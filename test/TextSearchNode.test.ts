@@ -13,7 +13,7 @@ jest.unstable_mockModule('../src/parts/SearchProcess/SearchProcess.js', () => {
   }
 })
 
-const TextSearchNode = await import('../src/parts/TextSearch/TextSearchNode.ts')
+const TextSearchNode = await import('../src/parts/TextSearchNode/TextSearchNode.ts')
 
 const SearchProcess = await import('../src/parts/SearchProcess/SearchProcess.ts')
 
