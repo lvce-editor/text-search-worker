@@ -4,14 +4,6 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/ExtensionHost/ExtensionHostTextSearch.js', () => {
-  return {
-    executeTextSearchProvider: jest.fn(() => {
-      throw new Error('not implemented')
-    }),
-  }
-})
-
 const TextSearchExtension = await import('../src/parts/TextSearchExtension/TextSearchExtension.ts')
 
 test.skip('textSearch - extension search - error', async () => {
