@@ -9,7 +9,7 @@ import * as SplitLines from '../SplitLines/SplitLines.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import { VError } from '../VError/VError.ts'
 
-const getDirectoryHandle = async (uri) => {
+const getDirectoryHandle = async (uri: string) => {
   const handle = await PersistentFileHandle.getHandle(uri)
   if (handle) {
     return handle
@@ -21,7 +21,7 @@ const getDirectoryHandle = async (uri) => {
   return getDirectoryHandle(dirname)
 }
 
-const textSearchInText = (file, content, query) => {
+const textSearchInText = (file: string, content: string, query: string) => {
   const results: any[] = []
   const lines = SplitLines.splitLines(content)
   for (let i = 0; i < lines.length; i++) {
@@ -49,7 +49,7 @@ const textSearchInText = (file, content, query) => {
   return results
 }
 
-const textSearchInFile = async (all, handle, absolutePath, query) => {
+const textSearchInFile = async (all: string, handle: any, absolutePath: string, query: string) => {
   try {
     const file = await FileSystemFileHandle.getFile(handle)
     const content = await file.text()
@@ -64,7 +64,7 @@ const textSearchInFile = async (all, handle, absolutePath, query) => {
   }
 }
 
-const textSearchRecursively = async (all, parent, handle, query) => {
+const textSearchRecursively = async (all: any, parent: any, handle: any, query: any) => {
   const childHandles: any[] = []
   // TODO
   // await FileSystemHtml.getChildHandles(handle)
@@ -85,7 +85,7 @@ const textSearchRecursively = async (all, parent, handle, query) => {
   await Promise.all(promises)
 }
 
-export const textSearch = async (scheme, root, query) => {
+export const textSearch = async (scheme: string, root: string, query: string) => {
   Assert.string(scheme)
   Assert.string(root)
   Assert.string(query)
@@ -95,7 +95,7 @@ export const textSearch = async (scheme, root, query) => {
     // @ts-ignore
     throw new VError(`Folder not found ${relativeRoot}`)
   }
-  const all = []
+  const all: any[] = []
   await textSearchRecursively(all, '', handle, query)
   return all
 }
