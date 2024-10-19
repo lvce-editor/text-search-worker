@@ -1,15 +1,5 @@
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
-// import * as SearchProcess from '../SearchProcess/SearchProcess.js'
-// import * as SharedProcessCommandType from '../SharedProcessCommandType/SharedProcessCommandType.js'
-
-const SearchProcess = {
-  // TODO connect to search process
-  invoke() {
-    return {
-      results: [],
-    }
-  },
-}
+import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
 export const textSearch = async (scheme: string, root: string, query: string, options: any) => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
@@ -20,8 +10,7 @@ export const textSearch = async (scheme: string, root: string, query: string, op
     ripGrepArgs,
     searchDir: root,
   }
-  // @ts-ignore
-  const result = await SearchProcess.invoke(SharedProcessCommandType.TextSearchSearch, actualOptions)
+  const result = await SearchProcess.invoke('TextSearch.search', actualOptions)
   // TODO api is weird
   return result.results
 }
