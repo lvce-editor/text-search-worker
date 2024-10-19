@@ -1,8 +1,8 @@
-import * as TextSearchExtension from '../TextSearch/TextSearchExtension.ts'
-import * as TextSearchFetch from '../TextSearch/TextSearchFetch.ts'
-import * as TextSearchHtml from '../TextSearch/TextSearchHtml.ts'
-import * as TextSearchNode from '../TextSearch/TextSearchNode.ts'
-import * as TextSearchWeb from '../TextSearch/TextSearchWeb.ts'
+import * as TextSearchExtension from '../TextSearchExtension/TextSearchExtension.ts'
+import * as TextSearchFetch from '../TextSearchFetch/TextSearchFetch.ts'
+import * as TextSearchHtml from '../TextSearchHtml/TextSearchHtml.ts'
+import * as TextSearchNode from '../TextSearchNode/TextSearchNode.ts'
+import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
 export const getProvider = (scheme: string) => {
   switch (scheme) {
