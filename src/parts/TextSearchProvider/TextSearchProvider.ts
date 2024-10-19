@@ -7,14 +7,14 @@ import * as TextSearchWeb from '../TextSearch/TextSearchWeb.ts'
 export const getProvider = (scheme: string) => {
   switch (scheme) {
     case '':
-      return TextSearchNode
+      return TextSearchNode.textSearch
     case 'web':
-      return TextSearchWeb
+      return TextSearchWeb.textSearch
     case 'fetch':
-      return TextSearchFetch
+      return TextSearchFetch.textSearch
     case 'html':
-      return TextSearchHtml
+      return TextSearchHtml.textSearch
     default:
-      return TextSearchExtension
+      return TextSearchExtension.textSearch
   }
 }
