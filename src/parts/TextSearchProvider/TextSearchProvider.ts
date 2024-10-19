@@ -1,14 +1,20 @@
-export const getProvider = (scheme) => {
+import * as TextSearchExtension from '../TextSearch/TextSearchExtension.ts'
+import * as TextSearchFetch from '../TextSearch/TextSearchFetch.ts'
+import * as TextSearchHtml from '../TextSearch/TextSearchHtml.ts'
+import * as TextSearchNode from '../TextSearch/TextSearchNode.ts'
+import * as TextSearchWeb from '../TextSearch/TextSearchWeb.ts'
+
+export const getProvider = (scheme: string) => {
   switch (scheme) {
     case '':
-      return import('../TextSearch/TextSearchNode.ts')
+      return TextSearchNode
     case 'web':
-      return import('../TextSearch/TextSearchWeb.ts')
+      return TextSearchWeb
     case 'fetch':
-      return import('../TextSearch/TextSearchFetch.ts')
+      return TextSearchFetch
     case 'html':
-      return import('../TextSearch/TextSearchHtml.ts')
+      return TextSearchHtml
     default:
-      return import('../TextSearch/TextSearchExtension.ts')
+      return TextSearchExtension
   }
 }
