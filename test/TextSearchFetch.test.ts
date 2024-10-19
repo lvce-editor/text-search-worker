@@ -31,7 +31,7 @@ test.skip('textSearch', async () => {
         break
     }
   })
-  expect(await TextSearchFetch.textSearch('fetch', 'fetch:///test', 'test', {})).toEqual([
+  expect(await TextSearchFetch.textSearch('fetch', 'fetch:///test', 'test', {}, '')).toEqual([
     {
       type: TextSearchResultType.File,
       text: 'file-1.txt',
