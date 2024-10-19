@@ -5,7 +5,7 @@ import * as HtmlFile from '../HtmlFile/HtmlFile.ts'
  * @param {FileSystemFileHandle} handle
  * @returns
  */
-export const getFile = (handle) => {
+export const getFile = (handle: any) => {
   return handle.getFile()
 }
 
@@ -14,7 +14,7 @@ export const getFile = (handle) => {
  * @param {FileSystemFileHandle} handle
  * @returns
  */
-export const getBinaryString = async (handle) => {
+export const getBinaryString = async (handle: any) => {
   const file = await getFile(handle)
   const text = await HtmlFile.getBinaryString(file)
   return text
@@ -25,7 +25,7 @@ export const getBinaryString = async (handle) => {
  * @param {FileSystemFileHandle} handle
  * @param {string} content
  */
-export const write = async (handle, content) => {
+export const write = async (handle: any, content: string) => {
   // @ts-ignore
   const writable = await handle.createWritable()
   await writable.write(content)

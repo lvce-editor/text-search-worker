@@ -11,7 +11,7 @@ export const textSearch = async (root: string, query: string, options: any) => {
   return results
 }
 
-export const cancel = async (searchId) => {
+export const cancel = async (searchId: any) => {
   // TODO
   // await SharedProcess.invoke(
   //   /* Search.cancel */ 'Search.cancel',
