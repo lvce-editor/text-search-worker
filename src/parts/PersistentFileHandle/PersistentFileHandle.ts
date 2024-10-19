@@ -5,7 +5,7 @@ export const state = {
   handles: Object.create(null),
 }
 
-export const addHandle = async (uri, handle) => {
+export const addHandle = async (uri: string, handle: any) => {
   try {
     // TODO save handle in indexeddb
     state.handles[uri] = handle
@@ -15,7 +15,7 @@ export const addHandle = async (uri, handle) => {
   }
 }
 
-export const addHandles = async (parentUri, childHandles) => {
+export const addHandles = async (parentUri: string, childHandles: any) => {
   const promises: any[] = []
   for (const childHandle of childHandles) {
     const childUri = parentUri + '/' + childHandle.name
@@ -32,7 +32,7 @@ export const removeHandle = () => {
   // TODO remove handle from state and from indexeddb
 }
 
-export const getHandle = async (uri) => {
+export const getHandle = async (uri: string) => {
   try {
     // TODO retrieve handle from state or from indexeddb
     // TODO if not found, throw error

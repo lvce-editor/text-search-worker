@@ -32,12 +32,7 @@ export const write = async (handle, content) => {
   await writable.close()
 }
 
-/**
- *
- * @param {FileSystemFileHandle} handle
- * @param {Response} response
- */
-export const writeResponse = async (handle, response) => {
+export const writeResponse = async (handle: FileSystemFileHandle, response: Response) => {
   // @ts-ignore
   const writable = await handle.createWritable()
   // @ts-ignore

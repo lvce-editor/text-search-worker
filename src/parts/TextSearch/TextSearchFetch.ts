@@ -4,7 +4,7 @@ import * as Command from '../Command/Command.ts'
 import * as SplitLines from '../SplitLines/SplitLines.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const textSearchInFile = (file, content, query) => {
+const textSearchInFile = (file: string, content: string, query: string) => {
   const results: any[] = []
   const lines = SplitLines.splitLines(content)
   for (let i = 0; i < lines.length; i++) {
@@ -32,7 +32,7 @@ const textSearchInFile = (file, content, query) => {
   return results
 }
 
-export const textSearch = async (scheme, root, query, options) => {
+export const textSearch = async (scheme: string, root: string, query: string, options: any) => {
   Assert.string(scheme)
   Assert.string(root)
   Assert.string(query)

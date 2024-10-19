@@ -11,7 +11,7 @@ const SearchProcess = {
   },
 }
 
-export const textSearch = async (scheme, root, query, options) => {
+export const textSearch = async (scheme: string, root: string, query: string, options: any) => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
