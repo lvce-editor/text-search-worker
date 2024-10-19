@@ -6,8 +6,8 @@ export const textSearch = async (root: string, query: string, options: any) => {
   Assert.string(root)
   Assert.string(query)
   const scheme = GetProtocol.getProtocol(root)
-  const provider = await TextSearchProvider.getProvider(scheme)
-  const results = await provider.textSearch(scheme, root, query, options)
+  const provider = TextSearchProvider.getProvider(scheme)
+  const results = await provider(scheme, root, query, options)
   return results
 }
 
