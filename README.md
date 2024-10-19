@@ -1,3 +1,3 @@
-# file search worker
+# text search worker
 
-Web Worker for the file search functionality in LVCE Editor.
+Web Worker for the text search functionality in LVCE Editor.
