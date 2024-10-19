@@ -12,7 +12,7 @@ jest.unstable_mockModule('../src/parts/ExtensionHost/ExtensionHostTextSearch.js'
   }
 })
 
-const TextSearchExtension = await import('../src/parts/TextSearch/TextSearchExtension.ts')
+const TextSearchExtension = await import('../src/parts/TextSearchExtension/TextSearchExtension.ts')
 
 test.skip('textSearch - extension search - error', async () => {
   // @ts-ignore
