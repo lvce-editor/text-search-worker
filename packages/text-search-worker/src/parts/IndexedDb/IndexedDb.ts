@@ -1,9 +1,7 @@
 // TODO high memory usage in idb because of transactionDoneMap
 
 import { openDB } from '../Idb/Idb.ts'
-import { VError } from '../VError/VError.ts'
 import { state } from '../IndexedDbState/IndexedDbState.ts'
-import * as IsDataCloneError from '../IsDataCloneError/IsDataCloneError.ts'
 
 const getDb = async () => {
   // @ts-ignore
@@ -18,12 +16,6 @@ const getDb = async () => {
     },
   })
   return db
-}
-
-const getDbMemoized = async () => {
-  // @ts-ignore
-  state.cachedDb ||= await getDb()
-  return state.cachedDb
 }
 
 const getHandleDb = async () => {
