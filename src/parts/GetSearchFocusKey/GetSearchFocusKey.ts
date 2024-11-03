@@ -1,6 +1,6 @@
 import * as WhenExpression from '../WhenExpression/WhenExpression.js'
 
-export const getSearchFocusKey = (key: string) => {
+export const getSearchFocusKey = (key: string): number => {
   switch (key) {
     case 'search-value':
       return WhenExpression.FocusSearchInput
