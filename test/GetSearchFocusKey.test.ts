@@ -17,8 +17,8 @@ test('matchCase', () => {
   expect(GetSearchFocusKey.getSearchFocusKey(key)).toBe(WhenExpression.FocusSearchMatchCase)
 })
 
-test('matchWholeCase', () => {
-  const key = 'Match Whole'
+test('matchWholeWord', () => {
+  const key = 'Match Whole Word'
   expect(GetSearchFocusKey.getSearchFocusKey(key)).toBe(WhenExpression.FocusSearchWholeWord)
 })
 
