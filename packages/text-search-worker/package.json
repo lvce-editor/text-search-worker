@@ -4,9 +4,6 @@
   "description": "",
   "main": "src/textSearchWorkerMain.ts",
   "type": "module",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "lint": "npx xo .",
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
