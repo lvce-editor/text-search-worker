@@ -56,7 +56,7 @@ await bundleJs()
 
 const version = await getVersion()
 
-const packageJson = await readJson(join(root, 'packages', 'editor-worker', 'package.json'))
+const packageJson = await readJson(join(root, 'packages', 'text-search-worker', 'package.json'))
 
 delete packageJson.scripts
 delete packageJson.devDependencies
@@ -66,16 +66,9 @@ delete packageJson.xo
 delete packageJson.directories
 delete packageJson.nodemonConfig
 packageJson.version = version
-packageJson.main = 'dist/editorWorkerMain.js'
+packageJson.main = 'dist/textSearchWorkerMain.js'
 
 await writeJson(join(dist, 'package.json'), packageJson)
 
 await cp(join(root, 'README.md'), join(dist, 'README.md'))
 await cp(join(root, 'LICENSE'), join(dist, 'LICENSE'))
-
-await mkdir(join(root, 'dist', 'dist', 'api'), {
-  recursive: true,
-})
-await cp(join(root, 'packages', 'editor-worker', 'src', 'parts', 'Api', 'Api.ts'), join(root, 'dist', 'dist', 'api', 'api.d.ts'))
-
-await writeFile(join(root, 'dist', 'dist', 'api', 'api.js'), '')
