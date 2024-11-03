@@ -1,0 +1,5 @@
+export const CheckBox = 'checkbox'
+export const None = 'none'
+export const Status = 'status'
+export const Tree = 'tree'
+export const TreeItem = 'treeitem'
