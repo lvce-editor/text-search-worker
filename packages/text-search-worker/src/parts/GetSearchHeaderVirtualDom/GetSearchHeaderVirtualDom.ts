@@ -1,11 +1,17 @@
-import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.js'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
-import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
-export const getSearchHeaderVirtualDom = (replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded) => {
+export const getSearchHeaderVirtualDom = (
+  replaceExpanded: boolean,
+  matchCase: boolean,
+  matchWholeWord: boolean,
+  useRegularExpression: boolean,
+  detailsExpanded: boolean,
+) => {
   const dom = [
     {
       type: VirtualDomElements.Div,
