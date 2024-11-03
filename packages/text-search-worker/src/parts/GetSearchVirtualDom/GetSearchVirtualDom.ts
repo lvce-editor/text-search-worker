@@ -8,14 +8,14 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.js'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 export const getSearchVirtualDom = (
-  visibleItems,
-  replaceExpanded,
-  matchCase,
-  matchWholeWord,
-  useRegularExpression,
-  message,
-  detailsExpanded,
-  focusOutline,
+  visibleItems: any,
+  replaceExpanded: boolean,
+  matchCase: boolean,
+  matchWholeWord: boolean,
+  useRegularExpression: boolean,
+  message: string,
+  detailsExpanded: boolean,
+  focusOutline: boolean,
 ) => {
   /**
    * @type {any[]}
