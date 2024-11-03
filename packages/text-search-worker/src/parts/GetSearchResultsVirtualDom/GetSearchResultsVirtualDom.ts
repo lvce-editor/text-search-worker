@@ -26,7 +26,7 @@ const highlighted = {
   childCount: 1,
 }
 
-const getLabelVirtualDom = (displayText, matchLength, matchStart, replacement) => {
+const getLabelVirtualDom = (displayText: string, matchLength: number, matchStart: number, replacement: string) => {
   const dom = []
   const label = {
     type: VirtualDomElements.Div,
@@ -51,10 +51,10 @@ const getLabelVirtualDom = (displayText, matchLength, matchStart, replacement) =
   return dom
 }
 
-const renderRow = (rowInfo) => {
+const renderRow = (rowInfo: any) => {
   // @ts-ignore
   const { top, type, matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, matchCount, focused } = rowInfo
-  const treeItem = {
+  const treeItem: any = {
     type: VirtualDomElements.Div,
     role: AriaRoles.TreeItem,
     className: ClassNames.TreeItem,
@@ -106,6 +106,6 @@ const renderRow = (rowInfo) => {
   return dom
 }
 
-export const getSearchResultsVirtualDom = (visibleItems) => {
+export const getSearchResultsVirtualDom = (visibleItems: any) => {
   return visibleItems.flatMap(renderRow)
 }
