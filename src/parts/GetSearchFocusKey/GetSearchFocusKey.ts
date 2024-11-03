@@ -1,4 +1,4 @@
-import * as WhenExpression from '../WhenExpression/WhenExpression.js'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getSearchFocusKey = (key: string): number => {
   switch (key) {

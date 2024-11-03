@@ -1,7 +1,7 @@
-import * as Focus from '../Focus/Focus.js'
-import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.js'
+import * as Focus from '../Focus/Focus.ts'
+import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.js'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const focusSearchValue = (state: SearchState): SearchState => {
   return {
