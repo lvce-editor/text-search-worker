@@ -2,10 +2,11 @@ import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
+import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
+import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
-import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 
 export const commandMap = {
   'SearchView.focusMatchCase': FocusMatchCase.focusMatchCase,
@@ -23,7 +24,8 @@ export const commandMap = {
   'TextSearch.focusReplaceValueNext': SearchFocus.focusReplaceValueNext,
   'TextSearch.focusSearchValue': SearchFocus.focusSearchValue,
   'TextSearch.focusSearchValueNext': SearchFocus.focusSearchValueNext,
+  'TextSearch.getActions': GetSearchActions.getActions,
+  'TextSearch.getActionsVirtualDom': GetActionsVirtualDom.getActionsVirtualDom,
   'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
   'TextSearch.textSearch': TextSearch.textSearch,
-  'TextSearch.getActions': GetSearchActions.getActions,
 }
