@@ -5,6 +5,7 @@ import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueN
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 
 export const commandMap = {
   'SearchView.focusMatchCase': FocusMatchCase.focusMatchCase,
@@ -24,4 +25,5 @@ export const commandMap = {
   'TextSearch.focusSearchValueNext': SearchFocus.focusSearchValueNext,
   'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
   'TextSearch.textSearch': TextSearch.textSearch,
+  'TextSearch.getActions': GetSearchActions.getActions,
 }
