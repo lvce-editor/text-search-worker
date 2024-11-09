@@ -4,7 +4,7 @@ import * as GetDirectoryHandle from '../GetDirectoryHandle/GetDirectoryHandle.ts
 import * as TextSearchInFile from '../TextSearchInFile/TextSearchInFile.ts'
 import { VError } from '../VError/VError.ts'
 
-const textSearchRecursively = async (all: any, parent: any, handle: any, query: any) => {
+const textSearchRecursively = async (all: any[], parent: string, handle: any, query: string): Promise<void> => {
   const childHandles: any[] = []
   // TODO
   // await FileSystemHtml.getChildHandles(handle)
@@ -25,14 +25,13 @@ const textSearchRecursively = async (all: any, parent: any, handle: any, query: 
   await Promise.all(promises)
 }
 
-export const textSearch = async (scheme: string, root: string, query: string) => {
+export const textSearch = async (scheme: string, root: string, query: string): Promise<readonly any[]> => {
   Assert.string(scheme)
   Assert.string(root)
   Assert.string(query)
   const relativeRoot = root.slice('html://'.length)
   const handle = await GetDirectoryHandle.getDirectoryHandle(relativeRoot)
   if (!handle) {
-    // @ts-ignore
     throw new VError(`Folder not found ${relativeRoot}`)
   }
   const all: any[] = []
