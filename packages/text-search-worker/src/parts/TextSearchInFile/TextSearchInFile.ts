@@ -3,7 +3,7 @@ import * as BrowserErrorTypes from '../BrowserErrorTypes/BrowserErrorTypes.ts'
 import * as FileSystemFileHandle from '../FileSystemFileHandle/FileSystemFileHandle.ts'
 import * as TextSearchInText from '../TextSearchInText/TextSearchInText.ts'
 
-export const textSearchInFile = async (all: string, handle: any, absolutePath: string, query: string) => {
+export const textSearchInFile = async (all: any[], handle: FileSystemFileHandle, absolutePath: string, query: string): Promise<void> => {
   try {
     const file = await FileSystemFileHandle.getFile(handle)
     const content = await file.text()

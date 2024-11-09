@@ -1,8 +1,3 @@
-/**
- *
- * @param {FileSystemFileHandle} handle
- * @returns
- */
-export const getFile = (handle: any) => {
+export const getFile = (handle: FileSystemFileHandle): Promise<File> => {
   return handle.getFile()
 }
