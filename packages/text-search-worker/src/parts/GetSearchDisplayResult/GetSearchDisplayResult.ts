@@ -1,9 +1,10 @@
 import * as GetIcon from '../GetIcon/GetIcon.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getDisplayResult = (
-  result: any,
+  result: SearchResult,
   itemHeight: number,
   i: number,
   setSize: number,
