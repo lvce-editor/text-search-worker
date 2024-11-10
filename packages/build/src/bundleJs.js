@@ -15,7 +15,7 @@ const options = {
     propertyReadSideEffects: false,
   },
   output: {
-    file: join(root, 'dist/dist/textSearchWorkerMain.js'),
+    file: join(root, '.tmp/dist/dist/textSearchWorkerMain.js'),
     format: 'es',
     freeze: false,
     generatedCode: {
