@@ -9,6 +9,7 @@ import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDi
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
+import * as Render from '../Render/Render.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
@@ -40,4 +41,5 @@ export const commandMap = {
   'TextSearch.submit': Submit.submit,
   'TextSearch.textSearch': TextSearch.textSearch,
   'TextSearch.handleContextMenu': ViewletSearchHandleContextMenu.handleContextMenu,
+  'TextSearch.doRender': Render.doRender,
 }
