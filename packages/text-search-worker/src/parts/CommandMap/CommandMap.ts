@@ -13,6 +13,7 @@ import * as Render from '../Render/Render.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 export const commandMap = {
   'SearchView.focusMatchCase': FocusMatchCase.focusMatchCase,
@@ -20,6 +21,7 @@ export const commandMap = {
   'SearchView.focusSearchValue': FocusSearchValue.focusSearchValue,
   'SearchView.focusSearchValueNext': FocusSearchValueNext.focusSearchValueNext,
   'TextSearch.create': Create.create,
+  'TextSearch.doRender': Render.doRender,
   'TextSearch.focusMatchCase': SearchFocus.focusMatchCase,
   'TextSearch.focusMatchCasePrevious': SearchFocus.focusMatchCasePrevious,
   'TextSearch.focusMatchWholeWord': SearchFocus.focusMatchWholeWord,
@@ -35,9 +37,9 @@ export const commandMap = {
   'TextSearch.getActionsVirtualDom': GetActionsVirtualDom.getActionsVirtualDom,
   'TextSearch.getSearchDisplayResults': GetSearchDisplayResults.getDisplayResults,
   'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
+  'TextSearch.handleContextMenu': ViewletSearchHandleContextMenu.handleContextMenu,
   'TextSearch.handleIconThemeChange': HandleIconThemeChange.handleIconThemeChange,
   'TextSearch.loadContent': LoadContent.loadContent,
   'TextSearch.submit': Submit.submit,
   'TextSearch.textSearch': TextSearch.textSearch,
-  'TextSearch.doRender': Render.doRender,
 }
