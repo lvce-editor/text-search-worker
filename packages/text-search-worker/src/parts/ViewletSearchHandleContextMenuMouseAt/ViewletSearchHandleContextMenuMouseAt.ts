@@ -1,5 +1,5 @@
-import * as ContextMenu from '../ContextMenu/ContextMenu.js'
-import * as MenuEntryId from '../MenuEntryId/MenuEntryId.js'
+import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
+import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const handleContextMenuMouseAt = async (state: SearchState, x: number, y: number) => {
