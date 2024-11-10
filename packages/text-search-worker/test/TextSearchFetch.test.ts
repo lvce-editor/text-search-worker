@@ -5,7 +5,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/Command/Command.js', () => {
+jest.unstable_mockModule('../src/parts/Command/Command.ts', () => {
   return {
     execute: jest.fn(() => {
       throw new Error('not implemented')

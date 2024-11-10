@@ -1,4 +1,4 @@
-import * as InputSource from '../InputSource/InputSource.js'
+import * as InputSource from '../InputSource/InputSource.ts'
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 

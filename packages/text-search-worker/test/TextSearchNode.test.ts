@@ -5,7 +5,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/SearchProcess/SearchProcess.js', () => {
+jest.unstable_mockModule('../src/parts/SearchProcess/SearchProcess.ts', () => {
   return {
     invoke: jest.fn(() => {
       throw new Error('not implemented')
