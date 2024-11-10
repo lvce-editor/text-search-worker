@@ -1,6 +1,6 @@
-import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.js'
-import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.js'
-import * as WhenExpression from '../WhenExpression/WhenExpression.js'
+import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
+import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const hasFunctionalRender = true
