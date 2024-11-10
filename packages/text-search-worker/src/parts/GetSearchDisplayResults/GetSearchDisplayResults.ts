@@ -1,7 +1,8 @@
 import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisplayResult.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const getFilteredResults = (results: readonly any[], collapsedPaths: readonly string[]) => {
+const getFilteredResults = (results: readonly SearchResult[], collapsedPaths: readonly string[]) => {
   const filteredResults = []
   let isExcluded = false
   for (const result of results) {
@@ -20,7 +21,7 @@ const getFilteredResults = (results: readonly any[], collapsedPaths: readonly st
 }
 
 export const getDisplayResults = (
-  results: readonly any[],
+  results: readonly SearchResult[],
   itemHeight: number,
   resultCount: number,
   searchTerm: string,
