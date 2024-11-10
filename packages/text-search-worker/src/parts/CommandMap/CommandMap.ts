@@ -1,3 +1,4 @@
+import * as Create from '../Create/Create.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
@@ -6,6 +7,7 @@ import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtual
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
@@ -30,4 +32,6 @@ export const commandMap = {
   'TextSearch.getSearchDisplayResults': GetSearchDisplayResults.getDisplayResults,
   'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
   'TextSearch.textSearch': TextSearch.textSearch,
+  'TextSearch.create': Create.create,
+  'TextSearch.loadContent': LoadContent.loadContent,
 }

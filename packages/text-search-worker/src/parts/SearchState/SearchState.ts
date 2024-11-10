@@ -33,4 +33,5 @@ export interface SearchState {
   readonly maxLineY: number
   readonly itemHeight: number
   readonly focusedIndex: number
+  readonly assetDir: string
 }
