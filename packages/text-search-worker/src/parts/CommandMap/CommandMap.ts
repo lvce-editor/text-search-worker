@@ -7,8 +7,10 @@ import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtual
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
+import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const commandMap = {
@@ -16,6 +18,7 @@ export const commandMap = {
   'SearchView.focusReplaceValue': FocusReplaceValue.focusReplaceValue,
   'SearchView.focusSearchValue': FocusSearchValue.focusSearchValue,
   'SearchView.focusSearchValueNext': FocusSearchValueNext.focusSearchValueNext,
+  'TextSearch.create': Create.create,
   'TextSearch.focusMatchCase': SearchFocus.focusMatchCase,
   'TextSearch.focusMatchCasePrevious': SearchFocus.focusMatchCasePrevious,
   'TextSearch.focusMatchWholeWord': SearchFocus.focusMatchWholeWord,
@@ -31,7 +34,8 @@ export const commandMap = {
   'TextSearch.getActionsVirtualDom': GetActionsVirtualDom.getActionsVirtualDom,
   'TextSearch.getSearchDisplayResults': GetSearchDisplayResults.getDisplayResults,
   'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
-  'TextSearch.textSearch': TextSearch.textSearch,
-  'TextSearch.create': Create.create,
+  'TextSearch.handleIconThemeChange': HandleIconThemeChange.handleIconThemeChange,
   'TextSearch.loadContent': LoadContent.loadContent,
+  'TextSearch.submit': Submit.submit,
+  'TextSearch.textSearch': TextSearch.textSearch,
 }

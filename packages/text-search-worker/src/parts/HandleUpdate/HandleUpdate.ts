@@ -3,11 +3,11 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearch from '../TextSearch/TextSearch.js'
 import * as ViewletSearchStatusMessage from './ViewletSearchStatusMessage.ts'
 
-export const handleUpdate = async (state: SearchState, update: any) => {
+export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   try {
     const { height, itemHeight, minimumSliderSize, headerHeight, matchCase, value, threads, useRegularExpression } = partialNewState
