@@ -1,4 +1,4 @@
-import * as Arrays from '../Arrays/Arrays.js'
+import * as Arrays from '../Arrays/Arrays.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 import { SearchState } from '../SearchState/SearchState.ts'
 

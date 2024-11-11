@@ -1,8 +1,8 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as OpenUri from '../OpenUri/OpenUri.js'
+import * as OpenUri from '../OpenUri/OpenUri.ts'
 import { SearchState } from '../SearchState/SearchState.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.js'
-import * as Workspace from '../Workspace/Workspace.js'
+import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
+import * as Workspace from '../Workspace/Workspace.ts'
 
 const getFileIndex = (items: readonly any[], index: number): number => {
   for (let i = index; i >= 0; i--) {

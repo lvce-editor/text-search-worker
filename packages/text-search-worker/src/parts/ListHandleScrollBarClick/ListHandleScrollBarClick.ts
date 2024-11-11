@@ -1,4 +1,4 @@
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import { SearchState } from '../SearchState/SearchState.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 

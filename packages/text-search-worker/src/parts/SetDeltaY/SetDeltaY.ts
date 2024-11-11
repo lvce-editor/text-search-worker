@@ -1,6 +1,6 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as Clamp from '../Clamp/Clamp.js'
-import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.js'
+import * as Clamp from '../Clamp/Clamp.ts'
+import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const setDeltaY = (state: SearchState, value: number): SearchState => {

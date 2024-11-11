@@ -1,4 +1,4 @@
-import * as ListIndex from '../ListIndex/ListIndex.js'
+import * as ListIndex from '../ListIndex/ListIndex.ts'
 import { SearchState } from '../SearchState/SearchState.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 
