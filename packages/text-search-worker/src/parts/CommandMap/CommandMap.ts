@@ -14,6 +14,8 @@ import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
+import * as Refresh from '../Refresh/Refresh.ts'
+import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 
 export const commandMap = {
   'SearchView.focusMatchCase': FocusMatchCase.focusMatchCase,
@@ -42,4 +44,6 @@ export const commandMap = {
   'TextSearch.loadContent': LoadContent.loadContent,
   'TextSearch.submit': Submit.submit,
   'TextSearch.textSearch': TextSearch.textSearch,
+  'TextSearch.refresh': Refresh.refresh,
+  'TextSearch.clearSearchResults': ClearSearchResults.clearSearchResults,
 }
