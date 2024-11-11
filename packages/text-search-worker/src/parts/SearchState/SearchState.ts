@@ -34,4 +34,10 @@ export interface SearchState {
   readonly itemHeight: number
   readonly focusedIndex: number
   readonly assetDir: string
+  readonly finalDeltaY: number
+  readonly deltaY: number
+  readonly headerHeight: number
+  readonly scrollBarHeight: number
+  readonly handleOffset: number
+  readonly scrollBarActive: boolean
 }

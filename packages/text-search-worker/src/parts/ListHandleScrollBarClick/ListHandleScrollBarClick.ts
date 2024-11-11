@@ -1,7 +1,8 @@
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.js'
-import { setDeltaY } from './VirtualListSetDeltaY.js'
+import { SearchState } from '../SearchState/SearchState.ts'
+import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
-export const handleScrollBarClick = (state, eventY) => {
+export const handleScrollBarClick = (state: SearchState, eventY: number): SearchState => {
   const { y, deltaY, headerHeight, finalDeltaY, scrollBarHeight, height } = state
   const contentHeight = height - headerHeight
   const relativeY = eventY - y - headerHeight
