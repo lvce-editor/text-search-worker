@@ -18,5 +18,3 @@ export const handleScrollBarMove = (state: SearchState, eventY: number): SearchS
   const newDeltaY = newPercent * finalDeltaY
   return setDeltaY(state, newDeltaY)
 }
-
-export const handleScrollBarThumbPointerMove = handleScrollBarMove
