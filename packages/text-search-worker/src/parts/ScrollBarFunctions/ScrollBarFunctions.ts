@@ -12,19 +12,12 @@ export const getScrollBarSize = (size: number, contentSize: number, minimumSlide
   return Math.max(Math.round(size ** 2 / contentSize), minimumSliderSize)
 }
 
-export const getScrollBarOffset = (delta: number, finalDelta: number, size: number, scrollBarSize: number) => {
+const getScrollBarOffset = (delta: number, finalDelta: number, size: number, scrollBarSize: number) => {
   const scrollBarOffset = (delta / finalDelta) * (size - scrollBarSize)
   return scrollBarOffset
 }
 
 export const getScrollBarY = getScrollBarOffset
-
-export const getScrollBarWidth = (width: number, longestLineWidth: number) => {
-  if (width > longestLineWidth) {
-    return 0
-  }
-  return width ** 2 / longestLineWidth
-}
 
 export const getNewDeltaPercent = (height: number, scrollBarHeight: number, relativeY: number) => {
   const halfScrollBarHeight = scrollBarHeight / 2

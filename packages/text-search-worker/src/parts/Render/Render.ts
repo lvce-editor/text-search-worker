@@ -3,9 +3,6 @@ import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
-export const hasFunctionalRender = true
-export const hasFunctionalRootRender = true
-
 const renderItems = {
   isEqual(oldState: SearchState, newState: SearchState) {
     return (
@@ -73,13 +70,13 @@ const renderFocus = {
   isEqual(oldState: SearchState, newState: SearchState) {
     return oldState.focus === newState.focus
   },
-  apply(oldState: SearchState, newState: SearchState) {
+  apply(newState: SearchState) {
     const selector = getSelector(newState.focus)
     return ['setFocus', selector]
   },
 }
 
-export const render = [renderItems, renderFocus]
+const render = [renderItems, renderFocus]
 
 export const doRender = (oldState: SearchState, newState: SearchState): any => {
   const commands = []
