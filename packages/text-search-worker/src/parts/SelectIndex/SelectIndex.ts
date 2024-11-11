@@ -1,9 +1,10 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as OpenUri from '../OpenUri/OpenUri.js'
+import { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.js'
 import * as Workspace from '../Workspace/Workspace.js'
 
-const getFileIndex = (items, index) => {
+const getFileIndex = (items: readonly any[], index: number): number => {
   for (let i = index; i >= 0; i--) {
     const item = items[i]
     if (item.type === TextSearchResultType.File) {
@@ -13,7 +14,7 @@ const getFileIndex = (items, index) => {
   return -1
 }
 
-const selectIndexFile = async (state, searchResult, index) => {
+const selectIndexFile = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {
   const { collapsedPaths } = state
   const path = Workspace.getAbsolutePath(searchResult.text)
   Assert.string(path)
@@ -25,7 +26,7 @@ const selectIndexFile = async (state, searchResult, index) => {
   }
 }
 
-const selectIndexPreview = async (state, searchResult, index) => {
+const selectIndexPreview = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {
   const { items } = state
   const fileIndex = getFileIndex(items, index)
   if (fileIndex === -1) {
@@ -46,7 +47,7 @@ const selectIndexPreview = async (state, searchResult, index) => {
   }
 }
 
-export const selectIndex = (state, index, isClose) => {
+export const selectIndex = async (state: SearchState, index: number, isClose: boolean): Promise<SearchState> => {
   if (index === -1) {
     return {
       ...state,
