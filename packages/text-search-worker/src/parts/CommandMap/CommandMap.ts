@@ -14,9 +14,11 @@ import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
 import * as ListFocusNext from '../ListFocusNext/ListFocusNext.ts'
 import * as ListFocusNextPage from '../ListFocusNextPage/ListFocusNextPage.ts'
+import * as ListFocusPreviouPage from '../ListFocusPreviouPage/ListFocusPreviousPage.ts'
 import * as ListFocusPrevious from '../ListFocusPrevious/ListFocusPrevious.ts'
 import * as ListHandleClickAt from '../ListHandleClickAt/ListHandleClickAt.ts'
 import * as ListHandleScrollBarCaptureLost from '../ListHandleScrollBarCaptureLost/ListHandleScrollBarCaptureLost.ts'
+import * as ListHandleScrollBarClick from '../ListHandleScrollBarClick/ListHandleScrollBarClick.ts'
 import * as ListHandleScrollBarMove from '../ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
 import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
@@ -45,6 +47,7 @@ export const commandMap = {
   'TextSearch.focusNextPage': ListFocusNextPage.focusNextPage,
   'TextSearch.focusPreserveCase': SearchFocus.focusPreserveCase,
   'TextSearch.focusPrevious': ListFocusPrevious.focusPrevious,
+  'TextSearch.focusPreviousPage': ListFocusPreviouPage.focusPreviousPage,
   'TextSearch.focusRegex': SearchFocus.focusRegex,
   'TextSearch.focusRegexNext': SearchFocus.focusRegexNext,
   'TextSearch.focusReplaceAll': SearchFocus.focusReplaceAll,
@@ -60,6 +63,7 @@ export const commandMap = {
   'TextSearch.handleContextMenu': ViewletSearchHandleContextMenu.handleContextMenu,
   'TextSearch.handleIconThemeChange': HandleIconThemeChange.handleIconThemeChange,
   'TextSearch.handleScrollBarCaptureLost': ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost,
+  'TextSearch.handleScrollBarClick': ListHandleScrollBarClick.handleScrollBarClick,
   'TextSearch.handleScrollBarMove': ListHandleScrollBarMove.handleScrollBarMove,
   'TextSearch.handleWheel': ListHandleWheel.handleWheel,
   'TextSearch.loadContent': LoadContent.loadContent,
