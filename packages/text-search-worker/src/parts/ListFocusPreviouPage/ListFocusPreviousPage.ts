@@ -1,6 +1,7 @@
-import { focusIndex } from './VirtualListFocusIndex.js'
+import { SearchState } from '../SearchState/SearchState.ts'
+import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 
-export const focusPreviousPage = (state) => {
+export const focusPreviousPage = (state: SearchState): SearchState => {
   const { focusedIndex, minLineY, maxLineY } = state
   if (focusedIndex === 0 || focusedIndex === -1) {
     return state

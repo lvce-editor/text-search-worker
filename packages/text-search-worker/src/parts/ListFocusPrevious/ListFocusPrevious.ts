@@ -1,7 +1,8 @@
 import * as ListIndex from '../ListIndex/ListIndex.js'
-import { focusIndex } from './VirtualListFocusIndex.js'
+import { SearchState } from '../SearchState/SearchState.ts'
+import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 
-export const focusPrevious = (state) => {
+export const focusPrevious = (state: SearchState) => {
   const { focusedIndex, items } = state
   if (focusedIndex === 0 || focusedIndex === -1) {
     return state
