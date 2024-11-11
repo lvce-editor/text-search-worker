@@ -1,7 +1,7 @@
 {
   "name": "@lvce-editor/text-search-worker",
   "version": "0.0.0-dev",
-  "description": "",
+  "description": "Text Search Worker",
   "main": "src/textSearchWorkerMain.ts",
   "type": "module",
   "scripts": {
