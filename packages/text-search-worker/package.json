@@ -91,5 +91,9 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
     "idb": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvce-editor/text-search-worker.git"
   }
 }
