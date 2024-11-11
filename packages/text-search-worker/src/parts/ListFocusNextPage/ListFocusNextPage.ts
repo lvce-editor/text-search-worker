@@ -1,7 +1,8 @@
 import * as Arrays from '../Arrays/Arrays.js'
-import { focusIndex } from './VirtualListFocusIndex.js'
+import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
+import { SearchState } from '../SearchState/SearchState.ts'
 
-export const focusNextPage = (state) => {
+export const focusNextPage = (state: SearchState): SearchState => {
   const { focusedIndex, items, maxLineY, minLineY } = state
   if (Arrays.isLastIndex(items, focusedIndex)) {
     return state

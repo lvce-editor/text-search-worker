@@ -17,3 +17,11 @@ const insertInto = (array: any, start: any, newItems: any) => {
 export const push = (array: any, newItems: any) => {
   insertInto(array, array.length, newItems)
 }
+
+export const isLastIndex = (array: any, index: number) => {
+  return index === array.length - 1
+}
+
+export const lastIndex = (array: any): number => {
+  return array.length - 1
+}

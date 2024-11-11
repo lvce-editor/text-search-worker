@@ -1,7 +1,8 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.js'
+import { SearchState } from '../SearchState/SearchState.ts'
 
-const focusIndexScrollUp = (state, index, listHeight, itemHeight, itemsLength) => {
+const focusIndexScrollUp = (state: SearchState, index: number, listHeight: number, itemHeight: number, itemsLength: number): SearchState => {
   const newMinLineY = index
   const fittingItems = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
   const newMaxLineY = Math.min(newMinLineY + fittingItems, itemsLength)
@@ -16,7 +17,7 @@ const focusIndexScrollUp = (state, index, listHeight, itemHeight, itemsLength) =
   }
 }
 
-const focusIndexScrollDown = (state, index, listHeight, itemHeight, itemsLength) => {
+const focusIndexScrollDown = (state: SearchState, index: number, listHeight: number, itemHeight: number, itemsLength: number) => {
   const newMaxLineY = Math.min(index + 1, itemsLength)
   const fittingItems = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
   const newMinLineY = Math.max(newMaxLineY - fittingItems, 0)
@@ -31,7 +32,7 @@ const focusIndexScrollDown = (state, index, listHeight, itemHeight, itemsLength)
   }
 }
 
-export const focusIndex = (state, index) => {
+export const focusIndex = (state: SearchState, index: number) => {
   const { itemHeight, minLineY, maxLineY, headerHeight, height, items } = state
   const itemsLength = items.length
   if (itemsLength === 0) {
