@@ -40,5 +40,4 @@ export interface SearchState {
   readonly scrollBarHeight: number
   readonly handleOffset: number
   readonly scrollBarActive: boolean
-  readonly listFocused: boolean
 }

@@ -1,10 +1,9 @@
-import * as Viewlet from '../Viewlet/Viewlet.js'
 import * as GetListIndex from '../GetListIndex/GetListIndex.js'
-import * as GetListIndex from '../Selein'
+import { SearchState } from '../SearchState/SearchState.ts'
+import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 
-export const handleClickAt = async (state, eventX, eventY) => {
-  const { x, y, itemHeight, uid, deltaY } = state
+export const handleClickAt = async (state: SearchState, eventX: number, eventY: number): Promise<SearchState> => {
+  const { x, y, itemHeight, deltaY } = state
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
-  await Viewlet.executeViewletCommand(uid, 'selectIndex', index)
-  return state
+  return SelectIndex.selectIndex(state, index, false)
 }
