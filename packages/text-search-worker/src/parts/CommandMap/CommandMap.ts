@@ -26,6 +26,7 @@ import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import * as Render from '../Render/Render.ts'
+import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
@@ -75,6 +76,7 @@ export const commandMap = {
   // not wrapped
   'TextSearch.create': Create.create,
   'TextSearch.render': Render.doRender,
+  'TextSearch.saveState': SaveState.saveState,
 
   // TODO needed?
   'TextSearch.textSearch': TextSearch.textSearch,
