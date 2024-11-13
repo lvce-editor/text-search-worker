@@ -7,7 +7,6 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
