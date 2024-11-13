@@ -1,10 +1,11 @@
-import * as GetIcon from '../GetIcon/GetIcon.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getDisplayResult = (
   result: SearchResult,
+  fileIcons: readonly string[],
+  fileIconIndex: number,
   itemHeight: number,
   i: number,
   setSize: number,
@@ -25,7 +26,7 @@ export const getDisplayResult = (
         title: absolutePath,
         type: TextSearchResultType.File,
         text: baseName,
-        icon: GetIcon.getFileIcon(),
+        icon: fileIcons[fileIconIndex],
         posInSet,
         setSize,
         top,

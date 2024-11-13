@@ -1,12 +1,13 @@
 import * as Height from '../Height/Height.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
+import { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const create = (uid: number, x: number, y: number, width: number, height: number, workspacePath: string) => {
-  const state = {
+  const state: SearchState = {
     uid,
     searchResults: [],
     stats: {},
@@ -41,6 +42,13 @@ export const create = (uid: number, x: number, y: number, width: number, height:
     loaded: false,
     message: '',
     collapsedPaths: [],
+    icons: [],
+    assetDir: '',
+    deltaY: 0,
+    finalDeltaY: 0,
+    focused: false,
+    focusedIndex: -1,
+    handleOffset: 0,
   }
   SearchViewStates.set(uid, state, state)
 }

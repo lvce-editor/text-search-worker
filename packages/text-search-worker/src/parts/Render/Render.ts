@@ -33,6 +33,7 @@ const renderItems = {
       newState.maxLineY,
       newState.replacement,
       newState.collapsedPaths,
+      newState.icons,
       newState.focusedIndex,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1

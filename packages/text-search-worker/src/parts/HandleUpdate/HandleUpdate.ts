@@ -1,11 +1,12 @@
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
+import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
+import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
@@ -47,6 +48,10 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
     const maxLineY = Math.min(numberOfVisible, total)
     const finalDeltaY = Math.max(contentHeight - listHeight, 0)
+
+    const visible = results.slice(0, maxLineY)
+    const icons = await GetFileIcons.getFileIcons(visible)
+
     return {
       ...partialNewState,
       minLineY: 0,
@@ -61,6 +66,7 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
       fileCount,
       matchCount: resultCount,
       loaded: true,
+      icons,
     }
   } catch (error) {
     ErrorHandling.handleError(error)

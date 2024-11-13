@@ -41,4 +41,5 @@ export interface SearchState {
   readonly handleOffset: number
   readonly scrollBarActive: boolean
   readonly focused: boolean
+  readonly icons: readonly string[]
 }
