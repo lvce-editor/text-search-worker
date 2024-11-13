@@ -73,7 +73,7 @@ const renderFocus = {
   },
   apply(newState: SearchState) {
     const selector = getSelector(newState.focus)
-    return ['setFocus', selector]
+    return ['Viewlet.send', newState.uid, 'setFocus', selector]
   },
 }
 
