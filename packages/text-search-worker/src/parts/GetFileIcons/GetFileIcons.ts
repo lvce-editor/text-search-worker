@@ -1,9 +1,13 @@
 import * as Rpc from '../Rpc/Rpc.ts'
+import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-export const getFileIcons = async (files: readonly string[]) => {
+export const getFileIcons = async (files: readonly any[]): Promise<readonly string[]> => {
   const promises = []
   for (const file of files) {
-    promises.push(Rpc.invoke('IconTheme.getFileIcon', file))
+    if (file.type === TextSearchResultType.Match) {
+      continue
+    }
+    promises.push(Rpc.invoke('IconTheme.getFileIcon', { name: file.text }))
   }
   const icons = await Promise.all(promises)
   return icons

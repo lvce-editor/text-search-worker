@@ -51,8 +51,7 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
     const finalDeltaY = Math.max(contentHeight - listHeight, 0)
 
     const visible = results.slice(0, maxLineY)
-    const files = visible.filter((item) => item.type === TextSearchResultType.File).map((item) => item.text)
-    const icons = await GetFileIcons.getFileIcons(files)
+    const icons = await GetFileIcons.getFileIcons(visible)
 
     return {
       ...partialNewState,
