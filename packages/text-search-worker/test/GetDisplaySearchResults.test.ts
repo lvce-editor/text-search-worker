@@ -33,7 +33,7 @@ test('getDisplayResults', () => {
       text: 'fun main(args : Array<String>) {',
     },
   ]
-  const fileIcons: readonly string[] = []
+  const fileIcons: readonly string[] = ['']
   const itemHeight = 20
   const resultCount = 3
   const searchTerm = 'a'
