@@ -17,7 +17,11 @@ test('getDisplayResult - file', () => {
   const focusedIndex = -1
   const setSize = 1
   const searchTermLength = 1
-  expect(GetSearchDisplayResult.getDisplayResult(result, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex)).toEqual({
+  const fileIcons: readonly string[] = ['']
+  const fileIconIndex = 0
+  expect(
+    GetSearchDisplayResult.getDisplayResult(result, fileIcons, fileIconIndex, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex),
+  ).toEqual({
     depth: 0,
     focused: false,
     icon: '',
@@ -49,7 +53,11 @@ test('getDisplayResult - result', () => {
   const focusedIndex = -1
   const setSize = 1
   const searchTermLength = 1
-  expect(GetSearchDisplayResult.getDisplayResult(result, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex)).toEqual({
+  const fileIcons: readonly string[] = []
+  const fileIconIndex = 0
+  expect(
+    GetSearchDisplayResult.getDisplayResult(result, fileIcons, fileIconIndex, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex),
+  ).toEqual({
     depth: 1,
     focused: false,
     icon: '',
