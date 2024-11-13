@@ -1,6 +1,7 @@
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as Copy from '../Copy/Copy.ts'
 import * as Create from '../Create/Create.ts'
+import * as Dismiss from '../Dismiss/Dismiss.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
@@ -38,6 +39,7 @@ export const commandMap = {
   'TextSearch.clearSearchResults': ClearSearchResults.clearSearchResults,
   'TextSearch.copy': Copy.copy,
   'TextSearch.create': Create.create,
+  'TextSearch.dismissItem': Dismiss.dismissItem,
   'TextSearch.doRender': Render.doRender,
   'TextSearch.focusFirst': ListFocusFirst.focusFirst,
   'TextSearch.focusIndex': ListFocusIndex.focusIndex,

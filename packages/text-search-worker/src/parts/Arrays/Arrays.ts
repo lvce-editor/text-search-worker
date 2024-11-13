@@ -25,3 +25,11 @@ export const isLastIndex = (array: any, index: number) => {
 export const lastIndex = (array: any): number => {
   return array.length - 1
 }
+
+export const toSpliced = (array: any, index: number, deleteCount: number, ...inserted: any[]) => {
+  return [...array.slice(0, index), ...inserted, ...array.slice(index + deleteCount)]
+}
+
+export const remove = (array: readonly any[], index: number, deleteCount: number) => {
+  return toSpliced(array, index, deleteCount)
+}
