@@ -46,7 +46,7 @@ const renderItems = {
       newState.detailsExpanded,
       focusOutline,
     )
-    return ['Viewlet.setDom2', dom]
+    return ['Viewlet.setDom2', newState.uid, dom]
   },
 }
 

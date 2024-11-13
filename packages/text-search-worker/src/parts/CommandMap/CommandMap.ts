@@ -35,7 +35,6 @@ import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
-  'TextSearch.create': WrapCommand.wrapCommand(Create.create),
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
@@ -71,6 +70,7 @@ export const commandMap = {
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
 
   // not wrapped
+  'TextSearch.create': Create.create,
   'TextSearch.render': Render.doRender,
 
   // TODO needed?

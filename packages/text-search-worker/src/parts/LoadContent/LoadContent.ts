@@ -1,6 +1,5 @@
-import * as InputSource from '../InputSource/InputSource.ts'
-import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 const getSavedValue = (savedState: any): string => {
@@ -32,8 +31,7 @@ const getThreads = () => {
   return 1
 }
 
-export const loadContent = async (uid: number, savedState: any): Promise<SearchState> => {
-  const state = SearchViewStates.get(uid)
+export const loadContent = async (state: SearchState, savedState: any): Promise<SearchState> => {
   const savedValue = getSavedValue(savedState)
   const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
   const savedCollapsedPaths = getSavedCollapsedPaths(savedState)
