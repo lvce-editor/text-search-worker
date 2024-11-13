@@ -29,6 +29,7 @@ export const getDisplayResults = (
   maxLineY: number,
   replacement: string,
   collapsedPaths: readonly string[],
+  fileIcons: readonly string[],
   focusedIndex: number,
 ) => {
   const displayResults = []
@@ -49,12 +50,24 @@ export const getDisplayResults = (
   let fileResult = {
     matchCount: 0,
   }
+  let fileIconIndex = 0
   for (let i = minLineY; i < maxLineY; i++) {
     const result = filteredResults[i]
-    const displayResult = GetSearchDisplayResult.getDisplayResult(result, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex)
+    const displayResult = GetSearchDisplayResult.getDisplayResult(
+      result,
+      fileIcons,
+      fileIconIndex,
+      itemHeight,
+      i,
+      setSize,
+      searchTermLength,
+      replacement,
+      focusedIndex,
+    )
     displayResults.push(displayResult)
     if (result.type === TextSearchResultType.File) {
       fileResult = displayResult
+      fileIconIndex++
     } else {
       fileResult.matchCount++
     }
