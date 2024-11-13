@@ -11,6 +11,7 @@ import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
+import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as ListFocusFirst from '../ListFocusFirst/ListFocusFirst.ts'
 import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
@@ -37,6 +38,7 @@ import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
+  'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
