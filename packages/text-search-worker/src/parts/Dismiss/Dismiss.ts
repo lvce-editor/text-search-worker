@@ -1,7 +1,7 @@
-import * as Arrays from '../Arrays/Arrays.js'
+import * as Arrays from '../Arrays/Arrays.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ViewletSearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.js'
+import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 const getSetSize = (items: readonly any[], index: number) => {
   let setSize = 0
