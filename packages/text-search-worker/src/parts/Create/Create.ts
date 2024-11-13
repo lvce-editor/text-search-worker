@@ -42,5 +42,5 @@ export const create = (uid: number, x: number, y: number, width: number, height:
     message: '',
     collapsedPaths: [],
   }
-  SearchViewStates.set(uid, state)
+  SearchViewStates.set(uid, state, state)
 }

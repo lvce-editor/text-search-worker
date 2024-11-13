@@ -1,6 +1,7 @@
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 const renderItems = {
@@ -78,7 +79,8 @@ const renderFocus = {
 
 const render = [renderItems, renderFocus]
 
-export const doRender = (oldState: SearchState, newState: SearchState): any => {
+export const doRender = (uid: number): any => {
+  const { oldState, newState } = SearchViewStates.get(uid)
   const commands = []
   for (const fn of render) {
     if (!fn.isEqual(oldState, newState)) {
