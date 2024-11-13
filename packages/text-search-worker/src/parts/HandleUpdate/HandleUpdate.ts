@@ -5,7 +5,7 @@ import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
-import * as ViewletSearchStatusMessage from './ViewletSearchStatusMessage.ts'
+import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 
 export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
@@ -39,7 +39,7 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
       throw new TypeError('results must be of type array')
     }
     const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(results)
-    const message = ViewletSearchStatusMessage.getStatusMessage(resultCount, fileCount)
+    const message = SearchStatusMessage.getStatusMessage(resultCount, fileCount)
     const total = results.length
     const contentHeight = total * itemHeight
     const listHeight = height - headerHeight
