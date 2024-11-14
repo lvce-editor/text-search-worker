@@ -2,7 +2,7 @@ import * as Arrays from '../Arrays/Arrays.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Assert from '../Assert/Assert.ts'
 
-export const getBulkReplacementEdits = (workspacePath: string, matches: readonly any[]): Promise<any> => {
+export const getBulkReplacementEdits = (workspacePath: string, matches: readonly any[]): any => {
   Assert.string(workspacePath)
   Assert.array(matches)
   const files = []
