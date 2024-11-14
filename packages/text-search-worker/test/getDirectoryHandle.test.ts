@@ -1,5 +1,13 @@
 import { test, expect, jest } from '@jest/globals'
-import { getDirectoryHandle } from '../src/parts/GetDirectoryHandle/GetDirectoryHandle.ts'
+
+jest.unstable_mockModule('../src/parts/PersistentFileHandle/PersistentFileHandle.ts', () => {
+  return {
+    getHandle: jest.fn(),
+  }
+})
+
+const GetDirectoryHandle = await import('../src/parts/GetDirectoryHandle/GetDirectoryHandle.ts')
+const PersistentFileHandle = await import('../src/parts/PersistentFileHandle/PersistentFileHandle.ts')
 
 test('getDirectoryHandle - should get directory handle', async () => {
   const mockHandle = {
@@ -7,21 +15,17 @@ test('getDirectoryHandle - should get directory handle', async () => {
     name: 'test-dir',
   }
 
-  const mockParent = {
-    getDirectoryHandle: jest.fn().mockResolvedValue(mockHandle),
-  }
-
   // @ts-ignore
-  const result = await getDirectoryHandle(mockParent, 'test-dir')
+  PersistentFileHandle.getHandle.mockResolvedValue(mockHandle)
+
+  const result = await GetDirectoryHandle.getDirectoryHandle('test-uri')
   expect(result).toEqual(mockHandle)
-  expect(mockParent.getDirectoryHandle).toHaveBeenCalledWith('test-dir', { create: true })
+  expect(PersistentFileHandle.getHandle).toHaveBeenCalledWith('test-uri')
 })
 
 test('getDirectoryHandle - should throw error when handle cannot be obtained', async () => {
-  const mockParent = {
-    getDirectoryHandle: jest.fn().mockRejectedValue(new Error('Failed to get handle')),
-  }
-
   // @ts-ignore
-  await expect(getDirectoryHandle(mockParent, 'test-dir')).rejects.toThrow('Failed to get handle')
+  PersistentFileHandle.getHandle.mockRejectedValue(new Error('Failed to get handle'))
+
+  await expect(GetDirectoryHandle.getDirectoryHandle('test-uri')).rejects.toThrow('Failed to get handle')
 })
