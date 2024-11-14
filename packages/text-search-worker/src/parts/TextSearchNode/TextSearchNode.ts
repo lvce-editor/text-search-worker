@@ -1,7 +1,7 @@
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
-export const textSearch = async (scheme: string, root: string, query: string, options: any) => {
+export const textSearch = async (scheme: string, root: string, query: string, options: any): Promise<any> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
