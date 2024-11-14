@@ -20,7 +20,7 @@ test('openUri - without options', async () => {
   Rpc.invoke.mockImplementation(() => {})
   await OpenUri.openUri('/test/file.txt')
   expect(Rpc.invoke).toHaveBeenCalledTimes(1)
-  expect(Rpc.invoke).toHaveBeenCalledWith('Main.openUri', '/test/file.txt', false, undefined)
+  expect(Rpc.invoke).toHaveBeenCalledWith('Main.openUri', '/test/file.txt', true, {})
 })
 
 test('openUri - with preview', async () => {
@@ -28,7 +28,7 @@ test('openUri - with preview', async () => {
   Rpc.invoke.mockImplementation(() => {})
   await OpenUri.openUri('/test/file.txt', true)
   expect(Rpc.invoke).toHaveBeenCalledTimes(1)
-  expect(Rpc.invoke).toHaveBeenCalledWith('Main.openUri', '/test/file.txt', true, undefined)
+  expect(Rpc.invoke).toHaveBeenCalledWith('Main.openUri', '/test/file.txt', true, {})
 })
 
 test('openUri - with options', async () => {
