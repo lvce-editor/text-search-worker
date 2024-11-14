@@ -44,7 +44,7 @@ export const getSearchHeaderVirtualDom = (
     },
     {
       type: VirtualDomElements.Div,
-      className: 'SearchHeaderTopRight',
+      className: ClassNames.SearchHeaderTopRight,
       role: AriaRoles.None,
       childCount: replaceExpanded ? 2 : 1,
     },
@@ -102,7 +102,7 @@ export const getSearchHeaderVirtualDom = (
     dom.push(
       {
         type: VirtualDomElements.Div,
-        className: 'SearchHeaderDetails',
+        className: ClassNames.SearchHeaderDetails,
         childCount: 4,
       },
       text('files to include'),

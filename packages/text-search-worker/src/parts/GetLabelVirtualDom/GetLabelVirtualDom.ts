@@ -1,21 +1,22 @@
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
-const deleted = {
+const deleted: VirtualDomNode = {
   type: VirtualDomElements.Del,
   className: ClassNames.HighlightDeleted,
   childCount: 1,
 }
 
-const inserted = {
+const inserted: VirtualDomNode = {
   type: VirtualDomElements.Ins,
   className: ClassNames.HighlightInserted,
   childCount: 1,
 }
 
-const highlighted = {
+const highlighted: VirtualDomNode = {
   type: VirtualDomElements.Span,
   className: ClassNames.Highlight,
   childCount: 1,
@@ -25,7 +26,7 @@ export const getLabelVirtualDom = (displayText: string, matchLength: number, mat
   const dom: VirtualDomNode[] = []
   const label = {
     type: VirtualDomElements.Div,
-    className: ClassNames.Label + ' Grow',
+    className: MergeClassNames.mergeClassNames(ClassNames.Label, ClassNames.Grow),
     childCount: 1,
   }
   dom.push(label)
