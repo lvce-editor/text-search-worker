@@ -37,7 +37,7 @@ test('getSearchResultsVirtualDom', () => {
     },
     {
       childCount: 0,
-      className: 'Chevron MaskIconChevronDown ',
+      className: 'Chevron MaskIconChevronDown',
       type: 4,
     },
     {
