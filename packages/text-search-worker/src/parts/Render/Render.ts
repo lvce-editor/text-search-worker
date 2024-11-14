@@ -6,7 +6,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 const renderItems = {
-  isEqual(oldState: SearchState, newState: SearchState) {
+  isEqual(oldState: SearchState, newState: SearchState): boolean {
     return (
       oldState.items === newState.items &&
       oldState.minLineY === newState.minLineY &&
@@ -24,7 +24,7 @@ const renderItems = {
       oldState.listFocused === newState.listFocused
     )
   },
-  apply(oldState: SearchState, newState: SearchState) {
+  apply(oldState: SearchState, newState: SearchState): any {
     const displayResults = GetSearchDisplayResults.getDisplayResults(
       newState.items,
       newState.itemHeight,
@@ -52,7 +52,7 @@ const renderItems = {
   },
 }
 
-const getSelector = (focusKey: number) => {
+const getSelector = (focusKey: number): string => {
   switch (focusKey) {
     case WhenExpression.FocusSearchInput:
       return '[name="search-value"]'
@@ -70,10 +70,10 @@ const getSelector = (focusKey: number) => {
 }
 
 const renderFocus = {
-  isEqual(oldState: SearchState, newState: SearchState) {
+  isEqual(oldState: SearchState, newState: SearchState): boolean {
     return oldState.focus === newState.focus || newState.focusSource === InputSource.User
   },
-  apply(newState: SearchState) {
+  apply(newState: SearchState): any {
     const selector = getSelector(newState.focus)
     return ['Viewlet.send', newState.uid, 'setFocus', selector, newState.focusSource]
   },
