@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals'
 import * as GetActionsVirtualDom from '../src/parts/GetActionsVirtualDom/GetActionsVirtualDom.ts'
-import { Action } from '../src/parts/Action/Action.ts'
+import type { Action } from '../src/parts/Action/Action.ts'
 
 test('getActionsVirtualDom - should return correct virtual dom structure', () => {
   const actions: readonly Action[] = [
