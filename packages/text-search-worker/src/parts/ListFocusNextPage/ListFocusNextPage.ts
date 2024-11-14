@@ -1,6 +1,6 @@
 import * as Arrays from '../Arrays/Arrays.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const focusNextPage = (state: SearchState): SearchState => {
   const { focusedIndex, items, maxLineY, minLineY } = state

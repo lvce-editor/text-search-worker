@@ -1,4 +1,4 @@
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as HandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 

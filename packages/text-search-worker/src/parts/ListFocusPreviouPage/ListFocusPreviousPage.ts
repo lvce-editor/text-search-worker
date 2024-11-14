@@ -1,4 +1,4 @@
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 
 export const focusPreviousPage = (state: SearchState): SearchState => {

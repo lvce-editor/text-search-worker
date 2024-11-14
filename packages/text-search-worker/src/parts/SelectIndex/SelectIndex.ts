@@ -1,6 +1,6 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as OpenUri from '../OpenUri/OpenUri.ts'
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 

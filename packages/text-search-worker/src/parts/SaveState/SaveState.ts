@@ -1,4 +1,4 @@
-import { SavedState } from '../SavedState/SavedState.ts'
+import type { SavedState } from '../SavedState/SavedState.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const saveState = (uid: number): SavedState => {
