@@ -3,6 +3,7 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
@@ -30,7 +31,11 @@ export const getSearchHeaderVirtualDom = (
     },
     {
       type: VirtualDomElements.Button,
-      className: `IconButton SearchToggleButton ${replaceExpanded ? ClassNames.SearchToggleButtonExpanded : ''}`,
+      className: MergeClassNames.mergeClassNames(
+        ClassNames.IconButton,
+        ClassNames.SearchToggleButton,
+        replaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
+      ),
       title: 'Toggle Replace',
       ariaLabel: 'Toggle Replace',
       ariaExpanded: replaceExpanded,
@@ -39,7 +44,10 @@ export const getSearchHeaderVirtualDom = (
     },
     {
       type: VirtualDomElements.Div,
-      className: `${ClassNames.MaskIcon} ${replaceExpanded ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight}`,
+      className: MergeClassNames.mergeClassNames(
+        ClassNames.MaskIcon,
+        replaceExpanded ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
+      ),
       childCount: 0,
     },
     {

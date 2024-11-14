@@ -1,5 +1,7 @@
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
+import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchFieldButtonVirtualDom = (button: any): readonly VirtualDomNode[] => {
@@ -7,7 +9,7 @@ export const getSearchFieldButtonVirtualDom = (button: any): readonly VirtualDom
   return [
     {
       type: VirtualDomElements.Div,
-      className: `SearchFieldButton ${checked ? 'SearchFieldButtonChecked' : ''}`,
+      className: MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, checked ? ClassNames.SearchFieldButtonChecked : ''),
       title,
       role: AriaRoles.CheckBox,
       ariaChecked: checked,
@@ -16,7 +18,7 @@ export const getSearchFieldButtonVirtualDom = (button: any): readonly VirtualDom
     },
     {
       type: VirtualDomElements.Div,
-      className: `MaskIcon ${icon}`,
+      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
       childCount: 0,
     },
   ]
