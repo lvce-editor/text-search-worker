@@ -6,7 +6,7 @@ import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
-export const create = (uid: number, x: number, y: number, width: number, height: number, workspacePath: string, assetDir: string): void => {
+export const create = (uid: number, x: number, y: number, width: number, height: number, workspacePath: string, assetDir: string): SearchState => {
   const state: SearchState = {
     uid,
     searchResults: [],
@@ -52,4 +52,5 @@ export const create = (uid: number, x: number, y: number, width: number, height:
     focusSource: InputSource.User,
   }
   SearchViewStates.set(uid, state, state)
+  return state
 }
