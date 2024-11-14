@@ -70,7 +70,7 @@ test('getSearchHeaderVirtualDom', () => {
     {
       ariaChecked: false,
       childCount: 1,
-      className: 'SearchFieldButton ',
+      className: 'SearchFieldButton',
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Case',

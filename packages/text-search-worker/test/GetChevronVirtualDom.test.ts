@@ -5,7 +5,7 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 test('getChevronDownVirtualDom', () => {
   expect(GetChevronVirtualDom.getChevronDownVirtualDom()).toEqual({
     type: VirtualDomElements.Div,
-    className: 'Chevron MaskIconChevronDown ',
+    className: 'Chevron MaskIconChevronDown',
     childCount: 0,
   })
 })
@@ -13,7 +13,7 @@ test('getChevronDownVirtualDom', () => {
 test('getChevronRightVirtualDom', () => {
   expect(GetChevronVirtualDom.getChevronRightVirtualDom()).toEqual({
     type: VirtualDomElements.Div,
-    className: 'Chevron MaskIconChevronRight ',
+    className: 'Chevron MaskIconChevronRight',
     childCount: 0,
   })
 })
