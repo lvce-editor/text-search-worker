@@ -35,17 +35,6 @@ export const getDisplayResults = (
   const displayResults = []
   const filteredResults = getFilteredResults(results, collapsedPaths)
   const setSize = resultCount
-  let fileIndex = 0
-  for (let i = 0; i < minLineY; i++) {
-    const result = filteredResults[i]
-    switch (result.type) {
-      case TextSearchResultType.File:
-        fileIndex++
-        break
-      default:
-        break
-    }
-  }
   const searchTermLength = searchTerm.length
   let fileResult = {
     matchCount: 0,
