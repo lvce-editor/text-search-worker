@@ -1,6 +1,7 @@
 import { test, expect } from '@jest/globals'
 import { getModule } from '../src/parts/IpcChildModule/IpcChildModule.ts'
 import * as IpcChildType from '../src/parts/IpcChildType/IpcChildType.ts'
+// @ts-ignore
 import { IpcChildWithModuleWorker, IpcChildWithModuleWorkerAndMessagePort } from '@lvce-editor/ipc/dist/browser.js'
 
 test('getModule - should return IpcChildWithModuleWorker for ModuleWorker type', () => {
