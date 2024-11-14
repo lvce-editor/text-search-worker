@@ -1,5 +1,4 @@
 import { expect, test, jest } from '@jest/globals'
-import { getHandle } from '../src/parts/PersistentFileHandle/PersistentFileHandle.ts'
 import { VError } from '../src/parts/VError/VError.ts'
 
 jest.unstable_mockModule('../src/parts/IndexedDb/IndexedDb.ts', () => {
@@ -9,6 +8,7 @@ jest.unstable_mockModule('../src/parts/IndexedDb/IndexedDb.ts', () => {
 })
 
 const IndexedDb = await import('../src/parts/IndexedDb/IndexedDb.ts')
+const PersistentFileHandle = await import('../src/parts/PersistentFileHandle/PersistentFileHandle.ts')
 
 test('getHandle retrieves handle successfully', async () => {
   const uri = 'test-uri'
@@ -17,7 +17,7 @@ test('getHandle retrieves handle successfully', async () => {
   // @ts-ignore
   IndexedDb.getHandle.mockResolvedValue(mockHandle)
 
-  const result = await getHandle(uri)
+  const result = await PersistentFileHandle.getHandle(uri)
   expect(result).toEqual(mockHandle)
   expect(IndexedDb.getHandle).toHaveBeenCalledWith(uri)
 })
@@ -29,6 +29,6 @@ test('getHandle throws VError on failure', async () => {
   // @ts-ignore
   IndexedDb.getHandle.mockRejectedValue(mockError)
 
-  await expect(getHandle(uri)).rejects.toThrow(VError)
-  await expect(getHandle(uri)).rejects.toThrow('Failed to get handle')
+  await expect(PersistentFileHandle.getHandle(uri)).rejects.toThrow(VError)
+  await expect(PersistentFileHandle.getHandle(uri)).rejects.toThrow('Failed to get handle')
 })
