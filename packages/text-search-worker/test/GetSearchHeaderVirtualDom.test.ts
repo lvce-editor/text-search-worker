@@ -28,7 +28,7 @@ test('getSearchHeaderVirtualDom', () => {
       ariaExpanded: false,
       ariaLabel: 'Toggle Replace',
       childCount: 1,
-      className: 'IconButton SearchToggleButton ',
+      className: 'IconButton SearchToggleButton',
       'data-command': 'toggleReplace',
       title: 'Toggle Replace',
       type: 1,
@@ -84,7 +84,7 @@ test('getSearchHeaderVirtualDom', () => {
     {
       ariaChecked: false,
       childCount: 1,
-      className: 'SearchFieldButton ',
+      className: 'SearchFieldButton',
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -98,7 +98,7 @@ test('getSearchHeaderVirtualDom', () => {
     {
       ariaChecked: false,
       childCount: 1,
-      className: 'SearchFieldButton ',
+      className: 'SearchFieldButton',
       role: 'checkbox',
       tabIndex: 0,
       title: 'Use Regular Expression',
