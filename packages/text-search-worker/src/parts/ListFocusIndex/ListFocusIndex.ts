@@ -17,7 +17,7 @@ const focusIndexScrollUp = (state: SearchState, index: number, listHeight: numbe
   }
 }
 
-const focusIndexScrollDown = (state: SearchState, index: number, listHeight: number, itemHeight: number, itemsLength: number) => {
+const focusIndexScrollDown = (state: SearchState, index: number, listHeight: number, itemHeight: number, itemsLength: number): SearchState => {
   const newMaxLineY = Math.min(index + 1, itemsLength)
   const fittingItems = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
   const newMinLineY = Math.max(newMaxLineY - fittingItems, 0)
@@ -32,7 +32,7 @@ const focusIndexScrollDown = (state: SearchState, index: number, listHeight: num
   }
 }
 
-export const focusIndex = (state: SearchState, index: number) => {
+export const focusIndex = (state: SearchState, index: number): SearchState => {
   const { itemHeight, minLineY, maxLineY, headerHeight, height, items } = state
   const itemsLength = items.length
   if (itemsLength === 0) {
