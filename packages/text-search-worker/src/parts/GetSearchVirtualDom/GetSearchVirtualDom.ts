@@ -7,9 +7,10 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 
 export const getSearchVirtualDom = (
-  visibleItems: any,
+  visibleItems: readonly DisplaySearchResult[],
   replaceExpanded: boolean,
   matchCase: boolean,
   matchWholeWord: boolean,
