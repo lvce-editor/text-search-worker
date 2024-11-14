@@ -14,7 +14,7 @@ const getFileIndex = (items: readonly any[], index: number): number => {
   return -1
 }
 
-const selectIndexFile = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {
+const selectIndexFile = (state: SearchState, searchResult: any, index: number): SearchState => {
   const { collapsedPaths } = state
   const path = Workspace.getAbsolutePath(searchResult.text)
   Assert.string(path)

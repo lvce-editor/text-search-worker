@@ -1,6 +1,6 @@
 import { VError } from '@lvce-editor/verror'
 
-export const getText = async (url: string) => {
+export const getText = async (url: string): Promise<string> => {
   try {
     const response = await fetch(url)
     if (!response.ok) {
