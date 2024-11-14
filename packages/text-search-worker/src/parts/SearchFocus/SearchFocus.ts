@@ -2,11 +2,13 @@ import * as Focus from '../Focus/Focus.ts'
 import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 
 export const focusSearchValue = (state: SearchState): SearchState => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchInput,
+    focusSource: InputSource.Script,
   }
 }
 
@@ -46,27 +48,48 @@ export const focusReplaceValue = (state: SearchState): SearchState => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchReplaceInput,
+    focusSource: InputSource.Script,
   }
 }
 
 export const focusMatchCase = (state: SearchState): SearchState => {
-  return { ...state, focus: WhenExpression.FocusSearchMatchCase }
+  return {
+    ...state,
+    focus: WhenExpression.FocusSearchMatchCase,
+    focusSource: InputSource.Script,
+  }
 }
 
 export const focusPreserveCase = (state: SearchState): SearchState => {
-  return { ...state, focus: WhenExpression.FocusSearchPreserveCase }
+  return {
+    ...state,
+    focus: WhenExpression.FocusSearchPreserveCase,
+    focusSource: InputSource.Script,
+  }
 }
 
 export const focusMatchWholeWord = (state: SearchState): SearchState => {
-  return { ...state, focus: WhenExpression.FocusSearchWholeWord }
+  return {
+    ...state,
+    focus: WhenExpression.FocusSearchWholeWord,
+    focusSource: InputSource.Script,
+  }
 }
 
 export const focusRegex = (state: SearchState): SearchState => {
-  return { ...state, focus: WhenExpression.FocusSearchRegex }
+  return {
+    ...state,
+    focus: WhenExpression.FocusSearchRegex,
+    focusSource: InputSource.Script,
+  }
 }
 
 export const focusReplaceAll = (state: SearchState): SearchState => {
-  return { ...state, focus: WhenExpression.FocusSearchReplaceAll }
+  return {
+    ...state,
+    focus: WhenExpression.FocusSearchReplaceAll,
+    focusSource: InputSource.Script,
+  }
 }
 
 export const handleFocusIn = (state: SearchState, key: any) => {
@@ -78,5 +101,6 @@ export const handleFocusIn = (state: SearchState, key: any) => {
   return {
     ...state,
     focus: focusKey,
+    focusSource: InputSource.User,
   }
 }

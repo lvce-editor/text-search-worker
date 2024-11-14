@@ -49,6 +49,7 @@ export const create = (uid: number, x: number, y: number, width: number, height:
     focused: false,
     focusedIndex: -1,
     handleOffset: 0,
+    focusSource: InputSource.User,
   }
   SearchViewStates.set(uid, state, state)
 }
