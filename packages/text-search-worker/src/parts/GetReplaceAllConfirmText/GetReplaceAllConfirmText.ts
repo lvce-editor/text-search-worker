@@ -1,6 +1,6 @@
 import * as ViewletSearchStrings from '../SearchStrings/SearchStrings.ts'
 
-export const getReplaceAllConfirmText = (matchCount: number, fileCount: number, replacement: string) => {
+export const getReplaceAllConfirmText = (matchCount: number, fileCount: number, replacement: string): string => {
   if (matchCount === 1) {
     if (replacement) {
       return ViewletSearchStrings.confirmReplaceOneOccurrenceInOneFile(replacement)
