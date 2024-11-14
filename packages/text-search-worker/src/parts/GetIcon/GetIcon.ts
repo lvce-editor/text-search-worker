@@ -1,3 +1,3 @@
-export const getFileIcon = () => {
+export const getFileIcon = (): string => {
   return ''
 }

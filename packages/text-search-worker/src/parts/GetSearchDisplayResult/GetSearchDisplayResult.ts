@@ -12,7 +12,7 @@ export const getDisplayResult = (
   searchTermLength: number,
   replacement: string,
   focusedIndex: number,
-) => {
+): any => {
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
   const top = i * itemHeight
