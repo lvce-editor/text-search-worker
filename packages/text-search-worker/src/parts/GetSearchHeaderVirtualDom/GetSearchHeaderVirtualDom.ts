@@ -4,6 +4,7 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
+import { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderVirtualDom = (
   replaceExpanded: boolean,
@@ -11,8 +12,8 @@ export const getSearchHeaderVirtualDom = (
   matchWholeWord: boolean,
   useRegularExpression: boolean,
   detailsExpanded: boolean,
-) => {
-  const dom = [
+): readonly VirtualDomNode[] => {
+  const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeader,
@@ -96,6 +97,7 @@ export const getSearchHeaderVirtualDom = (
   }
   if (detailsExpanded) {
     console.log({ detailsExpanded })
+    // @ts-ignore
     dom[0].childCount++
     dom.push(
       {
