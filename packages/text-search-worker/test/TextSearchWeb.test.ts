@@ -3,7 +3,7 @@ import * as TextSearchWeb from '../src/parts/TextSearchWeb/TextSearchWeb.ts'
 
 beforeEach(() => {})
 
-test.skip('textSearch', async () => {
+test.skip('textSearch', () => {
   expect(TextSearchWeb.textSearch('', '', 'val')).toEqual([
     [
       './index.txt',

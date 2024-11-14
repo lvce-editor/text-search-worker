@@ -4,7 +4,7 @@ import * as TextSearchHtml from '../TextSearchHtml/TextSearchHtml.ts'
 import * as TextSearchNode from '../TextSearchNode/TextSearchNode.ts'
 import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
-export const getProvider = (scheme: string) => {
+export const getProvider = (scheme: string): any => {
   switch (scheme) {
     case '':
       return TextSearchNode.textSearch

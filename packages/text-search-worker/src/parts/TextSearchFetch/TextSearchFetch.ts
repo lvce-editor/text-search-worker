@@ -32,7 +32,7 @@ const textSearchInFile = (file: string, content: string, query: string) => {
   return results
 }
 
-export const textSearch = async (scheme: string, root: string, query: string, options: any, assetDir: string) => {
+export const textSearch = async (scheme: string, root: string, query: string, options: any, assetDir: string): Promise<any> => {
   Assert.string(scheme)
   Assert.string(root)
   Assert.string(query)
