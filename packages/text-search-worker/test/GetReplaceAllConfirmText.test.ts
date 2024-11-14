@@ -1,57 +1,26 @@
 import { expect, test } from '@jest/globals'
-import { getReplaceAllConfirmText } from '../src/parts/GetReplaceAllConfirmText/GetReplaceAllConfirmText.ts'
-import * as ViewletSearchStrings from '../src/parts/SearchStrings/SearchStrings.ts'
+import * as GetReplaceAllConfirmText from '../src/parts/GetReplaceAllConfirmText/GetReplaceAllConfirmText.ts'
 
-test('getReplaceAllConfirmText returns correct message for one match in one file with replacement', () => {
-  const matchCount = 1
-  const fileCount = 1
-  const replacement = 'replacement text'
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceOneOccurrenceInOneFile(replacement))
+test('getReplaceAllConfirmText - one occurrence with replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(1, 1, 'newText')).toBe("Replace 1 occurrence across 1 file with 'newText'")
 })
 
-test('getReplaceAllConfirmText returns correct message for one match in one file without replacement', () => {
-  const matchCount = 1
-  const fileCount = 1
-  const replacement = ''
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceOneOccurrenceInOneFileNoValue())
+test('getReplaceAllConfirmText - one occurrence without replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(1, 1, '')).toBe('Replace 1 occurrence across 1 file')
 })
 
-test('getReplaceAllConfirmText returns correct message for multiple matches in one file with replacement', () => {
-  const matchCount = 5
-  const fileCount = 1
-  const replacement = 'replacement text'
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceManyOccurrencesInOneFile(matchCount, replacement))
+test('getReplaceAllConfirmText - multiple occurrences in one file with replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(3, 1, 'newText')).toBe("Replace 3 occurrences across 1 file with 'newText'")
 })
 
-test('getReplaceAllConfirmText returns correct message for multiple matches in one file without replacement', () => {
-  const matchCount = 5
-  const fileCount = 1
-  const replacement = ''
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceManyOccurrencesInOneFileNoValue(matchCount))
+test('getReplaceAllConfirmText - multiple occurrences in one file without replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(3, 1, '')).toBe('Replace 3 occurrences across 1 file')
 })
 
-test('getReplaceAllConfirmText returns correct message for multiple matches in multiple files with replacement', () => {
-  const matchCount = 10
-  const fileCount = 3
-  const replacement = 'replacement text'
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceManyOccurrencesInManyFiles(matchCount, fileCount, replacement))
+test('getReplaceAllConfirmText - multiple occurrences in multiple files with replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(5, 3, 'newText')).toBe("Replace 5 occurrences across 3 files with 'newText'")
 })
 
-test('getReplaceAllConfirmText returns correct message for multiple matches in multiple files without replacement', () => {
-  const matchCount = 10
-  const fileCount = 3
-  const replacement = ''
-
-  const result = getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  expect(result).toBe(ViewletSearchStrings.confirmReplaceManyOccurrencesInManyFilesNoValue(matchCount, fileCount))
+test('getReplaceAllConfirmText - multiple occurrences in multiple files without replacement', () => {
+  expect(GetReplaceAllConfirmText.getReplaceAllConfirmText(5, 3, '')).toBe('Replace 5 occurrences across 3 files')
 })
