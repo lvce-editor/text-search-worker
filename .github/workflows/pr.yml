@@ -34,3 +34,4 @@ jobs:
       - run: npm run build:static
       - run: npm test
       - run: npm run type-check
+      - run: npm run lint
