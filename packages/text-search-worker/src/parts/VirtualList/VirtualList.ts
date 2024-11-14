@@ -6,7 +6,7 @@ export const create = ({
   itemHeight: number
   headerHeight: number
   minimumSliderSize: number
-}) => {
+}): any => {
   return {
     deltaY: 0,
     minLineY: 0,

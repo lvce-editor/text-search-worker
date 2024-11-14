@@ -9,7 +9,7 @@ export const replaceAllAndPrompt = async (
   replacement: string,
   matchCount: number,
   fileCount: number,
-) => {
+): Promise<boolean> => {
   Assert.string(workspacePath)
   Assert.array(items)
   Assert.string(replacement)
