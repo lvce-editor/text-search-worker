@@ -1,5 +1,5 @@
 import * as ListIndex from '../ListIndex/ListIndex.ts'
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 
 export const focusLast = (state: SearchState): SearchState => {

@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchDisplayResult from '../src/parts/GetSearchDisplayResult/GetSearchDisplayResult.ts'
-import { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 
 test('getDisplayResult - file', () => {
   const result: SearchResult = {

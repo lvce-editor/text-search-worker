@@ -7,7 +7,7 @@ import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-import { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: any): readonly VirtualDomNode[] => {
   const { type, matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, matchCount, focused } = rowInfo

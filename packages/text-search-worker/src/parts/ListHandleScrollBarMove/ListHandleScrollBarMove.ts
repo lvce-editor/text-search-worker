@@ -1,4 +1,4 @@
-import { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
 const getNewPercent = (contentHeight: number, scrollBarHeight: number, relativeY: number): number => {
