@@ -6,7 +6,6 @@ import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/Displ
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
     {
-      /* mock display search result properties */
       type: 1,
       text: 'Result 1',
       title: 'Title 1',
@@ -23,12 +22,20 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       top: 0,
     },
     {
-      /* mock display search result properties */
-      type: 2,
+      type: 1,
       text: 'Result 2',
       title: 'Title 2',
-      matchCount: 1,
-      focused: true,
+      matchCount: 0,
+      focused: false,
+      depth: 0,
+      icon: '',
+      lineNumber: 0,
+      matchLength: 0,
+      matchStart: 0,
+      posInSet: 0,
+      replacement: '',
+      setSize: 0,
+      top: 0,
     },
   ]
   const replaceExpanded = false
@@ -56,7 +63,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       className: 'viewlet search',
       childCount: 2,
     },
-    // Expected structure from GetSearchHeaderVirtualDom
     {
       type: 'header',
       className: 'search-header',
@@ -76,7 +82,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       tabIndex: 0,
       childCount: visibleItems.length,
     },
-    // Expected structure from GetSearchResultsVirtualDom
     {
       type: 'result',
       className: 'result-item',
