@@ -27,7 +27,7 @@ const getSavedCollapsedPaths = (savedState: any): string[] => {
   return []
 }
 
-const getThreads = () => {
+const getThreads = (): number => {
   return 1
 }
 
