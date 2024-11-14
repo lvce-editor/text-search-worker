@@ -4,7 +4,7 @@ import * as GetText from '../GetText/GetText.ts'
 import * as SplitLines from '../SplitLines/SplitLines.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const textSearchInFile = (file: string, content: string, query: string) => {
+const textSearchInFile = (file: string, content: string, query: string): any => {
   const results: any[] = []
   const lines = SplitLines.splitLines(content)
   for (let i = 0; i < lines.length; i++) {

@@ -10,7 +10,7 @@ const preparePrettyError = (error: any): any => {
   return error
 }
 
-const logError = (error: any): void => {
+const logError = (): void => {
   // handled by renderer worker
 }
 
