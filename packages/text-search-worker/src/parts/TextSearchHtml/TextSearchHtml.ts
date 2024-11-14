@@ -1,10 +1,11 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as FileHandleType from '../FileHandleType/FileHandleType.ts'
 import * as GetDirectoryHandle from '../GetDirectoryHandle/GetDirectoryHandle.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchInFile from '../TextSearchInFile/TextSearchInFile.ts'
 import { VError } from '../VError/VError.ts'
 
-const textSearchRecursively = async (all: any[], parent: string, handle: any, query: string): Promise<void> => {
+const textSearchRecursively = async (all: SearchResult[], parent: string, handle: any, query: string): Promise<void> => {
   const childHandles: any[] = []
   // TODO
   // await FileSystemHtml.getChildHandles(handle)
@@ -25,7 +26,7 @@ const textSearchRecursively = async (all: any[], parent: string, handle: any, qu
   await Promise.all(promises)
 }
 
-export const textSearch = async (scheme: string, root: string, query: string): Promise<readonly any[]> => {
+export const textSearch = async (scheme: string, root: string, query: string): Promise<readonly SearchResult[]> => {
   Assert.string(scheme)
   Assert.string(root)
   Assert.string(query)
@@ -34,7 +35,7 @@ export const textSearch = async (scheme: string, root: string, query: string): P
   if (!handle) {
     throw new VError(`Folder not found ${relativeRoot}`)
   }
-  const all: any[] = []
+  const all: SearchResult[] = []
   await textSearchRecursively(all, '', handle, query)
   return all
 }
