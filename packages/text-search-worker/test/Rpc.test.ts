@@ -40,6 +40,6 @@ test('invoke - calls JsonRpc.invoke with correct parameters', async () => {
   const result = await Rpc.invoke('test.method', 'param1', 'param2')
 
   expect(IpcState.get).toHaveBeenCalledTimes(1)
-  expect(JsonRpc.invoke).toHaveBeenCalledWith('test.method', 'param1', 'param2')
+  expect(JsonRpc.invoke).toHaveBeenCalledWith(mockIpc, 'test.method', 'param1', 'param2')
   expect(result).toBe('test result')
 })
