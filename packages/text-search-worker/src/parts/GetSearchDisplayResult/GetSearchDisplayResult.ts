@@ -1,3 +1,4 @@
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
@@ -12,7 +13,7 @@ export const getDisplayResult = (
   searchTermLength: number,
   replacement: string,
   focusedIndex: number,
-): any => {
+): DisplaySearchResult => {
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
   const top = i * itemHeight
