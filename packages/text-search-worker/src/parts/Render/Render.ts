@@ -2,6 +2,7 @@ import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDi
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 const renderItems = {
@@ -70,11 +71,11 @@ const getSelector = (focusKey: number) => {
 
 const renderFocus = {
   isEqual(oldState: SearchState, newState: SearchState) {
-    return oldState.focus === newState.focus
+    return oldState.focus === newState.focus || newState.focusSource === InputSource.User
   },
   apply(newState: SearchState) {
     const selector = getSelector(newState.focus)
-    return ['Viewlet.send', newState.uid, 'setFocus', selector]
+    return ['Viewlet.send', newState.uid, 'setFocus', selector, newState.focusSource]
   },
 }
 

@@ -42,4 +42,5 @@ export interface SearchState {
   readonly scrollBarActive: boolean
   readonly focused: boolean
   readonly icons: readonly string[]
+  readonly focusSource: number
 }
