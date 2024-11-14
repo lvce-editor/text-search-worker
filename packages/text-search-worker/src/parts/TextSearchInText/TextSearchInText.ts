@@ -1,8 +1,9 @@
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as SplitLines from '../SplitLines/SplitLines.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-export const textSearchInText = (file: string, content: string, query: string): readonly any[] => {
-  const results: any[] = []
+export const textSearchInText = (file: string, content: string, query: string): readonly SearchResult[] => {
+  const results: SearchResult[] = []
   const lines = SplitLines.splitLines(content)
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
