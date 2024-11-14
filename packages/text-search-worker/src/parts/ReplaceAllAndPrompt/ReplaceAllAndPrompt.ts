@@ -1,6 +1,6 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as Command from '../Command/Command.js'
-import * as GetReplaceAllConfirmText from '../GetReplaceAllConfirmText/GetReplaceAllConfirmText.js'
+import * as Command from '../Command/Command.ts'
+import * as GetReplaceAllConfirmText from '../GetReplaceAllConfirmText/GetReplaceAllConfirmText.ts'
 import * as ViewletSearchStrings from '../SearchStrings/SearchStrings.ts'
 
 export const replaceAllAndPrompt = async (
