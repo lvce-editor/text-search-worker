@@ -7,8 +7,8 @@ test('initial state', () => {
 
 test('set and get', () => {
   const mockIpc = {
-    send: () => {},
-    receive: () => {},
+    send: (): void => {},
+    receive: (): void => {},
   }
   IpcState.set(mockIpc)
   expect(IpcState.get()).toBe(mockIpc)
@@ -28,7 +28,7 @@ test('set overwrites previous value', () => {
 
 test('set with undefined', () => {
   const mockIpc = {
-    send: () => {},
+    send: (): void => {},
   }
   IpcState.set(mockIpc)
   IpcState.set(undefined)
