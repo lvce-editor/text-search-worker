@@ -92,7 +92,7 @@ export const focusReplaceAll = (state: SearchState): SearchState => {
   }
 }
 
-export const handleFocusIn = (state: SearchState, key: any) => {
+export const handleFocusIn = (state: SearchState, key: any): SearchState => {
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
   if (state.focus === focusKey) {
     return state
