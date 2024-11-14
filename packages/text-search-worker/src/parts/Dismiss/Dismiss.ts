@@ -3,7 +3,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ViewletSearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const getSetSize = (items: readonly any[], index: number) => {
+const getSetSize = (items: readonly any[], index: number): number => {
   let setSize = 0
   for (let i = index + 1; i < items.length; i++) {
     if (items[i].type === TextSearchResultType.File) {
@@ -14,7 +14,7 @@ const getSetSize = (items: readonly any[], index: number) => {
   return setSize
 }
 
-const getRemoveIndicesFile = (items: readonly any[], item: any, index: number, matchCount: number, fileCount: number) => {
+const getRemoveIndicesFile = (items: readonly any[], item: any, index: number, matchCount: number, fileCount: number): any => {
   const setSize = getSetSize(items, index)
   return {
     startIndex: index,
@@ -25,7 +25,7 @@ const getRemoveIndicesFile = (items: readonly any[], item: any, index: number, m
   }
 }
 
-const getRemoveIndicesMatch = (items: readonly any[], index: number, matchCount: number, fileCount: number) => {
+const getRemoveIndicesMatch = (items: readonly any[], index: number, matchCount: number, fileCount: number): any => {
   for (let i = index; i >= 0; i--) {
     if (items[i].type === TextSearchResultType.File) {
       const setSize = getSetSize(items, i)
@@ -50,7 +50,7 @@ const getRemoveIndicesMatch = (items: readonly any[], index: number, matchCount:
   throw new Error('could not compute indices to remove')
 }
 
-const getRemoveIndices = (items: readonly any[], index: number, matchCount: number, fileCount: number) => {
+const getRemoveIndices = (items: readonly any[], index: number, matchCount: number, fileCount: number): any => {
   const item = items[index]
   switch (item.type) {
     case TextSearchResultType.File:
@@ -62,7 +62,7 @@ const getRemoveIndices = (items: readonly any[], index: number, matchCount: numb
   }
 }
 
-const removeItemFromItems = (items: readonly any[], index: number, matchCount: number, fileCount: number) => {
+const removeItemFromItems = (items: readonly any[], index: number, matchCount: number, fileCount: number): any => {
   const { startIndex, removeCount, newFocusedIndex, newFileCount, newMatchCount } = getRemoveIndices(items, index, matchCount, fileCount)
   const newItems = Arrays.remove(items, startIndex, removeCount)
   return {
@@ -73,7 +73,7 @@ const removeItemFromItems = (items: readonly any[], index: number, matchCount: n
   }
 }
 
-const getNewMinMax = (newItemsLength: number, minLineY: number, maxLineY: number, deltaY: number, itemHeight: number) => {
+const getNewMinMax = (newItemsLength: number, minLineY: number, maxLineY: number, deltaY: number, itemHeight: number): any => {
   if (maxLineY > newItemsLength) {
     const diff = maxLineY - minLineY
     const newMinLineY = Math.max(newItemsLength - diff, 0)

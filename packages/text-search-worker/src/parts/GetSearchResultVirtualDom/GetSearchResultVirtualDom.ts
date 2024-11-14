@@ -35,7 +35,7 @@ export const getSearchResultVirtualDom = (rowInfo: any): readonly VirtualDomNode
     default:
       break
   }
-  const dom = []
+  const dom: VirtualDomNode[] = []
 
   dom.push(treeItem)
   if (type === TextSearchResultType.File) {

@@ -2,7 +2,7 @@ import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisp
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const getFilteredResults = (results: readonly SearchResult[], collapsedPaths: readonly string[]) => {
+const getFilteredResults = (results: readonly SearchResult[], collapsedPaths: readonly string[]): readonly any[] => {
   const filteredResults = []
   let isExcluded = false
   for (const result of results) {
@@ -31,7 +31,7 @@ export const getDisplayResults = (
   collapsedPaths: readonly string[],
   fileIcons: readonly string[],
   focusedIndex: number,
-) => {
+): readonly any[] => {
   const displayResults = []
   const filteredResults = getFilteredResults(results, collapsedPaths)
   const setSize = resultCount
