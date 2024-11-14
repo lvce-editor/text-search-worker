@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals'
-import { openDB } from '../../../src/parts/Idb/Idb.js'
+import { openDB } from '../src/parts/Idb/Idb.ts'
 
 test('exports openDB function', () => {
   expect(openDB).toBeDefined()
