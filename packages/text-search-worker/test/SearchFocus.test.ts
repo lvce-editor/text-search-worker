@@ -102,7 +102,7 @@ test('focusPreserveCasePrevious', () => {
 test('handleFocusIn - same focus key returns same state', () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    focus: 'testKey',
+    focus: 0,
   }
 
   const mockKey = { dataset: { focusKey: 0 } }
