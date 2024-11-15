@@ -1,8 +1,9 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
+import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 
 test('getSearchResultsVirtualDom', () => {
-  const searchResults: any = [
+  const searchResults: readonly DisplaySearchResult[] = [
     {
       top: 20,
       type: 1,
@@ -17,6 +18,7 @@ test('getSearchResultsVirtualDom', () => {
       replacement: '',
       matchCount: 0,
       focused: false,
+      lineNumber: 0,
     },
   ]
   expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults)).toEqual([
