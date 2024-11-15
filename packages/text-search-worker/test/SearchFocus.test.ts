@@ -105,7 +105,7 @@ test('handleFocusIn - same focus key returns same state', () => {
     focus: 'testKey',
   }
 
-  const mockKey = { dataset: { focusKey: 'testKey' } }
+  const mockKey = { dataset: { focusKey: 0 } }
   const result = SearchFocus.handleFocusIn(state, mockKey)
 
   expect(result).toBe(state)
