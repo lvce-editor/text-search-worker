@@ -123,7 +123,7 @@ test('handleFocusIn - different focus key updates state', () => {
 
   expect(result).toEqual({
     ...state,
-    focus: 'newKey',
+    focus: 0,
     focusSource: InputSource.User,
   })
   expect(mockFocus.setFocus).toHaveBeenCalledWith('newKey')
