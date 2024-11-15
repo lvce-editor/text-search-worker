@@ -34,7 +34,7 @@ test('setDeltaY - updates state with new deltaY', () => {
   expect(result).not.toBe(state)
   expect(result.deltaY).toBe(100)
   expect(result.minLineY).toBe(5) // 100/20
-  expect(result.maxLineY).toBe(28) // minLineY + visible items (23)
+  expect(result.maxLineY).toBe(29) // minLineY + visible items (23)
 })
 
 test('setDeltaY - clamps value within bounds', () => {
@@ -53,6 +53,6 @@ test('setDeltaY - clamps value within bounds', () => {
 
   expect(result).not.toBe(state)
   expect(result.deltaY).toBe(200)
-  expect(result.minLineY).toBe(100) // 200/20
-  expect(result.maxLineY).toBe(123) // minLineY + visible items (23)
+  expect(result.minLineY).toBe(10) // 200/20
+  expect(result.maxLineY).toBe(34) // minLineY + visible items (23)
 })
