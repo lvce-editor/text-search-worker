@@ -31,6 +31,6 @@ test('focusSearchValueNext - without replace expanded', () => {
   expect(result).toEqual({
     ...state,
     focus: WhenExpression.FocusSearchMatchCase,
-    focusSource: InputSource.Script,
+    focusSource: InputSource.User,
   })
 })
