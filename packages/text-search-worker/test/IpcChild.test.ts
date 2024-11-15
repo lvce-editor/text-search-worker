@@ -11,7 +11,7 @@ const mockModule = {
 }
 
 jest.unstable_mockModule('../src/parts/IpcChildModule/IpcChildModule.ts', () => ({
-  getModule() {
+  getModule(): any {
     return mockModule
   },
 }))
