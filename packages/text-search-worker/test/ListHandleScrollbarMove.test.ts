@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import * as ListHandleScrollBarMove from '../src/parts/ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('handleScrollbarMove - move scrollbar', () => {
   const state: SearchState = {
