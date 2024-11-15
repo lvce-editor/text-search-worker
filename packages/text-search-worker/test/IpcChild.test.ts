@@ -25,7 +25,7 @@ test('listen - throws error when create fails', async () => {
   // @ts-ignore
   mockModule.listen.mockRejectedValue(new Error('Failed to create IPC'))
 
-  expect(() => listen({ method: IpcChildType.Auto() })).toThrow('Failed to create IPC')
+  expect(() => listen({ method: IpcChildType.Auto() })).rejects.toThrow('Failed to create IPC')
 })
 
 test('listen - passes correct options to create', async () => {
