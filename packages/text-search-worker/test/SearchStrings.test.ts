@@ -25,6 +25,10 @@ test('confirmReplaceOneOccurrenceInOneFile', () => {
   expect(SearchStrings.confirmReplaceOneOccurrenceInOneFile(replacement)).toBe("Replace 1 occurrence across 1 file with 'b'")
 })
 
+test('confirmReplaceOneOccurrenceInOneFileNoValue', () => {
+  expect(SearchStrings.confirmReplaceOneOccurrenceInOneFileNoValue()).toBe('Replace 1 occurrence across 1 file')
+})
+
 test('confirmReplaceManyOccurrencesInOneFile', () => {
   const matchCount = 2
   const replacement = 'b'
@@ -49,4 +53,58 @@ test('confirmReplaceManyOccurrencesInManyFilesNoValue', () => {
   const matchCount = 2
   const fileCount = 2
   expect(SearchStrings.confirmReplaceManyOccurrencesInManyFilesNoValue(matchCount, fileCount)).toBe('Replace 2 occurrences across 2 files')
+})
+
+test('replacedOneOccurrenceInOneFile', () => {
+  const replacement = 'b'
+  expect(SearchStrings.replacedOneOccurrenceInOneFile(replacement)).toBe("Replaced 1 occurrence across 1 file with 'b'")
+})
+
+test('replacedManyOccurrencesInOneFile', () => {
+  const matchCount = 2
+  const replacement = 'b'
+  expect(SearchStrings.replacedManyOccurrencesInOneFile(matchCount, replacement)).toBe("Replaced 2 occurrences across 1 file with 'b'")
+})
+
+test('replacedManyOccurrencesInManyFiles', () => {
+  const matchCount = 2
+  const fileCount = 2
+  const replacement = 'b'
+  expect(SearchStrings.replacedManyOccurrencesInManyFiles(matchCount, fileCount, replacement)).toBe("Replaced 2 occurrences across 2 files with 'b'")
+})
+
+test('replaceAll', () => {
+  expect(SearchStrings.replaceAll()).toBe('Replace All')
+})
+
+test('replace', () => {
+  expect(SearchStrings.replace()).toBe('Replace')
+})
+
+test('dismiss', () => {
+  expect(SearchStrings.dismiss()).toBe('Dismiss')
+})
+
+test('copyPath', () => {
+  expect(SearchStrings.copyPath()).toBe('Copy Path')
+})
+
+test('refresh', () => {
+  expect(SearchStrings.refresh()).toBe('Refresh')
+})
+
+test('clearSearchResults', () => {
+  expect(SearchStrings.clearSearchResults()).toBe('Clear Search Results')
+})
+
+test('openNewSearchEditor', () => {
+  expect(SearchStrings.openNewSearchEditor()).toBe('Open New Search Editor')
+})
+
+test('viewAsTree', () => {
+  expect(SearchStrings.viewAsTree()).toBe('View as Tree')
+})
+
+test('collapseAll', () => {
+  expect(SearchStrings.collapseAll()).toBe('Collapse All')
 })
