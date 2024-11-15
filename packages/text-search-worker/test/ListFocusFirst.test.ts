@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
-import { focusFirst } from '../src/parts/ListFocusFirst/ListFocusFirst.ts'
+import * as ListFocusFirst from '../src/parts/ListFocusFirst/ListFocusFirst.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('focusFirst', () => {
@@ -8,6 +8,6 @@ test('focusFirst', () => {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     focusedIndex: -1,
   }
-  const result = focusFirst(initialState)
+  const result = ListFocusFirst.focusFirst(initialState)
   expect(result.focusedIndex).toBe(-1)
 })

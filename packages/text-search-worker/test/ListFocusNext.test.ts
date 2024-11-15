@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
-import { focusNext } from '../src/parts/ListFocusNext/ListFocusNext.ts'
+import * as ListFocusNext from '../src/parts/ListFocusNext/ListFocusNext.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('focusNext updates focusedIndex to the next index', () => {
@@ -10,6 +10,6 @@ test('focusNext updates focusedIndex to the next index', () => {
     focusedIndex: 0,
     items: initialItems,
   }
-  const result = focusNext(initialState)
+  const result = ListFocusNext.focusNext(initialState)
   expect(result.focusedIndex).toBe(1)
 })

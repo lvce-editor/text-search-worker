@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
-import { handleScrollBarMove } from '../src/parts/ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
+import * as ListHandleScrollBarMove from '../src/parts/ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('handleScrollbarMove - move scrollbar', () => {
   const state: SearchState = {
@@ -13,7 +13,7 @@ test('handleScrollbarMove - move scrollbar', () => {
     headerHeight: 40,
   }
 
-  const result = handleScrollBarMove(state, 100)
+  const result = ListHandleScrollBarMove.handleScrollBarMove(state, 100)
 
   expect(result.deltaY).toBeCloseTo(26.0869)
 })
@@ -28,7 +28,7 @@ test('handleScrollBarMove - clamps at upper bound', () => {
     headerHeight: 40,
   }
 
-  const result = handleScrollBarMove(state, 250)
+  const result = ListHandleScrollBarMove.handleScrollBarMove(state, 250)
   expect(result.deltaY).toBeCloseTo(91.304) // Clamped at finalDeltaY
 })
 
@@ -42,6 +42,6 @@ test('handleScrollBarMove - clamps at lower bound', () => {
     headerHeight: 40,
   }
 
-  const result = handleScrollBarMove(state, -50)
+  const result = ListHandleScrollBarMove.handleScrollBarMove(state, -50)
   expect(result.deltaY).toBe(0) // Clamped at 0
 })
