@@ -14,7 +14,7 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
   const result = await replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'?", {
+  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
