@@ -1,16 +1,15 @@
 import { test, expect } from '@jest/globals'
-import { toggleReplace } from '../src/parts/ToggleReplace/ToggleReplace.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as ToggleReplace from '../src/parts/ToggleReplace/ToggleReplace.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 
 test('toggles replaceExpanded state', () => {
-  const initialState: SearchState = {
+  const initialState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     replaceExpanded: false,
   }
-  const newState = toggleReplace(initialState)
+  const newState = ToggleReplace.toggleReplace(initialState)
   expect(newState.replaceExpanded).toBe(true)
 
-  const nextState = toggleReplace(newState)
+  const nextState = ToggleReplace.toggleReplace(newState)
   expect(nextState.replaceExpanded).toBe(false)
 })
