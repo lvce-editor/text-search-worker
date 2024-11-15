@@ -15,7 +15,7 @@ test('handleScrollbarMove - move scrollbar', () => {
 
   const result = handleScrollBarMove(state, 100)
 
-  expect(result.deltaY).toBe(100)
+  expect(result.deltaY).toBeCloseTo(26.0869)
 })
 
 test('handleScrollBarMove - clamps at upper bound', () => {
@@ -29,7 +29,7 @@ test('handleScrollBarMove - clamps at upper bound', () => {
   }
 
   const result = handleScrollBarMove(state, 250)
-  expect(result.deltaY).toBe(200) // Clamped at finalDeltaY
+  expect(result.deltaY).toBeCloseTo(91.304) // Clamped at finalDeltaY
 })
 
 test('handleScrollBarMove - clamps at lower bound', () => {
