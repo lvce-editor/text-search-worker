@@ -1,11 +1,12 @@
 import { expect, test, jest } from '@jest/globals'
-import { textSearch } from '../src/parts/TextSearch/TextSearch.ts'
 
 const mockProvider = jest.fn()
 
 jest.unstable_mockModule('../src/parts/TextSearchProvider/TextSearchProvider.ts', () => ({
   getProvider: jest.fn(() => mockProvider),
 }))
+
+const { textSearch } = await import('../src/parts/TextSearch/TextSearch.ts')
 
 test('textSearch - calls provider with correct arguments', async () => {
   const root = 'file:///test/path'
