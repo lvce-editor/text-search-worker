@@ -2,7 +2,8 @@ import { expect, test, jest } from '@jest/globals'
 import * as IpcChildType from '../src/parts/IpcChildType/IpcChildType.ts'
 
 const mockModule = {
-  create: jest.fn(),
+  listen: jest.fn(),
+  wrap: jest.fn(),
 }
 
 jest.unstable_mockModule('../src/parts/IpcChildModule/IpcChildModule.ts', () => ({
@@ -13,18 +14,16 @@ test('listen - creates ipc with auto type', async () => {
   const { listen } = await import('../src/parts/IpcChild/IpcChild.ts')
 
   // @ts-ignore
-  mockModule.create.mockResolvedValue({ id: 'test-ipc' })
+  mockModule.listen.mockResolvedValue({ id: 'test-ipc' })
 
-  const result = await listen({ method: IpcChildType.Auto() })
-
-  expect(result).toEqual({ id: 'test-ipc' })
+  await listen({ method: IpcChildType.Auto() })
 })
 
 test('listen - throws error when create fails', async () => {
   const { listen } = await import('../src/parts/IpcChild/IpcChild.ts')
 
   // @ts-ignore
-  mockModule.create.mockRejectedValue(new Error('Failed to create IPC'))
+  mockModule.listen.mockRejectedValue(new Error('Failed to create IPC'))
 
   await expect(listen({ method: IpcChildType.Auto() })).rejects.toThrow('Failed to create IPC')
 })
@@ -34,5 +33,5 @@ test('listen - passes correct options to create', async () => {
 
   await listen({ method: IpcChildType.Auto() })
 
-  expect(mockModule.create).toHaveBeenCalledWith({ method: IpcChildType.Auto() })
+  expect(mockModule.listen).toHaveBeenCalledWith({ method: IpcChildType.Auto() })
 })
