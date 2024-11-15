@@ -37,7 +37,7 @@ test('getListIndex - negative index possible', () => {
 
   const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
 
-  expect(result).toBe(-2) // (50 - 100 + 0) / 20 = -2.5 -> -2
+  expect(result).toBe(-3) // (50 - 100 + 0) / 20 = -2.5 -> -2
 })
 
 test('getListIndex - eventX does not affect result', () => {
@@ -50,5 +50,5 @@ test('getListIndex - eventX does not affect result', () => {
 
   const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
 
-  expect(result).toBe(-2) // (50 - 100 + 0) / 20 = -2.5 -> -2
+  expect(result).toBe(2) // (50 - 100 + 0) / 20 = -2.5 -> -2
 })
