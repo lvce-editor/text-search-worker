@@ -1,34 +1,40 @@
 import { expect, jest, test } from '@jest/globals'
-import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 
-const mockCommand = {
-  execute: jest.fn(),
+const mockRpc = {
+  invoke: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/Command/Command.ts', () => mockCommand)
+jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => mockRpc)
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
+  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
   // @ts-ignore
-  mockCommand.execute.mockResolvedValue(false)
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  mockRpc.invoke.mockResolvedValue(false)
+
+  const result = await replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+
   expect(result).toBe(false)
-  expect(mockCommand.execute).toHaveBeenCalledWith('ConfirmPrompt.prompt', 'Replace 5 occurrences across 2 files with "replacement"?', {
+  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', 'Replace 5 occurrences across 2 files with "replacement"?', {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
+  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
   // @ts-ignore
-  mockCommand.execute.mockResolvedValue(true)
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  mockRpc.invoke.mockResolvedValue(true)
+
+  const result = await replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+
   expect(result).toBe(true)
-  expect(mockCommand.execute).toHaveBeenCalledWith('ConfirmPrompt.prompt', 'Replace 5 occurrences across 2 files with "replacement"?', {
+  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', 'Replace 5 occurrences across 2 files with "replacement"?', {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  await expect(ReplaceAllAndPrompt.replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
+  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
+  await expect(replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
 })
