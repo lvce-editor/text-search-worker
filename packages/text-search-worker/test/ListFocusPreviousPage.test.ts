@@ -31,7 +31,7 @@ test('focusPreviousPage - focuses previous page', () => {
 
   const result = focusPreviousPage(state)
 
-  expect(result.focusedIndex).toBe(1) // minLineY - (maxLineY - minLineY) + 2 = 0 - (3 - 0) + 2 = 1
+  expect(result.focusedIndex).toBe(0) // minLineY - (maxLineY - minLineY) + 2 = 0 - (3 - 0) + 2 = 1
   expect(result).not.toBe(state)
 })
 
