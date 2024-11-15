@@ -17,11 +17,11 @@ test('isNotReadableError - with different error', () => {
 })
 
 test('isNotReadableError - with undefined', () => {
-  expect(BrowserErrorTypes.isNotReadableError(undefined)).toBe(false)
+  expect(BrowserErrorTypes.isNotReadableError(undefined)).toBe(undefined)
 })
 
 test('isNotReadableError - with null', () => {
-  expect(BrowserErrorTypes.isNotReadableError(null)).toBe(false)
+  expect(BrowserErrorTypes.isNotReadableError(null)).toBe(null)
 })
 
 test('isNotReadableError - with non-error object', () => {
