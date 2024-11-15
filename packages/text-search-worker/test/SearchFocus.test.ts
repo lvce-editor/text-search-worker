@@ -1,20 +1,34 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, test, jest, beforeEach } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
-import * as SearchFocus from '../src/parts/SearchFocus/SearchFocus.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
-const mockFocus = {
-  setFocus: jest.fn(),
-}
+const mockSetFocus = jest.fn()
 
-jest.unstable_mockModule('../src/parts/Focus/Focus.ts', () => mockFocus)
+jest.unstable_mockModule('../src/parts/Focus/Focus.ts', () => ({
+  setFocus: mockSetFocus,
+}))
+
+const {
+  focusSearchValue,
+  focusSearchValueNext,
+  focusMatchCasePrevious,
+  focusReplaceValuePrevious,
+  focusReplaceValueNext,
+  focusRegexNext,
+  focusPreserveCasePrevious,
+  handleFocusIn,
+} = await import('../src/parts/SearchFocus/SearchFocus.ts')
+
+beforeEach(() => {
+  mockSetFocus.mockClear()
+})
 
 test('focusSearchValue - sets correct focus state', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
 
-  const result = SearchFocus.focusSearchValue(state)
+  const result = focusSearchValue(state)
 
   expect(result).toEqual({
     ...state,
@@ -29,7 +43,7 @@ test('focusSearchValueNext - with replace expanded', () => {
     replaceExpanded: true,
   }
 
-  const result = SearchFocus.focusSearchValueNext(state)
+  const result = focusSearchValueNext(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchReplaceInput)
 })
@@ -40,7 +54,7 @@ test('focusSearchValueNext - without replace expanded', () => {
     replaceExpanded: false,
   }
 
-  const result = SearchFocus.focusSearchValueNext(state)
+  const result = focusSearchValueNext(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchMatchCase)
 })
@@ -51,7 +65,7 @@ test('focusMatchCasePrevious - with replace expanded', () => {
     replaceExpanded: true,
   }
 
-  const result = SearchFocus.focusMatchCasePrevious(state)
+  const result = focusMatchCasePrevious(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchReplaceInput)
 })
@@ -62,7 +76,7 @@ test('focusMatchCasePrevious - without replace expanded', () => {
     replaceExpanded: false,
   }
 
-  const result = SearchFocus.focusMatchCasePrevious(state)
+  const result = focusMatchCasePrevious(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchInput)
 })
@@ -70,7 +84,7 @@ test('focusMatchCasePrevious - without replace expanded', () => {
 test('focusReplaceValuePrevious', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
 
-  const result = SearchFocus.focusReplaceValuePrevious(state)
+  const result = focusReplaceValuePrevious(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchInput)
 })
@@ -78,7 +92,7 @@ test('focusReplaceValuePrevious', () => {
 test('focusReplaceValueNext', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
 
-  const result = SearchFocus.focusReplaceValueNext(state)
+  const result = focusReplaceValueNext(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchMatchCase)
 })
@@ -86,7 +100,7 @@ test('focusReplaceValueNext', () => {
 test('focusRegexNext', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
 
-  const result = SearchFocus.focusRegexNext(state)
+  const result = focusRegexNext(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchPreserveCase)
 })
@@ -94,7 +108,7 @@ test('focusRegexNext', () => {
 test('focusPreserveCasePrevious', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
 
-  const result = SearchFocus.focusPreserveCasePrevious(state)
+  const result = focusPreserveCasePrevious(state)
 
   expect(result.focus).toBe(WhenExpression.FocusSearchRegex)
 })
@@ -105,11 +119,11 @@ test('handleFocusIn - same focus key returns same state', () => {
     focus: 0,
   }
 
-  const mockKey = { dataset: { focusKey: 0 } }
-  const result = SearchFocus.handleFocusIn(state, mockKey)
+  const mockKey = { dataset: { focusKey: 'testKey' } }
+  const result = handleFocusIn(state, mockKey)
 
   expect(result).toBe(state)
-  expect(mockFocus.setFocus).not.toHaveBeenCalled()
+  expect(mockSetFocus).not.toHaveBeenCalled()
 })
 
 test('handleFocusIn - different focus key updates state', () => {
@@ -119,7 +133,7 @@ test('handleFocusIn - different focus key updates state', () => {
   }
 
   const mockKey = { dataset: { focusKey: 'newKey' } }
-  const result = SearchFocus.handleFocusIn(state, mockKey)
+  const result = handleFocusIn(state, mockKey)
 
   expect(result).toEqual({
     ...state,
