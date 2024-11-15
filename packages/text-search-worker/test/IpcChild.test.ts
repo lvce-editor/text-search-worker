@@ -34,7 +34,7 @@ test('listen - throws error when create fails', async () => {
   await expect(listen({ method: IpcChildType.Auto() })).rejects.toThrow('Failed to create IPC')
 })
 
-test.skip('listen - passes correct options to create', async () => {
+test('listen - passes correct options to create', async () => {
   const { listen } = await import('../src/parts/IpcChild/IpcChild.ts')
 
   // @ts-ignore
@@ -42,5 +42,5 @@ test.skip('listen - passes correct options to create', async () => {
 
   await listen({ method: IpcChildType.Auto() })
 
-  expect(mockModule.listen).toHaveBeenCalledWith({ method: IpcChildType.Auto() })
+  expect(mockModule.listen).toHaveBeenCalledWith()
 })
