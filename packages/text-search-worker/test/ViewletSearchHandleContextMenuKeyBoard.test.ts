@@ -20,5 +20,5 @@ test('handleContextMenuKeyboard', async () => {
   const result = await handleContextMenuKeyboard(state)
 
   expect(result).toBe(state)
-  expect(mockContextMenu.show).toHaveBeenCalledWith(100, 200, 'Search')
+  expect(mockContextMenu.show).toHaveBeenCalledWith(100, 200, 18)
 })
