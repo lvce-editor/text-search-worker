@@ -8,7 +8,7 @@ const root = join(__dirname, '..', '..', '..')
 
 const nodeModulesPath = join(root, 'packages', 'server', 'node_modules')
 
-const editorWorkerPath = join(root, 'dist', 'dist', 'editorWorkerMain.js')
+const textSearchWorkerPath = join(root, 'dist', 'dist', 'textSearchWorkerMain.js')
 
 const sharedProcessPath = join(nodeModulesPath, '@lvce-editor', 'shared-process')
 
@@ -18,7 +18,7 @@ const newContent = `import * as GetRemoteUrl from '../GetRemoteUrl/GetRemoteUrl.
 
 export const addCustomPathsToIndexHtml = async (content) => {
     const config = Object.create(null)
-    config['develop.editorWorkerPath'] = GetRemoteUrl.getRemoteUrl('${editorWorkerPath}')
+    config['develop.textSearchWorkerPath'] = GetRemoteUrl.getRemoteUrl('${textSearchWorkerPath}')
     const stringifiedConfig = JSON.stringify(config, null, 2);
     let newContent = content
     newContent = newContent.toString().replace('</title>', \`</title>
@@ -38,7 +38,7 @@ if (!oldContent.includes(`app.use('/', servePackages, serve404())`)) {
     `app.use('/packages', servePackages, serve404())`,
     `app.use('/packages', servePackages, serve404())
     app.use('/', servePackages, serve404())
-    `
+    `,
   )
   await writeFile(serverJsPath, newContent2)
 }
