@@ -18,6 +18,7 @@ export default tseslint.config(
       '.tmp',
       '**/build/**',
       '**/coverage/**',
+      '**/e2e/**',
       'scripts',
       'rollup.config.js',
       'eslint.config.js',
