@@ -20,7 +20,7 @@ jest.unstable_mockModule('../src/parts/HandleIpc/HandleIpc.ts', () => {
   }
 })
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
   return {
     listen: jest.fn(),
   }

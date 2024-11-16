@@ -4,7 +4,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
   return {
     invoke: jest.fn(() => {
       throw new Error('not implemented')
