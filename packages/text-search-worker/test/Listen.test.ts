@@ -20,7 +20,7 @@ jest.unstable_mockModule('../src/parts/HandleIpc/HandleIpc.ts', () => {
   }
 })
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
   return {
     listen: jest.fn(),
   }
@@ -29,7 +29,7 @@ jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
 const Command = await import('../src/parts/Command/Command.ts')
 const IpcChild = await import('../src/parts/IpcChild/IpcChild.ts')
 const HandleIpc = await import('../src/parts/HandleIpc/HandleIpc.ts')
-const Rpc = await import('../src/parts/Rpc/Rpc.ts')
+const Rpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 const Listen = await import('../src/parts/Listen/Listen.ts')
 
 test('listen registers commands and sets up IPC', async () => {

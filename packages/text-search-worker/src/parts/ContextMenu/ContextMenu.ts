@@ -1,5 +1,5 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as Rpc from '../Rpc/Rpc.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 
 export const show = async (x: number, y: number, id: number, ...args: any[]): Promise<void> => {
   // TODO ask renderer worker to show context menu

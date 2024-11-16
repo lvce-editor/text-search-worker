@@ -7,7 +7,7 @@ const mockRpc = {
   invoke: jest.fn().mockResolvedValue(mockIcon),
 }
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => ({
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => ({
   invoke: mockRpc.invoke,
 }))
 
