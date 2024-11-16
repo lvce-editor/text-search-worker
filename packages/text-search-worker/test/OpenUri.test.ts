@@ -13,7 +13,7 @@ jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
 })
 
 const OpenUri = await import('../src/parts/OpenUri/OpenUri.ts')
-const Rpc = await import('../src/parts/Rpc/Rpc.ts')
+const Rpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 
 test('openUri - without options', async () => {
   // @ts-ignore

@@ -1,5 +1,5 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as Rpc from '../Rpc/Rpc.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 
 export const textSearch = async (scheme: string, root: string, query: string): Promise<any> => {
   Assert.string(scheme)
