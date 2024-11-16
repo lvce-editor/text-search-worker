@@ -3,7 +3,7 @@ import * as CommandMap from '../CommandMap/CommandMap.ts'
 import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
 
 export const listen = async (): Promise<void> => {
-  const rpc = WebWorkerRpcClient.create({
+  const rpc = await WebWorkerRpcClient.create({
     commandMap: CommandMap.commandMap,
   })
   ParentRpc.setRpc(rpc)
