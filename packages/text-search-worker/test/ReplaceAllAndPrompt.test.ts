@@ -4,7 +4,7 @@ const mockRpc = {
   invoke: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => mockRpc)
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => mockRpc)
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
   const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')

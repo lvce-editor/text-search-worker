@@ -4,7 +4,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
   return {
     invoke: jest.fn(() => {
       throw new Error('not implemented')
@@ -13,7 +13,7 @@ jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => {
 })
 
 const OpenUri = await import('../src/parts/OpenUri/OpenUri.ts')
-const Rpc = await import('../src/parts/Rpc/Rpc.ts')
+const Rpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 
 test('openUri - without options', async () => {
   // @ts-ignore
