@@ -1,4 +1,4 @@
-import * as Rpc from '../Rpc/Rpc.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const copy = async (state: SearchState): Promise<SearchState> => {

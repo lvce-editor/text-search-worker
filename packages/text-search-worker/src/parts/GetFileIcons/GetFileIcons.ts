@@ -1,4 +1,4 @@
-import * as Rpc from '../Rpc/Rpc.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const getFileIcons = async (files: readonly any[]): Promise<readonly string[]> => {
