@@ -65,7 +65,7 @@ export const focusReplaceAll = (state: SearchState): SearchState => {
   return FocusElement.focusElement(state, WhenExpression.FocusSearchReplaceAll)
 }
 
-export const handleFocusIn = (state: SearchState, key: string): SearchState => {
+export const handleFocusIn = (state: SearchState, key: any): SearchState => {
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
   if (state.focus === focusKey) {
     return state
