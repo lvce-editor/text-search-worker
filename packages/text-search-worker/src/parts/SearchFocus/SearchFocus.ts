@@ -70,7 +70,7 @@ export const handleFocusIn = (state: SearchState, key: { dataset: { focusKey: st
   if (focusKey === state.focus) {
     return state
   }
-  Focus.setFocus(focusKey)
+  void Focus.setFocus(focusKey)
   return {
     ...state,
     focus: focusKey,
