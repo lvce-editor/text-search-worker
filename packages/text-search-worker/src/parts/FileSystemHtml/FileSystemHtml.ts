@@ -1,5 +1,5 @@
-import * as FileSystemDirectoryHandle from '../FileSystemDirectoryHandle/FileSystemDirectoryHandle.js'
-import { VError } from '../VError/VError.js'
+import * as FileSystemDirectoryHandle from '../FileSystemDirectoryHandle/FileSystemDirectoryHandle.ts'
+import { VError } from '../VError/VError.ts'
 
 export const getChildHandles = async (handle: FileSystemHandle): Promise<readonly FileSystemHandle[]> => {
   try {
