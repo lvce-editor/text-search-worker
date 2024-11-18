@@ -1,6 +1,6 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 
-export const toggleMatchCase = (state: SearchState): SearchState => {
+export const toggleMatchCase = (state: SearchHeader): SearchHeader => {
   const { matchCase } = state
   return {
     ...state,

@@ -1,6 +1,6 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 
-export const togglePreserveCase = (state: SearchState): SearchState => {
+export const togglePreserveCase = (state: SearchHeader): SearchHeader => {
   const { preserveCase } = state
   return {
     ...state,
