@@ -1,4 +1,5 @@
 import type { SearchList } from '../SearchList/SearchList.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 
 export const create = ({
   itemHeight,
@@ -55,6 +56,8 @@ export const create = ({
     icons: [],
     assetDir,
     handleOffset: 0,
+    disposed: false,
+    inputSource: InputSource.User,
   }
   return state
 }
