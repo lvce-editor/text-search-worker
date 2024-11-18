@@ -1,15 +1,14 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as FileHandleType from '../FileHandleType/FileHandleType.ts'
+import * as FileSystemHtml from '../FileSystemHtml/FileSystemHtml.ts'
 import * as GetDirectoryHandle from '../GetDirectoryHandle/GetDirectoryHandle.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchInFile from '../TextSearchInFile/TextSearchInFile.ts'
 import { VError } from '../VError/VError.ts'
 
-const textSearchRecursively = async (all: SearchResult[], parent: string, handle: any, query: string): Promise<void> => {
-  const childHandles: any[] = []
-  // TODO
-  // await FileSystemHtml.getChildHandles(handle)
-  const promises: any[] = []
+const textSearchRecursively = async (all: SearchResult[], parent: string, handle: FileSystemHandle, query: string): Promise<void> => {
+  const childHandles: readonly FileSystemHandle[] = await FileSystemHtml.getChildHandles(handle)
+  const promises: Promise<void>[] = []
   for (const childHandle of childHandles) {
     const absolutePath = parent + '/' + childHandle.name
     switch (childHandle.kind) {
@@ -17,6 +16,7 @@ const textSearchRecursively = async (all: SearchResult[], parent: string, handle
         promises.push(textSearchRecursively(all, absolutePath, childHandle, query))
         break
       case FileHandleType.File:
+        // @ts-ignore
         promises.push(TextSearchInFile.textSearchInFile(all, childHandle, absolutePath, query))
         break
       default:
