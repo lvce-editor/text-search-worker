@@ -1,10 +1,10 @@
 import * as Focus from '../Focus/Focus.ts'
 import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 
-export const focusSearchValue = (state: SearchState): SearchState => {
+export const focusSearchValue = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchInput,
@@ -12,7 +12,7 @@ export const focusSearchValue = (state: SearchState): SearchState => {
   }
 }
 
-export const focusSearchValueNext = (state: SearchState): SearchState => {
+export const focusSearchValueNext = (state: SearchHeader): SearchHeader => {
   const { replaceExpanded } = state
   if (replaceExpanded) {
     return focusReplaceValue(state)
@@ -20,7 +20,7 @@ export const focusSearchValueNext = (state: SearchState): SearchState => {
   return focusMatchCase(state)
 }
 
-export const focusMatchCasePrevious = (state: SearchState): SearchState => {
+export const focusMatchCasePrevious = (state: SearchHeader): SearchHeader => {
   const { replaceExpanded } = state
   if (replaceExpanded) {
     return focusReplaceValue(state)
@@ -28,23 +28,23 @@ export const focusMatchCasePrevious = (state: SearchState): SearchState => {
   return focusSearchValue(state)
 }
 
-export const focusReplaceValuePrevious = (state: SearchState): SearchState => {
+export const focusReplaceValuePrevious = (state: SearchHeader): SearchHeader => {
   return focusSearchValue(state)
 }
 
-export const focusReplaceValueNext = (state: SearchState): SearchState => {
+export const focusReplaceValueNext = (state: SearchHeader): SearchHeader => {
   return focusMatchCase(state)
 }
 
-export const focusRegexNext = (state: SearchState): SearchState => {
+export const focusRegexNext = (state: SearchHeader): SearchHeader => {
   return focusPreserveCase(state)
 }
 
-export const focusPreserveCasePrevious = (state: SearchState): SearchState => {
+export const focusPreserveCasePrevious = (state: SearchHeader): SearchHeader => {
   return focusRegex(state)
 }
 
-export const focusReplaceValue = (state: SearchState): SearchState => {
+export const focusReplaceValue = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchReplaceInput,
@@ -52,7 +52,7 @@ export const focusReplaceValue = (state: SearchState): SearchState => {
   }
 }
 
-export const focusMatchCase = (state: SearchState): SearchState => {
+export const focusMatchCase = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchMatchCase,
@@ -60,7 +60,7 @@ export const focusMatchCase = (state: SearchState): SearchState => {
   }
 }
 
-export const focusPreserveCase = (state: SearchState): SearchState => {
+export const focusPreserveCase = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchPreserveCase,
@@ -68,7 +68,7 @@ export const focusPreserveCase = (state: SearchState): SearchState => {
   }
 }
 
-export const focusMatchWholeWord = (state: SearchState): SearchState => {
+export const focusMatchWholeWord = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchWholeWord,
@@ -76,7 +76,7 @@ export const focusMatchWholeWord = (state: SearchState): SearchState => {
   }
 }
 
-export const focusRegex = (state: SearchState): SearchState => {
+export const focusRegex = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchRegex,
@@ -84,7 +84,7 @@ export const focusRegex = (state: SearchState): SearchState => {
   }
 }
 
-export const focusReplaceAll = (state: SearchState): SearchState => {
+export const focusReplaceAll = (state: SearchHeader): SearchHeader => {
   return {
     ...state,
     focus: WhenExpression.FocusSearchReplaceAll,
@@ -92,7 +92,7 @@ export const focusReplaceAll = (state: SearchState): SearchState => {
   }
 }
 
-export const handleFocusIn = (state: SearchState, key: any): SearchState => {
+export const handleFocusIn = (state: SearchHeader, key: any): SearchHeader => {
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
   if (state.focus === focusKey) {
     return state

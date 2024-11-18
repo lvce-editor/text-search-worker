@@ -1,6 +1,6 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 
-export const toggleReplace = (state: SearchState): SearchState => {
+export const toggleReplace = (state: SearchHeader): SearchHeader => {
   const { replaceExpanded } = state
   return {
     ...state,
