@@ -28,6 +28,10 @@ const UiStrings = {
   OpenNewSearchEditor: 'Open New Search Editor',
   ViewAsTree: 'View as Tree',
   CollapseAll: 'Collapse All',
+  ToggleReplace: 'Toggle Replace',
+  MatchCase: 'Match Case',
+  MatchWholeWord: 'Match Whole Word',
+  UseRegularExpression: 'Use Regular Expression',
 }
 
 export const noResults = (): string => {
@@ -36,6 +40,22 @@ export const noResults = (): string => {
 
 export const oneResult = (): string => {
   return I18nString.i18nString(UiStrings.Oneresult)
+}
+
+export const toggleReplace = (): string => {
+  return I18nString.i18nString(UiStrings.ToggleReplace)
+}
+
+export const matchCase = (): string => {
+  return I18nString.i18nString(UiStrings.MatchCase)
+}
+
+export const matchWholeWord = (): string => {
+  return I18nString.i18nString(UiStrings.MatchWholeWord)
+}
+
+export const useRegularExpression = (): string => {
+  return I18nString.i18nString(UiStrings.UseRegularExpression)
 }
 
 export const manyResultsInOneFile = (resultCount: number): string => {
