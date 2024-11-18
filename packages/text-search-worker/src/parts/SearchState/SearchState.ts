@@ -1,46 +1,47 @@
 export interface SearchState {
-  readonly uid: number
-  readonly searchResults: readonly any[]
-  readonly items: readonly any[]
-  readonly stats: any
-  readonly searchId: number
-  readonly value: string
+  readonly assetDir: string
+  readonly collapsedPaths: readonly string[]
+  readonly deltaY: number
+  readonly detailsExpanded: boolean
   readonly disposed: boolean
+  readonly excludeValue: string
   readonly fileCount: number
-  readonly x: number
-  readonly y: number
-  readonly width: number
+  readonly finalDeltaY: number
+  readonly focus: any
+  readonly focused: boolean
+  readonly focusedIndex: number
+  readonly focusSource: number
+  readonly handleOffset: number
+  readonly headerHeight: number
   readonly height: number
-  readonly threads: number
-  readonly replaceExpanded: boolean
-  readonly useRegularExpression: boolean
-  readonly matchCase: boolean
-  readonly matchWholeWord: boolean
-  readonly replacement: string
-  readonly matchCount: number
+  readonly icons: readonly string[]
+  readonly includeValue: string
+  readonly inputSource: number
+  readonly itemHeight: number
+  readonly items: readonly any[]
   readonly listFocused: boolean
   readonly listFocusedIndex: number
-  readonly inputSource: number
-  readonly workspacePath: string
-  readonly includeValue: string
-  readonly excludeValue: string
-  readonly detailsExpanded: boolean
-  readonly focus: any
   readonly loaded: boolean
-  readonly message: string
-  readonly collapsedPaths: readonly string[]
-  readonly minLineY: number
+  readonly matchCase: boolean
+  readonly matchCount: number
+  readonly matchWholeWord: boolean
   readonly maxLineY: number
-  readonly itemHeight: number
-  readonly focusedIndex: number
-  readonly assetDir: string
-  readonly finalDeltaY: number
-  readonly deltaY: number
-  readonly headerHeight: number
-  readonly scrollBarHeight: number
-  readonly handleOffset: number
+  readonly message: string
+  readonly minLineY: number
+  readonly preserveCase: boolean
+  readonly replaceExpanded: boolean
+  readonly replacement: string
   readonly scrollBarActive: boolean
-  readonly focused: boolean
-  readonly icons: readonly string[]
-  readonly focusSource: number
+  readonly scrollBarHeight: number
+  readonly searchId: number
+  readonly searchResults: readonly any[]
+  readonly stats: any
+  readonly threads: number
+  readonly uid: number
+  readonly useRegularExpression: boolean
+  readonly value: string
+  readonly width: number
+  readonly workspacePath: string
+  readonly x: number
+  readonly y: number
 }
