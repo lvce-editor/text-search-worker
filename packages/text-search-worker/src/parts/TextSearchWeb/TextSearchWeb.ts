@@ -1,4 +1,4 @@
-export const textSearch = (scheme: string, root: string, query: string) :any=> {
+export const textSearch = (scheme: string, root: string, query: string): any => {
   // TODO ask renderer worker for files
   const entries = Object.entries({})
   const results: any[] = []
