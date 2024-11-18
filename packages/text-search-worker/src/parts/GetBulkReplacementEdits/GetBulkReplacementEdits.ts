@@ -1,13 +1,19 @@
 import * as Arrays from '../Arrays/Arrays.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Assert from '../Assert/Assert.ts'
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-export const getBulkReplacementEdits = (workspacePath: string, matches: readonly any[]): any => {
+interface BulkReplacementEdits {
+  files: string[]
+  ranges: number[]
+}
+
+export const getBulkReplacementEdits = (workspacePath: string, matches: readonly DisplaySearchResult[]): BulkReplacementEdits => {
   Assert.string(workspacePath)
   Assert.array(matches)
-  const files = []
-  const ranges = []
-  let currentRanges = []
+  const files: string[] = []
+  const ranges: number[] = []
+  let currentRanges: number[] = []
   for (const match of matches) {
     const { type, text } = match
     switch (type) {
@@ -15,7 +21,7 @@ export const getBulkReplacementEdits = (workspacePath: string, matches: readonly
         ranges.push(currentRanges.length)
         Arrays.push(ranges, currentRanges)
         const absolutePath = `${workspacePath}/${text.slice(2)}`
-        files.push(absolutePath) // TODO
+        files.push(absolutePath)
         currentRanges = []
         break
       case TextSearchResultType.Match:
