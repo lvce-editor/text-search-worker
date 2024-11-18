@@ -1,36 +1,7 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as GetJson from '../GetJson/GetJson.ts'
 import * as GetText from '../GetText/GetText.ts'
-import * as SplitLines from '../SplitLines/SplitLines.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
-
-const textSearchInFile = (file: string, content: string, query: string): any => {
-  const results: any[] = []
-  const lines = SplitLines.splitLines(content)
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]
-    const index = line.indexOf(query)
-    if (index !== -1) {
-      results.push({
-        type: TextSearchResultType.Match,
-        text: line,
-        start: index,
-        end: index + query.length,
-        lineNumber: i,
-      })
-    }
-  }
-  if (results.length > 0) {
-    results.unshift({
-      type: TextSearchResultType.File,
-      text: file,
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    })
-  }
-  return results
-}
+import * as TextSearchInText from '../TextSearchInText/TextSearchInText.ts'
 
 export const textSearch = async (scheme: string, root: string, query: string, options: any, assetDir: string): Promise<any> => {
   Assert.string(scheme)
@@ -44,7 +15,7 @@ export const textSearch = async (scheme: string, root: string, query: string, op
     const fetchUri = `${assetDir}${uri}`
     const content = await GetText.getText(fetchUri)
     const relativeUri = uri.slice(relativeRoot.length + 1)
-    const results = textSearchInFile(relativeUri, content, query)
+    const results = TextSearchInText.textSearchInText(relativeUri, content, query)
     allResults.push(...results)
   }
   return allResults
