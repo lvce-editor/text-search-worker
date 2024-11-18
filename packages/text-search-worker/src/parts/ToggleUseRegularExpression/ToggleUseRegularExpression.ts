@@ -1,6 +1,6 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 
-export const toggleUseRegularExpression = (state: SearchState): SearchState => {
+export const toggleUseRegularExpression = (state: SearchHeader): SearchHeader => {
   const { useRegularExpression } = state
   return {
     ...state,
