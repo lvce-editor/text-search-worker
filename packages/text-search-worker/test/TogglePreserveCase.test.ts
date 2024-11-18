@@ -6,8 +6,8 @@ import * as TogglePreserveCase from '../src/parts/TogglePreserveCase/TogglePrese
 test('togglePreserveCase', () => {
   const initialState: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    matchCase: false,
+    preserveCase: false,
   }
   const newState = TogglePreserveCase.togglePreserveCase(initialState)
-  expect(newState.matchCase).toBe(true)
+  expect(newState.preserveCase).toBe(true)
 })
