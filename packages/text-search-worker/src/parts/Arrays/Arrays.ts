@@ -1,6 +1,6 @@
 // based on https://github.com/microsoft/vscode/blob/c0769274fa136b45799edeccc0d0a2f645b75caf/src/vs/base/common/arrays.ts#L625 (License MIT)
 
-const insertInto = (array: any, start: any, newItems: any): void => {
+const insertInto = <T>(array: T[], start: number, newItems: readonly T[]): void => {
   const originalLength = array.length
   const newItemsLength = newItems.length
   array.length = originalLength + newItemsLength
@@ -14,22 +14,22 @@ const insertInto = (array: any, start: any, newItems: any): void => {
   }
 }
 
-export const push = (array: any, newItems: any): void => {
+export const push = <T>(array: T[], newItems: readonly T[]): void => {
   insertInto(array, array.length, newItems)
 }
 
-export const isLastIndex = (array: any, index: number): boolean => {
+export const isLastIndex = <T>(array: readonly T[], index: number): boolean => {
   return index === array.length - 1
 }
 
-export const lastIndex = (array: any): number => {
+export const lastIndex = <T>(array: readonly T[]): number => {
   return array.length - 1
 }
 
-const toSpliced = (array: any, index: number, deleteCount: number, ...inserted: any[]): readonly any[] => {
+const toSpliced = <T>(array: readonly T[], index: number, deleteCount: number, ...inserted: readonly T[]): readonly T[] => {
   return [...array.slice(0, index), ...inserted, ...array.slice(index + deleteCount)]
 }
 
-export const remove = (array: readonly any[], index: number, deleteCount: number): readonly any[] => {
+export const remove = <T>(array: readonly T[], index: number, deleteCount: number): readonly T[] => {
   return toSpliced(array, index, deleteCount)
 }
