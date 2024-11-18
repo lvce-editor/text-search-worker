@@ -63,17 +63,17 @@ export const getSearchHeaderVirtualDom = (
       'handleInput',
       [
         {
-          icon: 'MaskIconCaseSensitive',
+          icon: ClassNames.MaskIconCaseSensitive,
           checked: matchCase,
           title: SearchStrings.matchCase(),
         },
         {
-          icon: 'MaskIconWholeWord',
+          icon: ClassNames.MaskIconWholeWord,
           checked: matchWholeWord,
           title: SearchStrings.matchWholeWord(),
         },
         {
-          icon: 'MaskIconRegex',
+          icon: ClassNames.MaskIconRegex,
           checked: useRegularExpression,
           title: SearchStrings.useRegularExpression(),
         },
@@ -89,14 +89,14 @@ export const getSearchHeaderVirtualDom = (
         'handleReplaceInput',
         [
           {
-            icon: 'MaskIconPreserveCase',
+            icon: ClassNames.MaskIconPreserveCase,
             checked: false,
             title: 'Preserve Case',
           },
         ],
         [
           {
-            icon: 'MaskIconReplaceAll',
+            icon: ClassNames.MaskIconReplaceAll,
             checked: false,
             title: 'Replace All',
           },
