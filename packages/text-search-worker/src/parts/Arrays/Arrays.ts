@@ -26,10 +26,6 @@ export const lastIndex = <T>(array: readonly T[]): number => {
   return array.length - 1
 }
 
-const toSpliced = <T>(array: readonly T[], index: number, deleteCount: number, ...inserted: readonly T[]): readonly T[] => {
-  return [...array.slice(0, index), ...inserted, ...array.slice(index + deleteCount)]
-}
-
 export const remove = <T>(array: readonly T[], index: number, deleteCount: number): readonly T[] => {
-  return toSpliced(array, index, deleteCount)
+  return array.toSpliced(index, deleteCount)
 }
