@@ -4,6 +4,31 @@ import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualD
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
+interface OutSideButtonsDom {
+  readonly preNodes: readonly VirtualDomNode[]
+  readonly postNodes: readonly VirtualDomNode[]
+}
+
+const getOutSideButtonsDom = (outsideButtons: any): OutSideButtonsDom => {
+  if (outsideButtons.length === 0) {
+    return {
+      preNodes: [],
+      postNodes: [],
+    }
+  }
+  return {
+    preNodes: [
+      {
+        type: VirtualDomElements.Div,
+        className: ClassNames.SearchFieldContainer,
+        role: AriaRoles.None,
+        childCount: 1 + outsideButtons.length,
+      },
+    ],
+    postNodes: outsideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
+  }
+}
+
 export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
@@ -12,7 +37,9 @@ export const getSearchFieldVirtualDom = (
   outsideButtons: any,
   onFocus = '',
 ): readonly VirtualDomNode[] => {
-  const dom: VirtualDomNode[] = [
+  const { preNodes, postNodes } = getOutSideButtonsDom(outsideButtons)
+  const dom: readonly VirtualDomNode[] = [
+    ...preNodes,
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchField,
@@ -37,15 +64,7 @@ export const getSearchFieldVirtualDom = (
       childCount: insideButtons.length,
     },
     ...insideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
+    ...postNodes,
   ]
-  if (outsideButtons.length > 0) {
-    dom.unshift({
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchFieldContainer,
-      role: AriaRoles.None,
-      childCount: 1 + outsideButtons.length,
-    })
-    dom.push(...outsideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom))
-  }
   return dom
 }
