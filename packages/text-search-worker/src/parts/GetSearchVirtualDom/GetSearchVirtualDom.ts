@@ -19,14 +19,13 @@ export const getSearchVirtualDom = (
   detailsExpanded: boolean,
   focusOutline: boolean,
 ): readonly VirtualDomNode[] => {
-  const dom: VirtualDomNode[] = []
-  dom.push({
-    type: VirtualDomElements.Div,
-    className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
-    childCount: 2,
-  })
-  dom.push(...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded))
-  dom.push(
+  const dom: readonly VirtualDomNode[] = [
+    {
+      type: VirtualDomElements.Div,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
+      childCount: 2,
+    },
+    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded),
     {
       type: VirtualDomElements.Div,
       className: ClassNames.ViewletSearchMessage,
@@ -35,16 +34,17 @@ export const getSearchVirtualDom = (
       childCount: 1,
     },
     text(message),
-  )
-  dom.push({
-    type: VirtualDomElements.Div,
-    className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List, focusOutline ? ClassNames.FocusOutline : ClassNames.Empty),
-    role: AriaRoles.Tree,
-    tabIndex: 0,
-    childCount: visibleItems.length,
-    onClick: DomEventListenerFunctions.HandleClick,
-    onBlur: DomEventListenerFunctions.HandleListBlur,
-  })
-  dom.push(...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems))
+
+    {
+      type: VirtualDomElements.Div,
+      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List, focusOutline ? ClassNames.FocusOutline : ClassNames.Empty),
+      role: AriaRoles.Tree,
+      tabIndex: 0,
+      childCount: visibleItems.length,
+      onClick: DomEventListenerFunctions.HandleClick,
+      onBlur: DomEventListenerFunctions.HandleListBlur,
+    },
+    ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems),
+  ]
   return dom
 }
