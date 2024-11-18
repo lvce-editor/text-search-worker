@@ -33,6 +33,7 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
@@ -74,9 +75,10 @@ export const commandMap = {
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
-  'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
+  'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
+  'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
 
   // not wrapped
