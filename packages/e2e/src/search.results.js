@@ -1,4 +1,4 @@
-export const name = 'search.no-results'
+export const name = 'search.results'
 
 export const skip = true
 
@@ -10,10 +10,10 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Main, Locat
   await SideBar.open('Search')
 
   // act
-  await Search.setValue('Doc')
+  await Search.setValue('ab')
 
   // assert
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('No results found')
+  await expect(message).toHaveText('1 result')
 }
