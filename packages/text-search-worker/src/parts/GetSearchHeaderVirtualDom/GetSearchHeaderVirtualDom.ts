@@ -91,14 +91,14 @@ export const getSearchHeaderVirtualDom = (
           {
             icon: ClassNames.MaskIconPreserveCase,
             checked: false,
-            title: 'Preserve Case',
+            title: SearchStrings.preserveCase(),
           },
         ],
         [
           {
             icon: ClassNames.MaskIconReplaceAll,
             checked: false,
-            title: 'Replace All',
+            title: SearchStrings.replaceAll(),
           },
         ],
       ),
