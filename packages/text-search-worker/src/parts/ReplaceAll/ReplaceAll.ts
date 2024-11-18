@@ -2,7 +2,8 @@ import * as GetBulkReplacementEdits from '../GetBulkReplacementEdits/GetBulkRepl
 import * as Rpc from '../ParentRpc/ParentRpc.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
-export const replaceAll = async (state: SearchState, workspacePath: string, items: readonly any[], replacement: string): Promise<SearchState> => {
+export const replaceAll = async (state: SearchState): Promise<SearchState> => {
+  const { workspacePath, items, replacement } = state
   const { files, ranges } = GetBulkReplacementEdits.getBulkReplacementEdits(workspacePath, items)
   await Rpc.invoke('BulkReplacement.applyBulkReplacement', files, ranges, replacement)
   return state
