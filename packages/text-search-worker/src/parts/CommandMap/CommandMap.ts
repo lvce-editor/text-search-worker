@@ -36,6 +36,7 @@ import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeWord.ts'
+import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
@@ -84,6 +85,7 @@ export const commandMap = {
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleMatchWholeWord': WrapCommand.wrapCommand(ToggleMatchWholeWord.toggleMatchWholeWord),
+  'TextSearch.togglePreserveCase': WrapCommand.wrapCommand(TogglePreserveCase.togglePreserveCase),
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
 
