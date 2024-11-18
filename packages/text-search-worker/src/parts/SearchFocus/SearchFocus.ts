@@ -1,6 +1,9 @@
 import * as FocusElement from '../FocusElement/FocusElement.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as Focus from '../Focus/Focus.ts'
+import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 
 export const focusSearchValue = (state: SearchState): SearchState => {
   return FocusElement.focusElement(state, WhenExpression.FocusSearchInput)
@@ -60,4 +63,17 @@ export const focusRegex = (state: SearchState): SearchState => {
 
 export const focusReplaceAll = (state: SearchState): SearchState => {
   return FocusElement.focusElement(state, WhenExpression.FocusSearchReplaceAll)
+}
+
+export const handleFocusIn = (state: SearchState, key: { dataset: { focusKey: string } }): SearchState => {
+  const focusKey = GetSearchFocusKey.getSearchFocusKey(key.dataset.focusKey)
+  if (focusKey === state.focus) {
+    return state
+  }
+  Focus.setFocus(focusKey)
+  return {
+    ...state,
+    focus: focusKey,
+    focusSource: InputSource.User,
+  }
 }
