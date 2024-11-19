@@ -78,6 +78,34 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MaskIcon MaskIconCaseSensitive',
       type: 4,
     },
+    {
+      ariaChecked: false,
+      childCount: 1,
+      className: 'SearchFieldButton',
+      role: 'checkbox',
+      tabIndex: 0,
+      title: 'Match Whole Word',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'MaskIcon MaskIconWholeWord',
+      type: 4,
+    },
+    {
+      ariaChecked: false,
+      childCount: 1,
+      className: 'SearchFieldButton',
+      role: 'checkbox',
+      tabIndex: 0,
+      title: 'Use Regular Expression',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'MaskIcon MaskIconRegex',
+      type: 4,
+    },
   ])
 })
 
