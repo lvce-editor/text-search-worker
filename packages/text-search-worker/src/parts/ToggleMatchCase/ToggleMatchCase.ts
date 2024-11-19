@@ -1,9 +1,9 @@
 import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const toggleMatchCase = (state: SearchHeader): SearchHeader => {
-  const { matchCase } = state
   return {
     ...state,
-    matchCase: !matchCase,
+    flags: SearchFlags.toggleMatchCase(state.flags),
   }
 }

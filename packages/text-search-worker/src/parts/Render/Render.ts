@@ -4,6 +4,7 @@ import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 const renderItems = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
@@ -39,16 +40,7 @@ const renderItems = {
       newState.focusedIndex,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
-    const dom = GetSearchVirtualDom.getSearchVirtualDom(
-      displayResults,
-      newState.replaceExpanded,
-      newState.matchCase,
-      newState.matchWholeWord,
-      newState.useRegularExpression,
-      newState.message,
-      newState.detailsExpanded,
-      focusOutline,
-    )
+    const dom = GetSearchVirtualDom.getSearchVirtualDom(displayResults, newState.flags, newState.message, newState.detailsExpanded, focusOutline)
     return ['Viewlet.setDom2', newState.uid, dom]
   },
 }

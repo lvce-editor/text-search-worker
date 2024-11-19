@@ -1,9 +1,9 @@
 import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const toggleReplace = (state: SearchHeader): SearchHeader => {
-  const { replaceExpanded } = state
   return {
     ...state,
-    replaceExpanded: !replaceExpanded,
+    flags: SearchFlags.toggleReplaceExpanded(state.flags),
   }
 }
