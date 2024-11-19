@@ -17,5 +17,6 @@ test('saveState', () => {
   expect(result).toEqual({
     value: 'test-value',
     replaceExpanded: true,
+    replacement: '',
   })
 })
