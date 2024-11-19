@@ -13,7 +13,7 @@ export const create = (
   height: number,
   workspacePath: string,
   assetDir: string,
-  itemHeight: number,
+  itemHeight?: number,
 ): SearchState => {
   const state: SearchState = {
     uid,
