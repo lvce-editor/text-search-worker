@@ -45,6 +45,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const message = 'Search results'
   const detailsExpanded = false
   const focusOutline = false
+  const preserveCase = false
 
   const result: readonly VirtualDomNode[] = getSearchVirtualDom(
     visibleItems,
@@ -55,6 +56,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     message,
     detailsExpanded,
     focusOutline,
+    preserveCase,
   )
 
   expect(result).toEqual([
