@@ -17,7 +17,7 @@ const Rpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 
 test('openUri - without options', async () => {
   // @ts-ignore
-  Rpc.invoke.mockImplementation(() => {})
+  Rpc.invoke.mockResolvedValue(undefined)
   await OpenUri.openUri('/test/file.txt')
   expect(Rpc.invoke).toHaveBeenCalledTimes(1)
   expect(Rpc.invoke).toHaveBeenCalledWith('Main.openUri', '/test/file.txt', true, {})
