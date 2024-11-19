@@ -9,6 +9,9 @@ test('saveState', () => {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     value: 'test-value',
     replaceExpanded: true,
+    preserveCase: true,
+    matchCase: true,
+    matchWholeWord: true,
   }
   SearchViewStates.set(1, state, state)
 
@@ -18,5 +21,8 @@ test('saveState', () => {
     value: 'test-value',
     replaceExpanded: true,
     replacement: '',
+    preserveCase: true,
+    matchCase: true,
+    matchWholeWord: true,
   })
 })
