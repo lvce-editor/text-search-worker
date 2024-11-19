@@ -3,7 +3,7 @@ import { handleIconThemeChange } from '../src/parts/HandleIconThemeChange/Handle
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 
-test('handleIconThemeChange returns new state with copied items', () => {
+test('handleIconThemeChange returns new state with copied items', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -12,7 +12,7 @@ test('handleIconThemeChange returns new state with copied items', () => {
     ],
   }
 
-  const newState = handleIconThemeChange(state)
+  const newState = await handleIconThemeChange(state)
 
   // Check that state is copied, not mutated
   expect(newState).not.toBe(state)
@@ -22,13 +22,13 @@ test('handleIconThemeChange returns new state with copied items', () => {
   expect(newState.items).toEqual(state.items)
 })
 
-test('handleIconThemeChange handles empty items array', () => {
+test('handleIconThemeChange handles empty items array', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
   }
 
-  const newState = handleIconThemeChange(state)
+  const newState = await handleIconThemeChange(state)
 
   expect(newState.items).toEqual([])
   expect(newState.items).not.toBe(state.items)
