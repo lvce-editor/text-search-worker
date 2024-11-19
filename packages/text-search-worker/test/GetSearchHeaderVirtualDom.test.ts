@@ -4,8 +4,7 @@ import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('getSearchHeaderVirtualDom - with no flags', () => {
   const flags = 0
-  const detailsExpanded = false
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
   expect(dom).toEqual([
     {
       childCount: 2,
@@ -81,19 +80,10 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   ])
 })
 
-test('getSearchHeaderVirtualDom - with all flags enabled', () => {
+test('getSearchHeaderVirtualDom - with details expanded', () => {
   let flags = 0
-  flags = SearchFlags.toggleMatchCase(flags)
-  flags = SearchFlags.toggleMatchWholeWord(flags)
-  flags = SearchFlags.toggleUseRegularExpression(flags)
-  flags = SearchFlags.toggleReplaceExpanded(flags)
-  flags = SearchFlags.togglePreserveCase(flags)
-
-  const detailsExpanded = false
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)
-
-  expect(dom[2].ariaExpanded).toBe(true) // Replace expanded
-  expect(dom[8].ariaChecked).toBe(true) // Match case
-  expect(dom[10].ariaChecked).toBe(true) // Match whole word
-  expect(dom[12].ariaChecked).toBe(true) // Use regular expression
+  flags = SearchFlags.toggleDetailsExpanded(flags)
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(3) // Header has extra child when details expanded
+  expect(dom[dom.length - 5].className).toBe('SearchHeaderDetails')
 })
