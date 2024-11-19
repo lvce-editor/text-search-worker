@@ -1,15 +1,14 @@
-import { test, expect } from '@jest/globals'
-import * as ToggleReplace from '../src/parts/ToggleReplace/ToggleReplace.ts'
+import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
+import type { SearchHeader } from '../src/parts/SearchHeader/SearchHeader.ts'
+import * as ToggleReplace from '../src/parts/ToggleReplace/ToggleReplace.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
-test('toggles replaceExpanded state', () => {
-  const initialState = {
+test('toggleReplace', () => {
+  const initialState: SearchHeader = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    replaceExpanded: false,
+    flags: 0,
   }
   const newState = ToggleReplace.toggleReplace(initialState)
-  expect(newState.replaceExpanded).toBe(true)
-
-  const nextState = ToggleReplace.toggleReplace(newState)
-  expect(nextState.replaceExpanded).toBe(false)
+  expect(SearchFlags.hasReplaceExpanded(newState.flags)).toBe(true)
 })
