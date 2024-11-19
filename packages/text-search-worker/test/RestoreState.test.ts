@@ -10,6 +10,9 @@ test('restoreState - with empty state', () => {
     savedReplaceExpanded: false,
     savedValue: '',
     threads: 1,
+    savedPreserveCase: false,
+    savedMatchCase: false,
+    savedMatchWholeWord: false,
   })
 })
 
@@ -21,6 +24,9 @@ test('restoreState - with null state', () => {
     savedReplaceExpanded: false,
     savedValue: '',
     threads: 1,
+    savedPreserveCase: false,
+    savedMatchCase: false,
+    savedMatchWholeWord: false,
   })
 })
 
@@ -32,6 +38,9 @@ test('restoreState - with undefined state', () => {
     savedReplaceExpanded: false,
     savedValue: '',
     threads: 1,
+    savedPreserveCase: false,
+    savedMatchCase: false,
+    savedMatchWholeWord: false,
   })
 })
 
@@ -39,6 +48,9 @@ test('restoreState - with basic state', () => {
   const state = {
     value: 'test',
     replaceExpanded: true,
+    preserveCase: true,
+    matchCase: true,
+    matchWholeWord: true,
   }
   const result = restoreState(state)
   expect(result).toEqual({
@@ -47,5 +59,8 @@ test('restoreState - with basic state', () => {
     savedReplaceExpanded: true,
     savedValue: 'test',
     threads: 1,
+    savedPreserveCase: true,
+    savedMatchCase: true,
+    savedMatchWholeWord: true,
   })
 })

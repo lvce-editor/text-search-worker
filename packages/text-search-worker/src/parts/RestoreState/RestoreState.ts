@@ -38,17 +38,45 @@ const getThreads = (): number => {
   return 1
 }
 
+const getSavedPreserveCase = (savedState: unknown): boolean => {
+  if (savedState && typeof savedState === 'object' && 'preserveCase' in savedState && typeof savedState.preserveCase === 'boolean') {
+    return savedState.preserveCase
+  }
+  return false
+}
+
+const getSavedMatchCase = (savedState: unknown): boolean => {
+  if (savedState && typeof savedState === 'object' && 'matchCase' in savedState && typeof savedState.matchCase === 'boolean') {
+    return savedState.matchCase
+  }
+  return false
+}
+
+const getSavedMatchWholeWord = (savedState: unknown): boolean => {
+  if (savedState && typeof savedState === 'object' && 'matchWholeWord' in savedState && typeof savedState.matchWholeWord === 'boolean') {
+    return savedState.matchWholeWord
+  }
+  return false
+}
+
 export const restoreState = (savedState: unknown): RestoredState => {
   const savedValue = getSavedValue(savedState)
   const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
   const savedCollapsedPaths = getSavedCollapsedPaths(savedState)
   const threads = getThreads()
   const replacement = getSavedReplacement(savedState)
+  const savedPreserveCase = getSavedPreserveCase(savedState)
+  const savedMatchCase = getSavedMatchCase(savedState)
+  const savedMatchWholeWord = getSavedMatchWholeWord(savedState)
+
   return {
     savedCollapsedPaths,
     savedReplaceExpanded,
     savedValue,
     threads,
     replacement,
+    savedPreserveCase,
+    savedMatchCase,
+    savedMatchWholeWord,
   }
 }
