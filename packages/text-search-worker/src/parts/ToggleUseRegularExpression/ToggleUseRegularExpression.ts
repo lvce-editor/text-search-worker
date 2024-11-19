@@ -1,9 +1,7 @@
 import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+import * as ToggleSearchFlag from '../ToggleSearchFlag/ToggleSearchFlag.ts'
 
 export const toggleUseRegularExpression = (state: SearchHeader): SearchHeader => {
-  return {
-    ...state,
-    flags: SearchFlags.toggleUseRegularExpression(state.flags),
-  }
+  return ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.UseRegularExpression)
 }
