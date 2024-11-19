@@ -7,14 +7,9 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
-export const getSearchHeaderVirtualDom = (
-  replaceExpanded: boolean,
-  matchCase: boolean,
-  matchWholeWord: boolean,
-  useRegularExpression: boolean,
-  detailsExpanded: boolean,
-): readonly VirtualDomNode[] => {
+export const getSearchHeaderVirtualDom = (flags: number, detailsExpanded: boolean): readonly VirtualDomNode[] => {
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -35,11 +30,11 @@ export const getSearchHeaderVirtualDom = (
       className: MergeClassNames.mergeClassNames(
         ClassNames.IconButton,
         ClassNames.SearchToggleButton,
-        replaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
+        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.SearchToggleButtonExpanded : '',
       ),
       title: SearchStrings.toggleReplace(),
       ariaLabel: SearchStrings.toggleReplace(),
-      ariaExpanded: replaceExpanded,
+      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
       childCount: 1,
       'data-command': 'toggleReplace',
     },
@@ -47,7 +42,7 @@ export const getSearchHeaderVirtualDom = (
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(
         ClassNames.MaskIcon,
-        replaceExpanded ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
+        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
       ),
       childCount: 0,
     },
@@ -55,7 +50,7 @@ export const getSearchHeaderVirtualDom = (
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeaderTopRight,
       role: AriaRoles.None,
-      childCount: replaceExpanded ? 2 : 1,
+      childCount: SearchFlags.hasReplaceExpanded(flags) ? 2 : 1,
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       'search-value',
@@ -64,24 +59,24 @@ export const getSearchHeaderVirtualDom = (
       [
         {
           icon: ClassNames.MaskIconCaseSensitive,
-          checked: matchCase,
+          checked: SearchFlags.hasMatchCase(flags),
           title: SearchStrings.matchCase(),
         },
         {
           icon: ClassNames.MaskIconWholeWord,
-          checked: matchWholeWord,
+          checked: SearchFlags.hasMatchWholeWord(flags),
           title: SearchStrings.matchWholeWord(),
         },
         {
           icon: ClassNames.MaskIconRegex,
-          checked: useRegularExpression,
+          checked: SearchFlags.hasUseRegularExpression(flags),
           title: SearchStrings.useRegularExpression(),
         },
       ],
       [],
     ),
   ]
-  if (replaceExpanded) {
+  if (SearchFlags.hasReplaceExpanded(flags)) {
     dom.push(
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         'search-replace-value',

@@ -1,15 +1,11 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchHeaderVirtualDom from '../src/parts/GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('getSearchHeaderVirtualDom', () => {
-  const replaceExpanded = false
-  const matchCase = false
-  const matchWholeWord = false
-  const useRegularExpression = false
+  const flags = 0
   const detailsExpanded = false
-  expect(
-    GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded),
-  ).toEqual([
+  expect(GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)).toEqual([
     {
       childCount: 2,
       className: 'SearchHeader',
@@ -25,7 +21,7 @@ test('getSearchHeaderVirtualDom', () => {
       type: 4,
     },
     {
-      ariaExpanded: false,
+      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
       ariaLabel: 'Toggle Replace',
       childCount: 1,
       className: 'IconButton SearchToggleButton',
