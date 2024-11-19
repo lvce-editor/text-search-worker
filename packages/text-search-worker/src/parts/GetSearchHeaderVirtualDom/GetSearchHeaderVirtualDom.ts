@@ -85,7 +85,7 @@ export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNod
         [
           {
             icon: ClassNames.MaskIconPreserveCase,
-            checked: preserveCase,
+            checked: SearchFlags.hasPreserveCase(flags),
             title: SearchStrings.preserveCase(),
           },
         ],
