@@ -1,4 +1,8 @@
-import { expect, jest, test } from '@jest/globals'
+import { expect, jest, test, beforeEach } from '@jest/globals'
+
+beforeEach(() => {
+  jest.resetAllMocks()
+})
 
 const mockRpc = {
   invoke: jest.fn(),

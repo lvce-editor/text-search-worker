@@ -4,6 +4,10 @@ import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
+beforeEach(() => {
+  jest.resetAllMocks()
+})
+
 const mockSetFocus = jest.fn()
 
 jest.unstable_mockModule('../src/parts/Focus/Focus.ts', () => ({
@@ -20,10 +24,6 @@ const {
   focusPreserveCasePrevious,
   handleFocusIn,
 } = await import('../src/parts/SearchFocus/SearchFocus.ts')
-
-beforeEach(() => {
-  mockSetFocus.mockClear()
-})
 
 test('focusSearchValue - sets correct focus state', () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
