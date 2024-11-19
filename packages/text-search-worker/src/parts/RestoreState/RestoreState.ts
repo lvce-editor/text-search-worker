@@ -1,3 +1,5 @@
+import type { RestoredState } from '../RestoredState/RestoredState.ts'
+
 const getSavedValue = (savedState: unknown): string => {
   if (savedState && typeof savedState === 'object' && 'value' in savedState && typeof savedState.value === 'string') {
     return savedState.value
@@ -34,14 +36,6 @@ const getSavedCollapsedPaths = (savedState: unknown): string[] => {
 
 const getThreads = (): number => {
   return 1
-}
-
-interface RestoredState {
-  readonly savedValue: string
-  readonly savedReplaceExpanded: boolean
-  readonly savedCollapsedPaths: readonly string[]
-  readonly threads: number
-  readonly replacement: string
 }
 
 export const restoreState = (savedState: unknown): RestoredState => {
