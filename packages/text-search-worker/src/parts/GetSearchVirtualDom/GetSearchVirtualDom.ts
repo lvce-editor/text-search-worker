@@ -11,14 +11,9 @@ import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchRe
 
 export const getSearchVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],
-  replaceExpanded: boolean,
-  matchCase: boolean,
-  matchWholeWord: boolean,
-  useRegularExpression: boolean,
+  flags: number,
   message: string,
-  detailsExpanded: boolean,
   focusOutline: boolean,
-  preserveCase: boolean,
 ): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
@@ -26,14 +21,7 @@ export const getSearchVirtualDom = (
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
       childCount: 2,
     },
-    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(
-      replaceExpanded,
-      matchCase,
-      matchWholeWord,
-      useRegularExpression,
-      detailsExpanded,
-      preserveCase,
-    ),
+    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags),
     {
       type: VirtualDomElements.Div,
       className: ClassNames.ViewletSearchMessage,

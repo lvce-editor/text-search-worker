@@ -38,26 +38,11 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       top: 0,
     },
   ]
-  const replaceExpanded = false
-  const matchCase = false
-  const matchWholeWord = false
-  const useRegularExpression = false
+  const flags = 0
   const message = 'Search results'
-  const detailsExpanded = false
   const focusOutline = false
-  const preserveCase = false
 
-  const result: readonly VirtualDomNode[] = getSearchVirtualDom(
-    visibleItems,
-    replaceExpanded,
-    matchCase,
-    matchWholeWord,
-    useRegularExpression,
-    message,
-    detailsExpanded,
-    focusOutline,
-    preserveCase,
-  )
+  const result: readonly VirtualDomNode[] = getSearchVirtualDom(visibleItems, flags, message, focusOutline)
 
   expect(result).toEqual([
     {

@@ -1,9 +1,9 @@
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
-import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 const renderItems = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
@@ -12,12 +12,8 @@ const renderItems = {
       oldState.minLineY === newState.minLineY &&
       oldState.maxLineY === newState.maxLineY &&
       oldState.replacement === newState.replacement &&
-      oldState.replaceExpanded === newState.replaceExpanded &&
-      oldState.matchCase === newState.matchCase &&
-      oldState.matchWholeWord === newState.matchWholeWord &&
-      oldState.useRegularExpression === newState.useRegularExpression &&
+      oldState.flags === newState.flags &&
       oldState.message === newState.message &&
-      oldState.detailsExpanded === newState.detailsExpanded &&
       oldState.loaded === newState.loaded &&
       oldState.collapsedPaths === newState.collapsedPaths &&
       oldState.listFocusedIndex === newState.listFocusedIndex &&
@@ -39,17 +35,7 @@ const renderItems = {
       newState.focusedIndex,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
-    const dom = GetSearchVirtualDom.getSearchVirtualDom(
-      displayResults,
-      newState.replaceExpanded,
-      newState.matchCase,
-      newState.matchWholeWord,
-      newState.useRegularExpression,
-      newState.message,
-      newState.detailsExpanded,
-      focusOutline,
-      newState.preserveCase,
-    )
+    const dom = GetSearchVirtualDom.getSearchVirtualDom(displayResults, newState.flags, newState.message, focusOutline)
     return ['Viewlet.setDom2', newState.uid, dom]
   },
 }

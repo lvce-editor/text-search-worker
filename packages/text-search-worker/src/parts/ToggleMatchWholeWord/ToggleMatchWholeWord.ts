@@ -1,9 +1,7 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import * as ToggleSearchFlag from '../ToggleSearchFlag/ToggleSearchFlag.ts'
 
-export const toggleMatchWholeWord = (state: SearchState): SearchState => {
-  const { matchWholeWord } = state
-  return {
-    ...state,
-    matchWholeWord: !matchWholeWord,
-  }
+export const toggleMatchWholeWord = (state: SearchHeader): SearchHeader => {
+  return ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.MatchWholeWord)
 }

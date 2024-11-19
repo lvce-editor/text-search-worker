@@ -14,13 +14,15 @@ export const create = (
   workspacePath: string,
   assetDir: string,
   itemHeight?: number,
+  value: string = '',
+  replacement: string = '',
 ): SearchState => {
   const state: SearchState = {
     uid,
     searchResults: [],
     stats: {},
     searchId: -1,
-    value: '',
+    value,
     disposed: false,
     fileCount: 0,
     x,
@@ -33,11 +35,7 @@ export const create = (
       headerHeight: 61, // TODO
     }),
     threads: 0,
-    replaceExpanded: false,
-    useRegularExpression: false,
-    matchCase: false,
-    matchWholeWord: false,
-    replacement: '',
+    replacement,
     matchCount: 0,
     listFocused: false,
     listFocusedIndex: -1,
@@ -45,7 +43,6 @@ export const create = (
     workspacePath: workspacePath,
     includeValue: '',
     excludeValue: '',
-    detailsExpanded: false,
     focus: WhenExpression.Empty,
     loaded: false,
     message: '',
@@ -58,7 +55,7 @@ export const create = (
     focusedIndex: -1,
     handleOffset: 0,
     focusSource: InputSource.User,
-    preserveCase: false,
+    flags: 0,
   }
   SearchViewStates.set(uid, state, state)
   return state

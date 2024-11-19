@@ -1,23 +1,12 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchHeaderVirtualDom from '../src/parts/GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
-test('getSearchHeaderVirtualDom', () => {
-  const replaceExpanded = false
-  const matchCase = false
-  const matchWholeWord = false
-  const useRegularExpression = false
-  const detailsExpanded = false
-  const preserveCase = false
-  expect(
-    GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(
-      replaceExpanded,
-      matchCase,
-      matchWholeWord,
-      useRegularExpression,
-      detailsExpanded,
-      preserveCase,
-    ),
-  ).toEqual([
+test('getSearchHeaderVirtualDom - with no flags', () => {
+  const flags = 0
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(2)
+  expect(dom).toEqual([
     {
       childCount: 2,
       className: 'SearchHeader',
@@ -118,4 +107,21 @@ test('getSearchHeaderVirtualDom', () => {
       type: 4,
     },
   ])
+})
+
+test('getSearchHeaderVirtualDom - with details expanded', () => {
+  const flags = SearchFlags.DetailsExpanded
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(4)
+  expect(dom[dom.length - 5].className).toBe('SearchHeaderDetails')
+  expect(dom[dom.length - 4].text).toBe('files to include')
+  expect(dom[dom.length - 2].text).toBe('files to exclude')
+})
+
+test('getSearchHeaderVirtualDom - with replace and details expanded', () => {
+  const flags = SearchFlags.DetailsExpanded | SearchFlags.ReplaceExpanded
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(4)
+  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
+  expect(SearchFlags.hasReplaceExpanded(flags)).toBe(true)
 })
