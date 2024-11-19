@@ -9,7 +9,7 @@ import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
-export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
+export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   try {
     const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads } = partialNewState
@@ -20,7 +20,6 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
         maxLineY: 0,
         deltaY: 0,
         items: [],
-        matchIndex: 0,
         matchCount: 0,
         message: '',
         loaded: true,
