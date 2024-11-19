@@ -1,5 +1,4 @@
 import type { RestoredState } from '../RestoredState/RestoredState.ts'
-import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 const getSavedValue = (savedState: unknown): string => {
   if (savedState && typeof savedState === 'object' && 'value' in savedState && typeof savedState.value === 'string') {
