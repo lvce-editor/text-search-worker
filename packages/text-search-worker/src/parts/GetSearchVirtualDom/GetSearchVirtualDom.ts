@@ -14,7 +14,6 @@ export const getSearchVirtualDom = (
   flags: number,
   message: string,
   focusOutline: boolean,
-  preserveCase: boolean,
 ): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
