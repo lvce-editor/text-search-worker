@@ -35,10 +35,6 @@ export const create = (
       headerHeight: 61, // TODO
     }),
     threads: 0,
-    replaceExpanded: false,
-    useRegularExpression: false,
-    matchCase: false,
-    matchWholeWord: false,
     replacement,
     matchCount: 0,
     listFocused: false,
@@ -47,7 +43,6 @@ export const create = (
     workspacePath: workspacePath,
     includeValue: '',
     excludeValue: '',
-    detailsExpanded: false,
     focus: WhenExpression.Empty,
     loaded: false,
     message: '',
@@ -60,7 +55,6 @@ export const create = (
     focusedIndex: -1,
     handleOffset: 0,
     focusSource: InputSource.User,
-    preserveCase: false,
     flags: 0,
   }
   SearchViewStates.set(uid, state, state)
