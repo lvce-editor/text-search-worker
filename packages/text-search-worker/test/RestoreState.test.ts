@@ -13,6 +13,7 @@ test('restoreState - with empty state', () => {
     savedPreserveCase: false,
     savedMatchCase: false,
     savedMatchWholeWord: false,
+    savedUseRegularExpression: false,
   })
 })
 
@@ -27,6 +28,7 @@ test('restoreState - with null state', () => {
     savedPreserveCase: false,
     savedMatchCase: false,
     savedMatchWholeWord: false,
+    savedUseRegularExpression: false,
   })
 })
 
@@ -41,6 +43,7 @@ test('restoreState - with undefined state', () => {
     savedPreserveCase: false,
     savedMatchCase: false,
     savedMatchWholeWord: false,
+    savedUseRegularExpression: false,
   })
 })
 
@@ -62,5 +65,6 @@ test('restoreState - with basic state', () => {
     savedPreserveCase: true,
     savedMatchCase: true,
     savedMatchWholeWord: true,
+    savedUseRegularExpression: false,
   })
 })
