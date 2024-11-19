@@ -1,6 +1,10 @@
-import { expect, jest, test } from '@jest/globals'
+import { expect, jest, test, beforeEach } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+
+beforeEach(() => {
+  jest.resetAllMocks()
+})
 
 const mockRpc = {
   invoke: jest.fn(),
