@@ -32,7 +32,6 @@ const getThreads = (): number => {
 }
 
 export const loadContent = async (state: SearchState, savedState: any): Promise<SearchState> => {
-  console.log({ savedState })
   const savedValue = getSavedValue(savedState)
   const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
   const savedCollapsedPaths = getSavedCollapsedPaths(savedState)
