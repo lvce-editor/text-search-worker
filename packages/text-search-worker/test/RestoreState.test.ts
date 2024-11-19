@@ -28,11 +28,7 @@ test('restoreState - with null state', () => {
 test('restoreState - with basic state', () => {
   const state = {
     value: 'test',
-    replaceExpanded: true,
-    preserveCase: true,
-    matchCase: true,
-    matchWholeWord: true,
-    useRegularExpression: true,
+    flags: 31,
   }
   const result = restoreState(state)
   const expectedFlags =
