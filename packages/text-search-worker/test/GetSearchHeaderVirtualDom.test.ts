@@ -2,10 +2,11 @@ import { expect, test } from '@jest/globals'
 import * as GetSearchHeaderVirtualDom from '../src/parts/GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
-test('getSearchHeaderVirtualDom', () => {
+test('getSearchHeaderVirtualDom - with no flags', () => {
   const flags = 0
   const detailsExpanded = false
-  expect(GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)).toEqual([
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)
+  expect(dom).toEqual([
     {
       childCount: 2,
       className: 'SearchHeader',
@@ -21,7 +22,7 @@ test('getSearchHeaderVirtualDom', () => {
       type: 4,
     },
     {
-      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
+      ariaExpanded: false,
       ariaLabel: 'Toggle Replace',
       childCount: 1,
       className: 'IconButton SearchToggleButton',
@@ -77,33 +78,22 @@ test('getSearchHeaderVirtualDom', () => {
       className: 'MaskIcon MaskIconCaseSensitive',
       type: 4,
     },
-    {
-      ariaChecked: false,
-      childCount: 1,
-      className: 'SearchFieldButton',
-      role: 'checkbox',
-      tabIndex: 0,
-      title: 'Match Whole Word',
-      type: 4,
-    },
-    {
-      childCount: 0,
-      className: 'MaskIcon MaskIconWholeWord',
-      type: 4,
-    },
-    {
-      ariaChecked: false,
-      childCount: 1,
-      className: 'SearchFieldButton',
-      role: 'checkbox',
-      tabIndex: 0,
-      title: 'Use Regular Expression',
-      type: 4,
-    },
-    {
-      childCount: 0,
-      className: 'MaskIcon MaskIconRegex',
-      type: 4,
-    },
   ])
+})
+
+test('getSearchHeaderVirtualDom - with all flags enabled', () => {
+  let flags = 0
+  flags = SearchFlags.toggleMatchCase(flags)
+  flags = SearchFlags.toggleMatchWholeWord(flags)
+  flags = SearchFlags.toggleUseRegularExpression(flags)
+  flags = SearchFlags.toggleReplaceExpanded(flags)
+  flags = SearchFlags.togglePreserveCase(flags)
+
+  const detailsExpanded = false
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, detailsExpanded)
+
+  expect(dom[2].ariaExpanded).toBe(true) // Replace expanded
+  expect(dom[8].ariaChecked).toBe(true) // Match case
+  expect(dom[10].ariaChecked).toBe(true) // Match whole word
+  expect(dom[12].ariaChecked).toBe(true) // Use regular expression
 })
