@@ -9,7 +9,7 @@ import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
-export const getSearchHeaderVirtualDom = (flags: number, detailsExpanded: boolean): readonly VirtualDomNode[] => {
+export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNode[] => {
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -99,8 +99,8 @@ export const getSearchHeaderVirtualDom = (flags: number, detailsExpanded: boolea
       ),
     )
   }
-  if (detailsExpanded) {
-    console.log({ detailsExpanded })
+  if (SearchFlags.hasDetailsExpanded(flags)) {
+    console.log({ detailsExpanded: true })
     // @ts-ignore
     dom[0].childCount++
     dom.push(

@@ -22,3 +22,13 @@ test('toggle and check flags', () => {
   expect(SearchFlags.hasPreserveCase(flags)).toBe(false)
   expect(SearchFlags.hasUseRegularExpression(flags)).toBe(true)
 })
+
+test('toggle and check details expanded flag', () => {
+  let flags = 0
+
+  flags = SearchFlags.toggleDetailsExpanded(flags)
+  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
+
+  flags = SearchFlags.toggleDetailsExpanded(flags)
+  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(false)
+})
