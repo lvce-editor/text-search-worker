@@ -1,10 +1,9 @@
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
-import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 const renderItems = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
