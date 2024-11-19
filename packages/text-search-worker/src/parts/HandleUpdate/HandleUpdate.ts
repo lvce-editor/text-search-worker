@@ -7,11 +7,12 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   try {
-    const { height, itemHeight, minimumSliderSize, headerHeight, matchCase, value, threads, useRegularExpression } = partialNewState
+    const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads } = partialNewState
     if (IsEmptyString.isEmptyString(value)) {
       return {
         ...partialNewState,
@@ -31,8 +32,8 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
       value,
       {
         threads,
-        isCaseSensitive: matchCase,
-        useRegularExpression,
+        isCaseSensitive: SearchFlags.hasMatchCase(flags),
+        useRegularExpression: SearchFlags.hasUseRegularExpression(flags),
       },
       state.assetDir,
     )

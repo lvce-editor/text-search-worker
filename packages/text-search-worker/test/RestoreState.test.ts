@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals'
 import { restoreState } from '../src/parts/RestoreState/RestoreState.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('restoreState - with empty state', () => {
   const state = {}
@@ -7,12 +8,9 @@ test('restoreState - with empty state', () => {
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
-    savedReplaceExpanded: false,
     savedValue: '',
     threads: 1,
-    savedPreserveCase: false,
-    savedMatchCase: false,
-    savedMatchWholeWord: false,
+    flags: 0,
   })
 })
 
@@ -21,26 +19,9 @@ test('restoreState - with null state', () => {
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
-    savedReplaceExpanded: false,
     savedValue: '',
     threads: 1,
-    savedPreserveCase: false,
-    savedMatchCase: false,
-    savedMatchWholeWord: false,
-  })
-})
-
-test('restoreState - with undefined state', () => {
-  const result = restoreState(undefined)
-  expect(result).toEqual({
-    replacement: '',
-    savedCollapsedPaths: [],
-    savedReplaceExpanded: false,
-    savedValue: '',
-    threads: 1,
-    savedPreserveCase: false,
-    savedMatchCase: false,
-    savedMatchWholeWord: false,
+    flags: 0,
   })
 })
 
@@ -51,16 +32,16 @@ test('restoreState - with basic state', () => {
     preserveCase: true,
     matchCase: true,
     matchWholeWord: true,
+    useRegularExpression: true,
   }
   const result = restoreState(state)
+  const expectedFlags =
+    SearchFlags.PreserveCase | SearchFlags.ReplaceExpanded | SearchFlags.MatchCase | SearchFlags.MatchWholeWord | SearchFlags.UseRegularExpression
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
-    savedReplaceExpanded: true,
     savedValue: 'test',
     threads: 1,
-    savedPreserveCase: true,
-    savedMatchCase: true,
-    savedMatchWholeWord: true,
+    flags: expectedFlags,
   })
 })

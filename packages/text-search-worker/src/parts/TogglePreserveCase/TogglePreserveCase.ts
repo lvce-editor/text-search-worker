@@ -1,9 +1,9 @@
 import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const togglePreserveCase = (state: SearchHeader): SearchHeader => {
-  const { preserveCase } = state
   return {
     ...state,
-    preserveCase: !preserveCase,
+    flags: SearchFlags.togglePreserveCase(state.flags),
   }
 }
