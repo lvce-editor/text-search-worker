@@ -21,7 +21,8 @@ const renderItems = {
       oldState.loaded === newState.loaded &&
       oldState.collapsedPaths === newState.collapsedPaths &&
       oldState.listFocusedIndex === newState.listFocusedIndex &&
-      oldState.listFocused === newState.listFocused
+      oldState.listFocused === newState.listFocused &&
+      oldState.icons === newState.icons
     )
   },
   apply(oldState: SearchState, newState: SearchState): any {
