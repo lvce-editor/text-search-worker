@@ -5,4 +5,5 @@ export interface SavedState {
   readonly preserveCase: boolean
   readonly matchCase: boolean
   readonly matchWholeWord: boolean
+  readonly useRegularExpression: boolean
 }
