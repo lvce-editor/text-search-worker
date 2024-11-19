@@ -79,7 +79,16 @@ const renderFocus = {
   },
 }
 
-const render = [renderItems, renderFocus]
+const renderValue = {
+  isEqual(oldState: SearchState, newState: SearchState): boolean {
+    return oldState.value === newState.value || newState.inputSource === InputSource.User
+  },
+  apply(oldState: SearchState, newState: SearchState): any {
+    return ['Viewlet.send', newState.uid, 'setValue', newState.value, '[name="search-value"]']
+  },
+}
+
+const render = [renderItems, renderFocus, renderValue]
 
 export const doRender = (uid: number): any => {
   const { oldState, newState } = SearchViewStates.get(uid)
