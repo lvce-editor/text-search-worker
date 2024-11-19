@@ -59,6 +59,13 @@ const getSavedMatchWholeWord = (savedState: unknown): boolean => {
   return false
 }
 
+const getSavedUseRegularExpression = (savedState: unknown): boolean => {
+  if (savedState && typeof savedState === 'object' && 'useRegularExpression' in savedState && typeof savedState.useRegularExpression === 'boolean') {
+    return savedState.useRegularExpression
+  }
+  return false
+}
+
 export const restoreState = (savedState: unknown): RestoredState => {
   const savedValue = getSavedValue(savedState)
   const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
@@ -68,6 +75,7 @@ export const restoreState = (savedState: unknown): RestoredState => {
   const savedPreserveCase = getSavedPreserveCase(savedState)
   const savedMatchCase = getSavedMatchCase(savedState)
   const savedMatchWholeWord = getSavedMatchWholeWord(savedState)
+  const savedUseRegularExpression = getSavedUseRegularExpression(savedState)
 
   return {
     savedCollapsedPaths,
@@ -78,5 +86,6 @@ export const restoreState = (savedState: unknown): RestoredState => {
     savedPreserveCase,
     savedMatchCase,
     savedMatchWholeWord,
+    savedUseRegularExpression,
   }
 }

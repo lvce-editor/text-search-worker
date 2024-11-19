@@ -8,7 +8,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
-export const handleUpdate = async (state: SearchState, update: any): Promise<SearchState> => {
+export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   try {
     const { height, itemHeight, minimumSliderSize, headerHeight, matchCase, value, threads, useRegularExpression } = partialNewState
@@ -19,7 +19,6 @@ export const handleUpdate = async (state: SearchState, update: any): Promise<Sea
         maxLineY: 0,
         deltaY: 0,
         items: [],
-        matchIndex: 0,
         matchCount: 0,
         message: '',
         loaded: true,

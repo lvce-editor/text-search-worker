@@ -7,4 +7,5 @@ export interface RestoredState {
   readonly savedPreserveCase: boolean
   readonly savedMatchCase: boolean
   readonly savedMatchWholeWord: boolean
+  readonly savedUseRegularExpression: boolean
 }
