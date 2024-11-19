@@ -1,10 +1,6 @@
+import type { ResultCounts } from '../ResultCounts/ResultCounts.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
-
-export interface ResultCounts {
-  readonly fileCount: number
-  readonly resultCount: number
-}
 
 export const getTextSearchResultCounts = (results: readonly SearchResult[]): ResultCounts => {
   let resultCount = 0
