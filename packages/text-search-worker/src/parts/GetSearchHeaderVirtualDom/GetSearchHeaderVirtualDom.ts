@@ -100,6 +100,8 @@ export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNod
     )
   }
   if (SearchFlags.hasDetailsExpanded(flags)) {
+    // @ts-ignore
+    dom[0].childCount++
     dom.push(
       {
         type: VirtualDomElements.Div,
