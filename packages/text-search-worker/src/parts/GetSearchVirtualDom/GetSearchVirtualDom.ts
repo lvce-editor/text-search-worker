@@ -18,6 +18,7 @@ export const getSearchVirtualDom = (
   message: string,
   detailsExpanded: boolean,
   focusOutline: boolean,
+  preserveCase: boolean,
 ): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
@@ -25,7 +26,14 @@ export const getSearchVirtualDom = (
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
       childCount: 2,
     },
-    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded),
+    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(
+      replaceExpanded,
+      matchCase,
+      matchWholeWord,
+      useRegularExpression,
+      detailsExpanded,
+      preserveCase,
+    ),
     {
       type: VirtualDomElements.Div,
       className: ClassNames.ViewletSearchMessage,

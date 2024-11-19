@@ -7,8 +7,16 @@ test('getSearchHeaderVirtualDom', () => {
   const matchWholeWord = false
   const useRegularExpression = false
   const detailsExpanded = false
+  const preserveCase = false
   expect(
-    GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(replaceExpanded, matchCase, matchWholeWord, useRegularExpression, detailsExpanded),
+    GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(
+      replaceExpanded,
+      matchCase,
+      matchWholeWord,
+      useRegularExpression,
+      detailsExpanded,
+      preserveCase,
+    ),
   ).toEqual([
     {
       childCount: 2,
