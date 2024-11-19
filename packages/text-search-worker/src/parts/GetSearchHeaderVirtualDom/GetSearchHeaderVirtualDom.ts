@@ -15,7 +15,7 @@ export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNod
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeader,
       role: AriaRoles.None,
-      childCount: 2,
+      childCount: SearchFlags.hasDetailsExpanded(flags) ? 3 : 2,
       onClick: DomEventListenerFunctions.HandleHeaderClick,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
@@ -100,9 +100,6 @@ export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNod
     )
   }
   if (SearchFlags.hasDetailsExpanded(flags)) {
-    console.log({ detailsExpanded: true })
-    // @ts-ignore
-    dom[0].childCount++
     dom.push(
       {
         type: VirtualDomElements.Div,

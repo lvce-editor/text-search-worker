@@ -5,6 +5,7 @@ import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 test('getSearchHeaderVirtualDom - with no flags', () => {
   const flags = 0
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(2)
   expect(dom).toEqual([
     {
       childCount: 2,
@@ -81,9 +82,18 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
 })
 
 test('getSearchHeaderVirtualDom - with details expanded', () => {
-  let flags = 0
-  flags = SearchFlags.toggleDetailsExpanded(flags)
+  let flags = SearchFlags.DetailsExpanded
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
-  expect(dom[0].childCount).toBe(3) // Header has extra child when details expanded
+  expect(dom[0].childCount).toBe(3)
   expect(dom[dom.length - 5].className).toBe('SearchHeaderDetails')
+  expect(dom[dom.length - 4].text).toBe('files to include')
+  expect(dom[dom.length - 2].text).toBe('files to exclude')
+})
+
+test('getSearchHeaderVirtualDom - with replace and details expanded', () => {
+  let flags = SearchFlags.DetailsExpanded | SearchFlags.ReplaceExpanded
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  expect(dom[0].childCount).toBe(3)
+  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
+  expect(SearchFlags.hasReplaceExpanded(flags)).toBe(true)
 })
