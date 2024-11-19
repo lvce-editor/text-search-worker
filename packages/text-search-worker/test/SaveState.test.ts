@@ -12,6 +12,7 @@ test('saveState', () => {
     preserveCase: true,
     matchCase: true,
     matchWholeWord: true,
+    useRegularExpression: true,
   }
   SearchViewStates.set(1, state, state)
 
@@ -24,5 +25,6 @@ test('saveState', () => {
     preserveCase: true,
     matchCase: true,
     matchWholeWord: true,
+    useRegularExpression: true,
   })
 })
