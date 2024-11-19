@@ -1,41 +1,10 @@
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
+import * as RestoreState from '../RestoreState/RestoreState.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
-const getSavedValue = (savedState: any): string => {
-  if (savedState && savedState.value) {
-    return savedState.value
-  }
-  return ''
-}
-const getSavedReplaceExpanded = (savedState: any): boolean => {
-  if (savedState && 'replaceExpanded' in savedState) {
-    return savedState.replaceExpanded
-  }
-  return false
-}
-
-const getSavedCollapsedPaths = (savedState: any): string[] => {
-  if (
-    savedState &&
-    'collapsedPaths' in savedState &&
-    Array.isArray(savedState.collapsedPaths) &&
-    savedState.collapsedPaths.every((path: any) => typeof path === 'string')
-  ) {
-    return savedState.collapsedPaths
-  }
-  return []
-}
-
-const getThreads = (): number => {
-  return 1
-}
-
-export const loadContent = async (state: SearchState, savedState: any): Promise<SearchState> => {
-  const savedValue = getSavedValue(savedState)
-  const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
-  const savedCollapsedPaths = getSavedCollapsedPaths(savedState)
-  const threads = getThreads()
+export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
+  const { savedValue, savedCollapsedPaths, savedReplaceExpanded, threads } = RestoreState.restoreState(savedState)
   if (savedValue) {
     return ViewletSearchHandleUpdate.handleUpdate(state, {
       value: savedValue,
