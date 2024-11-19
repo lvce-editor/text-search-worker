@@ -1,17 +1,8 @@
 import { expect, test } from '@jest/globals'
 import { restoreState } from '../src/parts/RestoreState/RestoreState.ts'
 
-test('restoreState - no previous state', () => {
-  const state = {
-    value: '',
-    replaceExpanded: false,
-    matchCase: false,
-    matchWholeWord: false,
-    useRegularExpression: false,
-    preserveCase: false,
-    includeValue: '',
-    excludeValue: '',
-  }
+test('restoreState - with empty state', () => {
+  const state = {}
   const result = restoreState(state)
   expect(result).toEqual({
     replacement: '',
@@ -22,20 +13,8 @@ test('restoreState - no previous state', () => {
   })
 })
 
-test('restoreState - with previous state', () => {
-  const state = {
-    value: '',
-    replaceExpanded: false,
-    matchCase: false,
-    matchWholeWord: false,
-    useRegularExpression: false,
-    preserveCase: false,
-    includeValue: '',
-    excludeValue: '',
-  }
-
-  const result = restoreState(state)
-
+test('restoreState - with null state', () => {
+  const result = restoreState(null)
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
@@ -45,18 +24,8 @@ test('restoreState - with previous state', () => {
   })
 })
 
-test('restoreState - preserves non-persisted values', () => {
-  const state = {
-    value: '',
-    replaceExpanded: false,
-    matchCase: false,
-    items: [],
-    focusedIndex: -1,
-    height: 100,
-  }
-
-  const result = restoreState(state)
-
+test('restoreState - with undefined state', () => {
+  const result = restoreState(undefined)
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
@@ -66,20 +35,17 @@ test('restoreState - preserves non-persisted values', () => {
   })
 })
 
-test('restoreState - handles undefined values in previous state', () => {
+test('restoreState - with basic state', () => {
   const state = {
-    value: '',
-    replaceExpanded: false,
-    matchCase: false,
+    value: 'test',
+    replaceExpanded: true,
   }
-
   const result = restoreState(state)
-
   expect(result).toEqual({
     replacement: '',
     savedCollapsedPaths: [],
-    savedReplaceExpanded: false,
-    savedValue: '',
+    savedReplaceExpanded: true,
+    savedValue: 'test',
     threads: 1,
   })
 })
