@@ -110,7 +110,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
 })
 
 test('getSearchHeaderVirtualDom - with details expanded', () => {
-  let flags = SearchFlags.DetailsExpanded
+  const flags = SearchFlags.DetailsExpanded
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
   expect(dom[0].childCount).toBe(3)
   expect(dom[dom.length - 5].className).toBe('SearchHeaderDetails')
@@ -119,7 +119,7 @@ test('getSearchHeaderVirtualDom - with details expanded', () => {
 })
 
 test('getSearchHeaderVirtualDom - with replace and details expanded', () => {
-  let flags = SearchFlags.DetailsExpanded | SearchFlags.ReplaceExpanded
+  const flags = SearchFlags.DetailsExpanded | SearchFlags.ReplaceExpanded
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
   expect(dom[0].childCount).toBe(3)
   expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
