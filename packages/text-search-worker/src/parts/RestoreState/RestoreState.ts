@@ -4,6 +4,14 @@ const getSavedValue = (savedState: unknown): string => {
   }
   return ''
 }
+
+const getSavedReplacement = (savedState: unknown): string => {
+  if (savedState && typeof savedState === 'object' && 'replacement' in savedState && typeof savedState.replacement === 'string') {
+    return savedState.replacement
+  }
+  return ''
+}
+
 const getSavedReplaceExpanded = (savedState: unknown): boolean => {
   if (savedState && typeof savedState === 'object' && 'replaceExpanded' in savedState && typeof savedState.replaceExpanded === 'boolean') {
     return savedState.replaceExpanded
@@ -33,6 +41,7 @@ interface RestoredState {
   readonly savedReplaceExpanded: boolean
   readonly savedCollapsedPaths: readonly string[]
   readonly threads: number
+  readonly replacement: string
 }
 
 export const restoreState = (savedState: unknown): RestoredState => {
@@ -40,10 +49,12 @@ export const restoreState = (savedState: unknown): RestoredState => {
   const savedReplaceExpanded = getSavedReplaceExpanded(savedState)
   const savedCollapsedPaths = getSavedCollapsedPaths(savedState)
   const threads = getThreads()
+  const replacement = getSavedReplacement(savedState)
   return {
     savedCollapsedPaths,
     savedReplaceExpanded,
     savedValue,
     threads,
+    replacement,
   }
 }
