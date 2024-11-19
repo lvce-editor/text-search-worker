@@ -48,6 +48,7 @@ const renderItems = {
       newState.message,
       newState.detailsExpanded,
       focusOutline,
+      newState.preserveCase,
     )
     return ['Viewlet.setDom2', newState.uid, dom]
   },

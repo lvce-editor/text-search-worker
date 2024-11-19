@@ -14,6 +14,7 @@ export const getSearchHeaderVirtualDom = (
   matchWholeWord: boolean,
   useRegularExpression: boolean,
   detailsExpanded: boolean,
+  preserveCase: boolean,
 ): readonly VirtualDomNode[] => {
   const dom: VirtualDomNode[] = [
     {
@@ -90,7 +91,7 @@ export const getSearchHeaderVirtualDom = (
         [
           {
             icon: ClassNames.MaskIconPreserveCase,
-            checked: false,
+            checked: preserveCase,
             title: SearchStrings.preserveCase(),
           },
         ],
