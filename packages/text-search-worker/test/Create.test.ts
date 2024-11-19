@@ -9,6 +9,7 @@ test('create', () => {
   expect(state).toEqual({
     assetDir: '',
     collapsedPaths: [],
+    flags: 0,
     deltaY: 0,
     detailsExpanded: false,
     disposed: false,
