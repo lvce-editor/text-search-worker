@@ -14,6 +14,8 @@ export const getMemoryUsage = async (page: Page) => {
 
   const worker = await promise
 
+  // page.context().routeWebSocket
+  console.log({ client })
   console.log({ worker })
 
   console.log({ t1 })
