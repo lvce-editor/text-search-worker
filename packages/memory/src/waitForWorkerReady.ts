@@ -1,5 +1,6 @@
 import type { Page } from 'playwright'
 import * as WorkerState from './workerState.ts'
+import { WorkerInitializationError } from './errors.ts'
 
 export const waitForWorkerReady = async (page: Page): Promise<void> => {
   const workerState = await Promise.race([
@@ -10,7 +11,6 @@ export const waitForWorkerReady = async (page: Page): Promise<void> => {
   ])
 
   if (workerState === WorkerState.Error) {
-    console.error('[memory] Worker failed to initialize')
-    process.exit(1)
+    throw new WorkerInitializationError('Worker failed to initialize')
   }
 }
