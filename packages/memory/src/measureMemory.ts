@@ -15,8 +15,6 @@ const main = async () => {
 
   const server = await startServer(options.port, textSearchWorkerPath)
 
-  // process.env.PLAYWRIGHT_CHROMIUM_DEBUG_PORT = '9222'
-
   const remoteDebuggingPort = '9222'
   const browser = await chromium.launch({
     headless: options.headless,
