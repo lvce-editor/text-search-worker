@@ -1,10 +1,10 @@
 import CDP from 'chrome-remote-interface'
 
-export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
+export const getMemoryUsageWs = async (debuggingPort: string) => {
   console.log('before client')
   const client = await CDP({
     host: 'localhost',
-    port: Number(debuggingEndpoint.split(':')[2]),
+    port: Number(debuggingPort),
   })
 
   console.log('after client')
