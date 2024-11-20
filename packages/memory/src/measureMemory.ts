@@ -30,7 +30,7 @@ const main = async () => {
     await page.goto(`http://localhost:${options.port}`)
     await waitForWorkerReady(page)
 
-    const memoryUsages = await getMemoryUsageWs(`http://localhost:${remoteDebuggingPort}`)
+    const memoryUsages = await getMemoryUsageWs(remoteDebuggingPort)
     for (const usage of memoryUsages) {
       console.log('[memory] Worker Memory Usage:', usage)
     }
