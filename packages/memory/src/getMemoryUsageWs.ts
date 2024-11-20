@@ -1,35 +1,43 @@
 import WebSocket from 'ws'
 import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 
+const send = async (ws, method: string, params: any = {}) => {
+  const { promise, resolve } = Promise.withResolvers()
+  const id = Math.random()
+  ws.send(JSON.stringify({ id, method, params }))
+
+  const listener = (message: string) => {
+    console.log({ message: message.toString() })
+    const data = JSON.parse(message.toString())
+    if (data.id === id) {
+      ws.removeListener('message', listener)
+      resolve(data)
+    }
+  }
+  ws.on('message', listener)
+  const result = await promise
+
+  if (result && result.error && result.error.error) {
+    throw new Error(`[send] ${result.error.error.message}`)
+  }
+  return result
+}
+
 export const getMemoryUsageWs = async (wsEndpoint: string) => {
   const ws = new WebSocket(wsEndpoint)
   await waitForWebSocketToBeOpen(ws)
 
-  const send = (method: string, params: any = {}) => {
-    const { promise, resolve } = Promise.withResolvers()
-    const id = Math.random()
-    ws.send(JSON.stringify({ id, method, params }))
+  await send(ws, 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
+  const targets = await send(ws, 'Target.getTargets')
 
-    const listener = (message: string) => {
-      const data = JSON.parse(message.toString())
-      if (data.id === id) {
-        ws.removeListener('message', listener)
-        resolve(data.result)
-      }
-    }
-    ws.on('message', listener)
-    return promise
-  }
+  console.log({ targets })
 
-  await send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
-  const { targetInfos } = await send('Target.getTargets')
+  // const workers = targetInfos.filter((target: any) => target.type === 'worker')
 
-  const workers = targetInfos.filter((target: any) => target.type === 'worker')
-
-  if (!workers.length) {
-    console.error('[memory] No workers found')
-    process.exit(1)
-  }
+  // if (!workers.length) {
+  //   console.error('[memory] No workers found')
+  //   process.exit(1)
+  // }
 
   const results = []
   for (const worker of workers) {
