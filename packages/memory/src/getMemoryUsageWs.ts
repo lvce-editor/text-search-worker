@@ -16,6 +16,7 @@ export const getMemoryUsageWs = async (debuggingPort: string) => {
       flatten: true,
     })
 
+    // @ts-ignore
     const { sessionId } = await promise
 
     await client.Runtime.enable(sessionId)

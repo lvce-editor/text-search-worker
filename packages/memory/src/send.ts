@@ -1,3 +1,4 @@
+// @ts-ignore
 import WebSocket from 'ws'
 
 let _id = 1
