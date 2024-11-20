@@ -2,11 +2,13 @@ import { chromium } from 'playwright'
 import { getMemoryUsage } from './getMemoryUsage.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
+import { join } from 'node:path'
 
 const main = async () => {
   const options = parseArgs()
+  const textSearchWorkerPath = join(process.cwd(), '../../../.tmp/dist/dist/textSearchWorkerMain.js')
 
-  await startServer(options.port, process.cwd())
+  await startServer(options.port, textSearchWorkerPath)
 
   const browser = await chromium.launch({
     headless: options.headless,

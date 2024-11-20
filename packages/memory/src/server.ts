@@ -4,11 +4,13 @@ import { dirname, join } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export const startServer = async (port: number, cwd: string) => {
+export const startServer = async (port: number, textSearchWorkerPath: string) => {
   const app = express()
 
-  // Serve static files from provided cwd
-  app.use(express.static(cwd))
+  // Serve worker file
+  app.get('/dist/textSearchWorkerMain.js', (req, res) => {
+    res.sendFile(textSearchWorkerPath)
+  })
 
   // Serve index.html from src directory
   app.get('/', (req, res) => {
