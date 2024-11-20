@@ -1,10 +1,11 @@
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
 import { getMemoryUsageWs } from './getMemoryUsageWs.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
-import { fileURLToPath } from 'node:url'
-import { dirname, join } from 'node:path'
 import { waitForWorkerReady } from './waitForWorkerReady.ts'
+import { MemoryLimitExceededError } from './errors.ts'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '../../..')
@@ -33,8 +34,7 @@ const main = async () => {
     const memoryUsage = await getMemoryUsageWs(remoteDebuggingPort)
     console.log('[memory] Worker Memory Usage:', memoryUsage)
     if (memoryUsage.usedSize >= threshold) {
-      console.error(`[memory] Memory Limit of ${threshold} exceeded`)
-      process.exit(1)
+      throw new MemoryLimitExceededError(threshold, memoryUsage.usedSize)
     }
   } catch (error) {
     console.error('[memory] Measurement failed:', error)
