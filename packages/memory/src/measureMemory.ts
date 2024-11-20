@@ -5,8 +5,18 @@ import { dirname } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const parseArgs = () => {
+  const args = process.argv.slice(2)
+  return {
+    headless: !args.includes('--no-headless'),
+  }
+}
+
 const main = async () => {
-  const browser = await chromium.launch()
+  const options = parseArgs()
+  const browser = await chromium.launch({
+    headless: options.headless,
+  })
   const context = await browser.newContext()
   const page = await context.newPage()
 
