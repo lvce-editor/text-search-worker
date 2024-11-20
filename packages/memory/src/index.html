@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Text Search Worker Memory Test</title>
+  </head>
+  <body>
+    <script>
+      window.__workerReady = false
+
+      const worker = new Worker('/dist/textSearchWorkerMain.js')
+
+      worker.onmessage = (event) => {
+        if (event.data === 'ready') {
+          window.__workerReady = true
+        }
+      }
+
+      // Trigger some searches to measure memory
+      worker.postMessage({
+        id: 1,
+        method: 'textSearch',
+        params: ['file:///', 'test', {}, '/'],
+      })
+    </script>
+  </body>
+</html>
