@@ -1,14 +1,7 @@
 import { chromium } from 'playwright'
-import { startServer } from './server.ts'
 import { getMemoryUsage } from './getMemoryUsage.ts'
-
-const parseArgs = () => {
-  const args = process.argv.slice(2)
-  return {
-    headless: !args.includes('--no-headless'),
-    port: 3000,
-  }
-}
+import { parseArgs } from './parseArgs.ts'
+import { startServer } from './server.ts'
 
 const main = async () => {
   const options = parseArgs()
@@ -36,7 +29,4 @@ const main = async () => {
   }
 }
 
-main().catch((error) => {
-  console.error('[memory] Fatal error:', error)
-  process.exit(1)
-})
+main()
