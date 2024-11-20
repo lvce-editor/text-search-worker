@@ -4,11 +4,11 @@ import { dirname, join } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export const startServer = async (port: number) => {
+export const startServer = async (port: number, cwd: string) => {
   const app = express()
 
-  // Serve static files from project root
-  app.use(express.static(process.cwd()))
+  // Serve static files from provided cwd
+  app.use(express.static(cwd))
 
   // Serve index.html from src directory
   app.get('/', (req, res) => {

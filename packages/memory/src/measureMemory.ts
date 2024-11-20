@@ -6,7 +6,7 @@ import { startServer } from './server.ts'
 const main = async () => {
   const options = parseArgs()
 
-  await startServer(options.port)
+  await startServer(options.port, process.cwd())
 
   const browser = await chromium.launch({
     headless: options.headless,
