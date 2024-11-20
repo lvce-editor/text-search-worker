@@ -9,6 +9,8 @@ import { waitForWorkerReady } from './waitForWorkerReady.ts'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '../../..')
 
+const threshold = 450_000
+
 const main = async () => {
   const options = parseArgs()
   const textSearchWorkerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
@@ -28,9 +30,11 @@ const main = async () => {
     await page.goto(`http://localhost:${options.port}`)
     await waitForWorkerReady(page)
 
-    const memoryUsages = await getMemoryUsageWs(remoteDebuggingPort)
-    for (const usage of memoryUsages) {
-      console.log('[memory] Worker Memory Usage:', usage)
+    const memoryUsage = await getMemoryUsageWs(remoteDebuggingPort)
+    console.log('[memory] Worker Memory Usage:', memoryUsage)
+    if (memoryUsage.usedSize >= threshold) {
+      console.error(`[memory] Memory Limit of ${threshold} exceeded`)
+      process.exit(1)
     }
   } catch (error) {
     console.error('[memory] Measurement failed:', error)

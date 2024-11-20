@@ -67,11 +67,18 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
+      - name: install playwright dependencies 2
+        working-directory: ./packages/memory
+        run: npx playwright install chromium
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
       - name: e2e
         working-directory: ./packages/e2e
         run: npm run e2e:headless
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
+      - run: npm run measure
       - run: npm publish --access public
         if: matrix.os == 'ubuntu-24.04'
         working-directory: ./.tmp/dist
