@@ -1,6 +1,6 @@
 import { chromium } from 'playwright'
 import { startServer } from './server.ts'
-import * as WorkerState from './workerState.ts'
+import { getMemoryUsage } from './getMemoryUsage.ts'
 
 const parseArgs = () => {
   const args = process.argv.slice(2)
@@ -24,30 +24,9 @@ const main = async () => {
   try {
     await page.goto(`http://localhost:${options.port}`)
 
-    const workerState = await Promise.race([
-      page.waitForFunction(() => window.__workerDidLaunch === 1, { timeout: 5000 }).then(() => WorkerState.Launched),
-      page.waitForFunction(() => window.__workerDidLaunch === 2, { timeout: 5000 }).then(() => WorkerState.Error),
-    ])
-
-    if (workerState === WorkerState.Error) {
-      console.error('[memory] Worker failed to initialize')
-      process.exit(1)
-    }
-
-    const client = await context.newCDPSession(page)
-    const { workers } = await client.send('ServiceWorker.getAllWorkers')
-
-    if (!workers.length) {
-      console.error('[memory] No workers found')
-      process.exit(1)
-    }
-
-    for (const worker of workers) {
-      const metrics = await client.send('Performance.getMetrics')
-      console.log('Worker Memory Usage:', {
-        jsHeapSize: metrics.metrics.find((m) => m.name === 'JSHeapUsedSize')?.value,
-        totalHeapSize: metrics.metrics.find((m) => m.name === 'JSHeapTotalSize')?.value,
-      })
+    const memoryUsages = await getMemoryUsage(page)
+    for (const usage of memoryUsages) {
+      console.log('[memory] Worker Memory Usage:', usage)
     }
   } catch (error) {
     console.error('[memory] Measurement failed:', error)
@@ -57,4 +36,7 @@ const main = async () => {
   }
 }
 
-main()
+main().catch((error) => {
+  console.error('[memory] Fatal error:', error)
+  process.exit(1)
+})
