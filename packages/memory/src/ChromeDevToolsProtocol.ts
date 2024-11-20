@@ -1,35 +1,7 @@
 import WebSocket from 'ws'
 import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 
-let _id = 1
-
-const send = async (ws: WebSocket, method: string, params: any = {}) => {
-  const { promise, resolve } = Promise.withResolvers()
-  const id = ++_id
-  ws.send(JSON.stringify({ id, method, params }))
-
-  const listener = (message: string) => {
-    console.log({ message: message.toString() })
-    const data = JSON.parse(message.toString())
-    if (data.id === id) {
-      ws.removeListener('message', listener)
-      resolve(data)
-    }
-  }
-  ws.on('message', listener)
-  const result = await promise
-
-  if (result && result.error && result.error.error) {
-    throw new Error(`[send] ${result.error.error.message}`)
-  }
-  if (result && result.result) {
-    return result.result
-  }
-  return result
-}
-
 export type Protocol = {
-  ws: WebSocket
   send: (method: string, params?: any) => Promise<any>
   close: () => void
 }
@@ -47,9 +19,42 @@ export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
   const ws = new WebSocket(wsUrl)
   await waitForWebSocketToBeOpen(ws)
 
+  let messageId = 1
+  const pendingMessages = new Map<number, (data: any) => void>()
+
+  ws.on('message', (message: string) => {
+    console.log({ message: message.toString() })
+    const data = JSON.parse(message.toString())
+    const resolve = pendingMessages.get(data.id)
+    if (resolve) {
+      pendingMessages.delete(data.id)
+      resolve(data)
+    }
+  })
+
+  const send = async (method: string, params: any = {}) => {
+    const id = messageId++
+    const { promise, resolve } = Promise.withResolvers()
+
+    pendingMessages.set(id, resolve)
+    ws.send(JSON.stringify({ id, method, params }))
+
+    const result = await promise
+
+    if (result && result.error && result.error.error) {
+      throw new Error(`[send] ${result.error.error.message}`)
+    }
+    if (result && result.result) {
+      return result.result
+    }
+    return result
+  }
+
   return {
-    ws,
-    send: (method: string, params: any = {}) => send(ws, method, params),
-    close: () => ws.close(),
+    send,
+    close: () => {
+      pendingMessages.clear()
+      ws.close()
+    },
   }
 }
