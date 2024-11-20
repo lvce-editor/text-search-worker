@@ -2,7 +2,7 @@ import WebSocket from 'ws'
 import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 
 export type Protocol = {
-  send: (method: string, params?: any) => Promise<any>
+  send: (method: string, params?: any, sessionId?: string) => Promise<any>
   close: () => void
   addEventListener: (event: string, listener: (event: CustomEvent) => void) => void
   removeEventListener: (event: string, listener: (event: CustomEvent) => void) => void
@@ -43,12 +43,12 @@ export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
     }
   })
 
-  const send = async (method: string, params: any = {}) => {
+  const send = async (method: string, params: any = {}, sessionId = undefined) => {
     const id = messageId++
     const { promise, resolve } = Promise.withResolvers()
 
     pendingMessages.set(id, resolve)
-    ws.send(JSON.stringify({ id, method, params }))
+    ws.send(JSON.stringify({ id, method, params, sessionId }))
 
     const result = await promise
 

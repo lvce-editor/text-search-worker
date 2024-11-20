@@ -17,21 +17,21 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
     const targetEvent = await promise
     const target = targetEvent.detail
 
-    console.log({ target })
+    const sessionId = target.sessionId
+
+    await protocol.send('Runtime.enable', {}, sessionId)
+
+    const mem = await protocol.send('Runtime.getHeapUsage', {}, sessionId)
+    console.log({ mem })
 
     const results = []
-    for (const worker of workers) {
-      const { sessionId } = await protocol.send('Target.attachToTarget', {
-        targetId: worker.targetId,
-        flatten: true,
-      })
-
-      const { metrics } = await protocol.send('Performance.getMetrics', { sessionId })
-      results.push({
-        jsHeapSize: metrics.find((m: any) => m.name === 'JSHeapUsedSize')?.value,
-        totalHeapSize: metrics.find((m: any) => m.name === 'JSHeapTotalSize')?.value,
-      })
-    }
+    // for (const worker of workers) {
+    //   const { metrics } = await protocol.send('Performance.getMetrics', { sessionId })
+    //   results.push({
+    //     jsHeapSize: metrics.find((m: any) => m.name === 'JSHeapUsedSize')?.value,
+    //     totalHeapSize: metrics.find((m: any) => m.name === 'JSHeapTotalSize')?.value,
+    //   })
+    // }
 
     return results
   } finally {
