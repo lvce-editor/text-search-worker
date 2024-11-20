@@ -12,7 +12,6 @@ const parseArgs = () => {
 const main = async () => {
   const options = parseArgs()
 
-  // Start the server
   await startServer(options.port)
 
   const browser = await chromium.launch({
@@ -22,30 +21,21 @@ const main = async () => {
   const page = await context.newPage()
 
   try {
-    // Navigate to the test page using http instead of file protocol
     await page.goto(`http://localhost:${options.port}`)
 
-    // Add error handler for worker errors
-    await page.evaluate(() => {
-      window.addEventListener('error', (event) => {
-        if (event.message.includes('Worker')) {
-          console.error('Worker failed to launch:', event.message)
-          process.exit(1)
-        }
-      })
-    })
+    const result = await Promise.race([
+      page.waitForFunction(() => window.__workerReady === true, { timeout: 5000 }),
+      page.waitForFunction(() => window.__workerError !== null, { timeout: 5000 }).then(() => page.evaluate(() => window.__workerError)),
+    ])
 
-    // Wait for worker to be created with timeout
-    await page
-      .waitForFunction(() => window.__workerReady === true, {
-        timeout: 5000,
-      })
-      .catch((error) => {
-        console.error('Worker failed to initialize:', error.message)
-        process.exit(1)
-      })
+    console.log('Result:', result)
 
-    // Get worker metrics
+    await new Promise((r) => {})
+    if (typeof result === 'string') {
+      console.error('Worker failed to initialize:', result)
+      process.exit(1)
+    }
+
     const client = await context.newCDPSession(page)
     const { workers } = await client.send('ServiceWorker.getAllWorkers')
 
