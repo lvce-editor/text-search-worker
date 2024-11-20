@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const root = join(__dirname, '..')
 
 export const startServer = async (port: number, textSearchWorkerPath: string) => {
   const app = express()
@@ -12,9 +13,9 @@ export const startServer = async (port: number, textSearchWorkerPath: string) =>
     res.sendFile(textSearchWorkerPath)
   })
 
-  // Serve index.html from src directory
+  // Serve index.html from root directory
   app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, 'index.html'))
+    res.sendFile(join(root, 'index.html'))
   })
 
   const { promise, resolve } = Promise.withResolvers<void>()
