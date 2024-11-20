@@ -1,8 +1,32 @@
 import type { Page } from 'playwright'
 
 export const getMemoryUsage = async (page: Page) => {
-  await new Promise((r) => setTimeout(r, 1000))
   const client = await page.context().newCDPSession(page)
+
+  const { resolve, promise } = Promise.withResolvers()
+
+  client.once('Target.attachedToTarget', resolve)
+
+  const t1 = await client.send('Target.setAutoAttach', {
+    autoAttach: true,
+    waitForDebuggerOnStart: true,
+  })
+
+  const worker = await promise
+
+  console.log({ worker })
+
+  console.log({ t1 })
+  // client.on('Target.attachedToTarget', () => {
+  //   console.log('attached')
+  // })
+  // await client.send('Target.attachToTarget', {
+
+  // })
+  // await client.send('Runtime.enable')
+  // const h = await client.send('Runtime.getHeapUsage', {})
+
+  // console.log({ h })
 
   const workers = page.workers()
 
@@ -13,9 +37,10 @@ export const getMemoryUsage = async (page: Page) => {
 
   const results = []
   for (const worker of workers) {
+    // const cdp = page.context().newCDPSession(worker)
     console.log('worker', worker.url())
-    console.log(worker)
-    worker.
+    // console.log(worker)
+    // worker.
     // const metrics = await worker.evaluate((pageFunction, arg) => {
     // // @ts-ignore
     // const workerSession = await client.connection().createSession(worker.targetId)
