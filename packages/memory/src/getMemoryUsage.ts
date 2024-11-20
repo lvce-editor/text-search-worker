@@ -3,7 +3,9 @@ import * as WorkerState from './workerState.ts'
 
 export const getMemoryUsage = async (page: Page) => {
   const workerState = await Promise.race([
+    // @ts-ignore
     page.waitForFunction(() => window.__workerDidLaunch === 1, { timeout: 5000 }).then(() => WorkerState.Launched),
+    // @ts-ignore
     page.waitForFunction(() => window.__workerDidLaunch === 2, { timeout: 5000 }).then(() => WorkerState.Error),
   ])
 
@@ -24,11 +26,14 @@ export const getMemoryUsage = async (page: Page) => {
 
   const results = []
   for (const worker of workers) {
+    // @ts-ignore
     const workerSession = await client.connection().createSession(worker.targetId)
     const metrics = await workerSession.send('Performance.getMetrics')
     await workerSession.detach()
     results.push({
+      // @ts-ignore
       jsHeapSize: metrics.metrics.find((m) => m.name === 'JSHeapUsedSize')?.value,
+      // @ts-ignore
       totalHeapSize: metrics.metrics.find((m) => m.name === 'JSHeapTotalSize')?.value,
     })
   }
