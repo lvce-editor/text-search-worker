@@ -34,10 +34,10 @@ export const startServer = async (port: number) => {
     }
   })
 
-  return new Promise<void>((resolve) => {
-    server.listen(port, () => {
-      console.log(`Server running at http://localhost:${port}`)
-      resolve()
-    })
+  const { promise, resolve } = Promise.withResolvers<void>()
+  server.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`)
+    resolve()
   })
+  return promise
 }
