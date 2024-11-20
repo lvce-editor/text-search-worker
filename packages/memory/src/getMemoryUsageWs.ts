@@ -6,6 +6,9 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
   try {
     const version = await protocol.send('Browser.getVersion')
 
+    protocol.addEventListener('Target.attachedToTarget', (x) => {
+      console.log('got attached', x)
+    })
     await protocol.send('Target.setAutoAttach', {
       autoAttach: true,
       waitForDebuggerOnStart: true,

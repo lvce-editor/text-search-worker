@@ -4,6 +4,8 @@ import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 export type Protocol = {
   send: (method: string, params?: any) => Promise<any>
   close: () => void
+  addEventListener: (event: string, listener: (event: CustomEvent) => void) => void
+  removeEventListener: (event: string, listener: (event: CustomEvent) => void) => void
 }
 
 export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
@@ -21,10 +23,19 @@ export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
 
   let messageId = 1
   const pendingMessages = new Map<number, (data: any) => void>()
+  const eventTarget = new EventTarget()
 
   ws.on('message', (message: string) => {
     console.log({ message: message.toString() })
     const data = JSON.parse(message.toString())
+
+    if (data.method) {
+      // This is an event from Chrome
+      const event = new CustomEvent(data.method, { detail: data.params })
+      eventTarget.dispatchEvent(event)
+      return
+    }
+
     const resolve = pendingMessages.get(data.id)
     if (resolve) {
       pendingMessages.delete(data.id)
@@ -56,5 +67,7 @@ export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
       pendingMessages.clear()
       ws.close()
     },
+    addEventListener: (event, listener) => eventTarget.addEventListener(event, listener),
+    removeEventListener: (event, listener) => eventTarget.removeEventListener(event, listener),
   }
 }
