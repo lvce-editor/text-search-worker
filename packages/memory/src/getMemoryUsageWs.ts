@@ -1,52 +1,35 @@
-import WebSocket from 'ws'
-import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
-import { send } from './send.ts'
+import { connect } from './ChromeDevToolsProtocol.ts'
 
 export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
-  const response = await fetch(`${debuggingEndpoint}/json/list`)
+  const protocol = await connect(debuggingEndpoint)
 
-  if (!response.ok) {
-    throw new Error(response.statusText)
-  }
-  const json = await response.json()
-  const wsUrl = json[0].webSocketDebuggerUrl
+  try {
+    const version = await protocol.send('Browser.getVersion')
 
-  console.log({ wsUrl })
-
-  const ws = new WebSocket(wsUrl)
-  await waitForWebSocketToBeOpen(ws)
-
-  console.log({ wsUrl })
-
-  const version = await send(ws, 'Browser.getVersion')
-
-  console.log({ version })
-
-  // await new Promise((r) => {
-  //   setTimeout(r, 32132112)
-  // })
-  // await send(ws, 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
-  // const targets = await send(ws, 'Target.getTargets')
-
-  // console.log({ targets })
-
-  // const workers = targetInfos.filter((target: any) => target.type === 'worker')
-
-  // if (!workers.length) {
-  //   console.error('[memory] No workers found')
-  //   process.exit(1)
-  // }
-
-  const results = []
-  for (const worker of workers) {
-    const { sessionId } = await send('Target.attachToTarget', { targetId: worker.targetId, flatten: true })
-    const { metrics } = await send('Performance.getMetrics', { sessionId })
-    results.push({
-      jsHeapSize: metrics.find((m: any) => m.name === 'JSHeapUsedSize')?.value,
-      totalHeapSize: metrics.find((m: any) => m.name === 'JSHeapTotalSize')?.value,
+    await protocol.send('Target.setAutoAttach', {
+      autoAttach: true,
+      waitForDebuggerOnStart: true,
+      flatten: true,
     })
-  }
 
-  ws.close()
-  return results
+    console.log({ version })
+
+    const results = []
+    for (const worker of workers) {
+      const { sessionId } = await protocol.send('Target.attachToTarget', {
+        targetId: worker.targetId,
+        flatten: true,
+      })
+
+      const { metrics } = await protocol.send('Performance.getMetrics', { sessionId })
+      results.push({
+        jsHeapSize: metrics.find((m: any) => m.name === 'JSHeapUsedSize')?.value,
+        totalHeapSize: metrics.find((m: any) => m.name === 'JSHeapTotalSize')?.value,
+      })
+    }
+
+    return results
+  } finally {
+    protocol.close()
+  }
 }
