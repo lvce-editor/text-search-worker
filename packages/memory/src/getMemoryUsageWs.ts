@@ -1,23 +1,26 @@
 import WebSocket from 'ws'
-import type { Page } from 'playwright'
 
 export const getMemoryUsageWs = async (wsEndpoint: string) => {
   const ws = new WebSocket(wsEndpoint)
 
-  const send = (method: string, params: any = {}) => {
-    return new Promise((resolve) => {
-      const id = Math.random()
-      ws.send(JSON.stringify({ id, method, params }))
+  const { promise: openPromise, resolve: resolveOpen } = Promise.withResolvers<void>()
+  ws.once('open', resolveOpen)
+  await openPromise
 
-      const listener = (message: string) => {
-        const data = JSON.parse(message.toString())
-        if (data.id === id) {
-          ws.removeListener('message', listener)
-          resolve(data.result)
-        }
+  const send = (method: string, params: any = {}) => {
+    const { promise, resolve } = Promise.withResolvers()
+    const id = Math.random()
+    ws.send(JSON.stringify({ id, method, params }))
+
+    const listener = (message: string) => {
+      const data = JSON.parse(message.toString())
+      if (data.id === id) {
+        ws.removeListener('message', listener)
+        resolve(data.result)
       }
-      ws.on('message', listener)
-    })
+    }
+    ws.on('message', listener)
+    return promise
   }
 
   await send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
