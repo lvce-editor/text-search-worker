@@ -8,10 +8,29 @@
       window.__workerDidLaunch = 0 // 0: not launched, 1: launched, 2: error
 
       const worker = new Worker('/dist/textSearchWorkerMain.js')
+      const channel = new MessageChannel()
+
+      // Send initialize message with message port
+      worker.postMessage(
+        {
+          jsonrpc: '2.0',
+          id: 1,
+          method: 'initialize',
+          params: ['message-port', channel.port2],
+        },
+        [channel.port2],
+      )
 
       worker.onmessage = (event) => {
-        if (event.data === 'ready') {
+        if (event.data?.jsonrpc === '2.0' && event.data?.id === 1) {
           window.__workerDidLaunch = 1
+
+          // After initialization, use port1 for subsequent communication
+          channel.port1.postMessage({
+            id: 2,
+            method: 'textSearch',
+            params: ['file:///', 'test', {}, '/'],
+          })
         }
       }
 
@@ -20,12 +39,10 @@
         console.error('Worker error:', error)
       }
 
-      // Trigger some searches to measure memory
-      worker.postMessage({
-        id: 1,
-        method: 'textSearch',
-        params: ['file:///', 'test', {}, '/'],
-      })
+      channel.port1.onmessage = (event) => {
+        // Handle responses from worker through message port
+        console.log('Message from worker:', event.data)
+      }
     </script>
   </body>
 </html>
