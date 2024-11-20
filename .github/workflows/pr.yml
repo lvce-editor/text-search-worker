@@ -52,4 +52,8 @@ jobs:
         run: npm run e2e:headless
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
-      - run: npm run measure
+      - name: measure
+        working-directory: ./packages/measure
+        run: npm run measure
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
