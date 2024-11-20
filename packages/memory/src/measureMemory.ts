@@ -6,7 +6,7 @@ import { join } from 'node:path'
 
 const main = async () => {
   const options = parseArgs()
-  const textSearchWorkerPath = join(process.cwd(), '../../../.tmp/dist/dist/textSearchWorkerMain.js')
+  const textSearchWorkerPath = join(__dirname, '../../../.tmp/dist/dist/textSearchWorkerMain.js')
 
   await startServer(options.port, textSearchWorkerPath)
 
