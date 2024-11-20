@@ -1,36 +1,51 @@
 import WebSocket from 'ws'
 import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 
-const send = async (ws, method: string, params: any = {}) => {
-  const { promise, resolve } = Promise.withResolvers()
-  const id = Math.random()
-  ws.send(JSON.stringify({ id, method, params }))
+// const send = async (ws, method: string, params: any = {}) => {
+//   const { promise, resolve } = Promise.withResolvers()
+//   const id = Math.random()
+//   ws.send(JSON.stringify({ id, method, params }))
 
-  const listener = (message: string) => {
-    console.log({ message: message.toString() })
-    const data = JSON.parse(message.toString())
-    if (data.id === id) {
-      ws.removeListener('message', listener)
-      resolve(data)
-    }
+//   const listener = (message: string) => {
+//     console.log({ message: message.toString() })
+//     const data = JSON.parse(message.toString())
+//     if (data.id === id) {
+//       ws.removeListener('message', listener)
+//       resolve(data)
+//     }
+//   }
+//   ws.on('message', listener)
+//   const result = await promise
+
+//   if (result && result.error && result.error.error) {
+//     throw new Error(`[send] ${result.error.error.message}`)
+//   }
+//   return result
+// }
+
+export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
+  const response = await fetch(`${debuggingEndpoint}/json/list`)
+
+  if (!response.ok) {
+    throw new Error(response.statusText)
   }
-  ws.on('message', listener)
-  const result = await promise
+  const json = await response.json()
+  const wsUrl = json[0].webSocketDebuggerUrl
 
-  if (result && result.error && result.error.error) {
-    throw new Error(`[send] ${result.error.error.message}`)
-  }
-  return result
-}
+  console.log({ wsUrl })
 
-export const getMemoryUsageWs = async (wsEndpoint: string) => {
-  const ws = new WebSocket(wsEndpoint)
+  const ws = new WebSocket(wsUrl)
   await waitForWebSocketToBeOpen(ws)
 
-  await send(ws, 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
-  const targets = await send(ws, 'Target.getTargets')
+  console.log({ wsUrl })
 
-  console.log({ targets })
+  // await new Promise((r) => {
+  //   setTimeout(r, 32132112)
+  // })
+  // await send(ws, 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true })
+  // const targets = await send(ws, 'Target.getTargets')
+
+  // console.log({ targets })
 
   // const workers = targetInfos.filter((target: any) => target.type === 'worker')
 
