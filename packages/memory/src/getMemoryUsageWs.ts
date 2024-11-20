@@ -1,27 +1,6 @@
 import WebSocket from 'ws'
 import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
-
-// const send = async (ws, method: string, params: any = {}) => {
-//   const { promise, resolve } = Promise.withResolvers()
-//   const id = Math.random()
-//   ws.send(JSON.stringify({ id, method, params }))
-
-//   const listener = (message: string) => {
-//     console.log({ message: message.toString() })
-//     const data = JSON.parse(message.toString())
-//     if (data.id === id) {
-//       ws.removeListener('message', listener)
-//       resolve(data)
-//     }
-//   }
-//   ws.on('message', listener)
-//   const result = await promise
-
-//   if (result && result.error && result.error.error) {
-//     throw new Error(`[send] ${result.error.error.message}`)
-//   }
-//   return result
-// }
+import { send } from './send.ts'
 
 export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
   const response = await fetch(`${debuggingEndpoint}/json/list`)
@@ -38,6 +17,10 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
   await waitForWebSocketToBeOpen(ws)
 
   console.log({ wsUrl })
+
+  const version = await send(ws, 'Browser.getVersion')
+
+  console.log({ version })
 
   // await new Promise((r) => {
   //   setTimeout(r, 32132112)
