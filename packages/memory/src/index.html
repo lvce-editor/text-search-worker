@@ -6,6 +6,7 @@
   <body>
     <script>
       window.__workerReady = false
+      window.__workerError = null
 
       const worker = new Worker('/dist/textSearchWorkerMain.js')
 
@@ -13,6 +14,11 @@
         if (event.data === 'ready') {
           window.__workerReady = true
         }
+      }
+
+      worker.onerror = (error) => {
+        window.__workerError = error.message
+        console.error('Worker error:', error)
       }
 
       // Trigger some searches to measure memory
