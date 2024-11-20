@@ -2,11 +2,15 @@ import { chromium } from 'playwright'
 import { getMemoryUsage } from './getMemoryUsage.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
-import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const root = join(__dirname, '../../..')
 
 const main = async () => {
   const options = parseArgs()
-  const textSearchWorkerPath = join(__dirname, '../../../.tmp/dist/dist/textSearchWorkerMain.js')
+  const textSearchWorkerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
 
   await startServer(options.port, textSearchWorkerPath)
 
