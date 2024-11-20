@@ -4,7 +4,7 @@
     <title>Text Search Worker Memory Test</title>
   </head>
   <body>
-    <script>
+    <script type="module">
       window.__workerDidLaunch = 0 // 0: not launched, 1: launched, 2: error
 
       const worker = new Worker('/dist/textSearchWorkerMain.js')
@@ -24,13 +24,6 @@
       worker.onmessage = (event) => {
         if (event.data?.jsonrpc === '2.0' && event.data?.id === 1) {
           window.__workerDidLaunch = 1
-
-          // After initialization, use port1 for subsequent communication
-          channel.port1.postMessage({
-            id: 2,
-            method: 'textSearch',
-            params: ['file:///', 'test', {}, '/'],
-          })
         }
       }
 

@@ -23,7 +23,6 @@ const main = async () => {
   try {
     await page.goto(`http://localhost:${options.port}`)
 
-    await new Promise((r) => {})
     const memoryUsages = await getMemoryUsage(page)
     for (const usage of memoryUsages) {
       console.log('[memory] Worker Memory Usage:', usage)
