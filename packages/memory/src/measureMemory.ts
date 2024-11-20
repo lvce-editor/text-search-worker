@@ -1,5 +1,5 @@
 import { chromium } from 'playwright'
-import { getMemoryUsage } from './getMemoryUsage.ts'
+import { getMemoryUsageWs } from './getMemoryUsageWs.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
 import { fileURLToPath } from 'node:url'
@@ -13,11 +13,16 @@ const main = async () => {
   const options = parseArgs()
   const textSearchWorkerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
 
-  await startServer(options.port, textSearchWorkerPath)
+  const server = await startServer(options.port, textSearchWorkerPath)
 
+  // process.env.PLAYWRIGHT_CHROMIUM_DEBUG_PORT = '9222'
+
+  const remoteDebuggingPort = '9222'
   const browser = await chromium.launch({
     headless: options.headless,
+    args: [`--remote-debugging-port=${remoteDebuggingPort}`],
   })
+
   const context = await browser.newContext()
   const page = await context.newPage()
 
@@ -25,7 +30,7 @@ const main = async () => {
     await page.goto(`http://localhost:${options.port}`)
     await waitForWorkerReady(page)
 
-    const memoryUsages = await getMemoryUsage(page)
+    const memoryUsages = await getMemoryUsageWs(`http://localhost:${remoteDebuggingPort}`)
     for (const usage of memoryUsages) {
       console.log('[memory] Worker Memory Usage:', usage)
     }
@@ -33,6 +38,7 @@ const main = async () => {
     console.error('[memory] Measurement failed:', error)
     process.exit(1)
   } finally {
+    server.close()
     await browser.close()
   }
 }
