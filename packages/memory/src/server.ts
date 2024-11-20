@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 
-export const startServer = async (port: number, textSearchWorkerPath: string) => {
+export const startServer = async (port: number, textSearchWorkerPath: string): Promise<void> => {
   const app = express()
 
   // Serve worker file

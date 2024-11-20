@@ -20,6 +20,7 @@ export default tseslint.config(
       '**/coverage/**',
       '**/server/**',
       '**/e2e/**',
+      '**/memory/**',
       'scripts',
       'rollup.config.js',
       'eslint.config.js',
