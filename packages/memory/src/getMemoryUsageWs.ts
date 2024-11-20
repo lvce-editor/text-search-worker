@@ -6,16 +6,18 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
   try {
     const version = await protocol.send('Browser.getVersion')
 
-    protocol.addEventListener('Target.attachedToTarget', (x) => {
-      console.log('got attached', x)
-    })
+    const { resolve, promise } = Promise.withResolvers()
+    protocol.addEventListener('Target.attachedToTarget', resolve)
     await protocol.send('Target.setAutoAttach', {
       autoAttach: true,
       waitForDebuggerOnStart: true,
       flatten: true,
     })
 
-    console.log({ version })
+    const targetEvent = await promise
+    const target = targetEvent.detail
+
+    console.log({ target })
 
     const results = []
     for (const worker of workers) {
