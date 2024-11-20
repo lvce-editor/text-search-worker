@@ -7,18 +7,26 @@ export const getMemoryUsage = async (page: Page) => {
 
   client.once('Target.attachedToTarget', resolve)
 
-  const t1 = await client.send('Target.setAutoAttach', {
+  await client.send('Target.setAutoAttach', {
     autoAttach: true,
     waitForDebuggerOnStart: true,
   })
 
   const worker = await promise
 
-  // page.context().routeWebSocket
-  console.log({ client })
-  console.log({ worker })
+  // // page.context().routeWebSocket
+  // console.log({ client })
+  // console.log({ worker })
 
-  console.log({ t1 })
+  // const ws = await page.workers()
+
+  // const w = ws[0]
+  // const conn = w._connection
+
+  // console.log({ conn })
+
+  // console.log(ws)
+  // console.log({ t1 })
   // client.on('Target.attachedToTarget', () => {
   //   console.log('attached')
   // })

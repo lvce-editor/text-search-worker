@@ -1,5 +1,5 @@
 import { chromium } from 'playwright'
-import { getMemoryUsage } from './getMemoryUsage.ts'
+import { getMemoryUsageWs } from './getMemoryUsageWs.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
 import { fileURLToPath } from 'node:url'
@@ -15,17 +15,22 @@ const main = async () => {
 
   await startServer(options.port, textSearchWorkerPath)
 
-  const browser = await chromium.launch({
+  const browser = await chromium.launchServer({
     headless: options.headless,
   })
-  const context = await browser.newContext()
+
+  const s = browser.wsEndpoint()
+
+  console.log(s)
+  const c = await chromium.connect(browser.wsEndpoint())
+  const context = await c.newContext()
   const page = await context.newPage()
 
   try {
     await page.goto(`http://localhost:${options.port}`)
     await waitForWorkerReady(page)
 
-    const memoryUsages = await getMemoryUsage(page)
+    const memoryUsages = await getMemoryUsageWs(browser.wsEndpoint())
     for (const usage of memoryUsages) {
       console.log('[memory] Worker Memory Usage:', usage)
     }
