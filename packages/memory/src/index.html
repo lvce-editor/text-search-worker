@@ -5,19 +5,18 @@
   </head>
   <body>
     <script>
-      window.__workerReady = false
-      window.__workerError = null
+      window.__workerDidLaunch = 0 // 0: not launched, 1: launched, 2: error
 
       const worker = new Worker('/dist/textSearchWorkerMain.js')
 
       worker.onmessage = (event) => {
         if (event.data === 'ready') {
-          window.__workerReady = true
+          window.__workerDidLaunch = 1
         }
       }
 
       worker.onerror = (error) => {
-        window.__workerError = error.message
+        window.__workerDidLaunch = 2
         console.error('Worker error:', error)
       }
 

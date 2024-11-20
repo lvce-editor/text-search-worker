@@ -23,16 +23,13 @@ const main = async () => {
   try {
     await page.goto(`http://localhost:${options.port}`)
 
-    const result = await Promise.race([
-      page.waitForFunction(() => window.__workerReady === true, { timeout: 5000 }),
-      page.waitForFunction(() => window.__workerError !== null, { timeout: 5000 }).then(() => page.evaluate(() => window.__workerError)),
+    const workerState = await Promise.race([
+      page.waitForFunction(() => window.__workerDidLaunch === 1, { timeout: 5000 }).then(() => 1),
+      page.waitForFunction(() => window.__workerDidLaunch === 2, { timeout: 5000 }).then(() => 2),
     ])
 
-    console.log('Result:', result)
-
-    await new Promise((r) => {})
-    if (typeof result === 'string') {
-      console.error('Worker failed to initialize:', result)
+    if (workerState === 2) {
+      console.error('Worker failed to initialize')
       process.exit(1)
     }
 
