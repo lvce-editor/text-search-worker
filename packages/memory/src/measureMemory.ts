@@ -1,22 +1,15 @@
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
+import { threshold, workerPath } from './config.ts'
+import { MemoryLimitExceededError } from './errors.ts'
 import { getMemoryUsageWs } from './getMemoryUsageWs.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
 import { waitForWorkerReady } from './waitForWorkerReady.ts'
-import { MemoryLimitExceededError } from './errors.ts'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const root = join(__dirname, '../../..')
-
-const threshold = 450_000
 
 const main = async () => {
   const options = parseArgs()
-  const textSearchWorkerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
 
-  const server = await startServer(options.port, textSearchWorkerPath)
+  const server = await startServer(options.port, workerPath)
 
   const remoteDebuggingPort = '9222'
   const browser = await chromium.launch({
