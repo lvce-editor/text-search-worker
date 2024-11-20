@@ -1,11 +1,9 @@
 import WebSocket from 'ws'
+import { waitForWebSocketToBeOpen } from './waitForWebSocketToBeOpen.ts'
 
 export const getMemoryUsageWs = async (wsEndpoint: string) => {
   const ws = new WebSocket(wsEndpoint)
-
-  const { promise: openPromise, resolve: resolveOpen } = Promise.withResolvers<void>()
-  ws.once('open', resolveOpen)
-  await openPromise
+  await waitForWebSocketToBeOpen(ws)
 
   const send = (method: string, params: any = {}) => {
     const { promise, resolve } = Promise.withResolvers()
