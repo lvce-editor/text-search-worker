@@ -1,33 +1,30 @@
-import { connect } from './ChromeDevToolsProtocol.ts'
+import CDP from 'chrome-remote-interface'
 
-export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
-  const protocol = await connect(debuggingEndpoint)
+export const getMemoryUsageWs = async (debuggingPort: string) => {
+  const client = await CDP({
+    host: 'localhost',
+    port: Number(debuggingPort),
+  })
 
   try {
-    const { resolve, promise } = Promise.withResolvers()
-    protocol.addEventListener('Target.attachedToTarget', resolve)
-    await protocol.send('Target.setAutoAttach', {
+    const { promise, resolve } = Promise.withResolvers()
+    client.Target.attachedToTarget(resolve)
+
+    await client.Target.setAutoAttach({
       autoAttach: true,
       waitForDebuggerOnStart: true,
       flatten: true,
     })
 
-    const targetEvent = await promise
     // @ts-ignore
-    const target = targetEvent.detail
+    const { sessionId } = await promise
 
-    const sessionId = target.sessionId
-
-    await protocol.send('Runtime.enable', {}, sessionId)
-
-    const mem = await protocol.send('Runtime.getHeapUsage', {}, sessionId)
+    await client.Runtime.enable(sessionId)
+    const mem = await client.Runtime.getHeapUsage(sessionId)
     console.log({ mem })
 
-    // @ts-ignore
-    const results = []
-    // @ts-ignore
-    return results
+    return []
   } finally {
-    protocol.close()
+    await client.close()
   }
 }
