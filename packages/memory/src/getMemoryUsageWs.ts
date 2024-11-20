@@ -18,8 +18,8 @@ export const getMemoryUsageWs = async (debuggingPort: string) => {
 
     const { sessionId } = await promise
 
-    await client.Runtime.enable({ sessionId })
-    const mem = await client.Runtime.getHeapUsage({ sessionId })
+    await client.Runtime.enable(sessionId)
+    const mem = await client.Runtime.getHeapUsage(sessionId)
     console.log({ mem })
 
     return []
