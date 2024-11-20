@@ -1,5 +1,3 @@
-export enum WorkerState {
-  NotLaunched = 0,
-  Launched = 1,
-  Error = 2,
-}
+export const NotLaunched = 0
+export const Launched = 1
+export const Error = 2

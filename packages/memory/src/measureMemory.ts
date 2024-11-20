@@ -1,6 +1,6 @@
 import { chromium } from 'playwright'
 import { startServer } from './server.ts'
-import { WorkerState } from './workerState.ts'
+import { Launched, Error } from './workerState.ts'
 
 const parseArgs = () => {
   const args = process.argv.slice(2)
@@ -25,11 +25,11 @@ const main = async () => {
     await page.goto(`http://localhost:${options.port}`)
 
     const workerState = await Promise.race([
-      page.waitForFunction(() => window.__workerDidLaunch === 1, { timeout: 5000 }).then(() => WorkerState.Launched),
-      page.waitForFunction(() => window.__workerDidLaunch === 2, { timeout: 5000 }).then(() => WorkerState.Error),
+      page.waitForFunction(() => window.__workerDidLaunch === 1, { timeout: 5000 }).then(() => Launched),
+      page.waitForFunction(() => window.__workerDidLaunch === 2, { timeout: 5000 }).then(() => Error),
     ])
 
-    if (workerState === WorkerState.Error) {
+    if (workerState === Error) {
       console.error('Worker failed to initialize')
       process.exit(1)
     }
