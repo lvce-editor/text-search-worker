@@ -52,22 +52,29 @@ export const connect = async (debuggingEndpoint: string): Promise<Protocol> => {
 
     const result = await promise
 
+    // @ts-ignore
     if (result && result.error && result.error.error) {
+      // @ts-ignore
       throw new Error(`[send] ${result.error.error.message}`)
     }
+    // @ts-ignore
     if (result && result.result) {
+      // @ts-ignore
       return result.result
     }
     return result
   }
 
   return {
+    // @ts-ignore
     send,
     close: () => {
       pendingMessages.clear()
       ws.close()
     },
+    // @ts-ignore
     addEventListener: (event, listener) => eventTarget.addEventListener(event, listener),
+    // @ts-ignore
     removeEventListener: (event, listener) => eventTarget.removeEventListener(event, listener),
   }
 }

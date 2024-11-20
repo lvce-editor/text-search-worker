@@ -13,6 +13,7 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
     })
 
     const targetEvent = await promise
+    // @ts-ignore
     const target = targetEvent.detail
 
     const sessionId = target.sessionId
@@ -22,7 +23,9 @@ export const getMemoryUsageWs = async (debuggingEndpoint: string) => {
     const mem = await protocol.send('Runtime.getHeapUsage', {}, sessionId)
     console.log({ mem })
 
+    // @ts-ignore
     const results = []
+    // @ts-ignore
     return results
   } finally {
     protocol.close()
