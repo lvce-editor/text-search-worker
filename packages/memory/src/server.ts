@@ -1,41 +1,22 @@
-import { createServer } from 'node:http'
+import express from 'express'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { readFile } from 'node:fs/promises'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const startServer = async (port: number) => {
-  const server = createServer(async (req, res) => {
-    try {
-      const url = new URL(req.url!, `http://localhost:${port}`)
-      let filePath: string
+  const app = express()
 
-      if (url.pathname === '/') {
-        filePath = join(__dirname, 'index.html')
-      } else {
-        filePath = join(process.cwd(), url.pathname)
-      }
+  // Serve static files from project root
+  app.use(express.static(process.cwd()))
 
-      const content = await readFile(filePath)
-      const ext = filePath.split('.').pop()
-
-      const contentTypes: Record<string, string> = {
-        html: 'text/html',
-        js: 'application/javascript',
-        ts: 'application/javascript',
-      }
-
-      res.setHeader('Content-Type', contentTypes[ext!] || 'text/plain')
-      res.end(content)
-    } catch (error) {
-      res.statusCode = 404
-      res.end('Not found')
-    }
+  // Serve index.html from src directory
+  app.get('/', (req, res) => {
+    res.sendFile(join(__dirname, 'index.html'))
   })
 
   const { promise, resolve } = Promise.withResolvers<void>()
-  server.listen(port, () => {
+  app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`)
     resolve()
   })
