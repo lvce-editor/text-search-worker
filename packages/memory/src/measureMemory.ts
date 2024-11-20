@@ -30,7 +30,7 @@ const main = async () => {
     ])
 
     if (workerState === WorkerState.Error) {
-      console.error('Worker failed to initialize')
+      console.error('[memory] Worker failed to initialize')
       process.exit(1)
     }
 
@@ -38,7 +38,7 @@ const main = async () => {
     const { workers } = await client.send('ServiceWorker.getAllWorkers')
 
     if (!workers.length) {
-      console.error('No workers found')
+      console.error('[memory] No workers found')
       process.exit(1)
     }
 
@@ -50,7 +50,7 @@ const main = async () => {
       })
     }
   } catch (error) {
-    console.error('Measurement failed:', error)
+    console.error('[memory] Measurement failed:', error)
     process.exit(1)
   } finally {
     await browser.close()
