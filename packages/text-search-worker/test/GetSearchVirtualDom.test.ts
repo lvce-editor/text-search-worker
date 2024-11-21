@@ -51,7 +51,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 3,
+      childCount: 2,
       className: 'SearchHeader',
       onClick: 'handleHeaderClick',
       onFocusIn: 'handleHeaderFocusIn',
