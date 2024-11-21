@@ -12,7 +12,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeader,
       role: AriaRoles.None,
-      childCount: 3,
+      childCount: 2,
       onClick: DomEventListenerFunctions.HandleHeaderClick,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
