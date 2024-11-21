@@ -155,11 +155,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 0,
-      className: 'ToggleDetails',
-      type: 4,
-    },
-    {
       childCount: 1,
       className: 'ViewletSearchMessage',
       role: 'status',
