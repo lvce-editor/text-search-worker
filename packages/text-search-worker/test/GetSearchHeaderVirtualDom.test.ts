@@ -133,6 +133,11 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       title: 'Toggle Search Details',
       type: 4,
     },
+    {
+      childCount: 0,
+      className: 'MaskIcon MaskIconEllipsis',
+      type: 4,
+    },
   ])
 })
 
