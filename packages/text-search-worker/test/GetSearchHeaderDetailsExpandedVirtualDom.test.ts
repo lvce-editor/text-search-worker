@@ -6,7 +6,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
   const dom = GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(message)
   expect(dom).toEqual([
     {
-      childCount: 5,
+      childCount: 6,
       className: 'SearchHeaderDetailsExpanded',
       type: 4,
     },
