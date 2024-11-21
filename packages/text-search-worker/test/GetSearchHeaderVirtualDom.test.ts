@@ -125,8 +125,12 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       type: 12,
     },
     {
-      childCount: 0,
+      ariaLabel: 'Toggle Search Details',
+      childCount: 1,
       className: 'ToggleDetails',
+      role: 'button',
+      tabIndex: 0,
+      title: 'Toggle Search Details',
       type: 4,
     },
   ])
