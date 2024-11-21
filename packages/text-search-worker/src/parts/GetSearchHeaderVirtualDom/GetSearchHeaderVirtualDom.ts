@@ -1,6 +1,7 @@
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirtualDom/GetSearchHeaderDetailsVirtualDom.ts'
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
@@ -23,23 +24,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
   if (SearchFlags.hasDetailsExpanded(flags)) {
     // @ts-ignore
     dom[0].childCount++
-    dom.push(
-      {
-        type: VirtualDomElements.Div,
-        className: ClassNames.SearchHeaderDetails,
-        childCount: 4,
-      },
-      text('files to include'),
-      {
-        type: VirtualDomElements.Input,
-        childCount: 0,
-      },
-      text('files to exclude'),
-      {
-        type: VirtualDomElements.Input,
-        childCount: 0,
-      },
-    )
+    dom.push(...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom())
   }
 
   dom.push(
