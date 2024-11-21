@@ -18,8 +18,8 @@ import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
 import * as ListFocusNext from '../ListFocusNext/ListFocusNext.ts'
 import * as ListFocusNextPage from '../ListFocusNextPage/ListFocusNextPage.ts'
-import * as ListFocusPreviouPage from '../ListFocusPreviousPage/ListFocusPreviousPage.ts'
 import * as ListFocusPrevious from '../ListFocusPrevious/ListFocusPrevious.ts'
+import * as ListFocusPreviouPage from '../ListFocusPreviousPage/ListFocusPreviousPage.ts'
 import * as ListHandleClickAt from '../ListHandleClickAt/ListHandleClickAt.ts'
 import * as ListHandleScrollBarCaptureLost from '../ListHandleScrollBarCaptureLost/ListHandleScrollBarCaptureLost.ts'
 import * as ListHandleScrollBarClick from '../ListHandleScrollBarClick/ListHandleScrollBarClick.ts'
@@ -34,6 +34,7 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeWord.ts'
 import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
@@ -88,6 +89,7 @@ export const commandMap = {
   'TextSearch.togglePreserveCase': WrapCommand.wrapCommand(TogglePreserveCase.togglePreserveCase),
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
+  'TextSearch.toggleSearchDetails': WrapCommand.wrapCommand(ToggleDetailsExpanded.toggleDetailsExpanded),
 
   // not wrapped
   'TextSearch.create': Create.create,
