@@ -11,7 +11,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
     {
       type: VirtualDomElements.Div,
       className: 'SearchHeaderDetailsExpanded',
-      childCount: 5,
+      childCount: 6,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
     text(SearchStrings.filesToInclude()),
