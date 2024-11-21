@@ -51,7 +51,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 2,
+      childCount: 3,
       className: 'SearchHeader',
       onClick: 'handleHeaderClick',
       onFocusIn: 'handleHeaderFocusIn',
@@ -147,6 +147,16 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 0,
       className: 'MaskIcon MaskIconRegex',
+      type: 4,
+    },
+    {
+      childCount: 1,
+      className: 'SearchHeaderDetails',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'ToggleDetails',
       type: 4,
     },
     {
