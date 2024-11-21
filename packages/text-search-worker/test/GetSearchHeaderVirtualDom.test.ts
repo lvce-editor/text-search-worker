@@ -6,7 +6,6 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   const flags = 0
   const message = ''
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
-  expect(dom[0].childCount).toBe(2)
   expect(dom).toEqual([
     {
       childCount: 2,
