@@ -21,7 +21,17 @@ test('getSearchResultsVirtualDom', () => {
       lineNumber: 0,
     },
   ]
-  expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults)).toEqual([
+  const focusOutline = false
+  expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults, focusOutline)).toEqual([
+    {
+      type: 4,
+      className: 'Viewlet List',
+      role: 'tree',
+      tabIndex: 0,
+      childCount: 1,
+      onClick: 'handleClick',
+      onBlur: 'handleListBlur',
+    },
     {
       ariaDescription: '',
       ariaExpanded: 'true',
