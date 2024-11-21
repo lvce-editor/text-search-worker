@@ -23,16 +23,7 @@ export const getSearchVirtualDom = (
     },
     ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags),
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
-    {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.List, focusOutline ? ClassNames.FocusOutline : ClassNames.Empty),
-      role: AriaRoles.Tree,
-      tabIndex: 0,
-      childCount: visibleItems.length,
-      onClick: DomEventListenerFunctions.HandleClick,
-      onBlur: DomEventListenerFunctions.HandleListBlur,
-    },
-    ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems),
+    ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems, focusOutline),
   ]
   return dom
 }
