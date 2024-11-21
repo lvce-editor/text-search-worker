@@ -12,6 +12,18 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
     },
     {
       type: 4,
+      className: 'ViewletSearchMessage',
+      role: 'status',
+      tabIndex: 0,
+      childCount: 1,
+    },
+    {
+      type: 12,
+      text: 'test message',
+      childCount: 0,
+    },
+    {
+      type: 4,
       className: 'ToggleDetails',
       role: 'button',
       tabIndex: 0,
@@ -22,18 +34,6 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
     {
       type: 4,
       className: 'MaskIcon MaskIconEllipsis',
-      childCount: 0,
-    },
-    {
-      type: 4,
-      className: 'ViewletSearchMessage',
-      role: 'status',
-      tabIndex: 0,
-      childCount: 1,
-    },
-    {
-      type: 12,
-      text: 'test message',
       childCount: 0,
     },
   ])

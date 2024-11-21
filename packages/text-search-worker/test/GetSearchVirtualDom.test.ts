@@ -150,13 +150,8 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 1,
+      childCount: 2,
       className: 'SearchHeaderDetails',
-      type: 4,
-    },
-    {
-      childCount: 0,
-      className: 'ToggleDetails',
       type: 4,
     },
     {
@@ -170,6 +165,20 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 0,
       text: 'Search results',
       type: 12,
+    },
+    {
+      ariaLabel: 'Toggle Search Details',
+      childCount: 1,
+      className: 'ToggleDetails',
+      role: 'button',
+      tabIndex: 0,
+      title: 'Toggle Search Details',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'MaskIcon MaskIconEllipsis',
+      type: 4,
     },
     {
       childCount: 2,

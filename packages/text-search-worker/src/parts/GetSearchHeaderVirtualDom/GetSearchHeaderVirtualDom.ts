@@ -3,7 +3,6 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirtualDom/GetSearchHeaderDetailsVirtualDom.ts'
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
-import * as GetSearchMessageVirtualDom from '../GetSearchMessageVirtualDom/GetSearchMessageVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
@@ -18,8 +17,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
-    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags),
-    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
+    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
   ]
   return dom
 }
