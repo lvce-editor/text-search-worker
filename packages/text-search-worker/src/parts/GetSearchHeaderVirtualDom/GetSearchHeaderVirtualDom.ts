@@ -1,11 +1,9 @@
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
-import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirtualDom/GetSearchHeaderDetailsVirtualDom.ts'
-import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
@@ -20,91 +18,15 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       onClick: DomEventListenerFunctions.HandleHeaderClick,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderTop,
-      role: AriaRoles.None,
-      childCount: 2,
-    },
-    {
-      type: VirtualDomElements.Button,
-      className: MergeClassNames.mergeClassNames(
-        ClassNames.IconButton,
-        ClassNames.SearchToggleButton,
-        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.SearchToggleButtonExpanded : '',
-      ),
-      title: SearchStrings.toggleReplace(),
-      ariaLabel: SearchStrings.toggleReplace(),
-      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
-      childCount: 1,
-      'data-command': 'toggleReplace',
-    },
-    {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(
-        ClassNames.MaskIcon,
-        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
-      ),
-      childCount: 0,
-    },
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderTopRight,
-      role: AriaRoles.None,
-      childCount: SearchFlags.hasReplaceExpanded(flags) ? 2 : 1,
-    },
-    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
-      'search-value',
-      'Search',
-      'handleInput',
-      [
-        {
-          icon: ClassNames.MaskIconCaseSensitive,
-          checked: SearchFlags.hasMatchCase(flags),
-          title: SearchStrings.matchCase(),
-        },
-        {
-          icon: ClassNames.MaskIconWholeWord,
-          checked: SearchFlags.hasMatchWholeWord(flags),
-          title: SearchStrings.matchWholeWord(),
-        },
-        {
-          icon: ClassNames.MaskIconRegex,
-          checked: SearchFlags.hasUseRegularExpression(flags),
-          title: SearchStrings.useRegularExpression(),
-        },
-      ],
-      [],
-    ),
+    ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
   ]
-  if (SearchFlags.hasReplaceExpanded(flags)) {
-    dom.push(
-      ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
-        'search-replace-value',
-        'Replace',
-        'handleReplaceInput',
-        [
-          {
-            icon: ClassNames.MaskIconPreserveCase,
-            checked: SearchFlags.hasPreserveCase(flags),
-            title: SearchStrings.preserveCase(),
-          },
-        ],
-        [
-          {
-            icon: ClassNames.MaskIconReplaceAll,
-            checked: false,
-            title: SearchStrings.replaceAll(),
-          },
-        ],
-      ),
-    )
-  }
+
   if (SearchFlags.hasDetailsExpanded(flags)) {
     // @ts-ignore
     dom[0].childCount++
     dom.push(...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom())
   }
+
   dom.push(
     {
       type: VirtualDomElements.Div,
@@ -115,5 +37,6 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
     },
     text(message),
   )
+
   return dom
 }
