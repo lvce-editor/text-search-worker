@@ -13,13 +13,14 @@ import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
+import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
 import * as ListFocusFirst from '../ListFocusFirst/ListFocusFirst.ts'
 import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
 import * as ListFocusNext from '../ListFocusNext/ListFocusNext.ts'
 import * as ListFocusNextPage from '../ListFocusNextPage/ListFocusNextPage.ts'
-import * as ListFocusPreviouPage from '../ListFocusPreviousPage/ListFocusPreviousPage.ts'
 import * as ListFocusPrevious from '../ListFocusPrevious/ListFocusPrevious.ts'
+import * as ListFocusPreviouPage from '../ListFocusPreviousPage/ListFocusPreviousPage.ts'
 import * as ListHandleClickAt from '../ListHandleClickAt/ListHandleClickAt.ts'
 import * as ListHandleScrollBarCaptureLost from '../ListHandleScrollBarCaptureLost/ListHandleScrollBarCaptureLost.ts'
 import * as ListHandleScrollBarClick from '../ListHandleScrollBarClick/ListHandleScrollBarClick.ts'
@@ -77,6 +78,7 @@ export const commandMap = {
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'TextSearch.handleScrollBarClick': WrapCommand.wrapCommand(ListHandleScrollBarClick.handleScrollBarClick),
   'TextSearch.handleScrollBarMove': WrapCommand.wrapCommand(ListHandleScrollBarMove.handleScrollBarMove),
+  'TextSearch.handleSharedInput': WrapCommand.wrapCommand(HandleSharedInput.handleSharedInput),
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
