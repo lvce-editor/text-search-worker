@@ -8,7 +8,7 @@ test('getSearchHeaderDetailsVirtualDom', () => {
   expect(dom[0]).toEqual({
     type: 4,
     className: 'SearchHeaderDetails',
-    childCount: 1,
+    childCount: 2,
   })
   // expect(dom[1].text).toBe('files to include')
   // expect(dom[2]).toEqual({
