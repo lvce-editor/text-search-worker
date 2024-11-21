@@ -4,7 +4,8 @@ import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('getSearchHeaderVirtualDom - with no flags', () => {
   const flags = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  const message = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
   expect(dom[0].childCount).toBe(2)
   expect(dom).toEqual([
     {
@@ -106,21 +107,35 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MaskIcon MaskIconRegex',
       type: 4,
     },
+    {
+      childCount: 1,
+      className: 'ViewletSearchMessage',
+      role: 'status',
+      tabIndex: 0,
+      type: 4,
+    },
+    {
+      childCount: 0,
+      text: '',
+      type: 12,
+    },
   ])
 })
 
 test('getSearchHeaderVirtualDom - with details expanded', () => {
   const flags = SearchFlags.DetailsExpanded
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  const message = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
   expect(dom[0].childCount).toBe(4)
-  expect(dom[dom.length - 5].className).toBe('SearchHeaderDetails')
-  expect(dom[dom.length - 4].text).toBe('files to include')
-  expect(dom[dom.length - 2].text).toBe('files to exclude')
+  expect(dom[dom.length - 7].className).toBe('SearchHeaderDetails')
+  expect(dom[dom.length - 6].text).toBe('files to include')
+  expect(dom[dom.length - 4].text).toBe('files to exclude')
 })
 
 test('getSearchHeaderVirtualDom - with replace and details expanded', () => {
   const flags = SearchFlags.DetailsExpanded | SearchFlags.ReplaceExpanded
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags)
+  const message = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
   expect(dom[0].childCount).toBe(4)
   expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
   expect(SearchFlags.hasReplaceExpanded(flags)).toBe(true)
