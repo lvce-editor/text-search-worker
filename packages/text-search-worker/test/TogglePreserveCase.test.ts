@@ -10,5 +10,5 @@ test('togglePreserveCase', () => {
     flags: 0,
   }
   const newState = TogglePreserveCase.togglePreserveCase(initialState)
-  expect(SearchFlags.hasPreserveCase(newState.flags)).toBe(true)
+  expect(SearchFlags.hasPreserveCase(newState.flags)).toBeTruthy()
 })

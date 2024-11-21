@@ -10,5 +10,5 @@ test('toggleUseRegularExpression', () => {
     flags: 0,
   }
   const newState = ToggleUseRegularExpression.toggleUseRegularExpression(initialState)
-  expect(SearchFlags.hasUseRegularExpression(newState.flags)).toBe(true)
+  expect(SearchFlags.hasUseRegularExpression(newState.flags)).toBeTruthy()
 })

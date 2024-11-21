@@ -10,5 +10,5 @@ test('toggleMatchWholeWord', () => {
     flags: 0,
   }
   const newState = ToggleMatchWholeWord.toggleMatchWholeWord(initialState)
-  expect(SearchFlags.hasMatchWholeWord(newState.flags)).toBe(true)
+  expect(SearchFlags.hasMatchWholeWord(newState.flags)).toBeTruthy()
 })

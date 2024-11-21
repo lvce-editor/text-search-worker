@@ -12,7 +12,7 @@ export const getSearchFieldButtonVirtualDom = (button: any): readonly VirtualDom
       className: MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, checked ? ClassNames.SearchFieldButtonChecked : ''),
       title,
       role: AriaRoles.CheckBox,
-      ariaChecked: checked,
+      ariaChecked: Boolean(checked),
       tabIndex: 0,
       childCount: 1,
     },

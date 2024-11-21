@@ -10,5 +10,5 @@ test('toggleDetailsExpanded', () => {
     flags: 0,
   }
   const newState = ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
-  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(true)
+  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBeTruthy()
 })

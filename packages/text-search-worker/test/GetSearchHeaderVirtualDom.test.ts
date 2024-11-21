@@ -137,6 +137,6 @@ test('getSearchHeaderVirtualDom - with replace and details expanded', () => {
   const message = ''
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
   expect(dom[0].childCount).toBe(4)
-  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
-  expect(SearchFlags.hasReplaceExpanded(flags)).toBe(true)
+  expect(SearchFlags.hasDetailsExpanded(flags)).toBeTruthy()
+  expect(SearchFlags.hasReplaceExpanded(flags)).toBeTruthy()
 })

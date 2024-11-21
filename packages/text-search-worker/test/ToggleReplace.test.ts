@@ -10,5 +10,5 @@ test('toggleReplace', () => {
     flags: 0,
   }
   const newState = ToggleReplace.toggleReplace(initialState)
-  expect(SearchFlags.hasReplaceExpanded(newState.flags)).toBe(true)
+  expect(SearchFlags.hasReplaceExpanded(newState.flags)).toBeTruthy()
 })

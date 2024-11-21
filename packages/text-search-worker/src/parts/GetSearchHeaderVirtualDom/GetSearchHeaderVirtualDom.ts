@@ -34,7 +34,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       ),
       title: SearchStrings.toggleReplace(),
       ariaLabel: SearchStrings.toggleReplace(),
-      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
+      ariaExpanded: Boolean(SearchFlags.hasReplaceExpanded(flags)),
       childCount: 1,
       'data-command': 'toggleReplace',
     },

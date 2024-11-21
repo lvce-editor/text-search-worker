@@ -10,5 +10,5 @@ test('toggleMatchCase', () => {
     flags: 0,
   }
   const newState = ToggleMatchCase.toggleMatchCase(initialState)
-  expect(SearchFlags.hasMatchCase(newState.flags)).toBe(true)
+  expect(SearchFlags.hasMatchCase(newState.flags)).toBeTruthy()
 })
