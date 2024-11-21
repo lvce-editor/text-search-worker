@@ -3,7 +3,6 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirtualDom/GetSearchHeaderDetailsVirtualDom.ts'
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
-import * as GetSearchMessageVirtualDom from '../GetSearchMessageVirtualDom/GetSearchMessageVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
@@ -13,13 +12,12 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeader,
       role: AriaRoles.None,
-      childCount: 3,
+      childCount: 2,
       onClick: DomEventListenerFunctions.HandleHeaderClick,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
-    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags),
-    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
+    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
   ]
   return dom
 }
