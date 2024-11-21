@@ -9,7 +9,7 @@ import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
-export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNode[] => {
+export const getSearchHeaderVirtualDom = (flags: number, message: string): readonly VirtualDomNode[] => {
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -120,5 +120,15 @@ export const getSearchHeaderVirtualDom = (flags: number): readonly VirtualDomNod
       },
     )
   }
+  dom.push(
+    {
+      type: VirtualDomElements.Div,
+      className: ClassNames.ViewletSearchMessage,
+      role: AriaRoles.Status,
+      tabIndex: 0,
+      childCount: 1,
+    },
+    text(message),
+  )
   return dom
 }
