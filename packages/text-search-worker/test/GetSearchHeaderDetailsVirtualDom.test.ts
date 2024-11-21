@@ -3,7 +3,8 @@ import * as GetSearchHeaderDetailsVirtualDom from '../src/parts/GetSearchHeaderD
 
 test('getSearchHeaderDetailsVirtualDom', () => {
   const flags = 0
-  const dom = GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags)
+  const message = ''
+  const dom = GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message)
   expect(dom[0]).toEqual({
     type: 4,
     className: 'SearchHeaderDetails',
