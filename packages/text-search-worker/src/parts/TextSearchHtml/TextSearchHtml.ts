@@ -1,4 +1,4 @@
-import { FileNotFoundError } from '../../errors/FileNotFoundError.ts'
+import { FileNotFoundError } from '../FileNotFoundError/FileNotFoundError.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as FileHandleType from '../FileHandleType/FileHandleType.ts'
 import * as FileSystemHtml from '../FileSystemHtml/FileSystemHtml.ts'
