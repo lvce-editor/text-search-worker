@@ -108,3 +108,11 @@ test('viewAsTree', () => {
 test('collapseAll', () => {
   expect(SearchStrings.collapseAll()).toBe('Collapse All')
 })
+
+test('filesToInclude', () => {
+  expect(SearchStrings.filesToInclude()).toBe('Files to Include')
+})
+
+test('filesToExclude', () => {
+  expect(SearchStrings.filesToExclude()).toBe('Files to Exclude')
+})
