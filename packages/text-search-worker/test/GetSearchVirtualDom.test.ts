@@ -150,7 +150,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 1,
+      childCount: 2,
       className: 'SearchHeaderDetails',
       type: 4,
     },
