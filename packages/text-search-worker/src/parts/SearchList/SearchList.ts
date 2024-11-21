@@ -1,3 +1,5 @@
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+
 export interface SearchList {
   readonly assetDir: string
   readonly collapsedPaths: readonly string[]
@@ -24,7 +26,7 @@ export interface SearchList {
   readonly scrollBarActive: boolean
   readonly scrollBarHeight: number
   readonly searchId: number
-  readonly searchResults: readonly any[]
+  readonly searchResults: readonly DisplaySearchResult[]
   readonly stats: any
   readonly threads: number
   readonly touchDifference: number
