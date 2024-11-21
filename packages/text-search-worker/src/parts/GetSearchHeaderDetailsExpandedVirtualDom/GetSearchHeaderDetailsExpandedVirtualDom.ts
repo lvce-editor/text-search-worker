@@ -1,3 +1,4 @@
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchDetailsToggleVirtualDom from '../GetSearchDetailsToggleVirtualDom/GetSearchDetailsToggleVirtualDom.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as GetSearchMessageVirtualDom from '../GetSearchMessageVirtualDom/GetSearchMessageVirtualDom.ts'
@@ -10,7 +11,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
   return [
     {
       type: VirtualDomElements.Div,
-      className: 'SearchHeaderDetailsExpanded',
+      className: ClassNames.SearchHeaderDetailsExpanded,
       childCount: 6,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
