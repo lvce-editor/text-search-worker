@@ -17,7 +17,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
-    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
+    ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags),
   ]
   return dom
 }
