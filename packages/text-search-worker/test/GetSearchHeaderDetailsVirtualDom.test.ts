@@ -10,12 +10,12 @@ test('getSearchHeaderDetailsVirtualDom', () => {
   })
   expect(dom[1].text).toBe('files to include')
   expect(dom[2]).toEqual({
-    type: 4,
+    type: 6,
     childCount: 0,
   })
   expect(dom[3].text).toBe('files to exclude')
   expect(dom[4]).toEqual({
-    type: 4,
+    type: 6,
     childCount: 0,
   })
 })
