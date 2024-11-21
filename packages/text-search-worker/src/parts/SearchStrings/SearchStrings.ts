@@ -33,6 +33,8 @@ const UiStrings = {
   ToggleReplace: 'Toggle Replace',
   UseRegularExpression: 'Use Regular Expression',
   ViewAsTree: 'View as Tree',
+  FilesToInclude: 'Files to Include',
+  FilesToExclude: 'Files to Exclude',
 }
 
 export const noResults = (): string => {
@@ -174,4 +176,12 @@ export const viewAsTree = (): string => {
 
 export const collapseAll = (): string => {
   return I18nString.i18nString(UiStrings.CollapseAll)
+}
+
+export const filesToInclude = (): string => {
+  return I18nString.i18nString(UiStrings.FilesToInclude)
+}
+
+export const filesToExclude = (): string => {
+  return I18nString.i18nString(UiStrings.FilesToExclude)
 }

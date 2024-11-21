@@ -1,5 +1,6 @@
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import { DetailsExpanded } from '../SearchFlags/SearchFlags.ts'
+import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
@@ -20,12 +21,12 @@ export const getSearchHeaderDetailsVirtualDom = (flags: number): readonly Virtua
   ]
   if (flags & DetailsExpanded) {
     dom.push(
-      text('files to include'),
+      text(SearchStrings.filesToInclude()),
       {
         type: VirtualDomElements.Input,
         childCount: 0,
       },
-      text('files to exclude'),
+      text(SearchStrings.filesToExclude()),
       {
         type: VirtualDomElements.Input,
         childCount: 0,
