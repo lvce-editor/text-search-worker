@@ -34,7 +34,7 @@ export const getSearchHeaderDetailsVirtualDom = (flags: number, message: string)
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeaderDetails,
-      childCount: 1,
+      childCount: 2,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
