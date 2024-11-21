@@ -18,7 +18,7 @@ export const getSearchHeaderDetailsVirtualDom = (flags: number): readonly Virtua
       childCount: 0,
     },
   ]
-  if (flags & DetailsExpanded) {
+  if (isExpanded) {
     dom.push(
       text('files to include'),
       {
