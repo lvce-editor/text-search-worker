@@ -4,8 +4,7 @@ import { DetailsExpanded } from '../SearchFlags/SearchFlags.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderDetailsVirtualDom = (flags: number, message: string): readonly VirtualDomNode[] => {
-  const isExpanded = flags & DetailsExpanded
-  if (isExpanded) {
+  if (flags & DetailsExpanded) {
     return GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(message)
   }
   return GetSearchHeaderDetailsCollapsedVirtualDom.getSearchHeaderDetailsCollapsedVirtualDom(message)
