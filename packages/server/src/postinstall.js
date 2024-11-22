@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
@@ -13,23 +13,25 @@ export const getRemoteUrl = (path) => {
 
 const nodeModulesPath = join(root, 'packages', 'server', 'node_modules')
 
-const textSearchWorkerPath = join(root, 'dist', 'dist', 'textSearchWorkerMain.js')
+const textSearchWorkerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorkerMain.js')
 
 const serverPath = join(nodeModulesPath, '@lvce-editor', 'server')
-const indexHtmlPath = join(serverPath, 'static', 'index.html')
+const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'server', 'static')
 
-const indexHtmlContent = await readFile(indexHtmlPath, 'utf8')
-
-const remoteUrl = getRemoteUrl(textSearchWorkerPath)
-
-const config = {
-  'develop.textSearchWorkerPath': remoteUrl,
+const RE_COMMIT_HASH = /^[a-z\d]+$/
+const isCommitHash = (dirent) => {
+  return dirent.length === 7 && dirent.match(RE_COMMIT_HASH)
 }
-const stringifiedConfig = JSON.stringify(config, null, 2)
-const newContent = indexHtmlContent.replace(
-  '</title>',
-  `</title>
-  <script type="application/json" id="Config">${stringifiedConfig}</script>`,
-)
 
-await writeFile(indexHtmlPath, newContent)
+const dirents = await readdir(serverStaticPath)
+const commitHash = dirents.find(isCommitHash) || ''
+const rendererWorkerMainPath = join(serverPath, 'static', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+
+const content = await readFile(rendererWorkerMainPath, 'utf-8')
+const remoteUrl = getRemoteUrl(textSearchWorkerPath)
+const occurrence = `const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\``
+const replacement = `// const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\`
+const textSearchWorkerUrl = \`${remoteUrl}\``
+
+const newContent = content.replace(occurrence, replacement)
+await writeFile(rendererWorkerMainPath, newContent)
