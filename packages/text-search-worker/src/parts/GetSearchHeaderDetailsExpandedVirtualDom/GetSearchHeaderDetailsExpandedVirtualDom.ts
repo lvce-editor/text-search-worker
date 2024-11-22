@@ -10,7 +10,7 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): readonly VirtualDomNode[] => {
   const includeButtons = [
     {
-      icon: 'OpenEditors',
+      icon: ClassNames.MaskIconBook,
       title: SearchStrings.searchOnlyOpenEditors(),
       command: 'searchOnlyOpenEditors',
       checked: false,
