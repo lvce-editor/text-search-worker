@@ -53,8 +53,22 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       type: 62,
     },
     {
-      childCount: 0,
+      childCount: 1,
       className: 'SearchFieldButtons',
+      type: 4,
+    },
+    {
+      ariaChecked: false,
+      childCount: 1,
+      className: 'SearchFieldButton',
+      role: 'checkbox',
+      tabIndex: 0,
+      title: 'Search Only Open Editors',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'MaskIcon OpenEditors',
       type: 4,
     },
     {
