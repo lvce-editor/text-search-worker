@@ -44,7 +44,7 @@ const renderFocus = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
     return oldState.focus === newState.focus || newState.focusSource === InputSource.User
   },
-  apply(newState: SearchState): any {
+  apply(oldState: SearchState, newState: SearchState): any {
     const selector = GetFocusSelector.getFocusSelector(newState.focus)
     return ['Viewlet.send', newState.uid, 'setFocus', selector, newState.focusSource]
   },
@@ -68,7 +68,7 @@ const renderReplacement = {
   },
 }
 
-const render = [renderItems, renderFocus, renderValue, renderReplacement]
+const render = [renderItems, renderValue, renderReplacement, renderFocus]
 
 export const doRender = (uid: number): any => {
   const { oldState, newState } = SearchViewStates.get(uid)
@@ -78,5 +78,6 @@ export const doRender = (uid: number): any => {
       commands.push(fn.apply(oldState, newState))
     }
   }
+  console.log({ commands })
   return commands
 }
