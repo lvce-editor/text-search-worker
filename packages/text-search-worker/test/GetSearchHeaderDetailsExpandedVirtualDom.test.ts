@@ -73,7 +73,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
     },
     {
       childCount: 0,
-      className: 'MaskIcon OpenEditors',
+      className: 'MaskIcon MaskIconBook',
       type: 4,
     },
     {
