@@ -11,6 +11,8 @@ test('restoreState - with empty state', () => {
     savedValue: '',
     threads: 1,
     flags: 0,
+    includeValue: '',
+    excludeValue: '',
   })
 })
 
@@ -22,6 +24,8 @@ test('restoreState - with null state', () => {
     savedValue: '',
     threads: 1,
     flags: 0,
+    includeValue: '',
+    excludeValue: '',
   })
 })
 
@@ -29,6 +33,8 @@ test('restoreState - with basic state', () => {
   const state = {
     value: 'test',
     flags: 31,
+    includeValue: '*.ts',
+    excludeValue: 'node_modules',
   }
   const result = restoreState(state)
   const expectedFlags =
@@ -39,5 +45,7 @@ test('restoreState - with basic state', () => {
     savedValue: 'test',
     threads: 1,
     flags: expectedFlags,
+    includeValue: '*.ts',
+    excludeValue: 'node_modules',
   })
 })
