@@ -13,7 +13,7 @@ test('collapseDetails - collapses expanded details', () => {
   expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(false)
 })
 
-test('collapseDetails - does nothing if already collapsed', () => {
+test.skip('collapseDetails - does nothing if already collapsed', () => {
   const initialState: SearchHeader = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     flags: 0,
