@@ -1,6 +1,7 @@
 import * as GetFocusSelector from '../GetFocusSelector/GetFocusSelector.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
@@ -64,11 +65,32 @@ const renderReplacement = {
     return oldState.replacement === newState.replacement || newState.inputSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, '[name="search-replace-value"]']
+    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchReplaceInput)
+    return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, selector]
   },
 }
 
-const render = [renderItems, renderValue, renderReplacement, renderFocus]
+const renderIncludeValue = {
+  isEqual(oldState: SearchState, newState: SearchState): boolean {
+    return oldState.includeValue === newState.includeValue || newState.inputSource === InputSource.User
+  },
+  apply(oldState: SearchState, newState: SearchState): any {
+    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchIncludeInput)
+    return ['Viewlet.send', newState.uid, 'setValue', newState.includeValue, selector]
+  },
+}
+
+const renderExcludeValue = {
+  isEqual(oldState: SearchState, newState: SearchState): boolean {
+    return oldState.excludeValue === newState.excludeValue || newState.inputSource === InputSource.User
+  },
+  apply(oldState: SearchState, newState: SearchState): any {
+    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchExcludeInput)
+    return ['Viewlet.send', newState.uid, 'setValue', newState.excludeValue, selector]
+  },
+}
+
+const render = [renderItems, renderValue, renderIncludeValue, renderExcludeValue, renderReplacement, renderFocus]
 
 export const doRender = (uid: number): any => {
   const { oldState, newState } = SearchViewStates.get(uid)
