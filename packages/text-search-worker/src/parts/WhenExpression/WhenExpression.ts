@@ -7,3 +7,4 @@ export const FocusSearchWholeWord = 34
 export const FocusSearchReplaceAll = 35
 export const FocusSearchPreserveCase = 36
 export const FocusSearchIncludeInput = 1007
+export const FocusSearchExcludeInput = 1008

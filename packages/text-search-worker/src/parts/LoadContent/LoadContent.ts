@@ -4,7 +4,7 @@ import * as RestoreState from '../RestoreState/RestoreState.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
-  const { savedValue, savedCollapsedPaths, threads, replacement, flags } = RestoreState.restoreState(savedState)
+  const { savedValue, savedCollapsedPaths, threads, replacement, flags, includeValue, excludeValue } = RestoreState.restoreState(savedState)
   if (savedValue) {
     return ViewletSearchHandleUpdate.handleUpdate(state, {
       value: savedValue,
@@ -13,6 +13,8 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
       collapsedPaths: savedCollapsedPaths,
       replacement,
       flags,
+      includeValue,
+      excludeValue,
     })
   }
   return {
