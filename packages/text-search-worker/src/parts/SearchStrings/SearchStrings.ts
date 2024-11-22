@@ -35,6 +35,7 @@ const UiStrings = {
   ViewAsTree: 'View as Tree',
   FilesToInclude: 'Files to Include',
   FilesToExclude: 'Files to Exclude',
+  ToggleSearchDetails: 'Toggle Search Details',
 }
 
 export const noResults = (): string => {
@@ -59,6 +60,10 @@ export const preserveCase = (): string => {
 
 export const matchWholeWord = (): string => {
   return I18nString.i18nString(UiStrings.MatchWholeWord)
+}
+
+export const toggleSearchDetails = (): string => {
+  return I18nString.i18nString(UiStrings.ToggleSearchDetails)
 }
 
 export const useRegularExpression = (): string => {

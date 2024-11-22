@@ -1,6 +1,7 @@
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
@@ -11,8 +12,8 @@ export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] =>
       className: ClassNames.ToggleDetails,
       role: AriaRoles.Button,
       tabIndex: 0,
-      ariaLabel: 'Toggle Search Details',
-      title: 'Toggle Search Details',
+      ariaLabel: SearchStrings.toggleSearchDetails(),
+      title: SearchStrings.toggleSearchDetails(),
       childCount: 1,
     },
     {
