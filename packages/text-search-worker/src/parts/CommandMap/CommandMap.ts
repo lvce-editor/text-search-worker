@@ -38,6 +38,7 @@ import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeWord.ts'
+import * as ToggleOpenEditors from '../ToggleOpenEditors/ToggleOpenEditors.ts'
 import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
@@ -92,6 +93,7 @@ export const commandMap = {
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.toggleSearchDetails': WrapCommand.wrapCommand(ToggleDetailsExpanded.toggleDetailsExpanded),
+  'TextSearch.toggleOpenEditors': WrapCommand.wrapCommand(ToggleOpenEditors.toggleOpenEditors),
 
   // not wrapped
   'TextSearch.create': Create.create,
