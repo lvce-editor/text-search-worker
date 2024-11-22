@@ -1,4 +1,3 @@
-import * as Assert from '../Assert/Assert.ts'
 import * as I18nString from '../I18NString/I18NString.ts'
 
 /**
@@ -109,9 +108,6 @@ export const confirmReplaceManyOccurrencesInOneFileNoValue = (matchCount: number
 }
 
 export const confirmReplaceManyOccurrencesInManyFiles = (matchCount: number, fileCount: number, replacement: string): string => {
-  Assert.number(matchCount)
-  Assert.number(fileCount)
-  Assert.string(replacement)
   return I18nString.i18nString(UiStrings.ConfirmReplaceManyOccurrencesInManyFiles, {
     PH1: matchCount,
     PH2: fileCount,
@@ -120,8 +116,6 @@ export const confirmReplaceManyOccurrencesInManyFiles = (matchCount: number, fil
 }
 
 export const confirmReplaceManyOccurrencesInManyFilesNoValue = (matchCount: number, fileCount: number): string => {
-  Assert.number(matchCount)
-  Assert.number(fileCount)
   return I18nString.i18nString(UiStrings.ConfirmReplaceManyOccurrencesInManyFilesNoValue, {
     PH1: matchCount,
     PH2: fileCount,
