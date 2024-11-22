@@ -13,6 +13,8 @@ export const getFocusSelector = (focusKey: number): string => {
       return '[title="Preserve Case"]'
     case WhenExpression.FocusSearchRegex:
       return '[title="Use Regular Expression"]'
+    case WhenExpression.FocusSearchIncludeInput:
+      return '[name="files-to-include-value"]'
     default:
       return ''
   }
