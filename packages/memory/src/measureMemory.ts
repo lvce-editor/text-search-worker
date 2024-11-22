@@ -1,7 +1,7 @@
-import { chromium } from 'playwright'
 import { threshold, workerPath } from './config.ts'
 import { MemoryLimitExceededError } from './errors.ts'
 import { getMemoryUsageWs } from './getMemoryUsageWs.ts'
+import { launchBrowser } from './launchBrowser.ts'
 import { parseArgs } from './parseArgs.ts'
 import { startServer } from './server.ts'
 import { waitForWorkerReady } from './waitForWorkerReady.ts'
@@ -12,13 +12,8 @@ const main = async () => {
   const server = await startServer(options.port, workerPath)
 
   const remoteDebuggingPort = '9222'
-  const browser = await chromium.launch({
-    headless: options.headless,
-    args: [`--remote-debugging-port=${remoteDebuggingPort}`],
-  })
 
-  const context = await browser.newContext()
-  const page = await context.newPage()
+  const { page, browser } = await launchBrowser(options.headless, remoteDebuggingPort)
 
   try {
     await page.goto(`http://localhost:${options.port}`)
