@@ -41,6 +41,7 @@ import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeW
 import * as ToggleOpenEditors from '../ToggleOpenEditors/ToggleOpenEditors.ts'
 import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
+import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFiles.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
@@ -89,11 +90,12 @@ export const commandMap = {
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleMatchWholeWord': WrapCommand.wrapCommand(ToggleMatchWholeWord.toggleMatchWholeWord),
+  'TextSearch.toggleOpenEditors': WrapCommand.wrapCommand(ToggleOpenEditors.toggleOpenEditors),
   'TextSearch.togglePreserveCase': WrapCommand.wrapCommand(TogglePreserveCase.togglePreserveCase),
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
-  'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.toggleSearchDetails': WrapCommand.wrapCommand(ToggleDetailsExpanded.toggleDetailsExpanded),
-  'TextSearch.toggleOpenEditors': WrapCommand.wrapCommand(ToggleOpenEditors.toggleOpenEditors),
+  'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
+  'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
 
   // not wrapped
   'TextSearch.create': Create.create,
