@@ -3,6 +3,7 @@ import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom
 import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import * as GetFocusSelector from '../GetFocusSelector/GetFocusSelector.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 const renderItems = {
@@ -40,29 +41,12 @@ const renderItems = {
   },
 }
 
-const getSelector = (focusKey: number): string => {
-  switch (focusKey) {
-    case WhenExpression.FocusSearchInput:
-      return '[name="search-value"]'
-    case WhenExpression.FocusSearchReplaceInput:
-      return '[name="search-replace-value"]'
-    case WhenExpression.FocusSearchMatchCase:
-      return '[title="Match Case"]'
-    case WhenExpression.FocusSearchPreserveCase:
-      return '[title="Preserve Case"]'
-    case WhenExpression.FocusSearchRegex:
-      return '[title="Use Regular Expression"]'
-    default:
-      return ''
-  }
-}
-
 const renderFocus = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
     return oldState.focus === newState.focus || newState.focusSource === InputSource.User
   },
   apply(newState: SearchState): any {
-    const selector = getSelector(newState.focus)
+    const selector = GetFocusSelector.getFocusSelector(newState.focus)
     return ['Viewlet.send', newState.uid, 'setFocus', selector, newState.focusSource]
   },
 }
