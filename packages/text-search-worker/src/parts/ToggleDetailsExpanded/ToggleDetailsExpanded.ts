@@ -13,5 +13,9 @@ export const toggleDetailsExpanded = (state: SearchHeader): SearchHeader => {
       focusSource: InputSource.Script,
     }
   }
-  return newState
+  return {
+    ...newState,
+    focus: WhenExpression.FocusSearchInput,
+    focusSource: InputSource.Script,
+  }
 }
