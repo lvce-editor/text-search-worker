@@ -120,7 +120,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
     },
     {
       childCount: 0,
-      className: 'MaskIcon MaskIconSettings',
+      className: 'MaskIcon MaskIconExclude',
       type: 4,
     },
     {
