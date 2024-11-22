@@ -1,9 +1,8 @@
 import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
 import { saveState } from '../src/parts/SaveState/SaveState.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('saveState', () => {
   let flags = 0
@@ -16,15 +15,19 @@ test('saveState', () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     value: 'test-value',
+    replacement: 'test-replacement',
+    includeValue: '*.ts',
+    excludeValue: 'node_modules',
     flags,
   }
-  SearchViewStates.set(1, state, state)
 
-  const result = saveState(1)
+  const result = saveState(state)
 
   expect(result).toEqual({
     value: 'test-value',
-    replacement: '',
+    replacement: 'test-replacement',
     flags,
+    includeValue: '*.ts',
+    excludeValue: 'node_modules',
   })
 })
