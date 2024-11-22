@@ -116,3 +116,7 @@ test('filesToInclude', () => {
 test('filesToExclude', () => {
   expect(SearchStrings.filesToExclude()).toBe('Files to Exclude')
 })
+
+test('searchOnlyOpenEditors', () => {
+  expect(SearchStrings.searchOnlyOpenEditors()).toBe('Search Only Open Editors')
+})
