@@ -3,7 +3,7 @@ import * as GetChevronVirtualDom from '../src/parts/GetChevronVirtualDom/GetChev
 import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomElements.ts'
 
 test('getChevronDownVirtualDom', () => {
-  expect(GetChevronVirtualDom.getChevronDownVirtualDom()).toEqual({
+  expect(GetChevronVirtualDom.chevronDownVirtualDom).toEqual({
     type: VirtualDomElements.Div,
     className: 'Chevron MaskIconChevronDown',
     childCount: 0,
@@ -11,7 +11,7 @@ test('getChevronDownVirtualDom', () => {
 })
 
 test('getChevronRightVirtualDom', () => {
-  expect(GetChevronVirtualDom.getChevronRightVirtualDom()).toEqual({
+  expect(GetChevronVirtualDom.chevronRightVirtualDom).toEqual({
     type: VirtualDomElements.Div,
     className: 'Chevron MaskIconChevronRight',
     childCount: 0,

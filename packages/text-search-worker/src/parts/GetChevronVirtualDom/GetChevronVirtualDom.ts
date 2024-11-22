@@ -14,11 +14,3 @@ export const chevronRightVirtualDom: VirtualDomNode = {
   className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronRight),
   childCount: 0,
 }
-
-export const getChevronDownVirtualDom = (): VirtualDomNode => {
-  return chevronDownVirtualDom
-}
-
-export const getChevronRightVirtualDom = (): VirtualDomNode => {
-  return chevronRightVirtualDom
-}
