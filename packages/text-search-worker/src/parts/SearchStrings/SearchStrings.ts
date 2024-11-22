@@ -36,6 +36,7 @@ const UiStrings = {
   FilesToInclude: 'Files to Include',
   FilesToExclude: 'Files to Exclude',
   ToggleSearchDetails: 'Toggle Search Details',
+  SearchOnlyOpenEditors: 'Search Only Open Editors',
 }
 
 export const noResults = (): string => {
@@ -189,4 +190,8 @@ export const filesToInclude = (): string => {
 
 export const filesToExclude = (): string => {
   return I18nString.i18nString(UiStrings.FilesToExclude)
+}
+
+export const searchOnlyOpenEditors = (): string => {
+  return I18nString.i18nString(UiStrings.SearchOnlyOpenEditors)
 }
