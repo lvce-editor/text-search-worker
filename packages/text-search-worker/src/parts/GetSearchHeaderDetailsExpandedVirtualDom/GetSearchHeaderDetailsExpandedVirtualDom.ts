@@ -15,8 +15,18 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
       childCount: 6,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
+    {
+      type: VirtualDomElements.H4,
+      className: ClassNames.SearchHeaderDetailsHeading,
+      childCount: 1,
+    },
     text(SearchStrings.filesToInclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-include-value', 'Include', 'handleIncludeInput', [], []),
+    {
+      type: VirtualDomElements.H4,
+      className: ClassNames.SearchHeaderDetailsHeading,
+      childCount: 1,
+    },
     text(SearchStrings.filesToExclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-exclude-value', 'Exclude', 'handleExcludeInput', [], []),
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
