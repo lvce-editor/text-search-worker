@@ -25,6 +25,11 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       type: 4,
     },
     {
+      childCount: 1,
+      className: 'SearchHeaderDetailsHeading',
+      type: 24,
+    },
+    {
       childCount: 0,
       text: 'Files to Include',
       type: 12,
@@ -51,6 +56,11 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       childCount: 0,
       className: 'SearchFieldButtons',
       type: 4,
+    },
+    {
+      childCount: 1,
+      className: 'SearchHeaderDetailsHeading',
+      type: 24,
     },
     {
       childCount: 0,
