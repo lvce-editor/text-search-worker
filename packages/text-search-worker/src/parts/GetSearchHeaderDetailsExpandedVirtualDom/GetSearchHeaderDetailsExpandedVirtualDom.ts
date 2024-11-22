@@ -21,7 +21,12 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeaderDetailsExpanded,
-      childCount: 6,
+      childCount: 5,
+    },
+    {
+      type: VirtualDomElements.Div,
+      className: ClassNames.SearchHeaderDetailsExpandedTop,
+      childCount: 2,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
     {
