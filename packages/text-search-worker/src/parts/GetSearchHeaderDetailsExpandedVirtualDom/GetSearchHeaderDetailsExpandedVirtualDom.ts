@@ -19,7 +19,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
 
   const excludeButtons = [
     {
-      icon: ClassNames.MaskIconSettings,
+      icon: ClassNames.MaskIconExclude,
       title: SearchStrings.useExcludeSettings(),
       command: 'toggleUseExcludeSettings',
       checked: false,
