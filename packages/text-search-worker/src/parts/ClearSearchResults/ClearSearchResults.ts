@@ -1,4 +1,6 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 
 export const clearSearchResults = (state: SearchState): SearchState => {
   return {
@@ -8,5 +10,7 @@ export const clearSearchResults = (state: SearchState): SearchState => {
     minLineY: 0,
     maxLineY: 0,
     message: '',
+    focus: WhenExpression.FocusSearchInput,
+    focusSource: InputSource.Script,
   }
 }
