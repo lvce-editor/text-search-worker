@@ -17,32 +17,26 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
     },
   ]
 
+  const excludeButtons = [
+    {
+      icon: ClassNames.MaskIconSettings,
+      title: SearchStrings.useExcludeSettings(),
+      command: 'toggleUseExcludeSettings',
+      checked: false,
+    },
+  ]
+
   return [
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeaderDetailsExpanded,
       childCount: 5,
     },
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderDetailsExpandedTop,
-      childCount: 2,
-    },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
-    {
-      type: VirtualDomElements.H4,
-      className: ClassNames.SearchHeaderDetailsHeading,
-      childCount: 1,
-    },
     text(SearchStrings.filesToInclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-include-value', 'Include', 'handleIncludeInput', includeButtons, []),
-    {
-      type: VirtualDomElements.H4,
-      className: ClassNames.SearchHeaderDetailsHeading,
-      childCount: 1,
-    },
     text(SearchStrings.filesToExclude()),
-    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-exclude-value', 'Exclude', 'handleExcludeInput', [], []),
+    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-exclude-value', 'Exclude', 'handleExcludeInput', excludeButtons, []),
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
   ]
 }
