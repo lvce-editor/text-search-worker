@@ -4,6 +4,7 @@ export const ReplaceExpanded = 1 << 2 // 4
 export const MatchWholeWord = 1 << 3 // 8
 export const MatchCase = 1 << 4 // 16
 export const DetailsExpanded = 1 << 5 // 32
+export const OpenEditors = 1 << 6 // 64
 
 export const hasPreserveCase = (flags: number): boolean => {
   return (flags & PreserveCase) === PreserveCase
@@ -29,6 +30,10 @@ export const hasDetailsExpanded = (flags: number): boolean => {
   return (flags & DetailsExpanded) === DetailsExpanded
 }
 
+export const hasOpenEditors = (flags: number): boolean => {
+  return (flags & OpenEditors) === OpenEditors
+}
+
 export const togglePreserveCase = (flags: number): number => {
   return flags ^ PreserveCase
 }
@@ -51,4 +56,8 @@ export const toggleMatchCase = (flags: number): number => {
 
 export const toggleDetailsExpanded = (flags: number): number => {
   return flags ^ DetailsExpanded
+}
+
+export const toggleOpenEditors = (flags: number): number => {
+  return flags ^ OpenEditors
 }

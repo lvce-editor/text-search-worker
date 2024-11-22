@@ -32,3 +32,13 @@ test('toggle and check details expanded flag', () => {
   flags = SearchFlags.toggleDetailsExpanded(flags)
   expect(SearchFlags.hasDetailsExpanded(flags)).toBe(false)
 })
+
+test('toggle and check open editors flag', () => {
+  let flags = 0
+
+  flags = SearchFlags.toggleOpenEditors(flags)
+  expect(SearchFlags.hasOpenEditors(flags)).toBe(true)
+
+  flags = SearchFlags.toggleOpenEditors(flags)
+  expect(SearchFlags.hasOpenEditors(flags)).toBe(false)
+})
