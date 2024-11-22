@@ -1,12 +1,14 @@
 import type { SavedState } from '../SavedState/SavedState.ts'
-import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
-export const saveState = (state: SearchHeader): SavedState => {
+export const saveState = (uid: number): SavedState => {
+  const { newState } = SearchViewStates.get(uid)
+  const { value, replacement, flags, includeValue, excludeValue } = newState
   return {
-    value: state.value,
-    replacement: state.replacement,
-    flags: state.flags,
-    includeValue: state.includeValue,
-    excludeValue: state.excludeValue,
+    value,
+    replacement,
+    flags,
+    includeValue,
+    excludeValue,
   }
 }

@@ -2,6 +2,7 @@ import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
 import { saveState } from '../src/parts/SaveState/SaveState.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('saveState', () => {
@@ -21,7 +22,10 @@ test('saveState', () => {
     flags,
   }
 
-  const result = saveState(state)
+  const uid = 1
+  SearchViewStates.set(uid, state, state)
+
+  const result = saveState(uid)
 
   expect(result).toEqual({
     value: 'test-value',
