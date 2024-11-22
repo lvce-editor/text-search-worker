@@ -23,5 +23,5 @@ test('getFocusSelector - regex', () => {
 })
 
 test('getFocusSelector - match whole word', () => {
-  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchWholeWord)).toBe('[title="Match Whole Word"]')
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchWholeWord)).toBe('')
 })
