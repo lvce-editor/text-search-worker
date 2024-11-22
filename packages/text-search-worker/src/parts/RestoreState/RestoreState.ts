@@ -21,6 +21,20 @@ const getSavedFlags = (savedState: unknown): number => {
   return 0
 }
 
+const getSavedIncludeValue = (savedState: unknown): string => {
+  if (savedState && typeof savedState === 'object' && 'includeValue' in savedState && typeof savedState.includeValue === 'string') {
+    return savedState.includeValue
+  }
+  return ''
+}
+
+const getSavedExcludeValue = (savedState: unknown): string => {
+  if (savedState && typeof savedState === 'object' && 'excludeValue' in savedState && typeof savedState.excludeValue === 'string') {
+    return savedState.excludeValue
+  }
+  return ''
+}
+
 export const restoreState = (savedState: unknown): RestoredState => {
   return {
     savedValue: getSavedValue(savedState),
@@ -28,5 +42,7 @@ export const restoreState = (savedState: unknown): RestoredState => {
     savedCollapsedPaths: [],
     threads: 1,
     flags: getSavedFlags(savedState),
+    includeValue: getSavedIncludeValue(savedState),
+    excludeValue: getSavedExcludeValue(savedState),
   }
 }

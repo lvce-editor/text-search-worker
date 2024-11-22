@@ -4,4 +4,6 @@ export interface RestoredState {
   readonly threads: number
   readonly replacement: string
   readonly flags: number
+  readonly includeValue: string
+  readonly excludeValue: string
 }
