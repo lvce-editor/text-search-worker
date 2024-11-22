@@ -14,6 +14,8 @@ import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconTheme
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
+import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
+import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as ListFocusFirst from '../ListFocusFirst/ListFocusFirst.ts'
 import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
@@ -78,6 +80,8 @@ export const commandMap = {
   'TextSearch.handleIconThemeChange': WrapCommand.wrapCommand(HandleIconThemeChange.handleIconThemeChange),
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
   'TextSearch.handleReplaceInput': WrapCommand.wrapCommand(HandleReplaceInput.handleReplaceInput),
+  'TextSearch.handleIncludeInput': WrapCommand.wrapCommand(HandleIncludeInput.handleIncludeInput),
+  'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'TextSearch.handleScrollBarClick': WrapCommand.wrapCommand(ListHandleScrollBarClick.handleScrollBarClick),
   'TextSearch.handleScrollBarMove': WrapCommand.wrapCommand(ListHandleScrollBarMove.handleScrollBarMove),
