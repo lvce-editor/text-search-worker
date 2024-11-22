@@ -8,6 +8,15 @@ import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): readonly VirtualDomNode[] => {
+  const includeButtons = [
+    {
+      icon: 'OpenEditors',
+      title: SearchStrings.searchOnlyOpenEditors(),
+      command: 'searchOnlyOpenEditors',
+      checked: false,
+    },
+  ]
+
   return [
     {
       type: VirtualDomElements.Div,
@@ -21,7 +30,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (message: string): reado
       childCount: 1,
     },
     text(SearchStrings.filesToInclude()),
-    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-include-value', 'Include', 'handleIncludeInput', [], []),
+    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-include-value', 'Include', 'handleIncludeInput', includeButtons, []),
     {
       type: VirtualDomElements.H4,
       className: ClassNames.SearchHeaderDetailsHeading,
