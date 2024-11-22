@@ -105,8 +105,22 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       type: 62,
     },
     {
-      childCount: 0,
+      childCount: 1,
       className: 'SearchFieldButtons',
+      type: 4,
+    },
+    {
+      ariaChecked: false,
+      childCount: 1,
+      className: 'SearchFieldButton',
+      role: 'checkbox',
+      tabIndex: 0,
+      title: 'Use Exclude Settings',
+      type: 4,
+    },
+    {
+      childCount: 0,
+      className: 'MaskIcon MaskIconSettings',
       type: 4,
     },
     {
