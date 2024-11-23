@@ -27,6 +27,8 @@ export const getFocusSelector = (focusKey: number): string => {
       return '[title="Search Only Open Editors"]'
     case WhenExpression.FocusIgnoreFiles:
       return '[title="Use Exclude Settings"]'
+    case WhenExpression.FocusToggleReplace:
+      return '[aria-label="Toggle Replace"]'
     default:
       return ''
   }
