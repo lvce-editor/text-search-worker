@@ -8,7 +8,7 @@ export const stringifyCompact = (value: any): string => {
   return JSON.stringify(value)
 }
 
-export const parse = (content: string) => {
+export const parse = (content: string): any => {
   if (content === 'undefined') {
     return null
   }
