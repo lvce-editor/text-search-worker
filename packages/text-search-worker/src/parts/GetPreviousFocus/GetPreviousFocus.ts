@@ -31,6 +31,8 @@ export const getPreviousFocus = (focus: number, flags: number): number => {
       return WhenExpression.FocusSearchOpenEditors
     case WhenExpression.FocusIgnoreFiles:
       return WhenExpression.FocusSearchExcludeInput
+    case WhenExpression.FocusSearchIncludeInput:
+      return WhenExpression.FocusToggleDetails
     default:
       return focus
   }
