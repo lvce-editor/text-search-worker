@@ -16,6 +16,8 @@ export const getSearchFocusKey = (key: string): number => {
       return WhenExpression.FocusSearchReplaceAll
     case 'Preserve Case':
       return WhenExpression.FocusSearchPreserveCase
+    case 'Toggle Search Details':
+      return WhenExpression.FocusToggleDetails
     default:
       return WhenExpression.Empty
   }
