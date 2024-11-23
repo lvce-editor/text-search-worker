@@ -30,7 +30,7 @@ export const wrap = (webSocket: any): any => {
      * @type {any}
      */
     listener: undefined,
-    get onmessage() {
+    get onmessage(): any {
       return this.listener
     },
     set onmessage(listener) {
