@@ -1,6 +1,5 @@
-import * as HandleIpc from '../HandleIpc/HandleIpc.js'
-import * as IpcParent from '../IpcParent/IpcParent.js'
-import * as IpcParentType from '../IpcParentType/IpcParentType.js'
+import * as IpcParent from '../IpcParent/IpcParent.ts'
+import * as IpcParentType from '../IpcParentType/IpcParentType.ts'
 
 export const launchSearchProcess = async () => {
   const ipc = await IpcParent.create({
@@ -9,6 +8,7 @@ export const launchSearchProcess = async () => {
     name: 'Search Process',
     initialCommand: 'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
   })
-  HandleIpc.handleIpc(ipc)
+  // TODO
+  // HandleIpc.handleIpc(ipc)
   return ipc
 }
