@@ -13,3 +13,4 @@ export const FocusSearchReplaceInput = 31
 export const FocusSearchResults = 22
 export const FocusSearchWholeWord = 34
 export const FocusToggleDetails = 1010
+export const FocusToggleReplace = 1020

@@ -3,11 +3,11 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const focusPreviousInput = (state: SearchState): SearchState => {
-  const nextFocus = GetPreviousFocus.getPreviousFocus(state.focus, state.flags)
-
+  const previousFocus = GetPreviousFocus.getPreviousFocus(state.focus, state.flags)
+  console.log('prev', state.focus, previousFocus)
   return {
     ...state,
-    focus: nextFocus,
+    focus: previousFocus,
     focusSource: InputSource.Script,
   }
 }

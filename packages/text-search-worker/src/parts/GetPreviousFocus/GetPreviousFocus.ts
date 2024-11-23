@@ -3,6 +3,8 @@ import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getPreviousFocus = (focus: number, flags: number): number => {
   switch (focus) {
+    case WhenExpression.FocusSearchInput:
+      return WhenExpression.FocusToggleReplace
     case WhenExpression.FocusSearchMatchCase:
       if (flags & ReplaceExpanded) {
         return WhenExpression.FocusSearchReplaceInput
