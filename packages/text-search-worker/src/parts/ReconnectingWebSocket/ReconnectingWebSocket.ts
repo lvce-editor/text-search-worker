@@ -14,10 +14,10 @@ export const create = (url: string, args?: any): any => {
 
   const context = {
     webSocket,
-    get onmessage() {
+    get onmessage(): any {
       return this.webSocket.onmessage
     },
-    set onmessage(value) {
+    set onmessage(value: any) {
       this.webSocket.onmessage = value
     },
     send(message: any): void {
