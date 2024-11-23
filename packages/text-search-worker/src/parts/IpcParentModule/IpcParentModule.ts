@@ -1,23 +1,10 @@
-import * as IpcParentType from '../IpcParentType/IpcParentType.js'
+import * as IpcParentType from '../IpcParentType/IpcParentType.ts'
+import * as IpcParentWithNodeAlternate from '../IpcParentWithNodeAlternate/IpcParentWithNodeAlternate.ts'
 
-export const getModule = (method) => {
+export const getModule = (method: any) => {
   switch (method) {
-    case IpcParentType.ElectronMessagePort:
-      return import('../IpcParentWithElectronMessagePort/IpcParentWithElectronMessagePort.js')
-    case IpcParentType.MessagePort:
-      return import('../IpcParentWithMessagePort/IpcParentWithMessagePort.js')
-    case IpcParentType.ModuleWorker:
-      return import('../IpcParentWithModuleWorker/IpcParentWithModuleWorker.js')
-    case IpcParentType.ReferencePort:
-      return import('../IpcParentWithReferencePort/IpcParentWithReferencePort.js')
-    case IpcParentType.WebSocket:
-      return import('../IpcParentWithWebSocket/IpcParentWithWebSocket.ts')
-    case IpcParentType.ModuleWorkerAndWorkaroundForChromeDevtoolsBug:
-      return import('../IpcParentWithModuleWorkerAndWorkaroundForChromeDevtoolsBug/IpcParentWithModuleWorkerAndWorkaroundForChromeDevtoolsBug.js')
-    case IpcParentType.Node:
-      return import('../IpcParentWithNode/IpcParentWithNode.js')
     case IpcParentType.NodeAlternate:
-      return import('../IpcParentWithNodeAlternate/IpcParentWithNodeAlternate.js')
+      return IpcParentWithNodeAlternate
     default:
       throw new Error('unexpected ipc type')
   }
