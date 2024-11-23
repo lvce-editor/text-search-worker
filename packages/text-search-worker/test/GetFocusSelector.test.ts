@@ -25,3 +25,15 @@ test('getFocusSelector - regex', () => {
 test('getFocusSelector - match whole word', () => {
   expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchWholeWord)).toBe('[title="Match Whole Word"]')
 })
+
+test('getFocusSelector - search include input', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchIncludeInput)).toBe('[name="files-to-include-value"]')
+})
+
+test('getFocusSelector - search exclude input', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchExcludeInput)).toBe('[name="files-to-exclude-value"]')
+})
+
+test('getFocusSelector - unknown focus key', () => {
+  expect(GetFocusSelector.getFocusSelector(-1)).toBe('')
+})
