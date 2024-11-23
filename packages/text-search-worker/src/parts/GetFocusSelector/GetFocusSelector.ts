@@ -17,6 +17,8 @@ export const getFocusSelector = (focusKey: number): string => {
       return '[name="files-to-include-value"]'
     case WhenExpression.FocusSearchExcludeInput:
       return '[name="files-to-exclude-value"]'
+    case WhenExpression.FocusSearchWholeWord:
+      return '[title="Match Whole Word"]'
     default:
       return ''
   }

@@ -43,6 +43,7 @@ import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeWord.ts'
 import * as ToggleOpenEditors from '../ToggleOpenEditors/ToggleOpenEditors.ts'
 import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
+import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFiles.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
@@ -60,10 +61,12 @@ export const commandMap = {
   'TextSearch.focusMatchCasePrevious': WrapCommand.wrapCommand(SearchFocus.focusMatchCasePrevious),
   'TextSearch.focusMatchWholeWord': WrapCommand.wrapCommand(SearchFocus.focusMatchWholeWord),
   'TextSearch.focusNext': WrapCommand.wrapCommand(ListFocusNext.focusNext),
+  'TextSearch.focusNextInput': WrapCommand.wrapCommand(FocusNextInput.focusNextInput),
   'TextSearch.focusNextPage': WrapCommand.wrapCommand(ListFocusNextPage.focusNextPage),
   'TextSearch.focusPreserveCase': WrapCommand.wrapCommand(SearchFocus.focusPreserveCase),
   'TextSearch.focusPreserveCasePrevious': WrapCommand.wrapCommand(SearchFocus.focusPreserveCasePrevious),
   'TextSearch.focusPrevious': WrapCommand.wrapCommand(ListFocusPrevious.focusPrevious),
+  'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusNextInput.focusPreviousInput),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
