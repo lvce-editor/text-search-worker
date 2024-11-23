@@ -3,6 +3,8 @@ import * as Copy from '../Copy/Copy.ts'
 import * as Create from '../Create/Create.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
+import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
+import * as FocusPreviousInput from '../FocusPreviousInput/FocusPreviousInput.ts'
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
@@ -43,7 +45,6 @@ import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
 import * as ToggleMatchWholeWord from '../ToggleMatchWholeWord/ToggleMatchWholeWord.ts'
 import * as ToggleOpenEditors from '../ToggleOpenEditors/ToggleOpenEditors.ts'
 import * as TogglePreserveCase from '../TogglePreserveCase/TogglePreserveCase.ts'
-import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
 import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFiles.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
@@ -66,7 +67,7 @@ export const commandMap = {
   'TextSearch.focusPreserveCase': WrapCommand.wrapCommand(SearchFocus.focusPreserveCase),
   'TextSearch.focusPreserveCasePrevious': WrapCommand.wrapCommand(SearchFocus.focusPreserveCasePrevious),
   'TextSearch.focusPrevious': WrapCommand.wrapCommand(ListFocusPrevious.focusPrevious),
-  'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusNextInput.focusPreviousInput),
+  'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusPreviousInput.focusPreviousInput),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
