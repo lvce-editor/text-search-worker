@@ -39,7 +39,7 @@ export const wrap = (port: any): any => {
     get onmessage() {
       return this.listener
     },
-    set onmessage(listener) {
+    set onmessage(listener: any) {
       this.listener = listener
       const wrappedListener = (event: any): void => {
         const data = GetData.getData(event)

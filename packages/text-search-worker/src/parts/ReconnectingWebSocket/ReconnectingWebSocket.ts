@@ -1,14 +1,14 @@
 export const create = (url: string, args?: any): any => {
   const webSocket = new WebSocket(url, args)
 
-  const reconnect = () => {
+  const reconnect = (): void => {
     const originalOnMessage = context.webSocket.onmessage
     context.webSocket = new WebSocket(url, args)
     context.webSocket.onmessage = originalOnMessage
     context.webSocket.onclose = handleClose
   }
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setTimeout(reconnect, 2000)
   }
 
@@ -20,7 +20,7 @@ export const create = (url: string, args?: any): any => {
     set onmessage(value) {
       this.webSocket.onmessage = value
     },
-    send(message: any) {
+    send(message: any): void {
       this.webSocket.send(message)
     },
     addEventListener(type: any, listener: any): any {

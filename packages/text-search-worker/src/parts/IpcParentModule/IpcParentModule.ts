@@ -1,7 +1,7 @@
 import * as IpcParentType from '../IpcParentType/IpcParentType.ts'
 import * as IpcParentWithNodeAlternate from '../IpcParentWithNodeAlternate/IpcParentWithNodeAlternate.ts'
 
-export const getModule = (method: any) => {
+export const getModule = (method: any): any => {
   switch (method) {
     case IpcParentType.NodeAlternate:
       return IpcParentWithNodeAlternate
