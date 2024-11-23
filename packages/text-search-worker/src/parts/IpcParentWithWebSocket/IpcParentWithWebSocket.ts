@@ -7,7 +7,7 @@ import * as ReconnectingWebSocket from '../ReconnectingWebSocket/ReconnectingWeb
 import * as WaitForWebSocketToBeOpen from '../WaitForWebSocketToBeOpen/WaitForWebSocketToBeOpen.ts'
 import * as Location from '../Location/Location.ts'
 
-export const create = async ({ type }: { type: string }): any => {
+export const create = async ({ type }: { type: string }): Promise<any> => {
   Assert.string(type)
   const host = Location.getHost()
   const wsUrl = GetWebSocketUrl.getWebSocketUrl(type, host)
@@ -19,11 +19,11 @@ export const create = async ({ type }: { type: string }): any => {
   return webSocket
 }
 
-const getMessage = (event) => {
+const getMessage = (event: any): any => {
   return Json.parse(event.data)
 }
 
-export const wrap = (webSocket) => {
+export const wrap = (webSocket: any): any => {
   return {
     webSocket,
     /**
@@ -35,7 +35,7 @@ export const wrap = (webSocket) => {
     },
     set onmessage(listener) {
       this.listener = listener
-      const wrappedListener = (event) => {
+      const wrappedListener = (event: any): void => {
         const message = getMessage(event)
         const syntheticEvent = {
           data: message,
@@ -45,7 +45,7 @@ export const wrap = (webSocket) => {
       }
       this.webSocket.onmessage = wrappedListener
     },
-    send(message) {
+    send(message: any): void {
       const stringifiedMessage = Json.stringifyCompact(message)
       this.webSocket.send(stringifiedMessage)
     },
