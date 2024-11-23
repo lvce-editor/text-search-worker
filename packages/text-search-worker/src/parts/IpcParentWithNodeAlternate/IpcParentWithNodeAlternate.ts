@@ -52,10 +52,10 @@ export const wrap = (port: any): any => {
       }
       this.port.onmessage = wrappedListener
     },
-    send(message) {
+    send(message: any): void {
       this.port.postMessage(message)
     },
-    sendAndTransfer(message, transfer) {
+    sendAndTransfer(message: any, transfer: any): void {
       this.port.postMessage(message, transfer)
     },
   }
