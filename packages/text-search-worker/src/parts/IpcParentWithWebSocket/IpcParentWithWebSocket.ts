@@ -1,10 +1,10 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as FirstWebSocketEventType from '../FirstWebSocketEventType/FirstWebSocketEventType.ts'
 import * as GetWebSocketUrl from '../GetWebSocketUrl/GetWebSocketUrl.ts'
-import { IpcError } from '../IpcError/IpcError.js'
-import * as Json from '../Json/Json.js'
-import * as ReconnectingWebSocket from '../ReconnectingWebSocket/ReconnectingWebSocket.js'
-import * as WaitForWebSocketToBeOpen from '../WaitForWebSocketToBeOpen/WaitForWebSocketToBeOpen.js'
+import { IpcError } from '../IpcError/IpcError.ts'
+import * as Json from '../Json/Json.ts'
+import * as ReconnectingWebSocket from '../ReconnectingWebSocket/ReconnectingWebSocket.ts'
+import * as WaitForWebSocketToBeOpen from '../WaitForWebSocketToBeOpen/WaitForWebSocketToBeOpen.ts'
 import * as Location from '../Location/Location.ts'
 
 export const create = async ({ type }) => {
