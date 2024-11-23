@@ -51,5 +51,6 @@ test('create', () => {
     workspacePath: '',
     x: 0,
     y: 0,
+    listItems: [],
   })
 })
