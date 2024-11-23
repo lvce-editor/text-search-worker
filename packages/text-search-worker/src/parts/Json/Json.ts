@@ -1,9 +1,5 @@
 import { VError } from '../VError/VError.ts'
 
-export const stringify = (value: any): string => {
-  return JSON.stringify(value, null, 2) + '\n'
-}
-
 export const stringifyCompact = (value: any): string => {
   return JSON.stringify(value)
 }
