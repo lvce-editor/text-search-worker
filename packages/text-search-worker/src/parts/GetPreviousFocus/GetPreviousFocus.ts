@@ -3,32 +3,32 @@ import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getPreviousFocus = (focus: number, flags: number): number => {
   switch (focus) {
-    case WhenExpression.FocusSearchInput:
+    case WhenExpression.FocusSearchMatchCase:
       if (flags & ReplaceExpanded) {
         return WhenExpression.FocusSearchReplaceInput
       }
-      return WhenExpression.FocusSearchMatchCase
-    case WhenExpression.FocusSearchMatchCase:
-      return WhenExpression.FocusSearchWholeWord
+      return WhenExpression.FocusSearchInput
     case WhenExpression.FocusSearchWholeWord:
-      return WhenExpression.FocusSearchRegex
-    case WhenExpression.FocusSearchRegex:
-      if (flags & ReplaceExpanded) {
-        return WhenExpression.FocusSearchPreserveCase
-      }
-      return WhenExpression.FocusToggleDetails
-    case WhenExpression.FocusSearchReplaceInput:
       return WhenExpression.FocusSearchMatchCase
+    case WhenExpression.FocusSearchRegex:
+      return WhenExpression.FocusSearchWholeWord
     case WhenExpression.FocusSearchPreserveCase:
-      return WhenExpression.FocusSearchReplaceAll
+      return WhenExpression.FocusSearchRegex
+    case WhenExpression.FocusSearchReplaceInput:
+      return WhenExpression.FocusSearchInput
     case WhenExpression.FocusSearchReplaceAll:
-      return WhenExpression.FocusToggleDetails
-    case WhenExpression.FocusSearchIncludeInput:
-      return WhenExpression.FocusSearchOpenEditors
+      return WhenExpression.FocusSearchPreserveCase
+    case WhenExpression.FocusToggleDetails:
+      if (flags & ReplaceExpanded) {
+        return WhenExpression.FocusSearchReplaceAll
+      }
+      return WhenExpression.FocusSearchRegex
     case WhenExpression.FocusSearchOpenEditors:
-      return WhenExpression.FocusSearchExcludeInput
+      return WhenExpression.FocusSearchIncludeInput
     case WhenExpression.FocusSearchExcludeInput:
-      return WhenExpression.FocusIgnoreFiles
+      return WhenExpression.FocusSearchOpenEditors
+    case WhenExpression.FocusIgnoreFiles:
+      return WhenExpression.FocusSearchExcludeInput
     default:
       return focus
   }
