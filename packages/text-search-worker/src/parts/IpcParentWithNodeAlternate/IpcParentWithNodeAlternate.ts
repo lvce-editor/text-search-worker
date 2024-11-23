@@ -4,7 +4,7 @@ import * as IpcParentWithWebSocket from '../IpcParentWithWebSocket/IpcParentWith
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as SendMessagePortToElectron from '../SendMessagePortToElectron/SendMessagePortToElectron.ts'
 
-export const create = async (options: any) => {
+export const create = async (options: any): Promise<any> => {
   switch (options.platform) {
     case PlatformType.Web:
     case PlatformType.Remote:
