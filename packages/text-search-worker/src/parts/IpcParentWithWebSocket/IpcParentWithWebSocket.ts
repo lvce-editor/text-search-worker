@@ -7,7 +7,7 @@ import * as ReconnectingWebSocket from '../ReconnectingWebSocket/ReconnectingWeb
 import * as WaitForWebSocketToBeOpen from '../WaitForWebSocketToBeOpen/WaitForWebSocketToBeOpen.ts'
 import * as Location from '../Location/Location.ts'
 
-export const create = async ({ type }) => {
+export const create = async ({ type }: { type: string }): any => {
   Assert.string(type)
   const host = Location.getHost()
   const wsUrl = GetWebSocketUrl.getWebSocketUrl(type, host)

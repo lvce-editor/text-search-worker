@@ -1,4 +1,4 @@
-export const create = (url: string, args: any): any => {
+export const create = (url: string, args?: any): any => {
   const webSocket = new WebSocket(url, args)
 
   const reconnect = () => {
