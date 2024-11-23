@@ -1,5 +1,4 @@
 import { VError } from '../VError/VError.ts'
-import * as Character from '../Character/Character.ts'
 
 export const stringify = (value) => {
   return JSON.stringify(value, null, 2) + '\n'

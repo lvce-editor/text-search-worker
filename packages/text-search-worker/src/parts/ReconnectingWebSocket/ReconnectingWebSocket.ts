@@ -1,4 +1,4 @@
-export const create = (url, args) => {
+export const create = (url: string, args: any): any => {
   const webSocket = new WebSocket(url, args)
 
   const reconnect = () => {
@@ -8,7 +8,7 @@ export const create = (url, args) => {
     context.webSocket.onclose = handleClose
   }
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     setTimeout(reconnect, 2000)
   }
 
@@ -20,13 +20,13 @@ export const create = (url, args) => {
     set onmessage(value) {
       this.webSocket.onmessage = value
     },
-    send(message) {
+    send(message: any) {
       this.webSocket.send(message)
     },
-    addEventListener(type, listener) {
+    addEventListener(type: any, listener: any): any {
       this.webSocket.addEventListener(type, listener)
     },
-    removeEventListener(type, listener) {
+    removeEventListener(type: any, listener: any): any {
       this.webSocket.removeEventListener(type, listener)
     },
   }
