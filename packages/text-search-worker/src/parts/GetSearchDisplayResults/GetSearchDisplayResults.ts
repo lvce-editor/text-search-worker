@@ -3,24 +3,6 @@ import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisp
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-const getFilteredResults = (results: readonly SearchResult[], collapsedPaths: readonly string[]): readonly SearchResult[] => {
-  const filteredResults: SearchResult[] = []
-  let isExcluded = false
-  for (const result of results) {
-    if (result.type === TextSearchResultType.File) {
-      if (collapsedPaths.includes(result.text)) {
-        isExcluded = true
-      } else {
-        isExcluded = false
-      }
-    }
-    if (!isExcluded) {
-      filteredResults.push(result)
-    }
-  }
-  return filteredResults
-}
-
 export const getDisplayResults = (
   results: readonly SearchResult[],
   itemHeight: number,
@@ -29,12 +11,10 @@ export const getDisplayResults = (
   minLineY: number,
   maxLineY: number,
   replacement: string,
-  collapsedPaths: readonly string[],
   fileIcons: readonly string[],
   focusedIndex: number,
 ): readonly DisplaySearchResult[] => {
-  const displayResults = []
-  const filteredResults = getFilteredResults(results, collapsedPaths)
+  const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
   const searchTermLength = searchTerm.length
   let fileResult = {
@@ -42,7 +22,7 @@ export const getDisplayResults = (
   }
   let fileIconIndex = 0
   for (let i = minLineY; i < maxLineY; i++) {
-    const result = filteredResults[i]
+    const result = results[i]
     const displayResult = GetSearchDisplayResult.getDisplayResult(
       result,
       fileIcons,
