@@ -15,6 +15,7 @@ export interface SearchList {
   readonly inputSource: number
   readonly itemHeight: number
   readonly items: readonly any[]
+  readonly listItems: readonly any[]
   readonly listFocused: boolean
   readonly listFocusedIndex: number
   readonly loaded: boolean

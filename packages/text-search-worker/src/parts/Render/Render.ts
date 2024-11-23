@@ -24,14 +24,13 @@ const renderItems = {
   },
   apply(oldState: SearchState, newState: SearchState): any {
     const displayResults = GetSearchDisplayResults.getDisplayResults(
-      newState.items,
+      newState.listItems,
       newState.itemHeight,
       newState.fileCount,
       newState.value,
       newState.minLineY,
       newState.maxLineY,
       newState.replacement,
-      newState.collapsedPaths,
       newState.icons,
       newState.listFocusedIndex,
     )

@@ -15,6 +15,7 @@ export const create = ({
     itemHeight,
     headerHeight,
     items: [],
+    listItems: [],
     minimumSliderSize,
     focusedIndex: -1,
     touchOffsetY: 0,
