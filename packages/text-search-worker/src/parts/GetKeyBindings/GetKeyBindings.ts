@@ -8,7 +8,17 @@ export const getKeyBindings = (): readonly KeyBinding[] => {
     {
       key: KeyModifier.CtrlCmd | KeyModifier.Alt | KeyCode.Enter,
       command: 'Search.replaceAll',
-      when: WhenExpression.FocusSearchReplaceInput,
+      when: WhenExpression.FocusSearch,
+    },
+    {
+      key: KeyCode.Tab,
+      command: 'Search.focusNextInput',
+      when: WhenExpression.FocusSearch,
+    },
+    {
+      key: KeyModifier.Shift | KeyCode.Tab,
+      command: 'Search.focusPreviousInput',
+      when: WhenExpression.FocusSearch,
     },
     {
       key: KeyCode.DownArrow,
@@ -39,36 +49,6 @@ export const getKeyBindings = (): readonly KeyBinding[] => {
       key: KeyModifier.CtrlCmd | KeyCode.KeyC,
       command: 'Search.copy',
       when: WhenExpression.FocusSearchResults,
-    },
-    {
-      key: KeyCode.Tab,
-      command: 'Search.focusSearchValueNext',
-      when: WhenExpression.FocusSearchInput,
-    },
-    {
-      key: KeyModifier.Shift | KeyCode.Tab,
-      command: 'Search.focusReplaceValuePrevious',
-      when: WhenExpression.FocusSearchReplaceInput,
-    },
-    {
-      key: KeyCode.Tab,
-      command: 'Search.focusReplaceValueNext',
-      when: WhenExpression.FocusSearchReplaceInput,
-    },
-    {
-      key: KeyModifier.Shift | KeyCode.Tab,
-      command: 'Search.focusMatchCasePrevious',
-      when: WhenExpression.FocusSearchMatchCase,
-    },
-    {
-      key: KeyCode.Tab,
-      command: 'Search.focusRegexNext',
-      when: WhenExpression.FocusSearchRegex,
-    },
-    {
-      key: KeyModifier.Shift | KeyCode.Tab,
-      command: 'Search.focusPreserveCasePrevious',
-      when: WhenExpression.FocusSearchPreserveCase,
     },
     {
       key: KeyCode.Enter,

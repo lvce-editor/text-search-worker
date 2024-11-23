@@ -69,7 +69,7 @@ export const handleFocusIn = (state: SearchState, key: any): SearchState => {
   if (state.focus === focusKey) {
     return state
   }
-  void Focus.setFocus(focusKey)
+  void Focus.setFocus(WhenExpression.FocusSearch)
   return {
     ...state,
     focus: focusKey,
