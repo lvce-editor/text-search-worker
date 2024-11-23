@@ -1,12 +1,11 @@
 import * as GetData from '../GetData/GetData.ts'
-import * as Platform from '../Platform/Platform.ts'
-import * as PlatformType from '../PlatformType/PlatformType.ts'
-import * as SendMessagePortToElectron from '../SendMessagePortToElectron/SendMessagePortToElectron.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as IpcParentWithWebSocket from '../IpcParentWithWebSocket/IpcParentWithWebSocket.ts'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
+import * as SendMessagePortToElectron from '../SendMessagePortToElectron/SendMessagePortToElectron.ts'
 
 export const create = async (options: any) => {
-  switch (Platform.platform) {
+  switch (options.platform) {
     case PlatformType.Web:
     case PlatformType.Remote:
       const module = IpcParentWithWebSocket
