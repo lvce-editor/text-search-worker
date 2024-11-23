@@ -7,6 +7,8 @@ export const getFocusSelector = (focusKey: number): string => {
       return '[name="search-value"]'
     case WhenExpression.FocusSearchReplaceInput:
       return '[name="search-replace-value"]'
+    case WhenExpression.FocusToggleDetails:
+      return '[title="Toggle Search Details"]'
     case WhenExpression.FocusSearchMatchCase:
       return '[title="Match Case"]'
     case WhenExpression.FocusSearchPreserveCase:

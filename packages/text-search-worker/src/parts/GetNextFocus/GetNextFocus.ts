@@ -29,6 +29,8 @@ export const getNextFocus = (focus: number, flags: number): number => {
       return WhenExpression.FocusSearchExcludeInput
     case WhenExpression.FocusSearchExcludeInput:
       return WhenExpression.FocusIgnoreFiles
+    case WhenExpression.FocusToggleDetails:
+      return WhenExpression.FocusSearchIncludeInput
     default:
       return focus
   }
