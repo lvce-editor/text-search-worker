@@ -2,8 +2,9 @@ import { expect, test } from '@jest/globals'
 import * as GetSearchHeaderDetailsExpandedVirtualDom from '../src/parts/GetSearchHeaderDetailsExpandedVirtualDom/GetSearchHeaderDetailsExpandedVirtualDom.ts'
 
 test('getSearchHeaderDetailsExpandedVirtualDom', () => {
+  const flags = 0
   const message = 'test message'
-  const dom = GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(message)
+  const dom = GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(flags, message)
   expect(dom).toEqual([
     {
       childCount: 5,

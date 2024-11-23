@@ -5,7 +5,7 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderDetailsVirtualDom = (flags: number, message: string): readonly VirtualDomNode[] => {
   if (flags & DetailsExpanded) {
-    return GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(message)
+    return GetSearchHeaderDetailsExpandedVirtualDom.getSearchHeaderDetailsExpandedVirtualDom(flags, message)
   }
   return GetSearchHeaderDetailsCollapsedVirtualDom.getSearchHeaderDetailsCollapsedVirtualDom(message)
 }
