@@ -37,3 +37,11 @@ test('getFocusSelector - search exclude input', () => {
 test('getFocusSelector - unknown focus key', () => {
   expect(GetFocusSelector.getFocusSelector(-1)).toBe('')
 })
+
+test('getFocusSelector - toggle details', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusToggleDetails)).toBe('[title="Toggle Search Details"]')
+})
+
+test('getFocusSelector - replace all', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchReplaceAll)).toBe('[title="Replace All"]')
+})
