@@ -1,7 +1,7 @@
 import * as IpcParent from '../IpcParent/IpcParent.ts'
 import * as IpcParentType from '../IpcParentType/IpcParentType.ts'
 
-export const launchSearchProcess = async () => {
+export const launchSearchProcess = async (): Promise<any> => {
   const ipc = await IpcParent.create({
     method: IpcParentType.NodeAlternate,
     type: 'search-process',
