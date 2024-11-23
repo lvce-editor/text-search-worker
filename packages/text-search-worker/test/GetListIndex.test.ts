@@ -8,8 +8,8 @@ test('getListIndex - first item', () => {
   const y = 100
   const deltaY = 0
   const itemHeight = 20
-
-  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight)
+  const topHeight = 0
+  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight)
 
   expect(result).toBe(2) // (150 - 100 + 0) / 20 = 2.5 -> 2
 })
