@@ -1,14 +1,14 @@
 import { VError } from '../VError/VError.ts'
 
-export const stringify = (value) => {
+export const stringify = (value: any): string => {
   return JSON.stringify(value, null, 2) + '\n'
 }
 
-export const stringifyCompact = (value) => {
+export const stringifyCompact = (value: any): string => {
   return JSON.stringify(value)
 }
 
-export const parse = (content) => {
+export const parse = (content: string) => {
   if (content === 'undefined') {
     return null
   }
