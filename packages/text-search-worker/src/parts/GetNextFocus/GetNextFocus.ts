@@ -34,6 +34,7 @@ export const getNextFocus = (focus: number, flags: number): number => {
     case WhenExpression.FocusToggleDetails:
       return WhenExpression.FocusSearchIncludeInput
     default:
+      debugger
       return focus
   }
 }
