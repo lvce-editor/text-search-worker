@@ -1,34 +1,34 @@
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as InputName from '../InputName/InputName.ts'
 
-// TODO just return name
 export const getFocusSelector = (focusKey: number): string => {
   switch (focusKey) {
     case WhenExpression.FocusSearchInput:
-      return '[name="search-value"]'
+      return InputName.SearchValue
     case WhenExpression.FocusSearchReplaceInput:
-      return '[name="search-replace-value"]'
+      return InputName.ReplaceValue
     case WhenExpression.FocusToggleDetails:
-      return '[title="Toggle Search Details"]'
+      return InputName.ToggleSearchDetails
     case WhenExpression.FocusSearchMatchCase:
-      return '[title="Match Case"]'
+      return InputName.MatchCase
     case WhenExpression.FocusSearchPreserveCase:
-      return '[title="Preserve Case"]'
+      return InputName.PreserveCase
     case WhenExpression.FocusSearchRegex:
-      return '[title="Use Regular Expression"]'
+      return InputName.UseRegularExpression
     case WhenExpression.FocusSearchIncludeInput:
-      return '[name="files-to-include-value"]'
+      return InputName.FilesToInclude
     case WhenExpression.FocusSearchExcludeInput:
-      return '[name="files-to-exclude-value"]'
+      return InputName.FilesToExclude
     case WhenExpression.FocusSearchWholeWord:
-      return '[title="Match Whole Word"]'
+      return InputName.MatchWholeWord
     case WhenExpression.FocusSearchReplaceAll:
-      return '[title="Replace All"]'
+      return InputName.ReplaceAll
     case WhenExpression.FocusSearchOpenEditors:
-      return '[title="Search Only Open Editors"]'
+      return InputName.SearchOnlyOpenEditors
     case WhenExpression.FocusIgnoreFiles:
-      return '[title="Use Exclude Settings"]'
+      return InputName.UseExcludeSettings
     case WhenExpression.FocusToggleReplace:
-      return '[aria-label="Toggle Replace"]'
+      return InputName.ToggleReplace
     default:
       return ''
   }

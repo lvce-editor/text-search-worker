@@ -5,6 +5,7 @@ import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSear
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import * as InputName from '../InputName/InputName.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDomNode[] => {
@@ -23,7 +24,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
       childCount: SearchFlags.hasReplaceExpanded(flags) ? 2 : 1,
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
-      'search-value',
+      InputName.SearchValue,
       'Search',
       'handleInput',
       [
@@ -31,16 +32,19 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
           icon: ClassNames.MaskIconCaseSensitive,
           checked: SearchFlags.hasMatchCase(flags),
           title: SearchStrings.matchCase(),
+          name: InputName.MatchCase,
         },
         {
           icon: ClassNames.MaskIconWholeWord,
           checked: SearchFlags.hasMatchWholeWord(flags),
           title: SearchStrings.matchWholeWord(),
+          name: InputName.MatchWholeWord,
         },
         {
           icon: ClassNames.MaskIconRegex,
           checked: SearchFlags.hasUseRegularExpression(flags),
           title: SearchStrings.useRegularExpression(),
+          name: InputName.UseRegularExpression,
         },
       ],
       [],
@@ -50,7 +54,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
   if (SearchFlags.hasReplaceExpanded(flags)) {
     dom.push(
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
-        'search-replace-value',
+        InputName.ReplaceValue,
         'Replace',
         'handleReplaceInput',
         [
@@ -58,6 +62,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
             icon: ClassNames.MaskIconPreserveCase,
             checked: SearchFlags.hasPreserveCase(flags),
             title: SearchStrings.preserveCase(),
+            name: InputName.PreserveCase,
           },
         ],
         [
@@ -65,6 +70,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
             icon: ClassNames.MaskIconReplaceAll,
             checked: false,
             title: SearchStrings.replaceAll(),
+            name: InputName.ReplaceAll,
           },
         ],
       ),
