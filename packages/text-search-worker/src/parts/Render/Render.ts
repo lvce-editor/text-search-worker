@@ -45,8 +45,8 @@ const renderFocus = {
     return oldState.focus === newState.focus || newState.focusSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    const name = GetFocusSelector.getFocusSelector(newState.focus)
-    return ['Viewlet.focusElementByName', name, newState.focusSource]
+    const name = newState.focusSource === InputSource.User ? '' : GetFocusSelector.getFocusSelector(newState.focus)
+    return ['Viewlet.focusElementByName', name]
   },
 }
 
