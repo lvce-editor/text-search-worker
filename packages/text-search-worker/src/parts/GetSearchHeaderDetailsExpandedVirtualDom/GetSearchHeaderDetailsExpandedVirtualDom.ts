@@ -5,6 +5,7 @@ import * as GetSearchMessageVirtualDom from '../GetSearchMessageVirtualDom/GetSe
 import { OpenEditors, UseIgnoreFiles } from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import * as InputName from '../InputName/InputName.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
@@ -15,6 +16,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
       title: SearchStrings.searchOnlyOpenEditors(),
       command: 'searchOnlyOpenEditors',
       checked: Boolean(flags & OpenEditors),
+      name: InputName.SearchOnlyOpenEditors,
     },
   ]
 
@@ -24,6 +26,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
       title: SearchStrings.useExcludeSettings(),
       command: 'toggleUseExcludeSettings',
       checked: Boolean(flags & UseIgnoreFiles),
+      name: InputName.UseExcludeSettings,
     },
   ]
 
@@ -45,14 +48,14 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
       childCount: 1,
     },
     text(SearchStrings.filesToInclude()),
-    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-include-value', 'Include', 'handleIncludeInput', includeButtons, []),
+    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(InputName.FilesToInclude, 'Include', 'handleIncludeInput', includeButtons, []),
     {
       type: VirtualDomElements.H4,
       className: ClassNames.SearchHeaderDetailsHeading,
       childCount: 1,
     },
     text(SearchStrings.filesToExclude()),
-    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom('files-to-exclude-value', 'Exclude', 'handleExcludeInput', excludeButtons, []),
+    ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(InputName.FilesToExclude, 'Exclude', 'handleExcludeInput', excludeButtons, []),
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
   ]
 }
