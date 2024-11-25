@@ -1,30 +1,31 @@
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import * as InputName from '../InputName/InputName.ts'
 
 export const getSearchFocusKey = (key: string): number => {
   switch (key) {
-    case 'search-value':
+    case InputName.SearchValue:
       return WhenExpression.FocusSearchInput
-    case 'search-replace-value':
+    case InputName.ReplaceValue:
       return WhenExpression.FocusSearchReplaceInput
-    case 'Match Case':
+    case InputName.MatchCase:
       return WhenExpression.FocusSearchMatchCase
-    case 'Match Whole Word':
+    case InputName.MatchWholeWord:
       return WhenExpression.FocusSearchWholeWord
-    case 'Use Regular Expression':
+    case InputName.UseRegularExpression:
       return WhenExpression.FocusSearchRegex
-    case 'Replace All':
+    case InputName.ReplaceAll:
       return WhenExpression.FocusSearchReplaceAll
-    case 'Preserve Case':
+    case InputName.PreserveCase:
       return WhenExpression.FocusSearchPreserveCase
-    case 'Toggle Search Details':
+    case InputName.ToggleSearchDetails:
       return WhenExpression.FocusToggleDetails
-    case 'files-to-include-value':
+    case InputName.FilesToInclude:
       return WhenExpression.FocusSearchIncludeInput
-    case 'files-to-exclude-value':
+    case InputName.FilesToExclude:
       return WhenExpression.FocusSearchExcludeInput
-    case 'Search Only Open Editors':
+    case InputName.SearchOnlyOpenEditors:
       return WhenExpression.FocusSearchOpenEditors
-    case 'Use Exclude Settings':
+    case InputName.UseExcludeSettings:
       return WhenExpression.FocusIgnoreFiles
     default:
       return WhenExpression.Empty
