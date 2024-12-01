@@ -9,17 +9,12 @@ export const launchSearchProcessElectron = async (): Promise<any> => {
     commandMap: {},
     isMessagePortOpen: true,
   })
-  console.log('before send port')
   await ParentRpc.invokeAndTransfer(
     'SendMessagePortToElectron.sendMessagePortToElectron',
     port1,
     'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
   )
   port2.start()
-  console.log('after send port')
-
-  console.log('before promise')
   const rpc = await rpcPromise
-  console.log('after promise')
   return rpc
 }

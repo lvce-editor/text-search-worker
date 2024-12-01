@@ -21,7 +21,6 @@ export const selectIndexPreview = async (state: SearchState, searchResult: any, 
     throw new Error('Search result is missing file')
   }
   const { lineNumber } = searchResult
-  // console.log({ searchResult })
   const fileResult = items[fileIndex]
   const path = Workspace.getAbsolutePath(fileResult.text)
   Assert.string(path)
