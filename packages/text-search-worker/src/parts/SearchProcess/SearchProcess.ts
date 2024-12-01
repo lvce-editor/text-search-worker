@@ -1,22 +1,6 @@
-import * as LaunchSearchProcess from '../LaunchSearchProcess/LaunchSearchProcess.ts'
-
-interface State {
-  rpc: any
-}
-
-const state: State = {
-  rpc: undefined,
-}
-
-const getOrCreate = (): Promise<any> => {
-  if (!state.rpc) {
-    // @ts-ignore
-    state.rpc = LaunchSearchProcess.launchSearchProcess()
-  }
-  return state.rpc
-}
+import * as GetOrCreateSearchProcess from '../GetOrCreateSearchProcess/GetOrCreateSearchProcess.ts'
 
 export const invoke = async (method: string, ...params: any[]): Promise<any> => {
-  const rpc = await getOrCreate()
+  const rpc = await GetOrCreateSearchProcess.getOrCreate()
   return rpc.invoke(method, ...params)
 }
