@@ -16,6 +16,7 @@ export const create = (
   itemHeight?: number,
   value: string = '',
   replacement: string = '',
+  platform?: number,
 ): SearchState => {
   const state: SearchState = {
     uid,
@@ -56,6 +57,7 @@ export const create = (
     handleOffset: 0,
     focusSource: InputSource.User,
     flags: 0,
+    platform,
   }
   SearchViewStates.set(uid, state, state)
   return state

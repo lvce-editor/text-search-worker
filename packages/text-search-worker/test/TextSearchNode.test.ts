@@ -5,7 +5,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/SearchProcess/SearchProcess.ts', () => {
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
   return {
     invoke: jest.fn(() => {
       throw new Error('not implemented')
@@ -15,17 +15,17 @@ jest.unstable_mockModule('../src/parts/SearchProcess/SearchProcess.ts', () => {
 
 const TextSearchNode = await import('../src/parts/TextSearchNode/TextSearchNode.ts')
 
-const SearchProcess = await import('../src/parts/SearchProcess/SearchProcess.ts')
+const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 
 test('textSearch - error', async () => {
   // @ts-ignore
-  SearchProcess.invoke.mockRejectedValue(new TypeError('x is not a function'))
+  ParentRpc.invoke.mockRejectedValue(new TypeError('x is not a function'))
   await expect(TextSearchNode.textSearch('', '/test', 'abc', {})).rejects.toThrow(new TypeError('x is not a function'))
 })
 
 test('textSearch', async () => {
   // @ts-ignore
-  SearchProcess.invoke.mockResolvedValue({
+  ParentRpc.invoke.mockResolvedValue({
     results: [
       {
         type: TextSearchResultType.File,
@@ -59,8 +59,8 @@ test('textSearch', async () => {
       lineNumber: 0,
     },
   ])
-  expect(SearchProcess.invoke).toHaveBeenCalledTimes(1)
-  expect(SearchProcess.invoke).toHaveBeenCalledWith('TextSearch.search', {
+  expect(ParentRpc.invoke).toHaveBeenCalledTimes(1)
+  expect(ParentRpc.invoke).toHaveBeenCalledWith('SearchProcess.invoke', 'TextSearch.search', {
     ripGrepArgs: [
       '--hidden',
       '--no-require-git',
