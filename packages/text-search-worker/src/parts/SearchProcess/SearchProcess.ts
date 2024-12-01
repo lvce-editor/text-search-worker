@@ -1,6 +1,5 @@
-import * as GetOrCreateSearchProcess from '../GetOrCreateSearchProcess/GetOrCreateSearchProcess.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 
-export const invoke = async (method: string, ...params: any[]): Promise<any> => {
-  const rpc = await GetOrCreateSearchProcess.getOrCreate()
-  return rpc.invoke(method, ...params)
+export const invoke = (method: string, ...params: any[]): Promise<any> => {
+  return Rpc.invoke('SearchProcess.invoke', method, ...params)
 }
