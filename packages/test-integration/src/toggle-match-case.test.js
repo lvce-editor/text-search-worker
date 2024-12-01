@@ -14,5 +14,5 @@ export const test = async (rpc) => {
   await rpc.invoke('TextSearch.create', uid, x, y, width, height, workspacePath, assetDir, itemHeight, value, replacement)
   await rpc.invoke('TextSearch.toggleMatchCase', uid)
   const flags = await rpc.invoke('TextSearch.getFlags', uid)
-  assert.equal(flags, 1)
+  assert.equal(flags, 16)
 }
