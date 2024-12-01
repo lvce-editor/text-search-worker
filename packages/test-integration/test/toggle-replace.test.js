@@ -1,6 +1,8 @@
-import assert from 'assert'
+import { expect, test } from '@jest/globals'
+import { setup } from '../src/test.js'
 
-export const test = async (rpc) => {
+test('toggleReplace', async () => {
+  const rpc = await setup()
   const uid = 1
   const x = 0
   const y = 0
@@ -15,7 +17,7 @@ export const test = async (rpc) => {
   await rpc.invoke('TextSearch.loadContent', uid, null)
   await rpc.invoke('TextSearch.toggleReplace', uid, null)
   const commands = await rpc.invoke('TextSearch.render', uid)
-  assert.deepEqual(commands, [
+  expect(commands).toEqual([
     [
       'Viewlet.setDom2',
       1,
@@ -200,4 +202,4 @@ export const test = async (rpc) => {
       ],
     ],
   ])
-}
+})
