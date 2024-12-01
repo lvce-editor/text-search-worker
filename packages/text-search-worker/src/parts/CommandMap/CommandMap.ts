@@ -9,6 +9,7 @@ import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
+import * as GetFlags from '../GetFlags/GetFlags.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
@@ -114,6 +115,7 @@ export const commandMap = {
 
   // not wrapped
   'TextSearch.create': Create.create,
+  'TextSearch.getFlags': GetFlags.getFlags,
   'TextSearch.render': Render.doRender,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
