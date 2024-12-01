@@ -19,9 +19,7 @@ export const textSearch = async (scheme: string, root: string, query: string, op
     return result.results
   }
   if (platform === PlatformType.Electron) {
-    console.time('search')
     const result = await SearchProcessElectron.invoke('TextSearch.search', actualOptions)
-    console.timeEnd('search')
     return result.results
   }
   const results = await ParentRpc.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
