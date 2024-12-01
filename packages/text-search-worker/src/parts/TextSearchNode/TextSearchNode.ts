@@ -3,7 +3,7 @@ import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
-export const textSearch = async (scheme: string, root: string, query: string, options: any, assetDir: string, platform: number): Promise<any> => {
+export const textSearch = async (scheme: string, root: string, query: string, options: any, assetDir?: string, platform?: number): Promise<any> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
