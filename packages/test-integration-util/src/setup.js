@@ -36,6 +36,22 @@ export const setup = async () => {
       port.addEventListener('message', handleMessage)
       port.postMessage('ready')
     },
+    'SearchProcess.invoke'(method, ...params) {
+      if (method === 'TextSearch.search') {
+        return [
+          {
+            type: 1,
+            text: 'a.txt',
+          },
+          {
+            type: 2,
+            text: 'a',
+          },
+        ]
+      }
+      console.log({ method })
+      return []
+    },
   }
   const rpc = await createWorker(workerPath, commandMap)
   const wrapped = createWrappedRpc(rpc)
