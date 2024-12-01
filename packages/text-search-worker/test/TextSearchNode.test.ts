@@ -60,7 +60,7 @@ test('textSearch', async () => {
     },
   ])
   expect(ParentRpc.invoke).toHaveBeenCalledTimes(1)
-  expect(ParentRpc.invoke).toHaveBeenCalledWith('TextSearch.search', {
+  expect(ParentRpc.invoke).toHaveBeenCalledWith('SearchProcess.invoke', 'TextSearch.search', {
     ripGrepArgs: [
       '--hidden',
       '--no-require-git',
