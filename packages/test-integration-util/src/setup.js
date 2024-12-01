@@ -49,7 +49,6 @@ export const setup = async () => {
           },
         ]
       }
-      console.log({ method })
       return []
     },
   }
