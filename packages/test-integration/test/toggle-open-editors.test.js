@@ -1,6 +1,8 @@
-import assert from 'assert'
+import { expect, test } from '@jest/globals'
+import { setup } from '../src/test.js'
 
-export const test = async (rpc) => {
+test('toggleMatchWholeWord', async () => {
+  const rpc = await setup()
   const uid = 1
   const x = 0
   const y = 0
@@ -12,8 +14,7 @@ export const test = async (rpc) => {
   const value = ''
   const replacement = ''
   await rpc.invoke('TextSearch.create', uid, x, y, width, height, workspacePath, assetDir, itemHeight, value, replacement)
-  await rpc.invoke('TextSearch.loadContent', uid, null)
-  await rpc.invoke('TextSearch.toggleUseIgnoreFiles', uid)
+  await rpc.invoke('TextSearch.toggleOpenEditors', uid)
   const flags = await rpc.invoke('TextSearch.getFlags', uid)
-  assert.equal(flags, 128)
-}
+  expect(flags).toBe(64)
+})
