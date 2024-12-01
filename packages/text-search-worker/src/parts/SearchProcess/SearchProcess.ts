@@ -8,7 +8,7 @@ const state: State = {
   rpc: undefined,
 }
 
-export const getOrCreate = (): Promise<any> => {
+const getOrCreate = (): Promise<any> => {
   if (!state.rpc) {
     // @ts-ignore
     state.rpc = LaunchSearchProcess.launchSearchProcess()
