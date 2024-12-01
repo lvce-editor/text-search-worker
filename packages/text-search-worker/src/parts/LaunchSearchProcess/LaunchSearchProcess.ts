@@ -10,6 +10,5 @@ export const launchSearchProcess = async (): Promise<any> => {
     webSocket,
     commandMap: {},
   })
-  console.log({ rpc })
   return rpc
 }
