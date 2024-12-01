@@ -36,26 +36,6 @@ export const setup = async () => {
       port.addEventListener('message', handleMessage)
       port.postMessage('ready')
     },
-    'Editor.setSelections'() {},
-    'ExtensionHostManagement.activateByEvent'() {},
-    'GetEditorSourceActions.getEditorSourceActions'() {
-      return [
-        {
-          name: 'a',
-        },
-      ]
-    },
-    'Focus.setAdditionalFocus'() {},
-    'Focus.setFocus'() {},
-    'Viewlet.openWidget'() {},
-    'Languages.getLanguageConfiguration'() {
-      return {
-        comments: {
-          lineComment: '//',
-          blockComment: ['/*', '*/'],
-        },
-      }
-    },
   }
   const rpc = await createWorker(workerPath, commandMap)
   const syntaxHighlightingEnabled = true
