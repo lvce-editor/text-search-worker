@@ -1,5 +1,5 @@
 import * as Protocol from '../Protocol/Protocol.ts'
 
-export const getWebSocketProtocol = (): string => {
-  return location.protocol === Protocol.Https ? Protocol.Wss : Protocol.Ws
+export const getWebSocketProtocol = (locationProtocol: string): string => {
+  return locationProtocol === Protocol.Https ? Protocol.Wss : Protocol.Ws
 }
