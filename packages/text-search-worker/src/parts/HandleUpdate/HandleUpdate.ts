@@ -36,7 +36,6 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         useRegularExpression: SearchFlags.hasUseRegularExpression(flags),
       },
       state.assetDir,
-      state.platform,
     )
     if (!Array.isArray(results)) {
       throw new TypeError('results must be of type array')
