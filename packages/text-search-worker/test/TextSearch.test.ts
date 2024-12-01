@@ -19,7 +19,7 @@ test('textSearch - calls provider with correct arguments', async () => {
 
   const results = await textSearch(root, query, options, assetDir)
 
-  expect(mockProvider).toHaveBeenCalledWith('file', root, query, options, assetDir)
+  expect(mockProvider).toHaveBeenCalledWith('file', root, query, options, assetDir, undefined)
   expect(results).toEqual(['result1', 'result2'])
 })
 
@@ -44,5 +44,5 @@ test('textSearch - handles different protocols', async () => {
 
   await textSearch(root, query, options, assetDir)
 
-  expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir)
+  expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir, undefined)
 })
