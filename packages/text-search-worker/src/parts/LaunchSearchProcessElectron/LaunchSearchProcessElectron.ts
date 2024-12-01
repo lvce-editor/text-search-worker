@@ -15,6 +15,7 @@ export const launchSearchProcessElectron = async (): Promise<any> => {
     port1,
     'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
   )
+  port2.start()
   console.log('after send port')
 
   console.log('before promise')
