@@ -4,7 +4,7 @@
   "type": "module",
   "main": "create-editor.test.js",
   "scripts": {
-    "#test": "node src/test.js"
+    "test-integration": "node src/test.js"
   },
   "keywords": [],
   "author": "",
