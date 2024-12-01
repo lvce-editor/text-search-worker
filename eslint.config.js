@@ -21,6 +21,8 @@ export default tseslint.config(
       '**/server/**',
       '**/e2e/**',
       '**/memory/**',
+      '**/test-integration/**',
+      '**/test-integration-util/**',
       'scripts',
       'rollup.config.js',
       'eslint.config.js',
