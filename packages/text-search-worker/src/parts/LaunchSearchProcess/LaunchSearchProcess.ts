@@ -1,16 +1,14 @@
-import * as IpcParent from '../IpcParent/IpcParent.ts'
-import * as IpcParentType from '../IpcParentType/IpcParentType.ts'
-import * as PlatformType from '../PlatformType/PlatformType.ts'
+import { WebSocketRpcParent } from '@lvce-editor/rpc'
+import * as GetWebSocketUrl from '../GetWebSocketUrl/GetWebSocketUrl.ts'
+import * as Location from '../Location/Location.ts'
 
 export const launchSearchProcess = async (): Promise<any> => {
-  const ipc = await IpcParent.create({
-    method: IpcParentType.NodeAlternate,
-    type: 'search-process',
-    name: 'Search Process',
-    initialCommand: 'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
-    platform: PlatformType.Remote,
+  const host = Location.getHost()
+  const wsUrl = GetWebSocketUrl.getWebSocketUrl('search-process', host)
+  const rpc = await WebSocketRpcParent.create({
+    webSocketUrl: wsUrl,
+    commandMap: {},
   })
-  // TODO
-  // HandleIpc.handleIpc(ipc)
-  return ipc
+  console.log({ rpc })
+  return rpc
 }
