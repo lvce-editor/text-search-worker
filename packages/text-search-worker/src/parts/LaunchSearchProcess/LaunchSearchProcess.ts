@@ -11,5 +11,7 @@ export const launchSearchProcess = async (): Promise<any> => {
   // // TODO
   // // HandleIpc.handleIpc(ipc)
   // return ipc
+  // @ts-ignore
+  await new Promise(null)
   return {}
 }
