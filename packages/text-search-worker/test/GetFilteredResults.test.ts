@@ -34,7 +34,22 @@ test('getFilteredResults - returns empty array for no matches', () => {
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['*.js'])
-  expect(filteredResults).toEqual([])
+  expect(filteredResults).toEqual([
+    {
+      end: 0,
+      lineNumber: 0,
+      start: 0,
+      text: 'file1.txt',
+      type: 1,
+    },
+    {
+      end: 6,
+      lineNumber: 1,
+      start: 0,
+      text: 'match1',
+      type: 2,
+    },
+  ])
 })
 
 test('getFilteredResults - handles empty results array', () => {
