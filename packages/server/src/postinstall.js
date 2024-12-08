@@ -15,7 +15,6 @@ const nodeModulesPath = join(root, 'packages', 'server', 'node_modules')
 
 const textSearchWorkerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorkerMain.js')
 
-const serverPath = join(nodeModulesPath, '@lvce-editor', 'server')
 const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'static-server', 'static')
 
 const RE_COMMIT_HASH = /^[a-z\d]+$/
