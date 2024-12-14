@@ -9,8 +9,8 @@
   "description": "",
   "main": "src/setup.js",
   "devDependencies": {
-    "@lvce-editor/ipc": "^11.4.0",
-    "@lvce-editor/json-rpc": "^5.2.0",
+    "@lvce-editor/ipc": "^11.7.0",
+    "@lvce-editor/json-rpc": "^5.3.0",
     "@types/node": "^22.9.0"
   }
 }
