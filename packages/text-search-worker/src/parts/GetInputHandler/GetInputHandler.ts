@@ -1,11 +1,8 @@
+import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
-import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { InputHandler } from '../InputHandler/InputHandler.ts'
 
-interface InputHandler {
-  (state: SearchState, value: string, inputSource?: number): Promise<SearchState>
-}
 
 export const getInputHandler = (name: string): InputHandler => {
   switch (name) {
