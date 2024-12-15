@@ -1,40 +1,39 @@
-import { expect, jest, test } from '@jest/globals'
+import { expect, jest, test, beforeEach } from '@jest/globals'
 
-const mockEventListener = {
-  addEventListener: jest.fn(),
-  removeEventListener: jest.fn(),
+const mockRpc = {
+  invoke: jest.fn(),
 }
 
-test('listen - adds event listener', () => {
-  const { listen } = require('../src/parts/Listen/Listen.ts')
-  const type = 'click'
-  const listener = jest.fn()
+const mockParentRpc = {
+  setRpc: jest.fn(),
+}
 
-  listen(mockEventListener, type, listener)
+const mockWebWorkerRpcClient = {
+  create: jest.fn(),
+}
 
-  expect(mockEventListener.addEventListener).toHaveBeenCalledWith(type, listener)
-  expect(mockEventListener.removeEventListener).not.toHaveBeenCalled()
+beforeEach(() => {
+  jest.resetAllMocks()
 })
 
-test('listen - cleanup removes event listener', () => {
-  const { listen } = require('../src/parts/Listen/Listen.ts')
-  const type = 'click'
-  const listener = jest.fn()
-
-  const cleanup = listen(mockEventListener, type, listener)
-  cleanup()
-
-  expect(mockEventListener.removeEventListener).toHaveBeenCalledWith(type, listener)
+jest.unstable_mockModule('@lvce-editor/rpc', () => {
+  return {
+    WebWorkerRpcClient: mockWebWorkerRpcClient,
+  }
 })
 
-test('listen - cleanup can be called multiple times', () => {
-  const { listen } = require('../src/parts/Listen/Listen.ts')
-  const type = 'click'
-  const listener = jest.fn()
+jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => mockParentRpc)
 
-  const cleanup = listen(mockEventListener, type, listener)
-  cleanup()
-  cleanup()
+const Listen = await import('../src/parts/Listen/Listen.ts')
 
-  expect(mockEventListener.removeEventListener).toHaveBeenCalledTimes(1)
+test('listen - creates rpc client and sets it', async () => {
+  // @ts-ignore
+  mockWebWorkerRpcClient.create.mockResolvedValue(mockRpc)
+
+  await Listen.listen()
+
+  expect(mockWebWorkerRpcClient.create).toHaveBeenCalledWith({
+    commandMap: expect.any(Object),
+  })
+  expect(mockParentRpc.setRpc).toHaveBeenCalledWith(mockRpc)
 })
