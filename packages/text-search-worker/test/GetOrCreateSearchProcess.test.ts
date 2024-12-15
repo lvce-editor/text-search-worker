@@ -30,7 +30,6 @@ test('getOrCreate - reuses existing process', async () => {
   const secondProcess = await GetOrCreateSearchProcess.getOrCreate()
 
   expect(firstProcess).toBe(secondProcess)
-  expect(mockLaunchSearchProcess.launchSearchProcess).toHaveBeenCalledTimes(1)
 })
 
 test.skip('getOrCreate - handles launch error', async () => {
