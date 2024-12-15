@@ -3,7 +3,6 @@ import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import type { InputHandler } from '../InputHandler/InputHandler.ts'
 
-
 export const getInputHandler = (name: string): InputHandler => {
   switch (name) {
     case 'search-value':

@@ -7,7 +7,7 @@ test('getHost - returns location.host', () => {
   const originalLocation = global.location
   // @ts-ignore
   global.location = {
-    host: 'example.com:8080'
+    host: 'example.com:8080',
   }
 
   expect(Location.getHost()).toBe('example.com:8080')
@@ -21,7 +21,7 @@ test('getProtocol - returns location.protocol', () => {
   const originalLocation = global.location
   // @ts-ignore
   global.location = {
-    protocol: 'https:'
+    protocol: 'https:',
   }
 
   expect(Location.getProtocol()).toBe('https:')

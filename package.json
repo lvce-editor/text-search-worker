@@ -14,7 +14,8 @@
     "build": "node packages/build/src/build.js",
     "build:static": "node packages/build/src/build-static.js",
     "dev": "node packages/build/src/dev.js",
-    "measure": "cd packages/memory && npm run measure"
+    "measure": "cd packages/memory && npm run measure",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "Lvce Editor",
