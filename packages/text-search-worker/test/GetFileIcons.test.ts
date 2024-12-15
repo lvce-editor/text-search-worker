@@ -17,9 +17,9 @@ test('GetFileIcons', async () => {
 
   // Test data
   const mockFiles = [
-    { text: 'file1.txt', type: 'file' },
+    { text: 'file1.txt', type: TextSearchResultType.File },
     { text: 'file2.js', type: TextSearchResultType.Match },
-    { text: 'file3.css', type: 'file' },
+    { text: 'file3.css', type: TextSearchResultType.File },
   ]
 
   // Execute
