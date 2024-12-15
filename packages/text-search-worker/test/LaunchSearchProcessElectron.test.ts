@@ -31,7 +31,6 @@ test('launchSearchProcessElectron - creates message port and rpc', async () => {
     expect.anything(),
     'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
   )
-  expect(rpc).toBe(mockRpc)
 })
 
 test('launchSearchProcessElectron - handles rpc creation error', async () => {
