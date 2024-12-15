@@ -6,7 +6,7 @@ test('getWebSocketUrl - with http protocol', () => {
   const host = 'localhost:3000'
   const protocol = 'http:'
   const url = GetWebSocketUrl.getWebSocketUrl(processId, host, protocol)
-  expect(url).toBe('ws://localhost:3000/test-process')
+  expect(url).toBe('ws://localhost:3000/websocket/test-process')
 })
 
 test('getWebSocketUrl - with https protocol', () => {
