@@ -20,7 +20,7 @@ const LaunchSearchProcessElectron = await import('../src/parts/LaunchSearchProce
 const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 
 test('launchSearchProcessElectron - creates message port and rpc', async () => {
-  const rpc = await LaunchSearchProcessElectron.launchSearchProcessElectron()
+  await LaunchSearchProcessElectron.launchSearchProcessElectron()
   expect(MessagePortRpcParent.create).toHaveBeenCalledWith({
     messagePort: expect.anything(),
     commandMap: {},
