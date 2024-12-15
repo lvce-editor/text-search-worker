@@ -14,6 +14,7 @@ const GetOrCreateSearchProcess = await import('../src/parts/GetOrCreateSearchPro
 
 test('getOrCreate - creates new process when none exists', async () => {
   const mockRpc = { invoke: jest.fn() }
+  // @ts-ignore
   mockLaunchSearchProcess.launchSearchProcess.mockResolvedValue(mockRpc)
 
   const result = await GetOrCreateSearchProcess.getOrCreate()
@@ -23,6 +24,7 @@ test('getOrCreate - creates new process when none exists', async () => {
 
 test('getOrCreate - reuses existing process', async () => {
   const mockRpc = { invoke: jest.fn() }
+  // @ts-ignore
   mockLaunchSearchProcess.launchSearchProcess.mockResolvedValue(mockRpc)
 
   const firstProcess = await GetOrCreateSearchProcess.getOrCreate()
@@ -33,6 +35,7 @@ test('getOrCreate - reuses existing process', async () => {
 })
 
 test('getOrCreate - handles launch error', async () => {
+  // @ts-ignore
   mockLaunchSearchProcess.launchSearchProcess.mockRejectedValue(new Error('Failed to launch process'))
 
   await expect(GetOrCreateSearchProcess.getOrCreate()).rejects.toThrow('Failed to launch process')
