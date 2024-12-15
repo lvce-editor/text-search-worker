@@ -2,8 +2,12 @@ import { expect, test, jest } from '@jest/globals'
 import { WebSocketRpcParent } from '@lvce-editor/rpc'
 
 jest.unstable_mockModule('../src/parts/Location/Location.ts', () => ({
-  getHost: () => 'localhost:3000',
-  getProtocol: () => 'http:',
+  getHost(): string {
+    return 'localhost:3000'
+  },
+  getProtocol(): string {
+    return 'http:'
+  },
 }))
 
 jest.unstable_mockModule('../src/parts/GetWebSocketUrl/GetWebSocketUrl.ts', () => ({
