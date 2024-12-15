@@ -61,7 +61,7 @@ test('handleSharedInput - unknown input handler throws error', async () => {
   const name = 'unknown-handler'
   const value = 'test'
 
-  await expect(handleSharedInput(state, name, value)).rejects.toThrow('unknown input handler: unknown-handler')
+  expect(() => handleSharedInput(state, name, value)).toThrow('unknown input handler: unknown-handler')
 })
 
 test('handleSharedInput - uses default input source when not provided', async () => {
