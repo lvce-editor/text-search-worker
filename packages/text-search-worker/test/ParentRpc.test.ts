@@ -15,7 +15,7 @@ test('invoke - successfully invokes command', async () => {
 
 test('invoke - handles error from rpc', async () => {
   const mockRpc = {
-    invoke(): void {
+    async invoke(): Promise<void> {
       throw new Error('test error')
     },
   }
