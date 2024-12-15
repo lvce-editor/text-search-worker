@@ -3,7 +3,9 @@ import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.ts'
 
 test('invoke - successfully invokes command', async () => {
   const mockRpc = {
-    invoke: async (command: string, ...args: any[]) => 'test result',
+    async invoke(): Promise<string> {
+      return 'test result'
+    },
   }
   ParentRpc.setRpc(mockRpc)
 
@@ -13,7 +15,7 @@ test('invoke - successfully invokes command', async () => {
 
 test('invoke - handles error from rpc', async () => {
   const mockRpc = {
-    invoke: async () => {
+    async invoke(): Promise<void> {
       throw new Error('test error')
     },
   }
@@ -24,7 +26,9 @@ test('invoke - handles error from rpc', async () => {
 
 test('invoke - handles undefined arguments', async () => {
   const mockRpc = {
-    invoke: async (command: string, ...args: any[]) => 'success',
+    async invoke(): Promise<string> {
+      return 'success'
+    },
   }
   ParentRpc.setRpc(mockRpc)
 
