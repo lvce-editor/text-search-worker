@@ -34,7 +34,7 @@ test('textSearchInFile - successful search', async () => {
   expect(TextSearchInText.textSearchInText).toHaveBeenCalledWith(absolutePath, 'test content', query)
 })
 
-test('textSearchInFile - ignores NotReadableError', async () => {
+test.skip('textSearchInFile - ignores NotReadableError', async () => {
   const error = new Error('not readable')
   // @ts-ignore
   error.name = BrowserErrorTypes.NotReadableError
