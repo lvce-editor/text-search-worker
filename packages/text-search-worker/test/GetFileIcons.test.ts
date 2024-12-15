@@ -11,21 +11,18 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => ({
   invoke: mockRpc.invoke,
 }))
 
-test('GetFileIcons', async () => {
-  // Import after mocking
-  const { getFileIcons } = await import('../src/parts/GetFileIcons/GetFileIcons.ts')
+const { getFileIcons } = await import('../src/parts/GetFileIcons/GetFileIcons.ts')
 
-  // Test data
+
+test('GetFileIcons', async () => {
   const mockFiles = [
     { text: 'file1.txt', type: TextSearchResultType.File },
     { text: 'file2.js', type: TextSearchResultType.Match },
     { text: 'file3.css', type: TextSearchResultType.File },
   ]
 
-  // Execute
   const result = await getFileIcons(mockFiles)
 
-  // Verify
   expect(result).toEqual(['file-icon', 'file-icon'])
   expect(mockRpc.invoke).toHaveBeenCalledTimes(2)
   expect(mockRpc.invoke).toHaveBeenCalledWith('IconTheme.getFileIcon', { name: 'file1.txt' })
