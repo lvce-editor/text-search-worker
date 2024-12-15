@@ -14,7 +14,7 @@ test('getWebSocketUrl - with https protocol', () => {
   const host = 'example.com'
   const protocol = 'https:'
   const url = GetWebSocketUrl.getWebSocketUrl(processId, host, protocol)
-  expect(url).toBe('wss://example.com/test-process')
+  expect(url).toBe('wss://example.com/websocket/test-process')
 })
 
 test('getWebSocketUrl - with custom port', () => {
