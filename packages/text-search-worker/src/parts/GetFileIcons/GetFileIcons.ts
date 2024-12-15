@@ -7,8 +7,8 @@ const getFileIcon = (file: any): Promise<string> => {
 
 export const getFileIcons = async (matches: readonly any[]): Promise<readonly string[]> => {
   // TODO cache file icons
-  const files = GetFiles.getFiles(matches)
-  const promises = (await files).map(getFileIcon)
+  const files = await GetFiles.getFiles(matches)
+  const promises = ( files).map(getFileIcon)
   const icons = await Promise.all(promises)
   return icons
 }
