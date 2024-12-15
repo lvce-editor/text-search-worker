@@ -13,7 +13,6 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => ({
 
 const { getFileIcons } = await import('../src/parts/GetFileIcons/GetFileIcons.ts')
 
-
 test('GetFileIcons', async () => {
   const mockFiles = [
     { text: 'file1.txt', type: TextSearchResultType.File },
