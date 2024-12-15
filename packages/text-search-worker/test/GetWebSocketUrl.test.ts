@@ -22,5 +22,5 @@ test('getWebSocketUrl - with custom port', () => {
   const host = 'localhost:8080'
   const protocol = 'http:'
   const url = GetWebSocketUrl.getWebSocketUrl(processId, host, protocol)
-  expect(url).toBe('ws://localhost:8080/test-process')
+  expect(url).toBe('ws://localhost:8080/websocket/test-process')
 })
