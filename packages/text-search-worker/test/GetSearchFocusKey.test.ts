@@ -31,6 +31,26 @@ test('preserveCase', () => {
   expect(GetSearchFocusKey.getSearchFocusKey(InputName.PreserveCase)).toBe(WhenExpression.FocusSearchPreserveCase)
 })
 
+test('filesToInclude', () => {
+  expect(GetSearchFocusKey.getSearchFocusKey(InputName.FilesToInclude)).toBe(WhenExpression.FocusSearchIncludeInput)
+})
+
+test('filesToExclude', () => {
+  expect(GetSearchFocusKey.getSearchFocusKey(InputName.FilesToExclude)).toBe(WhenExpression.FocusSearchExcludeInput)
+})
+
+test('toggleDetails', () => {
+  expect(GetSearchFocusKey.getSearchFocusKey(InputName.ToggleSearchDetails)).toBe(WhenExpression.FocusToggleDetails)
+})
+
+test('openEditors', () => {
+  expect(GetSearchFocusKey.getSearchFocusKey(InputName.SearchOnlyOpenEditors)).toBe(WhenExpression.FocusSearchOpenEditors)
+})
+
+test('ignoreFiles', () => {
+  expect(GetSearchFocusKey.getSearchFocusKey(InputName.UseExcludeSettings)).toBe(WhenExpression.FocusIgnoreFiles)
+})
+
 test('other', () => {
   const key = ''
   expect(GetSearchFocusKey.getSearchFocusKey(key)).toBe(WhenExpression.Empty)
