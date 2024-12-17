@@ -1,6 +1,6 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 
-export interface ConfirmPromptOptions {
+interface ConfirmPromptOptions {
   readonly title: string
   readonly confirmMessage: string
 }
