@@ -1,43 +1,5 @@
 import * as I18nString from '../I18NString/I18NString.ts'
-
-/**
- * @enum {string}
- */
-const UiStrings = {
-  ClearSearchResults: 'Clear Search Results',
-  CollapseAll: 'Collapse All',
-  ConfirmReplaceAll: 'Replace All?',
-  ConfirmReplaceManyOccurrencesInManyFiles: "Replace {PH1} occurrences across {PH2} files with '{PH3}'",
-  ConfirmReplaceManyOccurrencesInManyFilesNoValue: 'Replace {PH1} occurrences across {PH2} files',
-  ConfirmReplaceManyOccurrencesInOneFile: "Replace {PH1} occurrences across 1 file with '{PH2}'",
-  ConfirmReplaceManyOccurrencesInOneFileNoValue: 'Replace {PH1} occurrences across 1 file',
-  ConfirmReplaceOneOccurrenceInOneFile: "Replace 1 occurrence across 1 file with '{PH1}'",
-  ConfirmReplaceOneOccurrenceInOneFileNoValue: 'Replace 1 occurrence across 1 file',
-  CopyPath: 'Copy Path',
-  Dismiss: 'Dismiss',
-  ManyResultsInManyFiles: '{PH1} results in {PH2} files',
-  ManyResultsInOneFile: '{PH1} results in 1 file',
-  MatchCase: 'Match Case',
-  MatchWholeWord: 'Match Whole Word',
-  NoResults: 'No results found',
-  Oneresult: '1 result in 1 file',
-  OpenNewSearchEditor: 'Open New Search Editor',
-  PreserveCase: 'Preserve Case',
-  Refresh: 'Refresh',
-  Replace: 'Replace',
-  ReplaceAll: 'Replace All',
-  ReplacedManyOccurrencesInManyFiles: "Replaced {PH1} occurrences across {PH2} files with '{PH3}'",
-  ReplacedManyOccurrencesInOneFile: "Replaced {PH1} occurrences across 1 file with '{PH2}'",
-  ReplacedOneOccurrenceInOneFile: "Replaced 1 occurrence across 1 file with '{PH1}'",
-  ToggleReplace: 'Toggle Replace',
-  UseRegularExpression: 'Use Regular Expression',
-  ViewAsTree: 'View as Tree',
-  FilesToInclude: 'Files to Include',
-  FilesToExclude: 'Files to Exclude',
-  ToggleSearchDetails: 'Toggle Search Details',
-  SearchOnlyOpenEditors: 'Search Only Open Editors',
-  UseExcludeSettings: 'Use Exclude Settings',
-}
+import * as UiStrings from '../UiStrings/UiStrings.ts'
 
 export const noResults = (): string => {
   return I18nString.i18nString(UiStrings.NoResults)
