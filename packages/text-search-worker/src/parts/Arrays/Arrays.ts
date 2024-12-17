@@ -29,11 +29,3 @@ export const lastIndex = <T>(array: readonly T[]): number => {
 export const remove = <T>(array: readonly T[], index: number, deleteCount: number): readonly T[] => {
   return array.toSpliced(index, deleteCount)
 }
-
-export const fromAsync = async (asyncIterable: any): Promise<any[]> => {
-  const children = []
-  for await (const value of asyncIterable) {
-    children.push(value)
-  }
-  return children
-}
