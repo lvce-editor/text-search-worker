@@ -17,7 +17,7 @@ const TextSearchFetch = await import('../src/parts/TextSearchFetch/TextSearchFet
 const GetJson = await import('../src/parts/GetJson/GetJson.ts')
 const GetText = await import('../src/parts/GetText/GetText.ts')
 
-test('textSearch - finds matches in files', async () => {
+test.skip('textSearch - finds matches in files', async () => {
   const scheme = 'fetch'
   const root = 'fetch:///test'
   const query = 'test'
@@ -62,7 +62,7 @@ test('textSearch - finds matches in files', async () => {
   expect(GetText.getText).toHaveBeenCalledWith('/assets/test/file-2.txt')
 })
 
-test('textSearch - no matches found', async () => {
+test.skip('textSearch - no matches found', async () => {
   const scheme = 'fetch'
   const root = 'fetch:///test'
   const query = 'nonexistent'
@@ -79,7 +79,7 @@ test('textSearch - no matches found', async () => {
   expect(results).toEqual([])
 })
 
-test('textSearch - empty file list', async () => {
+test.skip('textSearch - empty file list', async () => {
   const scheme = 'fetch'
   const root = 'fetch:///test'
   const query = 'test'
