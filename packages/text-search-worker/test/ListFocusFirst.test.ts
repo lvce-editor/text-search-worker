@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as ListFocusFirst from '../src/parts/ListFocusFirst/ListFocusFirst.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('focusFirst', () => {
   const initialState: SearchState = {

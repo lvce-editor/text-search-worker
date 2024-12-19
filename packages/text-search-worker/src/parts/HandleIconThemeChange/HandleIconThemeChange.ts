@@ -1,5 +1,5 @@
-import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 
 export const handleIconThemeChange = async (state: SearchState): Promise<SearchState> => {
   const { items, minLineY, maxLineY } = state

@@ -1,5 +1,5 @@
-import * as Rpc from '../ParentRpc/ParentRpc.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as Rpc from '../ParentRpc/ParentRpc.ts'
 
 export const copy = async (state: SearchState): Promise<SearchState> => {
   const { items, listFocusedIndex } = state

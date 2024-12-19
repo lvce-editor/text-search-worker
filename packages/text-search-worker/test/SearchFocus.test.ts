@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
-import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as Create from '../src/parts/Create/Create.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as SearchFocus from '../src/parts/SearchFocus/SearchFocus.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
-import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('focusSearchValueNext - without replace expanded', () => {
   const state: SearchState = {

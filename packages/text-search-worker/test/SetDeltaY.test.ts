@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { setDeltaY } from '../src/parts/SetDeltaY/SetDeltaY.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('setDeltaY - no change when same deltaY', () => {
   const state: SearchState = {

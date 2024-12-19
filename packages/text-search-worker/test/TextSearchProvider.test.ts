@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
-import * as TextSearchProvider from '../src/parts/TextSearchProvider/TextSearchProvider.ts'
-import * as TextSearchNode from '../src/parts/TextSearchNode/TextSearchNode.ts'
-import * as TextSearchWeb from '../src/parts/TextSearchWeb/TextSearchWeb.ts'
+import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
 import * as TextSearchFetch from '../src/parts/TextSearchFetch/TextSearchFetch.ts'
 import * as TextSearchHtml from '../src/parts/TextSearchHtml/TextSearchHtml.ts'
-import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
+import * as TextSearchNode from '../src/parts/TextSearchNode/TextSearchNode.ts'
+import * as TextSearchProvider from '../src/parts/TextSearchProvider/TextSearchProvider.ts'
+import * as TextSearchWeb from '../src/parts/TextSearchWeb/TextSearchWeb.ts'
 
 test('getProvider - empty scheme returns node search', () => {
   expect(TextSearchProvider.getProvider('')).toBe(TextSearchNode.textSearch)

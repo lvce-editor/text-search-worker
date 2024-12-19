@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const handleContextMenuKeyboard = async (state: SearchState): Promise<SearchState> => {
   const x = state.x // TODO

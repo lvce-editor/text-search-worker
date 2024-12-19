@@ -1,12 +1,12 @@
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
+import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-import * as InputName from '../InputName/InputName.ts'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDomNode[] => {
   const dom: VirtualDomNode[] = [

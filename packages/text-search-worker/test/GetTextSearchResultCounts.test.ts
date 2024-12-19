@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import { getTextSearchResultCounts } from '../src/parts/GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 
 test('getTextSearchResultCounts returns correct counts for mixed results', () => {
   const results: readonly SearchResult[] = [

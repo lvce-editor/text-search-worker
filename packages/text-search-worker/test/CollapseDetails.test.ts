@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
-import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchHeader } from '../src/parts/SearchHeader/SearchHeader.ts'
 import * as CollapseDetails from '../src/parts/CollapseDetails/CollapseDetails.ts'
+import * as Create from '../src/parts/Create/Create.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('collapseDetails - collapses expanded details', () => {

@@ -1,5 +1,5 @@
-import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
 export const handleScrollBarClick = (state: SearchState, eventY: number): SearchState => {

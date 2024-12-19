@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 
 const focusIndexScrollUp = (state: SearchState, index: number, listHeight: number, itemHeight: number, itemsLength: number): SearchState => {
   const newMinLineY = index

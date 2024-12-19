@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { saveState } from '../src/parts/SaveState/SaveState.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('saveState', () => {
   let flags = 0

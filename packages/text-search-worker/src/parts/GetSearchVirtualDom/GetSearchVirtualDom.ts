@@ -1,10 +1,10 @@
-import * as ClassNames from '../ClassNames/ClassNames.ts'
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchHeaderVirtualDom from '../GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
 import * as GetSearchResultsVirtualDom from '../GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],

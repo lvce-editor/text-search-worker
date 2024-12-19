@@ -1,6 +1,7 @@
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
-import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts'
 import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'
 import * as GetFileIconVirtualDom from '../GetFileIconVirtualDom/GetFileIconVirtualDom.ts'
@@ -8,7 +9,6 @@ import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
   const { type, matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, matchCount, focused } = rowInfo

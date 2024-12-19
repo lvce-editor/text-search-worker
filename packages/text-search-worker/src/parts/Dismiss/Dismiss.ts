@@ -1,6 +1,6 @@
-import * as Arrays from '../Arrays/Arrays.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as Arrays from '../Arrays/Arrays.ts'
 import * as ViewletSearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
