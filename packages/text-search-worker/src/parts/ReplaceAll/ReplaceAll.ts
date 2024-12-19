@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetBulkReplacementEdits from '../GetBulkReplacementEdits/GetBulkReplacementEdits.ts'
 import * as Rpc from '../ParentRpc/ParentRpc.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const replaceAll = async (state: SearchState): Promise<SearchState> => {
   const { workspacePath, items, replacement } = state

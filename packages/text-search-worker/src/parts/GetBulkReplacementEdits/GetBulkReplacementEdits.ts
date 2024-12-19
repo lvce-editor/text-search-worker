@@ -1,6 +1,6 @@
+import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import * as Arrays from '../Arrays/Arrays.ts'
 import * as Assert from '../Assert/Assert.ts'
-import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 interface BulkReplacementEdits {

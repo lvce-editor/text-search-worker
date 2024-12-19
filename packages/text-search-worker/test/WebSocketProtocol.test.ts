@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals'
-import * as WebSocketProtocol from '../src/parts/WebSocketProtocol/WebSocketProtocol.ts'
 import * as Protocol from '../src/parts/Protocol/Protocol.ts'
+import * as WebSocketProtocol from '../src/parts/WebSocketProtocol/WebSocketProtocol.ts'
 
 test('getWebSocketProtocol - returns wss: for https:', () => {
   expect(WebSocketProtocol.getWebSocketProtocol(Protocol.Https)).toBe(Protocol.Wss)

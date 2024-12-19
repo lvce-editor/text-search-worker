@@ -1,6 +1,6 @@
 import { expect, jest, test } from '@jest/globals'
-import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as Create from '../src/parts/Create/Create.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockWorkspace = {

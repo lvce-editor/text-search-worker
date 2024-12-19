@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetSearchDisplayResults from '../src/parts/GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import * as GetSearchDisplayResults from '../src/parts/GetSearchDisplayResults/GetSearchDisplayResults.ts'
 
 test('getDisplayResults', () => {
   const results: readonly SearchResult[] = [

@@ -1,5 +1,5 @@
-import * as Assert from '../Assert/Assert.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as Assert from '../Assert/Assert.ts'
 import { setDeltaY } from '../SetDeltaY/SetDeltaY.ts'
 
 export const handleWheel = (state: SearchState, deltaMode: number, deltaY: number): SearchState => {

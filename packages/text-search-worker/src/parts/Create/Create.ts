@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'

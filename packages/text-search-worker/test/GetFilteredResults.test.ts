@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetFilteredResults from '../src/parts/GetFilteredResults/GetFilteredResults.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 
 test('getFilteredResults - returns all results when no filters', () => {
   const results: SearchResult[] = [
