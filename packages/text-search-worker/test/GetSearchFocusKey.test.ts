@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchFocusKey from '../src/parts/GetSearchFocusKey/GetSearchFocusKey.ts'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 import * as InputName from '../src/parts/InputName/InputName.ts'
+import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
 test('searchValue', () => {
   expect(GetSearchFocusKey.getSearchFocusKey(InputName.SearchValue)).toBe(WhenExpression.FocusSearchInput)

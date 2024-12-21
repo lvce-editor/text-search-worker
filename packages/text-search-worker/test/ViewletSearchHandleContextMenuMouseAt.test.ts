@@ -1,7 +1,7 @@
 import { expect, test, jest } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 const mockContextMenu = {
   show: jest.fn(),

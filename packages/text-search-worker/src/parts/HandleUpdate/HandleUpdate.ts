@@ -1,13 +1,13 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
-import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }

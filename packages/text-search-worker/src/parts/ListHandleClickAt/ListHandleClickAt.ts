@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetListIndex from '../GetListIndex/GetListIndex.ts'
 import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 
 export const handleClickAt = (state: SearchState, eventX: number, eventY: number): Promise<SearchState> => {

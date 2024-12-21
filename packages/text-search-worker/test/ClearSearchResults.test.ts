@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
-import * as Create from '../src/parts/Create/Create.ts'
-import * as ClearSearchResults from '../src/parts/ClearSearchResults/ClearSearchResults.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
+import * as ClearSearchResults from '../src/parts/ClearSearchResults/ClearSearchResults.ts'
+import * as Create from '../src/parts/Create/Create.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
+import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
 test('clearSearchResults - clears state and focuses search input', () => {
   const state: SearchState = {

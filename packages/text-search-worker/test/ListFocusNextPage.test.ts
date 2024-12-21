@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { focusNextPage } from '../src/parts/ListFocusNextPage/ListFocusNextPage.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('focusNextPage - returns same state when at last index', () => {
   const state: SearchState = {

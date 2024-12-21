@@ -1,5 +1,5 @@
-import * as MouseEventType from '../MouseEventType/MouseEventType.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as MouseEventType from '../MouseEventType/MouseEventType.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 

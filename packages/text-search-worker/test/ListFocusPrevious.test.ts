@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as ListFocusPrevious from '../src/parts/ListFocusPrevious/ListFocusPrevious.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 test('focusPrevious - returns same state when focusedIndex is 0', () => {
   const state: SearchState = {

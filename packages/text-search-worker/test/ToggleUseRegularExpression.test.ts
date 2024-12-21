@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as ToggleUseRegularExpression from '../src/parts/ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
+import * as Create from '../src/parts/Create/Create.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
+import * as ToggleUseRegularExpression from '../src/parts/ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 
 test('toggleUseRegularExpression', () => {
   const initialState: SearchState = {
