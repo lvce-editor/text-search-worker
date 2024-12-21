@@ -1,3 +1,4 @@
+import perfectionist from 'eslint-plugin-perfectionist'
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 
@@ -48,6 +49,21 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/require-await': 'off',
+    },
+  },
+  {
+    plugins: {
+      perfectionist,
+    },
+    rules: {
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          newlinesBetween: 'never',
+        },
+      ],
     },
   },
 )
