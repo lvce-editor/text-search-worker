@@ -47,6 +47,7 @@ test('handle-input', async () => {
           className: 'IconButton SearchToggleButton',
           'data-command': 'toggleReplace',
           title: 'Toggle Replace',
+          name: 'ToggleReplace',
           type: 1,
         },
         {
@@ -152,6 +153,7 @@ test('handle-input', async () => {
           role: 'button',
           tabIndex: 0,
           title: 'Toggle Search Details',
+          name: 'ToggleSearchDetails',
           type: 4,
         },
         {

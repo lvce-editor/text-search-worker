@@ -29,6 +29,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       'data-command': 'toggleReplace',
       title: 'Toggle Replace',
       type: 1,
+      name: 'ToggleReplace',
     },
     {
       childCount: 0,
@@ -134,6 +135,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       tabIndex: 0,
       title: 'Toggle Search Details',
       type: 4,
+      name: 'ToggleSearchDetails',
     },
     {
       childCount: 0,

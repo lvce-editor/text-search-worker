@@ -44,6 +44,7 @@ test('render', async () => {
           ariaExpanded: false,
           childCount: 1,
           'data-command': 'toggleReplace',
+          name: 'ToggleReplace',
         },
         {
           type: 4,
@@ -133,6 +134,7 @@ test('render', async () => {
           ariaLabel: 'Toggle Search Details',
           title: 'Toggle Search Details',
           childCount: 1,
+          name: 'ToggleSearchDetails',
         },
         {
           type: 4,

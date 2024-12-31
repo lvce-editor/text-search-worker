@@ -72,6 +72,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       'data-command': 'toggleReplace',
       title: 'Toggle Replace',
       type: 1,
+      name: 'ToggleReplace',
     },
     {
       childCount: 0,
@@ -176,6 +177,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       role: 'button',
       tabIndex: 0,
       title: 'Toggle Search Details',
+      name: 'ToggleSearchDetails',
       type: 4,
     },
     {
