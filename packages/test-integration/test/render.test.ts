@@ -44,6 +44,7 @@ test('render', async () => {
           ariaExpanded: false,
           childCount: 1,
           'data-command': 'toggleReplace',
+          name: 'ToggleReplace',
         },
         {
           type: 4,

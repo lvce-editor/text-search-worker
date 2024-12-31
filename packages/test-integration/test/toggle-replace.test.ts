@@ -42,6 +42,8 @@ test('toggleReplace', async () => {
           className: 'IconButton SearchToggleButton SearchToggleButtonExpanded',
           title: 'Toggle Replace',
           ariaLabel: 'Toggle Replace',
+          name: 'ToggleReplace',
+
           ariaExpanded: true,
           childCount: 1,
           'data-command': 'toggleReplace',
