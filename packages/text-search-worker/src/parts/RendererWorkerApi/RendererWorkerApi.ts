@@ -24,4 +24,11 @@ export interface RendererWorkerApi {
     options: any,
     assetDir: string,
   ) => Promise<readonly SearchResult[]>
+  readonly 'ExtensionHostTextSearch.textSearchMemory': (
+    scheme: string,
+    root: string,
+    query: string,
+    options: any,
+    assetDir: string,
+  ) => Promise<readonly SearchResult[]>
 }
