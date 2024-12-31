@@ -3,6 +3,7 @@ import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchRe
 import * as Arrays from '../Arrays/Arrays.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
+import { SearchResult } from '../SearchResult/SearchResult.ts'
 
 const getFileName = (text: string): string => {
   // TODO make api stricter so that results always have the same shape
@@ -12,7 +13,7 @@ const getFileName = (text: string): string => {
   return text
 }
 
-export const getBulkReplacementEdits = (workspacePath: string, matches: readonly DisplaySearchResult[]): BulkReplacementEdits => {
+export const getBulkReplacementEdits = (workspacePath: string, matches: readonly SearchResult[]): BulkReplacementEdits => {
   Assert.string(workspacePath)
   Assert.array(matches)
   const files: string[] = []
@@ -30,12 +31,13 @@ export const getBulkReplacementEdits = (workspacePath: string, matches: readonly
         currentRanges = []
         break
       case TextSearchResultType.Match:
-        currentRanges.push(match.lineNumber - 1, match.matchStart, match.lineNumber - 1, match.matchStart + match.matchLength)
+        currentRanges.push(match.lineNumber - 1, match.start, match.lineNumber - 1, match.start + match.l)
         break
       default:
         break
     }
   }
+  console.log({ ranges, matches })
   ranges.push(currentRanges.length)
   Arrays.push(ranges, currentRanges)
   return {
