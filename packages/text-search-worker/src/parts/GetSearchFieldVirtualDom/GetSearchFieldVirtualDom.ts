@@ -1,3 +1,4 @@
+import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
@@ -9,7 +10,7 @@ interface OutSideButtonsDom {
   readonly postNodes: readonly VirtualDomNode[]
 }
 
-const getOutSideButtonsDom = (outsideButtons: any): OutSideButtonsDom => {
+const getOutSideButtonsDom = (outsideButtons: readonly InputAction[]): OutSideButtonsDom => {
   if (outsideButtons.length === 0) {
     return {
       preNodes: [],
@@ -33,8 +34,8 @@ export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
   onInput: string,
-  insideButtons: any,
-  outsideButtons: any,
+  insideButtons: readonly InputAction[],
+  outsideButtons: readonly InputAction[],
   onFocus = '',
 ): readonly VirtualDomNode[] => {
   const { preNodes, postNodes } = getOutSideButtonsDom(outsideButtons)
