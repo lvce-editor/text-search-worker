@@ -1,14 +1,18 @@
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as GetInputActionsInput from '../GetInputActionsInput/GetInputActionsInput.ts'
+import * as GetInputActionsReplace from '../GetInputActionsReplace/GetInputActionsReplace.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDomNode[] => {
+  const inputActions = GetInputActionsInput.getInputActionsInput(flags)
+  const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -26,28 +30,9 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,
       'Search',
-      'handleInput',
-      [
-        {
-          icon: ClassNames.MaskIconCaseSensitive,
-          checked: SearchFlags.hasMatchCase(flags),
-          title: SearchStrings.matchCase(),
-          name: InputName.MatchCase,
-        },
-        {
-          icon: ClassNames.MaskIconWholeWord,
-          checked: SearchFlags.hasMatchWholeWord(flags),
-          title: SearchStrings.matchWholeWord(),
-          name: InputName.MatchWholeWord,
-        },
-        {
-          icon: ClassNames.MaskIconRegex,
-          checked: SearchFlags.hasUseRegularExpression(flags),
-          title: SearchStrings.useRegularExpression(),
-          name: InputName.UseRegularExpression,
-        },
-      ],
-      [],
+      DomEventListenerFunctions.HandleInput,
+      inputActions.inside,
+      inputActions.outside,
     ),
   ]
 
@@ -56,23 +41,9 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         InputName.ReplaceValue,
         'Replace',
-        'handleReplaceInput',
-        [
-          {
-            icon: ClassNames.MaskIconPreserveCase,
-            checked: SearchFlags.hasPreserveCase(flags),
-            title: SearchStrings.preserveCase(),
-            name: InputName.PreserveCase,
-          },
-        ],
-        [
-          {
-            icon: ClassNames.MaskIconReplaceAll,
-            checked: false,
-            title: SearchStrings.replaceAll(),
-            name: InputName.ReplaceAll,
-          },
-        ],
+        DomEventListenerFunctions.HandleReplaceInput,
+        replaceActions.inside,
+        replaceActions.outside,
       ),
     )
   }
