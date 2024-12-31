@@ -6,10 +6,14 @@ const main = async () => {
     cwd: root,
     stdio: 'inherit',
   })
-  execa('node', ['packages/server/node_modules/@lvce-editor/server/bin/server.js'], {
-    cwd: root,
-    stdio: 'inherit',
-  })
+  execa(
+    'node',
+    ['packages/server/node_modules/@lvce-editor/server/bin/server.js', '--only-extension=packages/e2e/extension', '--test-path=packages/e2e'],
+    {
+      cwd: root,
+      stdio: 'inherit',
+    },
+  )
 }
 
 main()
