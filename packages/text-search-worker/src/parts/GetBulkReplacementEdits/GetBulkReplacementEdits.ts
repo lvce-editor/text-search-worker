@@ -1,12 +1,8 @@
+import type { BulkReplacementEdits } from '../BulkReplacementEdits/BulkReplacementEdits.ts'
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import * as Arrays from '../Arrays/Arrays.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
-
-interface BulkReplacementEdits {
-  files: string[]
-  ranges: number[]
-}
 
 export const getBulkReplacementEdits = (workspacePath: string, matches: readonly DisplaySearchResult[]): BulkReplacementEdits => {
   Assert.string(workspacePath)
