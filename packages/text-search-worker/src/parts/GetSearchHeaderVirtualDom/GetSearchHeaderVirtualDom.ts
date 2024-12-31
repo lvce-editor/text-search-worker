@@ -13,7 +13,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       className: ClassNames.SearchHeader,
       role: AriaRoles.None,
       childCount: 2,
-      onClick: DomEventListenerFunctions.HandleHeaderClick,
+      onClick: DomEventListenerFunctions.HandleHeaderClick2,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
