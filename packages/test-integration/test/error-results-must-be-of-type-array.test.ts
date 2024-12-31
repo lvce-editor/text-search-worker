@@ -90,6 +90,7 @@ test('handle-input', async () => {
           role: 'checkbox',
           tabIndex: 0,
           title: 'Match Case',
+          name: 'MatchCase',
           type: 4,
         },
         {
@@ -104,6 +105,7 @@ test('handle-input', async () => {
           role: 'checkbox',
           tabIndex: 0,
           title: 'Match Whole Word',
+          name: 'MatchWholeWord',
           type: 4,
         },
         {
@@ -118,6 +120,7 @@ test('handle-input', async () => {
           role: 'checkbox',
           tabIndex: 0,
           title: 'Use Regular Expression',
+          name: 'UseRegularExpression',
           type: 4,
         },
         {

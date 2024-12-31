@@ -70,6 +70,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       role: 'checkbox',
       tabIndex: 0,
       title: 'Search Only Open Editors',
+      name: 'SearchOnlyOpenEditors',
       type: 4,
     },
     {
@@ -116,6 +117,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       className: 'SearchFieldButton',
       role: 'checkbox',
       tabIndex: 0,
+      name: 'UseExcludeSettings',
       title: 'Use Exclude Settings',
       type: 4,
     },
