@@ -153,6 +153,7 @@ test('handle-input', async () => {
           role: 'button',
           tabIndex: 0,
           title: 'Toggle Search Details',
+          name: 'ToggleSearchDetails',
           type: 4,
         },
         {
