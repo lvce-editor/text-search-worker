@@ -1,5 +1,6 @@
 import type { ClickHandler } from '../ClickHandler/ClickHandler.ts'
 import * as InputName from '../InputName/InputName.ts'
+import * as Noop from '../Noop/Noop.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
@@ -39,6 +40,11 @@ export const getClickHandler = (name: string): ClickHandler => {
     case InputName.UseExcludeSettings:
       // @ts-ignore
       return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
+    case InputName.SearchValue:
+    case InputName.ReplaceValue:
+    case InputName.FilesToExclude:
+    case InputName.FilesToInclude:
+      return Noop.noop
     default:
       throw new Error(`Click handler not found: ${name}`)
   }
