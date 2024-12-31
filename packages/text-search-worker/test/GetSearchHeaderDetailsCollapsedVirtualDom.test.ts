@@ -30,6 +30,7 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
       ariaLabel: 'Toggle Search Details',
       title: 'Toggle Search Details',
       childCount: 1,
+      name: 'ToggleSearchDetails',
     },
     {
       type: 4,

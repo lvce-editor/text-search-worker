@@ -23,6 +23,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       role: 'button',
       tabIndex: 0,
       title: 'Toggle Search Details',
+      name: 'ToggleSearchDetails',
       type: 4,
     },
     {

@@ -13,6 +13,7 @@ test('getSearchToggleVirtualDom - not expanded', () => {
       ariaExpanded: false,
       childCount: 1,
       'data-command': 'toggleReplace',
+      name: 'ToggleReplace',
     },
     {
       type: 4,
@@ -33,6 +34,7 @@ test('getSearchToggleVirtualDom - expanded', () => {
       ariaExpanded: true,
       childCount: 1,
       'data-command': 'toggleReplace',
+      name: 'ToggleReplace',
     },
     {
       type: 4,
