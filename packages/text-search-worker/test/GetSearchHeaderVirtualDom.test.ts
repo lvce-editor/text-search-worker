@@ -71,6 +71,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Case',
+      name: 'MatchCase',
       type: 4,
     },
     {
@@ -85,6 +86,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Whole Word',
+      name: 'MatchWholeWord',
       type: 4,
     },
     {
@@ -99,6 +101,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       role: 'checkbox',
       tabIndex: 0,
       title: 'Use Regular Expression',
+      name: 'UseRegularExpression',
       type: 4,
     },
     {
