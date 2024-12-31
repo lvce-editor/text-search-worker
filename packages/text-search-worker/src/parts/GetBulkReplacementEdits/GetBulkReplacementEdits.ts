@@ -4,6 +4,14 @@ import * as Arrays from '../Arrays/Arrays.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
+const getFileName = (text: string): string => {
+  // TODO make api stricter so that results always have the same shape
+  if (text.startsWith('./')) {
+    return text.slice(2)
+  }
+  return text
+}
+
 export const getBulkReplacementEdits = (workspacePath: string, matches: readonly DisplaySearchResult[]): BulkReplacementEdits => {
   Assert.string(workspacePath)
   Assert.array(matches)
@@ -16,7 +24,8 @@ export const getBulkReplacementEdits = (workspacePath: string, matches: readonly
       case TextSearchResultType.File:
         ranges.push(currentRanges.length)
         Arrays.push(ranges, currentRanges)
-        const absolutePath = `${workspacePath}/${text.slice(2)}`
+        const fileName = getFileName(text)
+        const absolutePath = `${workspacePath}/${fileName}`
         files.push(absolutePath)
         currentRanges = []
         break
