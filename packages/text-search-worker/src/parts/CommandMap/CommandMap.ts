@@ -16,6 +16,7 @@ import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
+import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -89,6 +90,7 @@ export const commandMap = {
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
   'TextSearch.handleFocusIn': WrapCommand.wrapCommand(SearchFocus.handleFocusIn),
+  'TextSearch.handleHeaderClick': WrapCommand.wrapCommand(HandleHeaderClick.handleHeaderClick),
   'TextSearch.handleIconThemeChange': WrapCommand.wrapCommand(HandleIconThemeChange.handleIconThemeChange),
   'TextSearch.handleIncludeInput': WrapCommand.wrapCommand(HandleIncludeInput.handleIncludeInput),
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
