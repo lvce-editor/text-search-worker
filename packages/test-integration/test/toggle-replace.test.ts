@@ -190,6 +190,7 @@ test('toggleReplace', async () => {
           tabIndex: 0,
           ariaLabel: 'Toggle Search Details',
           title: 'Toggle Search Details',
+          name: 'ToggleSearchDetails',
           childCount: 1,
         },
         {
