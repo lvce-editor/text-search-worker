@@ -80,6 +80,7 @@ test('toggleReplace', async () => {
           type: 4,
           className: 'SearchFieldButton',
           title: 'Match Case',
+          name: 'MatchCase',
           role: 'checkbox',
           ariaChecked: false,
           tabIndex: 0,
