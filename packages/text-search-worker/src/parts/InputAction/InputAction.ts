@@ -3,4 +3,5 @@ export interface InputAction {
   readonly checked: boolean
   readonly title: string
   readonly name: string
+  readonly command?: string
 }
