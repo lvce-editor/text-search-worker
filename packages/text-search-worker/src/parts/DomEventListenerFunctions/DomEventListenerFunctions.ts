@@ -1,5 +1,6 @@
 export const HandleClick = 'handleClick'
 export const HandleHeaderClick = 'handleHeaderClick'
+export const HandleHeaderClick2 = 'handleHeaderClick2'
 export const HandleHeaderFocusIn = 'handleHeaderFocusIn'
 export const HandleListBlur = 'handleListBlur'
 export const HandleInput = 'handleInput'
