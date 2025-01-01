@@ -9,6 +9,7 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as ValidateSearchInput from '../ValidateSearchInput/ValidateSearchInput.ts'
 
 export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
@@ -25,6 +26,13 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         matchCount: 0,
         message: '',
         loaded: true,
+      }
+    }
+    const searchInputErrorMessage = ValidateSearchInput.validateSearchInput(value, flags)
+    if (searchInputErrorMessage) {
+      return {
+        ...partialNewState,
+        searchInputErrorMessage: searchInputErrorMessage,
       }
     }
     const root = state.workspacePath
