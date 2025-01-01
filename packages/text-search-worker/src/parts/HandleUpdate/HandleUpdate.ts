@@ -89,6 +89,7 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
       matchCount: resultCount,
       loaded: true,
       icons,
+      searchInputErrorMessage: '',
     }
   } catch (error) {
     ErrorHandling.handleError(error)
