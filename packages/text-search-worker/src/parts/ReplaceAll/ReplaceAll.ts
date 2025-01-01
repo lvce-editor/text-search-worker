@@ -4,11 +4,10 @@ import * as GetReplaceElements from '../GetReplaceElements/GetReplaceElements.ts
 import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
 
 export const replaceAll = async (state: SearchState): Promise<SearchState> => {
-  const { workspacePath, items, replacement } = state
+  const { workspacePath, items, replacement, matchCount } = state
   const bulkEdits = GetReplaceElements.getReplaceElements(items, workspacePath, replacement)
   await ParentRpc.invoke('BulkReplacement.applyBulkReplacement', bulkEdits)
   const fileCount = bulkEdits.length
-  const matchCount = items.length
   const message = GetReplacedMessage.getReplacedMessage(fileCount, matchCount, replacement)
   return {
     ...state,
