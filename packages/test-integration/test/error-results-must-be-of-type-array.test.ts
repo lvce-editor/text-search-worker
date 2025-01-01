@@ -172,6 +172,6 @@ test('handle-input', async () => {
         },
       ],
     ],
-    ['Viewlet.send', 1, 'setValue', 'abc', '[name="search-value"]'],
+    ['Viewlet.send', 1, 'setValue', 'abc', '[name="SearchValue"]'],
   ])
 })
