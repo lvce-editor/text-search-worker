@@ -4,10 +4,6 @@ const mockRpc = {
   invoke: jest.fn(),
 }
 
-const mockParentRpc = {
-  setRpc: jest.fn(),
-}
-
 const mockWebWorkerRpcClient = {
   create: jest.fn(),
 }
@@ -24,9 +20,8 @@ jest.unstable_mockModule('@lvce-editor/rpc', () => {
   }
 })
 
-jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => mockParentRpc)
-
 const Listen = await import('../src/parts/Listen/Listen.ts')
+const RpcRegistry = await import('../src/parts/RpcRegistry/RpcRegistry.ts')
 
 test('listen - creates rpc client and sets it', async () => {
   // @ts-ignore
