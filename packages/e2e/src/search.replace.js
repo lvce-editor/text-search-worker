@@ -1,8 +1,8 @@
 export const name = 'search.replace'
 
-export const skip = true
+export const skip = false
 
-export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -19,4 +19,7 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.replaceAll()
 
   // assert
+  await Main.openUri(`${tmpDir}/test.css`)
+  const row = Locator('.EditorRow')
+  await expect(row).toHaveText('d') // TODO should be dc
 }
