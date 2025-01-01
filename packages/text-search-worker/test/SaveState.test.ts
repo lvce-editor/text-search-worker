@@ -6,12 +6,8 @@ import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test('saveState', () => {
-  let flags = 0
-  flags = SearchFlags.togglePreserveCase(flags)
-  flags = SearchFlags.toggleMatchCase(flags)
-  flags = SearchFlags.toggleMatchWholeWord(flags)
-  flags = SearchFlags.toggleUseRegularExpression(flags)
-  flags = SearchFlags.toggleReplaceExpanded(flags)
+  const flags =
+    SearchFlags.PreserveCase | SearchFlags.MatchCase | SearchFlags.MatchWholeWord | SearchFlags.UseRegularExpression | SearchFlags.ReplaceExpanded
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),

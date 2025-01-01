@@ -25,7 +25,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
       type: VirtualDomElements.Div,
       className: ClassNames.SearchHeaderTopRight,
       role: AriaRoles.None,
-      childCount: SearchFlags.hasReplaceExpanded(flags) ? 2 : 1,
+      childCount: flags & SearchFlags.ReplaceExpanded ? 2 : 1,
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,
@@ -36,7 +36,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
     ),
   ]
 
-  if (SearchFlags.hasReplaceExpanded(flags)) {
+  if (flags & SearchFlags.ReplaceExpanded) {
     dom.push(
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         InputName.ReplaceValue,

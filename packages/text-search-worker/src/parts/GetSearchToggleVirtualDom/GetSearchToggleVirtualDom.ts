@@ -13,11 +13,11 @@ export const getSearchToggleVirtualDom = (flags: number): readonly VirtualDomNod
       className: MergeClassNames.mergeClassNames(
         ClassNames.IconButton,
         ClassNames.SearchToggleButton,
-        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.SearchToggleButtonExpanded : '',
+        flags & SearchFlags.ReplaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
       ),
       title: SearchStrings.toggleReplace(),
       ariaLabel: SearchStrings.toggleReplace(),
-      ariaExpanded: SearchFlags.hasReplaceExpanded(flags),
+      ariaExpanded: Boolean(flags & SearchFlags.ReplaceExpanded),
       childCount: 1,
       'data-command': 'toggleReplace',
       name: InputName.ToggleReplace,
@@ -26,7 +26,7 @@ export const getSearchToggleVirtualDom = (flags: number): readonly VirtualDomNod
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(
         ClassNames.MaskIcon,
-        SearchFlags.hasReplaceExpanded(flags) ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
+        flags & SearchFlags.ReplaceExpanded ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
       ),
       childCount: 0,
     },

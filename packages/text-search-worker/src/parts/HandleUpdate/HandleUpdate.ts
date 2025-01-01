@@ -35,8 +35,8 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
       value,
       {
         threads,
-        isCaseSensitive: SearchFlags.hasMatchCase(flags),
-        useRegularExpression: SearchFlags.hasUseRegularExpression(flags),
+        isCaseSensitive: Boolean(flags & SearchFlags.MatchCase),
+        useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
         exclude: excludeValue,
         include: includeValue,
         assetDir: state.assetDir,
