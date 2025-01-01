@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchHeaderDetailsVirtualDom from '../src/parts/GetSearchHeaderDetailsVirtualDom/GetSearchHeaderDetailsVirtualDom.ts'
+import { DetailsExpanded } from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('getSearchHeaderDetailsVirtualDom', () => {
   const flags = 0
@@ -10,14 +11,15 @@ test('getSearchHeaderDetailsVirtualDom', () => {
     className: 'SearchHeaderDetails',
     childCount: 2,
   })
-  // expect(dom[1].text).toBe('files to include')
-  // expect(dom[2]).toEqual({
-  //   type: 6,
-  //   childCount: 0,
-  // })
-  // expect(dom[3].text).toBe('files to exclude')
-  // expect(dom[4]).toEqual({
-  //   type: 6,
-  //   childCount: 0,
-  // })
+})
+
+test('getSearchHeaderDetailsVirtualDom - expanded', () => {
+  const flags = DetailsExpanded
+  const message = ''
+  const dom = GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message)
+  expect(dom[0]).toEqual({
+    childCount: 5,
+    className: 'SearchHeaderDetailsExpanded',
+    type: 4,
+  })
 })
