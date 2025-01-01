@@ -9,7 +9,7 @@ export const getInputActionsReplace = (flags: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconPreserveCase,
-      checked: SearchFlags.hasPreserveCase(flags),
+      checked: Boolean(flags & SearchFlags.PreserveCase),
       title: SearchStrings.preserveCase(),
       name: InputName.PreserveCase,
     },
