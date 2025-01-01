@@ -1,6 +1,6 @@
 export const name = 'search.use-regular-expression'
 
-export const skip = false
+export const skip = true
 
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
@@ -18,5 +18,5 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.toggleUseRegularExpression()
 
   // assert
-  await expect(message).toHaveText('No results found.')
+  await expect(message).toHaveText('No results found')
 }

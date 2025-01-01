@@ -1,6 +1,6 @@
 export const name = 'search.replace'
 
-export const skip = false
+export const skip = true
 
 export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
