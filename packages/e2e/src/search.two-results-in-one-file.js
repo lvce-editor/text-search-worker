@@ -1,7 +1,5 @@
 export const name = 'search.two-results-in-one-file'
 
-export const skip = true
-
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
