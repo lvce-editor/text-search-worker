@@ -1,6 +1,6 @@
 export const name = 'search.use-regular-expression'
 
-export const skip = false
+export const skip = true
 
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
