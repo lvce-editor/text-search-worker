@@ -9,3 +9,7 @@ export const set = (id: number, rpc: Rpc): void => {
 export const get = (id: number): Rpc => {
   return rpcs[id]
 }
+
+export const remove = (id: number): void => {
+  delete rpcs[id]
+}
