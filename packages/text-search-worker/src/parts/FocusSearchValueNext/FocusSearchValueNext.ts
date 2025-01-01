@@ -4,7 +4,7 @@ import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const focusSearchValueNext = (state: SearchState): SearchState => {
-  if (state.flags & SearchFlags.ReplaceExpanded) {
+  if (SearchFlags.hasReplaceExpanded(state.flags)) {
     return FocusReplaceValue.focusReplaceValue(state)
   }
   return FocusMatchCase.focusMatchCase(state)
