@@ -10,7 +10,7 @@ test('collapseDetails - collapses expanded details', () => {
     flags: SearchFlags.DetailsExpanded,
   }
   const newState = CollapseDetails.collapseDetails(initialState)
-  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(false)
+  expect(newState.flags & SearchFlags.DetailsExpanded).toBeFalsy()
 })
 
 test.skip('collapseDetails - does nothing if already collapsed', () => {

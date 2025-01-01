@@ -12,7 +12,7 @@ test('toggleDetailsExpanded - focuses include files input when expanding', () =>
     flags: 0,
   }
   const newState = ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
-  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(true)
+  expect(newState.flags & SearchFlags.DetailsExpanded).toBeTruthy()
   expect(newState.focus).toBe(WhenExpression.FocusSearchIncludeInput)
   expect(newState.focusSource).toBe(InputSource.Script)
 })
@@ -24,7 +24,7 @@ test('toggleDetailsExpanded - focuses search input when collapsing', () => {
     focus: WhenExpression.FocusSearchIncludeInput,
   }
   const newState = ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
-  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(false)
+  expect(newState.flags & SearchFlags.DetailsExpanded).toBeFalsy()
   expect(newState.focus).toBe(WhenExpression.FocusSearchInput)
   expect(newState.focusSource).toBe(InputSource.Script)
 })

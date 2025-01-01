@@ -10,5 +10,5 @@ test('toggleUseIgnoreFiles', () => {
     flags: 0,
   }
   const newState = ToggleUseIgnoreFiles.toggleUseIgnoreFiles(initialState)
-  expect(SearchFlags.hasUseIgnoreFiles(newState.flags)).toBe(true)
+  expect(newState.flags & SearchFlags.UseIgnoreFiles).toBeTruthy()
 })

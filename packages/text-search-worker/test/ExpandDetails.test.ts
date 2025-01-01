@@ -12,7 +12,7 @@ test('expandDetails - expands details and focuses include input', () => {
     flags: 0,
   }
   const newState = ExpandDetails.expandDetails(initialState)
-  expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(true)
+  expect(newState.flags & SearchFlags.DetailsExpanded).toBeTruthy()
   expect(newState.focus).toBe(WhenExpression.FocusSearchIncludeInput)
   expect(newState.focusSource).toBe(InputSource.Script)
 })

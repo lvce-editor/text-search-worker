@@ -160,6 +160,6 @@ test.skip('getSearchHeaderVirtualDom - with replace and details expanded', () =>
   const message = ''
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message)
   expect(dom[0].childCount).toBe(4)
-  expect(SearchFlags.hasDetailsExpanded(flags)).toBe(true)
-  expect(SearchFlags.hasReplaceExpanded(flags)).toBe(true)
+  expect(flags & SearchFlags.DetailsExpanded).toBeTruthy()
+  expect(flags & SearchFlags.ReplaceExpanded).toBeTruthy()
 })

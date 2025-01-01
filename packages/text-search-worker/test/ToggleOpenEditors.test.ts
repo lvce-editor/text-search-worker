@@ -10,5 +10,5 @@ test('toggleOpenEditors', () => {
     flags: 0,
   }
   const newState = ToggleOpenEditors.toggleOpenEditors(initialState)
-  expect(SearchFlags.hasOpenEditors(newState.flags)).toBe(true)
+  expect(newState.flags & SearchFlags.OpenEditors).toBeTruthy()
 })
