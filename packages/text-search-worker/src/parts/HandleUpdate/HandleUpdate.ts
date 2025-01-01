@@ -12,7 +12,7 @@ import * as TextSearch from '../TextSearch/TextSearch.ts'
 export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   try {
-    const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads } = partialNewState
+    const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads, includeValue, excludeValue } = partialNewState
     if (IsEmptyString.isEmptyString(value)) {
       return {
         ...partialNewState,
@@ -34,6 +34,8 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         threads,
         isCaseSensitive: SearchFlags.hasMatchCase(flags),
         useRegularExpression: SearchFlags.hasUseRegularExpression(flags),
+        exclude: excludeValue,
+        include: includeValue,
       },
       state.assetDir,
       state.platform,
