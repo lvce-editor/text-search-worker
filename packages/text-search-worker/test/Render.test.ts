@@ -90,7 +90,7 @@ test('doRender - renders items when changed', () => {
   const commands = Render.doRender(1)
   expect(commands).toEqual([
     ['Viewlet.setDom2', 1, ['virtualDom1']],
-    ['Viewlet.send', 1, 'setValue', 'test', '[name="search-value"]'],
+    ['Viewlet.send', 1, 'setValue', 'test', '[name="SearchValue"]'],
   ])
 })
 
