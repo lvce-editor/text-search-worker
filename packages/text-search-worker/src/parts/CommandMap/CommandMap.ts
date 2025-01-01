@@ -10,6 +10,7 @@ import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
 import * as GetFlags from '../GetFlags/GetFlags.ts'
+import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as GetFocus from '../GetFocus/GetFocus.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
@@ -106,6 +107,7 @@ export const commandMap = {
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
+  'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleMatchWholeWord': WrapCommand.wrapCommand(ToggleMatchWholeWord.toggleMatchWholeWord),
