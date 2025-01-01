@@ -1,6 +1,6 @@
 export const name = 'search.use-regular-expression'
 
-export const skip = true
+export const skip = 1
 
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
@@ -12,11 +12,11 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.setReplaceValue('')
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('1 result in 1 file')
+  await expect(message).toHaveText('No results found')
 
   // act
   await Search.toggleUseRegularExpression()
 
   // assert
-  await expect(message).toHaveText('No results found')
+  await expect(message).toHaveText('1 result in 1 file')
 }
