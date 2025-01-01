@@ -1,3 +1,4 @@
+import type { BulkReplacementEdit } from '../BulkReplacementEdit/BulkReplacementEdit.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 
 interface ConfirmPromptOptions {
@@ -6,7 +7,7 @@ interface ConfirmPromptOptions {
 }
 
 export interface RendererWorkerApi {
-  readonly 'BulkReplacement.applyBulkReplacement': (files: any, ranges: any, replacement: string) => Promise<void>
+  readonly 'BulkReplacement.applyBulkReplacement': (edits: readonly BulkReplacementEdit[]) => Promise<void>
   readonly 'ClipBoard.writeText': (text: string) => Promise<void>
   readonly 'ConfirmPrompt.prompt': (confirmText: string, options: ConfirmPromptOptions) => Promise<boolean>
   readonly 'ContextMenu.show': (x: number, y: number, id: any, ...args: any[]) => Promise<void>
