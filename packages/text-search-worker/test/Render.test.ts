@@ -155,5 +155,5 @@ test('doRender - renders value when changed', () => {
   mockSearchViewStates.get.mockReturnValue({ oldState, newState })
 
   const commands = Render.doRender(1)
-  expect(commands).toEqual([['Viewlet.send', 1, 'setValue', 'newValue', '[name="search-value"]']])
+  expect(commands).toEqual([['Viewlet.send', 1, 'setValue', 'newValue', '[name="SearchValue"]']])
 })
