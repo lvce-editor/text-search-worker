@@ -1,4 +1,5 @@
 import { expect, jest, test, beforeEach } from '@jest/globals'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
@@ -32,5 +33,5 @@ test('listen - creates rpc client and sets it', async () => {
   expect(mockWebWorkerRpcClient.create).toHaveBeenCalledWith({
     commandMap: expect.any(Object),
   })
-  expect(mockParentRpc.setRpc).toHaveBeenCalledWith(mockRpc)
+  expect(RpcRegistry.get(RpcId.RendererWorker)).toBeDefined()
 })
