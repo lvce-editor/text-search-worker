@@ -14,10 +14,6 @@ const insertInto = <T>(array: T[], start: number, newItems: readonly T[]): void 
   }
 }
 
-export const push = <T>(array: T[], newItems: readonly T[]): void => {
-  insertInto(array, array.length, newItems)
-}
-
 export const isLastIndex = <T>(array: readonly T[], index: number): boolean => {
   return index === array.length - 1
 }
