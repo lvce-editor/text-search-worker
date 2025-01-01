@@ -1,8 +1,8 @@
-import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
+import * as HandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 
-export const toggleSearchFlag = (state: SearchHeader, flag: number): SearchHeader => {
-  return {
-    ...state,
+export const toggleSearchFlag = (state: SearchState, flag: number): Promise<SearchState> => {
+  return HandleUpdate.handleUpdate(state, {
     flags: state.flags ^ flag,
-  }
+  })
 }
