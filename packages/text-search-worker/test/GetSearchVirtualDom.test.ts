@@ -42,7 +42,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const message = 'Search results'
   const focusOutline = false
 
-  const result: readonly VirtualDomNode[] = getSearchVirtualDom(visibleItems, flags, message, focusOutline)
+  const result: readonly VirtualDomNode[] = getSearchVirtualDom(visibleItems, flags, message, focusOutline, '')
 
   expect(result).toEqual([
     {

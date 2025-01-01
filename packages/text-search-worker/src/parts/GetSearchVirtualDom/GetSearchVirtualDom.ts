@@ -2,6 +2,7 @@ import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchRe
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetSearchHeaderVirtualDom from '../GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
+import * as GetSearchInputErrorVirtualDom from '../GetSearchInputErrorVirtualDom/GetSearchInputErrorVirtualDom.ts'
 import * as GetSearchResultsVirtualDom from '../GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
@@ -11,15 +12,19 @@ export const getSearchVirtualDom = (
   flags: number,
   message: string,
   focusOutline: boolean,
+  searchInputErrorMessage: string,
 ): readonly VirtualDomNode[] => {
-  const dom: readonly VirtualDomNode[] = [
+  const errorDom = GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(searchInputErrorMessage)
+  const childCount = 2 + (errorDom.length > 0 ? 1 : 0)
+
+  return [
     {
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
-      childCount: 2,
+      childCount,
     },
     ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message),
+    ...errorDom,
     ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems, focusOutline),
   ]
-  return dom
 }
