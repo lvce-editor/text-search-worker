@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetReplacementEdits from '../src/parts/GetReplaceElements/GetReplaceElements.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 
 test('getReplacementEdits - single file with one match', () => {
   const workspacePath = '/test'
