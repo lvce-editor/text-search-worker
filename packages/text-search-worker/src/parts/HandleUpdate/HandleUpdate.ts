@@ -26,6 +26,7 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         matchCount: 0,
         message: '',
         loaded: true,
+        searchInputErrorMessage: '',
       }
     }
     const searchInputErrorMessage = ValidateSearchInput.validateSearchInput(value, flags)
