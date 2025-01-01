@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as GetReplacementEdits from '../src/parts/GetReplacementEdits/GetReplacementEdits.ts'
+import * as GetReplacementEdits from '../src/parts/GetReplaceElements/GetReplaceElements.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 
@@ -23,7 +23,7 @@ test('getReplacementEdits - single file with one match', () => {
   ]
   const replacement = 'new'
 
-  const edits = GetReplacementEdits.getReplacementEdits(workspacePath, results, replacement)
+  const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
       uri: '/test/file.txt',
@@ -74,7 +74,7 @@ test('getReplacementEdits - multiple files with matches', () => {
   ]
   const replacement = 'new'
 
-  const edits = GetReplacementEdits.getReplacementEdits(workspacePath, results, replacement)
+  const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
       uri: '/test/file1.txt',
@@ -108,7 +108,7 @@ test('getReplacementEdits - empty results', () => {
   const results: readonly SearchResult[] = []
   const replacement = 'new'
 
-  const edits = GetReplacementEdits.getReplacementEdits(workspacePath, results, replacement)
+  const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([])
 })
 
@@ -139,7 +139,7 @@ test('getReplacementEdits - file with multiple matches', () => {
   ]
   const replacement = 'new'
 
-  const edits = GetReplacementEdits.getReplacementEdits(workspacePath, results, replacement)
+  const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
       uri: '/test/file.txt',
@@ -183,7 +183,7 @@ test('getReplacementEdits - handles different file paths', () => {
   ]
   const replacement = 'new'
 
-  const edits = GetReplacementEdits.getReplacementEdits(workspacePath, results, replacement)
+  const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
       uri: 'memfs:///test/file.txt',
