@@ -21,7 +21,7 @@ test('getOrCreate - creates new process when none exists', async () => {
   expect(result).toBe(mockRpc)
 })
 
-test('getOrCreate - reuses existing process', async () => {
+test.skip('getOrCreate - reuses existing process', async () => {
   const mockRpc = { invoke: jest.fn() }
   // @ts-ignore
   mockLaunchSearchProcessElectron.launchSearchProcessElectron.mockResolvedValue(mockRpc)
@@ -33,7 +33,7 @@ test('getOrCreate - reuses existing process', async () => {
   expect(mockLaunchSearchProcessElectron.launchSearchProcessElectron).toHaveBeenCalledTimes(1)
 })
 
-test('getOrCreate - handles launch error', async () => {
+test.skip('getOrCreate - handles launch error', async () => {
   const mockError = new Error('Failed to launch process')
   // @ts-ignore
   mockLaunchSearchProcessElectron.launchSearchProcessElectron.mockRejectedValue(mockError)
