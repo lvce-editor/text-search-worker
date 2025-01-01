@@ -43,6 +43,7 @@ import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
+import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
@@ -106,6 +107,7 @@ export const commandMap = {
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
+  'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleMatchWholeWord': WrapCommand.wrapCommand(ToggleMatchWholeWord.toggleMatchWholeWord),
