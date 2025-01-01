@@ -43,6 +43,7 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         root,
         query: value,
         scheme,
+        flags,
       },
       state.assetDir,
       state.platform,
