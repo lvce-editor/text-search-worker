@@ -18,5 +18,5 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.toggleMatchCase()
 
   // assert
-  await expect(message).toHaveText('No results found.')
+  await expect(message).toHaveText('No results found')
 }

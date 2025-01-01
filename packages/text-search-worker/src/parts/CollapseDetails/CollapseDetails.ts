@@ -1,12 +1,12 @@
-import type { SearchHeader } from '../SearchHeader/SearchHeader.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as ToggleSearchFlag from '../ToggleSearchFlag/ToggleSearchFlag.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
-export const collapseDetails = (state: SearchHeader): SearchHeader => {
+export const collapseDetails = async (state: SearchState): Promise<SearchState> => {
   return {
-    ...ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.DetailsExpanded),
+    ...(await ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.DetailsExpanded)),
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
   }
