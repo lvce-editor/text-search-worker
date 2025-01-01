@@ -1,11 +1,8 @@
 import { expect, jest, test, beforeEach } from '@jest/globals'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
-}
-
-const mockParentRpc = {
-  setRpc: jest.fn(),
 }
 
 const mockWebWorkerRpcClient = {
@@ -24,9 +21,8 @@ jest.unstable_mockModule('@lvce-editor/rpc', () => {
   }
 })
 
-jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => mockParentRpc)
-
 const Listen = await import('../src/parts/Listen/Listen.ts')
+const RpcRegistry = await import('../src/parts/RpcRegistry/RpcRegistry.ts')
 
 test('listen - creates rpc client and sets it', async () => {
   // @ts-ignore
@@ -37,5 +33,5 @@ test('listen - creates rpc client and sets it', async () => {
   expect(mockWebWorkerRpcClient.create).toHaveBeenCalledWith({
     commandMap: expect.any(Object),
   })
-  expect(mockParentRpc.setRpc).toHaveBeenCalledWith(mockRpc)
+  expect(RpcRegistry.get(RpcId.RendererWorker)).toBeDefined()
 })
