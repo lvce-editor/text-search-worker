@@ -7,7 +7,9 @@ export interface TextSearchOptions {
   readonly include: string
   readonly exclude: string
 
-  // TODO use flags
+  // TODO use flags or options object?
   readonly useRegularExpression: boolean
   readonly isCaseSensitive: boolean
+
+  readonly flags: number
 }
