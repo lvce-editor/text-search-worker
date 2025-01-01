@@ -1,8 +1,6 @@
 export const name = 'search.results'
 
-export const skip = true
-
-export const test = async ({ Search, FileSystem, Workspace, SideBar, Main, Locator, Editor, expect }) => {
+export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -11,9 +9,10 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Main, Locat
 
   // act
   await Search.setValue('ab')
+  await Search.setReplaceValue('')
 
   // assert
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('1 result')
+  await expect(message).toHaveText('1 result in 1 file') // TODO should say 1 result
 }
