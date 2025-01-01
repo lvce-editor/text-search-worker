@@ -9,6 +9,7 @@ export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locat
   await Workspace.setPath(tmpDir)
   await SideBar.open('Search')
   await Search.setValue('a.c')
+  await Search.toggleReplace()
   await Search.setReplaceValue('adc')
   await Search.toggleUseRegularExpression()
   const viewletSearch = Locator('.Search')
@@ -22,4 +23,5 @@ export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locat
   // assert
   const row = Locator('.EditorRow')
   await expect(row).toHaveText('adc')
+  await expect(message).toHaveText(`Replaced 1 occurrence across 1 file with 'adc'`)
 }
