@@ -7,4 +7,5 @@ export interface SearchHeader {
   readonly flags: number
   readonly replacement: string
   readonly value: string
+  readonly searchInputErrorMessage: string
 }

@@ -58,6 +58,7 @@ export const create = (
     focusSource: InputSource.User,
     flags: 0,
     platform,
+    searchInputErrorMessage: '',
   }
   SearchViewStates.set(uid, state, state)
   return state
