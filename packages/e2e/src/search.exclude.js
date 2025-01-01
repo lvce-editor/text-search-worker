@@ -18,5 +18,5 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.setExcludeValue('test.css')
 
   // assert
-  await expect(message).toHaveText('No Results')
+  await expect(message).toHaveText('No Results found.')
 }
