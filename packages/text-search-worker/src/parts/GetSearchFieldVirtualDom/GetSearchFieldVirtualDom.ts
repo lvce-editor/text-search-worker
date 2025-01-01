@@ -1,10 +1,11 @@
-import type { InputAction } from '../InputAction/InputAction.ts'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as GetOutSideButtonsDom from '../GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
+import type { InputAction } from '../InputAction/InputAction.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchFieldVirtualDom = (
   name: string,
@@ -13,13 +14,18 @@ export const getSearchFieldVirtualDom = (
   insideButtons: readonly InputAction[],
   outsideButtons: readonly InputAction[],
   onFocus = '',
+  hasError = false,
 ): readonly VirtualDomNode[] => {
   const { preNodes, postNodes } = GetOutSideButtonsDom.getOutSideButtonsDom(outsideButtons)
+  const searchFieldClassName = hasError
+    ? MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError)
+    : ClassNames.SearchField
+
   const dom: readonly VirtualDomNode[] = [
     ...preNodes,
     {
       type: VirtualDomElements.Div,
-      className: ClassNames.SearchField,
+      className: searchFieldClassName,
       role: AriaRoles.None,
       childCount: 2,
     },

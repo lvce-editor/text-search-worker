@@ -10,7 +10,7 @@ import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDomNode[] => {
+export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMessage = ''): readonly VirtualDomNode[] => {
   const inputActions = GetInputActionsInput.getInputActionsInput(flags)
   const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags)
   const dom: VirtualDomNode[] = [
@@ -33,6 +33,8 @@ export const getSearchHeaderTopVirtualDom = (flags: number): readonly VirtualDom
       DomEventListenerFunctions.HandleInput,
       inputActions.inside,
       inputActions.outside,
+      '',
+      Boolean(searchInputErrorMessage),
     ),
   ]
 

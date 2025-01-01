@@ -23,7 +23,7 @@ export const getSearchVirtualDom = (
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
       childCount,
     },
-    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message),
+    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage),
     ...errorDom,
     ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems, focusOutline),
   ]

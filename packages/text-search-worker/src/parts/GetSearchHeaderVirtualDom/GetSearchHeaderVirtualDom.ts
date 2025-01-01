@@ -6,7 +6,7 @@ import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirt
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getSearchHeaderVirtualDom = (flags: number, message: string): readonly VirtualDomNode[] => {
+export const getSearchHeaderVirtualDom = (flags: number, message: string, searchInputErrorMessage?: string): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -16,7 +16,7 @@ export const getSearchHeaderVirtualDom = (flags: number, message: string): reado
       onClick: DomEventListenerFunctions.HandleHeaderClick,
       onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
     },
-    ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags),
+    ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage),
     ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
   ]
   return dom
