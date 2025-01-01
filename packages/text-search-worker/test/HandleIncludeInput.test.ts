@@ -9,7 +9,10 @@ test.skip('handleIncludeInput', () => {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     includeValue: '',
   }
+  // @ts-ignore
   const newState = HandleIncludeInput.handleIncludeInput(initialState, '*.ts')
+  // @ts-ignore
   expect(newState.includeValue).toBe('*.ts')
+  // @ts-ignore
   expect(newState.focusSource).toBe(InputSource.User)
 })
