@@ -19,7 +19,8 @@ const renderItems = {
       oldState.collapsedPaths === newState.collapsedPaths &&
       oldState.listFocusedIndex === newState.listFocusedIndex &&
       oldState.listFocused === newState.listFocused &&
-      oldState.icons === newState.icons
+      oldState.icons === newState.icons &&
+      oldState.searchInputErrorMessage === newState.searchInputErrorMessage
     )
   },
   apply(oldState: SearchState, newState: SearchState): any {
@@ -35,7 +36,13 @@ const renderItems = {
       newState.listFocusedIndex,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
-    const dom = GetSearchVirtualDom.getSearchVirtualDom(displayResults, newState.flags, newState.message, focusOutline)
+    const dom = GetSearchVirtualDom.getSearchVirtualDom(
+      displayResults,
+      newState.flags,
+      newState.message,
+      focusOutline,
+      newState.searchInputErrorMessage,
+    )
     return ['Viewlet.setDom2', newState.uid, dom]
   },
 }
