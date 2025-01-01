@@ -1,6 +1,6 @@
+import * as ClassNames from '../ClassNames/ClassNames.ts'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { InputActions } from '../InputActions/InputActions.ts'
-import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
@@ -9,7 +9,7 @@ export const getInputActionsReplace = (flags: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconPreserveCase,
-      checked: Boolean(flags * SearchFlags.PreserveCase),
+      checked: Boolean(flags & SearchFlags.PreserveCase),
       title: SearchStrings.preserveCase(),
       name: InputName.PreserveCase,
     },
