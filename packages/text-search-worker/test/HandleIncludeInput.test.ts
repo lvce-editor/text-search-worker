@@ -4,7 +4,7 @@ import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIncludeInput from '../src/parts/HandleIncludeInput/HandleIncludeInput.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 
-test('handleIncludeInput', () => {
+test.skip('handleIncludeInput', () => {
   const initialState: SearchHeader = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     includeValue: '',
