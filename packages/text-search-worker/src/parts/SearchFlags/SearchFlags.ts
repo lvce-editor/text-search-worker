@@ -38,35 +38,3 @@ export const hasOpenEditors = (flags: number): boolean => {
 export const hasUseIgnoreFiles = (flags: number): boolean => {
   return (flags & UseIgnoreFiles) === UseIgnoreFiles
 }
-
-export const togglePreserveCase = (flags: number): number => {
-  return flags ^ PreserveCase
-}
-
-export const toggleUseRegularExpression = (flags: number): number => {
-  return flags ^ UseRegularExpression
-}
-
-export const toggleReplaceExpanded = (flags: number): number => {
-  return flags ^ ReplaceExpanded
-}
-
-export const toggleMatchWholeWord = (flags: number): number => {
-  return flags ^ MatchWholeWord
-}
-
-export const toggleMatchCase = (flags: number): number => {
-  return flags ^ MatchCase
-}
-
-export const toggleDetailsExpanded = (flags: number): number => {
-  return flags ^ DetailsExpanded
-}
-
-export const toggleOpenEditors = (flags: number): number => {
-  return flags ^ OpenEditors
-}
-
-export const toggleUseIgnoreFiles = (flags: number): number => {
-  return flags ^ UseIgnoreFiles
-}
