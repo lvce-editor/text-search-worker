@@ -9,19 +9,19 @@ export const getInputActionsInput = (flags: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconCaseSensitive,
-      checked: Boolean(flags & SearchFlags.MatchCase),
+      checked: SearchFlags.hasMatchCase(flags),
       title: SearchStrings.matchCase(),
       name: InputName.MatchCase,
     },
     {
       icon: ClassNames.MaskIconWholeWord,
-      checked: Boolean(flags & SearchFlags.MatchWholeWord),
+      checked: SearchFlags.hasMatchWholeWord(flags),
       title: SearchStrings.matchWholeWord(),
       name: InputName.MatchWholeWord,
     },
     {
       icon: ClassNames.MaskIconRegex,
-      checked: Boolean(flags & SearchFlags.UseRegularExpression),
+      checked: SearchFlags.hasUseRegularExpression(flags),
       title: SearchStrings.useRegularExpression(),
       name: InputName.UseRegularExpression,
     },
