@@ -2,9 +2,9 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFocusSelector from '../GetFocusSelector/GetFocusSelector.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as InputName from '../InputName/InputName.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 const renderItems = {
   isEqual(oldState: SearchState, newState: SearchState): boolean {
@@ -55,7 +55,7 @@ const renderValue = {
     return oldState.value === newState.value || newState.inputSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    return ['Viewlet.send', newState.uid, 'setValue', newState.value, '[name="search-value"]']
+    return ['Viewlet.send', newState.uid, 'setValue', newState.value, `[name="${InputName.SearchValue}"]`]
   },
 }
 
@@ -64,8 +64,7 @@ const renderReplacement = {
     return oldState.replacement === newState.replacement || newState.inputSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchReplaceInput)
-    return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, selector]
+    return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, `[name=${InputName.ReplaceValue}]`]
   },
 }
 
@@ -74,8 +73,7 @@ const renderIncludeValue = {
     return oldState.includeValue === newState.includeValue || newState.inputSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchIncludeInput)
-    return ['Viewlet.send', newState.uid, 'setValue', newState.includeValue, selector]
+    return ['Viewlet.send', newState.uid, 'setValue', newState.includeValue, `[name=${InputName.FilesToInclude}]`]
   },
 }
 
@@ -84,8 +82,7 @@ const renderExcludeValue = {
     return oldState.excludeValue === newState.excludeValue || newState.inputSource === InputSource.User
   },
   apply(oldState: SearchState, newState: SearchState): any {
-    const selector = GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchExcludeInput)
-    return ['Viewlet.send', newState.uid, 'setValue', newState.excludeValue, selector]
+    return ['Viewlet.send', newState.uid, 'setValue', newState.excludeValue, `[name=${InputName.FilesToExclude}]`]
   },
 }
 

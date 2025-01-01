@@ -20,7 +20,7 @@ const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
 test('textSearch - error', async () => {
   // @ts-ignore
   ParentRpc.invoke.mockRejectedValue(new TypeError('x is not a function'))
-  await expect(TextSearchNode.textSearch('', '/test', 'abc', {})).rejects.toThrow(new TypeError('x is not a function'))
+  await expect(TextSearchNode.textSearch('', '/test', 'abc', {} as any)).rejects.toThrow(new TypeError('x is not a function'))
 })
 
 test('textSearch', async () => {
@@ -43,7 +43,7 @@ test('textSearch', async () => {
       },
     ],
   })
-  expect(await TextSearchNode.textSearch('', '/test', 'abc', {})).toEqual([
+  expect(await TextSearchNode.textSearch('', '/test', 'abc', {} as any)).toEqual([
     {
       type: TextSearchResultType.File,
       text: './index.txt',
