@@ -11,7 +11,7 @@ const { textSearch } = await import('../src/parts/TextSearch/TextSearch.ts')
 test('textSearch - calls provider with correct arguments', async () => {
   const root = 'file:///test/path'
   const query = 'search term'
-  const options = { includePattern: '*.ts' }
+  const options = { includePattern: '*.ts' } as any
   const assetDir = '/assets'
 
   // @ts-ignore
@@ -36,7 +36,7 @@ test('textSearch - throws error for non-string query', async () => {
 test('textSearch - handles different protocols', async () => {
   const root = 'http://test.com'
   const query = 'search'
-  const options = {}
+  const options = {} as any
   const assetDir = '/assets'
 
   // @ts-ignore

@@ -30,7 +30,7 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
   const scheme = 'fetch'
   const root = 'fetch://example.com'
   const query = 'test'
-  const options = { includePattern: '*.txt' }
+  const options = { includePattern: '*.txt' } as any
   const assetDir = '/assets'
 
   const result = await TextSearchFetch.textSearch(scheme, root, query, options, assetDir)
@@ -55,7 +55,7 @@ test('textSearch - handles error from ParentRpc', async () => {
   const scheme = 'fetch'
   const root = 'fetch://example.com'
   const query = 'test'
-  const options = {}
+  const options = {} as any
   const assetDir = '/assets'
 
   await expect(TextSearchFetch.textSearch(scheme, root, query, options, assetDir)).rejects.toThrow('Network error')

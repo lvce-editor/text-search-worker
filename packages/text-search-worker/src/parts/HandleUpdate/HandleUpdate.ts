@@ -2,6 +2,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ErrorHandling from '../ErrorHandling/ErrorHandling.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
+import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
@@ -27,6 +28,8 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
       }
     }
     const root = state.workspacePath
+    const scheme = GetProtocol.getProtocol(root)
+
     const results = await TextSearch.textSearch(
       root,
       value,
@@ -36,6 +39,10 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         useRegularExpression: SearchFlags.hasUseRegularExpression(flags),
         exclude: excludeValue,
         include: includeValue,
+        assetDir: state.assetDir,
+        root,
+        query: value,
+        scheme,
       },
       state.assetDir,
       state.platform,
