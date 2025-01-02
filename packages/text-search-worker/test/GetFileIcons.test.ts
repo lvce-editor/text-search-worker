@@ -1,4 +1,5 @@
 import { expect, jest, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockIcon = 'file-icon'
@@ -14,10 +15,28 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => ({
 const { getFileIcons } = await import('../src/parts/GetFileIcons/GetFileIcons.ts')
 
 test('GetFileIcons', async () => {
-  const mockFiles = [
-    { text: 'file1.txt', type: TextSearchResultType.File },
-    { text: 'file2.js', type: TextSearchResultType.Match },
-    { text: 'file3.css', type: TextSearchResultType.File },
+  const mockFiles: readonly SearchResult[] = [
+    {
+      type: TextSearchResultType.File,
+      text: 'file1.txt',
+      start: 0,
+      end: 0,
+      lineNumber: 0,
+    },
+    {
+      type: TextSearchResultType.Match,
+      text: 'file2.js',
+      start: 0,
+      end: 0,
+      lineNumber: 0,
+    },
+    {
+      type: TextSearchResultType.File,
+      text: 'file3.css',
+      start: 0,
+      end: 0,
+      lineNumber: 0,
+    },
   ]
 
   const result = await getFileIcons(mockFiles)

@@ -1,9 +1,6 @@
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import * as IsFile from '../IsFile/IsFile.ts'
 
-const isFile = (match: any): boolean => {
-  return match.type === TextSearchResultType.File
-}
-
-export const getFiles = (matches: readonly any[]): readonly any[] => {
-  return matches.filter(isFile)
+export const getFiles = (matches: readonly SearchResult[]): readonly SearchResult[] => {
+  return matches.filter(IsFile.isFile)
 }
