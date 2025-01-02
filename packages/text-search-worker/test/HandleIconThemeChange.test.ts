@@ -14,9 +14,9 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
-      { id: 1, text: 'file1.txt' },
-      { id: 2, text: 'file2.txt' },
-      { id: 3, text: 'file3.txt' },
+      { text: 'file1.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
+      { text: 'file2.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
+      { text: 'file3.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
     ],
     minLineY: 0,
     maxLineY: 2,
