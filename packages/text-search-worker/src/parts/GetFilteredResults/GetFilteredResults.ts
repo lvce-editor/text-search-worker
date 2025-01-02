@@ -16,7 +16,7 @@ export const getFilteredResults = (results: readonly SearchResult[], collapsedPa
         isExcluded = false
       }
     }
-    if (!isExcluded) {
+    if (result.type === TextSearchResultType.Match && !isExcluded) {
       filteredResults.push(result)
     }
   }
