@@ -96,7 +96,6 @@ test('getDisplayResult - result', () => {
     text: 'fun main(args : Array<String>) {',
     title: 'fun main(args : Array<String>) {',
     top: 0,
-    type: 2,
     expanded: false,
   })
 })
