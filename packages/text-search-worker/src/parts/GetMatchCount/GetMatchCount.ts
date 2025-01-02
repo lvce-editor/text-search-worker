@@ -8,5 +8,5 @@ export const getMatchCount = (results: readonly SearchResult[], startIndex: numb
       return i - startIndex - 1
     }
   }
-  return results.length - startIndex
+  return results.length - startIndex - 1
 }
