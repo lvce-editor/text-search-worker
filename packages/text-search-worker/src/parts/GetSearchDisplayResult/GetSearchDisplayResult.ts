@@ -8,7 +8,6 @@ import * as Workspace from '../Workspace/Workspace.ts'
 export const getDisplayResult = (
   results: readonly SearchResult[],
   fileIcons: readonly string[],
-  fileIconIndex: number,
   itemHeight: number,
   i: number,
   setSize: number,
@@ -16,12 +15,14 @@ export const getDisplayResult = (
   replacement: string,
   focusedIndex: number,
   collapsedPaths: readonly string[],
+  minLineY: number,
 ): DisplaySearchResult => {
   const result = results[i]
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
   const top = i * itemHeight
   const focused = i === focusedIndex
+  const relativeIndex = i - minLineY
   switch (type) {
     case TextSearchResultType.File:
       const path = text
@@ -31,7 +32,7 @@ export const getDisplayResult = (
       return {
         title: absolutePath,
         text: baseName,
-        icon: fileIcons[fileIconIndex],
+        icon: fileIcons[relativeIndex],
         posInSet,
         setSize,
         top,

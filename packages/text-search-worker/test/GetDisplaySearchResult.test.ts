@@ -20,13 +20,12 @@ test('getDisplayResult - file', () => {
   const setSize = 1
   const searchTermLength = 1
   const fileIcons: readonly string[] = ['']
-  const fileIconIndex = 0
   const collapsedPaths: readonly string[] = []
+  const minLineY = 0
   expect(
     GetSearchDisplayResult.getDisplayResult(
       results,
       fileIcons,
-      fileIconIndex,
       itemHeight,
       i,
       setSize,
@@ -34,6 +33,7 @@ test('getDisplayResult - file', () => {
       replacement,
       focusedIndex,
       collapsedPaths,
+      minLineY,
     ),
   ).toEqual({
     depth: 0,
@@ -70,13 +70,12 @@ test('getDisplayResult - result', () => {
   const setSize = 1
   const searchTermLength = 1
   const fileIcons: readonly string[] = []
-  const fileIconIndex = 0
   const collapsedPaths: readonly string[] = []
+  const minLineY = 0
   expect(
     GetSearchDisplayResult.getDisplayResult(
       results,
       fileIcons,
-      fileIconIndex,
       itemHeight,
       i,
       setSize,
@@ -84,6 +83,7 @@ test('getDisplayResult - result', () => {
       replacement,
       focusedIndex,
       collapsedPaths,
+      minLineY,
     ),
   ).toEqual({
     depth: 1,

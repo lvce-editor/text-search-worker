@@ -41,7 +41,7 @@ test('GetFileIcons', async () => {
 
   const result = await getFileIcons(mockFiles)
 
-  expect(result).toEqual(['file-icon', 'file-icon'])
+  expect(result).toEqual(['file-icon', '', 'file-icon'])
   expect(mockRpc.invoke).toHaveBeenCalledTimes(2)
   expect(mockRpc.invoke).toHaveBeenCalledWith('IconTheme.getFileIcon', { name: 'file1.txt' })
   expect(mockRpc.invoke).toHaveBeenCalledWith('IconTheme.getFileIcon', { name: 'file3.css' })
