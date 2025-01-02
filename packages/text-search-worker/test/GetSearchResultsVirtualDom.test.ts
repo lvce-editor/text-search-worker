@@ -19,6 +19,7 @@ test('getSearchResultsVirtualDom', () => {
       matchCount: 0,
       focused: false,
       lineNumber: 0,
+      expanded: true,
     },
   ]
   const focusOutline = false

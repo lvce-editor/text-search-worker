@@ -19,8 +19,20 @@ test('getDisplayResult - file', () => {
   const searchTermLength = 1
   const fileIcons: readonly string[] = ['']
   const fileIconIndex = 0
+  const collapsedPaths: readonly string[] = []
   expect(
-    GetSearchDisplayResult.getDisplayResult(result, fileIcons, fileIconIndex, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex),
+    GetSearchDisplayResult.getDisplayResult(
+      result,
+      fileIcons,
+      fileIconIndex,
+      itemHeight,
+      i,
+      setSize,
+      searchTermLength,
+      replacement,
+      focusedIndex,
+      collapsedPaths,
+    ),
   ).toEqual({
     depth: 0,
     focused: false,
@@ -36,6 +48,7 @@ test('getDisplayResult - file', () => {
     title: '/languages/index.kt',
     top: 0,
     type: 1,
+    expanded: true,
   })
 })
 
@@ -55,8 +68,20 @@ test('getDisplayResult - result', () => {
   const searchTermLength = 1
   const fileIcons: readonly string[] = []
   const fileIconIndex = 0
+  const collapsedPaths: readonly string[] = []
   expect(
-    GetSearchDisplayResult.getDisplayResult(result, fileIcons, fileIconIndex, itemHeight, i, setSize, searchTermLength, replacement, focusedIndex),
+    GetSearchDisplayResult.getDisplayResult(
+      result,
+      fileIcons,
+      fileIconIndex,
+      itemHeight,
+      i,
+      setSize,
+      searchTermLength,
+      replacement,
+      focusedIndex,
+      collapsedPaths,
+    ),
   ).toEqual({
     depth: 1,
     focused: false,
