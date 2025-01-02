@@ -1,7 +1,5 @@
 export const name = 'search.exclude'
 
-export const skip = false
-
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()

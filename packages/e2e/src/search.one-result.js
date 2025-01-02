@@ -1,7 +1,5 @@
 export const name = 'search.one-result'
 
-export const skip = true
-
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
@@ -15,5 +13,5 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   // assert
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('1 result')
+  await expect(message).toHaveText('1 result in 1 file') // TODO
 }
