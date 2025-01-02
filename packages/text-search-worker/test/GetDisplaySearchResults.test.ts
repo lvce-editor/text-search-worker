@@ -41,8 +41,20 @@ test('getDisplayResults', () => {
   const maxLineY = 4
   const replacement = ''
   const focusedIndex = -1
+  const collapsedPaths: readonly string[] = []
   expect(
-    GetSearchDisplayResults.getDisplayResults(results, itemHeight, resultCount, searchTerm, minLineY, maxLineY, replacement, fileIcons, focusedIndex),
+    GetSearchDisplayResults.getDisplayResults(
+      results,
+      itemHeight,
+      resultCount,
+      searchTerm,
+      minLineY,
+      maxLineY,
+      replacement,
+      fileIcons,
+      focusedIndex,
+      collapsedPaths,
+    ),
   ).toEqual([
     {
       depth: 0,
