@@ -1,7 +1,5 @@
 export const name = 'search.use-regular-expression'
 
-export const skip = 1
-
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
