@@ -1,12 +1,12 @@
 import { expect, test } from '@jest/globals'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
+import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
 
 test('getSearchResultsVirtualDom', () => {
   const searchResults: readonly DisplaySearchResult[] = [
     {
       top: 20,
-      type: 1,
       matchStart: 0,
       matchLength: 1,
       text: 'abc',
@@ -19,7 +19,7 @@ test('getSearchResultsVirtualDom', () => {
       matchCount: 0,
       focused: false,
       lineNumber: 0,
-      expanded: true,
+      expanded: ExpandedType.Expanded,
     },
   ]
   const focusOutline = false

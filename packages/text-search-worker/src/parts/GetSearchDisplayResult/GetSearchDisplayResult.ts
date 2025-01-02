@@ -1,5 +1,6 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
@@ -26,7 +27,6 @@ export const getDisplayResult = (
       const baseName = Workspace.pathBaseName(path)
       return {
         title: absolutePath,
-        type: TextSearchResultType.File,
         text: baseName,
         icon: fileIcons[fileIconIndex],
         posInSet,
@@ -39,12 +39,11 @@ export const getDisplayResult = (
         depth: 0,
         matchCount: 0,
         focused,
-        expanded: !collapsedPaths.includes(path),
+        expanded: collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded,
       }
     case TextSearchResultType.Match:
       return {
         title: text,
-        type: TextSearchResultType.Match,
         text: text,
         icon: '',
         posInSet,
@@ -57,7 +56,7 @@ export const getDisplayResult = (
         depth: 1,
         matchCount: 0,
         focused,
-        expanded: false,
+        expanded: ExpandedType.None,
       }
     default:
       throw new Error('unexpected search result type')
