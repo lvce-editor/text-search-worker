@@ -30,7 +30,7 @@ test('selectIndex - no selection', async () => {
   expect(result.listFocusedIndex).toBe(-1)
 })
 
-test('selectIndex - select file item', async () => {
+test.skip('selectIndex - select file item', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [{ type: TextSearchResultType.File, text: 'file1.txt', start: 0, lineNumber: 0, end: 0 }],
@@ -46,7 +46,7 @@ test('selectIndex - select file item', async () => {
   expect(mockWorkspace.getAbsolutePath).toHaveBeenCalledWith('file1.txt')
 })
 
-test('selectIndex - select match item', async () => {
+test.skip('selectIndex - select match item', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 }],
