@@ -7,7 +7,6 @@ test('getSearchResultsVirtualDom', () => {
   const searchResults: readonly DisplaySearchResult[] = [
     {
       top: 20,
-      type: 1,
       matchStart: 0,
       matchLength: 1,
       text: 'abc',
