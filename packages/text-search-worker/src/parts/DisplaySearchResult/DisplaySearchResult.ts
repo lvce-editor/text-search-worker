@@ -13,4 +13,5 @@ export interface DisplaySearchResult {
   readonly depth: number
   readonly matchCount: number
   readonly focused: boolean
+  readonly expanded: boolean
 }

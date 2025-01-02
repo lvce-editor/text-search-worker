@@ -13,6 +13,7 @@ export const getDisplayResult = (
   searchTermLength: number,
   replacement: string,
   focusedIndex: number,
+  collapsedPaths: readonly string[],
 ): DisplaySearchResult => {
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
@@ -38,6 +39,7 @@ export const getDisplayResult = (
         depth: 0,
         matchCount: 0,
         focused,
+        expanded: !collapsedPaths.includes(path),
       }
     case TextSearchResultType.Match:
       return {
@@ -55,6 +57,7 @@ export const getDisplayResult = (
         depth: 1,
         matchCount: 0,
         focused,
+        expanded: false,
       }
     default:
       throw new Error('unexpected search result type')

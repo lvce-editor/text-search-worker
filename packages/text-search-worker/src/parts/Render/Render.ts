@@ -34,6 +34,7 @@ const renderItems = {
       newState.replacement,
       newState.icons,
       newState.listFocusedIndex,
+      newState.collapsedPaths,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
     const dom = GetSearchVirtualDom.getSearchVirtualDom(
