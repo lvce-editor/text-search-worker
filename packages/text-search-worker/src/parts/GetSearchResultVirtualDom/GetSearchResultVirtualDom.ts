@@ -3,43 +3,22 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
+import * as GetAriaExpanded from '../GetAriaExpanded/GetAriaExpanded.ts'
 import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts'
 import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'
 import * as GetFileIconVirtualDom from '../GetFileIconVirtualDom/GetFileIconVirtualDom.ts'
 import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts'
+import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
+import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
-
-const getPaddingLeft = (depth: number): string => {
-  return `${Number(depth) + 1}rem` // TODO use classname and dynamic css
-}
-
-const getClassName = (focused: boolean): string => {
-  if (focused) {
-    return ClassNames.TreeItem + ' ' + ClassNames.TreeItemActive
-  }
-  return ClassNames.TreeItem
-}
-
-// TODO instead of setting string, support enum in virtual dom and send enum to renderer process
-// which converts it to a boolean
-const getAriaExpanded = (expanded: number): string | undefined => {
-  switch (expanded) {
-    case ExpandedType.Collapsed:
-      return 'false'
-    case ExpandedType.Expanded:
-      return 'true'
-    default:
-      return undefined
-  }
-}
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
   const { matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, matchCount, focused, expanded } = rowInfo
   const treeItem: any = {
     type: VirtualDomElements.Div,
     role: AriaRoles.TreeItem,
-    className: getClassName(focused),
+    className: GetSearchResultClassName.getSearchResultClassName(focused),
     title,
     ariaSetSize: setSize,
     ariaLevel: depth,
@@ -47,9 +26,9 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     ariaLabel: title,
     ariaDescription: '',
     childCount: 1,
-    paddingLeft: getPaddingLeft(depth),
+    paddingLeft: GetPaddingLeft.getPaddingLeft(depth),
     paddingRight: TreeItemPadding.PaddingRight,
-    ariaExpanded: getAriaExpanded(expanded),
+    ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
   }
   const dom: VirtualDomNode[] = []
 
