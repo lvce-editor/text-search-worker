@@ -11,7 +11,21 @@ import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
-  const { type, matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, matchCount, focused } = rowInfo
+  const {
+    type,
+    matchStart,
+    matchLength,
+    text: displayText,
+    title,
+    icon,
+    setSize,
+    posInSet,
+    depth,
+    replacement,
+    matchCount,
+    focused,
+    expanded,
+  } = rowInfo
   const treeItem: any = {
     type: VirtualDomElements.Div,
     role: AriaRoles.TreeItem,
@@ -31,7 +45,7 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
   }
   switch (type) {
     case TextSearchResultType.File:
-      treeItem.ariaExpanded = 'true'
+      treeItem.ariaExpanded = `${expanded}`
       break
     default:
       break
@@ -41,7 +55,11 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
   dom.push(treeItem)
   if (type === TextSearchResultType.File) {
     treeItem.childCount += 2
-    dom.push(GetChevronVirtualDom.chevronDownVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon))
+    if (expanded) {
+      dom.push(GetChevronVirtualDom.chevronDownVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon))
+    } else {
+      dom.push(GetChevronVirtualDom.chevronRightVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon))
+    }
   }
   dom.push(...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement))
   if (matchCount) {

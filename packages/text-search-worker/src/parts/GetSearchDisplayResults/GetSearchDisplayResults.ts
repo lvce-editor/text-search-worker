@@ -13,6 +13,7 @@ export const getDisplayResults = (
   replacement: string,
   fileIcons: readonly string[],
   focusedIndex: number,
+  collapsedPaths: readonly string[],
 ): readonly DisplaySearchResult[] => {
   const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
@@ -33,6 +34,7 @@ export const getDisplayResults = (
       searchTermLength,
       replacement,
       focusedIndex,
+      collapsedPaths,
     )
     displayResults.push(displayResult)
     if (result.type === TextSearchResultType.File) {
