@@ -58,7 +58,7 @@ test('selectIndex - select match item', async () => {
   const result = await SelectIndex.selectIndex(state, 0)
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
-  expect(result.collapsedPaths).toEqual(['file.txt', '.file.txt'])
+  expect(result.collapsedPaths).toEqual(['file1.txt', '.file1.txt'])
   expect(mockWorkspace.getAbsolutePath).toHaveBeenCalledWith('file1.txt')
 })
 
