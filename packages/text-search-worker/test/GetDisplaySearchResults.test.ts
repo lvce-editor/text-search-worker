@@ -71,6 +71,7 @@ test('getDisplayResults', () => {
       title: '/languages/index.kt',
       top: 0,
       type: 1,
+      expanded: true,
     },
     {
       depth: 1,
@@ -103,6 +104,7 @@ test('getDisplayResults', () => {
       title: 'fun main(args : Array<String>) {',
       top: 40,
       type: 2,
+      expanded: false,
     },
     {
       depth: 1,
@@ -119,6 +121,7 @@ test('getDisplayResults', () => {
       title: 'fun main(args : Array<String>) {',
       top: 60,
       type: 2,
+      expanded: false,
     },
   ])
 })
