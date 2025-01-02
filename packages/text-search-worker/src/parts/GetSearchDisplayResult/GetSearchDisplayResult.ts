@@ -1,11 +1,12 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
+import * as GetMatchCount from '../GetMatchCount/GetMatchCount.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getDisplayResult = (
-  result: SearchResult,
+  results: readonly SearchResult[],
   fileIcons: readonly string[],
   fileIconIndex: number,
   itemHeight: number,
@@ -16,6 +17,7 @@ export const getDisplayResult = (
   focusedIndex: number,
   collapsedPaths: readonly string[],
 ): DisplaySearchResult => {
+  const result = results[i]
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
   const top = i * itemHeight
@@ -25,6 +27,7 @@ export const getDisplayResult = (
       const path = text
       const absolutePath = Workspace.getAbsolutePath(path)
       const baseName = Workspace.pathBaseName(path)
+      const matchCount = GetMatchCount.getMatchCount(results, i)
       return {
         title: absolutePath,
         text: baseName,
@@ -37,7 +40,7 @@ export const getDisplayResult = (
         matchLength: 0,
         replacement: '',
         depth: 0,
-        matchCount: 0,
+        matchCount,
         focused,
         expanded: collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded,
       }

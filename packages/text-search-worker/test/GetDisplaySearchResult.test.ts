@@ -3,13 +3,15 @@ import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetSearchDisplayResult from '../src/parts/GetSearchDisplayResult/GetSearchDisplayResult.ts'
 
 test('getDisplayResult - file', () => {
-  const result: SearchResult = {
-    type: 1,
-    start: 0,
-    end: 0,
-    lineNumber: 0,
-    text: './languages/index.kt',
-  }
+  const results: readonly SearchResult[] = [
+    {
+      type: 1,
+      start: 0,
+      end: 0,
+      lineNumber: 0,
+      text: './languages/index.kt',
+    },
+  ]
 
   const itemHeight = 20
   const i = 0
@@ -22,7 +24,7 @@ test('getDisplayResult - file', () => {
   const collapsedPaths: readonly string[] = []
   expect(
     GetSearchDisplayResult.getDisplayResult(
-      result,
+      results,
       fileIcons,
       fileIconIndex,
       itemHeight,
@@ -52,13 +54,15 @@ test('getDisplayResult - file', () => {
 })
 
 test('getDisplayResult - result', () => {
-  const result: SearchResult = {
-    type: 2,
-    start: 5,
-    end: 6,
-    lineNumber: 1,
-    text: 'fun main(args : Array<String>) {',
-  }
+  const results: readonly SearchResult[] = [
+    {
+      type: 2,
+      start: 5,
+      end: 6,
+      lineNumber: 1,
+      text: 'fun main(args : Array<String>) {',
+    },
+  ]
   const itemHeight = 20
   const i = 0
   const replacement = ''
@@ -70,7 +74,7 @@ test('getDisplayResult - result', () => {
   const collapsedPaths: readonly string[] = []
   expect(
     GetSearchDisplayResult.getDisplayResult(
-      result,
+      results,
       fileIcons,
       fileIconIndex,
       itemHeight,
