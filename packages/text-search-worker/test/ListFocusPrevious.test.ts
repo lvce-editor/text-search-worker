@@ -1,6 +1,5 @@
 import { expect, test } from '@jest/globals'
 import type { List } from '../src/parts/List/List.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as ListFocusPrevious from '../src/parts/ListFocusPrevious/ListFocusPrevious.ts'
 
@@ -38,7 +37,7 @@ test('focusPrevious - returns same state when focusedIndex is -1', () => {
 })
 
 test('focusPrevious - focuses previous item', () => {
-  const state: SearchState = {
+  const state: List<string> = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     focusedIndex: 2,
     items: ['item1', 'item2', 'item3'],
