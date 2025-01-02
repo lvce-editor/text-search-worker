@@ -47,7 +47,7 @@ test('getDisplayResult - file', () => {
     text: 'index.kt',
     title: '/languages/index.kt',
     top: 0,
-    expanded: true,
+    expanded: 2,
   })
 })
 
