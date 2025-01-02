@@ -1,7 +1,5 @@
 export const name = 'search.replace-regex'
 
-export const skip = 1
-
 export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
