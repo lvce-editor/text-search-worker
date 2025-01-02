@@ -16,30 +16,33 @@ test('getMatchCount - only file results', () => {
   expect(GetMatchCount.getMatchCount(results, 0)).toBe(0)
 })
 
-test('getMatchCount - only match results', () => {
-  const results: readonly SearchResult[] = [
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 1 },
-  ]
-  expect(GetMatchCount.getMatchCount(results, 0)).toBe(2)
-})
-
-test('getMatchCount - mixed results with startIndex', () => {
+test('getMatchCount - matches between two files', () => {
   const results: readonly SearchResult[] = [
     { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
     { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 2 },
     { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 3 },
-    { type: TextSearchResultType.Match, text: 'match3', start: 0, end: 6, lineNumber: 4 },
   ]
-  expect(GetMatchCount.getMatchCount(results, 1)).toBe(2) // Should count 2 matches before next file
+  expect(GetMatchCount.getMatchCount(results, 0)).toBe(2)
 })
 
-test('getMatchCount - startIndex after last file', () => {
+test('getMatchCount - matches after last file', () => {
   const results: readonly SearchResult[] = [
     { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
     { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 2 },
   ]
-  expect(GetMatchCount.getMatchCount(results, 1)).toBe(2) // Should count all matches after startIndex
+  expect(GetMatchCount.getMatchCount(results, 0)).toBe(2)
+})
+
+test('getMatchCount - matches between multiple files', () => {
+  const results: readonly SearchResult[] = [
+    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
+    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
+    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
+    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
+    { type: TextSearchResultType.Match, text: 'match3', start: 0, end: 6, lineNumber: 4 },
+    { type: TextSearchResultType.File, text: 'file3.txt', start: 0, end: 0, lineNumber: 5 },
+  ]
+  expect(GetMatchCount.getMatchCount(results, 2)).toBe(2)
 })
