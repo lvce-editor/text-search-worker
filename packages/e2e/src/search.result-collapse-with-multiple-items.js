@@ -1,5 +1,4 @@
 export const name = 'search.result-collapse'
-
 export const skip = 1
 
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
@@ -14,7 +13,7 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
   await expect(message).toHaveText('2 results in 2 files')
-  const result = Locator('.TreeItem[aria-label="/a.css"]')
+  const result = Locator('.TreeItem[aria-label="/b.css"]')
   await expect(result).toHaveAttribute('aria-expanded', 'true')
 
   // act
