@@ -1,4 +1,4 @@
-import { SearchResult } from '../SearchResult/SearchResult.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const getMatchCount = (results: readonly SearchResult[], startIndex: number): number => {

@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
-import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 import * as GetMatchCount from '../src/parts/GetMatchCount/GetMatchCount.ts'
+import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test.skip('getMatchCount - empty results', () => {
   const results: readonly SearchResult[] = []
