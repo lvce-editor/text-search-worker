@@ -20,6 +20,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       top: 0,
+      expanded: true,
     },
     {
       type: 1,
@@ -36,6 +37,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       top: 0,
+      expanded: true,
     },
   ]
   const flags = 0
