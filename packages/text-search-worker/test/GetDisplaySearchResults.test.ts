@@ -88,6 +88,7 @@ test('getDisplayResults', () => {
       title: 'fun main(args : Array<String>) {',
       top: 20,
       type: 2,
+      expanded: false,
     },
     {
       depth: 1,
