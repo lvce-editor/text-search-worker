@@ -2,11 +2,11 @@ import { test, expect } from '@jest/globals'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import { getSearchVirtualDom } from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
     {
-      type: 1,
       text: 'Result 1',
       title: 'Title 1',
       matchCount: 0,
@@ -20,10 +20,9 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       top: 0,
-      expanded: true,
+      expanded: ExpandedType.Expanded,
     },
     {
-      type: 1,
       text: 'Result 2',
       title: 'Title 2',
       matchCount: 0,
@@ -37,7 +36,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       top: 0,
-      expanded: true,
+      expanded: ExpandedType.Expanded,
     },
   ]
   const flags = 0
