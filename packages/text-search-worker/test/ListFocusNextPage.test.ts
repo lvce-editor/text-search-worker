@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import type { List } from '../src/parts/List/List.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { focusNextPage } from '../src/parts/ListFocusNextPage/ListFocusNextPage.ts'
 
 test('focusNextPage - returns same state when at last index', () => {
-  const state: SearchState = {
+  const state: List<string> = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     focusedIndex: 2,
     items: ['item1', 'item2', 'item3'],
@@ -18,8 +18,7 @@ test('focusNextPage - returns same state when at last index', () => {
 })
 
 test('focusNextPage - focuses next page', () => {
-  const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+  const state: List<string> = {
     focusedIndex: 0,
     items: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
     maxLineY: 3,
@@ -36,8 +35,7 @@ test('focusNextPage - focuses next page', () => {
 })
 
 test('focusNextPage - clamps to last index', () => {
-  const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+  const state: List<string> = {
     focusedIndex: 0,
     items: ['item1', 'item2', 'item3'],
     maxLineY: 3,
