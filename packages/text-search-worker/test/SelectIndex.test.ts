@@ -33,7 +33,7 @@ test('selectIndex - no selection', async () => {
 test('selectIndex - select file item', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt' }],
+    items: [{ type: TextSearchResultType.File, text: 'file1.txt', start: 0, lineNumber: 0, end: 0 }],
     listFocusedIndex: -1,
     listFocused: false,
     collapsedPaths: [],
@@ -49,7 +49,7 @@ test('selectIndex - select file item', async () => {
 test('selectIndex - select match item', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt' }],
+    items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 }],
     listFocusedIndex: -1,
     listFocused: false,
     collapsedPaths: [],
@@ -66,10 +66,10 @@ test('getFileIndex - finds closest file above match', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
-      { type: TextSearchResultType.File, text: 'file1.ts' },
-      { type: TextSearchResultType.Match, lineNumber: 5 },
-      { type: TextSearchResultType.Match, lineNumber: 10 },
-      { type: TextSearchResultType.File, text: 'file2.ts' },
+      { type: TextSearchResultType.File, text: 'file1.ts', lineNumber: 0, end: 0, start: 0 },
+      { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
+      { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
+      { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
     ],
   }
 
@@ -84,8 +84,8 @@ test('getFileIndex - returns -1 when no file found', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
-      { type: TextSearchResultType.Match, lineNumber: 5 },
-      { type: TextSearchResultType.Match, lineNumber: 10 },
+      { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
+      { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
     ],
   }
 
@@ -95,7 +95,7 @@ test('getFileIndex - returns -1 when no file found', async () => {
 test.skip('selectIndexFile - throws on invalid path', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    items: [{ type: TextSearchResultType.File, text: 'file1.ts' }],
+    items: [{ type: TextSearchResultType.File, text: 'file1.ts', end: 0, start: 0, lineNumber: 0 }],
   }
 
   mockWorkspace.getAbsolutePath.mockReturnValue(undefined)
@@ -107,8 +107,8 @@ test('selectIndexPreview - throws on invalid path', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
-      { type: TextSearchResultType.File, text: 'file1.ts' },
-      { type: TextSearchResultType.Match, lineNumber: 5 },
+      { type: TextSearchResultType.File, text: 'file1.ts', lineNumber: 0, end: 0, start: 0 },
+      { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
     ],
   }
 
@@ -121,10 +121,10 @@ test('selectIndexPreview - handles match with file above', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
-      { type: TextSearchResultType.File, text: 'file1.ts' },
-      { type: TextSearchResultType.Match, lineNumber: 5 },
-      { type: TextSearchResultType.Match, lineNumber: 10 },
-      { type: TextSearchResultType.File, text: 'file2.ts' },
+      { type: TextSearchResultType.File, text: 'file1.ts', start: 0, end: 0, lineNumber: 0 },
+      { type: TextSearchResultType.Match, lineNumber: 5, start: 0, end: 0, text: '' },
+      { type: TextSearchResultType.Match, lineNumber: 10, start: 0, end: 0, text: '' },
+      { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
     ],
   }
 
