@@ -18,14 +18,10 @@ export const getDisplayResults = (
   const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
   const searchTermLength = searchTerm.length
-  let fileResult = {
-    matchCount: 0,
-  }
   let fileIconIndex = 0
   for (let i = minLineY; i < maxLineY; i++) {
-    const result = results[i]
     const displayResult = GetSearchDisplayResult.getDisplayResult(
-      result,
+      results,
       fileIcons,
       fileIconIndex,
       itemHeight,
@@ -37,11 +33,9 @@ export const getDisplayResults = (
       collapsedPaths,
     )
     displayResults.push(displayResult)
-    if (result.type === TextSearchResultType.File) {
-      fileResult = displayResult
+    // TODO find a better way to compute file icons, without mutations
+    if (results[i].type === TextSearchResultType.File) {
       fileIconIndex++
-    } else {
-      fileResult.matchCount++
     }
   }
   return displayResults
