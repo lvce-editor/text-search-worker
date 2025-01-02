@@ -1,6 +1,6 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
-import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisplayResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisplayResult.ts'
 
 export const getDisplayResults = (
   results: readonly SearchResult[],
