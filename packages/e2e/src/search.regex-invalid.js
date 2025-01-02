@@ -1,7 +1,5 @@
 export const name = 'search.regex-invalid'
 
-export const skip = 1
-
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
@@ -18,5 +16,7 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.toggleUseRegularExpression()
 
   // assert
-  await expect(message).toHaveText('1 result in 1 file')
+  const inputMessage = Locator('.SearchInputError')
+  await expect(inputMessage).toBeVisible()
+  await expect(inputMessage).toHaveText('Invalid regular expression: /(ab/u: Unterminated group')
 }
