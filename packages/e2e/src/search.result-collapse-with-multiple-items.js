@@ -1,5 +1,4 @@
 export const name = 'search.result-collapse'
-export const skip = 1
 
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
