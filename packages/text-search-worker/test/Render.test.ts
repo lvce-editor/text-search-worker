@@ -113,6 +113,7 @@ test('doRender - renders focus when changed', () => {
     focus: '',
     focusSource: InputSource.Script,
     inputSource: InputSource.Script,
+    uid: 1,
   }
   const newState = {
     ...oldState,
@@ -123,7 +124,7 @@ test('doRender - renders focus when changed', () => {
   mockGetFocusSelector.getFocusSelector.mockReturnValue('focusSelector')
 
   const commands = Render.doRender(1)
-  expect(commands).toEqual([['Viewlet.focusElementByName', 'focusSelector']])
+  expect(commands).toEqual([['Viewlet.focusElementByName', 1, 'focusSelector']])
 })
 
 test('doRender - renders value when changed', () => {
