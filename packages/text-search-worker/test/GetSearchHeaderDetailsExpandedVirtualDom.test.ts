@@ -120,12 +120,12 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       tabIndex: 0,
       name: 'UseExcludeSettings',
       title: 'Use Exclude Settings',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconExclude',
-      type: 4,
+      type: 8,
     },
     {
       childCount: 1,

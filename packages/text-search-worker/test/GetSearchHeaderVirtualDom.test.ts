@@ -73,12 +73,12 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       tabIndex: 0,
       title: 'Match Case',
       name: 'MatchCase',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconCaseSensitive',
-      type: 1,
+      type: 8,
     },
     {
       ariaChecked: false,
