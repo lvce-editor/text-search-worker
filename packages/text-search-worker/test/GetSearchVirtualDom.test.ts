@@ -19,7 +19,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       posInSet: 0,
       replacement: '',
       setSize: 0,
-      top: 0,
       expanded: ExpandedType.Expanded,
     },
     {
@@ -35,7 +34,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       posInSet: 0,
       replacement: '',
       setSize: 0,
-      top: 0,
       expanded: ExpandedType.Expanded,
     },
   ]
