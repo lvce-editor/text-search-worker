@@ -1,8 +1,8 @@
-import { test, expect } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
-import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
-import { getSearchVirtualDom } from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as GetSearchVirtualDom from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
@@ -48,7 +48,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const deltaY = 0
   const ItemHeight = 1
 
-  const result: readonly VirtualDomNode[] = getSearchVirtualDom(
+  const result: readonly VirtualDomNode[] = GetSearchVirtualDom.getSearchVirtualDom(
     visibleItems,
     flags,
     message,
