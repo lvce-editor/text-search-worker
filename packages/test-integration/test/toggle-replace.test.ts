@@ -199,10 +199,15 @@ test('toggleReplace', async () => {
           childCount: 0,
         },
         {
-          type: 4,
-          className: 'Viewlet List',
+          childCount: 1,
+          className: 'Viewlet List Tree',
           role: 'tree',
           tabIndex: 0,
+          type: 4,
+        },
+        {
+          type: 4,
+          className: 'TreeItems',
           childCount: 0,
           onClick: 'handleClick',
           onBlur: 'handleListBlur',
