@@ -88,12 +88,12 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       tabIndex: 0,
       title: 'Match Whole Word',
       name: 'MatchWholeWord',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconWholeWord',
-      type: 4,
+      type: 8,
     },
     {
       ariaChecked: false,
