@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
+import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchVirtualDom from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
-import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
