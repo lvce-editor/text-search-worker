@@ -213,6 +213,7 @@ test('toggleReplace', async () => {
           onClick: 'handleClick',
           onBlur: 'handleListBlur',
           onWheel: 'handleWheel',
+          top: '0px',
         },
       ],
     ],

@@ -6,7 +6,12 @@ import * as DomId from '../DomId/DomId.ts'
 import * as GetSearchResultVirtualDom from '../GetSearchResultVirtualDom/GetSearchResultVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getTreeItemsVirtualDom = (visibleItems: readonly DisplaySearchResult[]): readonly VirtualDomNode[] => {
+export const getTreeItemsVirtualDom = (
+  visibleItems: readonly DisplaySearchResult[],
+  deltaY: number,
+  itemHeight: number,
+): readonly VirtualDomNode[] => {
+  const pixelOffset = deltaY % itemHeight
   return [
     {
       type: VirtualDomElements.Div,
@@ -16,6 +21,7 @@ export const getTreeItemsVirtualDom = (visibleItems: readonly DisplaySearchResul
       onBlur: DomEventListenerFunctions.HandleListBlur,
       onWheel: DomEventListenerFunctions.HandleWheel,
       id: DomId.TreeItems,
+      top: `${-pixelOffset}px`,
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
   ]

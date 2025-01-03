@@ -157,6 +157,7 @@ test('render', async () => {
           onClick: 'handleClick',
           onWheel: 'handleWheel',
           onBlur: 'handleListBlur',
+          top: '0px',
         },
       ],
     ],

@@ -177,6 +177,7 @@ test('handle-input', async () => {
           onClick: 'handleClick',
           onWheel: 'handleWheel',
           type: 4,
+          top: '0px',
         },
       ],
     ],

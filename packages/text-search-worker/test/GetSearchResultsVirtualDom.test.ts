@@ -26,7 +26,19 @@ test('getSearchResultsVirtualDom', () => {
   const scrollBarHeight = 0
   const scrollBarY = 0
   const scrollBarValue = 0
-  expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults, focusOutline, scrollBarHeight, scrollBarY, scrollBarValue)).toEqual([
+  const deltaY = 0
+  const itemHeight = 1
+  expect(
+    GetSearchResultsVirtualDom.getSearchResultsVirtualDom(
+      searchResults,
+      focusOutline,
+      scrollBarHeight,
+      scrollBarY,
+      scrollBarValue,
+      deltaY,
+      itemHeight,
+    ),
+  ).toEqual([
     {
       type: 4,
       className: 'Viewlet List Tree',
@@ -41,6 +53,7 @@ test('getSearchResultsVirtualDom', () => {
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',
+      top: '0px',
       type: 4,
     },
     {

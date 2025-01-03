@@ -1,8 +1,8 @@
-import { test, expect } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
-import { getSearchVirtualDom } from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as GetSearchVirtualDom from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
@@ -45,8 +45,10 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const scrollBarHeight = 0
   const scrollBarY = 0
   const scrollBarValue = 0
+  const deltaY = 0
+  const ItemHeight = 1
 
-  const result: readonly VirtualDomNode[] = getSearchVirtualDom(
+  const result: readonly VirtualDomNode[] = GetSearchVirtualDom.getSearchVirtualDom(
     visibleItems,
     flags,
     message,
@@ -55,6 +57,8 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     scrollBarHeight,
     scrollBarY,
     scrollBarValue,
+    deltaY,
+    ItemHeight,
   )
 
   expect(result).toEqual([
@@ -213,6 +217,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onClick: 'handleClick',
       onWheel: 'handleWheel',
       type: 4,
+      top: '0px',
     },
     {
       ariaDescription: '',
