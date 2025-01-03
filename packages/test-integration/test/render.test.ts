@@ -151,6 +151,8 @@ test('render', async () => {
         {
           type: 4,
           className: 'TreeItems',
+          id: 'TreeItems',
+
           childCount: 0,
           onClick: 'handleClick',
           onWheel: 'handleWheel',
