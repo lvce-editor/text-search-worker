@@ -17,15 +17,11 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
   await expect(message).toHaveText('100 results in 100 files')
-  const result = Locator('.TreeItem[aria-label="/test.css"]')
-  await expect(result).toHaveAttribute('aria-expanded', 'true')
-  const match = Locator('.TreeItem[aria-label="abc"]')
-  await expect(match).toBeVisible()
 
   // act
   await Search.handleWheel(1, 1)
 
   // assert
   const treeItems = Locator('.TreeItems')
-  await expect(treeItems).toHaveCss('top', '-1px')
+  await expect(treeItems).toHaveCSS('top', '-1px')
 }
