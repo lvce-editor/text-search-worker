@@ -160,7 +160,7 @@ test('toggleReplace', async () => {
           childCount: 0,
         },
         {
-          type: 4,
+          type: 1,
           className: 'SearchFieldButton',
           title: 'Replace All',
           name: 'ReplaceAll',
@@ -170,7 +170,7 @@ test('toggleReplace', async () => {
           childCount: 1,
         },
         {
-          type: 4,
+          type: 8,
           className: 'MaskIcon MaskIconReplaceAll',
           childCount: 0,
         },
