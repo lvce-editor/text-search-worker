@@ -9,7 +9,8 @@ test('getListIndex - first item', () => {
   const deltaY = 0
   const itemHeight = 20
   const topHeight = 0
-  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight)
+  const itemCount = 100
+  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, itemCount)
 
   expect(result).toBe(2) // (150 - 100 + 0) / 20 = 2.5 -> 2
 })
@@ -22,8 +23,9 @@ test('getListIndex - with deltaY offset', () => {
   const deltaY = 30
   const itemHeight = 20
   const topHeight = 0
+  const itemCount = 100
 
-  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight)
+  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, itemCount)
 
   expect(result).toBe(4) // (150 - 100 + 30) / 20 = 4
 })
@@ -36,8 +38,9 @@ test('getListIndex - negative index possible', () => {
   const deltaY = 0
   const itemHeight = 20
   const topHeight = 0
+  const itemCount = 100
 
-  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight)
+  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, itemCount)
 
   expect(result).toBe(-3) // (50 - 100 + 0) / 20 = -2.5 -> -2
 })
@@ -50,8 +53,9 @@ test('getListIndex - eventX does not affect result', () => {
   const deltaY = 0
   const itemHeight = 20
   const topHeight = 0
+  const itemCount = 100
 
-  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight)
+  const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, itemCount)
 
   expect(result).toBe(2) // (50 - 100 + 0) / 20 = -2.5 -> -2
 })
