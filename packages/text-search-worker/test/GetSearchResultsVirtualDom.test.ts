@@ -29,13 +29,18 @@ test('getSearchResultsVirtualDom', () => {
   expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults, focusOutline, scrollBarHeight, scrollBarY)).toEqual([
     {
       type: 4,
-      className: 'Viewlet List',
+      className: 'Viewlet List Tree',
       role: 'tree',
       tabIndex: 0,
       childCount: 1,
-      onClick: 'handleClick',
+    },
+    {
+      childCount: 1,
+      className: 'TreeItems',
       onBlur: 'handleListBlur',
+      onClick: 'handleClick',
       onWheel: 'handleWheel',
+      type: 4,
     },
     {
       ariaDescription: '',

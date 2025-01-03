@@ -162,14 +162,18 @@ test('handle-input', async () => {
           type: 4,
         },
         {
+          childCount: 1,
+          className: 'Viewlet List Tree',
+          role: 'tree',
+          tabIndex: 0,
+          type: 4,
+        },
+        {
           childCount: 0,
-          className: 'Viewlet List',
+          className: 'TreeItems',
           onBlur: 'handleListBlur',
           onClick: 'handleClick',
           onWheel: 'handleWheel',
-
-          role: 'tree',
-          tabIndex: 0,
           type: 4,
         },
       ],
