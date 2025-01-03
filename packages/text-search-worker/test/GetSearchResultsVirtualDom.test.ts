@@ -53,6 +53,7 @@ test('getSearchResultsVirtualDom', () => {
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',
+      top: '0px',
       type: 4,
     },
     {
