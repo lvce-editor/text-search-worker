@@ -27,6 +27,8 @@ export const getSearchFocusKey = (key: string): number => {
       return WhenExpression.FocusSearchOpenEditors
     case InputName.UseExcludeSettings:
       return WhenExpression.FocusIgnoreFiles
+    case InputName.ToggleReplace:
+      return WhenExpression.FocusToggleReplace
     default:
       return WhenExpression.Empty
   }
