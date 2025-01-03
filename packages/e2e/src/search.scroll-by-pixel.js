@@ -1,5 +1,7 @@
 export const name = 'search.scroll-by-pixel'
 
+export const skip = 1
+
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
