@@ -72,12 +72,12 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       tabIndex: 0,
       title: 'Search Only Open Editors',
       name: 'SearchOnlyOpenEditors',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconBook',
-      type: 4,
+      type: 8,
     },
     {
       childCount: 1,
