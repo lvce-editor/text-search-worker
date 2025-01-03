@@ -79,7 +79,7 @@ test('toggleReplace', async () => {
         },
         { type: 4, className: 'SearchFieldButtons', childCount: 3 },
         {
-          type: 4,
+          type: 1,
           className: 'SearchFieldButton',
           title: 'Match Case',
           name: 'MatchCase',
@@ -89,12 +89,12 @@ test('toggleReplace', async () => {
           childCount: 1,
         },
         {
-          type: 1,
+          type: 8,
           className: 'MaskIcon MaskIconCaseSensitive',
           childCount: 0,
         },
         {
-          type: 4,
+          type: 1,
           className: 'SearchFieldButton',
           title: 'Match Whole Word',
           name: 'MatchWholeWord',
@@ -104,12 +104,12 @@ test('toggleReplace', async () => {
           childCount: 1,
         },
         {
-          type: 4,
+          type: 8,
           className: 'MaskIcon MaskIconWholeWord',
           childCount: 0,
         },
         {
-          type: 4,
+          type: 1,
           className: 'SearchFieldButton',
           title: 'Use Regular Expression',
           name: 'UseRegularExpression',
@@ -118,7 +118,7 @@ test('toggleReplace', async () => {
           tabIndex: 0,
           childCount: 1,
         },
-        { type: 4, className: 'MaskIcon MaskIconRegex', childCount: 0 },
+        { type: 8, className: 'MaskIcon MaskIconRegex', childCount: 0 },
         {
           type: 4,
           className: 'SearchFieldContainer',
@@ -145,7 +145,7 @@ test('toggleReplace', async () => {
         },
         { type: 4, className: 'SearchFieldButtons', childCount: 1 },
         {
-          type: 4,
+          type: 1,
           className: 'SearchFieldButton',
           title: 'Preserve Case',
           name: 'PreserveCase',
@@ -155,7 +155,7 @@ test('toggleReplace', async () => {
           childCount: 1,
         },
         {
-          type: 4,
+          type: 8,
           className: 'MaskIcon MaskIconPreserveCase',
           childCount: 0,
         },
