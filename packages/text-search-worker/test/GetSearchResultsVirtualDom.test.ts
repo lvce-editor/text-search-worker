@@ -23,7 +23,10 @@ test('getSearchResultsVirtualDom', () => {
     },
   ]
   const focusOutline = false
-  expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults, focusOutline)).toEqual([
+  const scrollBarHeight = 0
+  const scrollBarY = 0
+
+  expect(GetSearchResultsVirtualDom.getSearchResultsVirtualDom(searchResults, focusOutline, scrollBarHeight, scrollBarY)).toEqual([
     {
       type: 4,
       className: 'Viewlet List',

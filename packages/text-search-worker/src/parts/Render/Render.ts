@@ -4,6 +4,7 @@ import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDi
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
+import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 const renderItems = {
@@ -37,12 +38,20 @@ const renderItems = {
       newState.collapsedPaths,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
+    const scrollBarY = ScrollBarFunctions.getScrollBarY(
+      newState.deltaY,
+      newState.finalDeltaY,
+      newState.height - newState.headerHeight,
+      newState.scrollBarHeight,
+    )
     const dom = GetSearchVirtualDom.getSearchVirtualDom(
       displayResults,
       newState.flags,
       newState.message,
       focusOutline,
       newState.searchInputErrorMessage,
+      newState.scrollBarHeight,
+      scrollBarY,
     )
     return ['Viewlet.setDom2', newState.uid, dom]
   },
