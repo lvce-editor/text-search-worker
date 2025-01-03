@@ -166,6 +166,8 @@ test('handle-input', async () => {
           className: 'Viewlet List',
           onBlur: 'handleListBlur',
           onClick: 'handleClick',
+          onWheel: 'handleWheel',
+
           role: 'tree',
           tabIndex: 0,
           type: 4,

@@ -206,6 +206,7 @@ test('toggleReplace', async () => {
           childCount: 0,
           onClick: 'handleClick',
           onBlur: 'handleListBlur',
+          onWheel: 'handleWheel',
         },
       ],
     ],
