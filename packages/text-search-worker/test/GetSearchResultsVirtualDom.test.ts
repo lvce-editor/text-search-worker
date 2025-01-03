@@ -27,7 +27,7 @@ test('getSearchResultsVirtualDom', () => {
   const scrollBarY = 0
   const scrollBarValue = 0
   const deltaY = 0
-  const itemHeight = 0
+  const itemHeight = 1
   expect(
     GetSearchResultsVirtualDom.getSearchResultsVirtualDom(
       searchResults,
