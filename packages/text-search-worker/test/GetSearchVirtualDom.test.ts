@@ -217,6 +217,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onClick: 'handleClick',
       onWheel: 'handleWheel',
       type: 4,
+      top: '0px',
     },
     {
       ariaDescription: '',
