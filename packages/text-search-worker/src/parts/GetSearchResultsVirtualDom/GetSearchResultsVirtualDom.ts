@@ -17,6 +17,7 @@ export const getSearchResultsVirtualDom = (visibleItems: readonly DisplaySearchR
       childCount: visibleItems.length,
       onClick: DomEventListenerFunctions.HandleClick,
       onBlur: DomEventListenerFunctions.HandleListBlur,
+      onWheel: DomEventListenerFunctions.HandleWheel,
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
   ]
