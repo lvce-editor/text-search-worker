@@ -36,7 +36,6 @@ test('getDisplayResult - file', () => {
     setSize: 1,
     text: 'index.kt',
     title: '/languages/index.kt',
-    top: 0,
     expanded: 2,
   })
 })
@@ -74,7 +73,6 @@ test('getDisplayResult - result', () => {
     setSize: 1,
     text: 'fun main(args : Array<String>) {',
     title: 'fun main(args : Array<String>) {',
-    top: 0,
     expanded: 0,
   })
 })
