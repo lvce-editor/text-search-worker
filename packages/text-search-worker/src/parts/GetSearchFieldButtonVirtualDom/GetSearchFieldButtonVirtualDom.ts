@@ -9,7 +9,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
   const { icon, checked, title, name } = button
   return [
     {
-      type: VirtualDomElements.Div,
+      type: VirtualDomElements.Button,
       className: MergeClassNames.mergeClassNames(ClassNames.SearchFieldButton, checked ? ClassNames.SearchFieldButtonChecked : ''),
       name,
       title,
@@ -19,7 +19,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       childCount: 1,
     },
     {
-      type: VirtualDomElements.Div,
+      type: VirtualDomElements.Span,
       className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
       childCount: 0,
     },
