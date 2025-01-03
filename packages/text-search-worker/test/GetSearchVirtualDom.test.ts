@@ -44,8 +44,18 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const focusOutline = false
   const scrollBarHeight = 0
   const scrollBarY = 0
+  const scrollBarValue = 0
 
-  const result: readonly VirtualDomNode[] = getSearchVirtualDom(visibleItems, flags, message, focusOutline, '', scrollBarHeight, scrollBarY)
+  const result: readonly VirtualDomNode[] = getSearchVirtualDom(
+    visibleItems,
+    flags,
+    message,
+    focusOutline,
+    '',
+    scrollBarHeight,
+    scrollBarY,
+    scrollBarValue,
+  )
 
   expect(result).toEqual([
     {
@@ -198,6 +208,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 2,
       className: 'TreeItems',
+      id: 'TreeItems',
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',

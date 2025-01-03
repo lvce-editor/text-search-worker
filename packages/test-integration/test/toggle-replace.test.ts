@@ -207,6 +207,7 @@ test('toggleReplace', async () => {
         },
         {
           type: 4,
+          id: 'TreeItems',
           className: 'TreeItems',
           childCount: 0,
           onClick: 'handleClick',

@@ -171,6 +171,8 @@ test('handle-input', async () => {
         {
           childCount: 0,
           className: 'TreeItems',
+          id: 'TreeItems',
+
           onBlur: 'handleListBlur',
           onClick: 'handleClick',
           onWheel: 'handleWheel',

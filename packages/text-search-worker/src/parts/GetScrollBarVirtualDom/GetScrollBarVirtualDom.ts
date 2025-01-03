@@ -1,10 +1,12 @@
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as DomId from '../DomId/DomId.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: number): readonly VirtualDomNode[] => {
+export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: number, scrollBarValue: number): readonly VirtualDomNode[] => {
   if (scrollBarHeight === 0) {
     return []
   }
@@ -14,6 +16,9 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
       className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarVertical),
       childCount: 1,
       onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
+      role: AriaRoles.ScrollBar,
+      ariaControls: DomId.TreeItems,
+      ariaValueNow: scrollBarValue,
     },
     {
       type: VirtualDomElements.Div,

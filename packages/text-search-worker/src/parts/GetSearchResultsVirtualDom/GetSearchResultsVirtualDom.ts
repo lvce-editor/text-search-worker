@@ -12,6 +12,7 @@ export const getSearchResultsVirtualDom = (
   focusOutline: boolean,
   scrollbarHeight: number,
   scrollBarY: number,
+  scrollBarValue: number,
 ): readonly VirtualDomNode[] => {
   const scrollBarDomNodes = scrollbarHeight === 0 ? 0 : 1
   return [
@@ -28,6 +29,6 @@ export const getSearchResultsVirtualDom = (
       childCount: 1 + scrollBarDomNodes,
     },
     ...GetTreeItemsVirtualDom.getTreeItemsVirtualDom(visibleItems),
-    ...GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollbarHeight, scrollBarY),
+    ...GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollbarHeight, scrollBarY, scrollBarValue),
   ]
 }
