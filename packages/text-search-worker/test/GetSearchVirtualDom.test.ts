@@ -189,13 +189,18 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
+      childCount: 1,
+      className: 'Viewlet List Tree',
+      role: 'tree',
+      tabIndex: 0,
+      type: 4,
+    },
+    {
       childCount: 2,
-      className: 'Viewlet List',
+      className: 'TreeItems',
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',
-      role: 'tree',
-      tabIndex: 0,
       type: 4,
     },
     {
