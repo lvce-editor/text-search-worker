@@ -13,7 +13,6 @@ test('getDisplayResult - file', () => {
     },
   ]
 
-  const itemHeight = 20
   const i = 0
   const replacement = ''
   const focusedIndex = -1
@@ -23,18 +22,7 @@ test('getDisplayResult - file', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(
-      results,
-      fileIcons,
-      itemHeight,
-      i,
-      setSize,
-      searchTermLength,
-      replacement,
-      focusedIndex,
-      collapsedPaths,
-      minLineY,
-    ),
+    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
   ).toEqual({
     depth: 0,
     focused: false,
@@ -63,7 +51,6 @@ test('getDisplayResult - result', () => {
       text: 'fun main(args : Array<String>) {',
     },
   ]
-  const itemHeight = 20
   const i = 0
   const replacement = ''
   const focusedIndex = -1
@@ -73,18 +60,7 @@ test('getDisplayResult - result', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(
-      results,
-      fileIcons,
-      itemHeight,
-      i,
-      setSize,
-      searchTermLength,
-      replacement,
-      focusedIndex,
-      collapsedPaths,
-      minLineY,
-    ),
+    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
   ).toEqual({
     depth: 1,
     focused: false,
