@@ -37,6 +37,7 @@ test('getSearchResultsVirtualDom', () => {
     {
       childCount: 1,
       className: 'TreeItems',
+      id: 'TreeItems',
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',

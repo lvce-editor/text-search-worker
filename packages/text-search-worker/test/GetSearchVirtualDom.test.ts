@@ -208,6 +208,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 2,
       className: 'TreeItems',
+      id: 'TreeItems',
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',
