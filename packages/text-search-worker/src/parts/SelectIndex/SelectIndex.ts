@@ -9,8 +9,8 @@ export const selectIndex = async (state: SearchState, index: number): Promise<Se
       listFocusedIndex: -1,
     }
   }
-  const { items } = state
-  const searchResult = items[index]
+  const { listItems } = state
+  const searchResult = listItems[index]
   const fn = GetSelectHandler.getSelectHandler(searchResult.type)
   return fn(state, searchResult, index)
 }
