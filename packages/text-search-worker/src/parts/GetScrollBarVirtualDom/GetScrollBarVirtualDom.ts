@@ -2,6 +2,7 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: number): readonly VirtualDomNode[] => {
   if (scrollBarHeight === 0) {
@@ -12,6 +13,7 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
       type: VirtualDomElements.Div,
       className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarVertical),
       childCount: 1,
+      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
     },
     {
       type: VirtualDomElements.Div,
