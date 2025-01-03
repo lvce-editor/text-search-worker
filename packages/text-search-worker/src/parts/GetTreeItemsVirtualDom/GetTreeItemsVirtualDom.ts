@@ -2,6 +2,7 @@ import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchRe
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as DomId from '../DomId/DomId.ts'
 import * as GetSearchResultVirtualDom from '../GetSearchResultVirtualDom/GetSearchResultVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
@@ -14,6 +15,7 @@ export const getTreeItemsVirtualDom = (visibleItems: readonly DisplaySearchResul
       onClick: DomEventListenerFunctions.HandleClick,
       onBlur: DomEventListenerFunctions.HandleListBlur,
       onWheel: DomEventListenerFunctions.HandleWheel,
+      id: DomId.TreeItems,
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
   ]

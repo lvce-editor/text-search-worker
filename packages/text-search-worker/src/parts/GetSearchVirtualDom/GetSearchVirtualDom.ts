@@ -15,6 +15,7 @@ export const getSearchVirtualDom = (
   searchInputErrorMessage: string,
   scrollBarHeight: number,
   scrollBarY: number,
+  scrollBarValue: number,
 ): readonly VirtualDomNode[] => {
   const errorDom = GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(searchInputErrorMessage)
   const childCount = 2 + (errorDom.length > 0 ? 1 : 0)
@@ -27,6 +28,6 @@ export const getSearchVirtualDom = (
     },
     ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage),
     ...errorDom,
-    ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems, focusOutline, scrollBarHeight, scrollBarY),
+    ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(visibleItems, focusOutline, scrollBarHeight, scrollBarY, scrollBarValue),
   ]
 }

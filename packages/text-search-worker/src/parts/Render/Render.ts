@@ -38,6 +38,7 @@ const renderItems = {
       newState.collapsedPaths,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
+    const scrollBarValue = (newState.deltaY / newState.finalDeltaY) * 100
     const scrollBarY = ScrollBarFunctions.getScrollBarY(
       newState.deltaY,
       newState.finalDeltaY,
@@ -52,6 +53,7 @@ const renderItems = {
       newState.searchInputErrorMessage,
       newState.scrollBarHeight,
       scrollBarY,
+      scrollBarValue,
     )
     return ['Viewlet.setDom2', newState.uid, dom]
   },
