@@ -32,6 +32,7 @@ test('getSearchResultsVirtualDom', () => {
       childCount: 1,
       onClick: 'handleClick',
       onBlur: 'handleListBlur',
+      onWheel: 'handleWheel',
     },
     {
       ariaDescription: '',

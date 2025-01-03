@@ -148,6 +148,8 @@ test('render', async () => {
           tabIndex: 0,
           childCount: 0,
           onClick: 'handleClick',
+          onWheel: 'handleWheel',
+
           onBlur: 'handleListBlur',
         },
       ],
