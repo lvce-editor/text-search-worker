@@ -14,31 +14,22 @@ import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/Toggl
 export const getClickHandler = (name: string): ClickHandler => {
   switch (name) {
     case InputName.MatchCase:
-      // @ts-ignore
       return ToggleMatchCase.toggleMatchCase
     case InputName.ToggleReplace:
-      // @ts-ignore
       return ToggleReplace.toggleReplace
     case InputName.UseRegularExpression:
-      // @ts-ignore
       return ToggleUseRegularExpression.toggleUseRegularExpression
     case InputName.ReplaceAll:
-      // @ts-ignore
       return ReplaceAll.replaceAll
     case InputName.MatchWholeWord:
-      // @ts-ignore
       return ToggleMatchWholeWord.toggleMatchWholeWord
     case InputName.PreserveCase:
-      // @ts-ignore
       return TogglePreserveCase.togglePreserveCase
     case InputName.ToggleSearchDetails:
-      // @ts-ignore
       return ToggleDetailsExpanded.toggleDetailsExpanded
     case InputName.SearchOnlyOpenEditors:
-      // @ts-ignore
       return ToggleOpenEditors.toggleOpenEditors
     case InputName.UseExcludeSettings:
-      // @ts-ignore
       return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
     case InputName.SearchValue:
     case InputName.ReplaceValue:
