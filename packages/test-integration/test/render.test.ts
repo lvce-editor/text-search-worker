@@ -27,7 +27,7 @@ test('render', async () => {
           className: 'SearchHeader',
           role: 'none',
           childCount: 2,
-          onClick: 'handleHeaderClick',
+          onClick: 'handleHeaderClick2',
           onFocusIn: 'handleHeaderFocusIn',
         },
         {
