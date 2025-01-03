@@ -69,7 +69,6 @@ test('getDisplayResults', () => {
       setSize: 3,
       text: 'index.kt',
       title: '/languages/index.kt',
-      top: 0,
       expanded: 2,
     },
     {
@@ -85,7 +84,6 @@ test('getDisplayResults', () => {
       setSize: 3,
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
-      top: 20,
       expanded: 0,
     },
     {
@@ -101,7 +99,6 @@ test('getDisplayResults', () => {
       setSize: 3,
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
-      top: 40,
       expanded: 0,
     },
     {
@@ -117,7 +114,6 @@ test('getDisplayResults', () => {
       setSize: 3,
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
-      top: 60,
       expanded: 0,
     },
   ])

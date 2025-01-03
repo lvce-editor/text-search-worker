@@ -8,7 +8,6 @@ import * as Workspace from '../Workspace/Workspace.ts'
 export const getDisplayResult = (
   results: readonly SearchResult[],
   fileIcons: readonly string[],
-  itemHeight: number,
   i: number,
   setSize: number,
   searchTermLength: number,
@@ -20,7 +19,6 @@ export const getDisplayResult = (
   const result = results[i]
   const { type, text, lineNumber, start } = result
   const posInSet = i + 1
-  const top = i * itemHeight
   const focused = i === focusedIndex
   const relativeIndex = i - minLineY
   switch (type) {
@@ -35,7 +33,6 @@ export const getDisplayResult = (
         icon: fileIcons[relativeIndex],
         posInSet,
         setSize,
-        top,
         lineNumber,
         matchStart: 0,
         matchLength: 0,
@@ -52,7 +49,6 @@ export const getDisplayResult = (
         icon: '',
         posInSet,
         setSize,
-        top,
         lineNumber,
         matchStart: start,
         matchLength: searchTermLength,

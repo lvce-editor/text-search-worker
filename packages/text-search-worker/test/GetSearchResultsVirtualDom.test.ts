@@ -6,7 +6,6 @@ import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtua
 test('getSearchResultsVirtualDom', () => {
   const searchResults: readonly DisplaySearchResult[] = [
     {
-      top: 20,
       matchStart: 0,
       matchLength: 1,
       text: 'abc',

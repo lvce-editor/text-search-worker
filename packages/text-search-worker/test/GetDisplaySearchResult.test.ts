@@ -13,7 +13,6 @@ test('getDisplayResult - file', () => {
     },
   ]
 
-  const itemHeight = 20
   const i = 0
   const replacement = ''
   const focusedIndex = -1
@@ -23,18 +22,7 @@ test('getDisplayResult - file', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(
-      results,
-      fileIcons,
-      itemHeight,
-      i,
-      setSize,
-      searchTermLength,
-      replacement,
-      focusedIndex,
-      collapsedPaths,
-      minLineY,
-    ),
+    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
   ).toEqual({
     depth: 0,
     focused: false,
@@ -48,7 +36,6 @@ test('getDisplayResult - file', () => {
     setSize: 1,
     text: 'index.kt',
     title: '/languages/index.kt',
-    top: 0,
     expanded: 2,
   })
 })
@@ -63,7 +50,6 @@ test('getDisplayResult - result', () => {
       text: 'fun main(args : Array<String>) {',
     },
   ]
-  const itemHeight = 20
   const i = 0
   const replacement = ''
   const focusedIndex = -1
@@ -73,18 +59,7 @@ test('getDisplayResult - result', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(
-      results,
-      fileIcons,
-      itemHeight,
-      i,
-      setSize,
-      searchTermLength,
-      replacement,
-      focusedIndex,
-      collapsedPaths,
-      minLineY,
-    ),
+    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
   ).toEqual({
     depth: 1,
     focused: false,
@@ -98,7 +73,6 @@ test('getDisplayResult - result', () => {
     setSize: 1,
     text: 'fun main(args : Array<String>) {',
     title: 'fun main(args : Array<String>) {',
-    top: 0,
     expanded: 0,
   })
 })

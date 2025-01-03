@@ -21,7 +21,6 @@ export const getDisplayResults = (
     const displayResult = GetSearchDisplayResult.getDisplayResult(
       results,
       fileIcons,
-      itemHeight,
       i,
       setSize,
       searchTermLength,
