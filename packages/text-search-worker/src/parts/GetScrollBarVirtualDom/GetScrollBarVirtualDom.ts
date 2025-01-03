@@ -4,6 +4,9 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: number): readonly VirtualDomNode[] => {
+  if (scrollBarHeight === 0) {
+    return []
+  }
   return [
     {
       type: VirtualDomElements.Div,
