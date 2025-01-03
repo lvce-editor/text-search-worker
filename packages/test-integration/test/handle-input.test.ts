@@ -97,7 +97,7 @@ test('handle-input', async () => {
         {
           childCount: 0,
           className: 'MaskIcon MaskIconCaseSensitive',
-          type: 4,
+          type: 1,
         },
         {
           ariaChecked: false,

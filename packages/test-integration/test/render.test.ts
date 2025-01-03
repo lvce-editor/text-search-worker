@@ -87,7 +87,7 @@ test('render', async () => {
           childCount: 1,
         },
         {
-          type: 4,
+          type: 1,
           className: 'MaskIcon MaskIconCaseSensitive',
           childCount: 0,
         },

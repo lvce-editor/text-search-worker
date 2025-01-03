@@ -78,7 +78,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 0,
       className: 'MaskIcon MaskIconCaseSensitive',
-      type: 4,
+      type: 1,
     },
     {
       ariaChecked: false,

@@ -131,12 +131,12 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       tabIndex: 0,
       title: 'Match Case',
       name: 'MatchCase',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconCaseSensitive',
-      type: 4,
+      type: 1,
     },
     {
       ariaChecked: false,
