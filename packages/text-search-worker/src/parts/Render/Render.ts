@@ -21,7 +21,8 @@ const renderItems = {
       oldState.listFocusedIndex === newState.listFocusedIndex &&
       oldState.listFocused === newState.listFocused &&
       oldState.icons === newState.icons &&
-      oldState.searchInputErrorMessage === newState.searchInputErrorMessage
+      oldState.searchInputErrorMessage === newState.searchInputErrorMessage &&
+      oldState.deltaY === newState.deltaY
     )
   },
   apply(oldState: SearchState, newState: SearchState): any {
@@ -54,6 +55,8 @@ const renderItems = {
       newState.scrollBarHeight,
       scrollBarY,
       scrollBarValue,
+      newState.deltaY,
+      newState.itemHeight,
     )
     return ['Viewlet.setDom2', newState.uid, dom]
   },
