@@ -161,12 +161,12 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       tabIndex: 0,
       title: 'Use Regular Expression',
       name: 'UseRegularExpression',
-      type: 4,
+      type: 1,
     },
     {
       childCount: 0,
       className: 'MaskIcon MaskIconRegex',
-      type: 4,
+      type: 8,
     },
     {
       childCount: 2,
