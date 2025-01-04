@@ -5,7 +5,7 @@ import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
-export const getInputActionsReplace = (flags: number): InputActions => {
+export const getInputActionsReplace = (flags: number, matchCount: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconPreserveCase,
@@ -20,6 +20,7 @@ export const getInputActionsReplace = (flags: number): InputActions => {
       checked: false,
       title: SearchStrings.replaceAll(),
       name: InputName.ReplaceAll,
+      disabled: matchCount === 0,
     },
   ]
   return {

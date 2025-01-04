@@ -18,6 +18,7 @@ export const getSearchVirtualDom = (
   scrollBarValue: number,
   deltaY: number,
   itemHeight: number,
+  matchCount: number,
 ): readonly VirtualDomNode[] => {
   const errorDom = GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(searchInputErrorMessage)
   const childCount = 2 + (errorDom.length > 0 ? 1 : 0)
@@ -28,7 +29,7 @@ export const getSearchVirtualDom = (
       className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
       childCount,
     },
-    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage),
+    ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage, matchCount),
     ...errorDom,
     ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(
       visibleItems,

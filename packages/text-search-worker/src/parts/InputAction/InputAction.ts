@@ -4,4 +4,5 @@ export interface InputAction {
   readonly title: string
   readonly name: string
   readonly command?: string
+  readonly disabled?: boolean
 }
