@@ -4,7 +4,6 @@ export interface DisplaySearchResult {
   readonly icon: string
   readonly posInSet: number
   readonly setSize: number
-  readonly lineNumber: number // TODO not needed
   readonly matchStart: number
   readonly matchLength: number
   readonly replacement: string

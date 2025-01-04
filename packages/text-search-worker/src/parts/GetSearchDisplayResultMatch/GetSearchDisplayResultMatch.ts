@@ -8,7 +8,6 @@ export const getDisplayResultMatch = (
   replacement: string,
   text: string,
   posInSet: number,
-  lineNumber: number,
   start: number,
   focused: boolean,
 ): DisplaySearchResult => {
@@ -19,7 +18,6 @@ export const getDisplayResultMatch = (
     expanded: ExpandedType.None,
     focused,
     icon: '',
-    lineNumber,
     matchLength: searchTermLength,
     matchStart: start,
     posInSet,

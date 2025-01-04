@@ -14,7 +14,6 @@ export const getSearchDisplayResultFile = (
   text: string,
   posInSet: number,
   relativeIndex: number,
-  lineNumber: number,
   focused: boolean,
 ): DisplaySearchResult => {
   const path = text
@@ -31,7 +30,6 @@ export const getSearchDisplayResultFile = (
     expanded,
     focused,
     icon: fileIcons[relativeIndex],
-    lineNumber,
     matchLength: 0,
     matchStart: 0,
     posInSet,
