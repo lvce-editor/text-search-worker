@@ -45,6 +45,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const scrollBarValue = 0
   const deltaY = 0
   const ItemHeight = 1
+  const matchCount = 1
 
   const result: readonly VirtualDomNode[] = GetSearchVirtualDom.getSearchVirtualDom(
     visibleItems,
@@ -57,6 +58,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     scrollBarValue,
     deltaY,
     ItemHeight,
+    matchCount,
   )
 
   expect(result).toEqual([
