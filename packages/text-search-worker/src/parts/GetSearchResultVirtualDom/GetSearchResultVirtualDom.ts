@@ -24,10 +24,10 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     posInSet,
     depth,
     replacement,
-    matchCount,
     focused,
     expanded,
     childCount,
+    badgeText,
   } = rowInfo
   const treeItem: VirtualDomNode = {
     type: VirtualDomElements.Div,
@@ -55,8 +55,8 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
   }
   dom.push(...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement))
   // TODO add badge icon to getDisplaySearchResults
-  if (matchCount) {
-    dom.push(...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, matchCount))
+  if (badgeText) {
+    dom.push(...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText))
   }
   dom.push(
     {

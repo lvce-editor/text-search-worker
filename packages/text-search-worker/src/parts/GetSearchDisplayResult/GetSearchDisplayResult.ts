@@ -16,7 +16,7 @@ export const getDisplayResult = (
   minLineY: number,
 ): DisplaySearchResult => {
   const result = results[i]
-  const { type, text, lineNumber, start } = result
+  const { type, text, start } = result
   const posInSet = i + 1
   const focused = i === focusedIndex
   const relativeIndex = i - minLineY
@@ -31,11 +31,10 @@ export const getDisplayResult = (
         text,
         posInSet,
         relativeIndex,
-        lineNumber,
         focused,
       )
     case TextSearchResultType.Match:
-      return GetSearchDisplayResultMatch.getDisplayResultMatch(setSize, searchTermLength, replacement, text, posInSet, lineNumber, start, focused)
+      return GetSearchDisplayResultMatch.getDisplayResultMatch(setSize, searchTermLength, replacement, text, posInSet, start, focused)
     default:
       throw new Error('unexpected search result type')
   }

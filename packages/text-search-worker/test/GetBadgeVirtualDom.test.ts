@@ -4,7 +4,7 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 
 test('getBadgeVirtualDom - returns correct structure with custom class and count', () => {
   const className = 'CustomBadge'
-  const count = 42
+  const count = '42'
   expect(GetBadgeVirtualDom.getBadgeVirtualDom(className, count)).toEqual([
     {
       type: VirtualDomElements.Div,
@@ -21,7 +21,7 @@ test('getBadgeVirtualDom - returns correct structure with custom class and count
 
 test('getBadgeVirtualDom - handles zero count', () => {
   const className = 'EmptyBadge'
-  const count = 0
+  const count = '0'
   expect(GetBadgeVirtualDom.getBadgeVirtualDom(className, count)).toEqual([
     {
       type: VirtualDomElements.Div,
@@ -38,7 +38,7 @@ test('getBadgeVirtualDom - handles zero count', () => {
 
 test('getBadgeVirtualDom - handles empty className', () => {
   const className = ''
-  const count = 5
+  const count = '5'
   expect(GetBadgeVirtualDom.getBadgeVirtualDom(className, count)).toEqual([
     {
       type: VirtualDomElements.Div,

@@ -14,7 +14,6 @@ export const getSearchDisplayResultFile = (
   text: string,
   posInSet: number,
   relativeIndex: number,
-  lineNumber: number,
   focused: boolean,
 ): DisplaySearchResult => {
   const path = text
@@ -23,20 +22,20 @@ export const getSearchDisplayResultFile = (
   const matchCount = GetMatchCount.getMatchCount(results, i)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
   const childCount = GetSearchDisplayResultChildCount.getChildCount(expanded, matchCount)
+  const badgeText = `${matchCount}`
   return {
-    title: absolutePath,
-    text: baseName,
-    icon: fileIcons[relativeIndex],
-    posInSet,
-    setSize,
-    lineNumber,
-    matchStart: 0,
-    matchLength: 0,
-    replacement: '',
-    depth: 0,
-    matchCount,
-    focused,
-    expanded,
+    badgeText,
     childCount,
+    depth: 0,
+    expanded,
+    focused,
+    icon: fileIcons[relativeIndex],
+    matchLength: 0,
+    matchStart: 0,
+    posInSet,
+    replacement: '',
+    setSize,
+    text: baseName,
+    title: absolutePath,
   }
 }
