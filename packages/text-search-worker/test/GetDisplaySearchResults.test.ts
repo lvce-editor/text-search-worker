@@ -70,6 +70,7 @@ test('getDisplayResults', () => {
       text: 'index.kt',
       title: '/languages/index.kt',
       expanded: 2,
+      childCount: 5,
     },
     {
       depth: 1,
@@ -85,6 +86,7 @@ test('getDisplayResults', () => {
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
       expanded: 0,
+      childCount: 2,
     },
     {
       depth: 1,
@@ -100,6 +102,7 @@ test('getDisplayResults', () => {
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
       expanded: 0,
+      childCount: 2,
     },
     {
       depth: 1,
@@ -115,6 +118,7 @@ test('getDisplayResults', () => {
       text: 'fun main(args : Array<String>) {',
       title: 'fun main(args : Array<String>) {',
       expanded: 0,
+      childCount: 2,
     },
   ])
 })

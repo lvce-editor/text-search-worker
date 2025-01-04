@@ -5,6 +5,18 @@ import * as GetMatchCount from '../GetMatchCount/GetMatchCount.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
+const getChildCount = (expanded: number, matchCount: number): number => {
+  let childCount = 1
+  if (expanded === ExpandedType.Expanded || expanded === ExpandedType.Collapsed) {
+    childCount += 2
+  }
+  if (matchCount) {
+    childCount++
+  }
+  childCount++
+  return childCount
+}
+
 export const getDisplayResult = (
   results: readonly SearchResult[],
   fileIcons: readonly string[],
@@ -27,6 +39,8 @@ export const getDisplayResult = (
       const absolutePath = Workspace.getAbsolutePath(path)
       const baseName = Workspace.pathBaseName(path)
       const matchCount = GetMatchCount.getMatchCount(results, i)
+      const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
+      const childCount = getChildCount(expanded, matchCount)
       return {
         title: absolutePath,
         text: baseName,
@@ -40,7 +54,8 @@ export const getDisplayResult = (
         depth: 0,
         matchCount,
         focused,
-        expanded: collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded,
+        expanded,
+        childCount,
       }
     case TextSearchResultType.Match:
       return {
@@ -57,6 +72,7 @@ export const getDisplayResult = (
         matchCount: 0,
         focused,
         expanded: ExpandedType.None,
+        childCount: getChildCount(ExpandedType.None, 0),
       }
     default:
       throw new Error('unexpected search result type')
