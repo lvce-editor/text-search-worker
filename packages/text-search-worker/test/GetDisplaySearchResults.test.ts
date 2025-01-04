@@ -54,6 +54,7 @@ test('getDisplayResults', () => {
       fileIcons,
       focusedIndex,
       collapsedPaths,
+      results,
     ),
   ).toEqual([
     {

@@ -22,7 +22,18 @@ test('getDisplayResult - file', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
+    GetSearchDisplayResult.getDisplayResult(
+      results,
+      fileIcons,
+      i,
+      setSize,
+      searchTermLength,
+      replacement,
+      focusedIndex,
+      collapsedPaths,
+      minLineY,
+      results,
+    ),
   ).toEqual({
     depth: 0,
     focused: false,
@@ -59,7 +70,18 @@ test('getDisplayResult - result', () => {
   const collapsedPaths: readonly string[] = []
   const minLineY = 0
   expect(
-    GetSearchDisplayResult.getDisplayResult(results, fileIcons, i, setSize, searchTermLength, replacement, focusedIndex, collapsedPaths, minLineY),
+    GetSearchDisplayResult.getDisplayResult(
+      results,
+      fileIcons,
+      i,
+      setSize,
+      searchTermLength,
+      replacement,
+      focusedIndex,
+      collapsedPaths,
+      minLineY,
+      results,
+    ),
   ).toEqual({
     depth: 1,
     focused: false,
