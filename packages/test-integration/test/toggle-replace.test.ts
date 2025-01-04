@@ -161,7 +161,7 @@ test('toggleReplace', async () => {
         },
         {
           type: 1,
-          className: 'SearchFieldButton',
+          className: 'SearchFieldButton SearchFieldButtonDisabled',
           title: 'Replace All',
           name: 'ReplaceAll',
           role: 'checkbox',

@@ -10,9 +10,9 @@ import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMessage = ''): readonly VirtualDomNode[] => {
+export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMessage: string, matchCount: number): readonly VirtualDomNode[] => {
   const inputActions = GetInputActionsInput.getInputActionsInput(flags)
-  const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags)
+  const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
