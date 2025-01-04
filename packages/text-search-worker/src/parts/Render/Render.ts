@@ -57,6 +57,7 @@ const renderItems = {
       scrollBarValue,
       newState.deltaY,
       newState.itemHeight,
+      newState.matchCount,
     )
     return ['Viewlet.setDom2', newState.uid, dom]
   },
