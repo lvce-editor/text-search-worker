@@ -57,11 +57,11 @@ test('getDisplayResults', () => {
     ),
   ).toEqual([
     {
+      badgeText: '3',
       depth: 0,
       focused: false,
       icon: '',
       lineNumber: 0,
-      matchCount: 3,
       matchLength: 0,
       matchStart: 0,
       posInSet: 1,
@@ -77,7 +77,7 @@ test('getDisplayResults', () => {
       focused: false,
       icon: '',
       lineNumber: 1,
-      matchCount: 0,
+      badgeText: '0',
       matchLength: 1,
       matchStart: 5,
       posInSet: 2,
