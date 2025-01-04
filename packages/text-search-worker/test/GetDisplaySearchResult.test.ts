@@ -28,7 +28,7 @@ test('getDisplayResult - file', () => {
     focused: false,
     icon: '',
     lineNumber: 0,
-    matchCount: 0,
+    badgeText: '0',
     matchLength: 0,
     matchStart: 0,
     posInSet: 1,
@@ -37,7 +37,7 @@ test('getDisplayResult - file', () => {
     text: 'index.kt',
     title: '/languages/index.kt',
     expanded: 2,
-    childCount:4
+    childCount: 4,
   })
 })
 
