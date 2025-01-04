@@ -1,5 +1,6 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetFilteredResults from '../GetFilteredResults/GetFilteredResults.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as ToggleCollapsedPath from '../ToggleCollapsedPath/ToggleCollapsedPath.ts'
@@ -9,6 +10,7 @@ export const selectIndexFile = async (state: SearchState, searchResult: SearchRe
   const path = searchResult.text
   const newCollapsedPaths = ToggleCollapsedPath.toggleCollapsedPath(collapsedPaths, path)
   const filteredResults = GetFilteredResults.getFilteredResults(items, newCollapsedPaths)
+  const icons = await GetFileIcons.getFileIcons(filteredResults)
   const total = filteredResults.length
   const listHeight = height - headerHeight
   const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
@@ -20,5 +22,6 @@ export const selectIndexFile = async (state: SearchState, searchResult: SearchRe
     listFocused: true,
     listItems: filteredResults,
     maxLineY,
+    icons,
   }
 }
