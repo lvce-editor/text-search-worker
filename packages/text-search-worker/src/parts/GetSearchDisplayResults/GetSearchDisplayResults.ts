@@ -13,6 +13,7 @@ export const getDisplayResults = (
   fileIcons: readonly string[],
   focusedIndex: number,
   collapsedPaths: readonly string[],
+  originalResults: readonly SearchResult[],
 ): readonly DisplaySearchResult[] => {
   const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
@@ -28,6 +29,7 @@ export const getDisplayResults = (
       focusedIndex,
       collapsedPaths,
       minLineY,
+      originalResults,
     )
     displayResults.push(displayResult)
   }

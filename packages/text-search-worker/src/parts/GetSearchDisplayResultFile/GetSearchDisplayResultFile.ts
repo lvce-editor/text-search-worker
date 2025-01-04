@@ -15,11 +15,13 @@ export const getSearchDisplayResultFile = (
   posInSet: number,
   relativeIndex: number,
   focused: boolean,
+  originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
   const path = text
   const absolutePath = Workspace.getAbsolutePath(path)
   const baseName = Workspace.pathBaseName(path)
-  const matchCount = GetMatchCount.getMatchCount(results, i)
+  const index = originalResults.indexOf(results[i])
+  const matchCount = GetMatchCount.getMatchCount(results, index)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
   const childCount = GetSearchDisplayResultChildCount.getChildCount(expanded, matchCount)
   const badgeText = `${matchCount}`

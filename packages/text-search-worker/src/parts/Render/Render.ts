@@ -37,6 +37,7 @@ const renderItems = {
       newState.icons,
       newState.listFocusedIndex,
       newState.collapsedPaths,
+      newState.items,
     )
     const focusOutline = newState.listFocused && newState.listFocusedIndex === -1
     const scrollBarValue = (newState.deltaY / newState.finalDeltaY) * 100
