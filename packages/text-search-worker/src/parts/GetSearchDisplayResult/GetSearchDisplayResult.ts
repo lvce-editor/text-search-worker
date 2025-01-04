@@ -14,6 +14,7 @@ export const getDisplayResult = (
   focusedIndex: number,
   collapsedPaths: readonly string[],
   minLineY: number,
+  originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
   const result = results[i]
   const { type, text, start } = result
@@ -32,6 +33,7 @@ export const getDisplayResult = (
         posInSet,
         relativeIndex,
         focused,
+        originalResults,
       )
     case TextSearchResultType.Match:
       return GetSearchDisplayResultMatch.getDisplayResultMatch(setSize, searchTermLength, replacement, text, posInSet, start, focused)
