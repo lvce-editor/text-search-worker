@@ -11,6 +11,7 @@ test('setDeltaY - no change when same deltaY', () => {
     finalDeltaY: 200,
     height: 500,
     headerHeight: 40,
+    listItems: [...Array(100)],
   }
 
   const result = setDeltaY(state, 100)
@@ -27,6 +28,7 @@ test('setDeltaY - updates state with new deltaY', () => {
     headerHeight: 40,
     minLineY: 0,
     maxLineY: 23,
+    listItems: [...Array(100)],
   }
 
   const result = setDeltaY(state, 100)
@@ -47,6 +49,7 @@ test('setDeltaY - clamps value within bounds', () => {
     headerHeight: 40,
     minLineY: 0,
     maxLineY: 23,
+    listItems: [...Array(100)],
   }
 
   const result = setDeltaY(state, 1000)
