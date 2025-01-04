@@ -4,7 +4,7 @@ import * as Create from '../src/parts/Create/Create.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockWorkspace = {
-  getAbsolutePath: jest.fn().mockReturnValue('/absolute/path/file.txt'),
+  getRelativePath: jest.fn().mockReturnValue('/absolute/path/file.txt'),
 }
 
 const mockOpenUri = {
@@ -45,7 +45,7 @@ test.skip('selectIndex - select file item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt', '.file1.txt'])
-  expect(mockWorkspace.getAbsolutePath).toHaveBeenCalledWith('file1.txt')
+  expect(mockWorkspace.getRelativePath).toHaveBeenCalledWith('file1.txt')
 })
 
 test.skip('selectIndex - select match item', async () => {
@@ -62,7 +62,7 @@ test.skip('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt', '.file1.txt'])
-  expect(mockWorkspace.getAbsolutePath).toHaveBeenCalledWith('file1.txt')
+  expect(mockWorkspace.getRelativePath).toHaveBeenCalledWith('file1.txt')
 })
 
 test('getFileIndex - finds closest file above match', async () => {
@@ -77,11 +77,11 @@ test('getFileIndex - finds closest file above match', async () => {
   }
   // @ts-ignore
   state.listItems = state.items
-  mockWorkspace.getAbsolutePath.mockReturnValue('/abs/file1.ts')
+  mockWorkspace.getRelativePath.mockReturnValue('/abs/file1.ts')
 
   await SelectIndex.selectIndex(state, 2) // Select second match
 
-  expect(mockWorkspace.getAbsolutePath).toHaveBeenCalledWith('file1.ts')
+  expect(mockWorkspace.getRelativePath).toHaveBeenCalledWith('file1.ts')
 })
 
 test('getFileIndex - returns -1 when no file found', async () => {
@@ -104,7 +104,7 @@ test.skip('selectIndexFile - throws on invalid path', async () => {
   }
   // @ts-ignore
   state.listItems = state.items
-  mockWorkspace.getAbsolutePath.mockReturnValue(undefined)
+  mockWorkspace.getRelativePath.mockReturnValue(undefined)
 
   await expect(SelectIndex.selectIndex(state, 0)).rejects.toThrow()
 })
@@ -119,7 +119,7 @@ test('selectIndexPreview - throws on invalid path', async () => {
   }
   // @ts-ignore
   state.listItems = state.items
-  mockWorkspace.getAbsolutePath.mockReturnValue(undefined)
+  mockWorkspace.getRelativePath.mockReturnValue(undefined)
 
   await expect(SelectIndex.selectIndex(state, 1)).rejects.toThrow()
 })
@@ -137,7 +137,7 @@ test.only('selectIndexPreview - handles match with file above', async () => {
   // @ts-ignore
   state.listItems = state.items
 
-  mockWorkspace.getAbsolutePath.mockReturnValue('/abs/file1.ts')
+  mockWorkspace.getRelativePath.mockReturnValue('/abs/file1.ts')
 
   const result = await SelectIndex.selectIndex(state, 2)
 
