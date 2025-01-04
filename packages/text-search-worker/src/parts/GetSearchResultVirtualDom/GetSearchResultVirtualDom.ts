@@ -13,6 +13,17 @@ import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearch
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
+const getIconsVirtualDom = (expanded: number, icon: string): readonly VirtualDomNode[] => {
+  switch (expanded) {
+    case ExpandedType.Expanded:
+      return [GetChevronVirtualDom.chevronDownVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon)]
+    case ExpandedType.Collapsed:
+      return [GetChevronVirtualDom.chevronRightVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon)]
+    default:
+      return []
+  }
+}
+
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
   const {
     matchStart,
@@ -29,36 +40,25 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     childCount,
     badgeText,
   } = rowInfo
-  const treeItem: VirtualDomNode = {
-    type: VirtualDomElements.Div,
-    role: AriaRoles.TreeItem,
-    className: GetSearchResultClassName.getSearchResultClassName(focused),
-    title,
-    ariaSetSize: setSize,
-    ariaLevel: depth,
-    ariaPosInSet: posInSet,
-    ariaLabel: title,
-    ariaDescription: '',
-    childCount,
-    paddingLeft: GetPaddingLeft.getPaddingLeft(depth),
-    paddingRight: TreeItemPadding.PaddingRight,
-    ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
-  }
-  const dom: VirtualDomNode[] = []
-
-  dom.push(treeItem)
-  if (expanded === ExpandedType.Expanded) {
-    // TODO add chevronIcon and fileIcon properties to getDisplaySearchResults
-    dom.push(GetChevronVirtualDom.chevronDownVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon))
-  } else if (expanded === ExpandedType.Collapsed) {
-    dom.push(GetChevronVirtualDom.chevronRightVirtualDom, GetFileIconVirtualDom.getFileIconVirtualDom(icon))
-  }
-  dom.push(...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement))
-  // TODO add badge icon to getDisplaySearchResults
-  if (badgeText) {
-    dom.push(...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText))
-  }
-  dom.push(
+  const dom: VirtualDomNode[] = [
+    {
+      type: VirtualDomElements.Div,
+      role: AriaRoles.TreeItem,
+      className: GetSearchResultClassName.getSearchResultClassName(focused),
+      title,
+      ariaSetSize: setSize,
+      ariaLevel: depth,
+      ariaPosInSet: posInSet,
+      ariaLabel: title,
+      ariaDescription: '',
+      childCount,
+      paddingLeft: GetPaddingLeft.getPaddingLeft(depth),
+      paddingRight: TreeItemPadding.PaddingRight,
+      ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
+    },
+    ...getIconsVirtualDom(expanded, icon),
+    ...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement),
+    ...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText),
     {
       type: VirtualDomElements.Div,
       className: ClassNames.SearchRemove,
@@ -69,6 +69,6 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
       className: ClassNames.CloseMaskIcon,
       childCount: 0,
     },
-  )
+  ]
   return dom
 }
