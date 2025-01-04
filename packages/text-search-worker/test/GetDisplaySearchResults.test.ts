@@ -93,7 +93,7 @@ test('getDisplayResults', () => {
       focused: false,
       icon: '',
       lineNumber: 1,
-      matchCount: 0,
+      badgeText: '',
       matchLength: 1,
       matchStart: 9,
       posInSet: 3,

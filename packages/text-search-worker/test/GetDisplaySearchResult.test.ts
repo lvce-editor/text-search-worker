@@ -66,7 +66,7 @@ test('getDisplayResult - result', () => {
     focused: false,
     icon: '',
     lineNumber: 1,
-    matchCount: 0,
+    badgeText: '',
     matchLength: 1,
     matchStart: 5,
     posInSet: 1,
