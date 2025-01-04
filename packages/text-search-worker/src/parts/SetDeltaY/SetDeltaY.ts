@@ -6,7 +6,7 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 export const setDeltaY = (state: SearchState, value: number): SearchState => {
   Assert.object(state)
   Assert.number(value)
-  const { itemHeight, finalDeltaY, deltaY, height, headerHeight } = state
+  const { itemHeight, finalDeltaY, deltaY, height, headerHeight, listItems } = state
   const listHeight = height - headerHeight
   const newDeltaY = Clamp.clamp(value, 0, finalDeltaY)
   if (deltaY === newDeltaY) {
@@ -14,7 +14,7 @@ export const setDeltaY = (state: SearchState, value: number): SearchState => {
   }
   // TODO when it only moves by one px, extensions don't need to be rerendered, only negative margin
   const minLineY = Math.floor(newDeltaY / itemHeight)
-  const maxLineY = minLineY + GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
+  const maxLineY = Math.min(minLineY + GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight), listItems.length)
 
   // TODO update icons
   return {
