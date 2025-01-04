@@ -77,7 +77,7 @@ test('getDisplayResults', () => {
       focused: false,
       icon: '',
       lineNumber: 1,
-      badgeText: '0',
+      badgeText: '',
       matchLength: 1,
       matchStart: 5,
       posInSet: 2,
