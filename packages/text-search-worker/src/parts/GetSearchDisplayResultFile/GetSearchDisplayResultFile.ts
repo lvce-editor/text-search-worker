@@ -18,7 +18,7 @@ export const getSearchDisplayResultFile = (
   originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
   const path = text
-  const absolutePath = Workspace.getAbsolutePath(path)
+  const absolutePath = Workspace.getRelativePath(path)
   const baseName = Workspace.pathBaseName(path)
   const index = originalResults.indexOf(results[i])
   const matchCount = GetMatchCount.getMatchCount(results, index)
