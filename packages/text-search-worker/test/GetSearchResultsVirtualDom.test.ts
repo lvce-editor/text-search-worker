@@ -19,6 +19,7 @@ test('getSearchResultsVirtualDom', () => {
       focused: false,
       lineNumber: 0,
       expanded: ExpandedType.Expanded,
+      childCount: 4,
     },
   ]
   const focusOutline = false
