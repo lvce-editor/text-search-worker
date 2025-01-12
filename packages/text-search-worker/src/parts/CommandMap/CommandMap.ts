@@ -46,6 +46,7 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as Submit from '../Submit/Submit.ts'
+import * as Terminate from '../Terminate/Terminate.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
@@ -127,6 +128,7 @@ export const commandMap = {
   'TextSearch.render': Render.doRender,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.saveState': SaveState.saveState,
+  'TextSearch.terminate': Terminate.terminate,
 
   // TODO needed?
   'TextSearch.textSearch': TextSearch.textSearch,
