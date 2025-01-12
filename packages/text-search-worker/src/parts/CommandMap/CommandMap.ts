@@ -39,6 +39,7 @@ import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import * as Render from '../Render/Render.ts'
+import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
@@ -124,6 +125,7 @@ export const commandMap = {
   'TextSearch.getFocus': GetFocus.getFocus,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TextSearch.render': Render.doRender,
+  'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.saveState': SaveState.saveState,
 
   // TODO needed?
