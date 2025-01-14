@@ -45,7 +45,7 @@ test('invoke - handles undefined arguments', async () => {
 test('invoke - handles multiple arguments of different types', async () => {
   let capturedArgs: any[] = []
   const mockRpc = {
-    invoke(command: string, ...args: any[]): string {
+    invoke(command: string, ...args: readonly any[]): string {
       capturedArgs = args
       return 'success'
     },
