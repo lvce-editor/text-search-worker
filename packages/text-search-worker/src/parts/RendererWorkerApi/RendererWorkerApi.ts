@@ -10,7 +10,7 @@ export interface RendererWorkerApi {
   readonly 'BulkReplacement.applyBulkReplacement': (edits: readonly BulkReplacementEdit[]) => Promise<void>
   readonly 'ClipBoard.writeText': (text: string) => Promise<void>
   readonly 'ConfirmPrompt.prompt': (confirmText: string, options: ConfirmPromptOptions) => Promise<boolean>
-  readonly 'ContextMenu.show': (x: number, y: number, id: any, ...args: any[]) => Promise<void>
+  readonly 'ContextMenu.show': (x: number, y: number, id: any, ...args: readonly any[]) => Promise<void>
   readonly 'ExtensionHostTextSearch.executeTextSearchProvider': (scheme: string, query: string) => Promise<readonly SearchResult[]>
   readonly 'Focus.setFocus': (focusKey: number) => Promise<void>
   readonly 'IconTheme.getFileIcon': (options: any) => Promise<string>
