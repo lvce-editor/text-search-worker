@@ -16,6 +16,7 @@ export interface RendererWorkerApi {
   readonly 'IconTheme.getFileIcon': (options: any) => Promise<string>
   readonly 'Main.openUri': (uri: string, focus?: boolean, props?: any) => Promise<void>
   readonly 'SearchProcess.invoke': (command: string, options: any) => Promise<any>
+  // eslint-disable-next-line  @typescript-eslint/prefer-readonly-parameter-types
   readonly 'SendMessagePortToElectron.sendMessagePortToElectron': (port: MessagePort, command: string) => Promise<void>
   readonly 'ExtensionHostTextSearch.textSearchHtml': (scheme: string, root: string, query: string) => Promise<readonly SearchResult[]>
   readonly 'ExtensionHostTextSearch.textSearchFetch': (
