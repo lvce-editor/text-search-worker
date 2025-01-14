@@ -4,10 +4,10 @@ export const getRipGrepArgs = ({
   searchString,
   useRegularExpression,
 }: {
-  threads: number
-  isCaseSensitive: boolean
-  searchString: string
-  useRegularExpression: boolean
+  readonly threads: number
+  readonly isCaseSensitive: boolean
+  readonly searchString: string
+  readonly useRegularExpression: boolean
 }): readonly string[] => {
   const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json']
   ripGrepArgs.push('--threads', `${threads}`)
