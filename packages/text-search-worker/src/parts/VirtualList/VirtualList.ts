@@ -3,9 +3,9 @@ export const create = ({
   headerHeight = 0,
   minimumSliderSize = 20,
 }: {
-  itemHeight: number
-  headerHeight: number
-  minimumSliderSize: number
+  readonly itemHeight: number
+  readonly headerHeight: number
+  readonly minimumSliderSize: number
 }): any => {
   return {
     deltaY: 0,
