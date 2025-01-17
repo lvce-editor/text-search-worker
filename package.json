@@ -16,9 +16,6 @@
     "lint": "eslint .",
     "measure": "cd packages/memory && npm run measure"
   },
-  "keywords": [],
-  "author": "Lvce Editor",
-  "license": "MIT",
   "prettier": {
     "semi": false,
     "singleQuote": true,
