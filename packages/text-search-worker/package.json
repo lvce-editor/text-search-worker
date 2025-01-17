@@ -2,17 +2,21 @@
   "name": "@lvce-editor/text-search-worker",
   "version": "0.0.0-dev",
   "description": "Text Search Worker",
-  "main": "src/textSearchWorkerMain.ts",
+  "keywords": [
+    "text-search"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvce-editor/text-search-worker.git"
+  },
+  "license": "MIT",
+  "author": "Lvce Editor",
   "type": "module",
+  "main": "src/textSearchWorkerMain.ts",
   "scripts": {
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
     "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch"
   },
-  "keywords": [
-    "text-search"
-  ],
-  "author": "Lvce Editor",
-  "license": "MIT",
   "xo": {
     "rules": {
       "unicorn/filename-case": "off",
@@ -91,9 +95,5 @@
     "@lvce-editor/virtual-dom-worker": "^1.9.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lvce-editor/text-search-worker.git"
   }
 }

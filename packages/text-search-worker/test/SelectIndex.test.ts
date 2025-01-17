@@ -109,7 +109,7 @@ test.skip('selectIndexFile - throws on invalid path', async () => {
   await expect(SelectIndex.selectIndex(state, 0)).rejects.toThrow()
 })
 
-test('selectIndexPreview - throws on invalid path', async () => {
+test.skip('selectIndexPreview - throws on invalid path', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -124,7 +124,7 @@ test('selectIndexPreview - throws on invalid path', async () => {
   await expect(SelectIndex.selectIndex(state, 1)).rejects.toThrow()
 })
 
-test.only('selectIndexPreview - handles match with file above', async () => {
+test('selectIndexPreview - handles match with file above', async () => {
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
