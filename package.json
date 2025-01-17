@@ -14,7 +14,11 @@
     "dev": "node packages/build/src/dev.js",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "measure": "cd packages/memory && npm run measure"
+    "measure": "cd packages/memory && npm run measure",
+    "postinstall": "lerna bootstrap --ci",
+    "test": "lerna run test",
+    "test-integration": "lerna run test-integration",
+    "type-check": "tsc -b"
   },
   "prettier": {
     "semi": false,
