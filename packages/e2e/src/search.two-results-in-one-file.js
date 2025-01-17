@@ -1,5 +1,8 @@
 export const name = 'search.two-results-in-one-file'
 
+/**
+ * @param {import('@lvce-editor/test-with-playwright').Test} param0
+ */
 export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()

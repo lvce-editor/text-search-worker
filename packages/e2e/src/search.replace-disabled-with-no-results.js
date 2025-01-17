@@ -2,6 +2,9 @@ export const name = 'search.replace-disabled-with-no-results'
 
 export const skip = 1
 
+/**
+ * @param {import('@lvce-editor/test-with-playwright').Test} param0
+ */
 export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
