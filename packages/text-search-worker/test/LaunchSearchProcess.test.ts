@@ -24,7 +24,7 @@ test('launchSearchProcess - creates websocket with correct url', async () => {
   }
 
   // @ts-ignore
-  global.WebSocket = jest.fn(() => mockWebSocket)
+  globalThis.WebSocket = jest.fn(() => mockWebSocket)
 
   // @ts-ignore
   WebSocketRpcParent.create = jest.fn().mockResolvedValue({
@@ -34,7 +34,7 @@ test('launchSearchProcess - creates websocket with correct url', async () => {
   const rpc = await LaunchSearchProcess.launchSearchProcess()
 
   expect(GetWebSocketUrl.getWebSocketUrl).toHaveBeenCalledWith('search-process', 'localhost:3000', 'http:')
-  expect(global.WebSocket).toHaveBeenCalledWith('ws://localhost:3000/search-process')
+  expect(globalThis.WebSocket).toHaveBeenCalledWith('ws://localhost:3000/search-process')
   expect(WebSocketRpcParent.create).toHaveBeenCalledWith({
     webSocket: mockWebSocket,
     commandMap: {},
@@ -46,7 +46,7 @@ test('launchSearchProcess - handles websocket creation error', async () => {
   const mockError = new Error('Failed to connect')
 
   // @ts-ignore
-  global.WebSocket = jest.fn(() => {
+  globalThis.WebSocket = jest.fn(() => {
     throw mockError
   })
 
@@ -60,7 +60,7 @@ test('launchSearchProcess - handles rpc creation error', async () => {
   }
 
   // @ts-ignore
-  global.WebSocket = jest.fn(() => mockWebSocket)
+  globalThis.WebSocket = jest.fn(() => mockWebSocket)
 
   const mockError = new Error('RPC creation failed')
   // @ts-ignore

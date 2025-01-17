@@ -19,7 +19,7 @@ test('validateSearchInput - invalid regular expression returns error message', (
 })
 
 test('validateSearchInput - complex valid regex returns empty error message', () => {
-  expect(ValidateSearchInput.validateSearchInput('(foo|bar)+\\s\\d+', UseRegularExpression)).toBe('')
+  expect(ValidateSearchInput.validateSearchInput(String.raw`(foo|bar)+\s\d+`, UseRegularExpression)).toBe('')
 })
 
 test('validateSearchInput - unescaped special characters returns error message', () => {
@@ -27,5 +27,5 @@ test('validateSearchInput - unescaped special characters returns error message',
 })
 
 test('validateSearchInput - unicode flag is supported', () => {
-  expect(ValidateSearchInput.validateSearchInput('\\p{Script=Latin}', UseRegularExpression)).toBe('')
+  expect(ValidateSearchInput.validateSearchInput(String.raw`\p{Script=Latin}`, UseRegularExpression)).toBe('')
 })

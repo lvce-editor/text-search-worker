@@ -10,11 +10,7 @@ export const getFilteredResults = (results: readonly SearchResult[], collapsedPa
   for (const result of results) {
     if (result.type === TextSearchResultType.File) {
       filteredResults.push(result)
-      if (collapsedPaths.includes(result.text)) {
-        isExcluded = true
-      } else {
-        isExcluded = false
-      }
+      isExcluded = collapsedPaths.includes(result.text) ? true : false
     }
     if (result.type === TextSearchResultType.Match && !isExcluded) {
       filteredResults.push(result)
