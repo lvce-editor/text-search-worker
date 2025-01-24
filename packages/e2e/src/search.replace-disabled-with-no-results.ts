@@ -1,9 +1,10 @@
-export const name = 'search.replace'
+import type { Test } from '@lvce-editor/test-with-playwright'
 
-/**
- * @param {import('@lvce-editor/test-with-playwright').Test} param0
- */
-export const test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const name = 'search.replace-disabled-with-no-results'
+
+export const skip = 1
+
+export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
