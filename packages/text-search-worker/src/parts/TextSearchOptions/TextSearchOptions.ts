@@ -10,6 +10,7 @@ export interface TextSearchOptions {
   // TODO use flags or options object?
   readonly useRegularExpression: boolean
   readonly isCaseSensitive: boolean
+  readonly matchWholeWord: boolean
 
   readonly flags: number
 }
