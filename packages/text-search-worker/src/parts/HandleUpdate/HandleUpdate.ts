@@ -53,6 +53,7 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
         query: value,
         scheme,
         flags,
+        matchWholeWord: Boolean(flags & SearchFlags.MatchWholeWord),
       },
       state.assetDir,
       state.platform,
