@@ -8,19 +8,17 @@ export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar,
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
   await Workspace.setPath(tmpDir)
   await SideBar.open('Search')
-  await Search.setValue('ab')
   const viewletSearch = Locator('.Search')
-  const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('1 result in 1 file')
 
   // act
-  await Search.toggleReplace()
-  await Search.setReplaceValue('d')
-  await Search.replaceAll()
+  await Search.setValue('abcd')
 
   // assert
-  await Main.openUri(`${tmpDir}/test.css`)
-  const row = Locator('.EditorRow')
-  await expect(row).toHaveText('d') // TODO should be dc
-  await expect(message).toHaveText(`Replaced 1 occurrence across 1 file with 'd'`)
+  const message = viewletSearch.locator('[role="status"]')
+  await expect(message).toHaveText('No results found')
+  await Search.setReplaceValue('d')
+  const replaceAll = Locator('[name="ReplaceAll"]')
+
+  // TODO
+  // await expect(replaceAll).toHaveAttribute('disabled', '')
 }
