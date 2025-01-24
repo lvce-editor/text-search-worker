@@ -1,11 +1,11 @@
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
-// TODO checked and disabled, use flag number?
-export const getSearchFieldButtonClassName = (checked: boolean, disabled: boolean | undefined): string => {
+export const getSearchFieldButtonClassName = (flag: number): string => {
   return MergeClassNames.mergeClassNames(
     ClassNames.SearchFieldButton,
-    checked ? ClassNames.SearchFieldButtonChecked : '',
-    disabled ? ClassNames.SearchFieldButtonDisabled : '',
+    flag === InputActionFlag.CheckBoxEnabled ? ClassNames.SearchFieldButtonChecked : '',
+    flag === InputActionFlag.ButtonDisabled ? ClassNames.SearchFieldButtonDisabled : '',
   )
 }

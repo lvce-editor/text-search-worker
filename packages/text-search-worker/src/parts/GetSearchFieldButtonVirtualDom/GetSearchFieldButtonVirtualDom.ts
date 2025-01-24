@@ -7,15 +7,15 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
-  const { icon, checked, title, name, disabled } = button
+  const { icon, title, name, flag } = button
   return [
     {
       type: VirtualDomElements.Button,
-      className: GetSearchFieldButtonClassName.getSearchFieldButtonClassName(checked, disabled),
+      className: GetSearchFieldButtonClassName.getSearchFieldButtonClassName(flag),
       name,
       title,
       role: AriaRoles.CheckBox,
-      ariaChecked: checked,
+      ariaChecked: flag,
       tabIndex: 0,
       childCount: 1,
     },
