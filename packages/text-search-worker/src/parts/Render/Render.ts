@@ -120,6 +120,5 @@ export const doRender = (uid: number): any => {
       commands.push(fn.apply(oldState, newState))
     }
   }
-  console.log({ commands })
   return commands
 }
