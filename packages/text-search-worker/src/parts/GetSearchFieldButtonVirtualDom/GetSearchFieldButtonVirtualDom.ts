@@ -30,10 +30,20 @@ const getRole = (flag: number): string | undefined => {
   }
 }
 
+const getDisabled = (flag: number): boolean | undefined => {
+  switch (flag) {
+    case InputActionFlag.ButtonDisabled:
+      return true
+    default:
+      return undefined
+  }
+}
+
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
   const { icon, title, name, flag } = button
   const ariaChecked = getAriaChecked(flag)
   const role = getRole(flag)
+  const disabled = getDisabled(flag)
   return [
     {
       type: VirtualDomElements.Button,
@@ -42,6 +52,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       title,
       role,
       ariaChecked,
+      disabled,
       tabIndex: 0,
       childCount: 1,
     },
