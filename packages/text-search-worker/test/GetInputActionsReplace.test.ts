@@ -21,5 +21,5 @@ test('getInputActionsReplace - preserve case checked when flag is set', () => {
   const flags = SearchFlags.PreserveCase
   const matchCount = 0
   const result = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
-  expect(result.inside[0].flag).toBe(InputActionFlag.ButtonEnabled)
+  expect(result.inside[0].flag).toBe(InputActionFlag.CheckBoxEnabled)
 })
