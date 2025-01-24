@@ -1,12 +1,11 @@
+import type { Test } from '@lvce-editor/test-with-playwright'
+
 export const name = 'search.scroll-by-pixel'
 
-/**
- * @param {import('@lvce-editor/test-with-playwright').Test} param0
- */
-export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
-  const promises = []
+  const promises: any[] = []
   for (let i = 0; i < 100; i++) {
     promises.push(FileSystem.writeFile(`${tmpDir}/${i}.css`, `abc`))
   }

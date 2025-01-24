@@ -1,15 +1,14 @@
-export const name = 'search.use-regular-expression'
+import type { Test } from '@lvce-editor/test-with-playwright'
 
-/**
- * @param {import('@lvce-editor/test-with-playwright').Test} param0
- */
-export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const name = 'search.regex-invalid'
+
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `Abc`)
   await Workspace.setPath(tmpDir)
   await SideBar.open('Search')
-  await Search.setValue('a.c')
+  await Search.setValue('(ab')
   await Search.setReplaceValue('')
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
@@ -19,5 +18,7 @@ export const test = async ({ Search, FileSystem, Workspace, SideBar, Locator, ex
   await Search.toggleUseRegularExpression()
 
   // assert
-  await expect(message).toHaveText('1 result in 1 file')
+  const inputMessage = Locator('.SearchInputError')
+  await expect(inputMessage).toBeVisible()
+  await expect(inputMessage).toHaveText('Invalid regular expression: /(ab/u: Unterminated group')
 }
