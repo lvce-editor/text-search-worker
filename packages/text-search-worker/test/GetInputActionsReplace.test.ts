@@ -7,14 +7,14 @@ test('getInputActionsReplace - replace all button disabled when no results', () 
   const flags = 0
   const matchCount = 0
   const result = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
-  expect(result.outside[0].flag).toBe(InputActionFlag.ButtonEnabled)
+  expect(result.outside[0].flag).toBe(InputActionFlag.ButtonDisabled)
 })
 
 test('getInputActionsReplace - replace all button enabled when results exist', () => {
   const flags = 0
   const matchCount = 5
   const result = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
-  expect(result.outside[0].flag).toBe(InputActionFlag.ButtonDisabled)
+  expect(result.outside[0].flag).toBe(InputActionFlag.ButtonEnabled)
 })
 
 test('getInputActionsReplace - preserve case checked when flag is set', () => {
