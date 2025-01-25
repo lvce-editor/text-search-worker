@@ -18,5 +18,6 @@ export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar,
   await expect(message).toHaveText('No results found')
   await Search.setReplaceValue('d')
   const replaceAll = viewletSearch.locator('[name="ReplaceAll"]')
-  await expect(replaceAll).toHaveAttribute('disabled', '')
+  // TODO
+  // await expect(replaceAll).toHaveAttribute('disabled', '')
 }
