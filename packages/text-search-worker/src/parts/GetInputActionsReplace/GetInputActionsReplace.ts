@@ -1,6 +1,7 @@
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { InputActions } from '../InputActions/InputActions.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
@@ -9,7 +10,7 @@ export const getInputActionsReplace = (flags: number, matchCount: number): Input
   const inside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconPreserveCase,
-      checked: Boolean(flags & SearchFlags.PreserveCase),
+      flag: flags & SearchFlags.PreserveCase ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
       title: SearchStrings.preserveCase(),
       name: InputName.PreserveCase,
     },
@@ -17,10 +18,9 @@ export const getInputActionsReplace = (flags: number, matchCount: number): Input
   const outside: readonly InputAction[] = [
     {
       icon: ClassNames.MaskIconReplaceAll,
-      checked: false,
+      flag: matchCount === 0 ? InputActionFlag.ButtonDisabled : InputActionFlag.ButtonEnabled,
       title: SearchStrings.replaceAll(),
       name: InputName.ReplaceAll,
-      disabled: matchCount === 0,
     },
   ]
   return {
