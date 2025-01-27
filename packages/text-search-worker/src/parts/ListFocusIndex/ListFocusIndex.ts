@@ -1,7 +1,7 @@
 import type { List } from '../List/List.ts'
 import * as Assert from '../Assert/Assert.ts'
-import * as FocusIndexScrollDown from '../FocusIndexScrollDown/FocusIndexScrollDown.ts'
-import * as FocusIndexScrollUp from '../FocusIndexScrollUp/FocusIndexScrollUp.ts'
+import * as FocusIndexScrollDown from '../ListFocusIndexScrollDown/ListFocusIndexScrollDown.ts'
+import * as FocusIndexScrollUp from '../ListFocusIndexScrollUp/ListFocusIndexScrollUp.ts'
 
 export const focusIndex = <T, State extends List<T>>(state: State, index: number): State => {
   const { itemHeight, minLineY, maxLineY, headerHeight, height, items } = state
