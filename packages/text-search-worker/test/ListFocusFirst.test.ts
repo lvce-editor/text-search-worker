@@ -3,9 +3,9 @@ import type { List } from '../src/parts/List/List.ts'
 import * as ListFocusFirst from '../src/parts/ListFocusFirst/ListFocusFirst.ts'
 
 test('focusFirst', () => {
-  const initialItems = ['item1', 'item2', 'item3']
+  const initialItems: readonly string[] = []
   const initialState: List<string> = {
-    focusedIndex: 0,
+    focusedIndex: -1,
     items: initialItems,
     headerHeight: 0,
     height: 100,
