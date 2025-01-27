@@ -5,7 +5,7 @@ import { focusLast } from '../src/parts/ListFocusLast/ListFocusLast.ts'
 test('focusLast', () => {
   const initialItems: readonly string[] = []
   const initialState: List<string> = {
-    focusedIndex: 0,
+    focusedIndex: -1,
     items: initialItems,
     headerHeight: 0,
     height: 100,
