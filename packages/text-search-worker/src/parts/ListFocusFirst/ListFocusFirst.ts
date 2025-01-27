@@ -1,8 +1,8 @@
-import type { SearchState } from '../SearchState/SearchState.ts'
+import type { List } from '../List/List.ts'
 import { focusIndex } from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListIndex from '../ListIndex/ListIndex.ts'
 
-export const focusFirst = (state: SearchState): SearchState => {
+export const focusFirst = <T, State extends List<T>>(state: State): State => {
   const firstIndex = ListIndex.first()
   return focusIndex(state, firstIndex)
 }
