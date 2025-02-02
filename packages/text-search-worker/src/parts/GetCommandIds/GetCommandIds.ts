@@ -1,4 +1,3 @@
-// TODO maybe ask text search worker for the commands it provides
 const commands = [
   'clearSearchResults',
   'copy',
