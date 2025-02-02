@@ -1,7 +1,3 @@
-import * as TextSearchWorker from '../TextSearchWorker/TextSearchWorker.js'
-import * as ViewletSearch from './ViewletSearch.ts'
-import * as WrapTextSearchCommand from './WrapTextSearchCommand.ts'
-
 // TODO maybe ask text search worker for the commands it provides
 const commands = [
   'clearSearchResults',
