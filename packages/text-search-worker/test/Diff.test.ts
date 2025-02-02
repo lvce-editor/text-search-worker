@@ -14,7 +14,7 @@ test('diff - no changes', () => {
   expect(Diff.diff(oldState, newState)).toEqual([])
 })
 
-test.only('diff - value change', () => {
+test('diff - value change', () => {
   const uid = 1
   Create.create(uid, 0, 0, 0, 0, '', '')
   const { oldState } = SearchViewStates.get(uid)
