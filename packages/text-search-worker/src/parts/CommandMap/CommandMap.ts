@@ -9,6 +9,7 @@ import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
+import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetFlags from '../GetFlags/GetFlags.ts'
 import * as GetFocus from '../GetFocus/GetFocus.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
@@ -79,6 +80,7 @@ export const commandMap = {
   'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusPreviousInput.focusPreviousInput),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
+  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
   'TextSearch.focusReplaceAll': WrapCommand.wrapCommand(SearchFocus.focusReplaceAll),
   'TextSearch.focusReplaceValue': WrapCommand.wrapCommand(FocusReplaceValue.focusReplaceValue),
