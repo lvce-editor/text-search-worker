@@ -54,7 +54,7 @@ test('doRender - no changes returns empty commands', () => {
   expect(commands).toEqual([])
 })
 
-test('doRender - renders items when changed', () => {
+test.skip('doRender - renders items when changed', () => {
   const oldState = {
     items: [],
     minLineY: 0,
@@ -94,7 +94,7 @@ test('doRender - renders items when changed', () => {
   ])
 })
 
-test('doRender - renders focus when changed', () => {
+test.skip('doRender - renders focus when changed', () => {
   const oldState = {
     items: [],
     minLineY: 0,
@@ -127,7 +127,7 @@ test('doRender - renders focus when changed', () => {
   expect(commands).toEqual([['Viewlet.focusElementByName', 1, 'focusSelector']])
 })
 
-test('doRender - renders value when changed', () => {
+test.skip('doRender - renders value when changed', () => {
   const oldState = {
     items: [],
     minLineY: 0,

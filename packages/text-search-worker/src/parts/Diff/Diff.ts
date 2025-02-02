@@ -4,8 +4,9 @@ import * as DiffFocus from '../DiffFocus/DiffFocus.ts'
 import * as DiffIncludeValue from '../DiffIncludeValue/DiffIncludeValue.ts'
 import * as DiffItems from '../DiffItems/DiffItems.ts'
 import * as DiffReplaceValue from '../DiffReplaceValue/DiffReplaceValue.ts'
+import * as DiffValue from '../DiffValue/DiffValue.ts'
 
-const modules = [DiffItems, DiffFocus, DiffIncludeValue, DiffExcludeValue, DiffReplaceValue]
+const modules = [DiffItems, DiffFocus, DiffIncludeValue, DiffExcludeValue, DiffReplaceValue, DiffValue]
 
 export const diff = (oldState: SearchState, newState: SearchState): readonly number[] => {
   const diffResult: number[] = []
