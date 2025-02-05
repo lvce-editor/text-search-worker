@@ -6,6 +6,15 @@ import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirt
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
+const parentNode: VirtualDomNode = {
+  type: VirtualDomElements.Div,
+  className: ClassNames.SearchHeader,
+  role: AriaRoles.None,
+  childCount: 2,
+  onClick: DomEventListenerFunctions.HandleHeaderClick2,
+  onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
+}
+
 export const getSearchHeaderVirtualDom = (
   flags: number,
   message: string,
@@ -13,14 +22,7 @@ export const getSearchHeaderVirtualDom = (
   matchCount: number,
 ): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeader,
-      role: AriaRoles.None,
-      childCount: 2,
-      onClick: DomEventListenerFunctions.HandleHeaderClick2,
-      onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
-    },
+    parentNode,
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount),
     ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
   ]
