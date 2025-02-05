@@ -120,7 +120,7 @@ test('render', async () => {
         { type: 4, className: 'SearchHeaderDetails', childCount: 2 },
         {
           type: 4,
-          className: 'ViewletSearchMessage',
+          className: 'ViewletSearchMessage ViewletSearchMessageIndented',
           role: 'status',
           tabIndex: 0,
           childCount: 1,
