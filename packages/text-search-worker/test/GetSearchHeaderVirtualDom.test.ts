@@ -119,7 +119,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     },
     {
       childCount: 1,
-      className: 'ViewletSearchMessage',
+      className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: 'status',
       tabIndex: 0,
       type: 4,

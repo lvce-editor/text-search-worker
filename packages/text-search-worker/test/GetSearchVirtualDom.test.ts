@@ -177,7 +177,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     },
     {
       childCount: 1,
-      className: 'ViewletSearchMessage',
+      className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: 'status',
       tabIndex: 0,
       type: 4,
