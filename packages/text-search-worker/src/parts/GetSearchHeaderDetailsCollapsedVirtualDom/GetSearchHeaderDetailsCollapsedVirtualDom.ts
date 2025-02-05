@@ -11,7 +11,7 @@ export const getSearchHeaderDetailsCollapsedVirtualDom = (message: string): read
       className: ClassNames.SearchHeaderDetails,
       childCount: 2,
     },
-    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
+    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message, true),
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
   ]
 }

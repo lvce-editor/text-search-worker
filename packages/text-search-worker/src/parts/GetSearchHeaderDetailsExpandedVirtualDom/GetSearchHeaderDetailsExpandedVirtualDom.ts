@@ -52,6 +52,6 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
       excludeButtons.inside,
       excludeButtons.outside,
     ),
-    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message),
+    ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message, false),
   ]
 }

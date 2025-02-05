@@ -12,7 +12,7 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
     },
     {
       type: 4,
-      className: 'ViewletSearchMessage',
+      className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: 'status',
       tabIndex: 0,
       childCount: 1,

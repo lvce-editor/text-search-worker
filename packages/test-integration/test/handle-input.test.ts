@@ -136,7 +136,7 @@ test('handle-input', async () => {
         },
         {
           childCount: 1,
-          className: 'ViewletSearchMessage',
+          className: 'ViewletSearchMessage ViewletSearchMessageIndented',
           role: 'status',
           tabIndex: 0,
           type: 4,
