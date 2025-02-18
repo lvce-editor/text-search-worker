@@ -44,6 +44,7 @@ import * as RenderEventListeners from '../RenderEventListeners/RenderEventListen
 import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
+import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
@@ -131,6 +132,7 @@ export const commandMap = {
   'TextSearch.render': Render.doRender,
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
+  'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.terminate': Terminate.terminate,
 
