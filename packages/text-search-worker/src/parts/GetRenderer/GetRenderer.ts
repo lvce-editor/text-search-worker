@@ -1,42 +1,26 @@
 import type { Renderer } from '../Renderer/Renderer.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as DiffType from '../DiffType/DiffType.ts'
-import * as InputName from '../InputName/InputName.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
+import * as RenderValue from '../RenderValue/RenderValue.ts'
 
 const renderFocus = (oldState: SearchState, newState: SearchState): boolean => {
   return oldState.focus === newState.focus || newState.focusSource === InputSource.User
 }
 
-const renderValue = (oldState: SearchState, newState: SearchState): any => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.value, `[name="${InputName.SearchValue}"]`]
-}
-
-const renderReplacement = (oldState: SearchState, newState: SearchState): any => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, `[name=${InputName.ReplaceValue}]`]
-}
-
-const renderIncludeValue = (oldState: SearchState, newState: SearchState): any => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.includeValue, `[name=${InputName.FilesToInclude}]`]
-}
-
-const renderExcludeValue = (oldState: SearchState, newState: SearchState): any => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.excludeValue, `[name=${InputName.FilesToExclude}]`]
-}
-
 export const getRenderer = (diffType: number): Renderer => {
   switch (diffType) {
     case DiffType.RenderValue:
-      return renderValue
+      return RenderValue.renderValue
     case DiffType.RenderFocus:
       return renderFocus
     case DiffType.RenderReplaceValue:
-      return renderReplacement
+      return RenderValue.renderReplacement
     case DiffType.RenderIncludeValue:
-      return renderIncludeValue
+      return RenderValue.renderIncludeValue
     case DiffType.RenderExcludeValue:
-      return renderExcludeValue
+      return RenderValue.renderExcludeValue
     case DiffType.RenderItems:
       return RenderItems.renderItems
     default:
