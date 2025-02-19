@@ -40,6 +40,7 @@ import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import * as Render from '../Render/Render.ts'
+import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
@@ -87,6 +88,7 @@ export const commandMap = {
   'TextSearch.focusReplaceValue': WrapCommand.wrapCommand(FocusReplaceValue.focusReplaceValue),
   'TextSearch.focusReplaceValueNext': WrapCommand.wrapCommand(SearchFocus.focusReplaceValueNext),
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
+  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
   'TextSearch.getActions': WrapCommand.wrapCommand(GetSearchActions.getActions),
