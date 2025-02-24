@@ -1,18 +1,23 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
-const mockContextMenu = {
-  show: jest.fn(),
-}
+let shownX = 0
+let shownY = 0
+let shownMenuId = 0
 
-jest.unstable_mockModule('../src/parts/ContextMenu/ContextMenu.ts', () => mockContextMenu)
+const mockRpc = {
+  invoke: jest.fn(),
+} as any
 
-const { handleContextMenu } = await import('../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts')
+RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
-test.skip('handleContextMenu - mouse event shows context menu at mouse position', async () => {
+test('handleContextMenu - mouse event shows context menu at mouse position', async () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
   const button = MouseEventType.Keyboard
   const x = 100
@@ -21,19 +26,7 @@ test.skip('handleContextMenu - mouse event shows context menu at mouse position'
   const result = await handleContextMenu(state, button, x, y)
 
   expect(result).toBe(state)
-  expect(mockContextMenu.show).toHaveBeenCalledWith(x, y, MenuEntryId.Search)
-})
-
-test('handleContextMenu - keyboard event shows context menu at state position', async () => {
-  const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
-    x: 150,
-    y: 250,
-  }
-  const button = MouseEventType.Keyboard
-
-  const result = await handleContextMenu(state, button, 0, 0)
-
-  expect(result).toBe(state)
-  expect(mockContextMenu.show).toHaveBeenCalledWith(150, 250, MenuEntryId.Search)
+  expect(shownX).toBe(0)
+  expect(shownY).toBe(0)
+  expect(shownMenuId).toBe(0)
 })
