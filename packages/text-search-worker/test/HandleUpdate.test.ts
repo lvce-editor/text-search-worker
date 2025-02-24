@@ -1,9 +1,9 @@
 import { expect, jest, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
