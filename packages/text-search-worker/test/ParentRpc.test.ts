@@ -14,7 +14,7 @@ test('invoke - successfully invokes command', async () => {
     },
   } as any
   RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-  // @ts-ignore
+  // @ts-expect-error
   const result = await ParentRpc.invoke('test.command', 'arg1', 'arg2')
   expect(result).toBe('test result')
 })
@@ -26,7 +26,7 @@ test('invoke - handles error from rpc', async () => {
     },
   } as any
   RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-  // @ts-ignore
+  // @ts-expect-error
   await expect(ParentRpc.invoke('test.command')).rejects.toThrow('test error')
 })
 
@@ -55,4 +55,27 @@ test('invoke - handles multiple arguments of different types', async () => {
   // @ts-ignore
   await ParentRpc.invoke('test.command', ...args)
   expect(capturedArgs).toEqual(args)
+})
+
+test('invokeAndTransfer - successfully transfers data', async () => {
+  const mockRpc = {
+    invokeAndTransfer(): string {
+      return 'transfer success'
+    },
+  } as any
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+  // @ts-expect-error
+  const result = await ParentRpc.invokeAndTransfer('test.transfer', 'data')
+  expect(result).toBe('transfer success')
+})
+
+test('invokeAndTransfer - handles transfer error', async () => {
+  const mockRpc = {
+    async invokeAndTransfer(): Promise<void> {
+      throw new Error('transfer failed')
+    },
+  } as any
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+  // @ts-expect-error
+  await expect(ParentRpc.invokeAndTransfer('test.transfer')).rejects.toThrow('transfer failed')
 })
