@@ -29,3 +29,10 @@ test('validateSearchInput - unescaped special characters returns error message',
 test('validateSearchInput - unicode flag is supported', () => {
   expect(ValidateSearchInput.validateSearchInput(String.raw`\p{Script=Latin}`, UseRegularExpression)).toBe('')
 })
+
+test('validateSearchInput - null or undefined value returns empty error message', () => {
+  // @ts-expect-error
+  expect(ValidateSearchInput.validateSearchInput(null, UseRegularExpression)).toBe('')
+  // @ts-expect-error
+  expect(ValidateSearchInput.validateSearchInput(undefined, UseRegularExpression)).toBe('')
+})
