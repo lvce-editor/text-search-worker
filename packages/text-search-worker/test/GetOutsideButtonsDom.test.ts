@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
 import * as GetOutsideButtonsDom from '../src/parts/GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as InputActionFlag from '../src/parts/InputActionFlag/InputActionFlag.ts'
-import { InputAction } from '../src/parts/InputAction/InputAction.ts'
 
 test('getOutsideButtonsDom - no buttons', () => {
   const buttons: InputAction[] = []
