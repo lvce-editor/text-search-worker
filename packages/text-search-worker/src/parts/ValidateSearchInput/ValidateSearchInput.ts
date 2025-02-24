@@ -3,7 +3,7 @@
 import { UseRegularExpression } from '../SearchFlags/SearchFlags.ts'
 
 export const validateSearchInput = (value: string, flags: number): string => {
-  if (value.length === 0) {
+  if (!value) {
     return ''
   }
   if (!(flags & UseRegularExpression)) {
