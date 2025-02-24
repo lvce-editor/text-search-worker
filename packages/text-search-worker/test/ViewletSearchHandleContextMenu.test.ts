@@ -1,10 +1,9 @@
 import { expect, jest, test } from '@jest/globals'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 const shownX = 0
