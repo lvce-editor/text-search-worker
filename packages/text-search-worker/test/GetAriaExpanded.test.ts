@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetAriaExpanded from '../src/parts/GetAriaExpanded/GetAriaExpanded.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
+import * as GetAriaExpanded from '../src/parts/GetAriaExpanded/GetAriaExpanded.ts'
 
 test('getAriaExpanded - collapsed', () => {
   expect(GetAriaExpanded.getAriaExpanded(ExpandedType.Collapsed)).toBe('false')
