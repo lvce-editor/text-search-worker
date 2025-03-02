@@ -23,15 +23,15 @@ test('renderEventListeners', () => {
     },
     {
       name: DomEventListenerFunctions.HandleClick,
-      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      params: ['handleClick', 'event.clientX', 'event.clientY'],
     },
     {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
-      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      params: ['handleToggleButtonClick'],
     },
     {
       name: DomEventListenerFunctions.HandleListFocus,
-      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      params: ['handleListFocus'],
     },
     {
       name: DomEventListenerFunctions.HandleListBlur,
@@ -44,7 +44,7 @@ test('renderEventListeners', () => {
     },
     {
       name: DomEventListenerFunctions.HandleWheel,
-      params: ['handleContextMenu', 'event.deltaMode', 'event.deltaY'],
+      params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
       passive: true,
     },
     {
