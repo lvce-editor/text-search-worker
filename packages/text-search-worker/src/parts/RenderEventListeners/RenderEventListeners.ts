@@ -30,7 +30,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleListFocus,
-      params: ['handleListFocus', 'event.clientX', 'event.clientY'],
+      params: ['handleListFocus'],
     },
     {
       name: DomEventListenerFunctions.HandleListBlur,
