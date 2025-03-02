@@ -5,8 +5,9 @@ import * as ToggleSearchFlag from '../ToggleSearchFlag/ToggleSearchFlag.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const collapseDetails = async (state: SearchState): Promise<SearchState> => {
+  const defaultState = await ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.DetailsExpanded)
   return {
-    ...(await ToggleSearchFlag.toggleSearchFlag(state, SearchFlags.DetailsExpanded)),
+    ...defaultState,
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
   }
