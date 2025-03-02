@@ -4,7 +4,7 @@ export const name = 'search.toggle-details'
 
 export const skip = 1
 
-export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect, Command }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -14,14 +14,19 @@ export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar,
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
   await expect(message).toHaveText('1 result in 1 file')
+  await Command.execute('Search.collapseDetails')
+  const details = Locator('.SearchHeaderDetailsExpandedTop')
+  await expect(details).toBeHidden()
 
   // act
   await Search.toggleSearchDetails()
 
-  // assert
+  // // assert
+  await expect(details).toBeVisible()
 
-  // act
+  // // act
   await Search.toggleSearchDetails()
 
-  // assert
+  // // assert
+  await expect(details).toBeHidden()
 }
