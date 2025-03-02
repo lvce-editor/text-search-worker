@@ -2,8 +2,6 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.toggle-details'
 
-export const skip = 1
-
 export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar, Locator, expect, Command }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
@@ -21,12 +19,12 @@ export const test: Test = async ({ Main, Search, FileSystem, Workspace, SideBar,
   // act
   await Search.toggleSearchDetails()
 
-  // // assert
+  // assert
   await expect(details).toBeVisible()
 
-  // // act
+  // act
   await Search.toggleSearchDetails()
 
-  // // assert
+  // assert
   await expect(details).toBeHidden()
 }
