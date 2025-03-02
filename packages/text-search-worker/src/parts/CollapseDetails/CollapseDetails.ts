@@ -7,7 +7,7 @@ export const collapseDetails = (state: SearchState): SearchState => {
   const { flags } = state
   return {
     ...state,
-    flags: flags ^ SearchFlags.DetailsExpanded,
+    flags: flags & ~SearchFlags.DetailsExpanded,
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
   }
