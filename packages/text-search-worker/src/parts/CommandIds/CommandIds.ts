@@ -1,7 +1,9 @@
 export const commandIds = [
   'clearSearchResults',
+  'collapseDetails',
   'copy',
   'dismissItem',
+  'expandDetails',
   'focusFirst',
   'focusIndex',
   'focusLast',
