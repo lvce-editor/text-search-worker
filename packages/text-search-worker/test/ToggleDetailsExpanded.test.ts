@@ -6,24 +6,24 @@ import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as ToggleDetailsExpanded from '../src/parts/ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
-test('toggleDetailsExpanded - focuses include files input when expanding', async () => {
+test('toggleDetailsExpanded - focuses include files input when expanding', () => {
   const initialState: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     flags: 0,
   }
-  const newState = await ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
+  const newState = ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
   expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(true)
   expect(newState.focus).toBe(WhenExpression.FocusSearchIncludeInput)
   expect(newState.focusSource).toBe(InputSource.Script)
 })
 
-test('toggleDetailsExpanded - focuses search input when collapsing', async () => {
+test('toggleDetailsExpanded - focuses search input when collapsing', () => {
   const initialState: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     flags: SearchFlags.DetailsExpanded,
     focus: WhenExpression.FocusSearchIncludeInput,
   }
-  const newState = await ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
+  const newState = ToggleDetailsExpanded.toggleDetailsExpanded(initialState)
   expect(SearchFlags.hasDetailsExpanded(newState.flags)).toBe(false)
   expect(newState.focus).toBe(WhenExpression.FocusSearchInput)
   expect(newState.focusSource).toBe(InputSource.Script)

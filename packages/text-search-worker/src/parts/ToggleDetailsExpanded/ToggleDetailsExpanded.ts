@@ -3,7 +3,7 @@ import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
-export const toggleDetailsExpanded = (state: SearchState): SearchState | Promise<SearchState> => {
+export const toggleDetailsExpanded = (state: SearchState): SearchState => {
   if (SearchFlags.hasDetailsExpanded(state.flags)) {
     return CollapseDetails.collapseDetails(state)
   }
