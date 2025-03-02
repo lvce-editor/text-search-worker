@@ -1,7 +1,9 @@
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
+import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
 import * as Create from '../Create/Create.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
+import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
 import * as FocusPreviousInput from '../FocusPreviousInput/FocusPreviousInput.ts'
@@ -68,6 +70,8 @@ export const commandMap = {
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
+  'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
+  'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
   'TextSearch.focusLast': WrapCommand.wrapCommand(ListFocusLast.focusLast),
   'TextSearch.focusMatchCase': WrapCommand.wrapCommand(FocusMatchCase.focusMatchCase),
@@ -82,14 +86,14 @@ export const commandMap = {
   'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusPreviousInput.focusPreviousInput),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
-  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
   'TextSearch.focusReplaceAll': WrapCommand.wrapCommand(SearchFocus.focusReplaceAll),
   'TextSearch.focusReplaceValue': WrapCommand.wrapCommand(FocusReplaceValue.focusReplaceValue),
   'TextSearch.focusReplaceValueNext': WrapCommand.wrapCommand(SearchFocus.focusReplaceValueNext),
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
-  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
+  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
+  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
   'TextSearch.getActions': WrapCommand.wrapCommand(GetSearchActions.getActions),
   'TextSearch.getActionsVirtualDom': WrapCommand.wrapCommand(GetActionsVirtualDom.getActionsVirtualDom),
