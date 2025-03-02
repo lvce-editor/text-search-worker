@@ -2,7 +2,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as CreateViewModel from '../CreateViewModel/CreateViewModel.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 
-export const renderItems = (oldState: SearchState, newState: SearchState): any => {
+export const renderItems = (oldState: SearchState, newState: SearchState): readonly any[] => {
   const viewModel = CreateViewModel.createViewModel(newState)
   const dom = GetSearchVirtualDom.getSearchVirtualDom(
     viewModel.displayResults,
