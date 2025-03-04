@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as RenderActions from '../src/parts/RenderActions/RenderActions.ts'
-import { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test('renderActions - returns empty array when states are same', () => {
   const state = Create.create(1, 0, 0, 0, 0, '', '')
