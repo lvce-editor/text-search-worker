@@ -50,5 +50,9 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       name: DomEventListenerFunctions.HandleHeaderClick2,
       params: ['handleHeaderClick', 'event.target.name'],
     },
+    {
+      name: DomEventListenerFunctions.HandleHeaderFocusIn,
+      params: ['handleHeaderFocusIn'],
+    },
   ]
 }
