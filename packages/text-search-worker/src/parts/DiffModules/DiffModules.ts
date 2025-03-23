@@ -6,3 +6,12 @@ import * as DiffReplaceValue from '../DiffReplaceValue/DiffReplaceValue.ts'
 import * as DiffValue from '../DiffValue/DiffValue.ts'
 
 export const modules = [DiffItems, DiffFocus, DiffIncludeValue, DiffExcludeValue, DiffReplaceValue, DiffValue]
+
+export const numbers = [
+  DiffItems.diffType,
+  DiffFocus.diffType,
+  DiffIncludeValue.diffType,
+  DiffExcludeValue.diffType,
+  DiffReplaceValue.diffType,
+  DiffValue.diffType,
+]
