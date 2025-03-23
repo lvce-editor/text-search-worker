@@ -5,7 +5,14 @@ import * as DiffItems from '../DiffItems/DiffItems.ts'
 import * as DiffReplaceValue from '../DiffReplaceValue/DiffReplaceValue.ts'
 import * as DiffValue from '../DiffValue/DiffValue.ts'
 
-export const modules = [DiffItems, DiffFocus, DiffIncludeValue, DiffExcludeValue, DiffReplaceValue, DiffValue]
+export const modules = [
+  DiffItems.isEqual,
+  DiffFocus.isEqual,
+  DiffIncludeValue.isEqual,
+  DiffExcludeValue.isEqual,
+  DiffReplaceValue.isEqual,
+  DiffValue.isEqual,
+]
 
 export const numbers = [
   DiffItems.diffType,
