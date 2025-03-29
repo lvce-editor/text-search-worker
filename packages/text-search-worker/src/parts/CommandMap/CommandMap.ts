@@ -20,6 +20,7 @@ import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDi
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
+import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
@@ -69,6 +70,7 @@ export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
+  'TextSearch.handleHeaderFocusIn': WrapCommand.wrapCommand(HandleHeaderFocusIn.handleHeaderFocusIn),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
