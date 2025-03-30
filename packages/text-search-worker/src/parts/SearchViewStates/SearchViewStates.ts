@@ -1,19 +1,4 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as ViewletRegistry from '../ViewletRegistry/ViewletRegistry.ts'
 
-const states = Object.create(null)
-
-export const get = (
-  uid: number,
-): {
-  oldState: SearchState
-  newState: SearchState
-} => {
-  return states[uid]
-}
-
-export const set = (uid: number, oldState: SearchState, newState: SearchState): void => {
-  states[uid] = {
-    oldState,
-    newState,
-  }
-}
+export const { get, set, dispose, getKeys } = ViewletRegistry.create<SearchState>()
