@@ -2,6 +2,7 @@ import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts
 import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
 import * as Create from '../Create/Create.ts'
+import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
 import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
@@ -48,6 +49,7 @@ import * as RenderEventListeners from '../RenderEventListeners/RenderEventListen
 import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
+import * as Render2 from '../Render2/Render2.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
@@ -68,12 +70,12 @@ import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
-  'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
-  'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
-  'TextSearch.handleHeaderFocusIn': WrapCommand.wrapCommand(HandleHeaderFocusIn.handleHeaderFocusIn),
-  'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
+  'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
+  'TextSearch.diff2': Diff2.diff2,
+  'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
+  'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
   'TextSearch.focusLast': WrapCommand.wrapCommand(ListFocusLast.focusLast),
   'TextSearch.focusMatchCase': WrapCommand.wrapCommand(FocusMatchCase.focusMatchCase),
@@ -94,11 +96,10 @@ export const commandMap = {
   'TextSearch.focusReplaceValueNext': WrapCommand.wrapCommand(SearchFocus.focusReplaceValueNext),
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
-  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
-  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
   'TextSearch.getActions': WrapCommand.wrapCommand(GetSearchActions.getActions),
   'TextSearch.getActionsVirtualDom': WrapCommand.wrapCommand(GetActionsVirtualDom.getActionsVirtualDom),
+  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.getSearchDisplayResults': WrapCommand.wrapCommand(GetSearchDisplayResults.getDisplayResults),
   'TextSearch.getVirtualDom': WrapCommand.wrapCommand(GetSearchVirtualDom.getSearchVirtualDom),
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
@@ -106,6 +107,7 @@ export const commandMap = {
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
   'TextSearch.handleFocusIn': WrapCommand.wrapCommand(SearchFocus.handleFocusIn),
   'TextSearch.handleHeaderClick': WrapCommand.wrapCommand(HandleHeaderClick.handleHeaderClick),
+  'TextSearch.handleHeaderFocusIn': WrapCommand.wrapCommand(HandleHeaderFocusIn.handleHeaderFocusIn),
   'TextSearch.handleIconThemeChange': WrapCommand.wrapCommand(HandleIconThemeChange.handleIconThemeChange),
   'TextSearch.handleIncludeInput': WrapCommand.wrapCommand(HandleIncludeInput.handleIncludeInput),
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
@@ -119,6 +121,7 @@ export const commandMap = {
   'TextSearch.launchSearchProcess': WrapCommand.wrapCommand(LaunchSearchProcess.launchSearchProcess),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
+  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
@@ -134,15 +137,18 @@ export const commandMap = {
 
   // not wrapped
   'TextSearch.create': Create.create,
-  'TextSearch.getFlags': GetFlags.getFlags,
-  'TextSearch.getFocus': GetFocus.getFocus,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'TextSearch.render': Render.doRender,
+  'TextSearch.render2': Render2.render2,
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.terminate': Terminate.terminate,
+
+  // deprecated
+  'TextSearch.getFlags': GetFlags.getFlags,
+  'TextSearch.getFocus': GetFocus.getFocus,
+  'TextSearch.render': Render.doRender,
 
   // TODO needed?
   'TextSearch.textSearch': TextSearch.textSearch,
