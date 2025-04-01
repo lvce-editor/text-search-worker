@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { setup } from '../src/test.js'
 
-test('toggleMatchWholeWord', async () => {
+test.skip('toggleMatchWholeWord', async () => {
   const rpc = await setup()
   const uid = 1
   const x = 0

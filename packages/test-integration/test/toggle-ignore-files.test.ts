@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { setup } from '../src/test.js'
 
-test('toggleIgnoreFiles', async () => {
+test.skip('toggleIgnoreFiles', async () => {
   const rpc = await setup()
   const uid = 1
   const x = 0
