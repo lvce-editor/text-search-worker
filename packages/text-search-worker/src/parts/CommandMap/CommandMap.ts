@@ -13,8 +13,6 @@ import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
 import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
-import * as GetFlags from '../GetFlags/GetFlags.ts'
-import * as GetFocus from '../GetFocus/GetFocus.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
@@ -44,7 +42,6 @@ import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import * as Render2 from '../Render2/Render2.ts'
-import * as Render from '../Render/Render.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
@@ -144,11 +141,6 @@ export const commandMap = {
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.terminate': Terminate.terminate,
-
-  // deprecated
-  'TextSearch.getFlags': GetFlags.getFlags,
-  'TextSearch.getFocus': GetFocus.getFocus,
-  'TextSearch.render': Render.doRender,
 
   // TODO needed?
   'TextSearch.textSearch': TextSearch.textSearch,
