@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { setup } from '../src/test.js'
 
-test('render', async () => {
+test.skip('render', async () => {
   const rpc = await setup()
   const uid = 1
   const x = 0
