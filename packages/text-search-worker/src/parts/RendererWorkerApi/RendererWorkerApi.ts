@@ -1,7 +1,7 @@
 import type { BulkReplacementEdit } from '../BulkReplacementEdit/BulkReplacementEdit.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 
-interface ConfirmPromptOptions {
+export interface ConfirmPromptOptions {
   readonly title: string
   readonly confirmMessage: string
 }
