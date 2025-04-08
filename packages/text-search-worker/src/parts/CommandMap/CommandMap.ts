@@ -94,11 +94,7 @@ export const commandMap = {
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
-  'TextSearch.getActions': WrapCommand.wrapCommand(GetSearchActions.getActions),
-  'TextSearch.getActionsVirtualDom': WrapCommand.wrapCommand(GetActionsVirtualDom.getActionsVirtualDom),
   'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
-  'TextSearch.getSearchDisplayResults': WrapCommand.wrapCommand(GetSearchDisplayResults.getDisplayResults),
-  'TextSearch.getVirtualDom': WrapCommand.wrapCommand(GetSearchVirtualDom.getSearchVirtualDom),
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
@@ -118,9 +114,8 @@ export const commandMap = {
   'TextSearch.launchSearchProcess': WrapCommand.wrapCommand(LaunchSearchProcess.launchSearchProcess),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
-  'TextSearch.renderActions': WrapCommand.wrapCommand(RenderActions.renderActions),
+  'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
-  'TextSearch.replaceAllAndPrompt': WrapCommand.wrapCommand(ReplaceAllAndPrompt.replaceAllAndPrompt),
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
@@ -143,5 +138,10 @@ export const commandMap = {
   'TextSearch.terminate': Terminate.terminate,
 
   // TODO needed?
+  'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
   'TextSearch.textSearch': TextSearch.textSearch,
+  'TextSearch.getActions': GetSearchActions.getActions,
+  'TextSearch.getActionsVirtualDom': GetActionsVirtualDom.getActionsVirtualDom,
+  'TextSearch.getSearchDisplayResults': GetSearchDisplayResults.getDisplayResults,
+  'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
 }
