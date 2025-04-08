@@ -1,6 +1,6 @@
 import * as Assert from '../Assert/Assert.ts'
+import * as ConfirmPrompt from '../ConfirmPrompt/ConfirmPrompt.ts'
 import * as GetReplaceAllConfirmText from '../GetReplaceAllConfirmText/GetReplaceAllConfirmText.ts'
-import * as Rpc from '../ParentRpc/ParentRpc.ts'
 import * as ViewletSearchStrings from '../SearchStrings/SearchStrings.ts'
 
 export const replaceAllAndPrompt = async (
@@ -18,7 +18,10 @@ export const replaceAllAndPrompt = async (
   const confirmTitle = ViewletSearchStrings.replaceAll()
   const confirmAccept = ViewletSearchStrings.replace()
   const confirmText = GetReplaceAllConfirmText.getReplaceAllConfirmText(matchCount, fileCount, replacement)
-  const shouldReplace = await Rpc.invoke('ConfirmPrompt.prompt', confirmText, { title: confirmTitle, confirmMessage: confirmAccept })
+  const shouldReplace = await ConfirmPrompt.prompt(confirmText, {
+    title: confirmTitle,
+    confirmMessage: confirmAccept,
+  })
   if (!shouldReplace) {
     return false
   }
