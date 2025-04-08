@@ -11,12 +11,8 @@ import * as FocusPreviousInput from '../FocusPreviousInput/FocusPreviousInput.ts
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
-import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
 import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
-import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
-import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDisplayResults.ts'
-import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
@@ -140,8 +136,4 @@ export const commandMap = {
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
   'TextSearch.textSearch': TextSearch.textSearch,
-  'TextSearch.getActions': GetSearchActions.getActions,
-  'TextSearch.getActionsVirtualDom': GetActionsVirtualDom.getActionsVirtualDom,
-  'TextSearch.getSearchDisplayResults': GetSearchDisplayResults.getDisplayResults,
-  'TextSearch.getVirtualDom': GetSearchVirtualDom.getSearchVirtualDom,
 }
