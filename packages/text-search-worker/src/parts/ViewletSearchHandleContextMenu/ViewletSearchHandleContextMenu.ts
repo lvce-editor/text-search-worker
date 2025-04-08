@@ -1,13 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as MouseEventType from '../MouseEventType/MouseEventType.ts'
-import * as ViewletSearchHandleContextMenuKeyBoard from '../ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
-import * as ViewletSearchHandleContextMenuMouseAt from '../ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
+import { getContextMenuHandler } from '../GetContextMenuHandler/GetContextMenuHandler.ts'
 
-export const handleContextMenu = (state: SearchState, button: number, x: number, y: number): Promise<SearchState> => {
-  switch (button) {
-    case MouseEventType.Keyboard:
-      return ViewletSearchHandleContextMenuKeyBoard.handleContextMenuKeyboard(state)
-    default:
-      return ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
-  }
+export const handleContextMenu = async (state: SearchState, button: number, x: number, y: number): Promise<SearchState> => {
+  const fn = getContextMenuHandler(button)
+  const newState = await fn(state, x, y)
+  return newState
 }
