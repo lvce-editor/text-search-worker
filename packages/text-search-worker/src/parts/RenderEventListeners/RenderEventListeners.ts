@@ -22,7 +22,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleClick,
-      params: ['handleClick', 'event.clientX', 'event.clientY'],
+      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
     },
     {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
