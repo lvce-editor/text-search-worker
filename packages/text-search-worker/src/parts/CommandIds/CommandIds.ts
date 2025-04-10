@@ -38,6 +38,7 @@ export const commandIds = [
   'handleIconThemeChange',
   'handleIncludeInput',
   'handleInput',
+  'handleInput2',
   'handleListBlur',
   'handleListFocus',
   'handleReplaceInput',
