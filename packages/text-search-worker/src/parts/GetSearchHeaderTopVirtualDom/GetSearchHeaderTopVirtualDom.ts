@@ -30,7 +30,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMess
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,
       'Search',
-      DomEventListenerFunctions.HandleInput,
+      DomEventListenerFunctions.HandleInput2,
       inputActions.inside,
       inputActions.outside,
       '',
@@ -43,7 +43,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMess
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         InputName.ReplaceValue,
         'Replace',
-        DomEventListenerFunctions.HandleReplaceInput,
+        DomEventListenerFunctions.HandleInput2,
         replaceActions.inside,
         replaceActions.outside,
       ),
