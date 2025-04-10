@@ -35,8 +35,7 @@ export const getClickHandler = (name: string): ClickHandler => {
     case InputName.ReplaceValue:
     case InputName.FilesToExclude:
     case InputName.FilesToInclude:
-      return Noop.noop
     default:
-      throw new Error(`Click handler not found: ${name}`)
+      return Noop.noop
   }
 }
