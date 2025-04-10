@@ -6,7 +6,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
       name: DomEventListenerFunctions.HandleInput2,
-      params: ['handleInput2', 'event.target.name', 'event.target.value'],
+      params: ['handleInput2', 'event.target.name', 'event.target.value', InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleExcludeInput,
