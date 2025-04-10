@@ -31,12 +31,7 @@ export const getClickHandler = (name: string): ClickHandler => {
       return ToggleOpenEditors.toggleOpenEditors
     case InputName.UseExcludeSettings:
       return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
-    case InputName.SearchValue:
-    case InputName.ReplaceValue:
-    case InputName.FilesToExclude:
-    case InputName.FilesToInclude:
-      return Noop.noop
     default:
-      throw new Error(`Click handler not found: ${name}`)
+      return Noop.noop
   }
 }
