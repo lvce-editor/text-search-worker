@@ -31,10 +31,6 @@ export const getClickHandler = (name: string): ClickHandler => {
       return ToggleOpenEditors.toggleOpenEditors
     case InputName.UseExcludeSettings:
       return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
-    case InputName.SearchValue:
-    case InputName.ReplaceValue:
-    case InputName.FilesToExclude:
-    case InputName.FilesToInclude:
     default:
       return Noop.noop
   }
