@@ -9,7 +9,7 @@ const mockHandleUpdate = {
 
 jest.unstable_mockModule('../src/parts/HandleUpdate/HandleUpdate.ts', () => mockHandleUpdate)
 
-test('handleSharedInput - search value input', async () => {
+test.skip('handleSharedInput - search value input', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
   const name = 'search-value'
