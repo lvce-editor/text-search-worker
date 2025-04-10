@@ -115,7 +115,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       className: 'MultilineInputBox',
       name: 'SearchValue',
       onFocus: '',
-      onInput: 'handleInput',
+      onInput: 'handleInput2',
       placeholder: 'Search',
       spellcheck: false,
       type: 62,

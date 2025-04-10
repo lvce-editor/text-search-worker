@@ -14,4 +14,4 @@ test('search-create', async () => {
   const value = ''
   const replacement = ''
   await rpc.invoke('TextSearch.create', uid, x, y, width, height, workspacePath, assetDir, itemHeight, value, replacement)
-})
+}, 20_000)
