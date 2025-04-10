@@ -35,7 +35,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.FilesToInclude,
       'Include',
-      DomEventListenerFunctions.HandleIncludeInput,
+      DomEventListenerFunctions.HandleInput2,
       includeButtons.inside,
       includeButtons.outside,
     ),
@@ -48,7 +48,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.FilesToExclude,
       'Exclude',
-      DomEventListenerFunctions.HandleExcludeInput,
+      DomEventListenerFunctions.HandleInput2,
       excludeButtons.inside,
       excludeButtons.outside,
     ),

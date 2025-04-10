@@ -57,7 +57,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MultilineInputBox',
       name: 'SearchValue',
       onFocus: '',
-      onInput: 'handleInput',
+      onInput: 'handleInput2',
       placeholder: 'Search',
       spellcheck: false,
       type: 62,

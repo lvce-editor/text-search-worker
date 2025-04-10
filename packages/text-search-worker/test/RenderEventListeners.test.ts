@@ -6,6 +6,10 @@ import * as RenderEventListeners from '../src/parts/RenderEventListeners/RenderE
 test('renderEventListeners', () => {
   expect(RenderEventListeners.renderEventListeners()).toEqual([
     {
+      name: DomEventListenerFunctions.HandleInput2,
+      params: ['handleInput2', 'event.target.name', 'event.target.value', InputSource.User],
+    },
+    {
       name: DomEventListenerFunctions.HandleExcludeInput,
       params: ['handleExcludeInput', 'event.target.value'],
     },

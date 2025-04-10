@@ -18,6 +18,7 @@ import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
+import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
@@ -100,6 +101,7 @@ export const commandMap = {
   'TextSearch.handleIconThemeChange': WrapCommand.wrapCommand(HandleIconThemeChange.handleIconThemeChange),
   'TextSearch.handleIncludeInput': WrapCommand.wrapCommand(HandleIncludeInput.handleIncludeInput),
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
+  'TextSearch.handleInput2': WrapCommand.wrapCommand(HandleInput2.handleInput2),
   'TextSearch.handleListBlur': WrapCommand.wrapCommand(HandleListBlur.handleListBlur),
   'TextSearch.handleReplaceInput': WrapCommand.wrapCommand(HandleReplaceInput.handleReplaceInput),
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),

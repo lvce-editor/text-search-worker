@@ -5,6 +5,10 @@ import * as InputSource from '../InputSource/InputSource.ts'
 export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
+      name: DomEventListenerFunctions.HandleInput2,
+      params: ['handleInput2', 'event.target.name', 'event.target.value', InputSource.User],
+    },
+    {
       name: DomEventListenerFunctions.HandleExcludeInput,
       params: ['handleExcludeInput', 'event.target.value'],
     },
