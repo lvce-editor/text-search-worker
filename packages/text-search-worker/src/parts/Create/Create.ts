@@ -59,6 +59,7 @@ export const create = (
     flags: 0,
     platform,
     searchInputErrorMessage: '',
+    history: [],
   }
   SearchViewStates.set(uid, state, state)
   return state

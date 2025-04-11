@@ -53,5 +53,6 @@ test('create', () => {
     y: 0,
     listItems: [],
     searchInputErrorMessage: '',
+    history: [],
   })
 })

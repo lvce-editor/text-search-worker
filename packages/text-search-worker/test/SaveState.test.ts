@@ -29,5 +29,6 @@ test('saveState', () => {
     flags,
     includeValue: '*.ts',
     excludeValue: 'node_modules',
+    history: [],
   })
 })
