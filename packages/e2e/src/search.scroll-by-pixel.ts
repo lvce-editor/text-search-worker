@@ -5,7 +5,7 @@ export const name = 'search.scroll-by-pixel'
 export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
-  const promises: any[] = []
+  const promises: Promise<void>[] = []
   for (let i = 0; i < 100; i++) {
     promises.push(FileSystem.writeFile(`${tmpDir}/${i}.css`, `abc`))
   }
