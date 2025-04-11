@@ -3,12 +3,13 @@ import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const saveState = (uid: number): SavedState => {
   const { newState } = SearchViewStates.get(uid)
-  const { value, replacement, flags, includeValue, excludeValue } = newState
+  const { value, replacement, flags, includeValue, excludeValue, history } = newState
   return {
     value,
     replacement,
     flags,
     includeValue,
     excludeValue,
+    history,
   }
 }

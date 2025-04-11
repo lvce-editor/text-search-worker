@@ -4,4 +4,5 @@ export interface SavedState {
   readonly flags: number
   readonly includeValue: string
   readonly excludeValue: string
+  readonly history: readonly string[]
 }
