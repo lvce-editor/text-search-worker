@@ -4,7 +4,7 @@ import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
-export const handleFocusIn = (state: SearchState, key: any): SearchState => {
+export const handleFocusIn = (state: SearchState, key: string): SearchState => {
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
   if (state.focus === focusKey) {
     return state
