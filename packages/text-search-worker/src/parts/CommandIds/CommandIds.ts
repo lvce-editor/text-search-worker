@@ -51,6 +51,8 @@ export const commandIds = [
   'handleTouchStart',
   'handleUpdate',
   'handleWheel',
+  'nextHistoryResult',
+  'previousHistoryResult',
   'refresh',
   'replaceAll',
   'scrollDown',

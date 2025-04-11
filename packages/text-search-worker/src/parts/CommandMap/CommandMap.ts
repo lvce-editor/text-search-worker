@@ -37,6 +37,8 @@ import * as ListHandleScrollBarClick from '../ListHandleScrollBarClick/ListHandl
 import * as ListHandleScrollBarMove from '../ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
 import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
+import * as NextHistoryResult from '../NextHistoryResult/NextHistoryResult.ts'
+import * as PreviousHistoryResult from '../PreviousHistoryResult/PreviousHistoryResult.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import * as Render2 from '../Render2/Render2.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
@@ -111,6 +113,8 @@ export const commandMap = {
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
   'TextSearch.launchSearchProcess': WrapCommand.wrapCommand(LaunchSearchProcess.launchSearchProcess),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
+  'TextSearch.nextHistoryResult': WrapCommand.wrapCommand(NextHistoryResult.nextHistoryResult),
+  'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
   'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),

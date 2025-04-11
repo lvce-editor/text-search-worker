@@ -21,6 +21,16 @@ export const getKeyBindings = (): readonly KeyBinding[] => {
       when: WhenExpression.FocusSearch,
     },
     {
+      key: KeyCode.UpArrow,
+      command: 'Search.previousHistoryResult',
+      when: WhenExpression.FocusSearch,
+    },
+    {
+      key: KeyCode.DownArrow,
+      command: 'Search.nextHistoryResult',
+      when: WhenExpression.FocusSearch,
+    },
+    {
       key: KeyCode.DownArrow,
       command: 'Search.focusNext',
       when: WhenExpression.FocusSearchResults,
