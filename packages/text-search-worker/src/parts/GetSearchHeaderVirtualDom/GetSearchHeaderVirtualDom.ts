@@ -13,6 +13,7 @@ const parentNode: VirtualDomNode = {
   childCount: 2,
   onClick: DomEventListenerFunctions.HandleHeaderClick2,
   onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
+  onFocusOut: DomEventListenerFunctions.HandleHeaderFocusOut,
 }
 
 export const getSearchHeaderVirtualDom = (
