@@ -4,12 +4,12 @@ import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetInputActionsInput from '../GetInputActionsInput/GetInputActionsInput.ts'
 import * as GetInputActionsReplace from '../GetInputActionsReplace/GetInputActionsReplace.ts'
+import { getReplacePlaceholder } from '../GetReplacePlaceholder/GetReplacePlaceholder.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 import { getSearchPlaceholder } from '../GetSearchPlaceholder/GetSearchPlaceholder.ts'
 import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchHeaderTopVirtualDom = (
@@ -20,7 +20,8 @@ export const getSearchHeaderTopVirtualDom = (
 ): readonly VirtualDomNode[] => {
   const inputActions = GetInputActionsInput.getInputActionsInput(flags)
   const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
-  const placeholder = getSearchPlaceholder(focus)
+  const searchPlaceholder = getSearchPlaceholder(focus)
+  const replacePlaceholder = getReplacePlaceholder(focus)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -37,7 +38,7 @@ export const getSearchHeaderTopVirtualDom = (
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,
-      placeholder,
+      searchPlaceholder,
       DomEventListenerFunctions.HandleInput2,
       inputActions.inside,
       inputActions.outside,
@@ -50,7 +51,7 @@ export const getSearchHeaderTopVirtualDom = (
     dom.push(
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         InputName.ReplaceValue,
-        SearchStrings.replace(),
+        replacePlaceholder,
         DomEventListenerFunctions.HandleInput2,
         replaceActions.inside,
         replaceActions.outside,
