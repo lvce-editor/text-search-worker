@@ -1,4 +1,5 @@
 import type { ClickHandler } from '../ClickHandler/ClickHandler.ts'
+import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as Noop from '../Noop/Noop.ts'
@@ -34,6 +35,8 @@ export const getClickHandler = (name: string): ClickHandler => {
       return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
     case InputName.SearchValue:
       return FocusSearchValue.focusSearchValue
+    case InputName.ReplaceValue:
+      return FocusReplaceValue.focusReplaceValue
     default:
       return Noop.noop
   }
