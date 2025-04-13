@@ -34,6 +34,7 @@ export const commandIds = [
   'handleFocusIn',
   'handleHeaderClick',
   'handleHeaderFocusIn',
+  'handleHeaderFocusOut',
   'handleIconThemeChange',
   'handleIconThemeChange',
   'handleIncludeInput',
