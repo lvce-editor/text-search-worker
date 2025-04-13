@@ -16,6 +16,7 @@ import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
+import * as HandleHeaderFocusOut from '../HandleHeaderFocusOut/HandleHeaderFocusOut.ts'
 import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
 import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
@@ -100,6 +101,7 @@ export const commandMap = {
   'TextSearch.handleFocusIn': WrapCommand.wrapCommand(SearchFocus.handleFocusIn),
   'TextSearch.handleHeaderClick': WrapCommand.wrapCommand(HandleHeaderClick.handleHeaderClick),
   'TextSearch.handleHeaderFocusIn': WrapCommand.wrapCommand(HandleHeaderFocusIn.handleHeaderFocusIn),
+  'TextSearch.handleHeaderFocusOut': WrapCommand.wrapCommand(HandleHeaderFocusOut.handleHeaderFocusOut),
   'TextSearch.handleIconThemeChange': WrapCommand.wrapCommand(HandleIconThemeChange.handleIconThemeChange),
   'TextSearch.handleIncludeInput': WrapCommand.wrapCommand(HandleIncludeInput.handleIncludeInput),
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
