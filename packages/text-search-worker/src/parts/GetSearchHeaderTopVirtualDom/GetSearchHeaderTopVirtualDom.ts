@@ -5,14 +5,22 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as GetInputActionsInput from '../GetInputActionsInput/GetInputActionsInput.ts'
 import * as GetInputActionsReplace from '../GetInputActionsReplace/GetInputActionsReplace.ts'
 import * as GetSearchFieldVirtualDom from '../GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
+import { getSearchPlaceholder } from '../GetSearchPlaceholder/GetSearchPlaceholder.ts'
 import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
-export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMessage: string, matchCount: number): readonly VirtualDomNode[] => {
+export const getSearchHeaderTopVirtualDom = (
+  flags: number,
+  searchInputErrorMessage: string,
+  matchCount: number,
+  focus: number,
+): readonly VirtualDomNode[] => {
   const inputActions = GetInputActionsInput.getInputActionsInput(flags)
   const replaceActions = GetInputActionsReplace.getInputActionsReplace(flags, matchCount)
+  const placeholder = getSearchPlaceholder(focus)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -29,7 +37,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMess
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,
-      'Search',
+      placeholder,
       DomEventListenerFunctions.HandleInput2,
       inputActions.inside,
       inputActions.outside,
@@ -42,7 +50,7 @@ export const getSearchHeaderTopVirtualDom = (flags: number, searchInputErrorMess
     dom.push(
       ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
         InputName.ReplaceValue,
-        'Replace',
+        SearchStrings.replace(),
         DomEventListenerFunctions.HandleInput2,
         replaceActions.inside,
         replaceActions.outside,

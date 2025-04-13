@@ -20,10 +20,11 @@ export const getSearchHeaderVirtualDom = (
   message: string,
   searchInputErrorMessage: string,
   matchCount: number,
+  focus: number,
 ): readonly VirtualDomNode[] => {
   const dom: readonly VirtualDomNode[] = [
     parentNode,
-    ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount),
+    ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount, focus),
     ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
   ]
   return dom
