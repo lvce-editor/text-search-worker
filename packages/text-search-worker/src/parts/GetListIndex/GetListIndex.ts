@@ -10,7 +10,7 @@ export const getListIndex = (
 ): number => {
   const relativeY = eventY - y - topHeight + deltaY
   const index = Math.floor(relativeY / itemHeight)
-  if (index >= itemCount) {
+  if (index < 0 || index >= itemCount) {
     return -1
   }
   return index
