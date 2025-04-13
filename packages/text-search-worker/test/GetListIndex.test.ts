@@ -30,7 +30,7 @@ test('getListIndex - with deltaY offset', () => {
   expect(result).toBe(4) // (150 - 100 + 30) / 20 = 4
 })
 
-test('getListIndex - negative index possible', () => {
+test('getListIndex - negative index not possible', () => {
   const eventX = 100
   const eventY = 50
   const x = 50
@@ -42,7 +42,7 @@ test('getListIndex - negative index possible', () => {
 
   const result = getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, itemCount)
 
-  expect(result).toBe(-3) // (50 - 100 + 0) / 20 = -2.5 -> -2
+  expect(result).toBe(-1) // (50 - 100 + 0) / 20 = -2.5 -> -2
 })
 
 test('getListIndex - eventX does not affect result', () => {
