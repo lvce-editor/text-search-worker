@@ -4,12 +4,12 @@ import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
-export const handleFocusIn = (state: SearchState, key: string): SearchState => {
+export const handleFocusIn = async (state: SearchState, key: string): Promise<SearchState> => {
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
   if (state.focus === focusKey) {
     return state
   }
-  void Focus.setFocus(WhenExpression.FocusSearch)
+  await Focus.setFocus(WhenExpression.FocusSearch)
   return {
     ...state,
     focus: focusKey,
