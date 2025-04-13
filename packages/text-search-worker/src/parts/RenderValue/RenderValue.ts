@@ -2,17 +2,17 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputName from '../InputName/InputName.ts'
 
 export const renderValue = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.value, `[name="${InputName.SearchValue}"]`]
+  return ['Viewlet.setValueByName', InputName.SearchValue, newState.value]
 }
 
 export const renderReplacement = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.replacement, `[name=${InputName.ReplaceValue}]`]
+  return ['Viewlet.setValueByName', InputName.ReplaceValue, newState.replacement]
 }
 
 export const renderIncludeValue = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.includeValue, `[name=${InputName.FilesToInclude}]`]
+  return ['Viewlet.setValueByName', InputName.FilesToInclude, newState.includeValue]
 }
 
 export const renderExcludeValue = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  return ['Viewlet.send', newState.uid, 'setValue', newState.excludeValue, `[name=${InputName.FilesToExclude}]`]
+  return ['Viewlet.setValueByName', InputName.FilesToExclude, newState.excludeValue]
 }
