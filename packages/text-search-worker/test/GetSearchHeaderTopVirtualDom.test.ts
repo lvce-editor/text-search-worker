@@ -6,7 +6,8 @@ test.skip('getSearchHeaderTopVirtualDom - replace all button disabled when no re
   const flags = SearchFlags.ReplaceExpanded
   const searchInputErrorMessage = ''
   const matchCount = 0
-  const dom = GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount)
+  const focus = 0
+  const dom = GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount, focus)
   const replaceField = dom.find((node) => node.name === 'ReplaceValue')
   expect(replaceField).toBeDefined()
   const replaceAllButton = dom.find((node) => node.name === 'ReplaceAll')
@@ -17,7 +18,8 @@ test.skip('getSearchHeaderTopVirtualDom - replace all button enabled when result
   const flags = SearchFlags.ReplaceExpanded
   const searchInputErrorMessage = ''
   const matchCount = 5
-  const dom = GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount)
+  const focus = 0
+  const dom = GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount, focus)
   const replaceField = dom.find((node) => node.name === 'ReplaceValue')
   expect(replaceField).toBeDefined()
   const replaceAllButton = dom.find((node) => node.name === 'ReplaceAll')
