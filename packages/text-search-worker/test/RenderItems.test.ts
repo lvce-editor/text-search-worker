@@ -14,7 +14,7 @@ test('renderItems - returns correct command structure', () => {
     value: '',
     includeValue: '',
     excludeValue: '',
-    focus: '',
+    focus: 0,
     focusSource: InputSource.Script,
     inputSource: InputSource.Script,
   }

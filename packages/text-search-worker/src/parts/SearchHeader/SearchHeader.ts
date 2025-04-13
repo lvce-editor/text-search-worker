@@ -1,6 +1,6 @@
 export interface SearchHeader {
   readonly excludeValue: string
-  readonly focus: any
+  readonly focus: number
   readonly focused: boolean
   readonly focusSource: number
   readonly includeValue: string
