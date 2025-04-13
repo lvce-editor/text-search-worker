@@ -9,4 +9,5 @@ export interface SearchHeader {
   readonly value: string
   readonly searchInputErrorMessage: string
   readonly history: readonly string[]
+  readonly historyIndex: number
 }

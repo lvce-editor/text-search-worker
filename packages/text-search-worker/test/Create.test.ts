@@ -54,5 +54,6 @@ test('create', () => {
     listItems: [],
     searchInputErrorMessage: '',
     history: [],
+    historyIndex: -1,
   })
 })
