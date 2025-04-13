@@ -27,6 +27,7 @@ export const ReplacedManyOccurrencesInOneFile = "Replaced {PH1} occurrences acro
 export const ReplacedOneOccurrenceInOneFile = "Replaced 1 occurrence across 1 file with '{PH1}'"
 export const Search = 'Search'
 export const SearchForHistory = 'Search (⇅ for history)'
+export const ReplaceForHistory = 'Replace (⇅ for history)'
 export const SearchOnlyOpenEditors = 'Search Only Open Editors'
 export const ToggleReplace = 'Toggle Replace'
 export const ToggleSearchDetails = 'Toggle Search Details'
