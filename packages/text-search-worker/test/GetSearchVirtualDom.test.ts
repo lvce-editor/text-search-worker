@@ -46,6 +46,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const deltaY = 0
   const ItemHeight = 1
   const matchCount = 1
+  const focus = 0
 
   const result: readonly VirtualDomNode[] = GetSearchVirtualDom.getSearchVirtualDom(
     visibleItems,
@@ -59,6 +60,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     deltaY,
     ItemHeight,
     matchCount,
+    focus,
   )
 
   expect(result).toEqual([
