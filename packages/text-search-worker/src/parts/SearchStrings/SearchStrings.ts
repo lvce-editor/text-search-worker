@@ -156,3 +156,7 @@ export const searchOnlyOpenEditors = (): string => {
 export const useExcludeSettings = (): string => {
   return I18nString.i18nString(UiStrings.UseExcludeSettings)
 }
+
+export const searchForHistory = (): string => {
+  return I18nString.i18nString(UiStrings.SearchForHistory)
+}
