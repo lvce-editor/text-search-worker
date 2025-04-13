@@ -60,6 +60,10 @@ test('renderEventListeners', () => {
       params: ['handleHeaderFocusIn'],
     },
     {
+      name: DomEventListenerFunctions.HandleHeaderFocusOut,
+      params: ['handleHeaderFocusOut'],
+    },
+    {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
       params: ['handleScrollBarClick', 'event.deltaY'],
     },
