@@ -149,6 +149,7 @@ test('selectIndexPreview - handles match with file above', async () => {
     ...state,
     listFocusedIndex: 2,
     listFocused: false,
+    focus: 22,
   })
   expect(mockOpenUri.openUri).toHaveBeenCalledWith('/abs/file1.ts', true, {
     selections: new Uint32Array([10, 0, 10, 0]),
