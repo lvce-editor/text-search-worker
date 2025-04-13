@@ -160,3 +160,7 @@ export const useExcludeSettings = (): string => {
 export const searchForHistory = (): string => {
   return I18nString.i18nString(UiStrings.SearchForHistory)
 }
+
+export const search = (): string => {
+  return I18nString.i18nString(UiStrings.Search)
+}
