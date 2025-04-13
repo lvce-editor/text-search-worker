@@ -60,6 +60,7 @@ export const create = (
     platform,
     searchInputErrorMessage: '',
     history: [],
+    historyIndex: -1,
   }
   SearchViewStates.set(uid, state, state)
   return state
