@@ -1,6 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as Focus from '../Focus/Focus.ts'
 import * as GetFileIndex from '../GetFileIndex/GetFileIndex.ts'
 import * as OpenUri from '../OpenUri/OpenUri.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const selectIndexPreview = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {
@@ -13,6 +15,9 @@ export const selectIndexPreview = async (state: SearchState, searchResult: any, 
   const fileResult = items[fileIndex]
   const relativePath = Workspace.getRelativePath(fileResult.text)
   const absolutePath = `${workspacePath}${relativePath}`
+  if (state.focus !== WhenExpression.FocusSearchResults) {
+    await Focus.setFocus(WhenExpression.FocusSearchResults)
+  }
   await OpenUri.openUri(absolutePath, true, {
     selections: new Uint32Array([lineNumber, 0, lineNumber, 0]),
   })
@@ -20,5 +25,6 @@ export const selectIndexPreview = async (state: SearchState, searchResult: any, 
     ...state,
     listFocusedIndex: index,
     listFocused: false,
+    focus: WhenExpression.FocusSearchResults,
   }
 }
