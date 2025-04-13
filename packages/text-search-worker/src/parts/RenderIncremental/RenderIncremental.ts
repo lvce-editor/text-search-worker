@@ -34,6 +34,7 @@ const getDom = (state: SearchState): any => {
     state.deltaY,
     state.itemHeight,
     state.matchCount,
+    state.focus,
   )
   return dom
 }

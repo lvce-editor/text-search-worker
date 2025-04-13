@@ -7,7 +7,8 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   const message = ''
   const errorMessage = ''
   const matchCount = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount)
+  const focus = 0
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
   expect(dom).toEqual([
     {
       childCount: 2,
@@ -152,7 +153,8 @@ test.skip('getSearchHeaderVirtualDom - with details expanded', () => {
   const message = ''
   const errorMessage = ''
   const matchCount = 1
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount)
+  const focus = 0
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
   expect(dom[0].childCount).toBe(4)
   expect(dom[dom.length - 7].className).toBe('SearchHeaderDetails')
   expect(dom[dom.length - 6].text).toBe('files to include')
@@ -164,7 +166,8 @@ test.skip('getSearchHeaderVirtualDom - with replace and details expanded', () =>
   const message = ''
   const errorMessage = ''
   const matchCount = 1
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount)
+  const focus = 0
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
   expect(dom[0].childCount).toBe(4)
   expect(flags & SearchFlags.DetailsExpanded).toBeTruthy()
   expect(flags & SearchFlags.ReplaceExpanded).toBeTruthy()

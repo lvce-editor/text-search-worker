@@ -16,6 +16,7 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
     viewModel.deltaY,
     viewModel.itemHeight,
     viewModel.matchCount,
+    viewModel.focus,
   )
   return ['Viewlet.setDom2', newState.uid, dom]
 }
