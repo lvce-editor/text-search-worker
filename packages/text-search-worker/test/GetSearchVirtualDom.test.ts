@@ -219,6 +219,8 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onBlur: 'handleListBlur',
       onClick: 'handleClick',
       onWheel: 'handleWheel',
+      onContextMenu: 'handleContextMenu',
+
       type: 4,
       top: '0px',
     },
