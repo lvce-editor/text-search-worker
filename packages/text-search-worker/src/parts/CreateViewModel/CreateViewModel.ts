@@ -26,6 +26,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     searchInputErrorMessage,
     scrollBarHeight,
     matchCount,
+    focus,
   } = state
   const displayResults = GetSearchDisplayResults.getDisplayResults(
     listItems,
@@ -55,5 +56,6 @@ export const createViewModel = (state: SearchState): ViewModel => {
     deltaY,
     itemHeight,
     matchCount,
+    focus,
   }
 }

@@ -12,4 +12,5 @@ export interface ViewModel {
   readonly deltaY: number
   readonly itemHeight: number
   readonly matchCount: number
+  readonly focus: number
 }
