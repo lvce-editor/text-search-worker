@@ -164,3 +164,7 @@ export const searchForHistory = (): string => {
 export const search = (): string => {
   return I18nString.i18nString(UiStrings.Search)
 }
+
+export const replaceForHistory = (): string => {
+  return I18nString.i18nString(UiStrings.ReplaceForHistory)
+}
