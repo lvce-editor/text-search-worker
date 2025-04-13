@@ -6,4 +6,5 @@ export interface RestoredState {
   readonly flags: number
   readonly includeValue: string
   readonly excludeValue: string
+  readonly history: readonly string[]
 }

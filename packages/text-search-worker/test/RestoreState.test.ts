@@ -13,6 +13,7 @@ test('restoreState - with empty state', () => {
     flags: 0,
     includeValue: '',
     excludeValue: '',
+    history: [],
   })
 })
 
@@ -26,6 +27,7 @@ test('restoreState - with null state', () => {
     flags: 0,
     includeValue: '',
     excludeValue: '',
+    history: [],
   })
 })
 
@@ -47,5 +49,6 @@ test('restoreState - with basic state', () => {
     flags: expectedFlags,
     includeValue: '*.ts',
     excludeValue: 'node_modules',
+    history: [],
   })
 })
