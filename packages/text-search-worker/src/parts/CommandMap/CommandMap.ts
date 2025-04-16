@@ -13,6 +13,7 @@ import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
+import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
@@ -94,7 +95,6 @@ export const commandMap = {
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
-  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
@@ -133,6 +133,8 @@ export const commandMap = {
 
   // not wrapped
   'TextSearch.create': Create.create,
+  'TextSearch.getActions': GetSearchActions.getActions,
+  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TextSearch.render2': Render2.render2,
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
