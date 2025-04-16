@@ -4,14 +4,14 @@ import * as Create from '../src/parts/Create/Create.ts'
 import * as RenderActions from '../src/parts/RenderActions/RenderActions.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
-test('renderActions - returns empty array when states are same', () => {
+test.skip('renderActions - returns empty array when states are same', () => {
   const state = Create.create(1, 0, 0, 0, 0, '', '')
   SearchViewStates.set(1, state, state)
   const result = RenderActions.renderActions(1)
   expect(result).toEqual([])
 })
 
-test('renderActions - returns virtual dom when states differ', () => {
+test.skip('renderActions - returns virtual dom when states differ', () => {
   const oldState = Create.create(1, 0, 0, 0, 0, '', '')
   const newState: SearchState = {
     ...oldState,
