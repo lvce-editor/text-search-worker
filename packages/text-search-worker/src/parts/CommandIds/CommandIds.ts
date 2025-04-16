@@ -66,4 +66,5 @@ export const commandIds = [
   'toggleReplace',
   'toggleSearchDetails',
   'toggleUseRegularExpression',
+  'viewAsTree',
 ]
