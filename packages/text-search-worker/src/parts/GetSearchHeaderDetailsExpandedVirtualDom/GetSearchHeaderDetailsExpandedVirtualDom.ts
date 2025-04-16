@@ -14,6 +14,8 @@ import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message: string): readonly VirtualDomNode[] => {
   const includeButtons = GetInputActionsInclude.getInputActionsInclude(flags)
   const excludeButtons = GetInputActionsExclude.getInputActionsExclude(flags)
+  const includePlaceholder = SearchStrings.include()
+  const excludePlaceholder = SearchStrings.exclude()
   return [
     {
       type: VirtualDomElements.Div,
@@ -34,7 +36,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
     text(SearchStrings.filesToInclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.FilesToInclude,
-      'Include',
+      includePlaceholder,
       DomEventListenerFunctions.HandleInput2,
       includeButtons.inside,
       includeButtons.outside,
@@ -47,7 +49,7 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
     text(SearchStrings.filesToExclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.FilesToExclude,
-      'Exclude',
+      excludePlaceholder,
       DomEventListenerFunctions.HandleInput2,
       excludeButtons.inside,
       excludeButtons.outside,
