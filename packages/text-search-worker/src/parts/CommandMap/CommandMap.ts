@@ -94,7 +94,6 @@ export const commandMap = {
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
-  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
@@ -118,7 +117,6 @@ export const commandMap = {
   'TextSearch.nextHistoryResult': WrapCommand.wrapCommand(NextHistoryResult.nextHistoryResult),
   'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
-  'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
@@ -133,6 +131,7 @@ export const commandMap = {
 
   // not wrapped
   'TextSearch.create': Create.create,
+  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TextSearch.render2': Render2.render2,
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
@@ -140,6 +139,7 @@ export const commandMap = {
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.terminate': Terminate.terminate,
+  'TextSearch.renderActions': RenderActions.renderActions,
 
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
