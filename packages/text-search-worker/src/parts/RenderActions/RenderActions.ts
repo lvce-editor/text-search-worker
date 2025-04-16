@@ -1,13 +1,9 @@
-import type { Action } from '../Action/Action.ts'
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtualDom.ts'
-import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 
-export const renderActions = (uid: number): readonly any[] => {
-  const { oldState, newState } = SearchViewStates.get(uid)
-  if (oldState === newState) {
-    return []
-  }
-  const actions: readonly Action[] = []
+export const renderActions = (uid: number): readonly VirtualDomNode[] => {
+  const actions = GetSearchActions.getActions()
   const dom = GetActionsVirtualDom.getActionsVirtualDom(actions)
   return dom
 }

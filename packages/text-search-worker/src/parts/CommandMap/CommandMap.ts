@@ -13,7 +13,6 @@ import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
-import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderFocusIn from '../HandleHeaderFocusIn/HandleHeaderFocusIn.ts'
@@ -118,7 +117,6 @@ export const commandMap = {
   'TextSearch.nextHistoryResult': WrapCommand.wrapCommand(NextHistoryResult.nextHistoryResult),
   'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
-  'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
@@ -133,7 +131,6 @@ export const commandMap = {
 
   // not wrapped
   'TextSearch.create': Create.create,
-  'TextSearch.getActions': GetSearchActions.getActions,
   'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TextSearch.render2': Render2.render2,
@@ -142,6 +139,7 @@ export const commandMap = {
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
   'TextSearch.terminate': Terminate.terminate,
+  'TextSearch.renderActions': RenderActions.renderActions,
 
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
