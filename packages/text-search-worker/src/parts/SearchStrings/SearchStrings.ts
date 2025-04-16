@@ -145,6 +145,14 @@ export const filesToInclude = (): string => {
   return I18nString.i18nString(UiStrings.FilesToInclude)
 }
 
+export const include = (): string => {
+  return I18nString.i18nString(UiStrings.Include)
+}
+
+export const exclude = (): string => {
+  return I18nString.i18nString(UiStrings.Exclude)
+}
+
 export const filesToExclude = (): string => {
   return I18nString.i18nString(UiStrings.FilesToExclude)
 }
