@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.regex-invalid'
 
-export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Platform, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `Abc`)
@@ -20,5 +20,9 @@ export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locat
   // assert
   const inputMessage = Locator('.SearchInputError')
   await expect(inputMessage).toBeVisible()
-  await expect(inputMessage).toHaveText('Invalid regular expression: /(ab/u: Unterminated group')
+  if (Platform.isFirefox()) {
+    await expect(inputMessage).toHaveText('unterminated parenthetical')
+  } else {
+    await expect(inputMessage).toHaveText('Invalid regular expression: /(ab/u: Unterminated group')
+  }
 }
