@@ -4,6 +4,7 @@ export const commandIds = [
   'collapseDetails',
   'copy',
   'dismissItem',
+  'dispose',
   'expandDetails',
   'focusFirst',
   'focusIndex',
