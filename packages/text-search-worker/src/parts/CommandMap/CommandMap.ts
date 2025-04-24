@@ -51,6 +51,7 @@ import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
+import * as WrapCommand from '../SearchViewStates/SearchViewStates.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as Terminate from '../Terminate/Terminate.ts'
@@ -65,7 +66,6 @@ import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFi
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
-import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
