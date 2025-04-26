@@ -47,6 +47,11 @@ test('renderEventListeners', () => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandleHeaderContextMenu,
+      params: ['handleHeaderContextMenu'],
+      preventDefault: true,
+    },
+    {
       name: DomEventListenerFunctions.HandleWheel,
       params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
       passive: true,

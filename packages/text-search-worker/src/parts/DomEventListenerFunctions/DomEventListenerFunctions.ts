@@ -1,5 +1,6 @@
 export const HandleClick = 'handleClick'
 export const HandleContextMenu = 'handleContextMenu'
+export const HandleHeaderContextMenu = 'handleHeaderContextMenu'
 export const HandleExcludeInput = 'handleExcludeInput'
 export const HandleHeaderClick = 'handleHeaderClick'
 export const HandleHeaderClick2 = 'handleHeaderClick2'

@@ -16,6 +16,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       onClick: 'handleHeaderClick2',
       onFocusIn: 'handleHeaderFocusIn',
       onFocusOut: 'handleHeaderFocusOut',
+      onContextMenu: 'handleHeaderContextMenu',
       role: 'none',
       type: 4,
     },
