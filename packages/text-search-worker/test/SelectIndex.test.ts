@@ -10,13 +10,9 @@ const mockWorkspace = {
 const mockOpenUri = {
   openUri: jest.fn(),
 }
-const mockFocus = {
-  setFocus: jest.fn(),
-}
 
 jest.unstable_mockModule('../src/parts/Workspace/Workspace.ts', () => mockWorkspace)
 jest.unstable_mockModule('../src/parts/OpenUri/OpenUri.ts', () => mockOpenUri)
-jest.unstable_mockModule('../src/parts/Focus/Focus.ts', () => mockFocus)
 
 const SelectIndex = await import('../src/parts/SelectIndex/SelectIndex.ts')
 

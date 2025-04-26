@@ -45,6 +45,8 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     ],
     maxLineY: 2,
     icons: [undefined, undefined],
+    focus: 22,
+    focusSource: 2,
   })
 })
 
@@ -72,5 +74,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listItems: state.items,
     maxLineY: 3,
     icons: [undefined, '', undefined],
+    focus: 22,
+    focusSource: 2,
   })
 })
