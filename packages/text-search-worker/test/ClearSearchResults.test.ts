@@ -29,5 +29,6 @@ test('clearSearchResults - clears state and focuses search input', () => {
     message: '',
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
+    inputSource: InputSource.Script,
   })
 })
