@@ -3,7 +3,9 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetFilteredResults from '../GetFilteredResults/GetFilteredResults.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
+import * as InputSource from '../InputSource/InputSource.ts'
 import * as ToggleCollapsedPath from '../ToggleCollapsedPath/ToggleCollapsedPath.ts'
+import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const selectIndexFile = async (state: SearchState, searchResult: SearchResult, index: number): Promise<SearchState> => {
   const { collapsedPaths, items, itemHeight, headerHeight, height } = state
@@ -23,5 +25,7 @@ export const selectIndexFile = async (state: SearchState, searchResult: SearchRe
     listItems: filteredResults,
     maxLineY,
     icons,
+    focus: WhenExpression.FocusSearchResults,
+    focusSource: InputSource.Script,
   }
 }
