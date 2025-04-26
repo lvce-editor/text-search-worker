@@ -10,13 +10,9 @@ const mockWorkspace = {
 const mockOpenUri = {
   openUri: jest.fn(),
 }
-const mockFocus = {
-  setFocus: jest.fn(),
-}
 
 jest.unstable_mockModule('../src/parts/Workspace/Workspace.ts', () => mockWorkspace)
 jest.unstable_mockModule('../src/parts/OpenUri/OpenUri.ts', () => mockOpenUri)
-jest.unstable_mockModule('../src/parts/Focus/Focus.ts', () => mockFocus)
 
 const SelectIndex = await import('../src/parts/SelectIndex/SelectIndex.ts')
 
@@ -150,6 +146,7 @@ test('selectIndexPreview - handles match with file above', async () => {
     listFocusedIndex: 2,
     listFocused: false,
     focus: 22,
+    focusSource: 2,
   })
   expect(mockOpenUri.openUri).toHaveBeenCalledWith('/abs/file1.ts', true, {
     selections: new Uint32Array([10, 0, 10, 0]),
