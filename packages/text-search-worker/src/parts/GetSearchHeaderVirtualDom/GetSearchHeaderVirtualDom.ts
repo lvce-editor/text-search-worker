@@ -14,6 +14,7 @@ const parentNode: VirtualDomNode = {
   onClick: DomEventListenerFunctions.HandleHeaderClick2,
   onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
   onFocusOut: DomEventListenerFunctions.HandleHeaderFocusOut,
+  onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
 }
 
 export const getSearchHeaderVirtualDom = (
