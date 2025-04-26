@@ -12,5 +12,6 @@ export const clearSearchResults = (state: SearchState): SearchState => {
     message: '',
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
+    inputSource: InputSource.Script,
   }
 }
