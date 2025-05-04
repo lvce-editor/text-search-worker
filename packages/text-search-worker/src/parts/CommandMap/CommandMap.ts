@@ -117,7 +117,6 @@ export const commandMap = {
   'TextSearch.handleScrollBarMove': WrapCommand.wrapCommand(ListHandleScrollBarMove.handleScrollBarMove),
   'TextSearch.handleSharedInput': WrapCommand.wrapCommand(HandleSharedInput.handleSharedInput),
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
-  'TextSearch.launchSearchProcess': WrapCommand.wrapCommand(LaunchSearchProcess.launchSearchProcess),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.nextHistoryResult': WrapCommand.wrapCommand(NextHistoryResult.nextHistoryResult),
   'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
