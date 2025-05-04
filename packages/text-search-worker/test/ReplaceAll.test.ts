@@ -1,8 +1,8 @@
 import { expect, jest, test } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockRpc = {
