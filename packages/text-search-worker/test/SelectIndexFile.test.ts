@@ -1,8 +1,7 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.ts'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import { selectIndexFile } from '../src/parts/SelectIndexFile/SelectIndexFile.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
@@ -12,7 +11,7 @@ const mockRpc = {
   invoke: jest.fn().mockResolvedValue(mockIcon),
 } as any
 
-RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+ParentRpc.set(mockRpc)
 
 beforeEach(() => {
   mockRpc.invoke.mockReset()
