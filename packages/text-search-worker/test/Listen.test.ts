@@ -1,4 +1,4 @@
-import { expect, jest, test, beforeEach } from '@jest/globals'
+import { beforeEach, expect, jest, test } from '@jest/globals'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 
 const mockRpc = {

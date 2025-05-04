@@ -1,16 +1,15 @@
 import { expect, jest, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
+import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
 } as any
 
-RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+ParentRpc.set(mockRpc)
 
 test('replaceAll - replaces all matches and updates state', async () => {
   const state: SearchState = {
