@@ -11,7 +11,6 @@ const state: State = {
 
 export const getOrCreate = (): Promise<Rpc> => {
   if (!state.rpc) {
-    // @ts-ignore
     state.rpc = LaunchSearchProcess.launchSearchProcess()
   }
   return state.rpc
