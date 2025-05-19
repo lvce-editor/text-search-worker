@@ -4,7 +4,7 @@ import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultT
 
 export const createMatchTree = (results: readonly SearchResult[]): Tree => {
   let start = 0
-  const current = ''
+  let current = ''
   const tree: Record<string, SearchResult[]> = Object.create(null)
   for (let i = 0; i < results.length; i++) {
     const result = results[i]
@@ -13,8 +13,13 @@ export const createMatchTree = (results: readonly SearchResult[]): Tree => {
         const sliced = results.slice(start, i - 1)
         tree[current] = sliced
       }
+      current = result.text
       start = i + 1
     }
   }
+  if (current) {
+    tree[current] = results.slice(start)
+  }
+
   return tree
 }
