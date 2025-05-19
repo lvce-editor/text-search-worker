@@ -3,7 +3,7 @@ import type { Tree } from '../Tree/Tree.ts'
 import * as Path from '../Path/Path.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-export const createTree = (items: readonly SearchResult[], root: string): Tree => {
+export const createTree = (items: readonly SearchResult[]): Tree => {
   const tree: Record<string, SearchResult[]> = Object.create(null)
   for (const item of items) {
     const { type, text } = item
@@ -12,6 +12,9 @@ export const createTree = (items: readonly SearchResult[], root: string): Tree =
       const dirname = Path.dirname2(relativePath)
       tree[dirname] ||= []
       tree[dirname].push(item)
+    } else {
+      // tree[text] ||= []
+      // tree[text].push(item)
     }
   }
   return tree
