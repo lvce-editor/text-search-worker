@@ -2,7 +2,7 @@ import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { Tree } from '../Tree/Tree.ts'
 import * as Path from '../Path/Path.ts'
 
-export const createFolderTree = (folders: readonly string[]): Tree => {
+export const createFullParentFolderTree = (folders: readonly string[]): Tree => {
   const denseTree: Record<string, SearchResult[]> = Object.create(null)
   for (const path of folders) {
     let currentPath = path

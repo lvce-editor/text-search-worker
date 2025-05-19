@@ -3,7 +3,7 @@ import type { Tree } from '../Tree/Tree.ts'
 import * as Path from '../Path/Path.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
-export const createTree = (items: readonly SearchResult[]): Tree => {
+export const createParentFolderTree = (items: readonly SearchResult[]): Tree => {
   const tree: Record<string, SearchResult[]> = Object.create(null)
   for (const item of items) {
     const { type, text } = item
