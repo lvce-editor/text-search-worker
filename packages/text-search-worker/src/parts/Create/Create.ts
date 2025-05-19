@@ -3,6 +3,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
+import * as ViewMode from '../ViewMode/ViewMode.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const create = (
@@ -61,6 +62,7 @@ export const create = (
     searchInputErrorMessage: '',
     history: [],
     historyIndex: -1,
+    viewMode: ViewMode.List,
   }
   SearchViewStates.set(uid, state, state)
   return state
