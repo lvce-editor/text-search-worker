@@ -1,4 +1,6 @@
-export const textSearch = (scheme: string, root: string, query: string): any => {
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
+
+export const textSearch = async (scheme: string, root: string, query: string): Promise<readonly SearchResult[]> => {
   // TODO ask renderer worker for files
   const entries = Object.entries({})
   const results: any[] = []
