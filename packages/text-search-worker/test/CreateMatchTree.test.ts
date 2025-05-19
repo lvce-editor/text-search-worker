@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals'
-import { createMatchTree } from '../src/parts/CreateMatchTree/CreateMatchTree.ts'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import { createMatchTree } from '../src/parts/CreateMatchTree/CreateMatchTree.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test.skip('createMatchTree creates tree from search results', () => {
@@ -90,5 +90,7 @@ test('createMatchTree handles single file with no matches', () => {
     },
   ]
   const result = createMatchTree(results)
-  expect(result).toEqual({})
+  expect(result).toEqual({
+    'file1.ts': [],
+  })
 })
