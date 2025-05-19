@@ -1,3 +1,4 @@
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
@@ -12,7 +13,7 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir?: string,
   platform?: number,
-): Promise<any> => {
+): Promise<readonly SearchResult[]> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
