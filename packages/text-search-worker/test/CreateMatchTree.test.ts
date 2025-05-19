@@ -3,7 +3,7 @@ import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import { createMatchTree } from '../src/parts/CreateMatchTree/CreateMatchTree.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-test.skip('createMatchTree creates tree from search results', () => {
+test('createMatchTree creates tree from search results', () => {
   const results: SearchResult[] = [
     {
       type: TextSearchResultType.File,

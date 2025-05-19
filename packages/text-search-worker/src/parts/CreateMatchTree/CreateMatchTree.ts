@@ -10,7 +10,7 @@ export const createMatchTree = (results: readonly SearchResult[]): Tree => {
     const result = results[i]
     if (result.type === TextSearchResultType.File) {
       if (current) {
-        const sliced = results.slice(start, i - 1)
+        const sliced = results.slice(start, i)
         tree[current] = sliced
       }
       current = result.text
