@@ -23,7 +23,6 @@ export const create = (
     uid,
     searchResults: [],
     stats: {},
-    searchId: -1,
     value,
     disposed: false,
     fileCount: 0,
@@ -64,6 +63,7 @@ export const create = (
     historyIndex: -1,
     viewMode: ViewMode.List,
     incrementalSearch: false,
+    searchId: '',
   }
   SearchViewStates.set(uid, state, state)
   return state

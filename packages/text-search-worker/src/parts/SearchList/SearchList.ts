@@ -21,7 +21,6 @@ export interface SearchList extends List<SearchResult> {
   readonly minimumSliderSize: number
   readonly scrollBarActive: boolean
   readonly scrollBarHeight: number
-  readonly searchId: number
   readonly searchResults: readonly DisplaySearchResult[]
   readonly stats: any
   readonly threads: number
