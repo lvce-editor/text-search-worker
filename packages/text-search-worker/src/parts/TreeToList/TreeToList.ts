@@ -1,6 +1,6 @@
-import { join2 } from '../Path/Path.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { Tree } from '../Tree/Tree.ts'
+import { join2 } from '../Path/Path.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const treeToList = (map: Tree, root: string): readonly SearchResult[] => {
