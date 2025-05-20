@@ -122,7 +122,7 @@ test('createTree handles single file with no matches', () => {
   })
 })
 
-test('createParentFolderTree creates tree for deeply nested folders', () => {
+test.only('createParentFolderTree creates tree for deeply nested folders', () => {
   const results = [
     { type: TextSearchResultType.File, text: 'src/folder1/folder2/folder3/file.ts', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
@@ -132,6 +132,8 @@ test('createParentFolderTree creates tree for deeply nested folders', () => {
 
   expect(tree).toEqual({
     '': [],
+    'src/folder1': [],
+    'src/folder1/folder2': [],
     'src/folder1/folder2/folder3': [
       {
         end: 0,

@@ -13,18 +13,26 @@ export const createParentFolderTree = (items: readonly SearchResult[]): Tree => 
     if (type === TextSearchResultType.File) {
       file = text
       const relativePath = text
-      const dirname = Path.dirname2(relativePath)
-      if (dirname === relativePath) {
+      let currentPath = text
+      while (true) {
+        const parentPath = Path.dirname2(currentPath)
+        if (parentPath === currentPath) {
+          break
+        }
+        tree[parentPath] ||= []
+        currentPath = parentPath
+      }
+      if (currentPath === relativePath) {
         tree[rootUri].push({
           type: 5,
           end: 0,
           lineNumber: 0,
           start: 0,
-          text: dirname,
+          text: currentPath,
         })
       } else {
-        tree[dirname] ||= []
-        tree[dirname].push(item)
+        tree[currentPath] ||= []
+        tree[currentPath].push(item)
       }
       tree[text] = []
     } else {
