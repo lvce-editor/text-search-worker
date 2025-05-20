@@ -59,6 +59,7 @@ export const commandIds = [
   'previousHistoryResult',
   'refresh',
   'replaceAll',
+  'rerender',
   'scrollDown',
   'selectIndex',
   'submit',

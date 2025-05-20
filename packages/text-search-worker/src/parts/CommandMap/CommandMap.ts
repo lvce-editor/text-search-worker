@@ -55,6 +55,7 @@ import * as WrapCommand from '../SearchViewStates/SearchViewStates.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as Terminate from '../Terminate/Terminate.ts'
+import * as Rerender from '../Rerender/Rerender.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
@@ -121,6 +122,7 @@ export const commandMap = {
   'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
+  'TextSearch.rerender': Rerender.rerender,
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
