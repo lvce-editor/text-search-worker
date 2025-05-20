@@ -3,7 +3,7 @@ import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import { getTreeListItems } from '../src/parts/GetTreeListItems/GetTreeListItems.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-test.skip('getTreeListItems transforms flat results into tree structure', () => {
+test.only('getTreeListItems transforms flat results into tree structure', () => {
   const results = [
     { type: TextSearchResultType.File, text: 'src/file1.ts', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
