@@ -63,6 +63,12 @@ export const create = (
     history: [],
     historyIndex: -1,
     viewMode: ViewMode.List,
+    searchProgress: {
+      totalResults: 0,
+      isComplete: false,
+      currentPage: 0,
+      resultsPerPage: 100,
+    },
   }
   SearchViewStates.set(uid, state, state)
   return state
