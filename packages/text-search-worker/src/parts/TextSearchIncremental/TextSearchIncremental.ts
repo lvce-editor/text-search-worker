@@ -1,4 +1,3 @@
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as Assert from '../Assert/Assert.ts'
