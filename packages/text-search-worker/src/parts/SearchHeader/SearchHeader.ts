@@ -11,4 +11,5 @@ export interface SearchHeader {
   readonly history: readonly string[]
   readonly historyIndex: number
   readonly viewMode: number
+  readonly incrementalSearch: boolean
 }

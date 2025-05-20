@@ -63,6 +63,7 @@ export const create = (
     history: [],
     historyIndex: -1,
     viewMode: ViewMode.List,
+    incrementalSearch: false,
   }
   SearchViewStates.set(uid, state, state)
   return state
