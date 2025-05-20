@@ -153,7 +153,7 @@ test('createParentFolderTree creates tree for deeply nested folders', () => {
   })
 })
 
-test.skip('createParentFolderTree creates tree for multiple files in same folder', () => {
+test('createParentFolderTree creates tree for multiple files in same folder', () => {
   const results = [
     { type: TextSearchResultType.File, text: 'src/folder/file1.ts', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
@@ -162,18 +162,46 @@ test.skip('createParentFolderTree creates tree for multiple files in same folder
   ]
 
   const tree = createParentFolderTree(results)
-
-  expect(tree['']).toEqual([{ type: TextSearchResultType.File, text: 'src', start: 0, end: 0, lineNumber: 0 }])
-  expect(tree['src']).toEqual([{ type: TextSearchResultType.File, text: 'src/folder', start: 0, end: 0, lineNumber: 0 }])
-  expect(tree['src/folder']).toEqual([
-    { type: TextSearchResultType.File, text: 'src/folder/file1.ts', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'src/folder/file2.ts', start: 0, end: 0, lineNumber: 2 },
-  ])
-  expect(tree['src/folder/file1.ts']).toEqual([{ type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 }])
-  expect(tree['src/folder/file2.ts']).toEqual([{ type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 }])
+  expect(tree).toEqual({
+    '': [],
+    'src/folder': [
+      {
+        end: 0,
+        lineNumber: 0,
+        start: 0,
+        text: 'src/folder/file1.ts',
+        type: 1,
+      },
+      {
+        end: 0,
+        lineNumber: 2,
+        start: 0,
+        text: 'src/folder/file2.ts',
+        type: 1,
+      },
+    ],
+    'src/folder/file1.ts': [
+      {
+        end: 6,
+        lineNumber: 1,
+        start: 0,
+        text: 'match1',
+        type: 2,
+      },
+    ],
+    'src/folder/file2.ts': [
+      {
+        end: 6,
+        lineNumber: 3,
+        start: 0,
+        text: 'match2',
+        type: 2,
+      },
+    ],
+  })
 })
 
-test.skip('createParentFolderTree creates tree for files in different folders', () => {
+test('createParentFolderTree creates tree for files in different folders', () => {
   const results = [
     { type: TextSearchResultType.File, text: 'src/folder1/file1.ts', start: 0, end: 0, lineNumber: 0 },
     { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
@@ -183,13 +211,43 @@ test.skip('createParentFolderTree creates tree for files in different folders', 
 
   const tree = createParentFolderTree(results)
 
-  expect(tree['']).toEqual([{ type: TextSearchResultType.File, text: 'src', start: 0, end: 0, lineNumber: 0 }])
-  expect(tree['src']).toEqual([
-    { type: TextSearchResultType.File, text: 'src/folder1', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'src/folder2', start: 0, end: 0, lineNumber: 2 },
-  ])
-  expect(tree['src/folder1']).toEqual([{ type: TextSearchResultType.File, text: 'src/folder1/file1.ts', start: 0, end: 0, lineNumber: 0 }])
-  expect(tree['src/folder2']).toEqual([{ type: TextSearchResultType.File, text: 'src/folder2/file2.ts', start: 0, end: 0, lineNumber: 2 }])
-  expect(tree['src/folder1/file1.ts']).toEqual([{ type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 }])
-  expect(tree['src/folder2/file2.ts']).toEqual([{ type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 }])
+  expect(tree).toEqual({
+    '': [],
+    'src/folder1': [
+      {
+        end: 0,
+        lineNumber: 0,
+        start: 0,
+        text: 'src/folder1/file1.ts',
+        type: 1,
+      },
+    ],
+    'src/folder1/file1.ts': [
+      {
+        end: 6,
+        lineNumber: 1,
+        start: 0,
+        text: 'match1',
+        type: 2,
+      },
+    ],
+    'src/folder2': [
+      {
+        end: 0,
+        lineNumber: 2,
+        start: 0,
+        text: 'src/folder2/file2.ts',
+        type: 1,
+      },
+    ],
+    'src/folder2/file2.ts': [
+      {
+        end: 6,
+        lineNumber: 3,
+        start: 0,
+        text: 'match2',
+        type: 2,
+      },
+    ],
+  })
 })
