@@ -36,6 +36,7 @@ test('launchSearchProcess - creates websocket with correct url', async () => {
   expect(GetWebSocketUrl.getWebSocketUrl).toHaveBeenCalledWith('search-process', 'localhost:3000', 'http:')
   expect(globalThis.WebSocket).toHaveBeenCalledWith('ws://localhost:3000/search-process')
   expect(WebSocketRpcParent.create).toHaveBeenCalledWith({
+    // @ts-ignore
     webSocket: mockWebSocket,
     commandMap: {},
   })
