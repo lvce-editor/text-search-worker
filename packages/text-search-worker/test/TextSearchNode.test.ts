@@ -1,48 +1,58 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
+import { expect, test, jest } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as TextSearchNode from '../src/parts/TextSearchNode/TextSearchNode.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-beforeEach(() => {
-  jest.resetAllMocks()
-})
-
-jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => {
-  return {
-    invoke: jest.fn(() => {
-      throw new Error('not implemented')
-    }),
-  }
-})
-
-const TextSearchNode = await import('../src/parts/TextSearchNode/TextSearchNode.ts')
-
-const ParentRpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
-
 test('textSearch - error', async () => {
-  // @ts-ignore
-  ParentRpc.invoke.mockRejectedValue(new TypeError('x is not a function'))
+  const mockInvoke = jest.fn((...args: unknown[]) => {
+    const method = args[0] as string
+    if (method === 'SearchProcess.invoke') {
+      throw new TypeError('x is not a function')
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const errorRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, errorRpc)
+
   await expect(TextSearchNode.textSearch('', '/test', 'abc', {} as any)).rejects.toThrow(new TypeError('x is not a function'))
 })
 
 test('textSearch', async () => {
-  // @ts-ignore
-  ParentRpc.invoke.mockResolvedValue({
-    results: [
-      {
-        type: TextSearchResultType.File,
-        text: './index.txt',
-        start: 0,
-        end: 0,
-        lineNumber: 0,
-      },
-      {
-        type: TextSearchResultType.Match,
-        text: '    <title>Document</title>\n',
-        start: 0,
-        end: 0,
-        lineNumber: 0,
-      },
-    ],
+  const mockInvoke = jest.fn((...args: unknown[]) => {
+    const method = args[0] as string
+    if (method === 'SearchProcess.invoke') {
+      return Promise.resolve({
+        results: [
+          {
+            type: TextSearchResultType.File,
+            text: './index.txt',
+            start: 0,
+            end: 0,
+            lineNumber: 0,
+          },
+          {
+            type: TextSearchResultType.Match,
+            text: '    <title>Document</title>\n',
+            start: 0,
+            end: 0,
+            lineNumber: 0,
+          },
+        ],
+      })
+    }
+    throw new Error(`unexpected method ${method}`)
   })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   expect(await TextSearchNode.textSearch('', '/test', 'abc', {} as any)).toEqual([
     {
       type: TextSearchResultType.File,
@@ -59,8 +69,8 @@ test('textSearch', async () => {
       lineNumber: 0,
     },
   ])
-  expect(ParentRpc.invoke).toHaveBeenCalledTimes(1)
-  expect(ParentRpc.invoke).toHaveBeenCalledWith('SearchProcess.invoke', 'TextSearch.search', {
+  expect(mockInvoke).toHaveBeenCalledTimes(1)
+  expect(mockInvoke).toHaveBeenCalledWith('SearchProcess.invoke', 'TextSearch.search', {
     ripGrepArgs: [
       '--hidden',
       '--no-require-git',
