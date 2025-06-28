@@ -1,9 +1,11 @@
 import { expect, test } from '@jest/globals'
 import { MockRpc, PlainMessagePortRpc } from '@lvce-editor/rpc'
 import { RendererWorker, SearchProcess } from '@lvce-editor/rpc-registry'
+import * as GetOrCreateSearchProcessElectron from '../src/parts/GetOrCreateSearchProcessElectron/GetOrCreateSearchProcessElectron.ts'
 import * as SearchProcessElectron from '../src/parts/SearchProcessElectron/SearchProcessElectron.ts'
 
 test('invoke - forwards call to rpc', async () => {
+  GetOrCreateSearchProcessElectron.reset()
   const mockRpc = MockRpc.create({
     commandMap: {},
     invoke() {},
