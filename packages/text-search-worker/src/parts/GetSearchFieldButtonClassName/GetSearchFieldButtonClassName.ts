@@ -1,4 +1,4 @@
-import * as ClassNames from '../ClassNames/ClassNames.ts'
+import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 

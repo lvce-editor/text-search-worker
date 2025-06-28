@@ -1,4 +1,4 @@
-import * as ClassNames from '../ClassNames/ClassNames.ts'
+import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 
 export const getSearchResultClassName = (focused: boolean): string => {
   if (focused) {
