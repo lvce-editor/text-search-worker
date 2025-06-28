@@ -1,8 +1,8 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
-import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
+import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 import * as SearchProcessElectron from '../SearchProcessElectron/SearchProcessElectron.ts'
 

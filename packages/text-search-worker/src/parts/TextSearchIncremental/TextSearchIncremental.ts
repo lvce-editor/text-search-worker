@@ -3,7 +3,7 @@ import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.t
 import * as Assert from '../Assert/Assert.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
-import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
+import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 

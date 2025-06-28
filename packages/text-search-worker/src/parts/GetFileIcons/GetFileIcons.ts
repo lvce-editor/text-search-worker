@@ -1,5 +1,5 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
-import * as Rpc from '../ParentRpc/ParentRpc.ts'
+import * as Rpc from '../RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 const getFileIcon = async (result: SearchResult): Promise<string> => {

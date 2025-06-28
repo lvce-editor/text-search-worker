@@ -2,8 +2,7 @@ import { test, expect } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
-
-const TextSearchExtension = await import('../src/parts/TextSearchExtension/TextSearchExtension.ts')
+import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
 
 test('textSearch - extension search', async () => {
   const mockRpc = MockRpc.create({

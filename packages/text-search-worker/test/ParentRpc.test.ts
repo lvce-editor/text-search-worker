@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as ParentRpc from '../src/parts/ParentRpc/ParentRpc.ts'
+import * as ParentRpc from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('invoke - successfully invokes command', async () => {
   const mockRpc = {

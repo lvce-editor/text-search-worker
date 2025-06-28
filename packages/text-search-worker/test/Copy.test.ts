@@ -10,7 +10,7 @@ const mockRpc = {
   invoke: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => mockRpc)
+jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => mockRpc)
 
 test('copy - no focused item returns same state', async () => {
   const { copy } = await import('../src/parts/Copy/Copy.ts')
