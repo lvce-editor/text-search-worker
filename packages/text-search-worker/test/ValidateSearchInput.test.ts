@@ -14,8 +14,17 @@ test('validateSearchInput - valid regular expression returns empty error message
   expect(ValidateSearchInput.validateSearchInput('test.*', UseRegularExpression)).toBe('')
 })
 
+const getExpectedMessage = () => {
+  // @ts-ignore
+  if (process.versions.bun) {
+    return 'Invalid regular expression: missing terminating ] for character class'
+  }
+  return 'Invalid regular expression: /[/u: Unterminated character class'
+}
+
 test('validateSearchInput - invalid regular expression returns error message', () => {
-  expect(ValidateSearchInput.validateSearchInput('[', UseRegularExpression)).toBe('Invalid regular expression: /[/u: Unterminated character class')
+  const expectedMessage = getExpectedMessage()
+  expect(ValidateSearchInput.validateSearchInput('[', UseRegularExpression)).toBe(expectedMessage)
 })
 
 test('validateSearchInput - complex valid regex returns empty error message', () => {
