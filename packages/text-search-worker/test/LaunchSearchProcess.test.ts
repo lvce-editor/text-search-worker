@@ -2,13 +2,10 @@ import { expect, jest, test } from '@jest/globals'
 import { WebSocketRpcParent } from '@lvce-editor/rpc'
 import * as LaunchSearchProcess from '../src/parts/LaunchSearchProcess/LaunchSearchProcess.ts'
 
-// @ts-ignore
-globalThis.location = {
-  host: '',
-  port: '3000',
-}
-
 test('launchSearchProcess - creates websocket with correct url', async () => {
+  // @ts-ignore
+  globalThis.location = {}
+
   const mockWebSocket = {
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
