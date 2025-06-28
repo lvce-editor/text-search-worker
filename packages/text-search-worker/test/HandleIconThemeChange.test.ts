@@ -1,16 +1,25 @@
 import { expect, test, jest } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-
-const mockGetFileIcons = {
-  getFileIcons: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/GetFileIcons/GetFileIcons.ts', () => mockGetFileIcons)
-
-const { handleIconThemeChange } = await import('../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts')
+import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
+    const method = args[0] as string
+    if (method === 'IconTheme.getFileIcon') {
+      return Promise.resolve('icon1')
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -22,18 +31,23 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     maxLineY: 2,
   }
 
-  const mockIcons = ['icon1', 'icon2']
-  // @ts-ignore
-  mockGetFileIcons.getFileIcons.mockResolvedValue(mockIcons)
-
-  const newState = await handleIconThemeChange(state)
+  const newState = await HandleIconThemeChange.handleIconThemeChange(state)
 
   expect(newState).not.toBe(state)
-  expect(newState.icons).toEqual(mockIcons)
-  expect(mockGetFileIcons.getFileIcons).toHaveBeenCalledWith(state.items.slice(0, 2))
+  expect(newState.icons).toEqual(['icon1', 'icon1'])
+  expect(mockInvoke).toHaveBeenCalledTimes(2)
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
+    throw new Error(`unexpected method ${args[0]}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
@@ -41,12 +55,9 @@ test('handleIconThemeChange handles empty items array', async () => {
     maxLineY: 0,
   }
 
-  // @ts-ignore
-  mockGetFileIcons.getFileIcons.mockResolvedValue([])
-
-  const newState = await handleIconThemeChange(state)
+  const newState = await HandleIconThemeChange.handleIconThemeChange(state)
 
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(mockGetFileIcons.getFileIcons).toHaveBeenCalledWith([])
+  expect(mockInvoke).not.toHaveBeenCalled()
 })
