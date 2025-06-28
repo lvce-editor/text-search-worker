@@ -1,17 +1,26 @@
 import { expect, jest, test } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as ParentRpc from '../src/parts/RendererWorker/RendererWorker.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-const mockRpc = {
-  invoke: jest.fn(),
-} as any
-
-ParentRpc.set(mockRpc)
-
 test('replaceAll - replaces all matches and updates state', async () => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
+    const method = args[0] as string
+    if (method === 'BulkReplacement.applyBulkReplacement') {
+      return Promise.resolve(undefined)
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -35,7 +44,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
     maxLineY: 0,
     message: "Replaced 2 occurrences across 2 files with 'new-text'",
   })
-  expect(mockRpc.invoke).toHaveBeenCalledWith('BulkReplacement.applyBulkReplacement', [
+  expect(mockInvoke).toHaveBeenCalledWith('BulkReplacement.applyBulkReplacement', [
     {
       changes: [
         {
