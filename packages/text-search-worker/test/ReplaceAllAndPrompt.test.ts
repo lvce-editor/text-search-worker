@@ -5,7 +5,7 @@ import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
-  const mockInvoke = jest.fn((...args: unknown[]) => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ConfirmPrompt.prompt') {
       return Promise.resolve(false)
@@ -28,7 +28,7 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
-  const mockInvoke = jest.fn((...args: unknown[]) => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ConfirmPrompt.prompt') {
       return Promise.resolve(true)
@@ -51,7 +51,7 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  const mockInvoke = jest.fn((...args: unknown[]) => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     throw new Error(`unexpected method ${args[0]}`)
   })
   const mockRpc = MockRpc.create({
