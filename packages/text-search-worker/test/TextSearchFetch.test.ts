@@ -13,7 +13,7 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
 })
 
 const TextSearchFetch = await import('../src/parts/TextSearchFetch/TextSearchFetch.ts')
-const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
+const ParentRpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
 
 test('textSearch - calls ParentRpc with correct arguments', async () => {
   // @ts-ignore

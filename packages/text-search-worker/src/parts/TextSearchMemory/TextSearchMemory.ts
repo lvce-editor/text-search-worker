@@ -1,6 +1,6 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
-import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
+import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
 
 export const textSearch = async (
   scheme: string,

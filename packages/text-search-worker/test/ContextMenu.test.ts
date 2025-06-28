@@ -14,7 +14,7 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
 })
 
 const ContextMenu = await import('../src/parts/ContextMenu/ContextMenu.ts')
-const Rpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
+const Rpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
 
 test('show - invokes rpc with correct coordinates and menu id', async () => {
   const x = 100

@@ -17,7 +17,7 @@ const mockRpc = {
 MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
 const LaunchSearchProcessElectron = await import('../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts')
-const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
+const ParentRpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
 
 test('launchSearchProcessElectron - creates message port and rpc', async () => {
   await LaunchSearchProcessElectron.launchSearchProcessElectron()

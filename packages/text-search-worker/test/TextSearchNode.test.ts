@@ -15,7 +15,7 @@ jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => {
 
 const TextSearchNode = await import('../src/parts/TextSearchNode/TextSearchNode.ts')
 
-const ParentRpc = await import('../src/parts/ParentRpc/ParentRpc.ts')
+const ParentRpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
 
 test('textSearch - error', async () => {
   // @ts-ignore
