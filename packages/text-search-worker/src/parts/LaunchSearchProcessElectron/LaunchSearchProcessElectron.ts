@@ -1,9 +1,10 @@
+import type { Rpc } from '@lvce-editor/rpc';
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
-export const launchSearchProcessElectron = async (): Promise<any> => {
+export const launchSearchProcessElectron = async (): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
     messagePort: port2,
