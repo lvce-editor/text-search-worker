@@ -14,7 +14,7 @@ test('validateSearchInput - valid regular expression returns empty error message
   expect(ValidateSearchInput.validateSearchInput('test.*', UseRegularExpression)).toBe('')
 })
 
-const getExpectedMessage = () => {
+const getExpectedMessage = (): string => {
   // @ts-ignore
   if (process.versions.bun) {
     return 'Invalid regular expression: missing terminating ] for character class'
