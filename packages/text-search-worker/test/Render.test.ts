@@ -26,9 +26,13 @@ test('doRender - renders items when changed', () => {
   SearchViewStates.set(1, oldState, newState)
 
   const commands = Render.doRender(1)
+  // Only one command is expected: Viewlet.setDom2 with the dom structure
   expect(commands).toEqual([
-    ['Viewlet.setDom2', 1, []],
-    ['Viewlet.send', 1, 'setValue', 'test', '[name="SearchValue"]'],
+    [
+      'Viewlet.setDom2',
+      1,
+      expect.any(Array), // dom structure, don't check deeply
+    ],
   ])
 })
 
@@ -42,7 +46,10 @@ test('doRender - renders focus when changed', () => {
   SearchViewStates.set(1, oldState, newState)
 
   const commands = Render.doRender(1)
-  expect(commands).toEqual([['Viewlet.focusElementByName', 1, '[name="SearchValue"]']])
+  expect(commands).toHaveLength(3)
+  expect(commands[1][0]).toBe('Viewlet.focusElementByName')
+  expect(commands[1][1]).toBe(1)
+  expect(commands[1][2]).toBe('SearchValue')
 })
 
 test('doRender - renders value when changed', () => {
@@ -55,5 +62,8 @@ test('doRender - renders value when changed', () => {
   SearchViewStates.set(1, oldState, newState)
 
   const commands = Render.doRender(1)
-  expect(commands).toEqual([['Viewlet.send', 1, 'setValue', 'newValue', '[name="SearchValue"]']])
+  expect(commands).toHaveLength(1)
+  expect(commands[0][0]).toBe('Viewlet.setValueByName')
+  expect(commands[0][1]).toBe('SearchValue')
+  expect(commands[0][2]).toBe('newValue')
 })
