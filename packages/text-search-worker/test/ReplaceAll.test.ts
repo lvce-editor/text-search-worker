@@ -3,12 +3,12 @@ import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
-import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
-  const mockInvoke = jest.fn((...args: unknown[]) => {
+  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'BulkReplacement.applyBulkReplacement') {
       return Promise.resolve(undefined)
