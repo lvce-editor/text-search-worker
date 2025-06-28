@@ -1,44 +1,64 @@
-import { expect, jest, test, beforeEach } from '@jest/globals'
-
-beforeEach(() => {
-  jest.resetAllMocks()
-})
-
-const mockRpc = {
-  invoke: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => mockRpc)
+import { expect, test, jest } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
+import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
-  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
-  // @ts-ignore
-  mockRpc.invoke.mockResolvedValue(false)
+  const mockInvoke = jest.fn((...args: unknown[]) => {
+    const method = args[0] as string
+    if (method === 'ConfirmPrompt.prompt') {
+      return Promise.resolve(false)
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
-  const result = await replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
+  expect(mockInvoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
-  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
-  // @ts-ignore
-  mockRpc.invoke.mockResolvedValue(true)
+  const mockInvoke = jest.fn((...args: unknown[]) => {
+    const method = args[0] as string
+    if (method === 'ConfirmPrompt.prompt') {
+      return Promise.resolve(true)
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
-  const result = await replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(true)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
+  expect(mockInvoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  const { replaceAllAndPrompt } = await import('../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts')
-  await expect(replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
+  const mockInvoke = jest.fn((...args: unknown[]) => {
+    throw new Error(`unexpected method ${args[0]}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
+  await expect(ReplaceAllAndPrompt.replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
 })
