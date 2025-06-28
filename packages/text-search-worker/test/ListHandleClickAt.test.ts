@@ -2,9 +2,10 @@ import { test, expect } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleClickAt } from '../src/parts/ListHandleClickAt/ListHandleClickAt.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
+import { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 // Helper to create a state with listItems
-const createState = (listItemsLength: number) => {
+const createState = (listItemsLength: number): SearchState => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')
   const listItems = Array.from({ length: listItemsLength }, (_, i): any => ({
     end: 0,
