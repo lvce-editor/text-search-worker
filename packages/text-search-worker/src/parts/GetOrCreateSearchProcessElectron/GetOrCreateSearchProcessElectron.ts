@@ -15,3 +15,7 @@ export const getOrCreate = (): Promise<any> => {
   }
   return state.rpc
 }
+
+export const reset = (): void => {
+  state.rpc = undefined
+}
