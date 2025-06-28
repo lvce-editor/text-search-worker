@@ -1,20 +1,24 @@
 import { expect, jest, test } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import * as GetFileIcons from '../src/parts/GetFileIcons/GetFileIcons.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-const mockIcon = 'file-icon'
-const mockRpc = {
-  // @ts-ignore
-  invoke: jest.fn().mockResolvedValue(mockIcon),
-}
-
-jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => ({
-  invoke: mockRpc.invoke,
-}))
-
-const { getFileIcons } = await import('../src/parts/GetFileIcons/GetFileIcons.ts')
-
 test('GetFileIcons', async () => {
+  const mockInvoke = jest.fn((method: string) => {
+    if (method === 'IconTheme.getFileIcon') {
+      return Promise.resolve('file-icon')
+    }
+    throw new Error(`unexpected method ${method}`)
+  })
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: mockInvoke,
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   const mockFiles: readonly SearchResult[] = [
     {
       type: TextSearchResultType.File,
@@ -39,7 +43,7 @@ test('GetFileIcons', async () => {
     },
   ]
 
-  const result = await getFileIcons(mockFiles)
+  const result = await GetFileIcons.getFileIcons(mockFiles)
 
   expect(result).toEqual(['file-icon', '', 'file-icon'])
   expect(mockRpc.invoke).toHaveBeenCalledTimes(2)
