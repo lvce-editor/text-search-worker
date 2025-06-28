@@ -1,6 +1,6 @@
 import { expect, jest, test } from '@jest/globals'
 import { WebSocketRpcParent } from '@lvce-editor/rpc'
-import * as LaunchSearchProcess from '../src/parts/LaunchSearchProcess/LaunchSearchProcess.ts'
+import * as LaunchSearchProcess from '../src/parts/LaunchSearchProcessNode/LaunchSearchProcessNode.ts'
 
 test('launchSearchProcess - creates websocket with correct url', async () => {
   // @ts-ignore
@@ -19,7 +19,7 @@ test('launchSearchProcess - creates websocket with correct url', async () => {
     invoke: jest.fn(),
   })
 
-  const rpc = await LaunchSearchProcess.launchSearchProcess()
+  const rpc = await LaunchSearchProcess.launchSearchProcessNode()
 
   expect(WebSocketRpcParent.create).toHaveBeenCalledWith({
     // @ts-ignore
@@ -37,7 +37,7 @@ test('launchSearchProcess - handles websocket creation error', async () => {
     throw mockError
   })
 
-  await expect(LaunchSearchProcess.launchSearchProcess()).rejects.toThrow('Failed to connect')
+  await expect(LaunchSearchProcess.launchSearchProcessNode()).rejects.toThrow('Failed to connect')
 })
 
 test('launchSearchProcess - handles rpc creation error', async () => {
@@ -53,5 +53,5 @@ test('launchSearchProcess - handles rpc creation error', async () => {
   // @ts-ignore
   WebSocketRpcParent.create = jest.fn().mockRejectedValue(mockError)
 
-  await expect(LaunchSearchProcess.launchSearchProcess()).rejects.toThrow('RPC creation failed')
+  await expect(LaunchSearchProcess.launchSearchProcessNode()).rejects.toThrow('RPC creation failed')
 })
