@@ -1,10 +1,9 @@
 import { expect, test, jest } from '@jest/globals'
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
 import { MockRpc } from '@lvce-editor/rpc'
+import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
 import * as RpcId from '../src/parts/RpcId/RpcId.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
-
-import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
