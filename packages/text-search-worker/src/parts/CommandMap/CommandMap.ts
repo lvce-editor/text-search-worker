@@ -26,6 +26,7 @@ import * as HandleInput from '../HandleInput/HandleInput.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
+import * as Initialize from '../Initialize/Initialize.ts'
 import * as ListFocusFirst from '../ListFocusFirst/ListFocusFirst.ts'
 import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
 import * as ListFocusLast from '../ListFocusLast/ListFocusLast.ts'
@@ -136,6 +137,7 @@ export const commandMap = {
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
 
   // not wrapped
+  'TextSearch.initialize': Initialize.initialize,
   'TextSearch.create': Create.create,
   'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
