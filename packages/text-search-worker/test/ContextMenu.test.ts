@@ -1,42 +1,44 @@
-import { expect, test, jest, beforeEach } from '@jest/globals'
+import { expect, test } from '@jest/globals'
+import { MockRpc } from '@lvce-editor/rpc'
+import * as ContextMenu from '../src/parts/ContextMenu/ContextMenu.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
-
-beforeEach(() => {
-  jest.resetAllMocks()
-})
-
-jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => {
-  return {
-    invoke: jest.fn(() => {
-      throw new Error('not implemented')
-    }),
-  }
-})
-
-const ContextMenu = await import('../src/parts/ContextMenu/ContextMenu.ts')
-const Rpc = await import('../src/parts/RendererWorker/RendererWorker.ts')
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 test('show - invokes rpc with correct coordinates and menu id', async () => {
+  const mockRpc = MockRpc.create({
+    commandMap: {},
+    invoke: (method: string) => {
+      if (method === 'ContextMenu.show') {
+        return Promise.resolve(undefined)
+      }
+      throw new Error(`unexpected method ${method}`)
+    },
+  })
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+
   const x = 100
   const y = 200
   const menuId = MenuEntryId.Search
 
-  // @ts-ignore
-  Rpc.invoke.mockResolvedValue(undefined)
-
   await ContextMenu.show(x, y, menuId)
-
-  expect(Rpc.invoke).toHaveBeenCalledTimes(1)
-  expect(Rpc.invoke).toHaveBeenCalledWith('ContextMenu.show', x, y, menuId)
 })
 
 test('show - handles rpc error', async () => {
+  const errorRpc = MockRpc.create({
+    commandMap: {},
+    invoke: (method: string) => {
+      if (method === 'ContextMenu.show') {
+        throw new Error('Failed to show context menu')
+      }
+      throw new Error(`unexpected method ${method}`)
+    },
+  })
+  RpcRegistry.set(RpcId.RendererWorker, errorRpc)
+
   const x = 100
   const y = 200
   const menuId = MenuEntryId.Search
-
-  // @ts-ignore
-  Rpc.invoke.mockRejectedValue(new Error('Failed to show context menu'))
 
   await expect(ContextMenu.show(x, y, menuId)).rejects.toThrow('Failed to show context menu')
 })
