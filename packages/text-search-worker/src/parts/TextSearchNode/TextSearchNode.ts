@@ -4,7 +4,6 @@ import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSe
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
-import * as SearchProcessElectron from '../SearchProcessElectron/SearchProcessElectron.ts'
 
 export const textSearch = async (
   scheme: string,
@@ -22,13 +21,11 @@ export const textSearch = async (
     ripGrepArgs,
     searchDir: root,
   }
-  if (platform === PlatformType.Remote) {
-    const result = await SearchProcess.invoke('TextSearch.search', actualOptions)
+  if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
+    // @ts-ignore
+    const result = await SearchProcess.lazyInvoke(platform, 'TextSearch.search', actualOptions)
     // TODO api is weird
-    return result.results
-  }
-  if (platform === PlatformType.Electron) {
-    const result = await SearchProcessElectron.invoke('TextSearch.search', actualOptions)
+    // @ts-ignore
     return result.results
   }
   const results = await ParentRpc.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)

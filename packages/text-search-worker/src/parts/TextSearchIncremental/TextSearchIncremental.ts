@@ -34,14 +34,14 @@ export const textSearchIncremental = async (
     id: searchId,
   }
 
-  const resultPromise = SearchProcess.invoke('TextSearch.searchIncremental', actualOptions)
+  const resultPromise = SearchProcess.lazyInvoke(platform, 'TextSearch.searchIncremental', actualOptions)
   for (let i = 0; i < 100; i++) {
     const latest = SearchViewStates.get(uid)
     const { newState } = latest
     const { minLineY, height, headerHeight, itemHeight } = newState
     const listHeight = height - headerHeight
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
-    const visible = await SearchProcess.invoke('TextSearch.getIncrementalResults', searchId, minLineY, minLineY + numberOfVisible)
+    const visible = await SearchProcess.lazyInvoke(platform, 'TextSearch.getIncrementalResults', searchId, minLineY, minLineY + numberOfVisible)
     const latest2 = SearchViewStates.get(uid)
     if (!latest2 || latest2.newState.searchId !== searchId) {
       return
