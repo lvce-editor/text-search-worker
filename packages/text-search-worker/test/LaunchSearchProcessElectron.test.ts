@@ -5,7 +5,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.unstable_mockModule('../src/parts/ParentRpc/ParentRpc.ts', () => ({
+jest.unstable_mockModule('../src/parts/RendererWorker/RendererWorker.ts', () => ({
   invokeAndTransfer: jest.fn(),
 }))
 
