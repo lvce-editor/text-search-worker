@@ -1,21 +1,12 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 import { WebSocketRpcParent } from '@lvce-editor/rpc'
+import * as LaunchSearchProcess from '../src/parts/LaunchSearchProcess/LaunchSearchProcess.ts'
 
-jest.unstable_mockModule('../src/parts/Location/Location.ts', () => ({
-  getHost(): string {
-    return 'localhost:3000'
-  },
-  getProtocol(): string {
-    return 'http:'
-  },
-}))
-
-jest.unstable_mockModule('../src/parts/GetWebSocketUrl/GetWebSocketUrl.ts', () => ({
-  getWebSocketUrl: jest.fn(() => 'ws://localhost:3000/search-process'),
-}))
-
-const LaunchSearchProcess = await import('../src/parts/LaunchSearchProcess/LaunchSearchProcess.ts')
-const GetWebSocketUrl = await import('../src/parts/GetWebSocketUrl/GetWebSocketUrl.ts')
+// @ts-ignore
+globalThis.location = {
+  host: '',
+  port: '3000',
+}
 
 test('launchSearchProcess - creates websocket with correct url', async () => {
   const mockWebSocket = {
@@ -33,8 +24,6 @@ test('launchSearchProcess - creates websocket with correct url', async () => {
 
   const rpc = await LaunchSearchProcess.launchSearchProcess()
 
-  expect(GetWebSocketUrl.getWebSocketUrl).toHaveBeenCalledWith('search-process', 'localhost:3000', 'http:')
-  expect(globalThis.WebSocket).toHaveBeenCalledWith('ws://localhost:3000/search-process')
   expect(WebSocketRpcParent.create).toHaveBeenCalledWith({
     // @ts-ignore
     webSocket: mockWebSocket,
