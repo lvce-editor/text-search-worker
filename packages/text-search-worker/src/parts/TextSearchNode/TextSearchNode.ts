@@ -4,7 +4,6 @@ import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSe
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
-import * as SearchProcessElectron from '../SearchProcessElectron/SearchProcessElectron.ts'
 
 export const textSearch = async (
   scheme: string,
