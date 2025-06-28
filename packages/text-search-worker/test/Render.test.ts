@@ -1,8 +1,8 @@
-import { expect, jest, test, beforeEach } from '@jest/globals'
-import * as InputSource from '../src/parts/InputSource/InputSource.ts'
+import { expect, test } from '@jest/globals'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
+import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as Render from '../src/parts/Render/Render.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
