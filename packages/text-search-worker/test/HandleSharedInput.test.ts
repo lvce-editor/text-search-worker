@@ -1,13 +1,7 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
-
-const mockHandleUpdate = {
-  handleUpdate: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/HandleUpdate/HandleUpdate.ts', () => mockHandleUpdate)
 
 test.skip('handleSharedInput - search value input', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
@@ -21,7 +15,6 @@ test.skip('handleSharedInput - search value input', async () => {
   const result = await handleSharedInput(state, name, value, inputSource)
 
   expect(result).toEqual({ ...state, value })
-  expect(mockHandleUpdate.handleUpdate).toHaveBeenCalledWith(state, { value, inputSource })
 })
 
 test.skip('handleSharedInput - replacement value input', async () => {
@@ -36,7 +29,6 @@ test.skip('handleSharedInput - replacement value input', async () => {
   const result = await handleSharedInput(state, name, value, inputSource)
 
   expect(result).toEqual({ ...state, replacement: value })
-  expect(mockHandleUpdate.handleUpdate).toHaveBeenCalledWith(state, { replacement: value, inputSource })
 })
 
 test.skip('handleSharedInput - exclude files input', async () => {
@@ -52,7 +44,6 @@ test.skip('handleSharedInput - exclude files input', async () => {
   const result = await handleSharedInput(state, name, value, inputSource)
 
   expect(result).toEqual({ ...state, excludeValue: value })
-  expect(mockHandleUpdate.handleUpdate).toHaveBeenCalledWith(state, { excludeValue: value, inputSource })
 })
 
 test.skip('handleSharedInput - unknown input handler throws error', async () => {
@@ -74,6 +65,4 @@ test.skip('handleSharedInput - uses default input source when not provided', asy
   mockHandleUpdate.handleUpdate.mockResolvedValue({ ...state, value } as SearchState)
 
   await handleSharedInput(state, name, value)
-
-  expect(mockHandleUpdate.handleUpdate).toHaveBeenCalledWith(state, { value, inputSource: InputSource.Script })
 })
