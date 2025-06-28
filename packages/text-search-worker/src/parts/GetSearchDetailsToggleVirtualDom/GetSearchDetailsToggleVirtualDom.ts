@@ -1,6 +1,6 @@
+import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
-import * as ClassNames from '../ClassNames/ClassNames.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
