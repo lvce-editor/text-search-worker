@@ -1,8 +1,8 @@
 import { test, expect } from '@jest/globals'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleClickAt } from '../src/parts/ListHandleClickAt/ListHandleClickAt.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import { SearchState } from '../src/parts/SearchState/SearchState.ts'
 
 // Helper to create a state with listItems
 const createState = (listItemsLength: number): SearchState => {
