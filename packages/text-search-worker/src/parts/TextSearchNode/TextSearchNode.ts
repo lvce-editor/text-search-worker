@@ -22,8 +22,7 @@ export const textSearch = async (
     searchDir: root,
   }
   if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
-    // @ts-ignore
-    const result = await SearchProcess.lazyInvoke(platform, 'TextSearch.search', actualOptions)
+    const result = await SearchProcess.invoke('TextSearch.search', actualOptions)
     // TODO api is weird
     // @ts-ignore
     return result.results
