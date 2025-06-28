@@ -9,6 +9,10 @@ const state: State = {
   rpc: undefined,
 }
 
+export const reset = (): void => {
+  state.rpc = undefined
+}
+
 export const getOrCreate = (): Promise<Rpc> => {
   if (!state.rpc) {
     state.rpc = LaunchSearchProcess.launchSearchProcess()
