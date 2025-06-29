@@ -4,6 +4,7 @@ import * as Path from '../Path/Path.ts'
 
 export const createFullParentFolderTree = (folders: readonly string[]): Tree => {
   const denseTree: Record<string, SearchResult[]> = Object.create(null)
+  denseTree[''] ||= []
   for (const path of folders) {
     let currentPath = path
     while (true) {
