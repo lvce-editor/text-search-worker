@@ -11,7 +11,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'BulkReplacement.applyBulkReplacement') {
-      return Promise.resolve(undefined)
+      return undefined
     }
     throw new Error(`unexpected method ${method}`)
   })

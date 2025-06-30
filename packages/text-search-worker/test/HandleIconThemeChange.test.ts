@@ -10,7 +10,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'IconTheme.getFileIcon') {
-      return Promise.resolve('icon1')
+      return 'icon1'
     }
     throw new Error(`unexpected method ${method}`)
   })

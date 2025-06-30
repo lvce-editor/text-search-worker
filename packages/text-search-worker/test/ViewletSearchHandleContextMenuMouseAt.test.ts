@@ -11,7 +11,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ContextMenu.show') {
-      return Promise.resolve(undefined)
+      return undefined
     }
     throw new Error(`unexpected method ${method}`)
   })
@@ -35,7 +35,7 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ContextMenu.show') {
-      return Promise.resolve(undefined)
+      return undefined
     }
     throw new Error(`unexpected method ${method}`)
   })

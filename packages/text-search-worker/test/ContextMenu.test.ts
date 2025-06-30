@@ -10,7 +10,7 @@ test('show - invokes rpc with correct coordinates and menu id', async () => {
     commandMap: {},
     invoke: (method: string) => {
       if (method === 'ContextMenu.show') {
-        return Promise.resolve(undefined)
+        return undefined
       }
       throw new Error(`unexpected method ${method}`)
     },

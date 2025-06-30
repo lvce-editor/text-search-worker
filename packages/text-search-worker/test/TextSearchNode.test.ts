@@ -26,7 +26,7 @@ test('textSearch', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'SearchProcess.invoke') {
-      return Promise.resolve({
+      return {
         results: [
           {
             type: TextSearchResultType.File,
@@ -43,7 +43,7 @@ test('textSearch', async () => {
             lineNumber: 0,
           },
         ],
-      })
+      }
     }
     throw new Error(`unexpected method ${method}`)
   })

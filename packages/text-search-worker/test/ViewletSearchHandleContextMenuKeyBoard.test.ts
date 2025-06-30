@@ -10,7 +10,7 @@ test('handleContextMenuKeyboard', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ContextMenu.show') {
-      return Promise.resolve(undefined)
+      return undefined
     }
     throw new Error(`unexpected method ${method}`)
   })

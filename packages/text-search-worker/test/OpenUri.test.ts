@@ -9,7 +9,7 @@ test('openUri - without options', async () => {
     commandMap: {},
     invoke: (method: string) => {
       if (method === 'Main.openUri') {
-        return Promise.resolve(undefined)
+        return undefined
       }
       throw new Error(`unexpected method ${method}`)
     },
@@ -24,7 +24,7 @@ test('openUri - with preview', async () => {
     commandMap: {},
     invoke: (method: string) => {
       if (method === 'Main.openUri') {
-        return Promise.resolve(undefined)
+        return undefined
       }
       throw new Error(`unexpected method ${method}`)
     },
@@ -39,7 +39,7 @@ test('openUri - with options', async () => {
     commandMap: {},
     invoke: (method: string) => {
       if (method === 'Main.openUri') {
-        return Promise.resolve(undefined)
+        return undefined
       }
       throw new Error(`unexpected method ${method}`)
     },
