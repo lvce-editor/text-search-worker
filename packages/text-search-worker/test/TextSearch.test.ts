@@ -1,25 +1,24 @@
-import { expect, test, jest } from '@jest/globals'
-
-const mockProvider = jest.fn()
-
-jest.unstable_mockModule('../src/parts/TextSearchProvider/TextSearchProvider.ts', () => ({
-  getProvider: jest.fn(() => mockProvider),
-}))
-
-const { textSearch } = await import('../src/parts/TextSearch/TextSearch.ts')
+import { expect, jest, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import { textSearch } from '../src/parts/TextSearch/TextSearch.ts'
+import { set } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('textSearch - calls provider with correct arguments', async () => {
-  const root = 'file:///test/path'
+  const root = 'test:///test/path'
   const query = 'search term'
   const options = { includePattern: '*.ts' } as any
   const assetDir = '/assets'
 
-  // @ts-ignore
-  mockProvider.mockResolvedValue(['result1', 'result2'])
+  const search = jest.fn(async (): Promise<readonly SearchResult[]> => {
+    return ['result1', 'result2'] as any[]
+  })
+  set({
+    test: search,
+  })
 
   const results = await textSearch(root, query, options, assetDir)
-
-  expect(mockProvider).toHaveBeenCalledWith('file', root, query, options, assetDir, undefined)
+  // @ts-ignore
+  expect(search).toHaveBeenCalledWith('test', root, query, options, assetDir, undefined)
   expect(results).toEqual(['result1', 'result2'])
 })
 
@@ -39,10 +38,15 @@ test('textSearch - handles different protocols', async () => {
   const options = {} as any
   const assetDir = '/assets'
 
-  // @ts-ignore
-  mockProvider.mockResolvedValue(['result'])
+  const mockProvider = jest.fn(async (): Promise<readonly SearchResult[]> => {
+    return ['result'] as any[]
+  })
+  set({
+    http: mockProvider,
+  })
 
   await textSearch(root, query, options, assetDir)
 
+  // @ts-ignore
   expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir, undefined)
 })
