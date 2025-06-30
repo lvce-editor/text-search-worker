@@ -1,10 +1,9 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
@@ -18,8 +17,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     commandMap: {},
     invoke: mockInvoke,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-
+  RendererWorker.set(mockRpc)
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -30,9 +28,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     minLineY: 0,
     maxLineY: 2,
   }
-
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
-
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual(['icon1', 'icon1'])
   expect(mockInvoke).toHaveBeenCalledTimes(2)
@@ -46,17 +42,14 @@ test('handleIconThemeChange handles empty items array', async () => {
     commandMap: {},
     invoke: mockInvoke,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-
+  RendererWorker.set(mockRpc)
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
     minLineY: 0,
     maxLineY: 0,
   }
-
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
-
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
   expect(mockInvoke).not.toHaveBeenCalled()
