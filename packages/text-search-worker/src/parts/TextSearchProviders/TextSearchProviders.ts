@@ -2,7 +2,11 @@ import type { TextSearchProvider } from '../TextSearchProvider/TextSearchProvide
 
 const providers = Object.create(null)
 
-export const add = (providerMap: Record<string, TextSearchProvider>): void => {
+interface TextSearchProviderMap {
+  readonly [key: string]: TextSearchProvider
+}
+
+export const add = (providerMap: TextSearchProviderMap): void => {
   Object.assign(providers, providerMap)
 }
 
@@ -16,7 +20,7 @@ export const reset = (): void => {
   }
 }
 
-export const set = (providerMap: Record<string, TextSearchProvider>): void => {
+export const set = (providerMap: TextSearchProviderMap): void => {
   reset()
   add(providerMap)
 }
