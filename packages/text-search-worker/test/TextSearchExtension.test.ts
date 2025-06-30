@@ -9,7 +9,7 @@ test('textSearch - extension search', async () => {
     commandMap: {},
     invoke: (method: string) => {
       if (method === 'ExtensionHostTextSearch.executeTextSearchProvider') {
-        return Promise.resolve([
+        return [
           {
             type: 1,
             text: './index.txt',
@@ -24,7 +24,7 @@ test('textSearch - extension search', async () => {
             end: 212,
             lineNumber: 1,
           },
-        ])
+        ]
       }
       throw new Error(`unexpected method ${method}`)
     },

@@ -8,7 +8,7 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ConfirmPrompt.prompt') {
-      return Promise.resolve(false)
+      return false
     }
     throw new Error(`unexpected method ${method}`)
   })
@@ -31,7 +31,7 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     const method = args[0] as string
     if (method === 'ConfirmPrompt.prompt') {
-      return Promise.resolve(true)
+      return true
     }
     throw new Error(`unexpected method ${method}`)
   })

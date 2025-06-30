@@ -9,7 +9,7 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test('GetFileIcons', async () => {
   const mockInvoke = jest.fn((method: string) => {
     if (method === 'IconTheme.getFileIcon') {
-      return Promise.resolve('file-icon')
+      return 'file-icon'
     }
     throw new Error(`unexpected method ${method}`)
   })
