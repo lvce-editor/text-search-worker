@@ -6,7 +6,7 @@ import * as TextSearchMemory from '../TextSearchMemory/TextSearchMemory.ts'
 import * as TextSearchNode from '../TextSearchNode/TextSearchNode.ts'
 import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
-interface TextSearchProvider {
+export interface TextSearchProvider {
   (scheme: string, root: string, query: string, options: any, assetDir: string, platform?: number): Promise<readonly SearchResult[]>
 }
 
