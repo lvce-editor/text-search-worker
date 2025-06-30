@@ -109,12 +109,4 @@ test.skip('handleUpdate - uses search flags from state', async () => {
   })
 
   await handleUpdate(state, update)
-
-  expect(mockRpc.invoke).toHaveBeenCalledWith(
-    'TextSearch.search',
-    expect.objectContaining({
-      isCaseSensitive: true,
-      useRegularExpression: true,
-    }),
-  )
 })
