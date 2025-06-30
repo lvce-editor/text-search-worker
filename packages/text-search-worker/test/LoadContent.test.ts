@@ -1,9 +1,8 @@
-import { test, expect } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
+import { expect, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { loadContent } from '../src/parts/LoadContent/LoadContent.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as TextSearchProviders from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('loadContent with saved value calls handleUpdate', async () => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')
@@ -17,16 +16,11 @@ test('loadContent with saved value calls handleUpdate', async () => {
     excludeValue: 'exclude',
   }
 
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'SearchProcess.invoke') {
-        return { results: [] }
-      }
-      throw new Error(`unexpected method ${method}`)
+  TextSearchProviders.add({
+    async ''(): Promise<readonly SearchResult[]> {
+      return []
     },
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const result = await loadContent(state, savedState)
 

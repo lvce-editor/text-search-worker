@@ -1,17 +1,10 @@
-import { expect, jest, test } from '@jest/globals'
+import { expect, test } from '@jest/globals'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import { handleUpdate } from '../src/parts/HandleUpdate/HandleUpdate.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-
-const mockRpc = {
-  invoke: jest.fn(),
-} as any
-
-RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-
-const { handleUpdate } = await import('../src/parts/HandleUpdate/HandleUpdate.ts')
+import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdate - empty search value returns cleared state', async () => {
   const state: SearchState = {
@@ -51,9 +44,13 @@ test.skip('handleUpdate - performs search with valid input', async () => {
   const searchResults = [
     { text: 'file1.txt', type: 1 },
     { text: 'match1', type: 2 },
-  ]
+  ] as SearchResult[]
 
-  mockRpc.invoke.mockResolvedValue(searchResults)
+  add({
+    async ''(): Promise<readonly SearchResult[]> {
+      return searchResults
+    },
+  })
 
   const result = await handleUpdate(state, update)
 
@@ -75,9 +72,12 @@ test('handleUpdate - handles search error', async () => {
     value: 'test',
   }
   const update = { value: 'test' }
-  const error = new Error('Search failed')
 
-  mockRpc.invoke.mockRejectedValue(error)
+  add({
+    async ''() {
+      throw new Error('Search failed')
+    },
+  })
 
   const result = await handleUpdate(state, update)
 
@@ -102,7 +102,11 @@ test.skip('handleUpdate - uses search flags from state', async () => {
   }
   const update = { value: 'test' }
 
-  mockRpc.invoke.mockResolvedValue([])
+  add({
+    async ''() {
+      return []
+    },
+  })
 
   await handleUpdate(state, update)
 
