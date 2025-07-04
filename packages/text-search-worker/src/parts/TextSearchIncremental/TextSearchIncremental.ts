@@ -8,9 +8,9 @@ import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 const waitForNextFrame = async (): Promise<void> => {
-  await new Promise((r) => {
-    requestAnimationFrame(r)
-  })
+  const { resolve, promise } = Promise.withResolvers<void>()
+  requestAnimationFrame(resolve)
+  await promise
 }
 
 export const textSearchIncremental = async (
