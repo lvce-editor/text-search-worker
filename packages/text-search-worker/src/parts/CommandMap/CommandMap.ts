@@ -1,3 +1,4 @@
+import { terminate } from '@lvce-editor/viewlet-registry'
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CollapseAll from '../CollapseAll/CollapseAll.ts'
 import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
@@ -56,7 +57,6 @@ import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as WrapCommand from '../SearchViewStates/SearchViewStates.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 import * as Submit from '../Submit/Submit.ts'
-import * as Terminate from '../Terminate/Terminate.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
 import * as ToggleMatchCase from '../ToggleMatchCase/ToggleMatchCase.ts'
@@ -146,7 +146,7 @@ export const commandMap = {
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': SaveState.saveState,
-  'TextSearch.terminate': Terminate.terminate,
+  'TextSearch.terminate': terminate,
   'TextSearch.renderActions': RenderActions.renderActions,
 
   // TODO needed?
