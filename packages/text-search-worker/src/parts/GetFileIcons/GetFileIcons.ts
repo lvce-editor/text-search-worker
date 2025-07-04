@@ -4,7 +4,7 @@ import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultT
 
 const getFileIcon = async (result: SearchResult): Promise<string> => {
   if (result.type === TextSearchResultType.File) {
-    return RendererWorker.invoke('IconTheme.getFileIcon', { name: result.text })
+    return RendererWorker.getFileIcon({ name: result.text })
   }
   return ''
 }
