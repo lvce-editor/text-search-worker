@@ -1,4 +1,5 @@
 import { ClassNames } from '@lvce-editor/virtual-dom-worker'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
@@ -9,7 +10,6 @@ import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts
 import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
 import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
   const {
