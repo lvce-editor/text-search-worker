@@ -2,7 +2,7 @@ import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
-import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
+import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
 export const textSearch = async (
@@ -27,7 +27,7 @@ export const textSearch = async (
     // @ts-ignore
     return result.results
   }
-  const results = await ParentRpc.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
+  const results = await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
   // TODO api is weird
   return results.results
 }
