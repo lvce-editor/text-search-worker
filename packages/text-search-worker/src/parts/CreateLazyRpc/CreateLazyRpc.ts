@@ -26,7 +26,7 @@ export const createLazyRpc = (rpcId: number): LazyRpc => {
     async invoke(method: string, ...params: readonly any[]): Promise<any> {
       await ensureRpc()
       const rpc = RpcRegistry.get(rpcId)
-      return rpc.invoke(method, ...params)
+      return RendererWorker.invoke(method, ...params)
     },
   }
 }
