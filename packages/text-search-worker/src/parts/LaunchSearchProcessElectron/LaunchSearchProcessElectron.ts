@@ -1,23 +1,19 @@
-import type { Rpc } from '@lvce-editor/rpc';
-import { MessagePortRpcParent } from '@lvce-editor/rpc'
-import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
+import type { Rpc } from '@lvce-editor/rpc'
+import { TransferMessagePortRpcParent } from '@lvce-editor/rpc'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
-import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
-export const launchSearchProcessElectron = async (): Promise<Rpc> => {
-  const { port1, port2 } = GetPortTuple.getPortTuple()
-  const rpcPromise = MessagePortRpcParent.create({
-    messagePort: port2,
-    commandMap: {},
-    isMessagePortOpen: true,
-  })
+const send = async (port: MessagePort): Promise<void> => {
   await RendererWorker.invokeAndTransfer(
     'SendMessagePortToElectron.sendMessagePortToElectron',
-    port1,
+    port,
     'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
   )
-  port2.start()
-  const rpc = await rpcPromise
-  SearchProcess.set(rpc)
+}
+
+export const launchSearchProcessElectron = async (): Promise<Rpc> => {
+  const rpc = await TransferMessagePortRpcParent.create({
+    commandMap: {},
+    send,
+  })
   return rpc
 }

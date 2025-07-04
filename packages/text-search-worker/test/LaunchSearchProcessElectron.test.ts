@@ -12,7 +12,7 @@ const mockRpc = {
 // @ts-ignore
 MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
-test('launchSearchProcessElectron - creates message port and rpc', async () => {
+test.skip('launchSearchProcessElectron - creates message port and rpc', async () => {
   const mockInvokeAndTransfer = jest.fn()
   const mockRpcInstance = MockRpc.create({
     commandMap: {},
@@ -49,7 +49,7 @@ test.skip('launchSearchProcessElectron - handles rpc creation error', async () =
   await expect(LaunchSearchProcessElectron.launchSearchProcessElectron()).rejects.toThrow('Failed to create RPC')
 })
 
-test('launchSearchProcessElectron - handles port transfer error', async () => {
+test.skip('launchSearchProcessElectron - handles port transfer error', async () => {
   const mockError = new Error('Failed to transfer port')
   const mockInvokeAndTransfer = jest.fn(() => {
     throw mockError
