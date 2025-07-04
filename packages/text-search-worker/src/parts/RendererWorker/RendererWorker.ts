@@ -1,3 +1,14 @@
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 
-export const { invoke, invokeAndTransfer, set, dispose, confirm, showContextMenu, writeClipBoardText, getFileIcon, openUri } = RendererWorker
+export const {
+  confirm,
+  dispose,
+  getFileIcon,
+  invoke,
+  invokeAndTransfer,
+  openUri,
+  sendMessagePortToSearchProcess,
+  set,
+  showContextMenu,
+  writeClipBoardText,
+} = RendererWorker
