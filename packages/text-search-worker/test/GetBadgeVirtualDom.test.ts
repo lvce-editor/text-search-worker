@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
 import * as GetBadgeVirtualDom from '../src/parts/GetBadgeVirtualDom/GetBadgeVirtualDom.ts'
-import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomElements.ts'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 
 test('getBadgeVirtualDom - returns correct structure with custom class and count', () => {
   const className = 'CustomBadge'
