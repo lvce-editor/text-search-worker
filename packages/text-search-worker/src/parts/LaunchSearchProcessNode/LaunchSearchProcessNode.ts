@@ -1,16 +1,11 @@
 import type { Rpc } from '@lvce-editor/rpc'
-import { WebSocketRpcParent } from '@lvce-editor/rpc'
-import * as GetWebSocketUrl from '../GetWebSocketUrl/GetWebSocketUrl.ts'
-import * as Location from '../Location/Location.ts'
+import { WebSocketRpcParent2 } from '@lvce-editor/rpc'
 
 export const launchSearchProcessNode = async (): Promise<Rpc> => {
-  const host = Location.getHost()
-  const protocol = Location.getProtocol()
-  const wsUrl = GetWebSocketUrl.getWebSocketUrl('search-process', host, protocol)
-  const webSocket = new WebSocket(wsUrl)
-  const rpc = await WebSocketRpcParent.create({
-    webSocket,
+  const rpc = await WebSocketRpcParent2.create({
     commandMap: {},
+    // @ts-ignore
+    type: 'search-process',
   })
   return rpc
 }
