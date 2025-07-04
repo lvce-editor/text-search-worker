@@ -1,5 +1,5 @@
-import * as ParentRpc from '../RendererWorker/RendererWorker.ts'
+import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const applyBulkReplacement = async (bulkEdits: readonly any[]): Promise<void> => {
-  await ParentRpc.invoke('BulkReplacement.applyBulkReplacement', bulkEdits)
+  await RendererWorker.invoke('BulkReplacement.applyBulkReplacement', bulkEdits)
 }

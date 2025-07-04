@@ -9,7 +9,7 @@ test('invoke - successfully invokes command', async () => {
   } as any
   ParentRpc.set(mockRpc)
   // @ts-expect-error
-  const result = await ParentRpc.invoke('test.command', 'arg1', 'arg2')
+  const result = await RendererWorker.invoke('test.command', 'arg1', 'arg2')
   expect(result).toBe('test result')
 })
 
@@ -21,7 +21,7 @@ test('invoke - handles error from rpc', async () => {
   } as any
   ParentRpc.set(mockRpc)
   // @ts-expect-error
-  await expect(ParentRpc.invoke('test.command')).rejects.toThrow('test error')
+  await expect(RendererWorker.invoke('test.command')).rejects.toThrow('test error')
 })
 
 test('invoke - handles undefined arguments', async () => {
@@ -32,7 +32,7 @@ test('invoke - handles undefined arguments', async () => {
   } as any
   ParentRpc.set(mockRpc)
   // @ts-ignore
-  const result = await ParentRpc.invoke('test.command')
+  const result = await RendererWorker.invoke('test.command')
   expect(result).toBe('success')
 })
 
@@ -47,7 +47,7 @@ test('invoke - handles multiple arguments of different types', async () => {
   ParentRpc.set(mockRpc)
   const args = [1, 'string', true, { key: 'value' }, [1, 2, 3]]
   // @ts-ignore
-  await ParentRpc.invoke('test.command', ...args)
+  await RendererWorker.invoke('test.command', ...args)
   expect(capturedArgs).toEqual(args)
 })
 
@@ -59,7 +59,7 @@ test('invokeAndTransfer - successfully transfers data', async () => {
   } as any
   ParentRpc.set(mockRpc)
   // @ts-expect-error
-  const result = await ParentRpc.invokeAndTransfer('test.transfer', 'data')
+  const result = await RendererWorker.invokeAndTransfer('test.transfer', 'data')
   expect(result).toBe('transfer success')
 })
 
@@ -71,5 +71,5 @@ test('invokeAndTransfer - handles transfer error', async () => {
   } as any
   ParentRpc.set(mockRpc)
   // @ts-expect-error
-  await expect(ParentRpc.invokeAndTransfer('test.transfer')).rejects.toThrow('transfer failed')
+  await expect(RendererWorker.invokeAndTransfer('test.transfer')).rejects.toThrow('transfer failed')
 })
