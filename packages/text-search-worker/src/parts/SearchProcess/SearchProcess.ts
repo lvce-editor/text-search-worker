@@ -1,5 +1,4 @@
-import { RpcId, SearchProcess } from '@lvce-editor/rpc-registry'
-import { createLazyRpc } from '../CreateLazyRpc/CreateLazyRpc.ts'
+import { createLazyRpc, RpcId, SearchProcess } from '@lvce-editor/rpc-registry'
 
 export const { set, dispose } = SearchProcess
 
