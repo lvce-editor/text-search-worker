@@ -7,5 +7,5 @@ export const show = async (x: number, y: number, id: number, ...args: readonly a
   Assert.number(y)
   Assert.number(id)
   // TODO
-  await RendererWorker.invoke('ContextMenu.show', x, y, id, ...args)
+  await RendererWorker.showContextMenu(x, y, id, ...args)
 }

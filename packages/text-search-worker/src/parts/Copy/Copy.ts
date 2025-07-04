@@ -7,6 +7,6 @@ export const copy = async (state: SearchState): Promise<SearchState> => {
     return state
   }
   const item = items[listFocusedIndex]
-  await RendererWorker.invoke('ClipBoard.writeText', item.text)
+  await RendererWorker.writeClipBoardText(item.text)
   return state
 }
