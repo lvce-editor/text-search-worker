@@ -1,4 +1,5 @@
 import { ClassNames } from '@lvce-editor/virtual-dom-worker'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
@@ -10,7 +11,6 @@ import { getSearchPlaceholder } from '../GetSearchPlaceholder/GetSearchPlacehold
 import * as GetSearchToggleVirtualDom from '../GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 
 export const getSearchHeaderTopVirtualDom = (
   flags: number,
