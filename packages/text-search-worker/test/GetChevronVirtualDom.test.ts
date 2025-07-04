@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetChevronVirtualDom from '../src/parts/GetChevronVirtualDom/GetChevronVirtualDom.ts'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
+import * as GetChevronVirtualDom from '../src/parts/GetChevronVirtualDom/GetChevronVirtualDom.ts'
 
 test('getChevronDownVirtualDom', () => {
   expect(GetChevronVirtualDom.chevronDownVirtualDom).toEqual({
