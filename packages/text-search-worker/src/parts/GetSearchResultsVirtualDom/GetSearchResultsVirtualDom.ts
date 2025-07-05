@@ -16,7 +16,7 @@ export const getSearchResultsVirtualDom = (
   deltaY: number,
   itemHeight: number,
 ): readonly VirtualDomNode[] => {
-  const scrollBarDomNodes = scrollbarHeight === 0 ? 0 : 1
+  const childCount = scrollbarHeight === 0 ? 1 : 2
   return [
     {
       type: VirtualDomElements.Div,
@@ -28,7 +28,7 @@ export const getSearchResultsVirtualDom = (
       ),
       role: AriaRoles.Tree,
       tabIndex: 0,
-      childCount: 1 + scrollBarDomNodes,
+      childCount,
     },
     ...GetTreeItemsVirtualDom.getTreeItemsVirtualDom(visibleItems, deltaY, itemHeight),
     ...GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollbarHeight, scrollBarY, scrollBarValue),
