@@ -13,4 +13,6 @@ export interface SearchHeader {
   readonly viewMode: number
   readonly incrementalSearch: boolean
   readonly searchId: string
+  readonly useFileIcons: boolean
+  readonly useChevrons: boolean
 }
