@@ -247,7 +247,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 0,
       className: 'FileIcon',
       role: 'none',
-      src: '',
+      src: 'test',
       type: 17,
     },
     {
@@ -294,7 +294,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 0,
       className: 'FileIcon',
       role: 'none',
-      src: '',
+      src: 'test',
       type: 17,
     },
     {

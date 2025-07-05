@@ -79,7 +79,7 @@ test('getSearchResultsVirtualDom', () => {
       childCount: 0,
       className: 'FileIcon',
       role: 'none',
-      src: '',
+      src: 'test',
       type: 17,
     },
     {
