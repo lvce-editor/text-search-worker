@@ -6,12 +6,7 @@ import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSe
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
-
-const waitForNextFrame = async (): Promise<void> => {
-  const { resolve, promise } = Promise.withResolvers<DOMHighResTimeStamp>()
-  requestAnimationFrame(resolve)
-  await promise
-}
+import { waitForNextFrame } from '../WaitForNextFrame/WaitForNextFrame.ts'
 
 export const textSearchIncremental = async (
   root: string,
