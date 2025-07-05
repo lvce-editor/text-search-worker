@@ -10,7 +10,7 @@ test('getSearchResultsVirtualDom', () => {
       matchLength: 1,
       text: 'abc',
       title: 'abc',
-      icon: '',
+      icon: 'test',
       setSize: 2,
       posInSet: 2,
       depth: 0,
@@ -18,7 +18,6 @@ test('getSearchResultsVirtualDom', () => {
       badgeText: '',
       focused: false,
       expanded: ExpandedType.Expanded,
-      childCount: 4,
     },
   ]
   const focusOutline = false
@@ -80,7 +79,7 @@ test('getSearchResultsVirtualDom', () => {
       childCount: 0,
       className: 'FileIcon',
       role: 'none',
-      src: '',
+      src: 'test',
       type: 17,
     },
     {

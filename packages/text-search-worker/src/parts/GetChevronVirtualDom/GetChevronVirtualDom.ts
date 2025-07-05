@@ -1,16 +1,14 @@
-import { ClassNames } from '@lvce-editor/virtual-dom-worker'
-import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
-import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as ChevronVirtualDom from '../ChevronVirtualDom/ChevronVirtualDom.ts'
+import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 
-export const chevronDownVirtualDom: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronDown),
-  childCount: 0,
-}
-
-export const chevronRightVirtualDom: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronRight),
-  childCount: 0,
+export const getChevronVirtualDom = (expanded: number): readonly VirtualDomNode[] => {
+  switch (expanded) {
+    case ExpandedType.Expanded:
+      return [ChevronVirtualDom.chevronDownVirtualDom]
+    case ExpandedType.Collapsed:
+      return [ChevronVirtualDom.chevronRightVirtualDom]
+    default:
+      return []
+  }
 }

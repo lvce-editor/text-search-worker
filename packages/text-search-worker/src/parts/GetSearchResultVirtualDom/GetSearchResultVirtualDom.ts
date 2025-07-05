@@ -1,33 +1,21 @@
-import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as GetAriaExpanded from '../GetAriaExpanded/GetAriaExpanded.ts'
 import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts'
+import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'
 import * as GetIconsVirtualDom from '../GetIconsVirtualDom/GetIconsVirtualDom.ts'
 import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts'
 import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
+import { getChildCount } from '../GetSearchDisplayResultChildCount/GetSearchDisplayResultChildCount.ts'
 import * as GetSearchRemoveVirtualDom from '../GetSearchRemoveVirtualDom/GetSearchRemoveVirtualDom.ts'
 import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
-  const {
-    matchStart,
-    matchLength,
-    text: displayText,
-    title,
-    icon,
-    setSize,
-    posInSet,
-    depth,
-    replacement,
-    focused,
-    expanded,
-    childCount,
-    badgeText,
-  } = rowInfo
+  const { matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, focused, expanded, badgeText } = rowInfo
+  const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -44,9 +32,10 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
       paddingRight: TreeItemPadding.PaddingRight,
       ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
     },
-    ...GetIconsVirtualDom.getIconsVirtualDom(expanded, icon),
+    ...GetChevronVirtualDom.getChevronVirtualDom(expanded),
+    ...GetIconsVirtualDom.getIconsVirtualDom(icon),
     ...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement),
-    ...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText),
+    ...GetBadgeVirtualDom.getBadgeVirtualDom(badgeText),
     ...GetSearchRemoveVirtualDom.getSearchRemoveVirtualDom(),
   ]
   return dom

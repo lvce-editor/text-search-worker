@@ -12,6 +12,5 @@ export interface DisplaySearchResult {
   // TODO maybe use a flags number instead of multiple booleans
   readonly focused: boolean
   readonly expanded: number
-  readonly childCount: number
   readonly badgeText: string
 }

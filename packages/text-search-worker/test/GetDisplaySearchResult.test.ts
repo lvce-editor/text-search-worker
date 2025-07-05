@@ -47,7 +47,6 @@ test('getDisplayResult - file', () => {
     text: 'index.kt',
     title: '/languages/index.kt',
     expanded: 2,
-    childCount: 4,
   })
 })
 
@@ -95,6 +94,5 @@ test('getDisplayResult - result', () => {
     text: 'fun main(args : Array<String>) {',
     title: 'fun main(args : Array<String>) {',
     expanded: 0,
-    childCount: 2,
   })
 })

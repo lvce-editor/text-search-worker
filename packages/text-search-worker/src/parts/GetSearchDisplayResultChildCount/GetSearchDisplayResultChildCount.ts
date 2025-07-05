@@ -1,13 +1,15 @@
-import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
-
-export const getChildCount = (expanded: number, matchCount: number): number => {
-  let childCount = 1
-  if (expanded === ExpandedType.Expanded || expanded === ExpandedType.Collapsed) {
-    childCount += 2
+export const getChildCount = (icon: string, expanded: number, badgeText: string): number => {
+  let childCount = 0
+  if (expanded) {
+    childCount++ // chevron
   }
-  if (matchCount) {
-    childCount++
+  if (icon) {
+    childCount++ // file icon
   }
-  childCount++
+  childCount++ // label
+  if (badgeText) {
+    childCount++ // badge
+  }
+  childCount++ // remove button
   return childCount
 }
