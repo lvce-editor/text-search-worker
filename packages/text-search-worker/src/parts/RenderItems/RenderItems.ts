@@ -18,6 +18,5 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
     viewModel.matchCount,
     viewModel.focus,
   )
-  console.log({ dom })
   return ['Viewlet.setDom2', newState.uid, dom]
 }

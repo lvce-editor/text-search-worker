@@ -1,7 +1,7 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 import * as GetMatchCount from '../GetMatchCount/GetMatchCount.ts'
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getSearchDisplayResultFile = (
