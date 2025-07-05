@@ -47,7 +47,6 @@ test('getDisplayResult - file', () => {
     text: 'index.kt',
     title: '/languages/index.kt',
     expanded: 2,
-    childCount: 4,
   })
 })
 
