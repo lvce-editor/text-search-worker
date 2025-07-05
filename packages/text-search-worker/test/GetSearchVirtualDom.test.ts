@@ -19,7 +19,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       expanded: ExpandedType.Expanded,
-      childCount: 4,
     },
     {
       text: 'Result 2',
@@ -34,7 +33,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       replacement: '',
       setSize: 0,
       expanded: ExpandedType.Expanded,
-      childCount: 4,
     },
   ]
   const flags = 0

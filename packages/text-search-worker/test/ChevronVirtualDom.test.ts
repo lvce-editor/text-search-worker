@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
-import * as GetChevronVirtualDom from '../src/parts/GetChevronVirtualDom/GetChevronVirtualDom.ts'
+import * as ChevronVirtualDom from '../src/parts/ChevronVirtualDom/ChevronVirtualDom.ts'
 
 test('getChevronDownVirtualDom', () => {
-  expect(GetChevronVirtualDom.chevronDownVirtualDom).toEqual({
+  expect(ChevronVirtualDom.chevronDownVirtualDom).toEqual({
     type: VirtualDomElements.Div,
     className: 'Chevron MaskIconChevronDown',
     childCount: 0,
@@ -11,7 +11,7 @@ test('getChevronDownVirtualDom', () => {
 })
 
 test('getChevronRightVirtualDom', () => {
-  expect(GetChevronVirtualDom.chevronRightVirtualDom).toEqual({
+  expect(ChevronVirtualDom.chevronRightVirtualDom).toEqual({
     type: VirtualDomElements.Div,
     className: 'Chevron MaskIconChevronRight',
     childCount: 0,

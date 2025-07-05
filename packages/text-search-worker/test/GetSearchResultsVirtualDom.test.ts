@@ -18,7 +18,6 @@ test('getSearchResultsVirtualDom', () => {
       badgeText: '',
       focused: false,
       expanded: ExpandedType.Expanded,
-      childCount: 4,
     },
   ]
   const focusOutline = false
