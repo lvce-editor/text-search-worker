@@ -24,6 +24,6 @@ export const getDisplayResultMatch = (
     replacement,
     setSize,
     text: text,
-    title: text,
+    title: text.trim(),
   }
 }
