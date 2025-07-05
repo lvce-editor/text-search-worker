@@ -11,23 +11,12 @@ import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
 import * as GetSearchRemoveVirtualDom from '../GetSearchRemoveVirtualDom/GetSearchRemoveVirtualDom.ts'
 import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
+import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'
+import { getChildCount } from '../GetSearchDisplayResultChildCount/GetSearchDisplayResultChildCount.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
-  const {
-    matchStart,
-    matchLength,
-    text: displayText,
-    title,
-    icon,
-    setSize,
-    posInSet,
-    depth,
-    replacement,
-    focused,
-    expanded,
-    childCount,
-    badgeText,
-  } = rowInfo
+  const { matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, focused, expanded, badgeText } = rowInfo
+  const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -44,9 +33,10 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
       paddingRight: TreeItemPadding.PaddingRight,
       ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
     },
-    ...GetIconsVirtualDom.getIconsVirtualDom(expanded, icon),
+    ...GetChevronVirtualDom.getChevronVirtualDom(expanded),
+    ...GetIconsVirtualDom.getIconsVirtualDom(icon),
     ...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement),
-    ...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText),
+    ...GetBadgeVirtualDom.getBadgeVirtualDom(badgeText),
     ...GetSearchRemoveVirtualDom.getSearchRemoveVirtualDom(),
   ]
   return dom

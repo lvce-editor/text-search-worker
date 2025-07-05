@@ -1,8 +1,7 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 import * as GetMatchCount from '../GetMatchCount/GetMatchCount.ts'
-import * as GetSearchDisplayResultChildCount from '../GetSearchDisplayResultChildCount/GetSearchDisplayResultChildCount.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getSearchDisplayResultFile = (
@@ -23,11 +22,9 @@ export const getSearchDisplayResultFile = (
   const index = originalResults.indexOf(results[i])
   const matchCount = GetMatchCount.getMatchCount(results, index)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
-  const childCount = GetSearchDisplayResultChildCount.getChildCount(expanded, matchCount)
   const badgeText = `${matchCount}`
   return {
     badgeText,
-    childCount,
     depth: 0,
     expanded,
     focused,
