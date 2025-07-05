@@ -64,6 +64,8 @@ export const create = (
     viewMode: ViewMode.List,
     incrementalSearch: false,
     searchId: '',
+    useChevrons: true,
+    useFileIcons: true,
   }
   SearchViewStates.set(uid, state, state)
   return state
