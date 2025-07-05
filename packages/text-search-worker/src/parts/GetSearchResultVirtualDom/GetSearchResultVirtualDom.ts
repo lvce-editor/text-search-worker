@@ -8,6 +8,7 @@ import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts
 import * as GetIconsVirtualDom from '../GetIconsVirtualDom/GetIconsVirtualDom.ts'
 import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts'
 import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
+import * as GetSearchRemoveVirtualDom from '../GetSearchRemoveVirtualDom/GetSearchRemoveVirtualDom.ts'
 import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 
@@ -46,16 +47,7 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     ...GetIconsVirtualDom.getIconsVirtualDom(expanded, icon),
     ...GetLabelVirtualDom.getLabelVirtualDom(displayText, matchLength, matchStart, replacement),
     ...GetBadgeVirtualDom.getBadgeVirtualDom(ClassNames.SourceControlBadge, badgeText),
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchRemove,
-      childCount: 1,
-    },
-    {
-      type: VirtualDomElements.Div,
-      className: ClassNames.CloseMaskIcon,
-      childCount: 0,
-    },
+    ...GetSearchRemoveVirtualDom.getSearchRemoveVirtualDom(),
   ]
   return dom
 }
