@@ -10,7 +10,7 @@ test('getSearchResultsVirtualDom', () => {
       matchLength: 1,
       text: 'abc',
       title: 'abc',
-      icon: '',
+      icon: 'test',
       setSize: 2,
       posInSet: 2,
       depth: 0,
