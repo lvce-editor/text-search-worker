@@ -57,6 +57,6 @@
     "@lvce-editor/viewlet-registry": "^1.4.0",
     "@lvce-editor/virtual-dom-worker": "^2.16.0",
     "jest": "^30.0.5",
-    "ts-jest": "^29.4.0"
+    "ts-jest": "^29.4.1"
   }
 }
