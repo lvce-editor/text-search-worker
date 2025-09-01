@@ -6,14 +6,9 @@ import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('GetFileIcons', async () => {
-  const mockInvoke = jest.fn((method: string) => {
-    if (method === 'IconTheme.getFileIcon') {
-      return 'file-icon'
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const getFileIcon = jest.fn(() => 'file-icon')
   RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getFileIcon': getFileIcon,
   })
 
   const mockFiles: readonly SearchResult[] = [
@@ -43,7 +38,7 @@ test('GetFileIcons', async () => {
   const result = await GetFileIcons.getFileIcons(mockFiles)
 
   expect(result).toEqual(['file-icon', '', 'file-icon'])
-  expect(mockRpc.invoke).toHaveBeenCalledTimes(2)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('IconTheme.getFileIcon', { name: 'file1.txt' })
-  expect(mockRpc.invoke).toHaveBeenCalledWith('IconTheme.getFileIcon', { name: 'file3.css' })
+  expect(getFileIcon).toHaveBeenCalledTimes(2)
+  expect(getFileIcon).toHaveBeenCalledWith({ name: 'file1.txt' })
+  expect(getFileIcon).toHaveBeenCalledWith({ name: 'file3.css' })
 })

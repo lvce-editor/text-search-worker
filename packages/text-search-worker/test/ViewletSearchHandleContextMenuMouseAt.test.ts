@@ -7,15 +7,9 @@ import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'ContextMenu.show') {
-      return undefined
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const show = jest.fn(() => undefined)
   RendererWorker.registerMockRpc({
-    'ContextMenu.show': () => undefined,
+    'ContextMenu.show': show,
   })
 
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
@@ -25,19 +19,13 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
   const result = await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
   expect(result).toBe(state)
-  expect(mockInvoke).toHaveBeenCalledWith('ContextMenu.show', x, y, MenuEntryId.Search)
+  expect(show).toHaveBeenCalledWith(x, y, MenuEntryId.Search)
 })
 
 test('handleContextMenuMouseAt - calls show with correct coordinates', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'ContextMenu.show') {
-      return undefined
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const show = jest.fn(() => undefined)
   RendererWorker.registerMockRpc({
-    'ContextMenu.show': () => undefined,
+    'ContextMenu.show': show,
   })
 
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
@@ -46,5 +34,5 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
 
   await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
-  expect(mockInvoke).toHaveBeenCalledWith('ContextMenu.show', x, y, MenuEntryId.Search)
+  expect(show).toHaveBeenCalledWith(x, y, MenuEntryId.Search)
 })

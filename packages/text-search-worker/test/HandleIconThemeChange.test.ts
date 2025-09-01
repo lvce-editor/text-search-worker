@@ -6,15 +6,9 @@ import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/Handl
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'IconTheme.getFileIcon') {
-      return 'icon1'
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const getFileIcon = jest.fn(() => 'icon1')
   RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'icon1',
+    'IconTheme.getFileIcon': getFileIcon,
   })
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -29,13 +23,11 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual(['icon1', 'icon1'])
-  expect(mockInvoke).toHaveBeenCalledTimes(2)
+  expect(getFileIcon).toHaveBeenCalledTimes(2)
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    throw new Error(`unexpected method ${args[0]}`)
-  })
+  const getFileIcon = jest.fn(() => 'icon1')
   RendererWorker.registerMockRpc({})
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -46,5 +38,5 @@ test('handleIconThemeChange handles empty items array', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(mockInvoke).not.toHaveBeenCalled()
+  expect(getFileIcon).not.toHaveBeenCalled()
 })

@@ -6,15 +6,9 @@ import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 
 test('handleContextMenuKeyboard', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'ContextMenu.show') {
-      return undefined
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const show = jest.fn(() => undefined)
   RendererWorker.registerMockRpc({
-    'ContextMenu.show': () => undefined,
+    'ContextMenu.show': show,
   })
 
   const state: SearchState = {
@@ -26,5 +20,5 @@ test('handleContextMenuKeyboard', async () => {
   const result = await ViewletSearchHandleContextMenuKeyBoard.handleContextMenuKeyboard(state)
 
   expect(result).toBe(state)
-  expect(mockInvoke).toHaveBeenCalledWith('ContextMenu.show', 100, 200, 18)
+  expect(show).toHaveBeenCalledWith(100, 200, 18)
 })

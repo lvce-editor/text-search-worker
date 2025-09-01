@@ -13,7 +13,9 @@ const mockRpc = {
   invoke: jest.fn(),
 } as any
 
-RendererWorker.registerMockRpc({})
+RendererWorker.registerMockRpc({
+  'ContextMenu.show': () => undefined,
+})
 
 test('handleContextMenu - mouse event shows context menu at mouse position', async () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
