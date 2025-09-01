@@ -1,4 +1,4 @@
-import { RendererWorker } from '@lvce-ridot/rpc-registry'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 export const {
   confirm,

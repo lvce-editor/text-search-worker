@@ -3,17 +3,10 @@ import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Copy from '../src/parts/Copy/Copy.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('copy - no focused item returns same state', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      throw new Error(`unexpected method ${method}`)
-    },
-  })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+  RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -26,16 +19,9 @@ test('copy - no focused item returns same state', async () => {
 })
 
 test('copy - copies text from focused item', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'ClipBoard.writeText') {
-        return undefined
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
