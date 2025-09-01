@@ -3,43 +3,48 @@ import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
-  const prompt = jest.fn(() => false)
-  RendererWorker.registerMockRpc({
-    'ConfirmPrompt.prompt': prompt,
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ConfirmPrompt.prompt': () => false,
   })
 
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
-  expect(prompt.mock.calls[0]).toEqual([
-    "Replace 5 occurrences across 2 files with 'replacement'",
-    {
-      title: 'Replace All',
-      confirmMessage: 'Replace',
-    },
+  expect(mockRpc.invocations).toEqual([
+    [
+      'ConfirmPrompt.prompt',
+      "Replace 5 occurrences across 2 files with 'replacement'",
+      {
+        title: 'Replace All',
+        confirmMessage: 'Replace',
+      },
+    ],
   ])
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
-  const prompt = jest.fn(() => true)
-  RendererWorker.registerMockRpc({
-    'ConfirmPrompt.prompt': prompt,
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ConfirmPrompt.prompt': () => true,
   })
 
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(true)
-  expect(prompt.mock.calls[0]).toEqual([
-    "Replace 5 occurrences across 2 files with 'replacement'",
-    {
-      title: 'Replace All',
-      confirmMessage: 'Replace',
-    },
+  expect(mockRpc.invocations).toEqual([
+    [
+      'ConfirmPrompt.prompt',
+      "Replace 5 occurrences across 2 files with 'replacement'",
+      {
+        title: 'Replace All',
+        confirmMessage: 'Replace',
+      },
+    ],
   ])
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  RendererWorker.registerMockRpc({})
+  const mockRpc = RendererWorker.registerMockRpc({})
 
   await expect(ReplaceAllAndPrompt.replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
+  expect(mockRpc.invocations).toEqual([])
 })
