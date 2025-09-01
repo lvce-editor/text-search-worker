@@ -2,20 +2,12 @@ import { expect, test } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
 import * as ContextMenu from '../src/parts/ContextMenu/ContextMenu.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('show - invokes rpc with correct coordinates and menu id', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'ContextMenu.show') {
-        return undefined
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'ContextMenu.show': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const x = 100
   const y = 200
@@ -25,16 +17,11 @@ test('show - invokes rpc with correct coordinates and menu id', async () => {
 })
 
 test('show - handles rpc error', async () => {
-  const errorRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'ContextMenu.show') {
-        throw new Error('Failed to show context menu')
-      }
-      throw new Error(`unexpected method ${method}`)
+  RendererWorker.registerMockRpc({
+    'ContextMenu.show': () => {
+      throw new Error('Failed to show context menu')
     },
   })
-  RpcRegistry.set(RpcId.RendererWorker, errorRpc)
 
   const x = 100
   const y = 200

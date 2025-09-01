@@ -2,8 +2,7 @@ import { expect, jest, test } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetFileIcons from '../src/parts/GetFileIcons/GetFileIcons.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('GetFileIcons', async () => {
@@ -13,11 +12,9 @@ test('GetFileIcons', async () => {
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const mockFiles: readonly SearchResult[] = [
     {

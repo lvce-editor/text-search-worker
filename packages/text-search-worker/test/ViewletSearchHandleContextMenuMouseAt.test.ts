@@ -3,8 +3,7 @@ import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
@@ -15,11 +14,9 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'ContextMenu.show': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
   const x = 100
@@ -39,11 +36,9 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'ContextMenu.show': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
   const x = 150

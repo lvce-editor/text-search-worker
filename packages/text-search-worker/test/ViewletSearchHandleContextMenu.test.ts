@@ -2,8 +2,7 @@ import { expect, jest, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 const shownX = 0
@@ -14,7 +13,7 @@ const mockRpc = {
   invoke: jest.fn(),
 } as any
 
-RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+RendererWorker.registerMockRpc({})
 
 test('handleContextMenu - mouse event shows context menu at mouse position', async () => {
   const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')

@@ -1,28 +1,20 @@
 import { expect, test } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchFetch from '../src/parts/TextSearchFetch/TextSearchFetch.ts'
 
 test('textSearch - calls ParentRpc with correct arguments', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'ExtensionHostTextSearch.textSearchFetch') {
-        return [
-          {
-            type: 1,
-            text: './index.txt',
-            start: 0,
-            end: 0,
-            lineNumber: 0,
-          },
-        ]
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'ExtensionHostTextSearch.textSearchFetch': () => [
+      {
+        type: 1,
+        text: './index.txt',
+        start: 0,
+        end: 0,
+        lineNumber: 0,
+      },
+    ],
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const scheme = 'fetch'
   const root = 'fetch://example.com'
@@ -44,16 +36,11 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
 })
 
 test('textSearch - handles error from ParentRpc', async () => {
-  const errorRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'ExtensionHostTextSearch.textSearchFetch') {
-        throw new Error('Network error')
-      }
-      throw new Error(`unexpected method ${method}`)
+  RendererWorker.registerMockRpc({
+    'ExtensionHostTextSearch.textSearchFetch': () => {
+      throw new Error('Network error')
     },
   })
-  RpcRegistry.set(RpcId.RendererWorker, errorRpc)
 
   const scheme = 'fetch'
   const root = 'fetch://example.com'

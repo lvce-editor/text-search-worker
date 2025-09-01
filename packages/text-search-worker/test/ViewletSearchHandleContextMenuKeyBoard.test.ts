@@ -2,8 +2,7 @@ import { expect, test, jest } from '@jest/globals'
 import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 
 test('handleContextMenuKeyboard', async () => {
@@ -14,11 +13,9 @@ test('handleContextMenuKeyboard', async () => {
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'ContextMenu.show': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),

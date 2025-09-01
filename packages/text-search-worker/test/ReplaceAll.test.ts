@@ -3,8 +3,7 @@ import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
@@ -15,11 +14,9 @@ test('replaceAll - replaces all matches and updates state', async () => {
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'BulkReplacement.applyBulkReplacement': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),

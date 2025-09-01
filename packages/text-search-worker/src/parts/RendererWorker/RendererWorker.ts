@@ -1,4 +1,4 @@
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { RendererWorker } from '@lvce-ridot/rpc-registry'
 
 export const {
   confirm,
@@ -11,4 +11,5 @@ export const {
   set,
   showContextMenu,
   writeClipBoardText,
+  registerMockRpc,
 } = RendererWorker
