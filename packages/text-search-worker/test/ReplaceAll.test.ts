@@ -7,15 +7,9 @@ import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'BulkReplacement.applyBulkReplacement') {
-      return undefined
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const apply = jest.fn(() => undefined)
   RendererWorker.registerMockRpc({
-    'BulkReplacement.applyBulkReplacement': () => undefined,
+    'BulkReplacement.applyBulkReplacement': apply,
   })
 
   const state: SearchState = {
@@ -41,7 +35,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
     maxLineY: 0,
     message: "Replaced 2 occurrences across 2 files with 'new-text'",
   })
-  expect(mockInvoke).toHaveBeenCalledWith('BulkReplacement.applyBulkReplacement', [
+  expect(apply).toHaveBeenCalledWith([
     {
       changes: [
         {

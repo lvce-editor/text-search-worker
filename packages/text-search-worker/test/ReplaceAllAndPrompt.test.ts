@@ -4,42 +4,30 @@ import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAl
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'ConfirmPrompt.prompt') {
-      return false
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const prompt = jest.fn(() => false)
   RendererWorker.registerMockRpc({
-    'ConfirmPrompt.prompt': () => false,
+    'ConfirmPrompt.prompt': prompt,
   })
 
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
-  expect(mockInvoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
+  expect(prompt).toHaveBeenCalledWith("Replace 5 occurrences across 2 files with 'replacement'", {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'ConfirmPrompt.prompt') {
-      return true
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
+  const prompt = jest.fn(() => true)
   RendererWorker.registerMockRpc({
-    'ConfirmPrompt.prompt': () => true,
+    'ConfirmPrompt.prompt': prompt,
   })
 
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(true)
-  expect(mockInvoke).toHaveBeenCalledWith('ConfirmPrompt.prompt', "Replace 5 occurrences across 2 files with 'replacement'", {
+  expect(prompt).toHaveBeenCalledWith("Replace 5 occurrences across 2 files with 'replacement'", {
     title: 'Replace All',
     confirmMessage: 'Replace',
   })
