@@ -2,8 +2,7 @@ import { expect, test, jest } from '@jest/globals'
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
 import { MockRpc } from '@lvce-editor/rpc'
 import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 const mockRpc = {
   invoke: jest.fn(),
@@ -14,12 +13,9 @@ MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
 test.skip('launchSearchProcessElectron - creates message port and rpc', async () => {
   const mockInvokeAndTransfer = jest.fn()
-  const mockRpcInstance = MockRpc.create({
-    commandMap: {},
-    invoke: jest.fn(),
-    invokeAndTransfer: mockInvokeAndTransfer,
+  RendererWorker.registerMockRpc({
+    'SendMessagePortToElectron.sendMessagePortToElectron': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpcInstance)
 
   await LaunchSearchProcessElectron.launchSearchProcessElectron()
   expect(MessagePortRpcParent.create).toHaveBeenCalledWith({
@@ -39,12 +35,9 @@ test.skip('launchSearchProcessElectron - handles rpc creation error', async () =
   // @ts-ignore
   MessagePortRpcParent.create.mockRejectedValue(mockError)
 
-  const mockRpcInstance = MockRpc.create({
-    commandMap: {},
-    invoke: jest.fn(),
-    invokeAndTransfer: jest.fn(),
+  RendererWorker.registerMockRpc({
+    'SendMessagePortToElectron.sendMessagePortToElectron': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpcInstance)
 
   await expect(LaunchSearchProcessElectron.launchSearchProcessElectron()).rejects.toThrow('Failed to create RPC')
 })
@@ -54,12 +47,11 @@ test.skip('launchSearchProcessElectron - handles port transfer error', async () 
   const mockInvokeAndTransfer = jest.fn(() => {
     throw mockError
   })
-  const mockRpcInstance = MockRpc.create({
-    commandMap: {},
-    invoke: jest.fn(),
-    invokeAndTransfer: mockInvokeAndTransfer,
+  RendererWorker.registerMockRpc({
+    'SendMessagePortToElectron.sendMessagePortToElectron': () => {
+      throw mockError
+    },
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpcInstance)
 
   await expect(LaunchSearchProcessElectron.launchSearchProcessElectron()).rejects.toThrow('Failed to transfer port')
 })
