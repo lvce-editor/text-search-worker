@@ -6,9 +6,8 @@ import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
-  const apply = jest.fn(() => undefined)
-  RendererWorker.registerMockRpc({
-    'BulkReplacement.applyBulkReplacement': apply,
+  const mockRpc = RendererWorker.registerMockRpc({
+    'BulkReplacement.applyBulkReplacement'() {},
   })
 
   const state: SearchState = {
@@ -34,7 +33,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
     maxLineY: 0,
     message: "Replaced 2 occurrences across 2 files with 'new-text'",
   })
-  expect(apply.mock.calls[0][0]).toEqual([
+  expect(mockRpc.invocations).toEqual([
     {
       changes: [
         {
