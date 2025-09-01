@@ -39,7 +39,7 @@ test('textSearch', async () => {
       },
     ],
   }))
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'SearchProcess.invoke': handler,
   })
 
@@ -59,22 +59,27 @@ test('textSearch', async () => {
       lineNumber: 0,
     },
   ])
-  expect(handler).toHaveBeenCalledTimes(1)
-  expect(handler).toHaveBeenCalledWith('TextSearch.search', {
-    ripGrepArgs: [
-      '--hidden',
-      '--no-require-git',
-      '--smart-case',
-      '--stats',
-      '--json',
-      '--threads',
-      'undefined',
-      '--ignore-case',
-      '--fixed-strings',
-      '--',
-      'abc',
-      '.',
+  expect(mockRpc.invocations).toEqual([
+    [
+      'SearchProcess.invoke',
+      'TextSearch.search',
+      {
+        ripGrepArgs: [
+          '--hidden',
+          '--no-require-git',
+          '--smart-case',
+          '--stats',
+          '--json',
+          '--threads',
+          'undefined',
+          '--ignore-case',
+          '--fixed-strings',
+          '--',
+          'abc',
+          '.',
+        ],
+        searchDir: '/test',
+      },
     ],
-    searchDir: '/test',
-  })
+  ])
 })
