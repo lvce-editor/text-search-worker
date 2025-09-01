@@ -1,20 +1,12 @@
 import { expect, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as SelectIndex from '../src/parts/SelectIndex/SelectIndex.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('selectIndex - no selection', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      throw new Error(`unexpected method ${method}`)
-    },
-  })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+  RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -31,16 +23,9 @@ test('selectIndex - no selection', async () => {
 })
 
 test('selectIndex - select file item', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'IconTheme.getFileIcon') {
-        return 'file-icon'
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -58,19 +43,10 @@ test('selectIndex - select file item', async () => {
 })
 
 test('selectIndex - select match item', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'Main.openUri') {
-        return undefined
-      }
-      if (method === 'IconTheme.getFileIcon') {
-        return 'file-icon'
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'Main.openUri': () => undefined,
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -88,16 +64,9 @@ test('selectIndex - select match item', async () => {
 })
 
 test('getFileIndex - finds closest file above match', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'Main.openUri') {
-        return undefined
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'Main.openUri': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -115,13 +84,7 @@ test('getFileIndex - finds closest file above match', async () => {
 })
 
 test('getFileIndex - returns -1 when no file found', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      throw new Error(`unexpected method ${method}`)
-    },
-  })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
+  RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -136,16 +99,9 @@ test('getFileIndex - returns -1 when no file found', async () => {
 })
 
 test('selectIndexPreview - handles match with file above', async () => {
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: (method: string) => {
-      if (method === 'Main.openUri') {
-        return undefined
-      }
-      throw new Error(`unexpected method ${method}`)
-    },
+  RendererWorker.registerMockRpc({
+    'Main.openUri': () => undefined,
   })
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),

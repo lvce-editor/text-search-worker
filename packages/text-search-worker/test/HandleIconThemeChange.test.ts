@@ -1,23 +1,14 @@
 import { expect, jest, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'IconTheme.getFileIcon') {
-      return 'icon1'
-    }
-    throw new Error(`unexpected method ${method}`)
+  const getFileIcon = jest.fn(() => 'icon1')
+  RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': getFileIcon,
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
-  })
-  RendererWorker.set(mockRpc)
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -31,18 +22,12 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual(['icon1', 'icon1'])
-  expect(mockInvoke).toHaveBeenCalledTimes(2)
+  expect(getFileIcon).toHaveBeenCalledTimes(2)
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    throw new Error(`unexpected method ${args[0]}`)
-  })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
-  })
-  RendererWorker.set(mockRpc)
+  const getFileIcon = jest.fn(() => 'icon1')
+  RendererWorker.registerMockRpc({})
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
@@ -52,5 +37,5 @@ test('handleIconThemeChange handles empty items array', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(mockInvoke).not.toHaveBeenCalled()
+  expect(getFileIcon).not.toHaveBeenCalled()
 })

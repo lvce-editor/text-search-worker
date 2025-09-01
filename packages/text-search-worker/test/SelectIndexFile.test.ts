@@ -1,20 +1,18 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
+import { beforeEach, expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as ParentRpc from '../src/parts/RendererWorker/RendererWorker.ts'
+import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import { selectIndexFile } from '../src/parts/SelectIndexFile/SelectIndexFile.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockIcon = 'file-icon'
-const mockRpc = {
-  // @ts-ignore
-  invoke: jest.fn().mockResolvedValue(mockIcon),
-} as any
 
-ParentRpc.set(mockRpc)
+RendererWorker.registerMockRpc({
+  'IconTheme.getFileIcon': () => mockIcon,
+})
 
 beforeEach(() => {
-  mockRpc.invoke.mockReset()
+  // no-op: handlers are pure functions
 })
 
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
@@ -43,7 +41,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
       { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
     ],
     maxLineY: 2,
-    icons: [undefined, undefined],
+    icons: ['file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
@@ -72,7 +70,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: [undefined, '', undefined],
+    icons: ['file-icon', '', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })

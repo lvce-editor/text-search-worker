@@ -11,4 +11,5 @@ export const {
   set,
   showContextMenu,
   writeClipBoardText,
+  registerMockRpc,
 } = RendererWorker
