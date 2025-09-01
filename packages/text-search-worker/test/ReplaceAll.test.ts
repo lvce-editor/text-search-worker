@@ -1,4 +1,4 @@
-import { expect, jest, test } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
