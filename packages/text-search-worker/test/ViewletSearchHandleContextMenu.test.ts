@@ -9,10 +9,6 @@ const shownX = 0
 const shownY = 0
 const shownMenuId = 0
 
-const mockRpc = {
-  invoke: jest.fn(),
-} as any
-
 RendererWorker.registerMockRpc({
   'ContextMenu.show': () => undefined,
 })

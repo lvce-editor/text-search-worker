@@ -11,7 +11,6 @@ const mockRpc = {
 MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
 test.skip('launchSearchProcessElectron - creates message port and rpc', async () => {
-  const mockInvokeAndTransfer = jest.fn()
   RendererWorker.registerMockRpc({
     'SendMessagePortToElectron.sendMessagePortToElectron': () => undefined,
   })

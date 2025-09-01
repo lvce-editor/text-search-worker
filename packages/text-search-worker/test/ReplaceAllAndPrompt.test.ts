@@ -39,9 +39,6 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    throw new Error(`unexpected method ${args[0]}`)
-  })
   RendererWorker.registerMockRpc({})
 
   await expect(ReplaceAllAndPrompt.replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()

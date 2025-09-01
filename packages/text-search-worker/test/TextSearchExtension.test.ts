@@ -1,5 +1,4 @@
 import { test, expect } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
 

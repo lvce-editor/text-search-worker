@@ -4,13 +4,6 @@ import * as TextSearchNode from '../src/parts/TextSearchNode/TextSearchNode.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('textSearch - error', async () => {
-  const mockInvoke = jest.fn((...args: readonly unknown[]) => {
-    const method = args[0] as string
-    if (method === 'SearchProcess.invoke') {
-      throw new TypeError('x is not a function')
-    }
-    throw new Error(`unexpected method ${method}`)
-  })
   RendererWorker.registerMockRpc({
     'SearchProcess.invoke': () => {
       throw new TypeError('x is not a function')
