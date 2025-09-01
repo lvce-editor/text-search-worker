@@ -1,4 +1,5 @@
 import { expect, jest, test } from '@jest/globals'
+void jest
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetFileIcons from '../src/parts/GetFileIcons/GetFileIcons.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'

@@ -1,4 +1,5 @@
 import { expect, test, jest } from '@jest/globals'
+void jest
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
@@ -17,9 +18,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
   const result = await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show', x, y, MenuEntryId.Search],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show', x, y, MenuEntryId.Search]])
 })
 
 test('handleContextMenuMouseAt - calls show with correct coordinates', async () => {
@@ -33,7 +32,5 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
 
   await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show', x, y, MenuEntryId.Search],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show', x, y, MenuEntryId.Search]])
 })
