@@ -1,6 +1,6 @@
 import { expect, test, jest } from '@jest/globals'
-import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
   const prompt = jest.fn(() => false)

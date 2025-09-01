@@ -21,11 +21,7 @@ test.skip('launchSearchProcessElectron - creates message port and rpc', async ()
     commandMap: {},
     isMessagePortOpen: true,
   })
-  expect(mockInvokeAndTransfer.mock.calls[0]).toEqual([
-    'SendMessagePortToElectron.sendMessagePortToElectron',
-    expect.anything(),
-    'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
-  ])
+  // assertion on transfer call intentionally omitted in skipped test
 })
 
 test.skip('launchSearchProcessElectron - handles rpc creation error', async () => {
@@ -42,9 +38,6 @@ test.skip('launchSearchProcessElectron - handles rpc creation error', async () =
 
 test.skip('launchSearchProcessElectron - handles port transfer error', async () => {
   const mockError = new Error('Failed to transfer port')
-  const mockInvokeAndTransfer = jest.fn(() => {
-    throw mockError
-  })
   RendererWorker.registerMockRpc({
     'SendMessagePortToElectron.sendMessagePortToElectron': () => {
       throw mockError

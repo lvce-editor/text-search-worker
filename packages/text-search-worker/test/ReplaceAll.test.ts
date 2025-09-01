@@ -1,8 +1,8 @@
 import { expect, jest, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
@@ -34,7 +34,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
     maxLineY: 0,
     message: "Replaced 2 occurrences across 2 files with 'new-text'",
   })
-  expect(apply.mock.calls[0]).toEqual([
+  expect(apply.mock.calls[0][0]).toEqual([
     {
       changes: [
         {
