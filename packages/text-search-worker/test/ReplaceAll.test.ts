@@ -34,29 +34,32 @@ test('replaceAll - replaces all matches and updates state', async () => {
     message: "Replaced 2 occurrences across 2 files with 'new-text'",
   })
   expect(mockRpc.invocations).toEqual([
-    {
-      changes: [
-        {
-          endColumnIndex: 0,
-          endRowIndex: 1,
-          startColumnIndex: 0,
-          startRowIndex: 0,
-          text: 'new-text',
-        },
-      ],
-      uri: '/test/file1.txt',
-    },
-    {
-      changes: [
-        {
-          endColumnIndex: 0,
-          endRowIndex: 3,
-          startColumnIndex: 0,
-          startRowIndex: 2,
-          text: 'new-text',
-        },
-      ],
-      uri: '/test/file2.txt',
-    },
+    [
+      'BulkReplacement.applyBulkReplacement',
+      {
+        changes: [
+          {
+            endColumnIndex: 0,
+            endRowIndex: 1,
+            startColumnIndex: 0,
+            startRowIndex: 0,
+            text: 'new-text',
+          },
+        ],
+        uri: '/test/file1.txt',
+      },
+      {
+        changes: [
+          {
+            endColumnIndex: 0,
+            endRowIndex: 3,
+            startColumnIndex: 0,
+            startRowIndex: 2,
+            text: 'new-text',
+          },
+        ],
+        uri: '/test/file2.txt',
+      },
+    ],
   ])
 })
