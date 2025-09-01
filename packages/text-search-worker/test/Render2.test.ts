@@ -13,7 +13,5 @@ SearchViewStates.set(uid, oldState, newState)
 test('render2 returns correct commands for RenderValue diff', () => {
   const diffResult = [DiffType.RenderValue]
   const result = render2(uid, diffResult)
-  expect(result).toEqual([
-    ['Viewlet.setValueByName', 'SearchValue', 'new value'],
-  ])
+  expect(result).toEqual([['Viewlet.setValueByName', 'SearchValue', 'new value']])
 })
