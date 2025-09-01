@@ -1,13 +1,13 @@
 import { expect, jest, test } from '@jest/globals'
+void jest
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const getFileIcon = jest.fn(() => 'icon1')
-  RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': getFileIcon,
+  const mockRpc = RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => 'icon1',
   })
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -22,12 +22,14 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual(['icon1', 'icon1'])
-  expect(getFileIcon).toHaveBeenCalledTimes(2)
+  expect(mockRpc.invocations).toEqual([
+    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
+    ['IconTheme.getFileIcon', { name: 'file2.txt' }],
+  ])
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const getFileIcon = jest.fn(() => 'icon1')
-  RendererWorker.registerMockRpc({})
+  const mockRpc = RendererWorker.registerMockRpc({})
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
@@ -37,5 +39,5 @@ test('handleIconThemeChange handles empty items array', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(getFileIcon).not.toHaveBeenCalled()
+  expect(mockRpc.invocations).toEqual([])
 })
