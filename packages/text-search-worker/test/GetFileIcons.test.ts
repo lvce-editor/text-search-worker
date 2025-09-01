@@ -1,5 +1,4 @@
 import { expect, jest, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetFileIcons from '../src/parts/GetFileIcons/GetFileIcons.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
@@ -38,7 +37,7 @@ test('GetFileIcons', async () => {
   const result = await GetFileIcons.getFileIcons(mockFiles)
 
   expect(result).toEqual(['file-icon', '', 'file-icon'])
-  expect(getFileIcon).toHaveBeenCalledTimes(2)
-  expect(getFileIcon).toHaveBeenCalledWith({ name: 'file1.txt' })
-  expect(getFileIcon).toHaveBeenCalledWith({ name: 'file3.css' })
+  expect(getFileIcon.mock.calls.length).toBe(2)
+  expect(getFileIcon.mock.calls[0]).toEqual([{ name: 'file1.txt' }])
+  expect(getFileIcon.mock.calls[1]).toEqual([{ name: 'file3.css' }])
 })

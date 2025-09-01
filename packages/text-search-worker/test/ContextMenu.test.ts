@@ -1,5 +1,4 @@
 import { expect, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import * as ContextMenu from '../src/parts/ContextMenu/ContextMenu.ts'
 import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'

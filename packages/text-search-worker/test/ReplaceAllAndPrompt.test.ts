@@ -1,5 +1,4 @@
 import { expect, test, jest } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
@@ -12,10 +11,13 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
-  expect(prompt).toHaveBeenCalledWith("Replace 5 occurrences across 2 files with 'replacement'", {
-    title: 'Replace All',
-    confirmMessage: 'Replace',
-  })
+  expect(prompt.mock.calls[0]).toEqual([
+    "Replace 5 occurrences across 2 files with 'replacement'",
+    {
+      title: 'Replace All',
+      confirmMessage: 'Replace',
+    },
+  ])
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
@@ -27,10 +29,13 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
   const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
 
   expect(result).toBe(true)
-  expect(prompt).toHaveBeenCalledWith("Replace 5 occurrences across 2 files with 'replacement'", {
-    title: 'Replace All',
-    confirmMessage: 'Replace',
-  })
+  expect(prompt.mock.calls[0]).toEqual([
+    "Replace 5 occurrences across 2 files with 'replacement'",
+    {
+      title: 'Replace All',
+      confirmMessage: 'Replace',
+    },
+  ])
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {

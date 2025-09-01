@@ -1,5 +1,4 @@
 import { expect, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import * as OpenUri from '../src/parts/OpenUri/OpenUri.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 

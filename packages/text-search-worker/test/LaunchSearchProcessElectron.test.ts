@@ -1,6 +1,5 @@
 import { expect, test, jest } from '@jest/globals'
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
-import { MockRpc } from '@lvce-editor/rpc'
 import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
 import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
@@ -23,11 +22,11 @@ test.skip('launchSearchProcessElectron - creates message port and rpc', async ()
     commandMap: {},
     isMessagePortOpen: true,
   })
-  expect(mockInvokeAndTransfer).toHaveBeenCalledWith(
+  expect(mockInvokeAndTransfer.mock.calls[0]).toEqual([
     'SendMessagePortToElectron.sendMessagePortToElectron',
     expect.anything(),
     'HandleMessagePortForSearchProcess.handleMessagePortForSearchProcess',
-  )
+  ])
 })
 
 test.skip('launchSearchProcessElectron - handles rpc creation error', async () => {

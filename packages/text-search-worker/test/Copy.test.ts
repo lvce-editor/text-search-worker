@@ -1,5 +1,4 @@
 import { expect, test } from '@jest/globals'
-import { MockRpc } from '@lvce-editor/rpc'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Copy from '../src/parts/Copy/Copy.ts'
 import * as Create from '../src/parts/Create/Create.ts'
