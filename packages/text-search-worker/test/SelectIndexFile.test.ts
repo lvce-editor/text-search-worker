@@ -41,7 +41,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
       { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
     ],
     maxLineY: 2,
-    icons: [undefined, undefined],
+    icons: ['file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
@@ -70,7 +70,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: [undefined, '', undefined],
+    icons: ['file-icon', '', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
