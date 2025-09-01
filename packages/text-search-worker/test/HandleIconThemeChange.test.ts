@@ -13,11 +13,9 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     }
     throw new Error(`unexpected method ${method}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
+  RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => 'icon1',
   })
-  RendererWorker.set(mockRpc)
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -38,11 +36,7 @@ test('handleIconThemeChange handles empty items array', async () => {
   const mockInvoke = jest.fn((...args: readonly unknown[]) => {
     throw new Error(`unexpected method ${args[0]}`)
   })
-  const mockRpc = MockRpc.create({
-    commandMap: {},
-    invoke: mockInvoke,
-  })
-  RendererWorker.set(mockRpc)
+  RendererWorker.registerMockRpc({})
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [],
