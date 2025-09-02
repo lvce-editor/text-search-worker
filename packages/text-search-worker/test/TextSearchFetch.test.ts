@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchFetch from '../src/parts/TextSearchFetch/TextSearchFetch.ts'
 
 test('textSearch - calls ParentRpc with correct arguments', async () => {
