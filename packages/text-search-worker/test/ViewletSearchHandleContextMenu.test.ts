@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 const shownX = 0

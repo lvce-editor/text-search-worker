@@ -1,6 +1,6 @@
 import { expect, test, jest } from '@jest/globals'
 void jest
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {

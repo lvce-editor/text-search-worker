@@ -1,5 +1,5 @@
 import { expect, test, jest } from '@jest/globals'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchNode from '../src/parts/TextSearchNode/TextSearchNode.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 

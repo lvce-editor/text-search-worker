@@ -1,7 +1,7 @@
 import { expect, test, jest } from '@jest/globals'
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 const mockRpc = {
   invoke: jest.fn(),

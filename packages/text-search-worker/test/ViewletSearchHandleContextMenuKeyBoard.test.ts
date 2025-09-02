@@ -1,8 +1,8 @@
 import { expect, test, jest } from '@jest/globals'
 void jest
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 
 test('handleContextMenuKeyboard', async () => {

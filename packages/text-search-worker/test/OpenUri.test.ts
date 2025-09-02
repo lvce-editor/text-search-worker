@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as OpenUri from '../src/parts/OpenUri/OpenUri.ts'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
 
 test('openUri - without options', async () => {
   RendererWorker.registerMockRpc({

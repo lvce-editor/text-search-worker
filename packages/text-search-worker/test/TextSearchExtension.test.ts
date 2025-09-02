@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals'
-import * as RendererWorker from '../src/parts/RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
 
 test('textSearch - extension search', async () => {
