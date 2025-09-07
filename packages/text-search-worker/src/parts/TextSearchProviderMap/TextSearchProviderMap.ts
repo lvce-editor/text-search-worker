@@ -7,7 +7,8 @@ import * as TextSearchNode from '../TextSearchNode/TextSearchNode.ts'
 import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
 export const textSearchProviderMap: Record<string, TextSearchProvider> = {
-  '': TextSearchNode.textSearch,
+  '': TextSearchNode.textSearch, // TODO deprecate/remove workspaces without scheme
+  file: TextSearchNode.textSearch,
   web: TextSearchWeb.textSearch,
   fetch: TextSearchFetch.textSearch,
   html: TextSearchHtml.textSearch,
