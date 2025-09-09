@@ -96,7 +96,6 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
   const result = await handleUpdateFull(state, update)
 
   expect(result).toMatchObject({
-    ...state,
     value: 'test',
     items: searchResults,
     listItems: searchResults,
@@ -105,5 +104,8 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: false,
+    icons: ['file-icon', ''],
+    maxLineY: 2,
+    message: '1 result in 1 file',
   })
 })

@@ -109,8 +109,11 @@ test.skip('handleUpdate - uses search flags from state', async () => {
   const update = { value: 'test' }
 
   add({
-    async ''() {
-      return []
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      return {
+        results: [],
+        limitHit: false,
+      }
     },
   })
 
