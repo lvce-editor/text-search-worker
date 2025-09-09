@@ -67,6 +67,7 @@ export const create = (
     useChevrons: true,
     useFileIcons: true,
     limitHit: false,
+    limitHitWarning: '',
   }
   SearchViewStates.set(uid, state, state)
   return state
