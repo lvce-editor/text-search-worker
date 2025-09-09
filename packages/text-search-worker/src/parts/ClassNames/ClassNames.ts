@@ -59,3 +59,5 @@ export const {
   ViewletSearchMessage,
   ViewletSearchMessageIndented,
 } = ClassNames
+
+export const SearchWarningMessage = 'SearchWarningMessage'
