@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
   RendererWorker.registerMockRpc({
