@@ -38,7 +38,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   if (!Array.isArray(results)) {
     throw new TypeError('results must be of type array')
   }
-  console.log({ limitHit, limit, results: results.length })
   const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(results)
   const message = SearchStatusMessage.getStatusMessage(resultCount, fileCount)
   const total = results.length
