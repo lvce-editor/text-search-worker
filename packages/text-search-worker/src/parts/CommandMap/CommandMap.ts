@@ -55,6 +55,7 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as SearchFocus from '../SearchFocus/SearchFocus.ts'
 import * as WrapCommand from '../SearchViewStates/SearchViewStates.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
+import { setLimit } from '../SetLimit/SetLimit.ts'
 import * as Submit from '../Submit/Submit.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 import * as ToggleDetailsExpanded from '../ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
@@ -134,6 +135,7 @@ export const commandMap = {
   'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
+  'TextSearch.setLimit': WrapCommand.wrapCommand(setLimit),
 
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
