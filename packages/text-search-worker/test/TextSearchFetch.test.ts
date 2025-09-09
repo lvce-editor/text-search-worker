@@ -23,15 +23,18 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
 
   const result = await TextSearchFetch.textSearch(scheme, root, query, options, assetDir)
 
-  expect(result).toEqual([
-    {
-      type: 1,
-      text: './index.txt',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-  ])
+  expect(result).toEqual({
+    results: [
+      {
+        type: 1,
+        text: './index.txt',
+        start: 0,
+        end: 0,
+        lineNumber: 0,
+      },
+    ],
+    limitHit: false,
+  })
 })
 
 test('textSearch - handles error from ParentRpc', async () => {

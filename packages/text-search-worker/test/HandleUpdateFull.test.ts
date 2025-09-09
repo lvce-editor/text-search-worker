@@ -5,8 +5,13 @@ import * as Create from '../src/parts/Create/Create.ts'
 import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
+  RendererWorker.registerMockRpc({
+    'FileSystem.getFileIcon': () => 'file-icon',
+  })
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     workspacePath: '/test',
@@ -53,6 +58,10 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
+  RendererWorker.registerMockRpc({
+    'FileSystem.getFileIcon': () => 'file-icon',
+  })
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     workspacePath: '/test',

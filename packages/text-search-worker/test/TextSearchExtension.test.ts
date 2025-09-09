@@ -22,22 +22,25 @@ test('textSearch - extension search', async () => {
     ],
   })
 
-  const mockResults = [
-    {
-      type: 1,
-      text: './index.txt',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-    {
-      type: 2,
-      text: '    <title>Document</title>\n',
-      start: 208,
-      end: 212,
-      lineNumber: 1,
-    },
-  ]
+  const mockResults = {
+    results: [
+      {
+        type: 1,
+        text: './index.txt',
+        start: 0,
+        end: 0,
+        lineNumber: 0,
+      },
+      {
+        type: 2,
+        text: '    <title>Document</title>\n',
+        start: 208,
+        end: 212,
+        lineNumber: 1,
+      },
+    ],
+    limitHit: false,
+  }
 
   const result = await TextSearchExtension.textSearch('xyz', 'xyz://', 'abc')
   expect(result).toEqual(mockResults)

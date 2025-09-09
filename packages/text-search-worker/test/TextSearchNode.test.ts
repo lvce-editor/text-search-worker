@@ -31,27 +31,31 @@ test('textSearch', async () => {
         lineNumber: 0,
       },
     ],
+    limitHit: false,
   }))
   const mockRpc = RendererWorker.registerMockRpc({
     'SearchProcess.invoke': handler,
   })
 
-  expect(await TextSearchNode.textSearch('', '/test', 'abc', {} as any)).toEqual([
-    {
-      type: TextSearchResultType.File,
-      text: './index.txt',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-    {
-      type: TextSearchResultType.Match,
-      text: '    <title>Document</title>\n',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-  ])
+  expect(await TextSearchNode.textSearch('', '/test', 'abc', {} as any)).toEqual({
+    results: [
+      {
+        type: TextSearchResultType.File,
+        text: './index.txt',
+        start: 0,
+        end: 0,
+        lineNumber: 0,
+      },
+      {
+        type: TextSearchResultType.Match,
+        text: '    <title>Document</title>\n',
+        start: 0,
+        end: 0,
+        lineNumber: 0,
+      },
+    ],
+    limitHit: false,
+  })
   expect(mockRpc.invocations).toEqual([
     [
       'SearchProcess.invoke',

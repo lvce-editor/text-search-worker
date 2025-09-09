@@ -20,10 +20,16 @@ test.skip('textSearch', () => {
 
 test('textSearch returns empty array for empty object', async () => {
   const result = await textSearch('web', '/root', 'test')
-  expect(result).toEqual([])
+  expect(result).toEqual({
+    results: [],
+    limitHit: false,
+  })
 })
 
 test('textSearch with different parameters', async () => {
   const result = await textSearch('web', '/different', 'query')
-  expect(result).toEqual([])
+  expect(result).toEqual({
+    results: [],
+    limitHit: false,
+  })
 })
