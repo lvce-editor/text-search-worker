@@ -6,7 +6,7 @@ import * as TextSearchIncremental from '../TextSearchIncremental/TextSearchIncre
 
 export const handleUpdateIncremental = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
-  const { flags, value, threads, includeValue, excludeValue, uid, assetDir, platform } = partialNewState
+  const { flags, value, threads, includeValue, excludeValue, limit, uid, assetDir, platform } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const searchId = crypto.randomUUID() // TODO try to avoid side effect
@@ -34,6 +34,7 @@ export const handleUpdateIncremental = async (state: SearchState, update: Partia
       scheme,
       flags,
       matchWholeWord: Boolean(flags & SearchFlags.MatchWholeWord),
+      limit,
     },
     assetDir,
     platform,
