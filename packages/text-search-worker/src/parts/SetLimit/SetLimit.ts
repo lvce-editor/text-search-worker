@@ -1,9 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import { handleUpdate } from '../HandleUpdate/HandleUpdate.ts'
 
-export const setLimit = (state: SearchState, limit: number): SearchState => {
-  // TODO update search results
-  return {
-    ...state,
+export const setLimit = (state: SearchState, limit: number): Promise<SearchState> => {
+  return handleUpdate(state, {
     limit,
-  }
+  })
 }
