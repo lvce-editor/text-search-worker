@@ -27,6 +27,7 @@ test('handleUpdate - empty search value returns cleared state', async () => {
     message: '',
     loaded: true,
     searchInputErrorMessage: '',
+    limitHit: false,
   })
 })
 
@@ -63,6 +64,7 @@ test.skip('handleUpdate - performs search with valid input', async () => {
     fileCount: 1,
     loaded: true,
     searchInputErrorMessage: '',
+    limitHit: false,
   })
 })
 
@@ -90,6 +92,7 @@ test('handleUpdate - handles search error', async () => {
     fileCount: 0,
     minLineY: 0,
     maxLineY: 0,
+    limitHit: false,
   })
 })
 

@@ -31,4 +31,5 @@ export interface SearchList extends List<SearchResult> {
   readonly workspacePath: string
   readonly x: number
   readonly y: number
+  readonly limitHit: boolean
 }
