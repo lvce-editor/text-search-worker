@@ -9,6 +9,7 @@ export const getTreeListItems = (results: readonly SearchResult[], root: string)
   const folders = Object.keys(tree)
   const denseTree = createFullParentFolderTree(folders)
   const merged = mergeTrees(denseTree, tree)
+  console.log(JSON.stringify(tree, null, 2))
   const newList = treeToList(merged, root)
   return newList
 }
