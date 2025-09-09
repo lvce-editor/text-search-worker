@@ -13,7 +13,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await Search.setValue('ab')
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('10 result in 1 file')
+  await expect(message).toHaveText('10 results in 1 file')
 
   // act
   await Command.execute('Search.setLimit', 5)
@@ -21,5 +21,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   // assert
   const warningMessage = Locator('.SearchWarningMessage')
   await expect(warningMessage).toBeVisible()
-  await expect(warningMessage).toHaveText('Limit was hit')
+  await expect(warningMessage).toHaveText(
+    'The result set only contains a subset of all matches. Be more specific in your search to narrow down the results.',
+  )
 }
