@@ -15,4 +15,5 @@ export interface SearchHeader {
   readonly searchId: string
   readonly useFileIcons: boolean
   readonly useChevrons: boolean
+  readonly limitHit: boolean
 }
