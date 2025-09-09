@@ -3,7 +3,6 @@ import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull.ts'
-import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 
@@ -45,7 +44,6 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
   const result = await handleUpdateFull(state, update)
 
   expect(result).toMatchObject({
-    ...state,
     value: 'test',
     items: searchResults,
     listItems: searchResults,
@@ -54,6 +52,9 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: true,
+    icons: ['file-icon', ''],
+    maxLineY: 2,
+    message: '1 result in 1 file',
   })
 })
 
