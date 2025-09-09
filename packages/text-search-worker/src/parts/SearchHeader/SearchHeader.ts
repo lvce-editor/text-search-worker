@@ -17,4 +17,5 @@ export interface SearchHeader {
   readonly useChevrons: boolean
   readonly limitHit: boolean
   readonly limitHitWarning: string
+  readonly limit: number
 }
