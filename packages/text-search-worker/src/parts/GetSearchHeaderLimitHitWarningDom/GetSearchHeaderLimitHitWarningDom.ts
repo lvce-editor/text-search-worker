@@ -1,7 +1,15 @@
 import { ClassNames, text, VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
-export const getSearchHeaderLimitHitVirtualDom = (): readonly VirtualDomNode[] => {
+export const getSearchHeaderLimitHitVirtualDom = (limitHitWarning: string): readonly VirtualDomNode[] => {
+  if (!limitHitWarning) {
+    return [
+      {
+        type: VirtualDomElements.Div,
+        childCount: 0,
+      },
+    ]
+  }
   const dom: readonly VirtualDomNode[] = [
     {
       type: VirtualDomElements.Div,
@@ -9,7 +17,7 @@ export const getSearchHeaderLimitHitVirtualDom = (): readonly VirtualDomNode[] =
       childCount: 1,
     },
     // TODO warning triangle here
-    text(`Limit Hit`),
+    text(limitHitWarning),
   ]
   return dom
 }

@@ -50,7 +50,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
 
   // TODO add info message if limit was hit
 
-  const limitHitWarning = limitHit ? '' : 'Limit was hit' // TODO i18n
+  const limitHitWarning = limitHit ? 'Limit was hit' : '' // TODO i18n
 
   return {
     ...partialNewState,
