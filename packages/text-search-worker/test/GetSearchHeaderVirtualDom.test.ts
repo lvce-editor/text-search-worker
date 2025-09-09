@@ -163,7 +163,8 @@ test.skip('getSearchHeaderVirtualDom - with details expanded', () => {
   const errorMessage = ''
   const matchCount = 1
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const limitHitWarning = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, limitHitWarning)
   expect(dom[0].childCount).toBe(4)
   expect(dom[dom.length - 7].className).toBe('SearchHeaderDetails')
   expect(dom[dom.length - 6].text).toBe('files to include')
@@ -176,7 +177,8 @@ test.skip('getSearchHeaderVirtualDom - with replace and details expanded', () =>
   const errorMessage = ''
   const matchCount = 1
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const limitHitWarning = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, limitHitWarning)
   expect(dom[0].childCount).toBe(4)
   expect(flags & SearchFlags.DetailsExpanded).toBeTruthy()
   expect(flags & SearchFlags.ReplaceExpanded).toBeTruthy()
