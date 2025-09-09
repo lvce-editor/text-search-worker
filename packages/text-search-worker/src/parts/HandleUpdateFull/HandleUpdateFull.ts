@@ -6,6 +6,7 @@ import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetText
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
+import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
@@ -51,7 +52,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
 
   // TODO add info message if limit was hit
 
-  const limitHitWarning = limitHit ? 'Limit was hit' : '' // TODO i18n
+  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
 
   return {
     ...partialNewState,
