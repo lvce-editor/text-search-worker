@@ -4,7 +4,7 @@ export const name = 'search.no-provider-found'
 
 export const skip = 1
 
-export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Main, Locator, Editor, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
