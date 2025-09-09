@@ -13,7 +13,6 @@ import * as FocusPreviousInput from '../FocusPreviousInput/FocusPreviousInput.ts
 import * as FocusReplaceValue from '../FocusReplaceValue/FocusReplaceValue.ts'
 import * as FocusSearchValue from '../FocusSearchValue/FocusSearchValue.ts'
 import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueNext.ts'
-import * as GetCommandIds from '../GetCommandIds/GetCommandIds.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
@@ -139,7 +138,7 @@ export const commandMap = {
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
   'TextSearch.create': Create.create,
-  'TextSearch.getCommandIds': GetCommandIds.getCommandIds,
+  'TextSearch.getCommandIds': WrapCommand.getCommandIds,
   'TextSearch.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TextSearch.render2': Render2.render2,
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
