@@ -9,9 +9,15 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir: string,
 ): Promise<TextSearchCompletionResult> => {
-  const results = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory', scheme, root, query, options, assetDir)
-  return {
-    results,
-    limitHit: false,
+  try {
+    // @ts-ignore
+    const result = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory2', scheme, root, query, options, assetDir)
+    return result
+  } catch {
+    const results = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory', scheme, root, query, options, assetDir)
+    return {
+      results,
+      limitHit: false,
+    }
   }
 }
