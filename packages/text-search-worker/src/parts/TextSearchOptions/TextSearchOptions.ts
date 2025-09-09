@@ -13,4 +13,6 @@ export interface TextSearchOptions {
   readonly matchWholeWord: boolean
 
   readonly flags: number
+
+  readonly limit: number
 }
