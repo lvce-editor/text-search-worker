@@ -10,7 +10,7 @@ import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
-  const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads, includeValue, excludeValue, assetDir, platform } =
+  const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads, includeValue, excludeValue, assetDir, platform, limit } =
     partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
@@ -29,6 +29,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       scheme,
       flags,
       matchWholeWord: Boolean(flags & SearchFlags.MatchWholeWord),
+      limit,
     },
     assetDir,
     platform,
