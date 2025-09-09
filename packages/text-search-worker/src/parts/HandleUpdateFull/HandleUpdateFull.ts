@@ -14,7 +14,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
-  const results = await TextSearch.textSearch(
+  const { results, limitHit } = await TextSearch.textSearch(
     root,
     value,
     {
@@ -48,22 +48,25 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const visible = results.slice(0, maxLineY)
   const icons = await GetFileIcons.getFileIcons(visible)
 
+  // TODO add info message if limit was hit
+
   return {
     ...partialNewState,
-    minLineY: 0,
     deltaY: 0,
-    value,
-    items: results,
-    listItems: results,
-    message,
-    maxLineY: maxLineY,
-    scrollBarHeight,
-    finalDeltaY,
-    threads,
     fileCount,
-    matchCount: resultCount,
-    loaded: true,
+    finalDeltaY,
     icons,
+    items: results,
+    limitHit,
+    listItems: results,
+    loaded: true,
+    matchCount: resultCount,
+    maxLineY: maxLineY,
+    message,
+    minLineY: 0,
+    scrollBarHeight,
     searchInputErrorMessage: '',
+    threads,
+    value,
   }
 }

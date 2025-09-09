@@ -1,8 +1,8 @@
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
-import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
 import { getTextSearchProvider } from '../GetTextSearchProvider/GetTextSearchProvider.ts'
+import { TextSearchCompletionResult } from '../TextSearchCompletionResult/TextSearchCompletionResult.ts'
+import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 
 export const textSearch = async (
   root: string,
@@ -10,7 +10,7 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir: string,
   platform?: number,
-): Promise<readonly SearchResult[]> => {
+): Promise<TextSearchCompletionResult> => {
   Assert.string(root)
   Assert.string(query)
   const scheme = GetProtocol.getProtocol(root)
