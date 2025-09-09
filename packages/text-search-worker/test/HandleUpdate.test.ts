@@ -48,8 +48,11 @@ test.skip('handleUpdate - performs search with valid input', async () => {
   ] as SearchResult[]
 
   add({
-    async ''(): Promise<readonly SearchResult[]> {
-      return searchResults
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      return {
+        results: searchResults,
+        limitHit: false,
+      }
     },
   })
 
@@ -76,7 +79,7 @@ test('handleUpdate - handles search error', async () => {
   const update = { value: 'test' }
 
   add({
-    async ''() {
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
       throw new Error('Search failed')
     },
   })

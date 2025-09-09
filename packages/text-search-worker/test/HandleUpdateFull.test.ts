@@ -9,7 +9,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
   RendererWorker.registerMockRpc({
-    'FileSystem.getFileIcon': () => 'file-icon',
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
 
   const state: SearchState = {
@@ -59,7 +59,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
   RendererWorker.registerMockRpc({
-    'FileSystem.getFileIcon': () => 'file-icon',
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
 
   const state: SearchState = {
