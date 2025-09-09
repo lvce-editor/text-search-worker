@@ -58,6 +58,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     deltaY,
     ItemHeight,
     matchCount,
+    '',
     focus,
   )
 
@@ -68,7 +69,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 2,
+      childCount: 3,
       className: 'SearchHeader',
       onClick: 'handleHeaderClick2',
       onFocusIn: 'handleHeaderFocusIn',
@@ -131,6 +132,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Case',
@@ -146,6 +148,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -161,6 +164,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Use Regular Expression',
@@ -202,6 +206,10 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 0,
       className: 'MaskIcon MaskIconEllipsis',
+      type: 4,
+    },
+    {
+      childCount: 0,
       type: 4,
     },
     {

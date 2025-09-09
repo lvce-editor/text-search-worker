@@ -8,10 +8,10 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   const errorMessage = ''
   const matchCount = 0
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, '')
   expect(dom).toEqual([
     {
-      childCount: 2,
+      childCount: 3,
       className: 'SearchHeader',
       onClick: 'handleHeaderClick2',
       onFocusIn: 'handleHeaderFocusIn',
@@ -74,6 +74,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Case',
@@ -89,6 +90,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -104,6 +106,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Use Regular Expression',
@@ -147,6 +150,10 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MaskIcon MaskIconEllipsis',
       type: 4,
     },
+    {
+      childCount: 0,
+      type: 4,
+    },
   ])
 })
 
@@ -156,7 +163,8 @@ test.skip('getSearchHeaderVirtualDom - with details expanded', () => {
   const errorMessage = ''
   const matchCount = 1
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const limitHitWarning = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, limitHitWarning)
   expect(dom[0].childCount).toBe(4)
   expect(dom[dom.length - 7].className).toBe('SearchHeaderDetails')
   expect(dom[dom.length - 6].text).toBe('files to include')
@@ -169,7 +177,8 @@ test.skip('getSearchHeaderVirtualDom - with replace and details expanded', () =>
   const errorMessage = ''
   const matchCount = 1
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const limitHitWarning = ''
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, limitHitWarning)
   expect(dom[0].childCount).toBe(4)
   expect(flags & SearchFlags.DetailsExpanded).toBeTruthy()
   expect(flags & SearchFlags.ReplaceExpanded).toBeTruthy()

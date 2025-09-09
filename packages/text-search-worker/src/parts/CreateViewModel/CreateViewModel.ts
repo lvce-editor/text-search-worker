@@ -4,6 +4,8 @@ import * as GetSearchDisplayResults from '../GetSearchDisplayResults/GetSearchDi
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 
 export const createViewModel = (state: SearchState): ViewModel => {
+  // TODO add viewmodel to state, not needing to have separate states and making it easier to compare
+  // visible items in diff
   const {
     listItems,
     itemHeight,
