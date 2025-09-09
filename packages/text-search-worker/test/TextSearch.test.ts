@@ -12,7 +12,7 @@ test('textSearch - calls provider with correct arguments', async () => {
   const search = jest.fn(async (): Promise<TextSearchCompletionResult> => {
     return {
       limitHit: false,
-      results: ['result1', 'result2'] as any[]
+      results: ['result1', 'result2'] as any[],
     }
   })
   set({
@@ -24,7 +24,7 @@ test('textSearch - calls provider with correct arguments', async () => {
   expect(search).toHaveBeenCalledWith('test', root, query, options, assetDir, undefined)
   expect(results).toEqual({
     limitHit: false,
-    results: ['result1', 'result2']
+    results: ['result1', 'result2'],
   })
 })
 
@@ -47,7 +47,7 @@ test('textSearch - handles different protocols', async () => {
   const mockProvider = jest.fn(async (): Promise<TextSearchCompletionResult> => {
     return {
       limitHit: false,
-      results: ['result'] as any[]
+      results: ['result'] as any[],
     }
   })
   set({
