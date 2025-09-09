@@ -8,10 +8,10 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   const errorMessage = ''
   const matchCount = 0
   const focus = 0
-  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus)
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, '')
   expect(dom).toEqual([
     {
-      childCount: 2,
+      childCount: 3,
       className: 'SearchHeader',
       onClick: 'handleHeaderClick2',
       onFocusIn: 'handleHeaderFocusIn',
@@ -74,6 +74,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Case',
@@ -89,6 +90,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -104,6 +106,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
+      disabled: undefined,
       role: 'checkbox',
       tabIndex: 0,
       title: 'Use Regular Expression',
@@ -145,6 +148,10 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 0,
       className: 'MaskIcon MaskIconEllipsis',
+      type: 4,
+    },
+    {
+      childCount: 0,
       type: 4,
     },
   ])
