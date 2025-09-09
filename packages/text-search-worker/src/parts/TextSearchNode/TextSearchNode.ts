@@ -1,4 +1,4 @@
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import type { TextSearchCompletionResult } from '../TextSearchCompletionResult/TextSearchCompletionResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
@@ -12,7 +12,7 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir?: string,
   platform?: number,
-): Promise<readonly SearchResult[]> => {
+): Promise<TextSearchCompletionResult> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
@@ -23,12 +23,16 @@ export const textSearch = async (
   }
   if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
     const result = await SearchProcess.invoke('TextSearch.search', actualOptions)
-    // TODO api is weird
-    // @ts-ignore
-    return result.results
+    return {
+      results: result.results,
+      limitHit: result.limitHit,
+    }
   }
   // TODO always create search process messageport rpc to have one api, in web can send the messageport to renderer worker
-  const results = await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
+  const result = await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
   // TODO api is weird
-  return results.results
+  return {
+    results: result.results,
+    limitHit: result.limitHit,
+  }
 }

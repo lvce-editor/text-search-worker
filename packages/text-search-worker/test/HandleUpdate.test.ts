@@ -27,6 +27,7 @@ test('handleUpdate - empty search value returns cleared state', async () => {
     message: '',
     loaded: true,
     searchInputErrorMessage: '',
+    limitHit: false,
   })
 })
 
@@ -47,8 +48,11 @@ test.skip('handleUpdate - performs search with valid input', async () => {
   ] as SearchResult[]
 
   add({
-    async ''(): Promise<readonly SearchResult[]> {
-      return searchResults
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      return {
+        results: searchResults,
+        limitHit: false,
+      }
     },
   })
 
@@ -63,6 +67,7 @@ test.skip('handleUpdate - performs search with valid input', async () => {
     fileCount: 1,
     loaded: true,
     searchInputErrorMessage: '',
+    limitHit: false,
   })
 })
 
@@ -74,7 +79,7 @@ test('handleUpdate - handles search error', async () => {
   const update = { value: 'test' }
 
   add({
-    async ''() {
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
       throw new Error('Search failed')
     },
   })
@@ -90,6 +95,7 @@ test('handleUpdate - handles search error', async () => {
     fileCount: 0,
     minLineY: 0,
     maxLineY: 0,
+    limitHit: false,
   })
 })
 
@@ -103,8 +109,11 @@ test.skip('handleUpdate - uses search flags from state', async () => {
   const update = { value: 'test' }
 
   add({
-    async ''() {
-      return []
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      return {
+        results: [],
+        limitHit: false,
+      }
     },
   })
 

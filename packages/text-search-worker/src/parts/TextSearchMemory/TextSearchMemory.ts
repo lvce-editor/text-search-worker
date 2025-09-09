@@ -1,4 +1,4 @@
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import type { TextSearchCompletionResult } from '../TextSearchCompletionResult/TextSearchCompletionResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
@@ -8,6 +8,10 @@ export const textSearch = async (
   query: string,
   options: TextSearchOptions,
   assetDir: string,
-): Promise<readonly SearchResult[]> => {
-  return RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory', scheme, root, query, options, assetDir)
+): Promise<TextSearchCompletionResult> => {
+  const results = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory', scheme, root, query, options, assetDir)
+  return {
+    results,
+    limitHit: false,
+  }
 }

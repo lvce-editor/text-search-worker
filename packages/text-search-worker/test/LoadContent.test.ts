@@ -17,8 +17,11 @@ test('loadContent with saved value calls handleUpdate', async () => {
   }
 
   TextSearchProviders.add({
-    async ''(): Promise<readonly SearchResult[]> {
-      return []
+    async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      return {
+        results: [],
+        limitHit: false,
+      }
     },
   })
 

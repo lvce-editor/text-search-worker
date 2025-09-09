@@ -1,5 +1,5 @@
 import { expect, jest, test } from '@jest/globals'
-import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
+import type { TextSearchCompletionResult } from '../src/parts/TextSearchCompletionResult/TextSearchCompletionResult.ts'
 import { textSearch } from '../src/parts/TextSearch/TextSearch.ts'
 import { set } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
@@ -9,8 +9,11 @@ test('textSearch - calls provider with correct arguments', async () => {
   const options = { includePattern: '*.ts' } as any
   const assetDir = '/assets'
 
-  const search = jest.fn(async (): Promise<readonly SearchResult[]> => {
-    return ['result1', 'result2'] as any[]
+  const search = jest.fn(async (): Promise<TextSearchCompletionResult> => {
+    return {
+      limitHit: false,
+      results: ['result1', 'result2'] as any[],
+    }
   })
   set({
     test: search,
@@ -19,7 +22,10 @@ test('textSearch - calls provider with correct arguments', async () => {
   const results = await textSearch(root, query, options, assetDir)
   // @ts-ignore
   expect(search).toHaveBeenCalledWith('test', root, query, options, assetDir, undefined)
-  expect(results).toEqual(['result1', 'result2'])
+  expect(results).toEqual({
+    limitHit: false,
+    results: ['result1', 'result2'],
+  })
 })
 
 test('textSearch - throws error for non-string root', async () => {
@@ -38,8 +44,11 @@ test('textSearch - handles different protocols', async () => {
   const options = {} as any
   const assetDir = '/assets'
 
-  const mockProvider = jest.fn(async (): Promise<readonly SearchResult[]> => {
-    return ['result'] as any[]
+  const mockProvider = jest.fn(async (): Promise<TextSearchCompletionResult> => {
+    return {
+      limitHit: false,
+      results: ['result'] as any[],
+    }
   })
   set({
     http: mockProvider,
