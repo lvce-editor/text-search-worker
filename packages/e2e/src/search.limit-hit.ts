@@ -16,7 +16,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await expect(message).toHaveText('10 results in 1 file')
 
   // act
-  await Command.execute('Search.setLimit', 5)
+  await Search.setLimit(5)
 
   // assert
   const warningMessage = Locator('.SearchWarningMessage')
