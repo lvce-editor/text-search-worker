@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.regex-invalid-long'
 
-export const test: Test = async ({ Platform, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `Abc`)
