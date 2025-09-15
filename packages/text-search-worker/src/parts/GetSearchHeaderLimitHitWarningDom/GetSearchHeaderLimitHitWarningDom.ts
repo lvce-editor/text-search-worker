@@ -16,7 +16,12 @@ export const getSearchHeaderLimitHitVirtualDom = (limitHitWarning: string): read
     {
       type: VirtualDomElements.Div,
       className: SearchWarningMessage,
-      childCount: 1,
+      childCount: 2,
+    },
+    {
+      type: VirtualDomElements.Div,
+      className: `MaskIcon MaskIconWarning`,
+      childCount: 0,
     },
     // TODO warning triangle here
     text(limitHitWarning),

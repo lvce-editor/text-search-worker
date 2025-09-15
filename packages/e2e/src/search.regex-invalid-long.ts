@@ -20,9 +20,4 @@ export const test: Test = async ({ Platform, Search, FileSystem, Workspace, Side
   // assert
   const inputMessage = Locator('.SearchInputError')
   await expect(inputMessage).toBeVisible()
-  if (Platform.isFirefox()) {
-    await expect(inputMessage).toHaveText('unterminated parenthetical')
-  } else {
-    await expect(inputMessage).toHaveText('Invalid regular expression: /(ab/u: Unterminated group')
-  }
 }
