@@ -18,7 +18,6 @@ export const getSearchHeaderLimitHitVirtualDom = (limitHitWarning: string): read
       className: SearchWarningMessage,
       childCount: 1,
     },
-
     // TODO warning triangle here
     text(limitHitWarning),
   ]
