@@ -14,6 +14,9 @@ const getPaths = (items: readonly SearchResult[]): readonly string[] => {
 
 export const collapseAll = async (state: SearchState): Promise<SearchState> => {
   const { items } = state
+  if (items.length === 0) {
+    return state
+  }
   const paths = getPaths(items)
   return {
     ...state,
