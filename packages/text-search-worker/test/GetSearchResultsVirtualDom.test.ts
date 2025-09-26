@@ -1,6 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
 
@@ -44,6 +45,7 @@ test('getSearchResultsVirtualDom', () => {
       role: AriaRoles.Tree,
       tabIndex: 0,
       childCount: 1,
+      onBlur: DomEventListenerFunctions.HandleListBlur,
     },
     {
       childCount: 1,
