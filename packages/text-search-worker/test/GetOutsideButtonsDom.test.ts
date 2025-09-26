@@ -1,6 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetOutsideButtonsDom from '../src/parts/GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as InputActionFlag from '../src/parts/InputActionFlag/InputActionFlag.ts'
 
@@ -36,6 +37,7 @@ test('getOutsideButtonsDom - multiple buttons', () => {
         className: 'SearchFieldButton',
         disabled: undefined,
         name: 'Button1',
+        onClick: DomEventListenerFunctions.HandleButtonClick,
         role: AriaRoles.CheckBox,
         tabIndex: 0,
         title: 'Button 1',
@@ -52,6 +54,7 @@ test('getOutsideButtonsDom - multiple buttons', () => {
         className: 'SearchFieldButton SearchFieldButtonDisabled',
         disabled: true,
         name: 'Button2',
+        onClick: DomEventListenerFunctions.HandleButtonClick,
         role: undefined,
         tabIndex: 0,
         title: 'Button 2',

@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchHeaderVirtualDom from '../src/parts/GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
@@ -14,7 +15,6 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 3,
       className: 'SearchHeader',
-      onClick: 5,
       onFocusIn: 6,
       onFocusOut: 7,
       onContextMenu: 3,
@@ -32,7 +32,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaLabel: 'Toggle Replace',
       childCount: 1,
       className: 'IconButton SearchToggleButton',
-      'data-command': 'toggleReplace',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       title: 'Toggle Replace',
       type: 1,
       name: 'ToggleReplace',
@@ -76,6 +76,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Case',
@@ -92,6 +93,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -108,6 +110,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Use Regular Expression',
@@ -140,10 +143,11 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',
-      type: 4,
+      type: 1,
       name: 'ToggleSearchDetails',
     },
     {

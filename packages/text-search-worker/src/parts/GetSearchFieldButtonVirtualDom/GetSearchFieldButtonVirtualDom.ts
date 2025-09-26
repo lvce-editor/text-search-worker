@@ -3,6 +3,7 @@ import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchFieldButtonClassName from '../GetSearchFieldButtonClassName/GetSearchFieldButtonClassName.ts'
 import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
@@ -55,6 +56,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       disabled,
       tabIndex: 0,
       childCount: 1,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
     },
     {
       type: VirtualDomElements.Span,

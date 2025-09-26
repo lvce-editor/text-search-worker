@@ -1,6 +1,7 @@
 import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
@@ -15,11 +16,11 @@ export const getSearchToggleVirtualDom = (replaceExpanded: number): readonly Vir
         replaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
       ),
       title: SearchStrings.toggleReplace(),
-      ariaLabel: SearchStrings.toggleReplace(),
+      ariaLabel: SearchStrings.toggleReplace(), // TODO compute label only once
       ariaExpanded: Boolean(replaceExpanded),
       childCount: 1,
-      'data-command': 'toggleReplace',
       name: InputName.ToggleReplace,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
     },
     {
       type: VirtualDomElements.Div,
