@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
-import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
