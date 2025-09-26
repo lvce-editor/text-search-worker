@@ -4,7 +4,7 @@ import * as ClearSearchResults from '../src/parts/ClearSearchResults/ClearSearch
 import * as Create from '../src/parts/Create/Create.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 test('clearSearchResults - clears state and focuses search input', () => {
   const state: SearchState = {

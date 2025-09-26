@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as ToggleDetailsExpanded from '../src/parts/ToggleDetailsExpanded/ToggleDetailsExpanded.ts'
-import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 test('toggleDetailsExpanded - focuses include files input when expanding', () => {
   const initialState: SearchState = {
