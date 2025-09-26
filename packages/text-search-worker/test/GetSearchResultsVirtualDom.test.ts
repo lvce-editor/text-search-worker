@@ -46,6 +46,7 @@ test('getSearchResultsVirtualDom', () => {
       tabIndex: 0,
       childCount: 1,
       onBlur: DomEventListenerFunctions.HandleListBlur,
+      onPointerDown: DomEventListenerFunctions.HandleListPointerDown,
     },
     {
       childCount: 1,
