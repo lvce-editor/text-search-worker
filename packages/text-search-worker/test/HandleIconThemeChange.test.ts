@@ -22,7 +22,13 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual(['icon1', 'icon1'])
   expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }, { type: 7, name: 'file2.txt', path: '/file2.txt' }]],
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 7, name: 'file1.txt', path: '/file1.txt' },
+        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+      ],
+    ],
   ])
 })
 
@@ -39,7 +45,5 @@ test('handleIconThemeChange handles empty items array', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getIcons', []],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', []]])
 })
