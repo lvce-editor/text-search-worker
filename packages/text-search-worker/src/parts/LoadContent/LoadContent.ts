@@ -4,7 +4,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
-  const { savedValue, savedCollapsedPaths, threads, replacement, flags, includeValue, excludeValue, focus } = RestoreState.restoreState(savedState)
+  const { savedValue, savedCollapsedPaths, threads, replacement, flags, includeValue, excludeValue } = RestoreState.restoreState(savedState)
 
   const update: Partial<SearchState> = {
     value: savedValue,
@@ -15,7 +15,7 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     flags,
     includeValue,
     excludeValue,
-    focus,
+    focus: 0, // TODO
   }
   if (savedValue) {
     const result = await ViewletSearchHandleUpdate.handleUpdate(state, update)
