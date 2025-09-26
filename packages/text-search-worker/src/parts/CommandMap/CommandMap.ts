@@ -152,7 +152,7 @@ export const commandMap = {
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.restoreState': RestoreState.restoreState,
-  'TextSearch.saveState': SaveState.saveState,
+  'TextSearch.saveState': WrapCommand.wrapGetter(SaveState.saveState),
   'TextSearch.terminate': terminate,
   'TextSearch.renderActions': RenderActions.renderActions,
 
