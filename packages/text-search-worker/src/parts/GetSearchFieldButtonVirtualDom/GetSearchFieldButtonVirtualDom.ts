@@ -5,6 +5,7 @@ import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as GetSearchFieldButtonClassName from '../GetSearchFieldButtonClassName/GetSearchFieldButtonClassName.ts'
 import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
 // TODO maybe move logic to viewmodel, which returns ariaChecked 1 | 2 | 3
@@ -55,6 +56,7 @@ export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly Vi
       disabled,
       tabIndex: 0,
       childCount: 1,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
     },
     {
       type: VirtualDomElements.Span,

@@ -5,17 +5,19 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] => {
   return [
     {
-      type: VirtualDomElements.Div,
+      type: VirtualDomElements.Button,
       className: ClassNames.ToggleDetails,
       role: AriaRoles.Button,
       tabIndex: 0,
       ariaLabel: SearchStrings.toggleSearchDetails(),
       title: SearchStrings.toggleSearchDetails(),
       name: InputName.ToggleSearchDetails,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       childCount: 1,
     },
     {

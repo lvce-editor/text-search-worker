@@ -4,6 +4,7 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 export const getSearchToggleVirtualDom = (replaceExpanded: number): readonly VirtualDomNode[] => {
   return [
@@ -15,11 +16,11 @@ export const getSearchToggleVirtualDom = (replaceExpanded: number): readonly Vir
         replaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
       ),
       title: SearchStrings.toggleReplace(),
-      ariaLabel: SearchStrings.toggleReplace(),
+      ariaLabel: SearchStrings.toggleReplace(), // TODO compute label only once
       ariaExpanded: Boolean(replaceExpanded),
       childCount: 1,
-      'data-command': 'toggleReplace',
       name: InputName.ToggleReplace,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
     },
     {
       type: VirtualDomElements.Div,

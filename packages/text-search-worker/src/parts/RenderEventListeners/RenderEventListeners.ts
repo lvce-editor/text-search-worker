@@ -57,7 +57,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       passive: true,
     },
     {
-      name: DomEventListenerFunctions.HandleHeaderClick2,
+      name: DomEventListenerFunctions.HandleButtonClick,
       params: ['handleHeaderClick', EventExpression.TargetName],
     },
     {

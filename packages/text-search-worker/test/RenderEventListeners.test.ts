@@ -57,7 +57,7 @@ test('renderEventListeners', () => {
       passive: true,
     },
     {
-      name: DomEventListenerFunctions.HandleHeaderClick2,
+      name: DomEventListenerFunctions.HandleButtonClick,
       params: ['handleHeaderClick', 'event.target.name'],
     },
     {
