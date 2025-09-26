@@ -22,10 +22,6 @@ test('renderEventListeners', () => {
       params: ['handleReplaceInput', 'event.target.value'],
     },
     {
-      name: DomEventListenerFunctions.HandleInput,
-      params: ['handleInput', 'event.target.value', InputSource.User],
-    },
-    {
       name: DomEventListenerFunctions.HandleClick,
       params: ['handleClickAt', 'event.clientX', 'event.clientY'],
     },
@@ -71,6 +67,14 @@ test('renderEventListeners', () => {
     {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
       params: ['handleScrollBarClick', 'event.deltaY'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputFocus,
+      params: ['handleInputFocus', 'event.target.name'],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputBlur,
+      params: ['handleInputBlur', 'event.target.name'],
     },
   ])
 })

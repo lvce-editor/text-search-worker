@@ -12,18 +12,8 @@ const parentNode: VirtualDomNode = {
   className: ClassNames.SearchHeader,
   role: AriaRoles.None,
   childCount: 3,
-  // onClick: DomEventListenerFunctions.HandleHeaderClick2,
-  onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
-  onFocusOut: DomEventListenerFunctions.HandleHeaderFocusOut,
   onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
 }
-
-// TODO
-// 1. add click listener to individual buttons
-// 2. add focusin listener to inputs
-// 3. add blur listener to inputs
-// 4. add context menu listener to inputs
-// 5. add a context menu listener to the outer header, only to prevent default
 
 export const getSearchHeaderVirtualDom = (
   flags: number,

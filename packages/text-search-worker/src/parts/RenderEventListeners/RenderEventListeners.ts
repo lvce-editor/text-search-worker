@@ -22,10 +22,6 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       params: ['handleReplaceInput', EventExpression.TargetValue],
     },
     {
-      name: DomEventListenerFunctions.HandleInput,
-      params: ['handleInput', EventExpression.TargetValue, InputSource.User],
-    },
-    {
       name: DomEventListenerFunctions.HandleClick,
       params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
     },
@@ -71,6 +67,14 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
       params: ['handleScrollBarClick', EventExpression.DeltaY],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputFocus,
+      params: ['handleInputFocus', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputBlur,
+      params: ['handleInputBlur', EventExpression.TargetName],
     },
   ]
 }

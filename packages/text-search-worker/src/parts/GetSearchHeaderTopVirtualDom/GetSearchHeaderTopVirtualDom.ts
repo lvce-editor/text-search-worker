@@ -43,7 +43,6 @@ export const getSearchHeaderTopVirtualDom = (
       DomEventListenerFunctions.HandleInput2,
       inputActions.inside,
       inputActions.outside,
-      '',
       Boolean(searchInputErrorMessage),
     ),
   ]

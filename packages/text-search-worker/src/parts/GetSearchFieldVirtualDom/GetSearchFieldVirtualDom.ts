@@ -3,6 +3,7 @@ import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetOutSideButtonsDom from '../GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
@@ -13,7 +14,6 @@ export const getSearchFieldVirtualDom = (
   onInput: string | number,
   insideButtons: readonly InputAction[],
   outsideButtons: readonly InputAction[],
-  onFocus = '',
   hasError = false,
 ): readonly VirtualDomNode[] => {
   const { preNodes, postNodes } = GetOutSideButtonsDom.getOutSideButtonsDom(outsideButtons)
@@ -38,7 +38,9 @@ export const getSearchFieldVirtualDom = (
       placeholder,
       name,
       onInput,
-      onFocus,
+      onFocus: DomEventListenerFunctions.HandleInputFocus,
+      onBlur: DomEventListenerFunctions.HandleInputBlur,
+      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       childCount: 0,
     },
     {
