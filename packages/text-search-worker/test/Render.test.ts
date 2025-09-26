@@ -1,10 +1,10 @@
 import { expect, test } from '@jest/globals'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as Render from '../src/parts/Render/Render.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
 
 test('doRender - no changes returns empty commands', () => {
   const oldState = Create.create(1, 0, 0, 0, 0, '', '')

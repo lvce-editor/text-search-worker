@@ -1,5 +1,5 @@
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import { ReplaceExpanded, DetailsExpanded } from '../SearchFlags/SearchFlags.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getNextFocus = (focus: number, flags: number): number => {
   switch (focus) {

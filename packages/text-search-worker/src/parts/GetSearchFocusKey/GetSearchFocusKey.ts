@@ -1,5 +1,5 @@
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import * as InputName from '../InputName/InputName.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getSearchFocusKey = (key: string): number => {
   switch (key) {
