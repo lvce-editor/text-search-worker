@@ -29,6 +29,8 @@ export const getFocusSelector = (focusKey: number): string => {
       return InputName.UseExcludeSettings
     case WhenExpression.FocusToggleReplace:
       return InputName.ToggleReplace
+    case WhenExpression.FocusSearchResults:
+      return '.Tree'
     default:
       return ''
   }
