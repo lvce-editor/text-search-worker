@@ -3,6 +3,7 @@ import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts
 import * as CollapseAll from '../CollapseAll/CollapseAll.ts'
 import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
+import * as CopyPath from '../CopyPath/CopyPath.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
@@ -67,7 +68,6 @@ import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFiles.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
-import * as CopyPath from '../CopyPath/CopyPath.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 export const commandMap = {
