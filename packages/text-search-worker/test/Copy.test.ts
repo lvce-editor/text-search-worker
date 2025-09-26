@@ -9,7 +9,7 @@ test('copy - no focused item returns same state', async () => {
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    listFocusedIndex: -1,
+    focusedIndex: -1,
     items: [],
   }
 
@@ -25,7 +25,7 @@ test('copy - copies text from focused item', async () => {
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
-    listFocusedIndex: 0,
+    focusedIndex: 0,
     items: [{ text: 'test text', end: 0, lineNumber: 0, start: 0, type: 0 }],
   }
 
