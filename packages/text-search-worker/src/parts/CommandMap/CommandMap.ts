@@ -67,6 +67,7 @@ import * as ToggleReplace from '../ToggleReplace/ToggleReplace.ts'
 import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFiles.ts'
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
+import * as CopyPath from '../CopyPath/CopyPath.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 export const commandMap = {
@@ -74,6 +75,7 @@ export const commandMap = {
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
+  'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
   'TextSearch.diff2': Diff2.diff2,
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
