@@ -25,7 +25,7 @@ test('selectIndex - no selection', async () => {
 
 test('selectIndex - select file item', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {
@@ -41,13 +41,13 @@ test('selectIndex - select file item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
 })
 
 test('selectIndex - select match item', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {
@@ -63,7 +63,7 @@ test('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
 })
 
 test('getFileIndex - finds closest file above match', async () => {

@@ -6,7 +6,7 @@ import * as RestoreState from '../RestoreState/RestoreState.ts'
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
   const { savedValue, savedCollapsedPaths, threads, replacement, flags, includeValue, excludeValue } = RestoreState.restoreState(savedState)
   if (savedValue) {
-    return ViewletSearchHandleUpdate.handleUpdate(state, {
+    const result = await ViewletSearchHandleUpdate.handleUpdate(state, {
       value: savedValue,
       threads,
       inputSource: InputSource.Script,
@@ -16,6 +16,10 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
       includeValue,
       excludeValue,
     })
+    return {
+      ...result,
+      loaded: true,
+    }
   }
   return {
     ...state,

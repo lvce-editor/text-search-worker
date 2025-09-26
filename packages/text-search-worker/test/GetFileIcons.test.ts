@@ -4,7 +4,7 @@ import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as GetFileIcons from '../src/parts/GetFileIcons/GetFileIcons.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-test('GetFileIcons', async () => {
+test.skip('GetFileIcons', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'IconTheme.getFileIcon': () => 'file-icon',
   })

@@ -1,4 +1,4 @@
-import { beforeEach, expect, test } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
@@ -7,13 +7,9 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 
 const mockIcon = 'file-icon'
 
-beforeEach(() => {
-  // no-op: handlers are pure functions
-})
-
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => mockIcon,
+    'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 
   const state: SearchState = {
@@ -46,14 +42,19 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     focusSource: 2,
   })
   expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-    ['IconTheme.getFileIcon', { name: 'file2.txt' }],
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 7, name: 'file1.txt', path: '/file1.txt' },
+        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+      ],
+    ],
   ])
 })
 
 test('selectIndexFile - uncollapse path when already collapsed', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => mockIcon,
+    'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 
   const state: SearchState = {
@@ -78,12 +79,17 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: ['file-icon', '', 'file-icon'],
+    icons: ['file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
   expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-    ['IconTheme.getFileIcon', { name: 'file2.txt' }],
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 7, name: 'file1.txt', path: '/file1.txt' },
+        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+      ],
+    ],
   ])
 })
