@@ -9,7 +9,7 @@ const mockIcon = 'file-icon'
 
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => mockIcon,
+    'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 
   const state: SearchState = {
