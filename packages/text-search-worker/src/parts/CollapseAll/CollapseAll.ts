@@ -1,4 +1,4 @@
-import { SearchResult } from '@lvce-editor/rpc-registry'
+import type { SearchResult } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
