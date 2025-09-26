@@ -1,10 +1,11 @@
 export interface RestoredState {
-  readonly savedValue: string
-  readonly savedCollapsedPaths: readonly string[]
-  readonly threads: number
-  readonly replacement: string
-  readonly flags: number
-  readonly includeValue: string
   readonly excludeValue: string
+  readonly flags: number
+  readonly focus: number
   readonly history: readonly string[]
+  readonly includeValue: string
+  readonly replacement: string
+  readonly savedCollapsedPaths: readonly string[]
+  readonly savedValue: string
+  readonly threads: number
 }
