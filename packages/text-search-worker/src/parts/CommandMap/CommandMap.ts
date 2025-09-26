@@ -24,6 +24,7 @@ import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconTheme
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
 import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
+import { handleInputBlur } from '../HandleInputBlur/HandleInputBlur.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
@@ -76,6 +77,7 @@ export const commandMap = {
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
+  'TextSearch.handleInputBlur': WrapCommand.wrapCommand(handleInputBlur),
   'TextSearch.diff2': Diff2.diff2,
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
