@@ -15,3 +15,4 @@ export const HandleToggleButtonClick = 15
 export const HandleWheel = 16
 export const HandleInputFocus = 17
 export const HandleInputBlur = 18
+export const HandleListPointerDown = 19
