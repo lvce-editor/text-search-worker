@@ -31,7 +31,5 @@ test('copy - copies text from focused item', async () => {
 
   const result = await Copy.copy(state)
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ClipBoard.writeText', 'test text'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'test text']])
 })

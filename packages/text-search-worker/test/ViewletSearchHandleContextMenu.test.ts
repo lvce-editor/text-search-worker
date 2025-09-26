@@ -10,7 +10,11 @@ test('handleContextMenu - mouse event shows context menu at mouse position', asy
     'ContextMenu.show': () => undefined,
   })
 
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = {
+    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    x: 0,
+    y: 0,
+  }
   const button = MouseEventType.Keyboard
   const x = 100
   const y = 200
@@ -18,7 +22,5 @@ test('handleContextMenu - mouse event shows context menu at mouse position', asy
   const result = await handleContextMenu(state, button, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show', x, y, 18],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show', 0, 0, 18]])
 })

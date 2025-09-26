@@ -13,9 +13,7 @@ test('show - invokes rpc with correct coordinates and menu id', async () => {
   const menuId = MenuEntryId.Search
 
   await ContextMenu.show(x, y, menuId)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show', x, y, menuId],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show', x, y, menuId]])
 })
 
 test('show - handles rpc error', async () => {
@@ -30,7 +28,5 @@ test('show - handles rpc error', async () => {
   const menuId = MenuEntryId.Search
 
   await expect(ContextMenu.show(x, y, menuId)).rejects.toThrow('Failed to show context menu')
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show', x, y, menuId],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show', x, y, menuId]])
 })

@@ -21,9 +21,7 @@ test.skip('launchSearchProcessElectron - creates message port and rpc', async ()
     commandMap: {},
     isMessagePortOpen: true,
   })
-  expect(mockRpc.invocations).toEqual([
-    ['SendMessagePortToElectron.sendMessagePortToElectron', expect.anything()],
-  ])
+  expect(mockRpc.invocations).toEqual([['SendMessagePortToElectron.sendMessagePortToElectron', expect.anything()]])
 })
 
 test.skip('launchSearchProcessElectron - handles rpc creation error', async () => {
@@ -48,7 +46,5 @@ test.skip('launchSearchProcessElectron - handles port transfer error', async () 
   })
 
   await expect(LaunchSearchProcessElectron.launchSearchProcessElectron()).rejects.toThrow('Failed to transfer port')
-  expect(mockRpc.invocations).toEqual([
-    ['SendMessagePortToElectron.sendMessagePortToElectron', expect.anything()],
-  ])
+  expect(mockRpc.invocations).toEqual([['SendMessagePortToElectron.sendMessagePortToElectron', expect.anything()]])
 })

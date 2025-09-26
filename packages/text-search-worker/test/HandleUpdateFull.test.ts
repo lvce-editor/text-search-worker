@@ -56,9 +56,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
@@ -111,7 +109,5 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })

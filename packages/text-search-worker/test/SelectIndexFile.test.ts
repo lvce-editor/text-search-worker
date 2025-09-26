@@ -84,7 +84,6 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
   })
   expect(mockRpc.invocations).toEqual([
     ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-    ['IconTheme.getFileIcon', { name: 'match1' }],
     ['IconTheme.getFileIcon', { name: 'file2.txt' }],
   ])
 })

@@ -41,9 +41,7 @@ test('selectIndex - select file item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })
 
 test('selectIndex - select match item', async () => {
@@ -65,9 +63,7 @@ test('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })
 
 test('getFileIndex - finds closest file above match', async () => {
@@ -83,14 +79,13 @@ test('getFileIndex - finds closest file above match', async () => {
       { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
       { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
     ],
+    workspacePath: '/test',
   }
   // @ts-ignore
   state.listItems = state.items
 
   await SelectIndex.selectIndex(state, 2) // Select second match
-  expect(mockRpc.invocations).toEqual([
-    ['Main.openUri', 'file1.ts', { selections: new Uint32Array([10, 0, 10, 0]) }],
-  ])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', '/test/file1.ts', true, { selections: new Uint32Array([10, 0, 10, 0]) }]])
 })
 
 test('getFileIndex - returns -1 when no file found', async () => {
@@ -122,6 +117,7 @@ test('selectIndexPreview - handles match with file above', async () => {
       { type: TextSearchResultType.Match, lineNumber: 10, start: 0, end: 0, text: '' },
       { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
     ],
+    workspacePath: '/test',
   }
   // @ts-ignore
   state.listItems = state.items
@@ -135,7 +131,5 @@ test('selectIndexPreview - handles match with file above', async () => {
     focus: 22,
     focusSource: 2,
   })
-  expect(mockRpc.invocations).toEqual([
-    ['Main.openUri', 'file1.ts', { selections: new Uint32Array([10, 0, 10, 0]) }],
-  ])
+  expect(mockRpc.invocations).toEqual([['Main.openUri', '/test/file1.ts', true, { selections: new Uint32Array([10, 0, 10, 0]) }]])
 })

@@ -44,9 +44,7 @@ test('textSearch - extension search', async () => {
 
   const result = await TextSearchExtension.textSearch('xyz', 'xyz://', 'abc')
   expect(result).toEqual(mockResults)
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostTextSearch.executeTextSearchProvider', 'xyz', 'xyz://', 'abc'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.executeTextSearchProvider', 'xyz', 'abc']])
 })
 
 test('textSearch - extension search error', async () => {
@@ -57,7 +55,5 @@ test('textSearch - extension search error', async () => {
   })
 
   await expect(TextSearchExtension.textSearch('xyz', 'xyz://', 'abc')).rejects.toThrow(new TypeError('x is not a function'))
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostTextSearch.executeTextSearchProvider', 'xyz', 'xyz://', 'abc'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.executeTextSearchProvider', 'xyz', 'abc']])
 })

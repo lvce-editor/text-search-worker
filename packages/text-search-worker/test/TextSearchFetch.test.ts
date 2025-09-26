@@ -35,9 +35,7 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
     ],
     limitHit: false,
   })
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir]])
 })
 
 test('textSearch - handles error from ParentRpc', async () => {
@@ -54,7 +52,5 @@ test('textSearch - handles error from ParentRpc', async () => {
   const assetDir = '/assets'
 
   await expect(TextSearchFetch.textSearch(scheme, root, query, options, assetDir)).rejects.toThrow('Network error')
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir]])
 })
