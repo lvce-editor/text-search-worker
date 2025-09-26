@@ -185,7 +185,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
-      role: 'status',
+      role: AriaRoles.Status,
       tabIndex: 0,
       type: 4,
     },
@@ -198,7 +198,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
-      role: 'button',
+      role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',
       name: 'ToggleSearchDetails',
@@ -216,7 +216,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'Viewlet List Tree',
-      role: 'tree',
+      role: AriaRoles.Tree,
       tabIndex: 0,
       type: 4,
     },
