@@ -1,5 +1,5 @@
 import type { RestoredState } from '../RestoredState/RestoredState.ts'
-import { getSavedFocus } from '../GetSavedFocus/GetSavedFocus.ts'
+import { getSavedFocus, getSavedListFocus } from '../GetSavedFocus/GetSavedFocus.ts'
 import { getSavedHistory } from '../GetSavedHistory/GetSavedHistory.ts'
 import {
   getSavedValue,
@@ -21,5 +21,6 @@ export const restoreState = (savedState: unknown): RestoredState => {
     excludeValue: getSavedExcludeValue(savedState),
     history: getSavedHistory(savedState),
     focus: getSavedFocus(savedState),
+    listFocused: getSavedListFocus(savedState),
   }
 }

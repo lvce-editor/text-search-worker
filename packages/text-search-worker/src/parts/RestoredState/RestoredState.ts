@@ -4,6 +4,7 @@ export interface RestoredState {
   readonly focus: number
   readonly history: readonly string[]
   readonly includeValue: string
+  readonly listFocused: boolean
   readonly replacement: string
   readonly savedCollapsedPaths: readonly string[]
   readonly savedValue: string
