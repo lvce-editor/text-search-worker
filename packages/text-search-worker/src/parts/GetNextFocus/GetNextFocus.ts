@@ -38,8 +38,6 @@ export const getNextFocus = (focus: number, flags: number): number => {
       return WhenExpression.FocusSearchResults
     case WhenExpression.FocusIgnoreFiles:
       return WhenExpression.FocusSearchResults
-    case WhenExpression.FocusUseExcludeSettings:
-      return WhenExpression.FocusSearchResults
     default:
       return focus
   }

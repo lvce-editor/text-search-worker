@@ -26,17 +26,6 @@ test('focusNextInput - from ignore files sets listFocused to true', () => {
   expect(updatedState.listFocused).toBe(true)
 })
 
-test('focusNextInput - from use exclude settings sets listFocused to true', () => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
-  const updatedState = FocusNextInput.focusNextInput({
-    ...state,
-    focus: WhenExpression.FocusUseExcludeSettings,
-    flags: 0,
-  })
-  expect(updatedState.focus).toBe(WhenExpression.FocusSearchResults)
-  expect(updatedState.listFocused).toBe(true)
-})
-
 test('focusNextInput - from search input does not set listFocused to true', () => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')
   const updatedState = FocusNextInput.focusNextInput({
