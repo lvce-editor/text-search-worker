@@ -15,7 +15,7 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     flags,
     includeValue,
     excludeValue,
-    focus,
+    focus: 0, // TODO
   }
   if (savedValue) {
     const result = await ViewletSearchHandleUpdate.handleUpdate(state, update)
