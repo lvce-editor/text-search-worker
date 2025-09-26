@@ -125,6 +125,7 @@ export const commandMap = {
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
   'TextSearch.rerender': Rerender.rerender,
   'TextSearch.selectIndex': WrapCommand.wrapCommand(SelectIndex.selectIndex),
+  'TextSearch.setLimit': WrapCommand.wrapCommand(setLimit),
   'TextSearch.submit': WrapCommand.wrapCommand(Submit.submit),
   'TextSearch.toggleMatchCase': WrapCommand.wrapCommand(ToggleMatchCase.toggleMatchCase),
   'TextSearch.toggleMatchWholeWord': WrapCommand.wrapCommand(ToggleMatchWholeWord.toggleMatchWholeWord),
@@ -135,7 +136,6 @@ export const commandMap = {
   'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
-  'TextSearch.setLimit': WrapCommand.wrapCommand(setLimit),
 
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
