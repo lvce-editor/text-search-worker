@@ -28,5 +28,6 @@ test('saveState', () => {
     history: [],
     collapsedPaths: [],
     focus: 0,
+    listFocused: false,
   })
 })

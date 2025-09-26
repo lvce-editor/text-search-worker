@@ -7,4 +7,5 @@ export interface SavedState {
   readonly replacement: string
   readonly value: string
   readonly focus: number
+  readonly listFocused: boolean
 }
