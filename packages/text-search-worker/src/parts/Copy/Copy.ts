@@ -1,5 +1,5 @@
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const copy = async (state: SearchState): Promise<SearchState> => {
   const { items, focusedIndex } = state
