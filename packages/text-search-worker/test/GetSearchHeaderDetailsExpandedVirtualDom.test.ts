@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchHeaderDetailsExpandedVirtualDom from '../src/parts/GetSearchHeaderDetailsExpandedVirtualDom/GetSearchHeaderDetailsExpandedVirtualDom.ts'
 
 test('getSearchHeaderDetailsExpandedVirtualDom', () => {
@@ -20,7 +21,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
-      role: 'button',
+      role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',
       name: 'ToggleSearchDetails',
@@ -44,7 +45,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
     {
       childCount: 2,
       className: 'SearchField',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -68,7 +69,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Search Only Open Editors',
       name: 'SearchOnlyOpenEditors',
@@ -92,7 +93,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
     {
       childCount: 2,
       className: 'SearchField',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -116,7 +117,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       ariaChecked: false,
       childCount: 1,
       className: 'SearchFieldButton',
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       name: 'UseExcludeSettings',
       title: 'Use Exclude Settings',
@@ -130,7 +131,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
     {
       childCount: 1,
       className: 'ViewletSearchMessage',
-      role: 'status',
+      role: AriaRoles.Status,
       tabIndex: 0,
       type: 4,
     },

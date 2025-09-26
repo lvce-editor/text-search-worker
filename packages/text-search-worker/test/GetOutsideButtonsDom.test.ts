@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
 import * as GetOutsideButtonsDom from '../src/parts/GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as InputActionFlag from '../src/parts/InputActionFlag/InputActionFlag.ts'
@@ -35,7 +36,7 @@ test('getOutsideButtonsDom - multiple buttons', () => {
         className: 'SearchFieldButton',
         disabled: undefined,
         name: 'Button1',
-        role: 'checkbox',
+        role: AriaRoles.CheckBox,
         tabIndex: 0,
         title: 'Button 1',
         type: 1,
@@ -66,7 +67,7 @@ test('getOutsideButtonsDom - multiple buttons', () => {
       {
         childCount: 3,
         className: 'SearchFieldContainer',
-        role: 'none',
+        role: AriaRoles.None,
         type: 4,
       },
     ],

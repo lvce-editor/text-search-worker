@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
@@ -40,7 +41,7 @@ test('getSearchResultsVirtualDom', () => {
     {
       type: 4,
       className: 'Viewlet List Tree',
-      role: 'tree',
+      role: AriaRoles.Tree,
       tabIndex: 0,
       childCount: 1,
     },
@@ -66,7 +67,7 @@ test('getSearchResultsVirtualDom', () => {
       className: 'TreeItem',
       paddingLeft: '1rem',
       paddingRight: '12px',
-      role: 'treeitem',
+      role: AriaRoles.TreeItem,
       title: 'abc',
       type: 4,
     },
@@ -78,7 +79,7 @@ test('getSearchResultsVirtualDom', () => {
     {
       childCount: 0,
       className: 'FileIcon',
-      role: 'none',
+      role: AriaRoles.None,
       src: 'test',
       type: 17,
     },

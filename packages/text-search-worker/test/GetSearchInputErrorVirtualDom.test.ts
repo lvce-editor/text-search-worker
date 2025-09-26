@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchInputErrorVirtualDom from '../src/parts/GetSearchInputErrorVirtualDom/GetSearchInputErrorVirtualDom.ts'
 
 test('getSearchInputErrorVirtualDom - with error message', () => {
@@ -7,7 +8,7 @@ test('getSearchInputErrorVirtualDom - with error message', () => {
     {
       type: 4,
       className: 'SearchInputError',
-      role: 'alert',
+      role: AriaRoles.Alert,
       childCount: 1,
     },
     {

@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchDetailsToggleVirtualDom from '../src/parts/GetSearchDetailsToggleVirtualDom/GetSearchDetailsToggleVirtualDom.ts'
 
 test('getSearchDetailsToggleVirtualDom', () => {
@@ -6,7 +7,7 @@ test('getSearchDetailsToggleVirtualDom', () => {
     {
       type: 4,
       className: 'ToggleDetails',
-      role: 'button',
+      role: AriaRoles.Button,
       tabIndex: 0,
       ariaLabel: 'Toggle Search Details',
       title: 'Toggle Search Details',

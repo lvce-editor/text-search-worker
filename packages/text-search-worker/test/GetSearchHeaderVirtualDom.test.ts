@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchHeaderVirtualDom from '../src/parts/GetSearchHeaderVirtualDom/GetSearchHeaderVirtualDom.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
@@ -17,13 +18,13 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       onFocusIn: 'handleHeaderFocusIn',
       onFocusOut: 'handleHeaderFocusOut',
       onContextMenu: 'handleHeaderContextMenu',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
       childCount: 2,
       className: 'SearchHeaderTop',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -44,13 +45,13 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 1,
       className: 'SearchHeaderTopRight',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
       childCount: 2,
       className: 'SearchField',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -75,7 +76,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Case',
       name: 'MatchCase',
@@ -91,7 +92,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Whole Word',
       name: 'MatchWholeWord',
@@ -107,7 +108,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Use Regular Expression',
       name: 'UseRegularExpression',
@@ -126,7 +127,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 1,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
-      role: 'status',
+      role: AriaRoles.Status,
       tabIndex: 0,
       type: 4,
     },
@@ -139,7 +140,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
-      role: 'button',
+      role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',
       type: 4,

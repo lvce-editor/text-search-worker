@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as RenderActions from '../src/parts/RenderActions/RenderActions.ts'
@@ -31,7 +32,7 @@ test.skip('renderActions - returns virtual dom when states differ', () => {
   expect(result[0]).toEqual({
     type: 4,
     className: 'Actions',
-    role: 'toolbar',
+    role: AriaRoles.ToolBar,
     childCount: 0,
   })
 })
