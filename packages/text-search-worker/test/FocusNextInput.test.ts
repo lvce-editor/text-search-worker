@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as FocusNextInput from '../src/parts/FocusNextInput/FocusNextInput.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 test('focusNextInput - from toggle details with details collapsed sets listFocused to true', () => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')

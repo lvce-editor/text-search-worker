@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
-import * as GetFocusSelector from '../src/parts/GetFocusSelector/GetFocusSelector.ts'
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
+import * as GetFocusSelector from '../src/parts/GetFocusSelector/GetFocusSelector.ts'
 
 test('getFocusSelector - search input', () => {
   expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchInput)).toBe('SearchValue')

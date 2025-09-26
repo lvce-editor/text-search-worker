@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import * as GetPreviousFocus from '../src/parts/GetPreviousFocus/GetPreviousFocus.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 test('getPreviousFocus - from match case to search input without replace expanded', () => {
   const result = GetPreviousFocus.getPreviousFocus(WhenExpression.FocusSearchMatchCase, 0)
