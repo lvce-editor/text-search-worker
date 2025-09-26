@@ -38,6 +38,7 @@ import * as ListFocusNextPage from '../ListFocusNextPage/ListFocusNextPage.ts'
 import * as ListFocusPrevious from '../ListFocusPrevious/ListFocusPrevious.ts'
 import * as ListFocusPreviouPage from '../ListFocusPreviousPage/ListFocusPreviousPage.ts'
 import * as ListHandleClickAt from '../ListHandleClickAt/ListHandleClickAt.ts'
+import { handleListPointerDown } from '../ListHandlePointerDown/ListHandlePointerDown.ts'
 import * as ListHandleScrollBarCaptureLost from '../ListHandleScrollBarCaptureLost/ListHandleScrollBarCaptureLost.ts'
 import * as ListHandleScrollBarClick from '../ListHandleScrollBarClick/ListHandleScrollBarClick.ts'
 import * as ListHandleScrollBarMove from '../ListHandleScrollBarMove/ListHandleScrollBarMove.ts'
@@ -140,6 +141,7 @@ export const commandMap = {
   'TextSearch.toggleReplace': WrapCommand.wrapCommand(ToggleReplace.toggleReplace),
   'TextSearch.toggleSearchDetails': WrapCommand.wrapCommand(ToggleDetailsExpanded.toggleDetailsExpanded),
   'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
+  'TextSearch.handleListPointerDown': WrapCommand.wrapCommand(handleListPointerDown),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
 
