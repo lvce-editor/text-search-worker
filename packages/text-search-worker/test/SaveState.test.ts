@@ -30,5 +30,6 @@ test('saveState', () => {
     includeValue: '*.ts',
     excludeValue: 'node_modules',
     history: [],
+    collapsedPaths: [],
   })
 })
