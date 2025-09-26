@@ -9,7 +9,7 @@ test('openUri - without options', async () => {
 
   await OpenUri.openUri('/test/file.txt')
   expect(mockRpc.invocations).toEqual([
-    ['Main.openUri', '/test/file.txt', false, undefined],
+    ['Main.openUri', '/test/file.txt', true, {}],
   ])
 })
 
@@ -20,7 +20,7 @@ test('openUri - with preview', async () => {
 
   await OpenUri.openUri('/test/file.txt', true)
   expect(mockRpc.invocations).toEqual([
-    ['Main.openUri', '/test/file.txt', true, undefined],
+    ['Main.openUri', '/test/file.txt', true, {}],
   ])
 })
 
@@ -47,6 +47,6 @@ test('openUri - error', async () => {
 
   await expect(OpenUri.openUri('/test/file.txt')).rejects.toThrow('Failed to open file')
   expect(mockRpc.invocations).toEqual([
-    ['Main.openUri', '/test/file.txt', false, undefined],
+    ['Main.openUri', '/test/file.txt', true, {}],
   ])
 })
