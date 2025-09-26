@@ -75,6 +75,24 @@ test('getNextFocus - from exclude input', () => {
   expect(GetNextFocus.getNextFocus(focus, flags)).toBe(WhenExpression.FocusIgnoreFiles)
 })
 
+test('getNextFocus - from toggle details with details expanded', () => {
+  const focus = WhenExpression.FocusToggleDetails
+  const flags = SearchFlags.DetailsExpanded
+  expect(GetNextFocus.getNextFocus(focus, flags)).toBe(WhenExpression.FocusSearchIncludeInput)
+})
+
+test('getNextFocus - from toggle details with details collapsed', () => {
+  const focus = WhenExpression.FocusToggleDetails
+  const flags = 0
+  expect(GetNextFocus.getNextFocus(focus, flags)).toBe(WhenExpression.FocusSearchResults)
+})
+
+test('getNextFocus - from ignore files', () => {
+  const focus = WhenExpression.FocusIgnoreFiles
+  const flags = 0
+  expect(GetNextFocus.getNextFocus(focus, flags)).toBe(WhenExpression.FocusSearchResults)
+})
+
 test('getNextFocus - default case returns same focus', () => {
   const focus = -1
   const flags = 0
