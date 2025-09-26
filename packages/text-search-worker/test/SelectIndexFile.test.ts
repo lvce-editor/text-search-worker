@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
-import * as Create from '../src/parts/Create/Create.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as Create from '../src/parts/Create/Create.ts'
 import { selectIndexFile } from '../src/parts/SelectIndexFile/SelectIndexFile.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
