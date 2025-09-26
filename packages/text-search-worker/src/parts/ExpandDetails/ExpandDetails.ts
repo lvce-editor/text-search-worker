@@ -1,7 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 export const expandDetails = (state: SearchState): SearchState => {
   const { flags } = state

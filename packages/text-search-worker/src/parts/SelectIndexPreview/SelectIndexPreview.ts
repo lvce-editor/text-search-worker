@@ -2,7 +2,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFileIndex from '../GetFileIndex/GetFileIndex.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as OpenUri from '../OpenUri/OpenUri.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const selectIndexPreview = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {

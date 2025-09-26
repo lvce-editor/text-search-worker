@@ -1,7 +1,7 @@
 import type { KeyBinding } from '../KeyBinding/KeyBinding.ts'
 import * as KeyCode from '../KeyCode/KeyCode.ts'
 import * as KeyModifier from '../KeyModifier/KeyModifier.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 export const getSearchHeaderKeyBindings = (): readonly KeyBinding[] => {
   return [

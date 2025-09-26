@@ -1,7 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as FocusElement from '../FocusElement/FocusElement.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 export const focusSearchValue = (state: SearchState): SearchState => {
   return FocusElement.focusElement(state, WhenExpression.FocusSearchInput)

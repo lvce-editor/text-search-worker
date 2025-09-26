@@ -4,7 +4,7 @@ import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import * as ViewMode from '../ViewMode/ViewMode.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
-import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 export const create = (
   uid: number,
