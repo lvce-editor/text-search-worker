@@ -1,5 +1,5 @@
-import { ReplaceExpanded } from '../SearchFlags/SearchFlags.ts'
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
+import { ReplaceExpanded } from '../SearchFlags/SearchFlags.ts'
 
 export const getPreviousFocus = (focus: number, flags: number): number => {
   switch (focus) {
