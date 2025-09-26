@@ -3,7 +3,6 @@ import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { saveState } from '../src/parts/SaveState/SaveState.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test('saveState', () => {
   const flags =
@@ -18,10 +17,7 @@ test('saveState', () => {
     flags,
   }
 
-  const uid = 1
-  SearchViewStates.set(uid, state, state)
-
-  const result = saveState(uid)
+  const result = saveState(state)
 
   expect(result).toEqual({
     value: 'test-value',
@@ -31,5 +27,7 @@ test('saveState', () => {
     excludeValue: 'node_modules',
     history: [],
     collapsedPaths: [],
+    focus: 0,
+    listFocused: false,
   })
 })

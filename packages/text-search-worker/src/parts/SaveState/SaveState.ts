@@ -1,9 +1,8 @@
 import type { SavedState } from '../SavedState/SavedState.ts'
-import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 
-export const saveState = (uid: number): SavedState => {
-  const { newState } = SearchViewStates.get(uid)
-  const { value, replacement, flags, includeValue, excludeValue, history, collapsedPaths } = newState
+export const saveState = (state: SearchState): SavedState => {
+  const { value, replacement, flags, includeValue, excludeValue, history, collapsedPaths, focus, listFocused } = state
   return {
     value,
     replacement,
@@ -12,5 +11,7 @@ export const saveState = (uid: number): SavedState => {
     excludeValue,
     history,
     collapsedPaths,
+    focus,
+    listFocused,
   }
 }

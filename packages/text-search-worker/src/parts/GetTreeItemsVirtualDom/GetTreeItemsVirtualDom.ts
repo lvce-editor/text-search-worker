@@ -22,7 +22,7 @@ export const getTreeItemsVirtualDom = (
       onWheel: DomEventListenerFunctions.HandleWheel,
       onContextMenu: DomEventListenerFunctions.HandleContextMenu,
       id: DomId.TreeItems,
-      top: `${-pixelOffset}px`,
+      top: `${-pixelOffset}px`, // TODO use dynamic css instead
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
   ]
