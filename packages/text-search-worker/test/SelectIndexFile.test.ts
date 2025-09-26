@@ -42,7 +42,13 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     focusSource: 2,
   })
   expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }, { type: 7, name: 'file2.txt', path: '/file2.txt' }]],
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 7, name: 'file1.txt', path: '/file1.txt' },
+        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+      ],
+    ],
   ])
 })
 
@@ -78,6 +84,12 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     focusSource: 2,
   })
   expect(mockRpc.invocations).toEqual([
-    ['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }, { type: 7, name: 'file2.txt', path: '/file2.txt' }]],
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 7, name: 'file1.txt', path: '/file1.txt' },
+        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+      ],
+    ],
   ])
 })
