@@ -24,6 +24,7 @@ import * as HandleIconThemeChange from '../HandleIconThemeChange/HandleIconTheme
 import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts'
 import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
+import { handleInputFocus } from '../HandleInputFocus/HandleInputFocus.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
@@ -102,6 +103,7 @@ export const commandMap = {
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
+  'TextSearch.handleInputFocus': WrapCommand.wrapCommand(handleInputFocus),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
   'TextSearch.handleFocusIn': WrapCommand.wrapCommand(SearchFocus.handleFocusIn),
