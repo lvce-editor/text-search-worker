@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchFetch from '../src/parts/TextSearchFetch/TextSearchFetch.ts'
 
 test('textSearch - calls ParentRpc with correct arguments', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.textSearchFetch': () => [
       {
         type: 1,
@@ -35,10 +35,11 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
     ],
     limitHit: false,
   })
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir]])
 })
 
 test('textSearch - handles error from ParentRpc', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.textSearchFetch': () => {
       throw new Error('Network error')
     },
@@ -51,4 +52,5 @@ test('textSearch - handles error from ParentRpc', async () => {
   const assetDir = '/assets'
 
   await expect(TextSearchFetch.textSearch(scheme, root, query, options, assetDir)).rejects.toThrow('Network error')
+  expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir]])
 })

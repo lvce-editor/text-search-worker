@@ -1,21 +1,17 @@
-import { beforeEach, expect, test } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
-import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import { selectIndexFile } from '../src/parts/SelectIndexFile/SelectIndexFile.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const mockIcon = 'file-icon'
 
-RendererWorker.registerMockRpc({
-  'IconTheme.getIcons': () => [mockIcon, mockIcon],
-})
-
-beforeEach(() => {
-  // no-op: handlers are pure functions
-})
-
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => mockIcon,
+  })
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -45,9 +41,17 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     focus: 22,
     focusSource: 2,
   })
+  expect(mockRpc.invocations).toEqual([
+    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
+    ['IconTheme.getFileIcon', { name: 'file2.txt' }],
+  ])
 })
 
 test('selectIndexFile - uncollapse path when already collapsed', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => mockIcon,
+  })
+
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
     items: [
@@ -74,4 +78,8 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     focus: 22,
     focusSource: 2,
   })
+  expect(mockRpc.invocations).toEqual([
+    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
+    ['IconTheme.getFileIcon', { name: 'file2.txt' }],
+  ])
 })

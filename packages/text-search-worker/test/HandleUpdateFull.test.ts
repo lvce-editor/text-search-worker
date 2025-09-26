@@ -7,7 +7,7 @@ import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -56,11 +56,12 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     maxLineY: 2,
     message: '1 result in 1 file',
   })
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
-  RendererWorker.registerMockRpc({
-    'IconTheme.getIcons': () => ['file-icon'],
+  const mockRpc = RendererWorker.registerMockRpc({
+    'IconTheme.getFileIcon': () => 'file-icon',
   })
 
   const state: SearchState = {
@@ -108,4 +109,5 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     maxLineY: 2,
     message: '1 result in 1 file',
   })
+  expect(mockRpc.invocations).toEqual([['IconTheme.getFileIcon', { name: 'file1.txt' }]])
 })
