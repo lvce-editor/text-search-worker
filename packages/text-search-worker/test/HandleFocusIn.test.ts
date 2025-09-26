@@ -3,7 +3,7 @@ import * as Create from '../src/parts/Create/Create.ts'
 import { handleFocusIn } from '../src/parts/HandleFocusIn/HandleFocusIn.ts'
 import * as InputName from '../src/parts/InputName/InputName.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
-import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
+import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 
 test('handleFocusIn changes focus when different key', async () => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')
