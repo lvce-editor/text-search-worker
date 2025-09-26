@@ -14,6 +14,7 @@ test('restoreState - with empty state', () => {
     includeValue: '',
     excludeValue: '',
     history: [],
+    focus: 0,
   })
 })
 
@@ -28,6 +29,7 @@ test('restoreState - with null state', () => {
     includeValue: '',
     excludeValue: '',
     history: [],
+    focus: 0,
   })
 })
 
