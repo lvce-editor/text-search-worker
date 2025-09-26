@@ -1,4 +1,4 @@
-import { ReplaceExpanded } from '../SearchFlags/SearchFlags.ts'
+import { ReplaceExpanded, DetailsExpanded } from '../SearchFlags/SearchFlags.ts'
 import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 
 export const getNextFocus = (focus: number, flags: number): number => {
@@ -32,7 +32,14 @@ export const getNextFocus = (focus: number, flags: number): number => {
     case WhenExpression.FocusSearchExcludeInput:
       return WhenExpression.FocusIgnoreFiles
     case WhenExpression.FocusToggleDetails:
-      return WhenExpression.FocusSearchIncludeInput
+      if (flags & DetailsExpanded) {
+        return WhenExpression.FocusSearchIncludeInput
+      }
+      return WhenExpression.FocusSearchResults
+    case WhenExpression.FocusIgnoreFiles:
+      return WhenExpression.FocusSearchResults
+    case WhenExpression.FocusUseExcludeSettings:
+      return WhenExpression.FocusSearchResults
     default:
       return focus
   }
