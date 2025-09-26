@@ -6,4 +6,5 @@ export interface SavedState {
   readonly includeValue: string
   readonly replacement: string
   readonly value: string
+  readonly focus: number
 }

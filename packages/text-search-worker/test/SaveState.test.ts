@@ -27,5 +27,6 @@ test('saveState', () => {
     excludeValue: 'node_modules',
     history: [],
     collapsedPaths: [],
+    focus: 0,
   })
 })
