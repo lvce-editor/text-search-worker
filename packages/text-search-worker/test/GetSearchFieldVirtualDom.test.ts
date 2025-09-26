@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchFieldVirtualDom from '../src/parts/GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 
 test('NotReadableError', () => {
@@ -12,7 +13,7 @@ test('NotReadableError', () => {
     {
       childCount: 2,
       className: 'SearchField',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -47,7 +48,7 @@ test('getSearchFieldVirtualDom - with error', () => {
     {
       childCount: 2,
       className: 'SearchField SearchFieldError',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {

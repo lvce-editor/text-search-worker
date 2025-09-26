@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchHeaderDetailsCollapsedVirtualDom from '../src/parts/GetSearchHeaderDetailsCollapsedVirtualDom/GetSearchHeaderDetailsCollapsedVirtualDom.ts'
 
 test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
@@ -13,7 +14,7 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
     {
       type: 4,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
-      role: 'status',
+      role: AriaRoles.Status,
       tabIndex: 0,
       childCount: 1,
     },
@@ -25,7 +26,7 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
     {
       type: 4,
       className: 'ToggleDetails',
-      role: 'button',
+      role: AriaRoles.Button,
       tabIndex: 0,
       ariaLabel: 'Toggle Search Details',
       title: 'Toggle Search Details',

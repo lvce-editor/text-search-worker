@@ -1,4 +1,5 @@
 import { test, expect } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import type { Action } from '../src/parts/Action/Action.ts'
 import * as GetActionsVirtualDom from '../src/parts/GetActionsVirtualDom/GetActionsVirtualDom.ts'
 
@@ -22,7 +23,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 2,
       className: 'Actions',
-      role: 'toolbar',
+      role: AriaRoles.ToolBar,
       type: 4,
     },
     {
@@ -35,7 +36,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 0,
       className: 'MaskIcon MaskIconSearch in Files',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -48,7 +49,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 0,
       className: 'MaskIcon MaskIconFind in File',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
   ])
@@ -59,7 +60,7 @@ test('getActionsVirtualDom - should handle empty actions array', () => {
     {
       type: 4,
       className: 'Actions',
-      role: 'toolbar',
+      role: AriaRoles.ToolBar,
       childCount: 0,
     },
   ])
