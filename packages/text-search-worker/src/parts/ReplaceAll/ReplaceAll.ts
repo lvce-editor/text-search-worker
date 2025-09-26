@@ -6,6 +6,7 @@ import * as GetReplaceElements from '../GetReplaceElements/GetReplaceElements.ts
 export const replaceAll = async (state: SearchState): Promise<SearchState> => {
   const { workspacePath, items, replacement, matchCount } = state
   const bulkEdits = GetReplaceElements.getReplaceElements(items, workspacePath, replacement)
+  // TODO this function should return an error message if an error occurred during bulk edit
   await ApplyBulkReplacement.applyBulkReplacement(bulkEdits)
   const fileCount = bulkEdits.length
   const message = GetReplacedMessage.getReplacedMessage(fileCount, matchCount, replacement)
