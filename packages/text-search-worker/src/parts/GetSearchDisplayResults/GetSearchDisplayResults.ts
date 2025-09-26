@@ -22,7 +22,8 @@ export const getDisplayResults = (
   const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
   const searchTermLength = searchTerm.length
-  for (let i = minLineY; i < maxLineY; i++) {
+  const max = Math.min(filteredResults.length, maxLineY)
+  for (let i = minLineY; i < max; i++) {
     const displayResult = GetSearchDisplayResult.getDisplayResult(
       filteredResults,
       fileIcons,
