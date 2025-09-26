@@ -1,12 +1,19 @@
 import type { RestoredState } from '../RestoredState/RestoredState.ts'
 import { getSavedHistory } from '../GetSavedHistory/GetSavedHistory.ts'
-import { getSavedValue, getSavedReplacement, getSavedFlags, getSavedIncludeValue, getSavedExcludeValue } from '../GetSavedValues/GetSavedValues.ts'
+import {
+  getSavedValue,
+  getSavedReplacement,
+  getSavedFlags,
+  getSavedIncludeValue,
+  getSavedExcludeValue,
+  getSavedCollapsedPaths,
+} from '../GetSavedValues/GetSavedValues.ts'
 
 export const restoreState = (savedState: unknown): RestoredState => {
   return {
     savedValue: getSavedValue(savedState),
     replacement: getSavedReplacement(savedState),
-    savedCollapsedPaths: [],
+    savedCollapsedPaths: getSavedCollapsedPaths(savedState),
     threads: 1,
     flags: getSavedFlags(savedState),
     includeValue: getSavedIncludeValue(savedState),
