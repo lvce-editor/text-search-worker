@@ -5,7 +5,7 @@ import * as Copy from '../src/parts/Copy/Copy.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 
 test('copy - no focused item returns same state', async () => {
-  RendererWorker.registerMockRpc({})
+  const mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -15,10 +15,11 @@ test('copy - no focused item returns same state', async () => {
 
   const result = await Copy.copy(state)
   expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([])
 })
 
 test('copy - copies text from focused item', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText': () => undefined,
   })
 
@@ -30,4 +31,5 @@ test('copy - copies text from focused item', async () => {
 
   const result = await Copy.copy(state)
   expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'test text']])
 })
