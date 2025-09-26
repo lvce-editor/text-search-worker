@@ -1,5 +1,6 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import * as GetFilteredResults from '../GetFilteredResults/GetFilteredResults.ts'
 import * as GetSearchDisplayResult from '../GetSearchDisplayResult/GetSearchDisplayResult.ts'
 
 export const getDisplayResults = (
@@ -15,12 +16,15 @@ export const getDisplayResults = (
   collapsedPaths: readonly string[],
   originalResults: readonly SearchResult[],
 ): readonly DisplaySearchResult[] => {
+  // Filter out child items when parent files are collapsed
+  const filteredResults = GetFilteredResults.getFilteredResults(results, collapsedPaths)
+
   const displayResults: DisplaySearchResult[] = []
   const setSize = resultCount
   const searchTermLength = searchTerm.length
   for (let i = minLineY; i < maxLineY; i++) {
     const displayResult = GetSearchDisplayResult.getDisplayResult(
-      results,
+      filteredResults,
       fileIcons,
       i,
       setSize,
