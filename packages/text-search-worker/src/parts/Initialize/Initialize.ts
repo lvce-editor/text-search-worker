@@ -1,6 +1,6 @@
+import { PlatformType } from '@lvce-editor/constants'
 import { launchSearchProcessElectron } from '../LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
 import { launchSearchProcessNode } from '../LaunchSearchProcessNode/LaunchSearchProcessNode.ts'
-import { PlatformType } from '@lvce-editor/constants'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
 export const initialize = async (platform: number): Promise<void> => {

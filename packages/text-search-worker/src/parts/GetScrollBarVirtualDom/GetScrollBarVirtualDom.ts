@@ -1,7 +1,7 @@
+import { AriaRoles } from '@lvce-editor/constants'
 import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
-import { AriaRoles } from '@lvce-editor/constants'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as DomId from '../DomId/DomId.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
