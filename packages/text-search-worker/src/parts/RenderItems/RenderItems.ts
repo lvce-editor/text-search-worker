@@ -1,3 +1,4 @@
+import { ViewletCommand } from '@lvce-editor/constants'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as CreateViewModel from '../CreateViewModel/CreateViewModel.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
@@ -19,5 +20,5 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
     newState.limitHitWarning,
     viewModel.focus,
   )
-  return ['Viewlet.setDom2', newState.uid, dom]
+  return [ViewletCommand.SetDom2, newState.uid, dom]
 }
