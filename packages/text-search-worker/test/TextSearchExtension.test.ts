@@ -50,11 +50,14 @@ test('textSearch - extension search', async () => {
 })
 
 test('textSearch - extension search error', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.executeTextSearchProvider': () => {
       throw new TypeError('x is not a function')
     },
   })
 
   await expect(TextSearchExtension.textSearch('xyz', 'xyz://', 'abc')).rejects.toThrow(new TypeError('x is not a function'))
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionHostTextSearch.executeTextSearchProvider', 'xyz', 'xyz://', 'abc'],
+  ])
 })
