@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
+import * as Create from '../src/parts/Create/Create.ts'
 import * as FocusNextInput from '../src/parts/FocusNextInput/FocusNextInput.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as WhenExpression from '../src/parts/WhenExpression/WhenExpression.ts'
-import * as Create from '../src/parts/Create/Create.ts'
 
 test('focusNextInput - from toggle details with details collapsed sets listFocused to true', () => {
   const state = Create.create(0, 0, 0, 0, 0, '', '')
