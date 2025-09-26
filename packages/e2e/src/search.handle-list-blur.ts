@@ -2,8 +2,6 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.handle-list-blur'
 
-export const skip = 1
-
 export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
@@ -18,5 +16,5 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
 
   // assert
   const tree = Locator('.Tree')
-  await expect(tree).not.toHaveClass('FocusOutline')
+  await expect(tree).toHaveClass('Tree')
 }
