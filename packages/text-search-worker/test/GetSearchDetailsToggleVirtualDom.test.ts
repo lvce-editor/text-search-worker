@@ -5,8 +5,9 @@ import * as GetSearchDetailsToggleVirtualDom from '../src/parts/GetSearchDetails
 test('getSearchDetailsToggleVirtualDom', () => {
   expect(GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom()).toEqual([
     {
-      type: 4,
+      type: 1,
       className: 'ToggleDetails',
+      onClick: 5,
       role: AriaRoles.Button,
       tabIndex: 0,
       ariaLabel: 'Toggle Search Details',

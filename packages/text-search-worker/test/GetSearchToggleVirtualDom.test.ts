@@ -12,7 +12,6 @@ test('getSearchToggleVirtualDom - not expanded', () => {
       ariaLabel: 'Toggle Replace',
       ariaExpanded: false,
       childCount: 1,
-      'data-command': 'toggleReplace',
       name: 'ToggleReplace',
     },
     {
