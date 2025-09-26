@@ -1,7 +1,7 @@
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
-import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetAriaExpanded from '../GetAriaExpanded/GetAriaExpanded.ts'
 import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts'
 import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'

@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals'
+import { AriaRoles } from '@lvce-editor/constants'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
@@ -75,13 +76,13 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onFocusIn: 'handleHeaderFocusIn',
       onFocusOut: 'handleHeaderFocusOut',
       onContextMenu: 'handleHeaderContextMenu',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
       childCount: 2,
       className: 'SearchHeaderTop',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -102,13 +103,13 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'SearchHeaderTopRight',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
       childCount: 2,
       className: 'SearchField',
-      role: 'none',
+      role: AriaRoles.None,
       type: 4,
     },
     {
@@ -133,7 +134,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Case',
       name: 'MatchCase',
@@ -149,7 +150,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Whole Word',
       name: 'MatchWholeWord',
@@ -165,7 +166,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      role: 'checkbox',
+      role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Use Regular Expression',
       name: 'UseRegularExpression',
@@ -254,7 +255,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 0,
       className: 'FileIcon',
-      role: 'none',
+      role: AriaRoles.None,
       src: 'test',
       type: 17,
     },
@@ -301,7 +302,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 0,
       className: 'FileIcon',
-      role: 'none',
+      role: AriaRoles.None,
       src: 'test',
       type: 17,
     },

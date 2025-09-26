@@ -2,7 +2,7 @@ import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { OutSideButtonsDom } from '../OutSideButtonsDom/OutSideButtonsDom.ts'
-import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
+import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
 
 export const getOutSideButtonsDom = (outsideButtons: readonly InputAction[]): OutSideButtonsDom => {
