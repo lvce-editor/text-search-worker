@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.copy'
 
-export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Workspace, SideBar }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   const tmpDir = await FileSystem.getTmpDir()
