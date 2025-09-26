@@ -72,5 +72,13 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
       params: ['handleScrollBarClick', EventExpression.DeltaY],
     },
+    {
+      name: DomEventListenerFunctions.HandleInputFocus,
+      params: ['handleInputFocus', EventExpression.TargetName],
+    },
+    {
+      name: DomEventListenerFunctions.HandleInputBlur,
+      params: ['handleInputBlur', EventExpression.TargetName],
+    },
   ]
 }

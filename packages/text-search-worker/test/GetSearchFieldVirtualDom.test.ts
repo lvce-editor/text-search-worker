@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchFieldVirtualDom from '../src/parts/GetSearchFieldVirtualDom/GetSearchFieldVirtualDom.ts'
 
 test('NotReadableError', () => {
@@ -8,8 +9,7 @@ test('NotReadableError', () => {
   const onInput = 'handleInput'
   const insideButtons: any = []
   const outsideButtons: any = []
-  const onFocus = ''
-  expect(GetSearchFieldVirtualDom.getSearchFieldVirtualDom(name, placeholder, onInput, insideButtons, outsideButtons, onFocus)).toEqual([
+  expect(GetSearchFieldVirtualDom.getSearchFieldVirtualDom(name, placeholder, onInput, insideButtons, outsideButtons)).toEqual([
     {
       childCount: 2,
       className: 'SearchField',
@@ -22,7 +22,9 @@ test('NotReadableError', () => {
       childCount: 0,
       className: 'MultilineInputBox',
       name: '',
-      onFocus: '',
+      onBlur: DomEventListenerFunctions.HandleInputBlur,
+      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
+      onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 'handleInput',
       placeholder: '',
       spellcheck: false,
@@ -42,9 +44,8 @@ test('getSearchFieldVirtualDom - with error', () => {
   const onInput = 'handleInput'
   const insideButtons: any = []
   const outsideButtons: any = []
-  const onFocus = ''
   const hasError = true
-  expect(GetSearchFieldVirtualDom.getSearchFieldVirtualDom(name, placeholder, onInput, insideButtons, outsideButtons, onFocus, hasError)).toEqual([
+  expect(GetSearchFieldVirtualDom.getSearchFieldVirtualDom(name, placeholder, onInput, insideButtons, outsideButtons, hasError)).toEqual([
     {
       childCount: 2,
       className: 'SearchField SearchFieldError',
@@ -57,7 +58,9 @@ test('getSearchFieldVirtualDom - with error', () => {
       childCount: 0,
       className: 'MultilineInputBox',
       name: '',
-      onFocus: '',
+      onBlur: DomEventListenerFunctions.HandleInputBlur,
+      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
+      onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 'handleInput',
       placeholder: '',
       spellcheck: false,

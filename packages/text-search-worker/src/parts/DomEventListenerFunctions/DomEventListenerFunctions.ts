@@ -14,3 +14,5 @@ export const HandleReplaceInput = 13
 export const HandleScrollBarPointerDown = 14
 export const HandleToggleButtonClick = 15
 export const HandleWheel = 16
+export const HandleInputFocus = 17
+export const HandleInputBlur = 18
