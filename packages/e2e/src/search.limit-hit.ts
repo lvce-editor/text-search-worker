@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.limit-hit'
 
-export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc\n`.repeat(10))
@@ -14,7 +14,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await expect(message).toHaveText('10 results in 1 file')
 
   // act
-  await Command.execute('Search.setLimit', 5)
+  await Search.setLimit(5)
 
   // assert
   const warningMessage = Locator('.SearchWarningMessage')
