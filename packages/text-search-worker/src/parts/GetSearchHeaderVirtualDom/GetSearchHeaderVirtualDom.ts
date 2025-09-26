@@ -12,12 +12,8 @@ const parentNode: VirtualDomNode = {
   className: ClassNames.SearchHeader,
   role: AriaRoles.None,
   childCount: 3,
-  // onClick: DomEventListenerFunctions.HandleHeaderClick2,
-  onFocusIn: DomEventListenerFunctions.HandleHeaderFocusIn,
-  onFocusOut: DomEventListenerFunctions.HandleHeaderFocusOut,
   onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
 }
-
 
 export const getSearchHeaderVirtualDom = (
   flags: number,

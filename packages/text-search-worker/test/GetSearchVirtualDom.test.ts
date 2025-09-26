@@ -73,8 +73,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 3,
       className: 'SearchHeader',
-      onFocusIn: 6,
-      onFocusOut: 7,
       onContextMenu: 3,
       role: AriaRoles.None,
       type: 4,

@@ -22,10 +22,6 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       params: ['handleReplaceInput', EventExpression.TargetValue],
     },
     {
-      name: DomEventListenerFunctions.HandleInput,
-      params: ['handleInput', EventExpression.TargetValue, InputSource.User],
-    },
-    {
       name: DomEventListenerFunctions.HandleClick,
       params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
     },

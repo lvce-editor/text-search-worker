@@ -22,10 +22,6 @@ test('renderEventListeners', () => {
       params: ['handleReplaceInput', 'event.target.value'],
     },
     {
-      name: DomEventListenerFunctions.HandleInput,
-      params: ['handleInput', 'event.target.value', InputSource.User],
-    },
-    {
       name: DomEventListenerFunctions.HandleClick,
       params: ['handleClickAt', 'event.clientX', 'event.clientY'],
     },

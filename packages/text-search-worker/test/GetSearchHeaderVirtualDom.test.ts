@@ -15,8 +15,6 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       childCount: 3,
       className: 'SearchHeader',
-      onFocusIn: 6,
-      onFocusOut: 7,
       onContextMenu: 3,
       role: AriaRoles.None,
       type: 4,
