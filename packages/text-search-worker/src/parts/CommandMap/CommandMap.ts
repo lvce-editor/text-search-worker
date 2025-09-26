@@ -3,6 +3,7 @@ import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts
 import * as CollapseAll from '../CollapseAll/CollapseAll.ts'
 import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
+import * as CopyPath from '../CopyPath/CopyPath.ts'
 import * as Create from '../Create/Create.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
@@ -74,6 +75,7 @@ export const commandMap = {
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
+  'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
   'TextSearch.diff2': Diff2.diff2,
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
