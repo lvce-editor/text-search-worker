@@ -50,5 +50,6 @@ test('restoreState - with basic state', () => {
     includeValue: '*.ts',
     excludeValue: 'node_modules',
     history: [],
+    focus: 0,
   })
 })
