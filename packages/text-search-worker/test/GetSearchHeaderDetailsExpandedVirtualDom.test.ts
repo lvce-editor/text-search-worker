@@ -1,6 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchHeaderDetailsExpandedVirtualDom from '../src/parts/GetSearchHeaderDetailsExpandedVirtualDom/GetSearchHeaderDetailsExpandedVirtualDom.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchHeaderDetailsExpandedVirtualDom', () => {
   const flags = 0
@@ -21,7 +22,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',
@@ -71,7 +72,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Search Only Open Editors',
@@ -121,7 +122,7 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       name: 'UseExcludeSettings',

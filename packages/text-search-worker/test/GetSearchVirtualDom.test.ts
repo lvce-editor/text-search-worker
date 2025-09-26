@@ -4,6 +4,7 @@ import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/Displ
 import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchVirtualDom from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [
@@ -89,7 +90,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaLabel: 'Toggle Replace',
       childCount: 1,
       className: 'IconButton SearchToggleButton',
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       title: 'Toggle Replace',
       type: 1,
       name: 'ToggleReplace',
@@ -133,7 +134,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Case',
@@ -150,7 +151,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Match Whole Word',
@@ -167,7 +168,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'SearchFieldButton',
       disabled: undefined,
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.CheckBox,
       tabIndex: 0,
       title: 'Use Regular Expression',
@@ -200,7 +201,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
       className: 'ToggleDetails',
-      onClick: 5,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
       tabIndex: 0,
       title: 'Toggle Search Details',

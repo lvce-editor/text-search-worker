@@ -1,6 +1,7 @@
 import { expect, test } from '@jest/globals'
 import * as GetSearchToggleVirtualDom from '../src/parts/GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchToggleVirtualDom - not expanded', () => {
   const flags = 0
@@ -12,6 +13,7 @@ test('getSearchToggleVirtualDom - not expanded', () => {
       ariaLabel: 'Toggle Replace',
       ariaExpanded: false,
       childCount: 1,
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       name: 'ToggleReplace',
     },
     {
@@ -32,7 +34,7 @@ test('getSearchToggleVirtualDom - expanded', () => {
       ariaLabel: 'Toggle Replace',
       ariaExpanded: true,
       childCount: 1,
-      'data-command': 'toggleReplace',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       name: 'ToggleReplace',
     },
     {

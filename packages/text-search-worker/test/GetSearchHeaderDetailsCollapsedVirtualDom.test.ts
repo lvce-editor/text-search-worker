@@ -1,6 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import * as GetSearchHeaderDetailsCollapsedVirtualDom from '../src/parts/GetSearchHeaderDetailsCollapsedVirtualDom/GetSearchHeaderDetailsCollapsedVirtualDom.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
   const message = 'test message'
@@ -24,8 +25,9 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
       childCount: 0,
     },
     {
-      type: 4,
+      type: 1,
       className: 'ToggleDetails',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
       tabIndex: 0,
       ariaLabel: 'Toggle Search Details',
