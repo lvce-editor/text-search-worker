@@ -1,8 +1,9 @@
 export interface SavedState {
-  readonly value: string
-  readonly replacement: string
-  readonly flags: number
-  readonly includeValue: string
+  readonly collapsedPaths: readonly string[]
   readonly excludeValue: string
+  readonly flags: number
   readonly history: readonly string[]
+  readonly includeValue: string
+  readonly replacement: string
+  readonly value: string
 }
