@@ -8,7 +8,7 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 const mockIcon = 'file-icon'
 
 RendererWorker.registerMockRpc({
-  'IconTheme.getFileIcon': () => mockIcon,
+  'IconTheme.getIcons': () => [mockIcon, mockIcon],
 })
 
 beforeEach(() => {
@@ -70,7 +70,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: ['file-icon', '', 'file-icon'],
+    icons: ['file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })

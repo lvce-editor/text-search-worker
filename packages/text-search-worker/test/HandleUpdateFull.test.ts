@@ -8,7 +8,7 @@ import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
   RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {
@@ -52,7 +52,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: true,
-    icons: ['file-icon', ''],
+    icons: ['file-icon'],
     maxLineY: 2,
     message: '1 result in 1 file',
   })
@@ -60,7 +60,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
   RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {
@@ -104,7 +104,7 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: false,
-    icons: ['file-icon', ''],
+    icons: ['file-icon'],
     maxLineY: 2,
     message: '1 result in 1 file',
   })

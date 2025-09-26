@@ -24,7 +24,7 @@ test('selectIndex - no selection', async () => {
 
 test('selectIndex - select file item', async () => {
   RendererWorker.registerMockRpc({
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {
@@ -45,7 +45,7 @@ test('selectIndex - select file item', async () => {
 test('selectIndex - select match item', async () => {
   RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
-    'IconTheme.getFileIcon': () => 'file-icon',
+    'IconTheme.getIcons': () => ['file-icon'],
   })
 
   const state: SearchState = {

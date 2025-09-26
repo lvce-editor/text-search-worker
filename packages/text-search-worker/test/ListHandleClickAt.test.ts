@@ -1,4 +1,5 @@
 import { test, expect } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleClickAt } from '../src/parts/ListHandleClickAt/ListHandleClickAt.ts'
@@ -26,6 +27,10 @@ const createState = (listItemsLength: number): SearchState => {
 }
 
 test('handleClickAt selects the correct index', async () => {
+  RendererWorker.registerMockRpc({
+    'IconTheme.getIcons': () => ['file-icon'],
+  })
+
   const state = createState(10)
   // Click at y=101 should select index 2 (itemHeight=20, topHeight=61)
   const result = await handleClickAt(state, 10, 101)
