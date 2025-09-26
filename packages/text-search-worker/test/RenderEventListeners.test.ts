@@ -26,6 +26,10 @@ test('renderEventListeners', () => {
       params: ['handleClickAt', 'event.clientX', 'event.clientY'],
     },
     {
+      name: DomEventListenerFunctions.HandleListPointerDown,
+      params: ['handleListPointerDown'],
+    },
+    {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
       params: ['handleToggleButtonClick'],
     },

@@ -26,6 +26,10 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
     },
     {
+      name: DomEventListenerFunctions.HandleListPointerDown,
+      params: ['handleListPointerDown'],
+    },
+    {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
       params: ['handleToggleButtonClick'],
     },
