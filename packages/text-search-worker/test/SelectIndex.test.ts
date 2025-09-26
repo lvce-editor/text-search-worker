@@ -6,7 +6,7 @@ import * as SelectIndex from '../src/parts/SelectIndex/SelectIndex.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('selectIndex - no selection', async () => {
-  RendererWorker.registerMockRpc({})
+  const mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -20,10 +20,11 @@ test('selectIndex - no selection', async () => {
   const result = await SelectIndex.selectIndex(state, -1)
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(-1)
+  expect(mockRpc.invocations).toEqual([])
 })
 
 test('selectIndex - select file item', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'IconTheme.getFileIcon': () => 'file-icon',
   })
 
@@ -40,10 +41,13 @@ test('selectIndex - select file item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
+  expect(mockRpc.invocations).toEqual([
+    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
+  ])
 })
 
 test('selectIndex - select match item', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
     'IconTheme.getFileIcon': () => 'file-icon',
   })
@@ -61,10 +65,13 @@ test('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
+  expect(mockRpc.invocations).toEqual([
+    ['IconTheme.getFileIcon', { name: 'file1.txt' }],
+  ])
 })
 
 test('getFileIndex - finds closest file above match', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -81,10 +88,13 @@ test('getFileIndex - finds closest file above match', async () => {
   state.listItems = state.items
 
   await SelectIndex.selectIndex(state, 2) // Select second match
+  expect(mockRpc.invocations).toEqual([
+    ['Main.openUri', 'file1.ts', { selections: new Uint32Array([10, 0, 10, 0]) }],
+  ])
 })
 
 test('getFileIndex - returns -1 when no file found', async () => {
-  RendererWorker.registerMockRpc({})
+  const mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...Create.create(0, 0, 0, 0, 0, '', ''),
@@ -96,10 +106,11 @@ test('getFileIndex - returns -1 when no file found', async () => {
   // @ts-ignore
   state.listItems = state.items
   await expect(SelectIndex.selectIndex(state, 1)).rejects.toThrow('Search result is missing file')
+  expect(mockRpc.invocations).toEqual([])
 })
 
 test('selectIndexPreview - handles match with file above', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -124,4 +135,7 @@ test('selectIndexPreview - handles match with file above', async () => {
     focus: 22,
     focusSource: 2,
   })
+  expect(mockRpc.invocations).toEqual([
+    ['Main.openUri', 'file1.ts', { selections: new Uint32Array([10, 0, 10, 0]) }],
+  ])
 })

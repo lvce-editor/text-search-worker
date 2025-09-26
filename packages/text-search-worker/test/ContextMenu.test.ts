@@ -4,7 +4,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ContextMenu from '../src/parts/ContextMenu/ContextMenu.ts'
 
 test('show - invokes rpc with correct coordinates and menu id', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show': () => undefined,
   })
 
@@ -13,10 +13,13 @@ test('show - invokes rpc with correct coordinates and menu id', async () => {
   const menuId = MenuEntryId.Search
 
   await ContextMenu.show(x, y, menuId)
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show', x, y, menuId],
+  ])
 })
 
 test('show - handles rpc error', async () => {
-  RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show': () => {
       throw new Error('Failed to show context menu')
     },
@@ -27,4 +30,7 @@ test('show - handles rpc error', async () => {
   const menuId = MenuEntryId.Search
 
   await expect(ContextMenu.show(x, y, menuId)).rejects.toThrow('Failed to show context menu')
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show', x, y, menuId],
+  ])
 })
