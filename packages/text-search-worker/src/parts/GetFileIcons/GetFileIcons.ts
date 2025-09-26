@@ -1,8 +1,8 @@
+import { DirentType } from '@lvce-editor/constants'
+import type { IconRequest } from '../IconRequest/IconRequest.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
-import { IconRequest } from '../IconRequest/IconRequest.ts'
-import { DirentType } from '@lvce-editor/constants'
 
 const getFileName = (text: string): string => {
   if (text.startsWith('./')) {
