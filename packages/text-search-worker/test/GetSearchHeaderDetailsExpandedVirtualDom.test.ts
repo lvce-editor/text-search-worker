@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
-import * as GetSearchHeaderDetailsExpandedVirtualDom from '../src/parts/GetSearchHeaderDetailsExpandedVirtualDom/GetSearchHeaderDetailsExpandedVirtualDom.ts'
 import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as GetSearchHeaderDetailsExpandedVirtualDom from '../src/parts/GetSearchHeaderDetailsExpandedVirtualDom/GetSearchHeaderDetailsExpandedVirtualDom.ts'
 
 test('getSearchHeaderDetailsExpandedVirtualDom', () => {
   const flags = 0

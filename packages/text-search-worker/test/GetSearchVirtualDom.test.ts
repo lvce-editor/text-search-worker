@@ -2,9 +2,9 @@ import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import type { DisplaySearchResult } from '../src/parts/DisplaySearchResult/DisplaySearchResult.ts'
 import type { VirtualDomNode } from '../src/parts/VirtualDomNode/VirtualDomNode.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as ExpandedType from '../src/parts/ExpandedType/ExpandedType.ts'
 import * as GetSearchVirtualDom from '../src/parts/GetSearchVirtualDom/GetSearchVirtualDom.ts'
-import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   const visibleItems: readonly DisplaySearchResult[] = [

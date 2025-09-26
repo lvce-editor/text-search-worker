@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import type { InputAction } from '../src/parts/InputAction/InputAction.ts'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetOutsideButtonsDom from '../src/parts/GetOutSideButtonsDom/GetOutSideButtonsDom.ts'
 import * as InputActionFlag from '../src/parts/InputActionFlag/InputActionFlag.ts'
-import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getOutsideButtonsDom - no buttons', () => {
   const buttons: InputAction[] = []

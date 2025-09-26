@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
+import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetSearchToggleVirtualDom from '../src/parts/GetSearchToggleVirtualDom/GetSearchToggleVirtualDom.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
-import * as DomEventListenerFunctions from '../src/parts/DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 test('getSearchToggleVirtualDom - not expanded', () => {
   const flags = 0
