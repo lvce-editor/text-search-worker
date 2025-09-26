@@ -13,6 +13,7 @@ process.env.PATH_PREFIX = '/text-search-worker'
 const { commitHash } = await sharedProcess.exportStatic({
   root,
   extensionPath: '',
+  testPath: 'packages/e2e',
 })
 
 const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
@@ -28,7 +29,7 @@ const remoteUrl = getRemoteUrl(workerPath)
 
 if (content.includes('// const textSearchWorkerUrl = ')) {
   const occurrence = `// const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\`
-  const textSearchWorkerUrl = \`${remoteUrl}\``
+const textSearchWorkerUrl = \`${remoteUrl}\``
   const replacement = `const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\``
   const newContent = content.replace(occurrence, replacement)
   await writeFile(rendererWorkerPath, newContent)
