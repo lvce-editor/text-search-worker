@@ -1,3 +1,4 @@
+import { EventExpression } from '@lvce-editor/constants'
 import type { DomEventListener } from '../DomEventListener/DomEventListener.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
@@ -6,27 +7,27 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
       name: DomEventListenerFunctions.HandleInput2,
-      params: ['handleInput2', 'event.target.name', 'event.target.value', InputSource.User],
+      params: ['handleInput2', EventExpression.TargetName, EventExpression.TargetValue, InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleExcludeInput,
-      params: ['handleExcludeInput', 'event.target.value'],
+      params: ['handleExcludeInput', EventExpression.TargetValue],
     },
     {
       name: DomEventListenerFunctions.HandleIncludeInput,
-      params: ['handleIncludeInput', 'event.target.value'],
+      params: ['handleIncludeInput', EventExpression.TargetValue],
     },
     {
       name: DomEventListenerFunctions.HandleReplaceInput,
-      params: ['handleReplaceInput', 'event.target.value'],
+      params: ['handleReplaceInput', EventExpression.TargetValue],
     },
     {
       name: DomEventListenerFunctions.HandleInput,
-      params: ['handleInput', 'event.target.value', InputSource.User],
+      params: ['handleInput', EventExpression.TargetValue, InputSource.User],
     },
     {
       name: DomEventListenerFunctions.HandleClick,
-      params: ['handleClickAt', 'event.clientX', 'event.clientY'],
+      params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
     },
     {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
@@ -42,7 +43,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleContextMenu,
-      params: ['handleContextMenu', 'event.button', 'event.clientX', 'event.clientY'],
+      params: ['handleContextMenu', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
     },
     {
@@ -52,12 +53,12 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleWheel,
-      params: ['handleWheel', 'event.deltaMode', 'event.deltaY'],
+      params: ['handleWheel', EventExpression.DeltaMode, EventExpression.DeltaY],
       passive: true,
     },
     {
       name: DomEventListenerFunctions.HandleHeaderClick2,
-      params: ['handleHeaderClick', 'event.target.name'],
+      params: ['handleHeaderClick', EventExpression.TargetName],
     },
     {
       name: DomEventListenerFunctions.HandleHeaderFocusIn,
@@ -69,7 +70,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleScrollBarPointerDown,
-      params: ['handleScrollBarClick', 'event.deltaY'],
+      params: ['handleScrollBarClick', EventExpression.DeltaY],
     },
   ]
 }
