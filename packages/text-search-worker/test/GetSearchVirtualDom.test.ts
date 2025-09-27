@@ -224,6 +224,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
       onBlur: DomEventListenerFunctions.HandleListBlur,
       onPointerDown: DomEventListenerFunctions.HandleListPointerDown,
+      onFocus: DomEventListenerFunctions.HandleListFocus,
     },
     {
       childCount: 2,
