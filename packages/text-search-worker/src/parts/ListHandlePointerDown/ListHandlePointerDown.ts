@@ -5,7 +5,6 @@ export const handleListPointerDown = async (state: SearchState, button: number):
   if (button !== MouseEventType.LeftClick) {
     return state
   }
-  // TODO set list to focused and render focus outline
   return {
     ...state,
     listFocused: true,
