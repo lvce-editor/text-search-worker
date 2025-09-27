@@ -3,11 +3,16 @@ import { launchSearchProcessElectron } from '../LaunchSearchProcessElectron/Laun
 import { launchSearchProcessNode } from '../LaunchSearchProcessNode/LaunchSearchProcessNode.ts'
 import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 
-export const initialize = async (platform: number): Promise<void> => {
+const setSearchProcessFactory = (platform: number): void => {
   if (platform === PlatformType.Electron) {
     SearchProcess.setFactory(launchSearchProcessElectron)
   } else if (platform === PlatformType.Remote) {
     SearchProcess.setFactory(launchSearchProcessNode)
   }
-  // TODO
+}
+
+export const initialize = async (platform: number): Promise<void> => {
+  setSearchProcessFactory(platform)
+
+  // TODO connect to icon theme worker
 }
