@@ -131,7 +131,6 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       childCount: 1,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: AriaRoles.Status,
-      tabIndex: 0,
       type: 4,
     },
     {

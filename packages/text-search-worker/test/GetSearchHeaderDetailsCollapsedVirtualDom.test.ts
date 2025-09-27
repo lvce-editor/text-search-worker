@@ -16,7 +16,6 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
       type: 4,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: AriaRoles.Status,
-      tabIndex: 0,
       childCount: 1,
     },
     {
