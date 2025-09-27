@@ -18,7 +18,6 @@ export const getSearchMessageVirtualDom = (message: string, indented: boolean): 
       type: VirtualDomElements.Div,
       className: getClassName(indented),
       role: AriaRoles.Status,
-      tabIndex: 0,
       childCount: 1,
     },
     text(message),

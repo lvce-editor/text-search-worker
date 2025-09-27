@@ -142,7 +142,6 @@ test('getSearchHeaderDetailsExpandedVirtualDom', () => {
       childCount: 1,
       className: 'ViewletSearchMessage',
       role: AriaRoles.Status,
-      tabIndex: 0,
       type: 4,
     },
     {

@@ -189,7 +189,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       childCount: 1,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: AriaRoles.Status,
-      tabIndex: 0,
       type: 4,
     },
     {
