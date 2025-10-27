@@ -9,8 +9,7 @@ export const getRipGrepArgs = ({
   readonly searchString: string
   readonly useRegularExpression: boolean
 }): readonly string[] => {
-  const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json']
-  ripGrepArgs.push('--threads', `${threads}`)
+  const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', `${threads}`]
   if (isCaseSensitive) {
     ripGrepArgs.push('--case-sensitive')
   } else {
