@@ -4,7 +4,7 @@ export const name = 'search.collapse-all'
 
 export const skip = 1
 
-export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -16,7 +16,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await expect(message).toHaveText('1 result in 1 file')
 
   // act
-  await Command.execute('Search.collapseAll')
+  await Search.collapseAll()
 
   // assert
   const text = Locator(`.TreeItem[aria-label="abc"]`)
