@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.toggle-details'
 
-export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect, Command }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -12,7 +12,7 @@ export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locat
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
   await expect(message).toHaveText('1 result in 1 file')
-  await Command.execute('Search.collapseDetails')
+  await Search.collapseDetails()
   const details = Locator('.SearchHeaderDetailsExpandedTop')
   await expect(details).toBeHidden()
 

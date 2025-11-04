@@ -20,7 +20,7 @@ export const getSearchDisplayResultFile = (
   const absolutePath = Workspace.getRelativePath(path)
   const baseName = Workspace.pathBaseName(path)
   const index = originalResults.indexOf(results[i])
-  const matchCount = GetMatchCount.getMatchCount(results, index)
+  const matchCount = GetMatchCount.getMatchCount(originalResults, index)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
   const badgeText = `${matchCount}`
   return {

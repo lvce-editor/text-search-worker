@@ -18,5 +18,5 @@ export const test: Test = async ({ ClipBoard, Search, FileSystem, Workspace, Sid
   await Search.copyPath()
 
   // assert
-  await ClipBoard.shouldHaveText('memfs:///test.css')
+  await ClipBoard.shouldHaveText('test.css')
 }

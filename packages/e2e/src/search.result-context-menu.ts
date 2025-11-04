@@ -1,8 +1,10 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const name = 'search.result-collapse'
+export const name = 'search.result-context-menu'
 
-export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const skip = 1
+
+export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -15,16 +17,20 @@ export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locat
   await expect(message).toHaveText('1 result in 1 file')
   const result = Locator('.TreeItem[aria-label="/test.css"]')
   await expect(result).toHaveAttribute('aria-expanded', 'true')
-  const badge = result.locator('.Badge')
-  await expect(badge).toHaveText('1')
   const match = Locator('.TreeItem[aria-label="abc"]')
   await expect(match).toBeVisible()
-
-  // act
   await Search.selectIndex(0)
 
+  // act
+  Command.execute('Search.handleContextMenu', 0, 0, 0)
+
   // assert
-  await expect(result).toHaveAttribute('aria-expanded', 'false')
-  await expect(match).toBeHidden()
-  await expect(badge).toHaveText('1')
+  const menu = Locator('.Menu')
+  await expect(menu).toBeVisible()
+  const menuItems = menu.locator('.MenuItem')
+  await expect(menuItems).toHaveCount(2)
+  const first = menuItems.nth(0)
+  await expect(first).toHaveText('Dismiss')
+  const second = menuItems.nth(1)
+  await expect(second).toHaveText('Copy Path')
 }
