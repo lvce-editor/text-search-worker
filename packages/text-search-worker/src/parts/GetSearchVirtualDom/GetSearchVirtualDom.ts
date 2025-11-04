@@ -7,6 +7,8 @@ import * as GetSearchInputErrorVirtualDom from '../GetSearchInputErrorVirtualDom
 import * as GetSearchResultsVirtualDom from '../GetSearchResultsVirtualDom/GetSearchResultsVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
+const className = MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search)
+
 export const getSearchVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],
   flags: number,
@@ -28,7 +30,7 @@ export const getSearchVirtualDom = (
   return [
     {
       type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.Viewlet, ClassNames.Search),
+      className,
       childCount,
     },
     ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage, matchCount, focus, limitHitWarning),
