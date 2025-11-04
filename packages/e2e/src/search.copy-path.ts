@@ -2,8 +2,6 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.copy-path'
 
-export const skip = 1
-
 export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Workspace, SideBar }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
@@ -18,5 +16,5 @@ export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Works
   await Command.execute(`Search.copyPath`)
 
   // assert
-  await ClipBoard.shouldHaveText('memfs:///test.css')
+  await ClipBoard.shouldHaveText('test.css')
 }
