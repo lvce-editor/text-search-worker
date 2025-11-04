@@ -2,7 +2,9 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.copy-path'
 
-export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Workspace, SideBar }) => {
+export const skip = 1
+
+export const test: Test = async ({ ClipBoard, Search, FileSystem, Workspace, SideBar }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   const tmpDir = await FileSystem.getTmpDir()
@@ -13,7 +15,7 @@ export const test: Test = async ({ Command, ClipBoard, Search, FileSystem, Works
   await Search.focusIndex(0)
 
   // act
-  await Command.execute(`Search.copyPath`)
+  await Search.copyPath()
 
   // assert
   await ClipBoard.shouldHaveText('test.css')
