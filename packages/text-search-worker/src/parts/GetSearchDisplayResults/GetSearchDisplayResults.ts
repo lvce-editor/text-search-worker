@@ -16,7 +16,6 @@ export const getDisplayResults = (
   collapsedPaths: readonly string[],
   originalResults: readonly SearchResult[],
 ): readonly DisplaySearchResult[] => {
-  // Filter out child items when parent files are collapsed
   const filteredResults = GetFilteredResults.getFilteredResults(results, collapsedPaths)
 
   const displayResults: DisplaySearchResult[] = []

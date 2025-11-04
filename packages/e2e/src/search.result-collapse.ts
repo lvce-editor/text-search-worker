@@ -26,5 +26,5 @@ export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locat
   // assert
   await expect(result).toHaveAttribute('aria-expanded', 'false')
   await expect(match).toBeHidden()
-  // await expect(badge).toHaveText('1')// TODO
+  await expect(badge).toHaveText('1')
 }
