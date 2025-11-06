@@ -31,8 +31,9 @@ export const getSearchResultsVirtualDom = (
       tabIndex: 0,
       childCount,
       onBlur: HandleListBlur,
-      onPointerDown: HandleListPointerDown,
-      onFocus: HandleListFocus,
+      // TODO renable this when dom diffing is supported
+      // onPointerDown: HandleListPointerDown,
+      // onFocus: HandleListFocus,
     },
     ...GetTreeItemsVirtualDom.getTreeItemsVirtualDom(visibleItems, deltaY, itemHeight),
     ...GetScrollBarVirtualDom.getScrollBarVirtualDom(scrollbarHeight, scrollBarY, scrollBarValue),
