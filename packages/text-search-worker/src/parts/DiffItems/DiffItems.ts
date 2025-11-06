@@ -12,7 +12,6 @@ export const isEqual = (oldState: SearchState, newState: SearchState): boolean =
     oldState.icons === newState.icons &&
     oldState.items === newState.items &&
     oldState.listFocused === newState.listFocused &&
-    oldState.listFocused === newState.listFocused &&
     oldState.listFocusedIndex === newState.listFocusedIndex &&
     oldState.loaded === newState.loaded &&
     oldState.maxLineY === newState.maxLineY &&
