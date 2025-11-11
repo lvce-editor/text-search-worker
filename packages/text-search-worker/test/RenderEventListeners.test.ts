@@ -43,7 +43,7 @@ test('renderEventListeners', () => {
       params: ['handleListBlur'],
     },
     {
-      name: DomEventListenerFunctions.HandleContextMenu,
+      name: DomEventListenerFunctions.HandleListContextMenu,
       params: ['handleContextMenu', 'event.button', 'event.clientX', 'event.clientY'],
       preventDefault: true,
     },

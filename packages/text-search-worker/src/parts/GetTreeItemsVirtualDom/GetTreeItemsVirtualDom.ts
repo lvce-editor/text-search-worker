@@ -20,7 +20,7 @@ export const getTreeItemsVirtualDom = (
       onClick: DomEventListenerFunctions.HandleClick,
       onBlur: DomEventListenerFunctions.HandleListBlur,
       onWheel: DomEventListenerFunctions.HandleWheel,
-      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
+      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
       id: DomId.TreeItems,
       top: `${-pixelOffset}px`, // TODO use dynamic css instead
     },
