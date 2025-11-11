@@ -16,7 +16,7 @@ export const getReplaceElements = (items: readonly SearchResult[], workspacePath
     const { type, text, lineNumber, end, start } = match
     if (type === TextSearchResultType.File) {
       changes = []
-      const fileName = GetFileName.getFileName(text)
+      const fileName = GetFileName.getFilePath(text)
       const absolutePath = `${workspacePath}/${fileName}`
       element = {
         uri: absolutePath,
