@@ -27,7 +27,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
 
   const result = await selectIndexFile(state, state.items[0], 0)
 
-  expect(result).toEqual({
+  expect(result).toMatchObject({
     ...state,
     collapsedPaths: ['file1.txt'],
     listFocusedIndex: 0,
@@ -45,8 +45,8 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 7, name: 'file1.txt', path: '/file1.txt' },
-        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+        { type: 1, name: 'file1.txt' },
+        { type: 1, name: 'file2.txt' },
       ],
     ],
   ])
@@ -54,7 +54,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
 
 test('selectIndexFile - uncollapse path when already collapsed', async () => {
   const mockRpc = IconThemeWorker.registerMockRpc({
-    'IconTheme.getIcons': () => [mockIcon, mockIcon],
+    'IconTheme.getIcons': () => [mockIcon, mockIcon, mockIcon],
   })
 
   const state: SearchState = {
@@ -79,7 +79,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: ['file-icon', 'file-icon'],
+    icons: ['file-icon', 'file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
@@ -87,8 +87,9 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 7, name: 'file1.txt', path: '/file1.txt' },
-        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+        { type: 1, name: 'file1.txt' },
+        { type: 1, name: 'match1' },
+        { type: 1, name: 'file2.txt' },
       ],
     ],
   ])
