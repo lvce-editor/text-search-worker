@@ -11,8 +11,21 @@ import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
-  const { height, itemHeight, minimumSliderSize, headerHeight, flags, value, threads, includeValue, excludeValue, assetDir, platform, limit } =
-    partialNewState
+  const {
+    height,
+    itemHeight,
+    minimumSliderSize,
+    headerHeight,
+    flags,
+    value,
+    threads,
+    includeValue,
+    excludeValue,
+    assetDir,
+    platform,
+    limit,
+    fileIconCache,
+  } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const { results, limitHit } = await TextSearch.textSearch(
@@ -48,7 +61,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const maxLineY = Math.min(numberOfVisible, total)
   const finalDeltaY = Math.max(contentHeight - listHeight, 0)
   const visible = results.slice(0, maxLineY)
-  const icons = await GetFileIcons.getFileIcons(visible)
+  const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, fileIconCache)
 
   // TODO add info message if limit was hit
 
@@ -58,6 +71,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     ...partialNewState,
     deltaY: 0,
     fileCount,
+    fileIconCache: newFileIconCache,
     finalDeltaY,
     icons,
     items: results,

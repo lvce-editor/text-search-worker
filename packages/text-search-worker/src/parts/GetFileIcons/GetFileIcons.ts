@@ -1,29 +1,20 @@
-import { DirentType } from '@lvce-editor/constants'
-import type { IconRequest } from '../IconRequest/IconRequest.ts'
+import type { FileIconCache } from '../FileIconCache/FileIconCache.ts'
+import type { FileIconsResult } from '../FileIconsRequest/FileIconsResult.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
-import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
+import * as GetFileIconsCached from '../GetFileIconsCached/GetFileIconsCached.ts'
+import { getFileName } from '../GetFileName/GetFileName.ts'
+import * as GetMissingIconRequests from '../GetMissingIconRequests/GetMissingIconRequests.ts'
+import * as RequestFileIcons from '../RequestFileIcons/RequestFileIcons.ts'
+import * as UpdateIconCache from '../UpdateIconCache/UpdateIconCache.ts'
 
-const getFileName = (text: string): string => {
-  if (text.startsWith('./')) {
-    return text.slice(2)
+export const getFileIcons = async (items: readonly SearchResult[], fileIconCache: FileIconCache): Promise<FileIconsResult> => {
+  const missingRequests = GetMissingIconRequests.getMissingIconRequests(items, fileIconCache)
+  const newIcons = await RequestFileIcons.requestFileIcons(missingRequests)
+  const newFileIconCache = UpdateIconCache.updateIconCache(fileIconCache, missingRequests, newIcons)
+  const paths = items.map((item) => getFileName(item.text))
+  const icons = GetFileIconsCached.getIconsCached(paths, newFileIconCache)
+  return {
+    icons,
+    newFileIconCache,
   }
-  return text
-}
-
-export const getFileIcons = async (matches: readonly SearchResult[]): Promise<readonly string[]> => {
-  const requests: IconRequest[] = []
-  for (const item of matches) {
-    if (item.type === TextSearchResultType.File) {
-      const fileName = getFileName(item.text)
-      requests.push({
-        type: DirentType.File,
-        name: fileName,
-        path: `/${fileName}`,
-      })
-    }
-  }
-  const icons = await RendererWorker.getIcons(requests)
-  // TODO cache file icons
-  return icons
 }

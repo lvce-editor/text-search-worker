@@ -33,7 +33,7 @@ test.skip('GetFileIcons', async () => {
     },
   ]
 
-  const result = await GetFileIcons.getFileIcons(mockFiles)
+  const result = await GetFileIcons.getFileIcons(mockFiles, {})
 
   expect(result).toEqual(['file-icon', '', 'file-icon'])
   expect(mockRpc.invocations).toEqual([
