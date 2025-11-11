@@ -69,6 +69,7 @@ export const create = (
     limitHit: false,
     limitHitWarning: '',
     limit: 20_000,
+    fileIconCache: {},
   }
   SearchViewStates.set(uid, state, state)
   return state

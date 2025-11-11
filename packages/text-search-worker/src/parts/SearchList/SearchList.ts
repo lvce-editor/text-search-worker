@@ -1,4 +1,5 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
+import type { FileIconCache } from '../FileIconCache/FileIconCache.ts'
 import type { List } from '../List/List.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 
@@ -8,13 +9,15 @@ export interface SearchList extends List<SearchResult> {
   readonly deltaY: number
   readonly disposed: boolean
   readonly fileCount: number
+  readonly fileIconCache: FileIconCache
   readonly finalDeltaY: number
   readonly handleOffset: number
   readonly icons: readonly string[]
   readonly inputSource: number
-  readonly listItems: readonly SearchResult[]
+  readonly limitHit: boolean
   readonly listFocused: boolean
   readonly listFocusedIndex: number
+  readonly listItems: readonly SearchResult[]
   readonly loaded: boolean
   readonly matchCount: number
   readonly message: string
@@ -31,5 +34,4 @@ export interface SearchList extends List<SearchResult> {
   readonly workspacePath: string
   readonly x: number
   readonly y: number
-  readonly limitHit: boolean
 }
