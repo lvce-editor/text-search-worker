@@ -45,7 +45,7 @@ test('selectIndex - select file item', async () => {
 })
 
 test('selectIndex - select match item', async () => {
-  const rendererMockRpc = RendererWorker.registerMockRpc({
+  RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
   const iconThemeMockRpc = IconThemeWorker.registerMockRpc({
