@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 
 test('handleContextMenuKeyboard', async () => {
@@ -10,7 +10,7 @@ test('handleContextMenuKeyboard', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     x: 100,
     y: 200,
   }

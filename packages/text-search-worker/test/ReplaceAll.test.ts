@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
@@ -11,7 +11,7 @@ test('replaceAll - replaces all matches and updates state', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
       { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 0, lineNumber: 1 },

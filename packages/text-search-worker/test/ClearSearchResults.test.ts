@@ -2,13 +2,14 @@ import { expect, test } from '@jest/globals'
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as ClearSearchResults from '../src/parts/ClearSearchResults/ClearSearchResults.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('clearSearchResults - clears state and focuses search input', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, 'test', ''),
+    ...CreateDefaultState.createDefaultState(),
+    workspacePath: 'test',
     items: [
       { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
       { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },

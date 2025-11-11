@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
 import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
@@ -11,7 +11,7 @@ test('handleContextMenu - mouse event shows context menu at mouse position', asy
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     x: 0,
     y: 0,
   }

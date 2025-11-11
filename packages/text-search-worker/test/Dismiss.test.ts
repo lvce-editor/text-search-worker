@@ -1,12 +1,12 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as Dismiss from '../src/parts/Dismiss/Dismiss.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('dismissItem - no focused item', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     listFocusedIndex: -1,
   }
 
@@ -16,7 +16,7 @@ test('dismissItem - no focused item', async () => {
 
 test('dismissItem - dismiss file item', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
       { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
@@ -36,7 +36,7 @@ test('dismissItem - dismiss file item', async () => {
 
 test('dismissItem - dismiss match item', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 },
       { type: TextSearchResultType.Match, text: 'match1', end: 0, lineNumber: 0, start: 0 },

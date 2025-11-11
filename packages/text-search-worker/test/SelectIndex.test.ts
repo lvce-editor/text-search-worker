@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as SelectIndex from '../src/parts/SelectIndex/SelectIndex.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
@@ -9,7 +9,7 @@ test('selectIndex - no selection', async () => {
   const mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [],
     listFocusedIndex: -1,
     listFocused: false,
@@ -29,7 +29,7 @@ test('selectIndex - select file item', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [{ type: TextSearchResultType.File, text: 'file1.txt', start: 0, lineNumber: 0, end: 0 }],
     listFocusedIndex: -1,
     listFocused: false,
@@ -53,7 +53,7 @@ test('selectIndex - select match item', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 }],
     listFocusedIndex: -1,
     listFocused: false,
@@ -74,7 +74,7 @@ test('getFileIndex - finds closest file above match', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.File, text: 'file1.ts', lineNumber: 0, end: 0, start: 0 },
       { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
@@ -94,7 +94,7 @@ test('getFileIndex - returns -1 when no file found', async () => {
   const mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
       { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
@@ -112,7 +112,7 @@ test('selectIndexPreview - handles match with file above', async () => {
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { type: TextSearchResultType.File, text: 'file1.ts', start: 0, end: 0, lineNumber: 0 },
       { type: TextSearchResultType.Match, lineNumber: 5, start: 0, end: 0, text: '' },

@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
@@ -9,7 +9,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     'IconTheme.getIcons': () => ['icon1', 'icon1'],
   })
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [
       { text: 'file1.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
       { text: 'file2.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
@@ -37,7 +37,7 @@ test('handleIconThemeChange handles empty items array', async () => {
     'IconTheme.getIcons': () => [],
   })
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     items: [],
     minLineY: 0,
     maxLineY: 0,

@@ -1,12 +1,12 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CollapseDetails from '../src/parts/CollapseDetails/CollapseDetails.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('collapseDetails - collapses expanded details', () => {
   const initialState: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     flags: SearchFlags.DetailsExpanded,
   }
   const newState = CollapseDetails.collapseDetails(initialState)
@@ -15,7 +15,7 @@ test('collapseDetails - collapses expanded details', () => {
 
 test.skip('collapseDetails - does nothing if already collapsed', () => {
   const initialState: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     flags: 0,
   }
   const newState = CollapseDetails.collapseDetails(initialState)

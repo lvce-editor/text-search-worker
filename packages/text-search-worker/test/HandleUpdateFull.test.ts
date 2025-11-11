@@ -2,7 +2,7 @@ import { expect, test } from '@jest/globals'
 import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
@@ -12,7 +12,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     workspacePath: '/test',
     value: 'test',
     itemHeight: 20,
@@ -73,7 +73,7 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
   })
 
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     workspacePath: '/test',
     value: 'test',
     itemHeight: 20,

@@ -2,7 +2,7 @@ import { expect, test } from '@jest/globals'
 import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
@@ -10,7 +10,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
     'ContextMenu.show': () => undefined,
   })
 
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const x = 100
   const y = 200
 
@@ -25,7 +25,7 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
     'ContextMenu.show': () => undefined,
   })
 
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const x = 150
   const y = 250
 

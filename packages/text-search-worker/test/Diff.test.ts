@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as Diff from '../src/parts/Diff/Diff.ts'
 import * as DiffType from '../src/parts/DiffType/DiffType.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
@@ -8,7 +8,8 @@ import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewState
 
 test('diff - no changes', () => {
   const uid = 1
-  Create.create(uid, 0, 0, 0, 0, '', '')
+  const state = { ...CreateDefaultState.createDefaultState(), uid }
+  SearchViewStates.set(uid, state, state)
   const { oldState } = SearchViewStates.get(uid)
   const newState = oldState
   expect(Diff.diff(oldState, newState)).toEqual([])
@@ -16,7 +17,8 @@ test('diff - no changes', () => {
 
 test('diff - value change', () => {
   const uid = 1
-  Create.create(uid, 0, 0, 0, 0, '', '')
+  const state = { ...CreateDefaultState.createDefaultState(), uid }
+  SearchViewStates.set(uid, state, state)
   const { oldState } = SearchViewStates.get(uid)
   const newState: SearchState = {
     ...oldState,
@@ -28,7 +30,8 @@ test('diff - value change', () => {
 
 test('diff - include value change', () => {
   const uid = 1
-  Create.create(uid, 0, 0, 0, 0, '', '')
+  const state = { ...CreateDefaultState.createDefaultState(), uid }
+  SearchViewStates.set(uid, state, state)
   const { oldState } = SearchViewStates.get(uid)
   const newState: SearchState = {
     ...oldState,
@@ -40,7 +43,8 @@ test('diff - include value change', () => {
 
 test('diff - exclude value change', () => {
   const uid = 1
-  Create.create(uid, 0, 0, 0, 0, '', '')
+  const state = { ...CreateDefaultState.createDefaultState(), uid }
+  SearchViewStates.set(uid, state, state)
   const { oldState } = SearchViewStates.get(uid)
   const newState: SearchState = {
     ...oldState,

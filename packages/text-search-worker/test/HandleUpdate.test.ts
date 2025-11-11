@@ -1,14 +1,14 @@
 import { expect, test } from '@jest/globals'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleUpdate } from '../src/parts/HandleUpdate/HandleUpdate.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdate - empty search value returns cleared state', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     value: '',
   }
   const update = { value: '' }
@@ -33,7 +33,7 @@ test('handleUpdate - empty search value returns cleared state', async () => {
 
 test.skip('handleUpdate - performs search with valid input', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     workspacePath: '/test',
     value: 'test',
     itemHeight: 20,
@@ -73,7 +73,7 @@ test.skip('handleUpdate - performs search with valid input', async () => {
 
 test('handleUpdate - handles search error', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     value: 'test',
   }
   const update = { value: 'test' }
@@ -101,7 +101,7 @@ test('handleUpdate - handles search error', async () => {
 
 test.skip('handleUpdate - uses search flags from state', async () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     workspacePath: '/test',
     value: 'test',
     flags: SearchFlags.MatchCase | SearchFlags.UseRegularExpression,
