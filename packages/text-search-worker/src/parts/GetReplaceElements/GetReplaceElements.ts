@@ -1,7 +1,7 @@
 import type { BulkReplacementEdit } from '../BulkReplacementEdit/BulkReplacementEdit.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { TextEdit } from '../TextEdit/TextEdit.ts'
-import * as GetFileName from '../GetFileName/GetFileName.ts'
+import * as GetFileName from '../GetFilePath/GetFilePath.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const getReplaceElements = (items: readonly SearchResult[], workspacePath: string, replacement: string): readonly BulkReplacementEdit[] => {

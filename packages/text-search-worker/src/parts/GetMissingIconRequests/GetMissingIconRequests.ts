@@ -2,7 +2,8 @@ import { DirentType } from '@lvce-editor/constants'
 import type { FileIconCache } from '../FileIconCache/FileIconCache.ts'
 import type { IconRequest } from '../IconRequest/IconRequest.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
-import { getFilePath } from '../GetFileName/GetFileName.ts'
+import { getFileName } from '../GetFileName/GetFileName.ts'
+import { getFilePath } from '../GetFilePath/GetFilePath.ts'
 import { isFile } from '../IsFile/IsFile.ts'
 
 const getMissingDirents = (searchResults: readonly SearchResult[], fileIconCache: FileIconCache): readonly SearchResult[] => {
@@ -19,10 +20,12 @@ const getMissingDirents = (searchResults: readonly SearchResult[], fileIconCache
 }
 
 const toIconRequest = (item: SearchResult): IconRequest => {
+  const filePath = getFilePath(item.text)
+  const fileName = getFileName(filePath)
   return {
     type: DirentType.File,
-    name: getFilePath(item.text),
-    path: getFilePath(item.text),
+    name: fileName,
+    path: filePath,
   }
 }
 

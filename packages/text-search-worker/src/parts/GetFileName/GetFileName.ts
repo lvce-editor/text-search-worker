@@ -1,7 +1,7 @@
-export const getFilePath = (text: string): string => {
-  // TODO make api stricter so that results always have the same shape
-  if (text.startsWith('./')) {
-    return text.slice(2)
+export const getFileName = (path: string): string => {
+  const slashIndex = path.lastIndexOf('/')
+  if (slashIndex === -1) {
+    return ''
   }
-  return text
+  return path.slice(slashIndex + 1)
 }
