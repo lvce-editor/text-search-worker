@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['icon1', 'icon1'],
   })
   const state: SearchState = {
@@ -33,7 +33,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [],
   })
   const state: SearchState = {

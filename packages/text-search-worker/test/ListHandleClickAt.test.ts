@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { handleClickAt } from '../src/parts/ListHandleClickAt/ListHandleClickAt.ts'
@@ -27,7 +27,7 @@ const createState = (listItemsLength: number): SearchState => {
 }
 
 test('handleClickAt selects the correct index', async () => {
-  RendererWorker.registerMockRpc({
+  IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 

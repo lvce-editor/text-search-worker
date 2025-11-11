@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as SelectIndex from '../src/parts/SelectIndex/SelectIndex.ts'
@@ -24,7 +24,7 @@ test('selectIndex - no selection', async () => {
 })
 
 test('selectIndex - select file item', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -45,8 +45,10 @@ test('selectIndex - select file item', async () => {
 })
 
 test('selectIndex - select match item', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const rendererMockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
+  })
+  const iconThemeMockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -63,7 +65,7 @@ test('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
+  expect(iconThemeMockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
 })
 
 test('getFileIndex - finds closest file above match', async () => {

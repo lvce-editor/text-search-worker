@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import { selectIndexFile } from '../src/parts/SelectIndexFile/SelectIndexFile.ts'
@@ -8,7 +8,7 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 const mockIcon = 'file-icon'
 
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 
@@ -53,7 +53,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
 })
 
 test('selectIndexFile - uncollapse path when already collapsed', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 

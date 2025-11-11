@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
@@ -7,7 +7,7 @@ import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -60,7 +60,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
