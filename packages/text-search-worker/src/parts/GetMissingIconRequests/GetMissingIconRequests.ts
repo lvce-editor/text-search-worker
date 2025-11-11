@@ -2,31 +2,30 @@ import { DirentType } from '@lvce-editor/constants'
 import type { FileIconCache } from '../FileIconCache/FileIconCache.ts'
 import type { IconRequest } from '../IconRequest/IconRequest.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import { getFileName } from '../GetFileName/GetFileName.ts'
+import { getFilePath } from '../GetFilePath/GetFilePath.ts'
+import { isFile } from '../IsFile/IsFile.ts'
 
-const getFileName = (text: string): string => {
-  if (text.startsWith('./')) {
-    return text.slice(2)
-  }
-  return text
-}
-
-const getMissingDirents = (items: readonly SearchResult[], fileIconCache: FileIconCache): readonly SearchResult[] => {
+const getMissingDirents = (searchResults: readonly SearchResult[], fileIconCache: FileIconCache): readonly SearchResult[] => {
   const missingDirents: SearchResult[] = []
-  for (const item of items) {
-    const uri = getFileName(item.text)
+  const files = searchResults.filter(isFile)
+  for (const file of files) {
+    const uri = getFilePath(file.text)
 
     if (!(uri in fileIconCache)) {
-      missingDirents.push(item)
+      missingDirents.push(file)
     }
   }
   return missingDirents
 }
 
 const toIconRequest = (item: SearchResult): IconRequest => {
+  const filePath = getFilePath(item.text)
+  const fileName = getFileName(filePath)
   return {
     type: DirentType.File,
-    name: getFileName(item.text),
-    path: getFileName(item.text),
+    name: fileName,
+    path: filePath,
   }
 }
 

@@ -45,8 +45,8 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'file2.txt' },
+        { type: 1, name: '' },
+        { type: 1, name: '' },
       ],
     ],
   ])
@@ -79,7 +79,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: ['file-icon', 'file-icon', 'file-icon'],
+    icons: ['file-icon', undefined, 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
@@ -87,9 +87,8 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'match1' },
-        { type: 1, name: 'file2.txt' },
+        { type: 1, name: '' },
+        { type: 1, name: '' },
       ],
     ],
   ])
