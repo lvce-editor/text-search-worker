@@ -7,5 +7,6 @@ export const handleClickAt = async (state: SearchState, eventX: number, eventY: 
   const { x, y, itemHeight, deltaY, flags, listItems } = state
   const topHeight = GetTopHeight.getTopHeight(flags)
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, listItems.length)
+  // TODO if it is the remove button, remove this entry
   return SelectIndex.selectIndex(state, index)
 }
