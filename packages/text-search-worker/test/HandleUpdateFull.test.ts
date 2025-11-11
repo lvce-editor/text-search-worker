@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
@@ -7,7 +7,7 @@ import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -56,11 +56,19 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
+  expect(mockRpc.invocations).toEqual([
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 1, name: 'file1.txt' },
+        { type: 1, name: 'match1' },
+      ],
+    ],
+  ])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -109,5 +117,13 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 7, name: 'file1.txt', path: '/file1.txt' }]]])
+  expect(mockRpc.invocations).toEqual([
+    [
+      'IconTheme.getIcons',
+      [
+        { type: 1, name: 'file1.txt' },
+        { type: 1, name: 'match1' },
+      ],
+    ],
+  ])
 })

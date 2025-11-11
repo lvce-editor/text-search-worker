@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as Create from '../src/parts/Create/Create.ts'
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['icon1', 'icon1'],
   })
   const state: SearchState = {
@@ -25,15 +25,15 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 7, name: 'file1.txt', path: '/file1.txt' },
-        { type: 7, name: 'file2.txt', path: '/file2.txt' },
+        { type: 1, name: 'file1.txt' },
+        { type: 1, name: 'file2.txt' },
       ],
     ],
   ])
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [],
   })
   const state: SearchState = {
@@ -45,5 +45,5 @@ test('handleIconThemeChange handles empty items array', async () => {
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
   expect(newState.icons).toEqual([])
-  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', []]])
+  expect(mockRpc.invocations).toEqual([])
 })
