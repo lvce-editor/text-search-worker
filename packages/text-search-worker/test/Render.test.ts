@@ -1,13 +1,13 @@
 import { expect, test } from '@jest/globals'
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as Render from '../src/parts/Render/Render.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('doRender - no changes returns empty commands', () => {
-  const oldState = Create.create(1, 0, 0, 0, 0, '', '')
+  const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   SearchViewStates.set(1, oldState, oldState)
 
   const commands = Render.doRender(1)
@@ -15,7 +15,7 @@ test('doRender - no changes returns empty commands', () => {
 })
 
 test('doRender - renders items when changed', () => {
-  const oldState = Create.create(1, 0, 0, 0, 0, '', '')
+  const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState = {
     ...oldState,
     items: [{ type: TextSearchResultType.File, text: 'item1', start: 0, lineNumber: 0, end: 0 }],
@@ -37,7 +37,7 @@ test('doRender - renders items when changed', () => {
 })
 
 test('doRender - renders focus when changed', () => {
-  const oldState = Create.create(1, 0, 0, 0, 0, '', '')
+  const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState = {
     ...oldState,
     focus: WhenExpression.FocusSearchInput,
@@ -53,7 +53,7 @@ test('doRender - renders focus when changed', () => {
 })
 
 test('doRender - renders value when changed', () => {
-  const oldState = Create.create(1, 0, 0, 0, 0, '', '')
+  const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState = {
     ...oldState,
     value: 'newValue',

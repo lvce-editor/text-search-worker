@@ -1,14 +1,14 @@
 import { expect, test } from '@jest/globals'
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as FocusSearchValueNext from '../src/parts/FocusSearchValueNext/FocusSearchValueNext.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 
 test('focusSearchValueNext - with replace expanded', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     flags: SearchFlags.ReplaceExpanded,
   }
 
@@ -23,7 +23,7 @@ test('focusSearchValueNext - with replace expanded', () => {
 
 test('focusSearchValueNext - without replace expanded', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     flags: 0,
   }
 

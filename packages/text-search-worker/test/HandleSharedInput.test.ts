@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 
 test.skip('handleSharedInput - search value input', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'search-value'
   const value = 'test'
   const inputSource = InputSource.User
@@ -19,7 +19,7 @@ test.skip('handleSharedInput - search value input', async () => {
 
 test.skip('handleSharedInput - replacement value input', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'replacement-value'
   const value = 'replacement'
   const inputSource = InputSource.User
@@ -33,7 +33,7 @@ test.skip('handleSharedInput - replacement value input', async () => {
 
 test.skip('handleSharedInput - exclude files input', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'files-to-exclude-value'
   const value = '*.test.ts'
   const inputSource = InputSource.User
@@ -48,7 +48,7 @@ test.skip('handleSharedInput - exclude files input', async () => {
 
 test.skip('handleSharedInput - unknown input handler throws error', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'unknown-handler'
   const value = 'test'
 
@@ -57,7 +57,7 @@ test.skip('handleSharedInput - unknown input handler throws error', async () => 
 
 test.skip('handleSharedInput - uses default input source when not provided', async () => {
   const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = Create.create(0, 0, 0, 0, 0, '', '')
+  const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'search-value'
   const value = 'test'
 

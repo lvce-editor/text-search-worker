@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { setDeltaY } from '../src/parts/SetDeltaY/SetDeltaY.ts'
 
 test('setDeltaY - no change when same deltaY', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     deltaY: 100,
     itemHeight: 20,
     finalDeltaY: 200,
@@ -20,7 +20,7 @@ test('setDeltaY - no change when same deltaY', () => {
 
 test('setDeltaY - updates state with new deltaY', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     deltaY: 0,
     itemHeight: 20,
     finalDeltaY: 200,
@@ -41,7 +41,7 @@ test('setDeltaY - updates state with new deltaY', () => {
 
 test('setDeltaY - clamps value within bounds', () => {
   const state: SearchState = {
-    ...Create.create(0, 0, 0, 0, 0, '', ''),
+    ...CreateDefaultState.createDefaultState(),
     deltaY: 0,
     itemHeight: 20,
     finalDeltaY: 200,

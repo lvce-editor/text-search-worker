@@ -1,11 +1,11 @@
 import { expect, test } from '@jest/globals'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { loadContent } from '../src/parts/LoadContent/LoadContent.ts'
 import * as TextSearchProviders from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('loadContent with saved value calls handleUpdate', async () => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
+  const state = CreateDefaultState.createDefaultState()
   const savedState = {
     value: 'test',
     savedCollapsedPaths: [],
@@ -38,7 +38,7 @@ test('loadContent with saved value calls handleUpdate', async () => {
 })
 
 test('loadContent without saved value returns state with loaded flag', async () => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
+  const state = CreateDefaultState.createDefaultState()
   const savedState = {
     value: '',
     savedCollapsedPaths: [],
@@ -59,7 +59,7 @@ test('loadContent without saved value returns state with loaded flag', async () 
 })
 
 test('loadContent with null savedState', async () => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
+  const state = CreateDefaultState.createDefaultState()
   const savedState = null
 
   const result = await loadContent(state, savedState)
@@ -70,7 +70,7 @@ test('loadContent with null savedState', async () => {
 })
 
 test('loadContent with undefined savedState', async () => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
+  const state = CreateDefaultState.createDefaultState()
   const savedState = undefined
 
   const result = await loadContent(state, savedState)

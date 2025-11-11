@@ -1,19 +1,19 @@
 import { expect, test } from '@jest/globals'
 import { AriaRoles } from '@lvce-editor/constants'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as RenderActions from '../src/parts/RenderActions/RenderActions.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test.skip('renderActions - returns empty array when states are same', () => {
-  const state = Create.create(1, 0, 0, 0, 0, '', '')
+  const state = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   SearchViewStates.set(1, state, state)
   const result = RenderActions.renderActions(1)
   expect(result).toEqual([])
 })
 
 test.skip('renderActions - returns virtual dom when states differ', () => {
-  const oldState = Create.create(1, 0, 0, 0, 0, '', '')
+  const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState: SearchState = {
     ...oldState,
     items: [

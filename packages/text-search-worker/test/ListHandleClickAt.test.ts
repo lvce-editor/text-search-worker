@@ -1,13 +1,13 @@
 import { test, expect } from '@jest/globals'
 import { IconThemeWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
-import * as Create from '../src/parts/Create/Create.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleClickAt } from '../src/parts/ListHandleClickAt/ListHandleClickAt.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 // Helper to create a state with listItems
 const createState = (listItemsLength: number): SearchState => {
-  const state = Create.create(0, 0, 0, 0, 0, '', '')
+  const state = CreateDefaultState.createDefaultState()
   const listItems = Array.from({ length: listItemsLength }, (_, i): any => ({
     end: 0,
     lineNumber: 0,
