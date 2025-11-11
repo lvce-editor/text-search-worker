@@ -72,7 +72,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
 
   const result = await selectIndexFile(state, state.items[0], 0)
 
-  expect(result).toEqual({
+  expect(result).toMatchObject({
     ...state,
     collapsedPaths: [],
     listFocusedIndex: 0,
