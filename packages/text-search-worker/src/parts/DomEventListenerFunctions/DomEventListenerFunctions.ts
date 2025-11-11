@@ -1,5 +1,5 @@
 export const HandleClick = 1
-export const HandleContextMenu = 2
+export const HandleListContextMenu = 2
 export const HandleHeaderContextMenu = 3
 export const HandleExcludeInput = 4
 export const HandleButtonClick = 5

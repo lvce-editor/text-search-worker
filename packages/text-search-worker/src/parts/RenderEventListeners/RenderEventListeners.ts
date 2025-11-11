@@ -42,7 +42,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       params: ['handleListBlur'],
     },
     {
-      name: DomEventListenerFunctions.HandleContextMenu,
+      name: DomEventListenerFunctions.HandleListContextMenu,
       params: ['handleContextMenu', EventExpression.Button, EventExpression.ClientX, EventExpression.ClientY],
       preventDefault: true,
     },

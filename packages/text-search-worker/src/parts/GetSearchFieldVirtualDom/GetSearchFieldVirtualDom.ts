@@ -40,7 +40,7 @@ export const getSearchFieldVirtualDom = (
       onInput,
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onBlur: DomEventListenerFunctions.HandleInputBlur,
-      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
+      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
       childCount: 0,
     },
     {

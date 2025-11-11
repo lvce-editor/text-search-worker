@@ -59,7 +59,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MultilineInputBox',
       name: 'SearchValue',
       onBlur: DomEventListenerFunctions.HandleInputBlur,
-      onContextMenu: DomEventListenerFunctions.HandleContextMenu,
+      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 10,
       placeholder: 'Search',
