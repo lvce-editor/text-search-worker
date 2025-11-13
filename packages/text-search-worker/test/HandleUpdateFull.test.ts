@@ -105,7 +105,7 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: false,
-    icons: ['file-icon', ''],
+    icons: ['file-icon', undefined],
     maxLineY: 2,
     message: '1 result in 1 file',
   })
