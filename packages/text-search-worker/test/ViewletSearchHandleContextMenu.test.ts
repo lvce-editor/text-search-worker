@@ -7,7 +7,7 @@ import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/V
 
 test('handleContextMenu - mouse event shows context menu at mouse position', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'ContextMenu.show': () => undefined,
+    'RendererWorker.showContextMenu2': () => undefined,
   })
 
   const state: SearchState = {
@@ -22,5 +22,5 @@ test('handleContextMenu - mouse event shows context menu at mouse position', asy
   const result = await handleContextMenu(state, button, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show', 0, 0, 18]])
+  expect(mockRpc.invocations).toEqual([['RendererWorker.showContextMenu2', state.uid, 18, 0, 0, { menuId: 18 }]])
 })
