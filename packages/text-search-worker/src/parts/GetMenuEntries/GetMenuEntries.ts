@@ -1,10 +1,6 @@
-import { MenuEntryId, MenuItemFlags } from '@lvce-editor/constants'
+import { MenuItemFlags } from '@lvce-editor/constants'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
-
-export const getMenuEntryIds = (): readonly number[] => {
-  return [MenuEntryId.Search]
-}
 
 export const getMenuEntries = (): readonly MenuEntry[] => {
   return [
