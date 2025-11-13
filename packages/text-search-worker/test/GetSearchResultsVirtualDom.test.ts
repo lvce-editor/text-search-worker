@@ -116,6 +116,7 @@ test('getSearchResultsVirtualDom', () => {
       childCount: 1,
       className: 'SearchRemove',
       title: 'Remove',
+      name: 'Remove',
       type: 1,
     },
     {

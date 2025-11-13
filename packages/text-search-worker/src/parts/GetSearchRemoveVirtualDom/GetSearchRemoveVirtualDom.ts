@@ -1,5 +1,6 @@
 import { ClassNames, VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as InputName from '../InputName/InputName.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
 const closeIcon: VirtualDomNode = {
@@ -14,6 +15,7 @@ export const getSearchRemoveVirtualDom = (): readonly VirtualDomNode[] => {
     {
       type: VirtualDomElements.Button,
       className: ClassNames.SearchRemove,
+      name: InputName.Remove,
       childCount: 1,
       title,
     },

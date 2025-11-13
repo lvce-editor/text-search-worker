@@ -9,5 +9,6 @@ export const handleClickAt = async (state: SearchState, eventX: number, eventY: 
   const topHeight = GetTopHeight.getTopHeight(flags)
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, listItems.length)
   const isRemoveButton = name === InputName.Remove
+  console.log('isremovebutton', isRemoveButton)
   return SelectIndex.selectIndex(state, index, isRemoveButton)
 }
