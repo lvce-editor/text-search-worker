@@ -17,6 +17,10 @@ export const matchCase = (): string => {
   return I18nString.i18nString(UiStrings.MatchCase)
 }
 
+export const remove = (): string => {
+  return I18nString.i18nString(UiStrings.Remove)
+}
+
 export const preserveCase = (): string => {
   return I18nString.i18nString(UiStrings.PreserveCase)
 }

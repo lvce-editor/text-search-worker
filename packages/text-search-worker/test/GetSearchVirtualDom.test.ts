@@ -278,7 +278,9 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'SearchRemove',
-      type: 4,
+      title: 'Remove',
+      type: 1,
+      name: 'Remove',
     },
     {
       childCount: 0,
@@ -325,7 +327,9 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 1,
       className: 'SearchRemove',
-      type: 4,
+      title: 'Remove',
+      type: 1,
+      name: 'Remove',
     },
     {
       childCount: 0,
