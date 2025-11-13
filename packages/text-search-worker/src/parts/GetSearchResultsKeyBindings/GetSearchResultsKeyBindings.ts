@@ -35,5 +35,10 @@ export const getSearchResultKeyBindings = (): readonly KeyBinding[] => {
       command: 'Search.copy',
       when: WhenExpression.FocusSearchResults,
     },
+    {
+      key: KeyCode.Delete,
+      command: 'Search.removeCurrent',
+      when: WhenExpression.FocusSearchResults,
+    },
   ]
 }
