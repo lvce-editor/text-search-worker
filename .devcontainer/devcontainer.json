@@ -1,8 +1,6 @@
 {
   "name": "text-search-worker",
   "image": "mcr.microsoft.com/devcontainers/node:24",
-  "workspaceFolder": "/workspace",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "postCreateCommand": "npm ci",
   "postStartCommand": "npm run dev",
   "customizations": {
