@@ -7,7 +7,7 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as ToggleCollapsedPath from '../ToggleCollapsedPath/ToggleCollapsedPath.ts'
 
-export const selectIndexFile = async (state: SearchState, searchResult: SearchResult, index: number): Promise<SearchState> => {
+export const selectIndexFile = async (state: SearchState, searchResult: SearchResult, index: number, isRemove: boolean): Promise<SearchState> => {
   const { collapsedPaths, items, itemHeight, headerHeight, height, fileIconCache } = state
   const path = searchResult.text
   const newCollapsedPaths = ToggleCollapsedPath.toggleCollapsedPath(collapsedPaths, path)
