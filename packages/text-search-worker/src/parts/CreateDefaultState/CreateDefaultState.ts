@@ -66,6 +66,8 @@ export const createDefaultState = (): SearchState => {
     limit: 20_000,
     fileIconCache: {},
     scrollBarY,
+    removeButtonWidth: 20,
+    removeButtonRight: 0,
   }
   return state
 }
