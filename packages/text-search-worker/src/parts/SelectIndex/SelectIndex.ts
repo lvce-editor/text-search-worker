@@ -1,7 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetSelectHandler from '../GetSelectHandler/GetSelectHandler.ts'
 
-export const selectIndex = async (state: SearchState, index: number): Promise<SearchState> => {
+export const selectIndex = async (state: SearchState, index: number, isRemoveButton = false): Promise<SearchState> => {
   if (index === -1) {
     return {
       ...state,
