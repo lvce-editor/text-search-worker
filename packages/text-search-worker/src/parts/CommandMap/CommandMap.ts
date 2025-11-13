@@ -49,6 +49,7 @@ import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as NextHistoryResult from '../NextHistoryResult/NextHistoryResult.ts'
 import * as PreviousHistoryResult from '../PreviousHistoryResult/PreviousHistoryResult.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
+import { removeCurrent } from '../RemoveCurrent/RemoveCurrent.ts'
 import { removeIndex } from '../RemoveIndex/RemoveIndex.ts'
 import * as Render2 from '../Render2/Render2.ts'
 import * as RenderActions from '../RenderActions/RenderActions.ts'
@@ -80,6 +81,7 @@ export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
+  'TextSearch.removeCurrent': WrapCommand.wrapCommand(removeCurrent),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
   'TextSearch.diff2': Diff2.diff2,
