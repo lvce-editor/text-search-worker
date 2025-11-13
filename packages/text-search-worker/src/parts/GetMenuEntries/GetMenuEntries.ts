@@ -8,13 +8,13 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       id: 'dismiss',
       label: SearchStrings.dismiss(),
       flags: MenuItemFlags.None,
-      command: /* TODO */ '',
+      command: 'Search.removeCurrent',
     },
     {
       id: 'copyPath',
       label: SearchStrings.copyPath(),
       flags: MenuItemFlags.None,
-      command: /* TODO */ '',
+      command: 'Search.copyPath',
     },
   ]
 }
