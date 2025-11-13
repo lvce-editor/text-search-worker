@@ -25,7 +25,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
     height: 500,
   }
 
-  const result = await selectIndexFile(state, state.items[0], 0)
+  const result = await selectIndexFile(state, state.items[0], 0, false)
 
   expect(result).toMatchObject({
     ...state,
@@ -70,7 +70,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     height: 500,
   }
 
-  const result = await selectIndexFile(state, state.items[0], 0)
+  const result = await selectIndexFile(state, state.items[0], 0, false)
 
   expect(result).toMatchObject({
     ...state,

@@ -12,5 +12,5 @@ export const selectIndex = async (state: SearchState, index: number, isRemoveBut
   const { listItems } = state
   const searchResult = listItems[index]
   const fn = GetSelectHandler.getSelectHandler(searchResult.type)
-  return fn(state, searchResult, index)
+  return fn(state, searchResult, index, isRemoveButton)
 }
