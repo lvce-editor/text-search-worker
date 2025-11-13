@@ -6,7 +6,7 @@ import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSea
 
 test('handleContextMenuKeyboard', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'RendererWorker.showContextMenu2': () => undefined,
+    'ContextMenu.show2': () => undefined,
   })
 
   const state: SearchState = {
@@ -18,5 +18,5 @@ test('handleContextMenuKeyboard', async () => {
   const result = await ViewletSearchHandleContextMenuKeyBoard.handleContextMenuKeyboard(state)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['RendererWorker.showContextMenu2', state.uid, 18, 100, 200, { menuId: 18 }]])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, 18, 100, 200, { menuId: 18 }]])
 })
