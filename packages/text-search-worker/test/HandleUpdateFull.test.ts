@@ -8,7 +8,7 @@ import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
   const mockRpc = IconThemeWorker.registerMockRpc({
-    'IconTheme.getIcons': () => ['file-icon'],
+    'IconTheme.getIcons': () => ['file-icon', undefined],
   })
 
   const state: SearchState = {
@@ -27,10 +27,10 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     platform: 0,
   }
   const update = { value: 'test' }
-  const searchResults = [
+  const searchResults: readonly SearchResult[] = [
     { text: 'file1.txt', type: 1, start: 0, end: 0, lineNumber: 0 },
     { text: 'match1', type: 2, start: 0, end: 6, lineNumber: 1 },
-  ] as SearchResult[]
+  ]
 
   add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
@@ -52,24 +52,16 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: true,
-    icons: ['file-icon'],
+    icons: ['file-icon', undefined],
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([
-    [
-      'IconTheme.getIcons',
-      [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'match1' },
-      ],
-    ],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 1, name: '' }]]])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
   const mockRpc = IconThemeWorker.registerMockRpc({
-    'IconTheme.getIcons': () => ['file-icon'],
+    'IconTheme.getIcons': () => ['file-icon', undefined],
   })
 
   const state: SearchState = {
@@ -88,10 +80,10 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     platform: 0,
   }
   const update = { value: 'test' }
-  const searchResults = [
+  const searchResults: readonly SearchResult[] = [
     { text: 'file1.txt', type: 1, start: 0, end: 0, lineNumber: 0 },
     { text: 'match1', type: 2, start: 0, end: 6, lineNumber: 1 },
-  ] as SearchResult[]
+  ]
 
   add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
@@ -113,17 +105,9 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     loaded: true,
     searchInputErrorMessage: '',
     limitHit: false,
-    icons: ['file-icon'],
+    icons: ['file-icon', undefined],
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRpc.invocations).toEqual([
-    [
-      'IconTheme.getIcons',
-      [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'match1' },
-      ],
-    ],
-  ])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 1, name: '' }]]])
 })

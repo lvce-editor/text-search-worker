@@ -42,10 +42,10 @@ test.skip('handleUpdate - performs search with valid input', async () => {
     minimumSliderSize: 20,
   }
   const update = { value: 'test' }
-  const searchResults = [
-    { text: 'file1.txt', type: 1 },
-    { text: 'match1', type: 2 },
-  ] as SearchResult[]
+  const searchResults: readonly SearchResult[] = [
+    { text: 'file1.txt', type: 1, start: 0, end: 0, lineNumber: 0 },
+    { text: 'match1', type: 2, start: 0, end: 0, lineNumber: 0 },
+  ]
 
   add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {

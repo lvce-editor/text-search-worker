@@ -23,7 +23,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleClick,
-      params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY],
+      params: ['handleClickAt', EventExpression.ClientX, EventExpression.ClientY, EventExpression.TargetName],
     },
     {
       name: DomEventListenerFunctions.HandleListPointerDown,

@@ -70,6 +70,8 @@ export const create = (
     limitHitWarning: '',
     limit: 20_000,
     fileIconCache: {},
+    removeButtonWidth: 20,
+    removeButtonRight: 0,
   }
   SearchViewStates.set(uid, state, state)
   return state
