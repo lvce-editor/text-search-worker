@@ -79,7 +79,7 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
     listFocused: true,
     listItems: state.items,
     maxLineY: 3,
-    icons: ['file-icon', undefined, 'file-icon'],
+    icons: ['file-icon', '', 'file-icon'],
     focus: 22,
     focusSource: 2,
   })
