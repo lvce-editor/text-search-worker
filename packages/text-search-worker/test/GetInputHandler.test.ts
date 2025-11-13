@@ -18,5 +18,5 @@ test('GetInputHandler - should return handleReplaceInput function', () => {
 
 test('GetInputHandler - error', () => {
   const name = 'unknown'
-  expect(() => GetInputHandler.getInputHandler(name)).toThrow(new Error('unknown input handler: unknown'))
+  expect(() => GetInputHandler.getInputHandler(name)).toThrow('unknown input handler: unknown')
 })
