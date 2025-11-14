@@ -5,7 +5,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import * as OpenUri from '../OpenUri/OpenUri.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
-export const selectIndexPreview = async (state: SearchState, searchResult: any, index: number, isRemove: boolean): Promise<SearchState> => {
+export const selectIndexPreview = async (state: SearchState, searchResult: any, index: number): Promise<SearchState> => {
   const { items, workspacePath } = state
   const fileIndex = GetFileIndex.getFileIndex(items, index)
   if (fileIndex === -1) {
