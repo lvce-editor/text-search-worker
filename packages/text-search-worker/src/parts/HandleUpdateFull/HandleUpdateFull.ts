@@ -62,9 +62,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const finalDeltaY = Math.max(contentHeight - listHeight, 0)
   const visible = results.slice(0, maxLineY)
   const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, fileIconCache)
-
   const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
-
   return {
     ...partialNewState,
     deltaY: 0,
