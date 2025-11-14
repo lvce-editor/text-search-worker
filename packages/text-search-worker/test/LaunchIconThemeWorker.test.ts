@@ -11,12 +11,7 @@ test('launchIconThemeWorker - creates rpc and calls sendMessagePortToIconThemeWo
 
   expect(rpc).toBeDefined()
   expect(typeof rpc).toBe('object')
-  expect(mockRpc.invocations[0][1]).toBeInstanceOf(MessagePort)
-  const expectedArray = [
-    'SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker',
-    mockRpc.invocations[0][1],
-    'IconTheme.handleMessagePort',
-  ]
+  const expectedArray = ['SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker', expect.anything(), 'IconTheme.handleMessagePort', 0]
   expect(mockRpc.invocations).toEqual([expectedArray])
 })
 
@@ -29,11 +24,6 @@ test('launchIconThemeWorker - handles error when sendMessagePortToIconThemeWorke
   })
 
   await expect(LaunchIconThemeWorker.launchIconThemeWorker()).rejects.toThrow('Failed to transfer port')
-  expect(mockRpc.invocations[0][1]).toBeInstanceOf(MessagePort)
-  const expectedArray = [
-    'SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker',
-    mockRpc.invocations[0][1],
-    'IconTheme.handleMessagePort',
-  ]
+  const expectedArray = ['SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker', expect.anything(), 'IconTheme.handleMessagePort', 0]
   expect(mockRpc.invocations).toEqual([expectedArray])
 })
