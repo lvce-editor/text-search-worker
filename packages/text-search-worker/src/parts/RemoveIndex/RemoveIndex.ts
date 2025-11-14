@@ -16,6 +16,7 @@ export const removeIndex = (state: SearchState, index: number): SearchState => {
     deltaY: newDeltaY,
     fileCount: newFileCount,
     items: newItems,
+    listItems: newItems,
     listFocusedIndex: newFocusedIndex,
     matchCount: newMatchCount,
     maxLineY: newMaxLineY,
