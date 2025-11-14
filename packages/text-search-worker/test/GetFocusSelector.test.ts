@@ -45,3 +45,19 @@ test('getFocusSelector - toggle details', () => {
 test('getFocusSelector - replace all', () => {
   expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchReplaceAll)).toBe('ReplaceAll')
 })
+
+test('getFocusSelector - search open editors', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchOpenEditors)).toBe('SearchOnlyOpenEditors')
+})
+
+test('getFocusSelector - ignore files', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusIgnoreFiles)).toBe('UseExcludeSettings')
+})
+
+test('getFocusSelector - toggle replace', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusToggleReplace)).toBe('ToggleReplace')
+})
+
+test('getFocusSelector - search results', () => {
+  expect(GetFocusSelector.getFocusSelector(WhenExpression.FocusSearchResults)).toBe('.Tree')
+})
