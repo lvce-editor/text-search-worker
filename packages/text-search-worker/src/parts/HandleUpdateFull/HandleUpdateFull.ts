@@ -63,8 +63,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const visible = results.slice(0, maxLineY)
   const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, fileIconCache)
 
-  // TODO add info message if limit was hit
-
   const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
 
   return {
