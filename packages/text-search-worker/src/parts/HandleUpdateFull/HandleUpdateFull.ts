@@ -37,7 +37,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
       exclude: excludeValue,
       include: includeValue,
-      assetDir: assetDir,
+      assetDir,
       root,
       query: value,
       scheme,
