@@ -15,7 +15,7 @@ test.skip('removeIndex - returns state unchanged', async () => {
     matchCount: 1,
   }
 
-  const result = RemoveIndex.removeIndex(state, 0)
+  const result = await RemoveIndex.removeIndex(state, 0)
   expect(result).toEqual({
     ...state,
   })
@@ -29,7 +29,7 @@ test.skip('removeIndex - with empty state', async () => {
     matchCount: 0,
   }
 
-  const result = RemoveIndex.removeIndex(state, 0)
+  const result = await RemoveIndex.removeIndex(state, 0)
   expect(result).toEqual({
     ...state,
   })
@@ -47,7 +47,7 @@ test.skip('removeIndex - with file item', async () => {
     matchCount: 1,
   }
 
-  const result = RemoveIndex.removeIndex(state, 0)
+  const result = await RemoveIndex.removeIndex(state, 0)
   expect(result).toEqual({
     ...state,
   })
@@ -65,7 +65,7 @@ test.skip('removeIndex - with match item', async () => {
     matchCount: 2,
   }
 
-  const result = RemoveIndex.removeIndex(state, 1)
+  const result = await RemoveIndex.removeIndex(state, 1)
   expect(result).toEqual({
     ...state,
   })
@@ -79,7 +79,7 @@ test.skip('removeIndex - with invalid index', async () => {
     matchCount: 0,
   }
 
-  const result = RemoveIndex.removeIndex(state, 10)
+  const result = await RemoveIndex.removeIndex(state, 10)
   expect(result).toEqual({
     ...state,
   })
