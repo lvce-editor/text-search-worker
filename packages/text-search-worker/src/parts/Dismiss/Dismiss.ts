@@ -13,13 +13,13 @@ export const dismissItem = (state: SearchState): SearchState => {
   const { newMinLineY, newMaxLineY, newDeltaY } = getNewMinMax(newItems.length, minLineY, maxLineY, deltaY, itemHeight)
   return {
     ...state,
+    deltaY: newDeltaY,
+    fileCount: newFileCount,
     items: newItems,
     listFocusedIndex: newFocusedIndex,
-    message,
     matchCount: newMatchCount,
-    fileCount: newFileCount,
-    minLineY: newMinLineY,
     maxLineY: newMaxLineY,
-    deltaY: newDeltaY,
+    message,
+    minLineY: newMinLineY,
   }
 }
