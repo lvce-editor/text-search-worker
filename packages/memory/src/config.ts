@@ -3,7 +3,7 @@ import { root } from './root.ts'
 
 export const threshold = 545_000
 
-export const instantiations = 10_000
+export const instantiations = 5_000
 
 export const instantiationsPath = join(root, 'packages', 'text-search-worker')
 
