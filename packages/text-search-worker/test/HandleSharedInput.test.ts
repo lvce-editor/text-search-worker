@@ -1,68 +1,74 @@
 import { expect, test } from '@jest/globals'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as HandleSharedInput from '../src/parts/HandleSharedInput/HandleSharedInput.ts'
+import * as InputName from '../src/parts/InputName/InputName.ts'
 import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 
-test.skip('handleSharedInput - search value input', async () => {
-  const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
+test('handleSharedInput - search value input', async () => {
   const state: SearchState = CreateDefaultState.createDefaultState()
-  const name = 'search-value'
-  const value = 'test'
+  const name = InputName.SearchValue
+  const value = ''
   const inputSource = InputSource.User
-  // @ts-expect-error
-  mockHandleUpdate.handleUpdate.mockResolvedValue({ ...state, value } as SearchState)
 
-  const result = await handleSharedInput(state, name, value, inputSource)
+  const result = await HandleSharedInput.handleSharedInput(state, name, value, inputSource)
 
-  expect(result).toEqual({ ...state, value })
+  expect(result.value).toBe(value)
+  expect(result.inputSource).toBe(inputSource)
+  expect(result.loaded).toBe(true)
 })
 
-test.skip('handleSharedInput - replacement value input', async () => {
-  const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
+test('handleSharedInput - replacement value input', async () => {
   const state: SearchState = CreateDefaultState.createDefaultState()
-  const name = 'replacement-value'
+  const name = InputName.ReplaceValue
   const value = 'replacement'
   const inputSource = InputSource.User
-  // @ts-expect-error
-  mockHandleUpdate.handleUpdate.mockResolvedValue({ ...state, replacement: value } as SearchState)
 
-  const result = await handleSharedInput(state, name, value, inputSource)
+  const result = await HandleSharedInput.handleSharedInput(state, name, value, inputSource)
 
-  expect(result).toEqual({ ...state, replacement: value })
+  expect(result.replacement).toBe(value)
+  expect(result.inputSource).toBe(inputSource)
 })
 
-test.skip('handleSharedInput - exclude files input', async () => {
-  const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
+test('handleSharedInput - exclude files input', async () => {
   const state: SearchState = CreateDefaultState.createDefaultState()
-  const name = 'files-to-exclude-value'
+  const name = InputName.FilesToExclude
   const value = '*.test.ts'
   const inputSource = InputSource.User
 
-  // @ts-expect-error
-  mockHandleUpdate.handleUpdate.mockResolvedValue({ ...state, excludeValue: value } as SearchState)
+  const result = await HandleSharedInput.handleSharedInput(state, name, value, inputSource)
 
-  const result = await handleSharedInput(state, name, value, inputSource)
-
-  expect(result).toEqual({ ...state, excludeValue: value })
+  expect(result.excludeValue).toBe(value)
+  expect(result.inputSource).toBe(inputSource)
 })
 
-test.skip('handleSharedInput - unknown input handler throws error', async () => {
-  const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
+test('handleSharedInput - include files input', async () => {
+  const state: SearchState = CreateDefaultState.createDefaultState()
+  const name = InputName.FilesToInclude
+  const value = '*.ts'
+  const inputSource = InputSource.User
+
+  const result = await HandleSharedInput.handleSharedInput(state, name, value, inputSource)
+
+  expect(result.includeValue).toBe(value)
+  expect(result.inputSource).toBe(inputSource)
+})
+
+test('handleSharedInput - uses default input source when not provided', async () => {
+  const state: SearchState = CreateDefaultState.createDefaultState()
+  const name = InputName.SearchValue
+  const value = ''
+
+  const result = await HandleSharedInput.handleSharedInput(state, name, value)
+
+  expect(result.value).toBe(value)
+  expect(result.inputSource).toBe(InputSource.Script)
+})
+
+test('handleSharedInput - unknown input handler throws error', () => {
   const state: SearchState = CreateDefaultState.createDefaultState()
   const name = 'unknown-handler'
   const value = 'test'
 
-  expect(() => handleSharedInput(state, name, value)).toThrow('unknown input handler: unknown-handler')
-})
-
-test.skip('handleSharedInput - uses default input source when not provided', async () => {
-  const { handleSharedInput } = await import('../src/parts/HandleSharedInput/HandleSharedInput.ts')
-  const state: SearchState = CreateDefaultState.createDefaultState()
-  const name = 'search-value'
-  const value = 'test'
-
-  // @ts-expect-error
-  mockHandleUpdate.handleUpdate.mockResolvedValue({ ...state, value } as SearchState)
-
-  await handleSharedInput(state, name, value)
+  expect(() => HandleSharedInput.handleSharedInput(state, name, value)).toThrow('unknown input handler: unknown-handler')
 })
