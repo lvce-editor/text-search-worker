@@ -1,5 +1,5 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const copyPath = async (state: SearchState): Promise<SearchState> => {
   const { items, focusedIndex } = state

@@ -1,6 +1,6 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { TextSearchCompletionResult } from '../TextSearchCompletionResult/TextSearchCompletionResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const textSearch = async (
   scheme: string,

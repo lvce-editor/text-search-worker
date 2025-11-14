@@ -1,5 +1,5 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as Assert from '../Assert/Assert.ts'
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const show = async (x: number, y: number, id: number, ...args: readonly any[]): Promise<void> => {
   Assert.number(x)
