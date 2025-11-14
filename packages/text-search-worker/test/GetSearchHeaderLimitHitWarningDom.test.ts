@@ -1,0 +1,48 @@
+import { expect, test } from '@jest/globals'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
+import { SearchWarningMessage } from '../src/parts/ClassNames/ClassNames.ts'
+import * as GetSearchHeaderLimitHitWarningDom from '../src/parts/GetSearchHeaderLimitHitWarningDom/GetSearchHeaderLimitHitWarningDom.ts'
+
+test('getSearchHeaderLimitHitVirtualDom - returns empty div when limitHitWarning is empty', () => {
+  const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom('')
+  expect(result).toEqual([
+    {
+      type: VirtualDomElements.Div,
+      childCount: 0,
+    },
+  ])
+})
+
+test('getSearchHeaderLimitHitVirtualDom - returns warning div with text when limitHitWarning has value', () => {
+  const warningMessage = 'Search limit reached: 1000 results'
+  const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom(warningMessage)
+  expect(result).toEqual([
+    {
+      type: VirtualDomElements.Div,
+      className: SearchWarningMessage,
+      childCount: 1,
+    },
+    {
+      type: 12,
+      text: warningMessage,
+      childCount: 0,
+    },
+  ])
+})
+
+test('getSearchHeaderLimitHitVirtualDom - handles different warning messages', () => {
+  const warningMessage = 'Too many results found'
+  const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom(warningMessage)
+  expect(result).toEqual([
+    {
+      type: VirtualDomElements.Div,
+      className: SearchWarningMessage,
+      childCount: 1,
+    },
+    {
+      type: 12,
+      text: warningMessage,
+      childCount: 0,
+    },
+  ])
+})
