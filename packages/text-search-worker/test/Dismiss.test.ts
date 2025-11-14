@@ -10,7 +10,7 @@ test('dismissItem - no focused item', async () => {
     listFocusedIndex: -1,
   }
 
-  const result = Dismiss.dismissItem(state)
+  const result = await Dismiss.dismissItem(state)
   expect(result).toBe(state)
 })
 
@@ -27,7 +27,7 @@ test('dismissItem - dismiss file item', async () => {
     matchCount: 1,
   }
 
-  const result = Dismiss.dismissItem(state)
+  const result = await Dismiss.dismissItem(state)
   expect(result.items).toHaveLength(1)
   expect(result.fileCount).toBe(1)
   expect(result.matchCount).toBe(0)
@@ -47,7 +47,7 @@ test('dismissItem - dismiss match item', async () => {
     matchCount: 2,
   }
 
-  const result = Dismiss.dismissItem(state)
+  const result = await Dismiss.dismissItem(state)
   expect(result.items).toHaveLength(2)
   expect(result.fileCount).toBe(1)
   expect(result.matchCount).toBe(1)
