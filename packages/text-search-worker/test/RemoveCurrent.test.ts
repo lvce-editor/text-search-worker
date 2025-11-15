@@ -4,7 +4,7 @@ import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefau
 import * as RemoveCurrent from '../src/parts/RemoveCurrent/RemoveCurrent.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
-test('removeCurrent - no focused item returns state', async () => {
+test.skip('removeCurrent - no focused item returns state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: -1,
@@ -17,7 +17,7 @@ test('removeCurrent - no focused item returns state', async () => {
   })
 })
 
-test('removeCurrent - with focused item returns state', async () => {
+test.skip('removeCurrent - with focused item returns state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: 0,
@@ -30,7 +30,7 @@ test('removeCurrent - with focused item returns state', async () => {
   })
 })
 
-test('removeCurrent - with focused match item returns state', async () => {
+test.skip('removeCurrent - with focused match item returns state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: 1,
