@@ -1,6 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import { writeText } from '../ClipBoard/ClipBoard.ts'
 import { getNewTextCut } from '../GetNewTextCut/GetNewTextCut.ts'
-import { getCurrentValue, isSelectionKey } from '../HandleInputPaste/HandleInputPaste.ts'
+import { getCurrentValue, isSelectionKey, updateValue } from '../HandleInputPaste/HandleInputPaste.ts'
 
 export const handleInputCut = async (state: SearchState, name: string): Promise<SearchState> => {
   const { selections } = state
@@ -10,11 +11,7 @@ export const handleInputCut = async (state: SearchState, name: string): Promise<
   const selection = selections[name]
   const { start, end } = selection
   const currentText = getCurrentValue(state, name)
-  // TODO get cut text
-  const { newText } = getNewTextCut(currentText, start, end)
-  if (newText) {
-    return state
-  }
-  // TODO cut text
-  return state
+  const { newText, cutText } = getNewTextCut(currentText, start, end)
+  await writeText(cutText)
+  return updateValue(state, name, newText)
 }
