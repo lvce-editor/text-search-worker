@@ -9,8 +9,7 @@ export const getMenuEntries = (state: SearchState, props: ContextMenuProps): rea
   if (props.menuId === MenuEntryId.Search) {
     return getMenuEntriesList()
   }
-  const menuIdInput = 91
-  if (props.menuId === menuIdInput) {
+  if (props.menuId === MenuEntryId.InputContextMenu) {
     return getMenuEntriesInput()
   }
   return []
