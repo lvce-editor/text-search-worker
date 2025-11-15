@@ -32,7 +32,7 @@ export const getMenuEntriesList = (state: SearchState, props: ContextMenuProps):
     },
     {
       id: 'copyAll',
-      label: SearchStrings.copyPath(),
+      label: SearchStrings.copyAll(),
       flags: MenuItemFlags.None,
       command: 'Search.copyAll',
     },
