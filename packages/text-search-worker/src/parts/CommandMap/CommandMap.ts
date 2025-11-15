@@ -28,7 +28,10 @@ import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import { handleInputBlur } from '../HandleInputBlur/HandleInputBlur.ts'
 import { handleInputContextMenu } from '../HandleInputContextMenu/HandleInputContextMenu.ts'
+import { handleInputCopy } from '../HandleInputCopy/HandleInputCopy.ts'
+import { handleInputCut } from '../HandleInputCut/HandleInputCut.ts'
 import { handleInputFocus } from '../HandleInputFocus/HandleInputFocus.ts'
+import { handleInputPaste } from '../HandleInputPaste/HandleInputPaste.ts'
 import { handleInputSelectionChange } from '../HandleInputSelectionChange/HandleInputSelectionChange.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import { handleListFocus } from '../HandleListFocus/HandleListFocus.ts'
@@ -102,7 +105,6 @@ export const commandMap = {
   'TextSearch.focusPreserveCasePrevious': WrapCommand.wrapCommand(SearchFocus.focusPreserveCasePrevious),
   'TextSearch.focusPrevious': WrapCommand.wrapCommand(ListFocusPrevious.focusPrevious),
   'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusPreviousInput.focusPreviousInput),
-  'TextSearch.handleInputContextMenu': WrapCommand.wrapCommand(handleInputContextMenu),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
@@ -112,6 +114,7 @@ export const commandMap = {
   'TextSearch.focusReplaceValuePrevious': WrapCommand.wrapCommand(SearchFocus.focusReplaceValuePrevious),
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
+  'TextSearch.getMenuEntries': WrapCommand.wrapGetter(getMenuEntries),
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
@@ -125,8 +128,12 @@ export const commandMap = {
   'TextSearch.handleInput': WrapCommand.wrapCommand(HandleInput.handleInput),
   'TextSearch.handleInput2': WrapCommand.wrapCommand(HandleInput2.handleInput2),
   'TextSearch.handleInputBlur': WrapCommand.wrapCommand(handleInputBlur),
-  'TextSearch.handleInputSelectionChange': WrapCommand.wrapCommand(handleInputSelectionChange),
+  'TextSearch.handleInputContextMenu': WrapCommand.wrapCommand(handleInputContextMenu),
+  'TextSearch.handleInputCopy': WrapCommand.wrapCommand(handleInputCopy),
+  'TextSearch.handleInputCut': WrapCommand.wrapCommand(handleInputCut),
   'TextSearch.handleInputFocus': WrapCommand.wrapCommand(handleInputFocus),
+  'TextSearch.handleInputPaste': WrapCommand.wrapCommand(handleInputPaste),
+  'TextSearch.handleInputSelectionChange': WrapCommand.wrapCommand(handleInputSelectionChange),
   'TextSearch.handleListBlur': WrapCommand.wrapCommand(HandleListBlur.handleListBlur),
   'TextSearch.handleListFocus': WrapCommand.wrapCommand(handleListFocus),
   'TextSearch.handleListPointerDown': WrapCommand.wrapCommand(handleListPointerDown),
@@ -156,7 +163,6 @@ export const commandMap = {
   'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
-  'TextSearch.getMenuEntries': WrapCommand.wrapGetter(getMenuEntries),
 
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
