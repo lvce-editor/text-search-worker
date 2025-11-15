@@ -10,14 +10,20 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
     'ContextMenu.show2': () => undefined,
   })
 
-  const state: SearchState = CreateDefaultState.createDefaultState()
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    x: 100,
+    y: 200,
+  }
   const x = 100
   const y = 200
 
   const result = await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, MenuEntryId.Search, x, y, { menuId: MenuEntryId.Search }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }],
+  ])
 })
 
 test('handleContextMenuMouseAt - calls show with correct coordinates', async () => {
@@ -25,11 +31,17 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
     'ContextMenu.show2': () => undefined,
   })
 
-  const state: SearchState = CreateDefaultState.createDefaultState()
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    x: 150,
+    y: 250,
+  }
   const x = 150
   const y = 250
 
   await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, MenuEntryId.Search, x, y, { menuId: MenuEntryId.Search }]])
+  expect(mockRpc.invocations).toEqual([
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }],
+  ])
 })
