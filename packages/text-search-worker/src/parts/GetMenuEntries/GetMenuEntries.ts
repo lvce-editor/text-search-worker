@@ -7,7 +7,7 @@ import { getMenuEntriesList } from '../GetMenuEntriesList/GetMenuEntriesList.ts'
 
 export const getMenuEntries = (state: SearchState, props: ContextMenuProps): readonly MenuEntry[] => {
   if (props.menuId === MenuEntryId.Search) {
-    return getMenuEntriesList()
+    return getMenuEntriesList(state, props)
   }
   if (props.menuId === MenuEntryId.InputContextMenu) {
     return getMenuEntriesInput(props)
