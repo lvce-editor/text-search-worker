@@ -37,7 +37,7 @@ test('getMenuEntries returns menu entries with correct structure', () => {
   })
   expect(entries[4]).toEqual({
     id: 'copyAll',
-    label: SearchStrings.copyPath(),
+    label: SearchStrings.copyAll(),
     flags: MenuItemFlags.None,
     command: 'Search.copyAll',
   })
