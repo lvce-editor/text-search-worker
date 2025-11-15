@@ -12,8 +12,8 @@ export const handleInputSelectionChange = async (
     selections: {
       ...selections,
       [name]: {
-        selectionStart,
-        selectionEnd,
+        start: selectionStart,
+        end: selectionEnd,
       },
     },
   }
