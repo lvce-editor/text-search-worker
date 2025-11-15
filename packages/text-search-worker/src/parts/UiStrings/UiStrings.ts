@@ -8,6 +8,7 @@ export const ConfirmReplaceManyOccurrencesInOneFileNoValue = 'Replace {PH1} occu
 export const ConfirmReplaceOneOccurrenceInOneFile = "Replace 1 occurrence across 1 file with '{PH1}'"
 export const ConfirmReplaceOneOccurrenceInOneFileNoValue = 'Replace 1 occurrence across 1 file'
 export const CopyPath = 'Copy Path'
+export const CopyAll = 'Copy All'
 export const Dismiss = 'Dismiss'
 export const Cut = 'Cut'
 export const Copy = 'Copy'
