@@ -16,3 +16,4 @@ export const HandleWheel = 16
 export const HandleInputFocus = 17
 export const HandleInputBlur = 18
 export const HandleListPointerDown = 19
+export const HandleInputContextMenu = 20

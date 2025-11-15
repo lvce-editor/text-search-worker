@@ -27,6 +27,7 @@ import * as HandleIncludeInput from '../HandleIncludeInput/HandleIncludeInput.ts
 import * as HandleInput2 from '../HandleInput2/HandleInput2.ts'
 import * as HandleInput from '../HandleInput/HandleInput.ts'
 import { handleInputBlur } from '../HandleInputBlur/HandleInputBlur.ts'
+import { handleInputContextMenu } from '../HandleInputContextMenu/HandleInputContextMenu.ts'
 import { handleInputFocus } from '../HandleInputFocus/HandleInputFocus.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import { handleListFocus } from '../HandleListFocus/HandleListFocus.ts'
@@ -100,6 +101,7 @@ export const commandMap = {
   'TextSearch.focusPreserveCasePrevious': WrapCommand.wrapCommand(SearchFocus.focusPreserveCasePrevious),
   'TextSearch.focusPrevious': WrapCommand.wrapCommand(ListFocusPrevious.focusPrevious),
   'TextSearch.focusPreviousInput': WrapCommand.wrapCommand(FocusPreviousInput.focusPreviousInput),
+  'TextSearch.handleInputContextMenu': WrapCommand.wrapCommand(handleInputContextMenu),
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
