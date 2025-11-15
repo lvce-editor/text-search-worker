@@ -1,6 +1,7 @@
 import { MenuItemFlags } from '@lvce-editor/constants'
 import type { ContextMenuProps } from '../ContextMenuProps/ContextMenuProps.ts'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
+import { menuEntrySeparator } from '../MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
 export const getMenuEntriesInput = (options: ContextMenuProps): readonly MenuEntry[] => {
@@ -30,6 +31,7 @@ export const getMenuEntriesInput = (options: ContextMenuProps): readonly MenuEnt
       command: 'Search.handleInputPaste',
       args: [inputName],
     },
+    menuEntrySeparator,
     {
       id: 'selectAll',
       label: SearchStrings.selectAll(),
