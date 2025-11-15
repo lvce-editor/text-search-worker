@@ -11,11 +11,13 @@ export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Works
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
   await Workspace.setPath(tmpDir)
   await Search.open()
-  await Search.setValue('ab')
+  await Search.setValue('abc')
   await Search.setReplaceValue('')
+  await Command.execute('Search.handleInputSelectionChange', 'SearchValue', 1, 2)
 
   // act
   await Command.execute('Search.handleInputCut', 'SearchValue')
 
   // assert
+  await ClipBoard.shouldHaveText('b')
 }
