@@ -52,6 +52,10 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandleInputSelectionChange,
+      params: ['handleInputSelectionChange'],
+    },
+    {
       name: DomEventListenerFunctions.HandleHeaderContextMenu,
       params: ['handleHeaderContextMenu'],
       preventDefault: true,
