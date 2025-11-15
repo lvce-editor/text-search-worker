@@ -1,0 +1,158 @@
+import { expect, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
+import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import { handleInputCopy } from '../src/parts/HandleInputCopy/HandleInputCopy.ts'
+import * as InputName from '../src/parts/InputName/InputName.ts'
+
+test('handleInputCopy - returns state unchanged when name is not a selection key', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({})
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    value: 'test value',
+  }
+
+  const result = await handleInputCopy(state, 'InvalidName')
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([])
+})
+
+test('handleInputCopy - copies selected text from SearchValue', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    value: 'hello world',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      SearchValue: {
+        start: 0,
+        end: 5,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.SearchValue)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'hello']])
+})
+
+test('handleInputCopy - copies selected text from ReplaceValue', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    replacement: 'replace text',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      ReplaceValue: {
+        start: 0,
+        end: 7,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.ReplaceValue)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'replace']])
+})
+
+test('handleInputCopy - copies selected text from FilesToInclude', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    includeValue: '*.ts,*.js',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      FilesToInclude: {
+        start: 0,
+        end: 4,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.FilesToInclude)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', '*.ts']])
+})
+
+test('handleInputCopy - copies selected text from FilesToExclude', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    excludeValue: 'node_modules',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      FilesToExclude: {
+        start: 0,
+        end: 4,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.FilesToExclude)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'node']])
+})
+
+test('handleInputCopy - copies middle portion of text', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    value: 'hello world test',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      SearchValue: {
+        start: 6,
+        end: 11,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.SearchValue)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'world']])
+})
+
+test('handleInputCopy - copies empty string when selection range is empty', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'ClipBoard.writeText': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    value: 'test',
+    selections: {
+      ...CreateDefaultState.createDefaultState().selections,
+      SearchValue: {
+        start: 2,
+        end: 2,
+      },
+    },
+  }
+
+  const result = await handleInputCopy(state, InputName.SearchValue)
+
+  expect(result).toBe(state)
+  expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', '']])
+})
