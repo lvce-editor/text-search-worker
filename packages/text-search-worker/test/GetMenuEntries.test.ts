@@ -1,10 +1,15 @@
 import { expect, test } from '@jest/globals'
 import { MenuItemFlags } from '@lvce-editor/constants'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { getMenuEntries } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 import * as SearchStrings from '../src/parts/SearchStrings/SearchStrings.ts'
 
 test('getMenuEntries returns menu entries with correct structure', () => {
-  const entries = getMenuEntries()
+  const state = createDefaultState()
+  const params = {
+    menuId: 0,
+  }
+  const entries = getMenuEntries(state, params)
   expect(entries).toHaveLength(2)
   expect(entries[0]).toEqual({
     id: 'dismiss',
