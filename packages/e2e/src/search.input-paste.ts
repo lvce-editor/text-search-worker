@@ -4,7 +4,7 @@ export const name = 'search.input-paste'
 
 export const skip = 1
 
-export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Workspace }) => {
+export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Workspace, Locator, expect }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   await Command.execute('ClipBoard.writeText', 'ab')
@@ -19,5 +19,6 @@ export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Works
   await Command.execute('Search.handleInputPaste', 'SearchValue')
 
   // assert
-  // TODO verify that input has pasted text
+  const searchInput = Locator('[name="SearchValue"]')
+  await expect(searchInput).toHaveText('ab')
 }
