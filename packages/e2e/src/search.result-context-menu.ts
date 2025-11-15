@@ -26,9 +26,9 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   const menu = Locator('.Menu')
   await expect(menu).toBeVisible()
   const menuItems = menu.locator('.MenuItem')
-  await expect(menuItems).toHaveCount(2)
+  await expect(menuItems).toHaveCount(5)
   const first = menuItems.nth(0)
-  await expect(first).toHaveText('DismissDELETE')
+  await expect(first).toHaveText('Replace AllCtrl+ENTER')
   const second = menuItems.nth(1)
-  await expect(second).toHaveText('Copy Path')
+  await expect(second).toHaveText('DismissDELETE')
 }
