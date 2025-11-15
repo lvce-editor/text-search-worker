@@ -32,6 +32,7 @@ import { handleInputCopy } from '../HandleInputCopy/HandleInputCopy.ts'
 import { handleInputCut } from '../HandleInputCut/HandleInputCut.ts'
 import { handleInputFocus } from '../HandleInputFocus/HandleInputFocus.ts'
 import { handleInputPaste } from '../HandleInputPaste/HandleInputPaste.ts'
+import { handleInputSelectAll } from '../HandleInputSelectAll/HandleInputSelectAll.ts'
 import { handleInputSelectionChange } from '../HandleInputSelectionChange/HandleInputSelectionChange.ts'
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import { handleListFocus } from '../HandleListFocus/HandleListFocus.ts'
@@ -135,6 +136,7 @@ export const commandMap = {
   'TextSearch.handleInputCut': WrapCommand.wrapCommand(handleInputCut),
   'TextSearch.handleInputFocus': WrapCommand.wrapCommand(handleInputFocus),
   'TextSearch.handleInputPaste': WrapCommand.wrapCommand(handleInputPaste),
+  'TextSearch.handleInputSelectAll': WrapCommand.wrapCommand(handleInputSelectAll),
   'TextSearch.handleInputSelectionChange': WrapCommand.wrapCommand(handleInputSelectionChange),
   'TextSearch.handleListBlur': WrapCommand.wrapCommand(HandleListBlur.handleListBlur),
   'TextSearch.handleListFocus': WrapCommand.wrapCommand(handleListFocus),
