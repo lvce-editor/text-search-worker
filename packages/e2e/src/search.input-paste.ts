@@ -2,8 +2,6 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.input-paste'
 
-export const skip = 1
-
 export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Workspace, Locator, expect }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
@@ -20,5 +18,5 @@ export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Works
 
   // assert
   const searchInput = Locator('[name="SearchValue"]')
-  await expect(searchInput).toHaveText('ab')
+  await expect(searchInput).toHaveValue('ab')
 }

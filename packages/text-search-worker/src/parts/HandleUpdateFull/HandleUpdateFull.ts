@@ -83,5 +83,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     searchInputErrorMessage: '',
     threads,
     value,
+    collapsedPaths: [],
   }
 }
