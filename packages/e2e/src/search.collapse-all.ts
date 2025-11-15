@@ -2,8 +2,6 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.collapse-all'
 
-export const skip = 1
-
 export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
