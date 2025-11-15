@@ -117,7 +117,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       className: 'MultilineInputBox',
       name: 'SearchValue',
       onBlur: DomEventListenerFunctions.HandleInputBlur,
-      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
+      onContextMenu: DomEventListenerFunctions.HandleInputContextMenu,
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 10,
       placeholder: 'Search',
