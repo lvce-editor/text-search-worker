@@ -23,7 +23,7 @@ export const getCurrentValue = (state: SearchState, name: string): string => {
   }
 }
 
-const updateValue = (state: SearchState, name: string, newValue: string): SearchState => {
+export const updateValue = (state: SearchState, name: string, newValue: string): SearchState => {
   switch (name) {
     case InputName.SearchValue:
       return {
