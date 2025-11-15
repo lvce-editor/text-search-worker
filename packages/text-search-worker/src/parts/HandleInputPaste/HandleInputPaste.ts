@@ -60,8 +60,5 @@ export const handleInputPaste = async (state: SearchState, name: string): Promis
   const currentText = getCurrentValue(state, name)
   const insertedText = await readText()
   const newText = getNewText(currentText, start, end, insertedText)
-  if (newText === currentText) {
-    return state
-  }
   return updateValue(state, name, newText)
 }
