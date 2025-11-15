@@ -1,5 +1,6 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import type { SelectionState } from '../SelectionState/SelectionState.ts'
+import { readText } from '../ClipBoard/ClipBoard.ts'
 import { getNewText } from '../GetNewText/GetNewText.ts'
 import * as InputName from '../InputName/InputName.ts'
 
@@ -29,7 +30,7 @@ export const handleInputPaste = async (state: SearchState, name: string): Promis
   const selection = selections[name]
   const { start, end } = selection
   const currentText = getCurrentValue(state, name)
-  const insertedText = ''
+  const insertedText = await readText()
   const newText = getNewText(currentText, start, end, insertedText)
   if (newText) {
     return state
