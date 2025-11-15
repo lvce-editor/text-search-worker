@@ -62,6 +62,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       onContextMenu: DomEventListenerFunctions.HandleInputContextMenu,
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 10,
+      onSelectionChange: 21,
       placeholder: 'Search',
       spellcheck: false,
       type: 62,
