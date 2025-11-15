@@ -6,15 +6,21 @@ export const getMenuEntriesInput = (): readonly MenuEntry[] => {
   return [
     {
       id: 'cut',
-      label: SearchStrings.dismiss(),
+      label: SearchStrings.cut(),
       flags: MenuItemFlags.None,
-      command: 'Search.removeCurrent',
+      command: 'Search.cut',
     },
     {
-      id: 'copyPath',
-      label: SearchStrings.copyPath(),
+      id: 'copy',
+      label: SearchStrings.copy(),
       flags: MenuItemFlags.None,
-      command: 'Search.copyPath',
+      command: 'Search.copy',
+    },
+    {
+      id: 'paste',
+      label: SearchStrings.paste(),
+      flags: MenuItemFlags.None,
+      command: 'Search.paste',
     },
   ]
 }
