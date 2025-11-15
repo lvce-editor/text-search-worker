@@ -1,6 +1,6 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
-import { getNewText } from '../GetNewText/GetNewText.ts'
-import { isSelectionKey, getCurrentValue } from '../HandleInputPaste/HandleInputPaste.ts'
+import { getNewTextCut } from '../GetNewTextCut/GetNewTextCut.ts'
+import { getCurrentValue, isSelectionKey } from '../HandleInputPaste/HandleInputPaste.ts'
 
 export const handleInputCut = async (state: SearchState, name: string): Promise<SearchState> => {
   const { selections } = state
@@ -10,9 +10,8 @@ export const handleInputCut = async (state: SearchState, name: string): Promise<
   const selection = selections[name]
   const { start, end } = selection
   const currentText = getCurrentValue(state, name)
-  const insertedText = ''
   // TODO get cut text
-  const newText = getNewText(currentText, start, end, insertedText)
+  const { newText } = getNewTextCut(currentText, start, end)
   if (newText) {
     return state
   }
