@@ -145,6 +145,10 @@ export const copyPath = (): string => {
   return I18nString.i18nString(UiStrings.CopyPath)
 }
 
+export const copyAll = (): string => {
+  return I18nString.i18nString(UiStrings.CopyAll)
+}
+
 export const refresh = (): string => {
   return I18nString.i18nString(UiStrings.Refresh)
 }
