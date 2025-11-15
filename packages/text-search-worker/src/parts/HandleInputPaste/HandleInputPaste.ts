@@ -1,26 +1,12 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import type { SelectionState } from '../SelectionState/SelectionState.ts'
 import { readText } from '../ClipBoard/ClipBoard.ts'
+import { getCurrentValue } from '../GetCurrentValue/GetCurrentValue.ts'
 import { getNewText } from '../GetNewText/GetNewText.ts'
 import * as InputName from '../InputName/InputName.ts'
 
 export const isSelectionKey = (name: string, selections: SelectionState): name is keyof SelectionState => {
   return name in selections
-}
-
-export const getCurrentValue = (state: SearchState, name: string): string => {
-  switch (name) {
-    case InputName.SearchValue:
-      return state.value
-    case InputName.FilesToExclude:
-      return state.excludeValue
-    case InputName.FilesToInclude:
-      return state.includeValue
-    case InputName.ReplaceValue:
-      return state.replacement
-    default:
-      return ''
-  }
 }
 
 export const updateValue = (state: SearchState, name: string, newValue: string): SearchState => {
