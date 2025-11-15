@@ -63,5 +63,5 @@ test('mouse handler works correctly', async () => {
   const result = await handler(state, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search }]])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }]])
 })
