@@ -72,6 +72,24 @@ export const create = (
     fileIconCache: {},
     removeButtonWidth: 20,
     removeButtonRight: 0,
+    selections: {
+      SearchValue: {
+        start: 0,
+        end: 0,
+      },
+      ReplaceValue: {
+        start: 0,
+        end: 0,
+      },
+      FilesToExclude: {
+        start: 0,
+        end: 0,
+      },
+      FilesToInclude: {
+        start: 0,
+        end: 0,
+      },
+    },
   }
   SearchViewStates.set(uid, state, state)
   return state
