@@ -41,6 +41,7 @@ export const getSearchFieldVirtualDom = (
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onBlur: DomEventListenerFunctions.HandleInputBlur,
       onContextMenu: DomEventListenerFunctions.HandleInputContextMenu,
+      onSelectionChange: DomEventListenerFunctions.HandleInputSelectionChange,
       childCount: 0,
     },
     {

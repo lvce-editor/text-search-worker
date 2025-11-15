@@ -120,6 +120,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onContextMenu: DomEventListenerFunctions.HandleInputContextMenu,
       onFocus: DomEventListenerFunctions.HandleInputFocus,
       onInput: 10,
+      onSelectionChange: 21,
       placeholder: 'Search',
       spellcheck: false,
       type: 62,
