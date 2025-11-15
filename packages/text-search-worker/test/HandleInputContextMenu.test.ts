@@ -72,7 +72,7 @@ test('handleInputContextMenu works with different input name', async () => {
 })
 
 test('handleInputContextMenu returns state unchanged', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 
