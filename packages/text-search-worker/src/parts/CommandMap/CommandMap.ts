@@ -152,6 +152,7 @@ export const commandMap = {
   'TextSearch.toggleUseIgnoreFiles': WrapCommand.wrapCommand(ToggleUseIgnoreFiles.toggleUseIgnoreFiles),
   'TextSearch.toggleUseRegularExpression': WrapCommand.wrapCommand(ToggleUseRegularExpression.toggleUseRegularExpression),
   'TextSearch.viewAsTree': WrapCommand.wrapCommand(ViewAsTree.viewAsTree),
+  'TextSearch.getMenuEntries': WrapCommand.wrapGetter(getMenuEntries),
 
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
@@ -166,7 +167,6 @@ export const commandMap = {
   'TextSearch.terminate': terminate,
   'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.getMenuEntryIds': getMenuEntryIds,
-  'TextSearch.getMenuEntries': getMenuEntries,
 
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
