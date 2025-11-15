@@ -2,7 +2,9 @@ import { expect, test } from '@jest/globals'
 import * as DiffType from '../src/parts/DiffType/DiffType.ts'
 import * as GetRenderer from '../src/parts/GetRenderer/GetRenderer.ts'
 import * as RenderFocus from '../src/parts/RenderFocus/RenderFocus.ts'
+import * as RenderFocusContext from '../src/parts/RenderFocusContext/RenderFocusContext.ts'
 import * as RenderItems from '../src/parts/RenderItems/RenderItems.ts'
+import { renderSelections } from '../src/parts/RenderSelections/RenderSelections.ts'
 import * as RenderValue from '../src/parts/RenderValue/RenderValue.ts'
 
 test('getRenderer - focus type', () => {
@@ -18,6 +20,31 @@ test('getRenderer - value type', () => {
 test('getRenderer - items type', () => {
   const renderer = GetRenderer.getRenderer(DiffType.RenderItems)
   expect(renderer).toBe(RenderItems.renderItems)
+})
+
+test('getRenderer - replace value type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderReplaceValue)
+  expect(renderer).toBe(RenderValue.renderReplacement)
+})
+
+test('getRenderer - include value type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderIncludeValue)
+  expect(renderer).toBe(RenderValue.renderIncludeValue)
+})
+
+test('getRenderer - exclude value type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderExcludeValue)
+  expect(renderer).toBe(RenderValue.renderExcludeValue)
+})
+
+test('getRenderer - focus context type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderFocusContext)
+  expect(renderer).toBe(RenderFocusContext.renderFocusContext)
+})
+
+test('getRenderer - selections type', () => {
+  const renderer = GetRenderer.getRenderer(DiffType.RenderSelections)
+  expect(renderer).toBe(renderSelections)
 })
 
 test('getRenderer - invalid type', () => {
