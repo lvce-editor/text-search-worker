@@ -20,7 +20,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await Search.selectIndex(0)
 
   // act
-  await Command.execute('Search.handleContextMenu', 0, 300, 100)
+  await Command.execute('Search.handleContextMenu', -1, 300, 100)
 
   // assert
   const menu = Locator('.Menu')
