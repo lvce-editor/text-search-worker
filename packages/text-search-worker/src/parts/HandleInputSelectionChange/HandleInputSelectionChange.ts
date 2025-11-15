@@ -6,6 +6,15 @@ export const handleInputSelectionChange = async (
   selectionStart: number,
   selectionEnd: number,
 ): Promise<SearchState> => {
-  // TODO
-  return state
+  const { selections } = state
+  return {
+    ...state,
+    selections: {
+      ...selections,
+      [name]: {
+        selectionStart,
+        selectionEnd,
+      },
+    },
+  }
 }
