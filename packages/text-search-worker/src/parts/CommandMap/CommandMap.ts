@@ -63,6 +63,7 @@ import * as RenderEventListeners from '../RenderEventListeners/RenderEventListen
 import * as RenderIncremental from '../RenderIncremental/RenderIncremental.ts'
 import * as ReplaceAll from '../ReplaceAll/ReplaceAll.ts'
 import * as ReplaceAllAndPrompt from '../ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
+import { replaceAllInFile } from '../ReplaceAllInFile/ReplaceAllInFile.ts'
 import * as Rerender from '../Rerender/Rerender.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
@@ -108,6 +109,7 @@ export const commandMap = {
   'TextSearch.focusPreviousPage': WrapCommand.wrapCommand(ListFocusPreviouPage.focusPreviousPage),
   'TextSearch.focusRegex': WrapCommand.wrapCommand(SearchFocus.focusRegex),
   'TextSearch.focusRegexNext': WrapCommand.wrapCommand(SearchFocus.focusRegexNext),
+  'TextSearch.replaceAllInFile': WrapCommand.wrapCommand(replaceAllInFile),
   'TextSearch.focusReplaceAll': WrapCommand.wrapCommand(SearchFocus.focusReplaceAll),
   'TextSearch.focusReplaceValue': WrapCommand.wrapCommand(FocusReplaceValue.focusReplaceValue),
   'TextSearch.focusReplaceValueNext': WrapCommand.wrapCommand(SearchFocus.focusReplaceValueNext),
