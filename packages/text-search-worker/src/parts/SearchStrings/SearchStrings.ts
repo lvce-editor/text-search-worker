@@ -121,6 +121,18 @@ export const dismiss = (): string => {
   return I18nString.i18nString(UiStrings.Dismiss)
 }
 
+export const cut = (): string => {
+  return I18nString.i18nString(UiStrings.Cut)
+}
+
+export const copy = (): string => {
+  return I18nString.i18nString(UiStrings.Copy)
+}
+
+export const paste = (): string => {
+  return I18nString.i18nString(UiStrings.Paste)
+}
+
 export const theResultSetOnlyContainsASubSetOfMatches = (): string => {
   return I18nString.i18nString(UiStrings.TheResultSetOnlyContainsASubSetOfMatches)
 }
