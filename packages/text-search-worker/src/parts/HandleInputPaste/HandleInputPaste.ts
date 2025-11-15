@@ -4,11 +4,11 @@ import { readText } from '../ClipBoard/ClipBoard.ts'
 import { getNewText } from '../GetNewText/GetNewText.ts'
 import * as InputName from '../InputName/InputName.ts'
 
-const isSelectionKey = (name: string, selections: SelectionState): name is keyof SelectionState => {
+export const isSelectionKey = (name: string, selections: SelectionState): name is keyof SelectionState => {
   return name in selections
 }
 
-const getCurrentValue = (state: SearchState, name: string): string => {
+export const getCurrentValue = (state: SearchState, name: string): string => {
   switch (name) {
     case InputName.SearchValue:
       return state.value
