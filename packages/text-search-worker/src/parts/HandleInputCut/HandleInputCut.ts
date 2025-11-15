@@ -12,7 +12,6 @@ export const handleInputCut = async (state: SearchState, name: string): Promise<
   const { start, end } = selection
   const currentText = getCurrentValue(state, name)
   const { newText, cutText } = getNewTextCut(currentText, start, end)
-  console.log({ start, end, cutText })
   await writeText(cutText)
   return updateValue(state, name, newText)
 }
