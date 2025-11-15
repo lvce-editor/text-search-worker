@@ -3,6 +3,7 @@ import * as DiffType from '../DiffType/DiffType.ts'
 import * as RenderFocus from '../RenderFocus/RenderFocus.ts'
 import * as RenderFocusContext from '../RenderFocusContext/RenderFocusContext.ts'
 import * as RenderItems from '../RenderItems/RenderItems.ts'
+import { renderSelections } from '../RenderSelections/RenderSelections.ts'
 import * as RenderValue from '../RenderValue/RenderValue.ts'
 
 export const getRenderer = (diffType: number): Renderer => {
@@ -21,6 +22,8 @@ export const getRenderer = (diffType: number): Renderer => {
       return RenderItems.renderItems
     case DiffType.RenderFocusContext:
       return RenderFocusContext.renderFocusContext
+    case DiffType.RenderSelections:
+      return renderSelections
     default:
       throw new Error('unknown renderer')
   }
