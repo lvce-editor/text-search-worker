@@ -22,5 +22,11 @@ export const getMenuEntriesInput = (): readonly MenuEntry[] => {
       flags: MenuItemFlags.None,
       command: 'Search.paste',
     },
+    {
+      id: 'selectAll',
+      label: SearchStrings.selectAll(),
+      flags: MenuItemFlags.None,
+      command: 'Search.selectAll',
+    },
   ]
 }

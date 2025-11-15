@@ -133,6 +133,10 @@ export const paste = (): string => {
   return I18nString.i18nString(UiStrings.Paste)
 }
 
+export const selectAll = (): string => {
+  return I18nString.i18nString(UiStrings.SelectAll)
+}
+
 export const theResultSetOnlyContainsASubSetOfMatches = (): string => {
   return I18nString.i18nString(UiStrings.TheResultSetOnlyContainsASubSetOfMatches)
 }
