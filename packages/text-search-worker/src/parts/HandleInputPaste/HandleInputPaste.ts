@@ -51,3 +51,5 @@ export const handleInputPaste = async (state: SearchState, name: string): Promis
   }
   return updateValue(state, name, newText)
 }
+
+export { getCurrentValue } from '../GetCurrentValue/GetCurrentValue.ts'
