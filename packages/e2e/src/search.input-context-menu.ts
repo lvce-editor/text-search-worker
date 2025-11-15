@@ -14,7 +14,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, Locat
   await Search.setReplaceValue('')
 
   // act
-  Command.execute('Search.handleInputContextMenu', 'SearchValue', 0, 0, 0)
+  await Command.execute('Search.handleInputContextMenu', 'SearchValue', 0, 0, 0)
 
   // assert
   const menu = Locator('.Menu')
