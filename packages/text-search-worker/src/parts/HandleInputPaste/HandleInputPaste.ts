@@ -22,6 +22,34 @@ export const getCurrentValue = (state: SearchState, name: string): string => {
       return ''
   }
 }
+
+const updateValue = (state: SearchState, name: string, newValue: string): SearchState => {
+  switch (name) {
+    case InputName.SearchValue:
+      return {
+        ...state,
+        value: newValue,
+      }
+    case InputName.ReplaceValue:
+      return {
+        ...state,
+        replacement: newValue,
+      }
+    case InputName.FilesToInclude:
+      return {
+        ...state,
+        includeValue: newValue,
+      }
+    case InputName.FilesToExclude:
+      return {
+        ...state,
+        excludeValue: newValue,
+      }
+    default:
+      return state
+  }
+}
+
 export const handleInputPaste = async (state: SearchState, name: string): Promise<SearchState> => {
   const { selections } = state
   if (!isSelectionKey(name, selections)) {
@@ -32,9 +60,8 @@ export const handleInputPaste = async (state: SearchState, name: string): Promis
   const currentText = getCurrentValue(state, name)
   const insertedText = await readText()
   const newText = getNewText(currentText, start, end, insertedText)
-  if (newText) {
+  if (newText === currentText) {
     return state
   }
-  // TODO paste text
-  return state
+  return updateValue(state, name, newText)
 }
