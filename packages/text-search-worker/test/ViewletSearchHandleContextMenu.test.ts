@@ -22,5 +22,5 @@ test('handleContextMenu - mouse event shows context menu at mouse position', asy
   const result = await handleContextMenu(state, button, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, 18, 0, 0, { menuId: 18 }]])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, 18, 0, 0, { menuId: 18, index: 0 }]])
 })
