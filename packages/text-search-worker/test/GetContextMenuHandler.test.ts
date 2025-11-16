@@ -5,9 +5,9 @@ import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import * as GetContextMenuHandler from '../src/parts/GetContextMenuHandler/GetContextMenuHandler.ts'
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
-import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test('getContextMenuHandler returns keyboard handler for Keyboard button', () => {
   const handler = GetContextMenuHandler.getContextMenuHandler(MouseEventType.Keyboard)

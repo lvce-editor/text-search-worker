@@ -3,8 +3,8 @@ import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
-import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
+import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
