@@ -1,13 +1,15 @@
 import { expect, test } from '@jest/globals'
 import { MenuEntryId, MenuItemFlags } from '@lvce-editor/constants'
+import type { ContextMenuProps } from '../src/parts/ContextMenuProps/ContextMenuProps.ts'
 import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { getMenuEntries } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 import * as SearchStrings from '../src/parts/SearchStrings/SearchStrings.ts'
 
 test('getMenuEntries returns menu entries with correct structure', () => {
   const state = createDefaultState()
-  const params = {
+  const params: ContextMenuProps = {
     menuId: MenuEntryId.Search,
+    index: 0,
   }
   const entries = getMenuEntries(state, params)
   expect(entries).toHaveLength(5)

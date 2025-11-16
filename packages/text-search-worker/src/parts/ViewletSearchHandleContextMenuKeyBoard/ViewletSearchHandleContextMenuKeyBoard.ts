@@ -6,6 +6,7 @@ export const handleContextMenuKeyboard = async (state: SearchState): Promise<Sea
   const { x, y, uid } = state // TODO
   await ContextMenu.show2(uid, MenuEntryId.Search, x, y, {
     menuId: MenuEntryId.Search,
+    index: 0, // TODO pass proper index
   })
   return state
 }
