@@ -15,5 +15,8 @@ export const getMenuEntriesList = (state: SearchState, props: ContextMenuPropsLi
   if (item.type === TextSearchResultType.Match) {
     return getMenuEntriesMatch(state, props)
   }
-  return getMenuEntriesFile(state, props)
+  if (item.type === TextSearchResultType.File) {
+    return getMenuEntriesFile(state, props)
+  }
+  return []
 }
