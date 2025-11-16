@@ -3,6 +3,7 @@ import { MenuEntryId } from '@lvce-editor/constants'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
@@ -15,6 +16,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
     x: 100,
     y: 200,
   }
+  SearchViewStates.set(state.uid, state, state)
   const x = 100
   const y = 200
 
@@ -36,6 +38,7 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
     x: 150,
     y: 250,
   }
+  SearchViewStates.set(state.uid, state, state)
   const x = 150
   const y = 250
 
