@@ -7,6 +7,7 @@ import * as GetContextMenuHandler from '../src/parts/GetContextMenuHandler/GetCo
 import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
 import * as ViewletSearchHandleContextMenuKeyBoard from '../src/parts/ViewletSearchHandleContextMenuKeyBoard/ViewletSearchHandleContextMenuKeyBoard.ts'
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 
 test('getContextMenuHandler returns keyboard handler for Keyboard button', () => {
   const handler = GetContextMenuHandler.getContextMenuHandler(MouseEventType.Keyboard)
@@ -56,6 +57,7 @@ test('mouse handler works correctly', async () => {
     x: 150,
     y: 250,
   }
+  SearchViewStates.set(state.uid, state, state)
   const x = 150
   const y = 250
 
