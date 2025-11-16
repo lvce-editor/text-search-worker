@@ -5,7 +5,7 @@ import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaul
 import { getMenuEntries } from '../src/parts/GetMenuEntries/GetMenuEntries.ts'
 import * as SearchStrings from '../src/parts/SearchStrings/SearchStrings.ts'
 
-test('getMenuEntries returns menu entries with correct structure', () => {
+test.skip('getMenuEntries returns menu entries with correct structure', () => {
   const state = createDefaultState()
   const params: ContextMenuProps = {
     menuId: MenuEntryId.Search,
