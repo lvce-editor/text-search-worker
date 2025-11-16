@@ -1,10 +1,10 @@
 import { MenuItemFlags } from '@lvce-editor/constants'
-import type { ContextMenuProps } from '../ContextMenuProps/ContextMenuProps.ts'
+import type { ContextMenuPropsList } from '../ContextMenuProps/ContextMenuProps.ts'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
-export const getMenuEntriesList = (state: SearchState, props: ContextMenuProps): readonly MenuEntry[] => {
+export const getMenuEntriesList = (state: SearchState, props: ContextMenuPropsList): readonly MenuEntry[] => {
   return [
     {
       id: 'replaceAll',
