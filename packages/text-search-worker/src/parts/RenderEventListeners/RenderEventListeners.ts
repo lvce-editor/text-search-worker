@@ -27,7 +27,7 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     },
     {
       name: DomEventListenerFunctions.HandleListPointerDown,
-      params: ['handleListPointerDown', EventExpression.Button],
+      params: ['handleListPointerDown', EventExpression.Button, EventExpression.TargetName],
     },
     {
       name: DomEventListenerFunctions.HandleToggleButtonClick,
