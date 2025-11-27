@@ -1,3 +1,4 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ApplyBulkReplacement from '../ApplyBulkReplacement/ApplyBulkReplacement.ts'
 import * as GetReplacedMessage from '../GetReplacedMessage/GetReplacedMessage.ts'
@@ -8,6 +9,7 @@ export const replaceAll = async (state: SearchState): Promise<SearchState> => {
   const bulkEdits = GetReplaceElements.getReplaceElements(items, workspacePath, replacement)
   // TODO this function should return an error message if an error occurred during bulk edit
   await ApplyBulkReplacement.applyBulkReplacement(bulkEdits)
+  await RendererWorker.handleWorkspaceRefresh()
   const fileCount = bulkEdits.length
   const message = GetReplacedMessage.getReplacedMessage(fileCount, matchCount, replacement)
   return {
