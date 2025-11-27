@@ -180,8 +180,8 @@ export const commandMap = {
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.restoreState': RestoreState.restoreState,
   'TextSearch.saveState': WrapCommand.wrapGetter(SaveState.saveState),
+  'TextSearch.renderActions': WrapCommand.wrapGetter(RenderActions.renderActions),
   'TextSearch.terminate': terminate,
-  'TextSearch.renderActions': RenderActions.renderActions,
   'TextSearch.getMenuEntryIds': getMenuEntryIds,
 
   // TODO needed?
