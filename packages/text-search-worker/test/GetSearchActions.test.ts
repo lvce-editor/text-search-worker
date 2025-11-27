@@ -45,6 +45,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'CollapseAll',
       label: 'Collapse All',
       type: 1,
+      enabled: true,
     },
   ])
 })
