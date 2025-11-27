@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.result-context-menu'
 
-export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -20,7 +20,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await Search.selectIndex(0)
 
   // act
-  await Command.execute('Search.handleContextMenu', -1, 300, 100)
+  await Search.handleContextMenu(-1, 300, 100)
 
   // assert
   const menu = Locator('.Menu')
