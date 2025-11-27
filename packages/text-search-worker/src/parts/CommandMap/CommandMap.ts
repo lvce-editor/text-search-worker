@@ -55,6 +55,7 @@ import * as ListHandleScrollBarMove from '../ListHandleScrollBarMove/ListHandleS
 import * as ListHandleWheel from '../ListHandleWheel/ListHandleWheel.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as NextHistoryResult from '../NextHistoryResult/NextHistoryResult.ts'
+import { openSearchEditor } from '../OpenSearchEditor/OpenSearchEditor.ts'
 import * as PreviousHistoryResult from '../PreviousHistoryResult/PreviousHistoryResult.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import { removeCurrent } from '../RemoveCurrent/RemoveCurrent.ts'
@@ -87,7 +88,6 @@ import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 export const commandMap = {
-  'TextSearch.handleActionClick': WrapCommand.wrapCommand(handleActionClick),
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
@@ -119,6 +119,7 @@ export const commandMap = {
   'TextSearch.focusSearchValue': WrapCommand.wrapCommand(FocusSearchValue.focusSearchValue),
   'TextSearch.focusSearchValueNext': WrapCommand.wrapCommand(FocusSearchValueNext.focusSearchValueNext),
   'TextSearch.getMenuEntries': WrapCommand.wrapGetter(getMenuEntries),
+  'TextSearch.handleActionClick': WrapCommand.wrapCommand(handleActionClick),
   'TextSearch.handleClickAt': WrapCommand.wrapCommand(ListHandleClickAt.handleClickAt),
   'TextSearch.handleContextMenu': WrapCommand.wrapCommand(ViewletSearchHandleContextMenu.handleContextMenu),
   'TextSearch.handleExcludeInput': WrapCommand.wrapCommand(HandleExcludeInput.handleExcludeInput),
@@ -150,6 +151,7 @@ export const commandMap = {
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TextSearch.nextHistoryResult': WrapCommand.wrapCommand(NextHistoryResult.nextHistoryResult),
+  'TextSearch.openSearchEditor': WrapCommand.wrapCommand(openSearchEditor),
   'TextSearch.previousHistoryResult': WrapCommand.wrapCommand(PreviousHistoryResult.previousHistoryResult),
   'TextSearch.refresh': WrapCommand.wrapCommand(Refresh.refresh),
   'TextSearch.removeCurrent': WrapCommand.wrapCommand(removeCurrent),
