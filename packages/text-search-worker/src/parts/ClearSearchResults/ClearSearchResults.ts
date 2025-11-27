@@ -5,13 +5,14 @@ import * as InputSource from '../InputSource/InputSource.ts'
 export const clearSearchResults = (state: SearchState): SearchState => {
   return {
     ...state,
-    value: '',
-    items: [],
-    minLineY: 0,
-    maxLineY: 0,
-    message: '',
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
     inputSource: InputSource.Script,
+    items: [],
+    maxLineY: 0,
+    message: '',
+    minLineY: 0,
+    replacement: '',
+    value: '',
   }
 }
