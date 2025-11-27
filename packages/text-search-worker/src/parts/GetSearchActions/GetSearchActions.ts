@@ -1,10 +1,13 @@
 import type { Action } from '../Action/Action.ts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ActionType from '../ActionType/ActionType.ts'
 import * as InputName from '../InputName/InputName.ts'
 import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
-export const getActions = (): readonly Action[] => {
+export const getActions = (state: SearchState): readonly Action[] => {
+  const { value, replacement } = state
+  const bothEmpty = value === '' && replacement === ''
   return [
     {
       type: ActionType.Button,
@@ -20,7 +23,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.ClearAll,
       command: 'clearSearchResults',
       id: InputName.ClearAll,
-      enabled: true,
+      enabled: !bothEmpty,
     },
     {
       type: ActionType.Button,
