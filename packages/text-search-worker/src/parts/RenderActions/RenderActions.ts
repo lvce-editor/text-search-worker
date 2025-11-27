@@ -4,7 +4,7 @@ import * as GetActionsVirtualDom from '../GetActionsVirtualDom/GetActionsVirtual
 import * as GetSearchActions from '../GetSearchActions/GetSearchActions.ts'
 
 export const renderActions = (state: SearchState): readonly VirtualDomNode[] => {
-  const actions = GetSearchActions.getActions()
+  const actions = GetSearchActions.getActions(state)
   const dom = GetActionsVirtualDom.getActionsVirtualDom(actions)
   return dom
 }

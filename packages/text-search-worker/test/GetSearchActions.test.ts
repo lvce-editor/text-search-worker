@@ -1,14 +1,19 @@
 import { test, expect } from '@jest/globals'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { getActions } from '../src/parts/GetSearchActions/GetSearchActions.ts'
 
 test('getSearchActions - should return array of search actions', () => {
-  expect(getActions()).toEqual([
+  const state = {
+    ...createDefaultState(),
+  }
+  expect(getActions(state)).toEqual([
     {
       command: 'refresh',
       icon: 'Refresh',
       id: 'Refresh',
       label: 'Refresh',
       type: 1,
+      enabled: true,
     },
     {
       command: 'clearSearchResults',
@@ -16,6 +21,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'ClearAll',
       label: 'Clear Search Results',
       type: 1,
+      enabled: false,
     },
     {
       command: '',
@@ -23,6 +29,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'OpenSearchEditor',
       label: 'Open New Search Editor',
       type: 1,
+      enabled: true,
     },
     {
       command: '',
@@ -30,6 +37,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'ViewAsTree',
       label: 'View as Tree',
       type: 1,
+      enabled: true,
     },
     {
       command: '',
@@ -37,6 +45,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'CollapseAll',
       label: 'Collapse All',
       type: 1,
+      enabled: true,
     },
   ])
 })

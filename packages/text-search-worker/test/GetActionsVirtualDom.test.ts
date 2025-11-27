@@ -11,6 +11,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       command: 'Search.searchInFiles',
       type: 1,
       label: 'Search in Files',
+      enabled: true,
     },
     {
       id: 'findInFile',
@@ -18,6 +19,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       command: 'Search.findInFile',
       type: 1,
       label: 'Find in File',
+      enabled: true,
     },
   ]
 
