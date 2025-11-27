@@ -1,8 +1,12 @@
 import { test, expect } from '@jest/globals'
+import { createDefaultState } from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { getActions } from '../src/parts/GetSearchActions/GetSearchActions.ts'
 
 test('getSearchActions - should return array of search actions', () => {
-  expect(getActions()).toEqual([
+  const state = {
+    ...createDefaultState(),
+  }
+  expect(getActions(state)).toEqual([
     {
       command: 'refresh',
       icon: 'Refresh',
@@ -17,7 +21,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'ClearAll',
       label: 'Clear Search Results',
       type: 1,
-      enabled: true,
+      enabled: false,
     },
     {
       command: '',
