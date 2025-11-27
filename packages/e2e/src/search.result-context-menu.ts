@@ -28,7 +28,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   const menuItems = menu.locator('.MenuItem')
   await expect(menuItems).toHaveCount(5)
   const first = menuItems.nth(0)
-  await expect(first).toHaveText('Replace AllCtrl+ENTER')
+  await expect(first).toHaveText('Replace All')
   const second = menuItems.nth(1)
-  await expect(second).toHaveText('DismissDELETE')
+  await expect(second).toHaveText('Dismiss')
 }
