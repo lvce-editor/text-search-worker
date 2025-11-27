@@ -3,6 +3,7 @@ import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { Action } from '../Action/Action.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 import * as GetActionVirtualDom from '../GetActionVirtualDom/GetActionVirtualDom.ts'
 
 export const getActionsVirtualDom = (actions: readonly Action[]): readonly VirtualDomNode[] => {
@@ -12,6 +13,7 @@ export const getActionsVirtualDom = (actions: readonly Action[]): readonly Virtu
       className: ClassNames.Actions,
       role: AriaRoles.ToolBar,
       childCount: actions.length,
+      onClick: DomEventListenerFunctions.HandleActionClick,
     },
     ...actions.flatMap(GetActionVirtualDom.getActionVirtualDom),
   ]
