@@ -10,12 +10,14 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       icon: 'Search in Files',
       command: 'Search.searchInFiles',
       type: 1,
+      label: 'Search in Files',
     },
     {
       id: 'findInFile',
       icon: 'Find in File',
       command: 'Search.findInFile',
       type: 1,
+      label: 'Find in File',
     },
   ]
 
@@ -25,6 +27,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       className: 'Actions',
       role: AriaRoles.ToolBar,
       type: 4,
+      onClick: 22,
     },
     {
       childCount: 1,
@@ -32,6 +35,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       'data-command': 'Search.searchInFiles',
       title: 'searchInFiles',
       type: 1,
+      name: 'searchInFiles',
     },
     {
       childCount: 0,
@@ -45,6 +49,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
       'data-command': 'Search.findInFile',
       title: 'findInFile',
       type: 1,
+      name: 'findInFile',
     },
     {
       childCount: 0,
@@ -62,6 +67,7 @@ test('getActionsVirtualDom - should handle empty actions array', () => {
       className: 'Actions',
       role: AriaRoles.ToolBar,
       childCount: 0,
+      onClick: 22,
     },
   ])
 })

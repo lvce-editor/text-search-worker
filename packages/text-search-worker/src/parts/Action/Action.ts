@@ -3,4 +3,5 @@ export interface Action {
   readonly id: string
   readonly icon: string
   readonly command: string
+  readonly label?: string
 }
