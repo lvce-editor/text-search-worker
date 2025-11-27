@@ -17,6 +17,7 @@ import * as FocusSearchValueNext from '../FocusSearchValueNext/FocusSearchValueN
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import { getMenuEntries } from '../GetMenuEntries/GetMenuEntries.ts'
 import { getMenuEntryIds } from '../GetMenuEntryIds/GetMenuEntryIds.ts'
+import { handleActionClick } from '../HandleActionClick/HandleActionClick.ts'
 import * as HandleExcludeInput from '../HandleExcludeInput/HandleExcludeInput.ts'
 import * as HandleHeaderClick from '../HandleHeaderClick/HandleHeaderClick.ts'
 import * as HandleHeaderContextMenu from '../HandleHeaderContextMenu/HandleHeaderContextMenu.ts'
@@ -86,6 +87,7 @@ import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 export const commandMap = {
+  'TextSearch.handleActionClick': WrapCommand.wrapCommand(handleActionClick),
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
