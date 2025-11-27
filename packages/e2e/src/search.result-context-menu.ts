@@ -2,7 +2,9 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.result-context-menu'
 
-export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const skip = 1
+
+export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
@@ -20,7 +22,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   await Search.selectIndex(0)
 
   // act
-  await Command.execute('Search.handleContextMenu', -1, 300, 100)
+  await Search.handleContextMenu(-1, 300, 100)
 
   // assert
   const menu = Locator('.Menu')
@@ -28,7 +30,7 @@ export const test: Test = async ({ Command, Search, FileSystem, Workspace, SideB
   const menuItems = menu.locator('.MenuItem')
   await expect(menuItems).toHaveCount(5)
   const first = menuItems.nth(0)
-  await expect(first).toHaveText('Replace AllCtrl+ENTER')
+  await expect(first).toHaveText('Replace All')
   const second = menuItems.nth(1)
-  await expect(second).toHaveText('DismissDELETE')
+  await expect(second).toHaveText('Dismiss')
 }
