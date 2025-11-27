@@ -12,6 +12,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.Refresh,
       id: InputName.Refresh,
       command: 'refresh',
+      enabled: true,
     },
     {
       type: ActionType.Button,
@@ -19,6 +20,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.ClearAll,
       command: 'clearSearchResults',
       id: InputName.ClearAll,
+      enabled: true,
     },
     {
       type: ActionType.Button,
@@ -26,6 +28,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.NewFile,
       command: '',
       id: InputName.OpenSearchEditor,
+      enabled: true,
     },
     {
       type: ActionType.Button,
@@ -33,6 +36,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.ListFlat,
       command: '',
       id: InputName.ViewAsTree,
+      enabled: true,
     },
     {
       type: ActionType.Button,
@@ -40,6 +44,7 @@ export const getActions = (): readonly Action[] => {
       icon: MaskIcon.CollapseAll,
       command: '',
       id: InputName.CollapseAll,
+      enabled: true,
     },
   ]
 }

@@ -9,6 +9,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'Refresh',
       label: 'Refresh',
       type: 1,
+      enabled: true,
     },
     {
       command: 'clearSearchResults',
@@ -16,6 +17,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'ClearAll',
       label: 'Clear Search Results',
       type: 1,
+      enabled: true,
     },
     {
       command: '',
@@ -23,6 +25,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'OpenSearchEditor',
       label: 'Open New Search Editor',
       type: 1,
+      enabled: true,
     },
     {
       command: '',
@@ -30,6 +33,7 @@ test('getSearchActions - should return array of search actions', () => {
       id: 'ViewAsTree',
       label: 'View as Tree',
       type: 1,
+      enabled: true,
     },
     {
       command: '',
