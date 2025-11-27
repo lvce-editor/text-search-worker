@@ -32,8 +32,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 1,
       className: 'IconButton',
-      'data-command': 'Search.searchInFiles',
-      title: 'searchInFiles',
+      title: 'Search in Files',
       type: 1,
       name: 'searchInFiles',
     },
@@ -46,8 +45,7 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 1,
       className: 'IconButton',
-      'data-command': 'Search.findInFile',
-      title: 'findInFile',
+      title: 'Find in File',
       type: 1,
       name: 'findInFile',
     },
