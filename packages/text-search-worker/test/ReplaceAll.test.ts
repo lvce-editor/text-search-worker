@@ -8,6 +8,7 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test('replaceAll - replaces all matches and updates state', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'BulkReplacement.applyBulkReplacement'() {},
+    'Layout.handleWorkspaceRefresh'() {},
   })
 
   const state: SearchState = {
@@ -63,5 +64,6 @@ test('replaceAll - replaces all matches and updates state', async () => {
         },
       ],
     ],
+    ['Layout.handleWorkspaceRefresh'],
   ])
 })
