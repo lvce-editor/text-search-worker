@@ -52,6 +52,10 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
       preventDefault: true,
     },
     {
+      name: DomEventListenerFunctions.HandleActionClick,
+      params: ['handleActionClick', EventExpression.TargetName],
+    },
+    {
       name: DomEventListenerFunctions.HandleInputSelectionChange,
       params: ['handleInputSelectionChange', EventExpression.TargetName, EventExpression.TargetSelectionStart, EventExpression.TargetSelectionEnd],
     },

@@ -18,3 +18,4 @@ export const HandleInputBlur = 18
 export const HandleListPointerDown = 19
 export const HandleInputContextMenu = 20
 export const HandleInputSelectionChange = 21
+export const HandleActionClick = 22
