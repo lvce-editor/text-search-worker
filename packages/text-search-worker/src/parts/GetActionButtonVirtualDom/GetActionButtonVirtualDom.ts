@@ -11,6 +11,7 @@ export const getActionButtonVirtualDom = (action: Action): readonly VirtualDomNo
       type: VirtualDomElements.Button,
       className: ClassNames.IconButton,
       title: id,
+      name: id,
       'data-command': command,
       childCount: 1,
     },
