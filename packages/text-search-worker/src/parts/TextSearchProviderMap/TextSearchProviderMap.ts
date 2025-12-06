@@ -8,10 +8,10 @@ import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
 export const textSearchProviderMap: Record<string, TextSearchProvider> = {
   '': TextSearchNode.textSearch, // TODO deprecate/remove workspaces without scheme
-  file: TextSearchNode.textSearch,
-  web: TextSearchWeb.textSearch,
+  default: TextSearchExtension.textSearch,
   fetch: TextSearchFetch.textSearch,
+  file: TextSearchNode.textSearch,
   html: TextSearchHtml.textSearch,
   memfs: TextSearchMemory.textSearch,
-  default: TextSearchExtension.textSearch,
+  web: TextSearchWeb.textSearch,
 }

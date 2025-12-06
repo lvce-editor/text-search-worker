@@ -6,7 +6,7 @@ import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewState
 
 // Setup a state in SearchViewStates
 const uid = 123
-const oldState = { ...CreateDefaultState.createDefaultState(), uid, width: 100, height: 100 }
+const oldState = { ...CreateDefaultState.createDefaultState(), height: 100, uid, width: 100 }
 const newState = { ...oldState, value: 'new value' }
 SearchViewStates.set(uid, oldState, newState)
 

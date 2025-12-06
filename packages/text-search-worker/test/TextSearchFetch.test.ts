@@ -6,11 +6,11 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.textSearchFetch': () => [
       {
-        type: 1,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: 1,
       },
     ],
   })
@@ -24,16 +24,16 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
   const result = await TextSearchFetch.textSearch(scheme, root, query, options, assetDir)
 
   expect(result).toEqual({
+    limitHit: false,
     results: [
       {
-        type: 1,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: 1,
       },
     ],
-    limitHit: false,
   })
   expect(mockRpc.invocations).toEqual([['ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir]])
 })

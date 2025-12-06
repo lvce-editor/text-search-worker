@@ -5,27 +5,27 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 
 test('convertSearchResults - converts flat array to hierarchical structure', () => {
   const flatResults: readonly SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 2 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match3', start: 0, end: 6, lineNumber: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 6, lineNumber: 2, start: 0, text: 'match2', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 0, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match3', type: TextSearchResultType.Match },
   ]
 
   const result = ConvertSearchResults.convertSearchResults(flatResults)
   expect(result).toEqual([
     {
-      path: 'file1.txt',
       isExpanded: true,
       matches: [
-        { text: 'match1', start: 0, end: 6, lineNumber: 1 },
-        { text: 'match2', start: 0, end: 6, lineNumber: 2 },
+        { end: 6, lineNumber: 1, start: 0, text: 'match1' },
+        { end: 6, lineNumber: 2, start: 0, text: 'match2' },
       ],
+      path: 'file1.txt',
     },
     {
-      path: 'file2.txt',
       isExpanded: true,
-      matches: [{ text: 'match3', start: 0, end: 6, lineNumber: 1 }],
+      matches: [{ end: 6, lineNumber: 1, start: 0, text: 'match3' }],
+      path: 'file2.txt',
     },
   ])
 })

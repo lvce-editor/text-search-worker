@@ -1,6 +1,6 @@
 export const create = ({
-  itemHeight,
   headerHeight = 0,
+  itemHeight,
   minimumSliderSize = 20,
 }: {
   readonly itemHeight: number
@@ -9,19 +9,19 @@ export const create = ({
 }): any => {
   return {
     deltaY: 0,
-    minLineY: 0,
-    maxLineY: 0,
     finalDeltaY: 0,
-    itemHeight,
+    focusedIndex: -1,
     headerHeight,
+    itemHeight,
     items: [],
     listItems: [],
+    maxLineY: 0,
     minimumSliderSize,
-    focusedIndex: -1,
+    minLineY: 0,
+    scrollBarActive: false,
+    scrollBarHeight: 0,
+    touchDifference: 0,
     touchOffsetY: 0,
     touchTimeStamp: 0,
-    touchDifference: 0,
-    scrollBarHeight: 0,
-    scrollBarActive: false,
   }
 }

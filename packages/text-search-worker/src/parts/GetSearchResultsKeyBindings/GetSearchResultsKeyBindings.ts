@@ -6,38 +6,38 @@ import * as KeyModifier from '../KeyModifier/KeyModifier.ts'
 export const getSearchResultKeyBindings = (): readonly KeyBinding[] => {
   return [
     {
-      key: KeyCode.DownArrow,
       command: 'Search.focusNext',
+      key: KeyCode.DownArrow,
       when: WhenExpression.FocusSearchResults,
     },
     {
-      key: KeyCode.UpArrow,
       command: 'Search.focusPrevious',
+      key: KeyCode.UpArrow,
       when: WhenExpression.FocusSearchResults,
     },
     {
-      key: KeyCode.Delete,
       command: 'Search.dismissItem',
-      when: WhenExpression.FocusSearchResults,
-    },
-    {
-      key: KeyCode.Home,
-      command: 'Search.focusFirst',
-      when: WhenExpression.FocusSearchResults,
-    },
-    {
-      key: KeyCode.End,
-      command: 'Search.focusLast',
-      when: WhenExpression.FocusSearchResults,
-    },
-    {
-      key: KeyModifier.CtrlCmd | KeyCode.KeyC,
-      command: 'Search.copy',
-      when: WhenExpression.FocusSearchResults,
-    },
-    {
       key: KeyCode.Delete,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
+      command: 'Search.focusFirst',
+      key: KeyCode.Home,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
+      command: 'Search.focusLast',
+      key: KeyCode.End,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
+      command: 'Search.copy',
+      key: KeyModifier.CtrlCmd | KeyCode.KeyC,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
       command: 'Search.removeCurrent',
+      key: KeyCode.Delete,
       when: WhenExpression.FocusSearchResults,
     },
   ]

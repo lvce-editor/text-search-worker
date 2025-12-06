@@ -5,10 +5,10 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 
 test('getTextSearchResultCounts returns correct counts for mixed results', () => {
   const results: readonly SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 1 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 1, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const resultCounts = getTextSearchResultCounts(results)
@@ -24,8 +24,8 @@ test('getTextSearchResultCounts returns zero counts for empty results', () => {
 
 test('getTextSearchResultCounts counts only files', () => {
   const results: readonly SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 1, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
   ]
 
   const resultCounts = getTextSearchResultCounts(results)
@@ -34,8 +34,8 @@ test('getTextSearchResultCounts counts only files', () => {
 
 test('getTextSearchResultCounts counts only matches', () => {
   const results: readonly SearchResult[] = [
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 1 },
+    { end: 6, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 6, lineNumber: 1, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const resultCounts = getTextSearchResultCounts(results)

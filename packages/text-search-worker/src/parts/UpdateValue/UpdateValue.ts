@@ -8,7 +8,7 @@ const getNewSelections = (selections: SelectionState, name: string, newValue: st
   if (!old) {
     return selections
   }
-  const { start, end } = old
+  const { end, start } = old
   const newSelection = newValue.length
   if (start === newSelection && end === newSelection) {
     return selections
@@ -16,8 +16,8 @@ const getNewSelections = (selections: SelectionState, name: string, newValue: st
   return {
     ...selections,
     [name]: {
-      start: newSelection,
       end: newSelection,
+      start: newSelection,
     },
   }
 }
@@ -26,17 +26,10 @@ export const updateValue = (state: SearchState, name: string, newValue: string):
   const { selections } = state
   const newSelections = getNewSelections(selections, name, newValue)
   switch (name) {
-    case InputName.SearchValue:
+    case InputName.FilesToExclude:
       return {
         ...state,
-        value: newValue,
-        inputSource: InputSource.Script,
-        selections: newSelections,
-      }
-    case InputName.ReplaceValue:
-      return {
-        ...state,
-        replacement: newValue,
+        excludeValue: newValue,
         inputSource: InputSource.Script,
         selections: newSelections,
       }
@@ -47,12 +40,19 @@ export const updateValue = (state: SearchState, name: string, newValue: string):
         inputSource: InputSource.Script,
         selections: newSelections,
       }
-    case InputName.FilesToExclude:
+    case InputName.ReplaceValue:
       return {
         ...state,
-        excludeValue: newValue,
+        inputSource: InputSource.Script,
+        replacement: newValue,
+        selections: newSelections,
+      }
+    case InputName.SearchValue:
+      return {
+        ...state,
         inputSource: InputSource.Script,
         selections: newSelections,
+        value: newValue,
       }
     default:
       return state

@@ -29,9 +29,9 @@ export const getSearchVirtualDom = (
 
   return [
     {
-      type: VirtualDomElements.Div,
-      className,
       childCount,
+      className,
+      type: VirtualDomElements.Div,
     },
     ...GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, searchInputErrorMessage, matchCount, focus, limitHitWarning),
     ...errorDom,

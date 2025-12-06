@@ -4,7 +4,7 @@ import * as GetNextFocus from '../GetNextFocus/GetNextFocus.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 
 export const focusNextInput = (state: SearchState): SearchState => {
-  const { focus, flags } = state
+  const { flags, focus } = state
   const nextFocus = GetNextFocus.getNextFocus(focus, flags)
   const isListFocus = nextFocus === WhenExpression.FocusSearchResults
   return {

@@ -6,40 +6,40 @@ test('textSearch - extension search', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.executeTextSearchProvider': () => [
       {
-        type: 1,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: 1,
       },
       {
-        type: 2,
-        text: '    <title>Document</title>\n',
-        start: 208,
         end: 212,
         lineNumber: 1,
+        start: 208,
+        text: '    <title>Document</title>\n',
+        type: 2,
       },
     ],
   })
 
   const mockResults = {
+    limitHit: false,
     results: [
       {
-        type: 1,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: 1,
       },
       {
-        type: 2,
-        text: '    <title>Document</title>\n',
-        start: 208,
         end: 212,
         lineNumber: 1,
+        start: 208,
+        text: '    <title>Document</title>\n',
+        type: 2,
       },
     ],
-    limitHit: false,
   }
 
   const result = await TextSearchExtension.textSearch('xyz', 'xyz://', 'abc')

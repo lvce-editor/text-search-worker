@@ -10,10 +10,10 @@ export const getSearchInputErrorVirtualDom = (errorMessage: string): readonly Vi
   }
   return [
     {
-      type: VirtualDomElements.Div,
+      childCount: 1,
       className: ClassNames.SearchInputError,
       role: AriaRoles.Alert,
-      childCount: 1,
+      type: VirtualDomElements.Div,
     },
     text(errorMessage),
   ]

@@ -10,24 +10,24 @@ test('textSearch - calls provider with correct arguments', async () => {
   const query = 'search term'
   const assetDir = '/assets'
   const options: TextSearchOptions = {
-    scheme: 'test',
-    root,
-    query,
     assetDir,
-    threads: 0,
-    include: '*.ts',
     exclude: '',
-    useRegularExpression: false,
-    isCaseSensitive: false,
-    matchWholeWord: false,
     flags: 0,
+    include: '*.ts',
+    isCaseSensitive: false,
     limit: 0,
+    matchWholeWord: false,
+    query,
+    root,
+    scheme: 'test',
+    threads: 0,
+    useRegularExpression: false,
   }
 
   const search = jest.fn(async (): Promise<TextSearchCompletionResult> => {
     const results: readonly SearchResult[] = [
-      { text: 'result1', type: 1, start: 0, end: 0, lineNumber: 0 },
-      { text: 'result2', type: 1, start: 0, end: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'result1', type: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'result2', type: 1 },
     ]
     return {
       limitHit: false,
@@ -44,8 +44,8 @@ test('textSearch - calls provider with correct arguments', async () => {
   expect(results).toEqual({
     limitHit: false,
     results: [
-      { text: 'result1', type: 1, start: 0, end: 0, lineNumber: 0 },
-      { text: 'result2', type: 1, start: 0, end: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'result1', type: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'result2', type: 1 },
     ],
   })
 })
@@ -65,22 +65,22 @@ test('textSearch - handles different protocols', async () => {
   const query = 'search'
   const assetDir = '/assets'
   const options: TextSearchOptions = {
-    scheme: 'http',
-    root,
-    query,
     assetDir,
-    threads: 0,
-    include: '',
     exclude: '',
-    useRegularExpression: false,
-    isCaseSensitive: false,
-    matchWholeWord: false,
     flags: 0,
+    include: '',
+    isCaseSensitive: false,
     limit: 0,
+    matchWholeWord: false,
+    query,
+    root,
+    scheme: 'http',
+    threads: 0,
+    useRegularExpression: false,
   }
 
   const mockProvider = jest.fn(async (): Promise<TextSearchCompletionResult> => {
-    const results: readonly SearchResult[] = [{ text: 'result', type: 1, start: 0, end: 0, lineNumber: 0 }]
+    const results: readonly SearchResult[] = [{ end: 0, lineNumber: 0, start: 0, text: 'result', type: 1 }]
     return {
       limitHit: false,
       results,

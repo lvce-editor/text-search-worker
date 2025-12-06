@@ -7,22 +7,22 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getMenuEntriesMatch = (state: SearchState, props: ContextMenuProps): readonly MenuEntry[] => {
   return [
     {
+      command: 'Search.removeCurrent',
+      flags: MenuItemFlags.None,
       id: 'dismiss',
       label: SearchStrings.dismiss(),
-      flags: MenuItemFlags.None,
-      command: 'Search.removeCurrent',
     },
     {
+      command: 'Search.copy',
+      flags: MenuItemFlags.None,
       id: 'copy',
       label: SearchStrings.copy(),
-      flags: MenuItemFlags.None,
-      command: 'Search.copy',
     },
     {
+      command: 'Search.copyAll',
+      flags: MenuItemFlags.None,
       id: 'copyAll',
       label: SearchStrings.copyAll(),
-      flags: MenuItemFlags.None,
-      command: 'Search.copyAll',
     },
   ]
 }

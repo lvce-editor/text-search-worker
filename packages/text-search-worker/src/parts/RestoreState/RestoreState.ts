@@ -12,15 +12,15 @@ import {
 
 export const restoreState = (savedState: unknown): RestoredState => {
   return {
-    savedValue: getSavedValue(savedState),
+    excludeValue: getSavedExcludeValue(savedState),
+    flags: getSavedFlags(savedState),
+    focus: getSavedFocus(savedState),
+    history: getSavedHistory(savedState),
+    includeValue: getSavedIncludeValue(savedState),
+    listFocused: getSavedListFocus(savedState),
     replacement: getSavedReplacement(savedState),
     savedCollapsedPaths: getSavedCollapsedPaths(savedState),
+    savedValue: getSavedValue(savedState),
     threads: 1,
-    flags: getSavedFlags(savedState),
-    includeValue: getSavedIncludeValue(savedState),
-    excludeValue: getSavedExcludeValue(savedState),
-    history: getSavedHistory(savedState),
-    focus: getSavedFocus(savedState),
-    listFocused: getSavedListFocus(savedState),
   }
 }

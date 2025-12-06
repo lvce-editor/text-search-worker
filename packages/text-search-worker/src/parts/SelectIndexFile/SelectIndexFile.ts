@@ -8,7 +8,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import * as ToggleCollapsedPath from '../ToggleCollapsedPath/ToggleCollapsedPath.ts'
 
 export const selectIndexFile = async (state: SearchState, searchResult: SearchResult, index: number): Promise<SearchState> => {
-  const { collapsedPaths, items, itemHeight, headerHeight, height, fileIconCache } = state
+  const { collapsedPaths, fileIconCache, headerHeight, height, itemHeight, items } = state
   const path = searchResult.text
   const newCollapsedPaths = ToggleCollapsedPath.toggleCollapsedPath(collapsedPaths, path)
   const filteredResults = GetFilteredResults.getFilteredResults(items, newCollapsedPaths)

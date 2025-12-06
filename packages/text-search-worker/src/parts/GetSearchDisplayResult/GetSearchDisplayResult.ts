@@ -17,7 +17,7 @@ export const getDisplayResult = (
   originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
   const result = results[i]
-  const { type, text, start } = result
+  const { start, text, type } = result
   const posInSet = i + 1
   const focused = i === focusedIndex
   const relativeIndex = i - minLineY

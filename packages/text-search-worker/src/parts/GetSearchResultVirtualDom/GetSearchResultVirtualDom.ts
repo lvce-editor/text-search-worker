@@ -14,23 +14,23 @@ import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearch
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
-  const { matchStart, matchLength, text: displayText, title, icon, setSize, posInSet, depth, replacement, focused, expanded, badgeText } = rowInfo
+  const { badgeText, depth, expanded, focused, icon, matchLength, matchStart, posInSet, replacement, setSize, text: displayText, title } = rowInfo
   const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Div,
-      role: AriaRoles.TreeItem,
-      className: GetSearchResultClassName.getSearchResultClassName(focused),
-      title,
-      ariaSetSize: setSize,
+      ariaDescription: '',
+      ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
+      ariaLabel: title,
       ariaLevel: depth,
       ariaPosInSet: posInSet,
-      ariaLabel: title,
-      ariaDescription: '',
+      ariaSetSize: setSize,
       childCount,
+      className: GetSearchResultClassName.getSearchResultClassName(focused),
       paddingLeft: GetPaddingLeft.getPaddingLeft(depth),
       paddingRight: TreeItemPadding.PaddingRight,
-      ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
+      role: AriaRoles.TreeItem,
+      title,
+      type: VirtualDomElements.Div,
     },
     ...GetChevronVirtualDom.getChevronVirtualDom(expanded),
     ...GetIconsVirtualDom.getIconsVirtualDom(icon),

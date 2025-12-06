@@ -7,11 +7,11 @@ test('getIconsVirtualDom - returns array with icon virtual dom when icon is prov
   const icon = 'test-icon.svg'
   expect(GetIconsVirtualDom.getIconsVirtualDom(icon)).toEqual([
     {
-      type: VirtualDomElements.Img,
-      className: ClassNames.FileIcon,
-      src: icon,
-      role: AriaRoles.None,
       childCount: 0,
+      className: ClassNames.FileIcon,
+      role: AriaRoles.None,
+      src: icon,
+      type: VirtualDomElements.Img,
     },
   ])
 })
@@ -25,10 +25,10 @@ test('getIconsVirtualDom - returns correct virtual dom for different icon string
   const result = GetIconsVirtualDom.getIconsVirtualDom(icon)
   expect(result).toHaveLength(1)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Img,
-    className: ClassNames.FileIcon,
-    src: icon,
-    role: AriaRoles.None,
     childCount: 0,
+    className: ClassNames.FileIcon,
+    role: AriaRoles.None,
+    src: icon,
+    type: VirtualDomElements.Img,
   })
 })

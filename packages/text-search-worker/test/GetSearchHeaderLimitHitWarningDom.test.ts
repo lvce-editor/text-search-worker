@@ -7,8 +7,8 @@ test('getSearchHeaderLimitHitVirtualDom - returns empty div when limitHitWarning
   const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom('')
   expect(result).toEqual([
     {
-      type: VirtualDomElements.Div,
       childCount: 0,
+      type: VirtualDomElements.Div,
     },
   ])
 })
@@ -18,14 +18,14 @@ test('getSearchHeaderLimitHitVirtualDom - returns warning div with text when lim
   const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom(warningMessage)
   expect(result).toEqual([
     {
-      type: VirtualDomElements.Div,
-      className: SearchWarningMessage,
       childCount: 1,
+      className: SearchWarningMessage,
+      type: VirtualDomElements.Div,
     },
     {
-      type: 12,
-      text: warningMessage,
       childCount: 0,
+      text: warningMessage,
+      type: 12,
     },
   ])
 })
@@ -35,14 +35,14 @@ test('getSearchHeaderLimitHitVirtualDom - handles different warning messages', (
   const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom(warningMessage)
   expect(result).toEqual([
     {
-      type: VirtualDomElements.Div,
-      className: SearchWarningMessage,
       childCount: 1,
+      className: SearchWarningMessage,
+      type: VirtualDomElements.Div,
     },
     {
-      type: 12,
-      text: warningMessage,
       childCount: 0,
+      text: warningMessage,
+      type: 12,
     },
   ])
 })

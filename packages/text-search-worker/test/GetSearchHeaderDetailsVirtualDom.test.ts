@@ -7,9 +7,9 @@ test('getSearchHeaderDetailsVirtualDom', () => {
   const message = ''
   const dom = GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message)
   expect(dom[0]).toEqual({
-    type: 4,
-    className: 'SearchHeaderDetails',
     childCount: 2,
+    className: 'SearchHeaderDetails',
+    type: 4,
   })
 })
 

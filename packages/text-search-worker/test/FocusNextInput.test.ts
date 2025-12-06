@@ -8,8 +8,8 @@ test('focusNextInput - from toggle details with details collapsed sets listFocus
   const state = CreateDefaultState.createDefaultState()
   const updatedState = FocusNextInput.focusNextInput({
     ...state,
-    focus: WhenExpression.FocusToggleDetails,
     flags: 0,
+    focus: WhenExpression.FocusToggleDetails,
   })
   expect(updatedState.focus).toBe(WhenExpression.FocusSearchResults)
   expect(updatedState.listFocused).toBe(true)
@@ -19,8 +19,8 @@ test('focusNextInput - from ignore files sets listFocused to true', () => {
   const state = CreateDefaultState.createDefaultState()
   const updatedState = FocusNextInput.focusNextInput({
     ...state,
-    focus: WhenExpression.FocusIgnoreFiles,
     flags: 0,
+    focus: WhenExpression.FocusIgnoreFiles,
   })
   expect(updatedState.focus).toBe(WhenExpression.FocusSearchResults)
   expect(updatedState.listFocused).toBe(true)
@@ -30,8 +30,8 @@ test('focusNextInput - from search input does not set listFocused to true', () =
   const state = CreateDefaultState.createDefaultState()
   const updatedState = FocusNextInput.focusNextInput({
     ...state,
-    focus: WhenExpression.FocusSearchInput,
     flags: 0,
+    focus: WhenExpression.FocusSearchInput,
   })
   expect(updatedState.focus).toBe(WhenExpression.FocusSearchMatchCase)
   expect(updatedState.listFocused).toBe(false)
@@ -41,8 +41,8 @@ test('focusNextInput - from toggle details with details expanded does not set li
   const state = CreateDefaultState.createDefaultState()
   const updatedState = FocusNextInput.focusNextInput({
     ...state,
-    focus: WhenExpression.FocusToggleDetails,
     flags: SearchFlags.DetailsExpanded,
+    focus: WhenExpression.FocusToggleDetails,
   })
   expect(updatedState.focus).toBe(WhenExpression.FocusSearchIncludeInput)
   expect(updatedState.listFocused).toBe(false)

@@ -2,16 +2,16 @@ import type { SavedState } from '../SavedState/SavedState.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const saveState = (state: SearchState): SavedState => {
-  const { value, replacement, flags, includeValue, excludeValue, history, collapsedPaths, focus, listFocused } = state
+  const { collapsedPaths, excludeValue, flags, focus, history, includeValue, listFocused, replacement, value } = state
   return {
-    value,
-    replacement,
-    flags,
-    includeValue,
-    excludeValue,
-    history,
     collapsedPaths,
+    excludeValue,
+    flags,
     focus,
+    history,
+    includeValue,
     listFocused,
+    replacement,
+    value,
   }
 }

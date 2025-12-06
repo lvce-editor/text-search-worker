@@ -8,19 +8,19 @@ import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualD
 export const getOutSideButtonsDom = (outsideButtons: readonly InputAction[]): OutSideButtonsDom => {
   if (outsideButtons.length === 0) {
     return {
-      preNodes: [],
       postNodes: [],
+      preNodes: [],
     }
   }
   return {
+    postNodes: outsideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
     preNodes: [
       {
-        type: VirtualDomElements.Div,
+        childCount: 1 + outsideButtons.length,
         className: ClassNames.SearchFieldContainer,
         role: AriaRoles.None,
-        childCount: 1 + outsideButtons.length,
+        type: VirtualDomElements.Div,
       },
     ],
-    postNodes: outsideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
   }
 }

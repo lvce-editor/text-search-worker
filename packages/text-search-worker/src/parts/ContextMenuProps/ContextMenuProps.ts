@@ -5,13 +5,13 @@ export interface ContextMenuPropsBase {
 }
 
 export interface ContextMenuPropsInput extends ContextMenuPropsBase {
-  readonly menuId: typeof MenuEntryId.InputContextMenu
   readonly inputName: string
+  readonly menuId: typeof MenuEntryId.InputContextMenu
 }
 
 export interface ContextMenuPropsList extends ContextMenuPropsBase {
-  readonly menuId: typeof MenuEntryId.Search
   readonly index: number
+  readonly menuId: typeof MenuEntryId.Search
 }
 
 export type ContextMenuProps = ContextMenuPropsInput | ContextMenuPropsList

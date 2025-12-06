@@ -9,22 +9,22 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getInputActionsInput = (flags: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
-      icon: ClassNames.MaskIconCaseSensitive,
       flag: flags & SearchFlags.MatchCase ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
-      title: SearchStrings.matchCase(),
+      icon: ClassNames.MaskIconCaseSensitive,
       name: InputName.MatchCase,
+      title: SearchStrings.matchCase(),
     },
     {
-      icon: ClassNames.MaskIconWholeWord,
       flag: flags & SearchFlags.MatchWholeWord ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
-      title: SearchStrings.matchWholeWord(),
+      icon: ClassNames.MaskIconWholeWord,
       name: InputName.MatchWholeWord,
+      title: SearchStrings.matchWholeWord(),
     },
     {
-      icon: ClassNames.MaskIconRegex,
       flag: flags & SearchFlags.UseRegularExpression ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
-      title: SearchStrings.useRegularExpression(),
+      icon: ClassNames.MaskIconRegex,
       name: InputName.UseRegularExpression,
+      title: SearchStrings.useRegularExpression(),
     },
   ]
   const outside: readonly InputAction[] = []

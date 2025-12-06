@@ -9,28 +9,28 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test('clearSearchResults - clears state and focuses search input', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    workspacePath: 'test',
     items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
     ],
-    minLineY: 10,
     maxLineY: 20,
     message: 'test message',
+    minLineY: 10,
+    workspacePath: 'test',
   }
 
   const result = ClearSearchResults.clearSearchResults(state)
 
   expect(result).toEqual({
     ...state,
-    value: '',
-    items: [],
-    minLineY: 0,
-    maxLineY: 0,
-    message: '',
     focus: WhenExpression.FocusSearchInput,
     focusSource: InputSource.Script,
     inputSource: InputSource.Script,
+    items: [],
+    maxLineY: 0,
+    message: '',
+    minLineY: 0,
     replacement: '',
+    value: '',
   })
 })

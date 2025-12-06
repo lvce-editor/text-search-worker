@@ -12,38 +12,38 @@ import * as TextSearch from '../TextSearch/TextSearch.ts'
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
   const {
-    height,
-    itemHeight,
-    minimumSliderSize,
-    headerHeight,
-    flags,
-    value,
-    threads,
-    includeValue,
-    excludeValue,
     assetDir,
-    platform,
-    limit,
+    excludeValue,
     fileIconCache,
+    flags,
+    headerHeight,
+    height,
+    includeValue,
+    itemHeight,
+    limit,
+    minimumSliderSize,
+    platform,
+    threads,
+    value,
   } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
-  const { results, limitHit } = await TextSearch.textSearch(
+  const { limitHit, results } = await TextSearch.textSearch(
     root,
     value,
     {
-      threads,
-      isCaseSensitive: Boolean(flags & SearchFlags.MatchCase),
-      useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
-      exclude: excludeValue,
-      include: includeValue,
       assetDir,
-      root,
-      query: value,
-      scheme,
+      exclude: excludeValue,
       flags,
-      matchWholeWord: Boolean(flags & SearchFlags.MatchWholeWord),
+      include: includeValue,
+      isCaseSensitive: Boolean(flags & SearchFlags.MatchCase),
       limit,
+      matchWholeWord: Boolean(flags & SearchFlags.MatchWholeWord),
+      query: value,
+      root,
+      scheme,
+      threads,
+      useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
     assetDir,
     platform,
@@ -65,6 +65,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
   return {
     ...partialNewState,
+    collapsedPaths: [],
     deltaY: 0,
     fileCount,
     fileIconCache: newFileIconCache,
@@ -83,6 +84,5 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     searchInputErrorMessage: '',
     threads,
     value,
-    collapsedPaths: [],
   }
 }

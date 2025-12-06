@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.input-cut'
 
-export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Workspace }) => {
+export const test: Test = async ({ ClipBoard, Command, FileSystem, Search, Workspace }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   const tmpDir = await FileSystem.getTmpDir()

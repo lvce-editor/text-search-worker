@@ -7,18 +7,18 @@ test('getReplacementEdits - single file with one match', () => {
   const workspacePath = '/test'
   const results: readonly SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: './file.txt',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: './file.txt',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test content',
-      start: 0,
       end: 4,
       lineNumber: 1,
+      start: 0,
+      text: 'test content',
+      type: TextSearchResultType.Match,
     },
   ]
   const replacement = 'new'
@@ -26,16 +26,16 @@ test('getReplacementEdits - single file with one match', () => {
   const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
-      uri: '/test/file.txt',
       changes: [
         {
-          text: 'new',
-          startRowIndex: 0,
-          startColumnIndex: 0,
-          endRowIndex: 1,
           endColumnIndex: 4,
+          endRowIndex: 1,
+          startColumnIndex: 0,
+          startRowIndex: 0,
+          text: 'new',
         },
       ],
+      uri: '/test/file.txt',
     },
   ])
 })
@@ -44,32 +44,32 @@ test('getReplacementEdits - multiple files with matches', () => {
   const workspacePath = '/test'
   const results: readonly SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: './file1.txt',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: './file1.txt',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test content',
-      start: 0,
       end: 4,
       lineNumber: 1,
+      start: 0,
+      text: 'test content',
+      type: TextSearchResultType.Match,
     },
     {
-      type: TextSearchResultType.File,
-      text: './file2.txt',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: './file2.txt',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test other',
-      start: 2,
       end: 6,
       lineNumber: 3,
+      start: 2,
+      text: 'test other',
+      type: TextSearchResultType.Match,
     },
   ]
   const replacement = 'new'
@@ -77,28 +77,28 @@ test('getReplacementEdits - multiple files with matches', () => {
   const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
-      uri: '/test/file1.txt',
       changes: [
         {
-          text: 'new',
-          startRowIndex: 0,
-          startColumnIndex: 0,
-          endRowIndex: 1,
           endColumnIndex: 4,
+          endRowIndex: 1,
+          startColumnIndex: 0,
+          startRowIndex: 0,
+          text: 'new',
         },
       ],
+      uri: '/test/file1.txt',
     },
     {
-      uri: '/test/file2.txt',
       changes: [
         {
-          text: 'new',
-          startRowIndex: 2,
-          startColumnIndex: 2,
-          endRowIndex: 3,
           endColumnIndex: 6,
+          endRowIndex: 3,
+          startColumnIndex: 2,
+          startRowIndex: 2,
+          text: 'new',
         },
       ],
+      uri: '/test/file2.txt',
     },
   ])
 })
@@ -116,25 +116,25 @@ test('getReplacementEdits - file with multiple matches', () => {
   const workspacePath = '/test'
   const results: readonly SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: './file.txt',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: './file.txt',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test content test',
-      start: 0,
       end: 4,
       lineNumber: 1,
+      start: 0,
+      text: 'test content test',
+      type: TextSearchResultType.Match,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test content test',
-      start: 12,
       end: 16,
       lineNumber: 1,
+      start: 12,
+      text: 'test content test',
+      type: TextSearchResultType.Match,
     },
   ]
   const replacement = 'new'
@@ -142,23 +142,23 @@ test('getReplacementEdits - file with multiple matches', () => {
   const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
-      uri: '/test/file.txt',
       changes: [
         {
-          text: 'new',
-          startRowIndex: 0,
-          startColumnIndex: 0,
-          endRowIndex: 1,
           endColumnIndex: 4,
+          endRowIndex: 1,
+          startColumnIndex: 0,
+          startRowIndex: 0,
+          text: 'new',
         },
         {
-          text: 'new',
-          startRowIndex: 0,
-          startColumnIndex: 12,
-          endRowIndex: 1,
           endColumnIndex: 16,
+          endRowIndex: 1,
+          startColumnIndex: 12,
+          startRowIndex: 0,
+          text: 'new',
         },
       ],
+      uri: '/test/file.txt',
     },
   ])
 })
@@ -167,18 +167,18 @@ test('getReplacementEdits - handles different file paths', () => {
   const workspacePath = 'memfs:///test'
   const results: readonly SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: 'file.txt',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: 'file.txt',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'test content',
-      start: 0,
       end: 4,
       lineNumber: 1,
+      start: 0,
+      text: 'test content',
+      type: TextSearchResultType.Match,
     },
   ]
   const replacement = 'new'
@@ -186,16 +186,16 @@ test('getReplacementEdits - handles different file paths', () => {
   const edits = GetReplacementEdits.getReplaceElements(results, workspacePath, replacement)
   expect(edits).toEqual([
     {
-      uri: 'memfs:///test/file.txt',
       changes: [
         {
-          text: 'new',
-          startRowIndex: 0,
-          startColumnIndex: 0,
-          endRowIndex: 1,
           endColumnIndex: 4,
+          endRowIndex: 1,
+          startColumnIndex: 0,
+          startRowIndex: 0,
+          text: 'new',
         },
       ],
+      uri: 'memfs:///test/file.txt',
     },
   ])
 })

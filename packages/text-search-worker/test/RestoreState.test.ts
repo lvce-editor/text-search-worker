@@ -6,57 +6,57 @@ test('restoreState - with empty state', () => {
   const state = {}
   const result = restoreState(state)
   expect(result).toEqual({
+    excludeValue: '',
+    flags: 0,
+    focus: 0,
+    history: [],
+    includeValue: '',
+    listFocused: false,
     replacement: '',
     savedCollapsedPaths: [],
+
     savedValue: '',
     threads: 1,
-    flags: 0,
-    includeValue: '',
-    excludeValue: '',
-    history: [],
-
-    listFocused: false,
-    focus: 0,
   })
 })
 
 test('restoreState - with null state', () => {
   const result = restoreState(null)
   expect(result).toEqual({
+    excludeValue: '',
+    flags: 0,
+    focus: 0,
+    history: [],
+    includeValue: '',
+    listFocused: false,
     replacement: '',
     savedCollapsedPaths: [],
+
     savedValue: '',
     threads: 1,
-    flags: 0,
-    includeValue: '',
-    excludeValue: '',
-    history: [],
-
-    listFocused: false,
-    focus: 0,
   })
 })
 
 test('restoreState - with basic state', () => {
   const state = {
-    value: 'test',
+    excludeValue: 'node_modules',
     flags: 31,
     includeValue: '*.ts',
-    excludeValue: 'node_modules',
+    value: 'test',
   }
   const result = restoreState(state)
   const expectedFlags =
     SearchFlags.PreserveCase | SearchFlags.ReplaceExpanded | SearchFlags.MatchCase | SearchFlags.MatchWholeWord | SearchFlags.UseRegularExpression
   expect(result).toEqual({
+    excludeValue: 'node_modules',
+    flags: expectedFlags,
+    focus: 0,
+    history: [],
+    includeValue: '*.ts',
+    listFocused: false,
     replacement: '',
     savedCollapsedPaths: [],
     savedValue: 'test',
     threads: 1,
-    flags: expectedFlags,
-    includeValue: '*.ts',
-    excludeValue: 'node_modules',
-    history: [],
-    focus: 0,
-    listFocused: false,
   })
 })

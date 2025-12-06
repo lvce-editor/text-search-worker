@@ -19,17 +19,17 @@ export const getSearchResultsVirtualDom = (
   const childCount = scrollbarHeight === 0 ? 1 : 2
   return [
     {
-      type: VirtualDomElements.Div,
+      childCount,
       className: MergeClassNames.mergeClassNames(
         ClassNames.Viewlet,
         ClassNames.List,
         ClassNames.Tree,
         focusOutline ? ClassNames.FocusOutline : ClassNames.Empty,
       ),
+      onBlur: HandleListBlur,
       role: AriaRoles.Tree,
       tabIndex: 0,
-      childCount,
-      onBlur: HandleListBlur,
+      type: VirtualDomElements.Div,
       // TODO renable this when dom diffing is supported
       // onPointerDown: HandleListPointerDown,
       // onFocus: HandleListFocus,

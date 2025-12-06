@@ -4,16 +4,16 @@ import * as ChevronVirtualDom from '../src/parts/ChevronVirtualDom/ChevronVirtua
 
 test('getChevronDownVirtualDom', () => {
   expect(ChevronVirtualDom.chevronDownVirtualDom).toEqual({
-    type: VirtualDomElements.Div,
-    className: 'Chevron MaskIconChevronDown',
     childCount: 0,
+    className: 'Chevron MaskIconChevronDown',
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getChevronRightVirtualDom', () => {
   expect(ChevronVirtualDom.chevronRightVirtualDom).toEqual({
-    type: VirtualDomElements.Div,
-    className: 'Chevron MaskIconChevronRight',
     childCount: 0,
+    className: 'Chevron MaskIconChevronRight',
+    type: VirtualDomElements.Div,
   })
 })

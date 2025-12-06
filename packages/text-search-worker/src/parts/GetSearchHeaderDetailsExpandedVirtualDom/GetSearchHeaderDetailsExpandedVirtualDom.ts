@@ -18,20 +18,20 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
   const excludePlaceholder = SearchStrings.exclude()
   return [
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderDetailsExpanded,
       childCount: 5,
+      className: ClassNames.SearchHeaderDetailsExpanded,
+      type: VirtualDomElements.Div,
     },
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderDetailsExpandedTop,
       childCount: 2,
+      className: ClassNames.SearchHeaderDetailsExpandedTop,
+      type: VirtualDomElements.Div,
     },
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),
     {
-      type: VirtualDomElements.H4,
-      className: ClassNames.SearchHeaderDetailsHeading,
       childCount: 1,
+      className: ClassNames.SearchHeaderDetailsHeading,
+      type: VirtualDomElements.H4,
     },
     text(SearchStrings.filesToInclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
@@ -42,9 +42,9 @@ export const getSearchHeaderDetailsExpandedVirtualDom = (flags: number, message:
       includeButtons.outside,
     ),
     {
-      type: VirtualDomElements.H4,
-      className: ClassNames.SearchHeaderDetailsHeading,
       childCount: 1,
+      className: ClassNames.SearchHeaderDetailsHeading,
+      type: VirtualDomElements.H4,
     },
     text(SearchStrings.filesToExclude()),
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(

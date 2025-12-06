@@ -4,12 +4,12 @@ export const handleUpdateError = async (state: SearchState, update: Partial<Sear
   const partialNewState = { ...state, ...update }
   return {
     ...partialNewState,
-    message: `${error}`,
+    fileCount: 0,
     items: [],
     listItems: [],
     matchCount: 0,
-    fileCount: 0,
-    minLineY: 0,
     maxLineY: 0,
+    message: `${error}`,
+    minLineY: 0,
   }
 }

@@ -6,30 +6,30 @@ import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultT
 
 export const getReplaceElements = (items: readonly SearchResult[], workspacePath: string, replacement: string): readonly BulkReplacementEdit[] => {
   let element: BulkReplacementEdit = {
-    uri: '',
     changes: [],
+    uri: '',
   }
   const bulkChanges: BulkReplacementEdit[] = []
   let changes: TextEdit[] = []
   // TODO simplify code by first matching files with their elements, then creating bulk edits
   for (const match of items) {
-    const { type, text, lineNumber, end, start } = match
+    const { end, lineNumber, start, text, type } = match
     if (type === TextSearchResultType.File) {
       changes = []
       const fileName = GetFileName.getFilePath(text)
       const absolutePath = `${workspacePath}/${fileName}`
       element = {
-        uri: absolutePath,
         changes,
+        uri: absolutePath,
       }
       bulkChanges.push(element)
     } else {
       changes.push({
-        text: replacement,
-        startRowIndex: lineNumber - 1,
-        startColumnIndex: start,
-        endRowIndex: lineNumber,
         endColumnIndex: end,
+        endRowIndex: lineNumber,
+        startColumnIndex: start,
+        startRowIndex: lineNumber - 1,
+        text: replacement,
       })
     }
   }

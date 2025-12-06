@@ -7,14 +7,14 @@ import * as InputName from '../InputName/InputName.ts'
 
 export const getInputHandler = (name: string): InputHandler => {
   switch (name) {
-    case InputName.SearchValue:
-      return HandleInput.handleInput
-    case InputName.ReplaceValue:
-      return HandleReplaceInput.handleReplaceInput
     case InputName.FilesToExclude:
       return HandleExcludeInput.handleExcludeInput
     case InputName.FilesToInclude:
       return HandleIncludeInput.handleIncludeInput
+    case InputName.ReplaceValue:
+      return HandleReplaceInput.handleReplaceInput
+    case InputName.SearchValue:
+      return HandleInput.handleInput
     default:
       throw new Error(`unknown input handler: ${name}`)
   }

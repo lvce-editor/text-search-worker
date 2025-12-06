@@ -9,18 +9,18 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getInputActionsReplace = (flags: number, matchCount: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
-      icon: ClassNames.MaskIconPreserveCase,
       flag: flags & SearchFlags.PreserveCase ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
-      title: SearchStrings.preserveCase(),
+      icon: ClassNames.MaskIconPreserveCase,
       name: InputName.PreserveCase,
+      title: SearchStrings.preserveCase(),
     },
   ]
   const outside: readonly InputAction[] = [
     {
-      icon: ClassNames.MaskIconReplaceAll,
       flag: matchCount === 0 ? InputActionFlag.ButtonDisabled : InputActionFlag.ButtonEnabled,
-      title: SearchStrings.replaceAll(),
+      icon: ClassNames.MaskIconReplaceAll,
       name: InputName.ReplaceAll,
+      title: SearchStrings.replaceAll(),
     },
   ]
   return {

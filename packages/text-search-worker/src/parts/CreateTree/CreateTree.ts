@@ -6,7 +6,7 @@ import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultT
 export const createParentFolderTree = (items: readonly SearchResult[]): Tree => {
   const tree: Record<string, SearchResult[]> = Object.create(null)
   for (const item of items) {
-    const { type, text } = item
+    const { text, type } = item
     if (type === TextSearchResultType.File) {
       const relativePath = text
       const dirname = Path.dirname2(relativePath)

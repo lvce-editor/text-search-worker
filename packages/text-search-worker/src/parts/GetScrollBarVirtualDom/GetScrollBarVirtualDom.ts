@@ -12,20 +12,20 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
   }
   return [
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarVertical),
-      childCount: 1,
-      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
-      role: AriaRoles.ScrollBar,
       ariaControls: DomId.TreeItems,
       ariaValueNow: scrollBarValue,
+      childCount: 1,
+      className: MergeClassNames.mergeClassNames(ClassNames.ScrollBar, ClassNames.ScrollBarVertical),
+      onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
+      role: AriaRoles.ScrollBar,
+      type: VirtualDomElements.Div,
     },
     {
-      type: VirtualDomElements.Div,
+      childCount: 0,
       className: ClassNames.ScrollBarThumb,
       height: scrollBarHeight,
       translate: `0 ${scrollBarY}px`,
-      childCount: 0,
+      type: VirtualDomElements.Div,
     },
   ]
 }

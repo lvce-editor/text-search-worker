@@ -6,8 +6,8 @@ import { setLimit } from '../src/parts/SetLimit/SetLimit.ts'
 test('setLimit - updates limit in state with empty value', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: '',
     limit: 20_000,
+    value: '',
   }
 
   const result = await setLimit(state, 10_000)
@@ -19,8 +19,8 @@ test('setLimit - updates limit in state with empty value', async () => {
 test('setLimit - updates limit to different value', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: '',
     limit: 10_000,
+    value: '',
   }
 
   const result = await setLimit(state, 50_000)
@@ -32,8 +32,8 @@ test('setLimit - updates limit to different value', async () => {
 test('setLimit - updates limit to zero', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: '',
     limit: 20_000,
+    value: '',
   }
 
   const result = await setLimit(state, 0)
@@ -45,8 +45,8 @@ test('setLimit - updates limit to zero', async () => {
 test('setLimit - updates limit to large value', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: '',
     limit: 20_000,
+    value: '',
   }
 
   const result = await setLimit(state, 100_000)

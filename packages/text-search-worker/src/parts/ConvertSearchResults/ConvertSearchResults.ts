@@ -10,17 +10,17 @@ export const convertSearchResults = (results: readonly SearchResult[]): readonly
     if (result.type === TextSearchResultType.File) {
       matches = []
       const currentFile = {
-        path: result.text,
-        matches,
         isExpanded: true,
+        matches,
+        path: result.text,
       }
       files.push(currentFile)
     } else if (result.type === TextSearchResultType.Match) {
       matches.push({
-        text: result.text,
-        start: result.start,
         end: result.end,
         lineNumber: result.lineNumber,
+        start: result.start,
+        text: result.text,
       })
     }
   }

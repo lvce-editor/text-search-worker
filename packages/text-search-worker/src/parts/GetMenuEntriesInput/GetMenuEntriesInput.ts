@@ -11,33 +11,33 @@ export const getMenuEntriesInput = (options: ContextMenuPropsInput): readonly Me
   }
   return [
     {
+      args: [inputName],
+      command: 'Search.handleInputCut',
+      flags: MenuItemFlags.None,
       id: 'cut',
       label: SearchStrings.cut(),
-      flags: MenuItemFlags.None,
-      command: 'Search.handleInputCut',
-      args: [inputName],
     },
     {
+      args: [inputName],
+      command: 'Search.handleInputCopy',
+      flags: MenuItemFlags.None,
       id: 'copy',
       label: SearchStrings.copy(),
-      flags: MenuItemFlags.None,
-      command: 'Search.handleInputCopy',
-      args: [inputName],
     },
     {
+      args: [inputName],
+      command: 'Search.handleInputPaste',
+      flags: MenuItemFlags.None,
       id: 'paste',
       label: SearchStrings.paste(),
-      flags: MenuItemFlags.None,
-      command: 'Search.handleInputPaste',
-      args: [inputName],
     },
     menuEntrySeparator,
     {
+      args: [inputName],
+      command: 'Search.handleInputSelectAll',
+      flags: MenuItemFlags.None,
       id: 'selectAll',
       label: SearchStrings.selectAll(),
-      flags: MenuItemFlags.None,
-      command: 'Search.handleInputSelectAll',
-      args: [inputName],
     },
   ]
 }

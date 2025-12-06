@@ -1,7 +1,7 @@
 interface MinMaxResult {
   newDeltaY: number
-  newMinLineY: number
   newMaxLineY: number
+  newMinLineY: number
 }
 
 export const getNewMinMax = (newItemsLength: number, minLineY: number, maxLineY: number, deltaY: number, itemHeight: number): MinMaxResult => {
@@ -11,13 +11,13 @@ export const getNewMinMax = (newItemsLength: number, minLineY: number, maxLineY:
     const newDeltaY = newMinLineY * itemHeight
     return {
       newDeltaY,
-      newMinLineY,
       newMaxLineY: newItemsLength,
+      newMinLineY,
     }
   }
   return {
     newDeltaY: deltaY,
-    newMinLineY: minLineY,
     newMaxLineY: maxLineY,
+    newMinLineY: minLineY,
   }
 }

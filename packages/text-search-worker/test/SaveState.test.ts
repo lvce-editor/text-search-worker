@@ -10,24 +10,24 @@ test('saveState', () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test-value',
-    replacement: 'test-replacement',
-    includeValue: '*.ts',
     excludeValue: 'node_modules',
     flags,
+    includeValue: '*.ts',
+    replacement: 'test-replacement',
+    value: 'test-value',
   }
 
   const result = saveState(state)
 
   expect(result).toEqual({
-    value: 'test-value',
-    replacement: 'test-replacement',
-    flags,
-    includeValue: '*.ts',
-    excludeValue: 'node_modules',
-    history: [],
     collapsedPaths: [],
+    excludeValue: 'node_modules',
+    flags,
     focus: 0,
+    history: [],
+    includeValue: '*.ts',
     listFocused: false,
+    replacement: 'test-replacement',
+    value: 'test-value',
   })
 })

@@ -15,46 +15,46 @@ test('textSearch - error', async () => {
 
 test('textSearch', async () => {
   const handler = jest.fn(() => ({
+    limitHit: false,
     results: [
       {
-        type: TextSearchResultType.File,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: TextSearchResultType.File,
       },
       {
-        type: TextSearchResultType.Match,
-        text: '    <title>Document</title>\n',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: '    <title>Document</title>\n',
+        type: TextSearchResultType.Match,
       },
     ],
-    limitHit: false,
   }))
   const mockRpc = RendererWorker.registerMockRpc({
     'SearchProcess.invoke': handler,
   })
 
   expect(await TextSearchNode.textSearch('', '/test', 'abc', {} as any)).toEqual({
+    limitHit: false,
     results: [
       {
-        type: TextSearchResultType.File,
-        text: './index.txt',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: './index.txt',
+        type: TextSearchResultType.File,
       },
       {
-        type: TextSearchResultType.Match,
-        text: '    <title>Document</title>\n',
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
+        text: '    <title>Document</title>\n',
+        type: TextSearchResultType.Match,
       },
     ],
-    limitHit: false,
   })
   expect(mockRpc.invocations).toEqual([
     [

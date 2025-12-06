@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.input-paste'
 
-export const test: Test = async ({ ClipBoard, Command, Search, FileSystem, Workspace, Locator, expect }) => {
+export const test: Test = async ({ ClipBoard, Command, expect, FileSystem, Locator, Search, Workspace }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   await Command.execute('ClipBoard.writeText', 'ab')

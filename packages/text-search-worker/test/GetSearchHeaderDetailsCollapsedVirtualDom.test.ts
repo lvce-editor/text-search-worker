@@ -8,36 +8,36 @@ test('getSearchHeaderDetailsCollapsedVirtualDom', () => {
   const dom = GetSearchHeaderDetailsCollapsedVirtualDom.getSearchHeaderDetailsCollapsedVirtualDom(message)
   expect(dom).toEqual([
     {
-      type: 4,
-      className: 'SearchHeaderDetails',
       childCount: 2,
+      className: 'SearchHeaderDetails',
+      type: 4,
     },
     {
-      type: 4,
+      childCount: 1,
       className: 'ViewletSearchMessage ViewletSearchMessageIndented',
       role: AriaRoles.Status,
-      childCount: 1,
+      type: 4,
     },
     {
-      type: 12,
-      text: 'test message',
       childCount: 0,
+      text: 'test message',
+      type: 12,
     },
     {
-      type: 1,
+      ariaLabel: 'Toggle Search Details',
+      childCount: 1,
       className: 'ToggleDetails',
+      name: 'ToggleSearchDetails',
       onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
       tabIndex: 0,
-      ariaLabel: 'Toggle Search Details',
       title: 'Toggle Search Details',
-      childCount: 1,
-      name: 'ToggleSearchDetails',
+      type: 1,
     },
     {
-      type: 4,
-      className: 'MaskIcon MaskIconEllipsis',
       childCount: 0,
+      className: 'MaskIcon MaskIconEllipsis',
+      type: 4,
     },
   ])
 })

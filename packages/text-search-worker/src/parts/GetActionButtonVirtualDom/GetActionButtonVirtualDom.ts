@@ -12,15 +12,15 @@ const getClassName = (enabled: boolean | undefined): string => {
 }
 
 export const getActionButtonVirtualDom = (action: Action): readonly VirtualDomNode[] => {
-  const { id, icon, label, enabled } = action
+  const { enabled, icon, id, label } = action
   const className = getClassName(enabled)
   return [
     {
-      type: VirtualDomElements.Button,
-      className,
-      title: label,
-      name: id,
       childCount: 1,
+      className,
+      name: id,
+      title: label,
+      type: VirtualDomElements.Button,
     },
     GetIconVirtualDom.getIconVirtualDom(icon),
   ]

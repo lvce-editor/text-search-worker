@@ -7,34 +7,34 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getMenuEntriesFile = (state: SearchState, props: ContextMenuPropsList): readonly MenuEntry[] => {
   return [
     {
+      command: 'Search.replaceAll',
+      flags: MenuItemFlags.None,
       id: 'replaceAll',
       label: SearchStrings.replaceAll(),
-      flags: MenuItemFlags.None,
-      command: 'Search.replaceAll',
     },
     {
+      command: 'Search.removeCurrent',
+      flags: MenuItemFlags.None,
       id: 'dismiss',
       label: SearchStrings.dismiss(),
-      flags: MenuItemFlags.None,
-      command: 'Search.removeCurrent',
     },
     {
+      command: 'Search.copy',
+      flags: MenuItemFlags.None,
       id: 'copy',
       label: SearchStrings.copy(),
-      flags: MenuItemFlags.None,
-      command: 'Search.copy',
     },
     {
+      command: 'Search.copyPath',
+      flags: MenuItemFlags.None,
       id: 'copyPath',
       label: SearchStrings.copyPath(),
-      flags: MenuItemFlags.None,
-      command: 'Search.copyPath',
     },
     {
+      command: 'Search.copyAll',
+      flags: MenuItemFlags.None,
       id: 'copyAll',
       label: SearchStrings.copyAll(),
-      flags: MenuItemFlags.None,
-      command: 'Search.copyAll',
     },
   ]
 }

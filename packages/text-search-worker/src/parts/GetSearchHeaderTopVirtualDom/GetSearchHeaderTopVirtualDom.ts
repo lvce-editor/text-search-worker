@@ -25,17 +25,17 @@ export const getSearchHeaderTopVirtualDom = (
   const replaceExpanded = flags & SearchFlags.ReplaceExpanded
   const dom: VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Div,
+      childCount: 2,
       className: ClassNames.SearchHeaderTop,
       role: AriaRoles.None,
-      childCount: 2,
+      type: VirtualDomElements.Div,
     },
     ...GetSearchToggleVirtualDom.getSearchToggleVirtualDom(replaceExpanded),
     {
-      type: VirtualDomElements.Div,
+      childCount: replaceExpanded ? 2 : 1,
       className: ClassNames.SearchHeaderTopRight,
       role: AriaRoles.None,
-      childCount: replaceExpanded ? 2 : 1,
+      type: VirtualDomElements.Div,
     },
     ...GetSearchFieldVirtualDom.getSearchFieldVirtualDom(
       InputName.SearchValue,

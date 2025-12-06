@@ -17,21 +17,21 @@ test('handleInputSelectionChange returns state unchanged when selection values a
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 5,
-        end: 10,
-      },
-      ReplaceValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 10,
+        start: 5,
       },
     },
   }
@@ -45,21 +45,21 @@ test('handleInputSelectionChange updates SearchValue selection', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -68,8 +68,8 @@ test('handleInputSelectionChange updates SearchValue selection', async () => {
 
   expect(result).not.toBe(state)
   expect(result.selections.SearchValue).toEqual({
-    start: 5,
     end: 10,
+    start: 5,
   })
   expect(result.selections.ReplaceValue).toBe(state.selections.ReplaceValue)
   expect(result.selections.FilesToInclude).toBe(state.selections.FilesToInclude)
@@ -80,21 +80,21 @@ test('handleInputSelectionChange updates ReplaceValue selection', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
-        start: 2,
-        end: 4,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
+        end: 4,
+        start: 2,
+      },
+      SearchValue: {
         end: 0,
+        start: 0,
       },
     },
   }
@@ -103,8 +103,8 @@ test('handleInputSelectionChange updates ReplaceValue selection', async () => {
 
   expect(result).not.toBe(state)
   expect(result.selections.ReplaceValue).toEqual({
-    start: 7,
     end: 12,
+    start: 7,
   })
   expect(result.selections.SearchValue).toBe(state.selections.SearchValue)
   expect(result.selections.FilesToInclude).toBe(state.selections.FilesToInclude)
@@ -115,21 +115,21 @@ test('handleInputSelectionChange updates FilesToInclude selection', async () => 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 1,
         end: 3,
+        start: 1,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -138,8 +138,8 @@ test('handleInputSelectionChange updates FilesToInclude selection', async () => 
 
   expect(result).not.toBe(state)
   expect(result.selections.FilesToInclude).toEqual({
-    start: 8,
     end: 15,
+    start: 8,
   })
   expect(result.selections.SearchValue).toBe(state.selections.SearchValue)
   expect(result.selections.ReplaceValue).toBe(state.selections.ReplaceValue)
@@ -150,21 +150,21 @@ test('handleInputSelectionChange updates FilesToExclude selection', async () => 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
-        end: 0,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
+      FilesToExclude: {
+        end: 6,
+        start: 3,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 3,
-        end: 6,
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -173,8 +173,8 @@ test('handleInputSelectionChange updates FilesToExclude selection', async () => 
 
   expect(result).not.toBe(state)
   expect(result.selections.FilesToExclude).toEqual({
-    start: 20,
     end: 25,
+    start: 20,
   })
   expect(result.selections.SearchValue).toBe(state.selections.SearchValue)
   expect(result.selections.ReplaceValue).toBe(state.selections.ReplaceValue)
@@ -184,26 +184,26 @@ test('handleInputSelectionChange updates FilesToExclude selection', async () => 
 test('handleInputSelectionChange preserves other state properties', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test-value',
-    uid: 42,
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
+    uid: 42,
+    value: 'test-value',
   }
 
   const result = await handleInputSelectionChange(state, 'SearchValue', 1, 2)

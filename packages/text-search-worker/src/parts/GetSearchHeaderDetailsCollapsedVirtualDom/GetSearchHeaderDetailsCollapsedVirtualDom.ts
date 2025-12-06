@@ -7,9 +7,9 @@ import * as GetSearchMessageVirtualDom from '../GetSearchMessageVirtualDom/GetSe
 export const getSearchHeaderDetailsCollapsedVirtualDom = (message: string): readonly VirtualDomNode[] => {
   return [
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchHeaderDetails,
       childCount: 2,
+      className: ClassNames.SearchHeaderDetails,
+      type: VirtualDomElements.Div,
     },
     ...GetSearchMessageVirtualDom.getSearchMessageVirtualDom(message, true),
     ...GetSearchDetailsToggleVirtualDom.getSearchDetailsToggleVirtualDom(),

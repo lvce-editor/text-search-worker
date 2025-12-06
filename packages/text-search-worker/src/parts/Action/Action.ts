@@ -1,8 +1,8 @@
 export interface Action {
-  readonly type: number
-  readonly id: string
-  readonly icon: string
   readonly command: string
-  readonly label?: string
   readonly enabled?: boolean
+  readonly icon: string
+  readonly id: string
+  readonly label?: string
+  readonly type: number
 }

@@ -1,7 +1,7 @@
 export const getRipGrepArgs = ({
-  threads,
   isCaseSensitive,
   searchString,
+  threads,
   useRegularExpression,
 }: {
   readonly threads: number

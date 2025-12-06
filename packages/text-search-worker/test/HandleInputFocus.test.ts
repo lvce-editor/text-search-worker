@@ -142,11 +142,11 @@ test('handleInputFocus sets focus to Empty for unknown input name', () => {
 test('handleInputFocus preserves other state properties', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
+    height: 200,
+    replacement: 'test-replacement',
     uid: 42,
     value: 'test-value',
-    replacement: 'test-replacement',
     width: 100,
-    height: 200,
   }
 
   const result = handleInputFocus(state, InputName.SearchValue)

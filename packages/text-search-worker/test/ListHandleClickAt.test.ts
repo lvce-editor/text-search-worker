@@ -17,12 +17,12 @@ const createState = (listItemsLength: number): SearchState => {
   }))
   return {
     ...state,
-    x: 0,
-    y: 0,
-    itemHeight: 20,
     deltaY: 0,
     flags: 0,
+    itemHeight: 20,
     listItems,
+    x: 0,
+    y: 0,
   }
 }
 

@@ -4,20 +4,20 @@ import * as InputName from '../InputName/InputName.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
 const closeIcon: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.CloseMaskIcon,
   childCount: 0,
+  className: ClassNames.CloseMaskIcon,
+  type: VirtualDomElements.Div,
 }
 
 export const getSearchRemoveVirtualDom = (): readonly VirtualDomNode[] => {
   const title = SearchStrings.remove()
   const dom: VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Button,
+      childCount: 1,
       className: ClassNames.SearchRemove,
       name: InputName.Remove,
-      childCount: 1,
       title,
+      type: VirtualDomElements.Button,
     },
     closeIcon,
   ]

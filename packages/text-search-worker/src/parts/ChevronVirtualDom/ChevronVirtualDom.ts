@@ -4,13 +4,13 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
 export const chevronDownVirtualDom: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronDown),
   childCount: 0,
+  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronDown),
+  type: VirtualDomElements.Div,
 }
 
 export const chevronRightVirtualDom: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronRight),
   childCount: 0,
+  className: MergeClassNames.mergeClassNames(ClassNames.Chevron, ClassNames.MaskIconChevronRight),
+  type: VirtualDomElements.Div,
 }

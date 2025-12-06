@@ -8,7 +8,7 @@ export const handleInputCopy = async (state: SearchState, name: string): Promise
     return state
   }
   const selection = selections[name]
-  const { start, end } = selection
+  const { end, start } = selection
   const currentText = getCurrentValue(state, name)
   const toCopy = currentText.slice(start, end)
   await writeText(toCopy)

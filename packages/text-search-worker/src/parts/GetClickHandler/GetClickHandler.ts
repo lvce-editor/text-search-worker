@@ -17,26 +17,26 @@ export const getClickHandler = (name: string): ClickHandler => {
   switch (name) {
     case InputName.MatchCase:
       return ToggleMatchCase.toggleMatchCase
-    case InputName.ToggleReplace:
-      return ToggleReplace.toggleReplace
-    case InputName.UseRegularExpression:
-      return ToggleUseRegularExpression.toggleUseRegularExpression
-    case InputName.ReplaceAll:
-      return ReplaceAll.replaceAll
     case InputName.MatchWholeWord:
       return ToggleMatchWholeWord.toggleMatchWholeWord
     case InputName.PreserveCase:
       return TogglePreserveCase.togglePreserveCase
-    case InputName.ToggleSearchDetails:
-      return ToggleDetailsExpanded.toggleDetailsExpanded
-    case InputName.SearchOnlyOpenEditors:
-      return ToggleOpenEditors.toggleOpenEditors
-    case InputName.UseExcludeSettings:
-      return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
-    case InputName.SearchValue:
-      return FocusSearchValue.focusSearchValue
+    case InputName.ReplaceAll:
+      return ReplaceAll.replaceAll
     case InputName.ReplaceValue:
       return FocusReplaceValue.focusReplaceValue
+    case InputName.SearchOnlyOpenEditors:
+      return ToggleOpenEditors.toggleOpenEditors
+    case InputName.SearchValue:
+      return FocusSearchValue.focusSearchValue
+    case InputName.ToggleReplace:
+      return ToggleReplace.toggleReplace
+    case InputName.ToggleSearchDetails:
+      return ToggleDetailsExpanded.toggleDetailsExpanded
+    case InputName.UseExcludeSettings:
+      return ToggleUseIgnoreFiles.toggleUseIgnoreFiles
+    case InputName.UseRegularExpression:
+      return ToggleUseRegularExpression.toggleUseRegularExpression
     default:
       return Noop.noop
   }

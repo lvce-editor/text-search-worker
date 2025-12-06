@@ -1,5 +1,5 @@
 export const waitForNextFrame = async (): Promise<void> => {
-  const { resolve, promise } = Promise.withResolvers<DOMHighResTimeStamp>()
+  const { promise, resolve } = Promise.withResolvers<DOMHighResTimeStamp>()
   requestAnimationFrame(resolve)
   await promise
 }

@@ -7,20 +7,20 @@ import * as TextSearchProviders from '../src/parts/TextSearchProviders/TextSearc
 test('loadContent with saved value calls handleUpdate', async () => {
   const state = CreateDefaultState.createDefaultState()
   const savedState = {
-    value: 'test',
-    savedCollapsedPaths: [],
-    threads: 4,
-    replacement: 'replacement',
+    excludeValue: 'exclude',
     flags: 1,
     includeValue: 'include',
-    excludeValue: 'exclude',
+    replacement: 'replacement',
+    savedCollapsedPaths: [],
+    threads: 4,
+    value: 'test',
   }
 
   TextSearchProviders.add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
       return {
-        results: [],
         limitHit: false,
+        results: [],
       }
     },
   })
@@ -28,33 +28,33 @@ test('loadContent with saved value calls handleUpdate', async () => {
   const result = await loadContent(state, savedState)
 
   expect(result).toMatchObject({
-    value: 'test',
-    threads: 1,
+    excludeValue: 'exclude',
     flags: 1,
     includeValue: 'include',
-    excludeValue: 'exclude',
     loaded: true,
+    threads: 1,
+    value: 'test',
   })
 })
 
 test('loadContent without saved value returns state with loaded flag', async () => {
   const state = CreateDefaultState.createDefaultState()
   const savedState = {
-    value: '',
-    savedCollapsedPaths: [],
-    threads: 4,
-    replacement: '',
+    excludeValue: '',
     flags: 1,
     includeValue: '',
-    excludeValue: '',
+    replacement: '',
+    savedCollapsedPaths: [],
+    threads: 4,
+    value: '',
   }
 
   const result = await loadContent(state, savedState)
 
   expect(result).toMatchObject({
-    threads: 1,
     flags: 1,
     loaded: true,
+    threads: 1,
   })
 })
 

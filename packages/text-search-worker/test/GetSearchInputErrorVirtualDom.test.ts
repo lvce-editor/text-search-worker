@@ -6,15 +6,15 @@ test('getSearchInputErrorVirtualDom - with error message', () => {
   const errorMessage = 'Invalid regular expression'
   expect(GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(errorMessage)).toEqual([
     {
-      type: 4,
+      childCount: 1,
       className: 'SearchInputError',
       role: AriaRoles.Alert,
-      childCount: 1,
+      type: 4,
     },
     {
-      type: 12,
-      text: errorMessage,
       childCount: 0,
+      text: errorMessage,
+      type: 12,
     },
   ])
 })

@@ -19,8 +19,8 @@ export const textSearch = async (
   } catch {
     const results = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchMemory', scheme, root, query, options, assetDir)
     return {
-      results,
       limitHit: false,
+      results,
     }
   }
 }

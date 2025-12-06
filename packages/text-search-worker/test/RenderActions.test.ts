@@ -19,11 +19,11 @@ test.skip('renderActions - returns virtual dom when states differ', () => {
     ...oldState,
     items: [
       {
-        type: 1,
-        start: 0,
         end: 0,
         lineNumber: 0,
+        start: 0,
         text: 'item1',
+        type: 1,
       },
     ],
   }
@@ -32,9 +32,9 @@ test.skip('renderActions - returns virtual dom when states differ', () => {
   const result = RenderActions.renderActions(1)
   expect(result).toHaveLength(1)
   expect(result[0]).toEqual({
-    type: 4,
+    childCount: 0,
     className: 'Actions',
     role: AriaRoles.ToolBar,
-    childCount: 0,
+    type: 4,
   })
 })

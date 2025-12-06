@@ -4,6 +4,7 @@ export const {
   confirm,
   dispose,
   getFileIcon,
+  getIcons,
   invoke,
   invokeAndTransfer,
   openUri,
@@ -12,5 +13,4 @@ export const {
   showContextMenu,
   showContextMenu2,
   writeClipBoardText,
-  getIcons,
 } = RendererWorker

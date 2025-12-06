@@ -10,10 +10,10 @@ test('selectIndex - no selection', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [],
-    listFocusedIndex: -1,
-    listFocused: false,
     collapsedPaths: [],
+    items: [],
+    listFocused: false,
+    listFocusedIndex: -1,
   }
   // @ts-ignore
   state.listItems = state.items
@@ -30,10 +30,10 @@ test('selectIndex - select file item', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt', start: 0, lineNumber: 0, end: 0 }],
-    listFocusedIndex: -1,
-    listFocused: false,
     collapsedPaths: [],
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File }],
+    listFocused: false,
+    listFocusedIndex: -1,
   } // @ts-ignore
   state.listItems = state.items
 
@@ -41,7 +41,7 @@ test('selectIndex - select file item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 1, name: 'file1.txt' }]]])
+  expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
 })
 
 test('selectIndex - select match item', async () => {
@@ -54,10 +54,10 @@ test('selectIndex - select match item', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 }],
-    listFocusedIndex: -1,
-    listFocused: false,
     collapsedPaths: [],
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File }],
+    listFocused: false,
+    listFocusedIndex: -1,
   }
   // @ts-ignore
   state.listItems = state.items
@@ -65,7 +65,7 @@ test('selectIndex - select match item', async () => {
   expect(result.listFocused).toBe(true)
   expect(result.listFocusedIndex).toBe(0)
   expect(result.collapsedPaths).toEqual(['file1.txt'])
-  expect(iconThemeMockRpc.invocations).toEqual([['IconTheme.getIcons', [{ type: 1, name: 'file1.txt' }]]])
+  expect(iconThemeMockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
 })
 
 test('getFileIndex - finds closest file above match', async () => {
@@ -76,10 +76,10 @@ test('getFileIndex - finds closest file above match', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [
-      { type: TextSearchResultType.File, text: 'file1.ts', lineNumber: 0, end: 0, start: 0 },
-      { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
-      { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
-      { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.ts', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 5, start: 0, text: '', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 10, start: 0, text: '', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.ts', type: TextSearchResultType.File },
     ],
     workspacePath: '/test',
   }
@@ -96,8 +96,8 @@ test('getFileIndex - returns -1 when no file found', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [
-      { type: TextSearchResultType.Match, lineNumber: 5, end: 0, start: 0, text: '' },
-      { type: TextSearchResultType.Match, lineNumber: 10, end: 0, start: 0, text: '' },
+      { end: 0, lineNumber: 5, start: 0, text: '', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 10, start: 0, text: '', type: TextSearchResultType.Match },
     ],
   }
   // @ts-ignore
@@ -114,10 +114,10 @@ test('selectIndexPreview - handles match with file above', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [
-      { type: TextSearchResultType.File, text: 'file1.ts', start: 0, end: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, lineNumber: 5, start: 0, end: 0, text: '' },
-      { type: TextSearchResultType.Match, lineNumber: 10, start: 0, end: 0, text: '' },
-      { type: TextSearchResultType.File, text: 'file2.ts', start: 0, end: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.ts', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 5, start: 0, text: '', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 10, start: 0, text: '', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.ts', type: TextSearchResultType.File },
     ],
     workspacePath: '/test',
   }
@@ -128,10 +128,10 @@ test('selectIndexPreview - handles match with file above', async () => {
 
   expect(result).toEqual({
     ...state,
-    listFocusedIndex: 2,
-    listFocused: false,
     focus: 22,
     focusSource: 2,
+    listFocused: false,
+    listFocusedIndex: 2,
   })
   expect(mockRpc.invocations).toEqual([['Main.openUri', '/test/file1.ts', true, { selections: new Uint32Array([10, 0, 10, 0]) }]])
 })

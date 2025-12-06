@@ -5,10 +5,10 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 
 test('getFilteredResults - returns all results when no filters', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, [])
@@ -17,51 +17,51 @@ test('getFilteredResults - returns all results when no filters', () => {
 
 test('getFilteredResults - filters matches under collapsed file', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['file1.txt'])
   expect(filteredResults).toEqual([
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ])
 })
 
 test('getFilteredResults - handles multiple collapsed files', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
-    { type: TextSearchResultType.File, text: 'file3.txt', start: 0, end: 0, lineNumber: 4 },
-    { type: TextSearchResultType.Match, text: 'match3', start: 0, end: 6, lineNumber: 5 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 4, start: 0, text: 'file3.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 5, start: 0, text: 'match3', type: TextSearchResultType.Match },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['file1.txt', 'file3.txt'])
   expect(filteredResults).toEqual([
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
-    { type: TextSearchResultType.File, text: 'file3.txt', start: 0, end: 0, lineNumber: 4 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 4, start: 0, text: 'file3.txt', type: TextSearchResultType.File },
   ])
 })
 
 test('getFilteredResults - handles consecutive collapsed files', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 1 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 3 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    { end: 6, lineNumber: 3, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['file1.txt', 'file2.txt'])
   expect(filteredResults).toEqual([
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
   ])
 })
 
@@ -73,21 +73,21 @@ test('getFilteredResults - handles empty results', () => {
 
 test('getFilteredResults - handles only file results', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 1, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['file1.txt'])
   expect(filteredResults).toEqual([
-    { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-    { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+    { end: 0, lineNumber: 1, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
   ])
 })
 
 test('getFilteredResults - handles only match results', () => {
   const results: SearchResult[] = [
-    { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 6, lineNumber: 0 },
-    { type: TextSearchResultType.Match, text: 'match2', start: 0, end: 6, lineNumber: 1 },
+    { end: 6, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    { end: 6, lineNumber: 1, start: 0, text: 'match2', type: TextSearchResultType.Match },
   ]
 
   const filteredResults = GetFilteredResults.getFilteredResults(results, ['file1.txt'])

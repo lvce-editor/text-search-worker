@@ -6,39 +6,39 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test('createMatchTree creates tree from search results', () => {
   const results: SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: 'file1.ts',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: 'file1.ts',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'match1',
-      start: 0,
       end: 5,
       lineNumber: 1,
+      start: 0,
+      text: 'match1',
+      type: TextSearchResultType.Match,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'match2',
-      start: 0,
       end: 5,
       lineNumber: 2,
+      start: 0,
+      text: 'match2',
+      type: TextSearchResultType.Match,
     },
     {
-      type: TextSearchResultType.File,
-      text: 'file2.ts',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: 'file2.ts',
+      type: TextSearchResultType.File,
     },
     {
-      type: TextSearchResultType.Match,
-      text: 'match3',
-      start: 0,
       end: 5,
       lineNumber: 1,
+      start: 0,
+      text: 'match3',
+      type: TextSearchResultType.Match,
     },
   ]
 
@@ -47,27 +47,27 @@ test('createMatchTree creates tree from search results', () => {
   expect(result).toEqual({
     'file1.ts': [
       {
-        type: TextSearchResultType.Match,
-        text: 'match1',
-        start: 0,
         end: 5,
         lineNumber: 1,
+        start: 0,
+        text: 'match1',
+        type: TextSearchResultType.Match,
       },
       {
-        type: TextSearchResultType.Match,
-        text: 'match2',
-        start: 0,
         end: 5,
         lineNumber: 2,
+        start: 0,
+        text: 'match2',
+        type: TextSearchResultType.Match,
       },
     ],
     'file2.ts': [
       {
-        type: TextSearchResultType.Match,
-        text: 'match3',
-        start: 0,
         end: 5,
         lineNumber: 1,
+        start: 0,
+        text: 'match3',
+        type: TextSearchResultType.Match,
       },
     ],
   })
@@ -82,11 +82,11 @@ test('createMatchTree handles empty results', () => {
 test('createMatchTree handles single file with no matches', () => {
   const results: SearchResult[] = [
     {
-      type: TextSearchResultType.File,
-      text: 'file1.ts',
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: 'file1.ts',
+      type: TextSearchResultType.File,
     },
   ]
   const result = createMatchTree(results)

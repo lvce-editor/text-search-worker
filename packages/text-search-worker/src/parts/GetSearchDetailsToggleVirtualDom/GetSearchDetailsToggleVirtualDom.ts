@@ -10,20 +10,20 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] => {
   return [
     {
-      type: VirtualDomElements.Button,
-      className: ClassNames.ToggleDetails,
-      role: AriaRoles.Button,
-      tabIndex: 0,
       ariaLabel: SearchStrings.toggleSearchDetails(),
-      title: SearchStrings.toggleSearchDetails(),
+      childCount: 1,
+      className: ClassNames.ToggleDetails,
       name: InputName.ToggleSearchDetails,
       onClick: DomEventListenerFunctions.HandleButtonClick,
-      childCount: 1,
+      role: AriaRoles.Button,
+      tabIndex: 0,
+      title: SearchStrings.toggleSearchDetails(),
+      type: VirtualDomElements.Button,
     },
     {
-      type: VirtualDomElements.Div,
-      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, ClassNames.MaskIconEllipsis),
       childCount: 0,
+      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, ClassNames.MaskIconEllipsis),
+      type: VirtualDomElements.Div,
     },
   ]
 }
