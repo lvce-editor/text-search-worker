@@ -9,10 +9,13 @@ export const clearSearchResults = (state: SearchState): SearchState => {
     focusSource: InputSource.Script,
     inputSource: InputSource.Script,
     items: [],
+    limitHit: false,
+    limitHitWarning: '',
     maxLineY: 0,
     message: '',
     minLineY: 0,
     replacement: '',
+    searchInputErrorMessage: '',
     value: '',
   }
 }
