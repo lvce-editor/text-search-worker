@@ -26,7 +26,7 @@ test('copy - copies text from focused item', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: 0,
-    items: [{ text: 'test text', end: 0, lineNumber: 0, start: 0, type: 0 }],
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'test text', type: 0 }],
   }
 
   const result = await Copy.copy(state)

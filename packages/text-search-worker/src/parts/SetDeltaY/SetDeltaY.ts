@@ -6,7 +6,7 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 export const setDeltaY = (state: SearchState, value: number): SearchState => {
   Assert.object(state)
   Assert.number(value)
-  const { itemHeight, finalDeltaY, deltaY, height, headerHeight, listItems } = state
+  const { deltaY, finalDeltaY, headerHeight, height, itemHeight, listItems } = state
   const listHeight = height - headerHeight
   const newDeltaY = Clamp.clamp(value, 0, finalDeltaY)
   if (deltaY === newDeltaY) {
@@ -20,7 +20,7 @@ export const setDeltaY = (state: SearchState, value: number): SearchState => {
   return {
     ...state,
     deltaY: newDeltaY,
-    minLineY,
     maxLineY,
+    minLineY,
   }
 }

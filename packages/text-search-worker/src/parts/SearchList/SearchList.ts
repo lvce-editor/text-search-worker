@@ -22,6 +22,8 @@ export interface SearchList extends List<SearchResult> {
   readonly matchCount: number
   readonly message: string
   readonly minimumSliderSize: number
+  readonly removeButtonRight: number
+  readonly removeButtonWidth: number
   readonly scrollBarActive: boolean
   readonly scrollBarHeight: number
   readonly searchResults: readonly DisplaySearchResult[]
@@ -34,6 +36,4 @@ export interface SearchList extends List<SearchResult> {
   readonly workspacePath: string
   readonly x: number
   readonly y: number
-  readonly removeButtonWidth: number
-  readonly removeButtonRight: number
 }

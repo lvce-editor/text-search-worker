@@ -7,19 +7,19 @@ test('getSearchToggleVirtualDom - not expanded', () => {
   const flags = 0
   expect(GetSearchToggleVirtualDom.getSearchToggleVirtualDom(flags)).toEqual([
     {
-      type: 1,
-      className: 'IconButton SearchToggleButton',
-      title: 'Toggle Replace',
-      ariaLabel: 'Toggle Replace',
       ariaExpanded: false,
+      ariaLabel: 'Toggle Replace',
       childCount: 1,
-      onClick: DomEventListenerFunctions.HandleButtonClick,
+      className: 'IconButton SearchToggleButton',
       name: 'ToggleReplace',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
+      title: 'Toggle Replace',
+      type: 1,
     },
     {
-      type: 4,
-      className: 'MaskIcon MaskIconChevronRight',
       childCount: 0,
+      className: 'MaskIcon MaskIconChevronRight',
+      type: 4,
     },
   ])
 })
@@ -28,19 +28,19 @@ test('getSearchToggleVirtualDom - expanded', () => {
   const flags = SearchFlags.ReplaceExpanded
   expect(GetSearchToggleVirtualDom.getSearchToggleVirtualDom(flags)).toEqual([
     {
-      type: 1,
-      className: 'IconButton SearchToggleButton SearchToggleButtonExpanded',
-      title: 'Toggle Replace',
-      ariaLabel: 'Toggle Replace',
       ariaExpanded: true,
+      ariaLabel: 'Toggle Replace',
       childCount: 1,
-      onClick: DomEventListenerFunctions.HandleButtonClick,
+      className: 'IconButton SearchToggleButton SearchToggleButtonExpanded',
       name: 'ToggleReplace',
+      onClick: DomEventListenerFunctions.HandleButtonClick,
+      title: 'Toggle Replace',
+      type: 1,
     },
     {
-      type: 4,
-      className: 'MaskIcon MaskIconChevronDown',
       childCount: 0,
+      className: 'MaskIcon MaskIconChevronDown',
+      type: 4,
     },
   ])
 })

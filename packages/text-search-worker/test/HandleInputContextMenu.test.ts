@@ -31,8 +31,8 @@ test('handleInputContextMenu calls ContextMenu.show2 with correct parameters', a
       x,
       y,
       {
-        menuId: MenuEntryId.InputContextMenu,
         inputName: name,
+        menuId: MenuEntryId.InputContextMenu,
       },
     ],
   ])
@@ -64,8 +64,8 @@ test('handleInputContextMenu works with different input name', async () => {
       x,
       y,
       {
-        menuId: MenuEntryId.InputContextMenu,
         inputName: name,
+        menuId: MenuEntryId.InputContextMenu,
       },
     ],
   ])

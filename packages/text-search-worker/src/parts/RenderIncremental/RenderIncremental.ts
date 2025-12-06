@@ -4,7 +4,7 @@ import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 // TODO cache rendered dom so that it can be used for dom diffing
 export const renderIncremental = (uid: number): readonly any[] => {
-  const { oldState, newState } = SearchViewStates.get(uid)
+  const { newState, oldState } = SearchViewStates.get(uid)
   const oldDom = renderItems(oldState, oldState)
   const newDom = renderItems(newState, newState)
   const patches = diff(oldDom, newDom)

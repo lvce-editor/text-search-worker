@@ -8,8 +8,8 @@ import { updateValue } from '../src/parts/UpdateValue/UpdateValue.ts'
 test('updateValue - updates SearchValue', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'old',
     inputSource: InputSource.User,
+    value: 'old',
   }
 
   const result = updateValue(state, InputName.SearchValue, 'new value')
@@ -17,16 +17,16 @@ test('updateValue - updates SearchValue', () => {
   expect(result.value).toBe('new value')
   expect(result.inputSource).toBe(InputSource.Script)
   expect(result.selections.SearchValue).toEqual({
-    start: 9,
     end: 9,
+    start: 9,
   })
 })
 
 test('updateValue - updates ReplaceValue', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    replacement: 'old replacement',
     inputSource: InputSource.User,
+    replacement: 'old replacement',
   }
 
   const result = updateValue(state, InputName.ReplaceValue, 'new replacement')
@@ -34,8 +34,8 @@ test('updateValue - updates ReplaceValue', () => {
   expect(result.replacement).toBe('new replacement')
   expect(result.inputSource).toBe(InputSource.Script)
   expect(result.selections.ReplaceValue).toEqual({
-    start: 15,
     end: 15,
+    start: 15,
   })
 })
 
@@ -51,8 +51,8 @@ test('updateValue - updates FilesToInclude', () => {
   expect(result.includeValue).toBe('*.js,*.ts')
   expect(result.inputSource).toBe(InputSource.Script)
   expect(result.selections.FilesToInclude).toEqual({
-    start: 9,
     end: 9,
+    start: 9,
   })
 })
 
@@ -68,16 +68,16 @@ test('updateValue - updates FilesToExclude', () => {
   expect(result.excludeValue).toBe('node_modules,dist')
   expect(result.inputSource).toBe(InputSource.Script)
   expect(result.selections.FilesToExclude).toEqual({
-    start: 17,
     end: 17,
+    start: 17,
   })
 })
 
 test('updateValue - returns state unchanged for unknown input name', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     inputSource: InputSource.User,
+    value: 'test',
   }
 
   const result = updateValue(state, 'UnknownInput', 'new value')
@@ -88,54 +88,54 @@ test('updateValue - returns state unchanged for unknown input name', () => {
 test('updateValue - updates selection when cursor is not at end', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 2,
         end: 2,
+        start: 2,
       },
     },
+    value: 'test',
   }
 
   const result = updateValue(state, InputName.SearchValue, 'new value')
 
   expect(result.selections.SearchValue).toEqual({
-    start: 9,
     end: 9,
+    start: 9,
   })
 })
 
 test('updateValue - does not update selection when cursor is already at end', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 4,
         end: 4,
+        start: 4,
       },
     },
+    value: 'test',
   }
 
   const result = updateValue(state, InputName.SearchValue, 'test')
 
   expect(result.selections.SearchValue).toEqual({
-    start: 4,
     end: 4,
+    start: 4,
   })
 })
 
 test('updateValue - preserves other state properties', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'old',
-    replacement: 'old replacement',
-    includeValue: '*.ts',
     excludeValue: 'node_modules',
-    uid: 123,
+    includeValue: '*.ts',
     platform: 1,
+    replacement: 'old replacement',
+    uid: 123,
+    value: 'old',
   }
 
   const result = updateValue(state, InputName.SearchValue, 'new value')
@@ -157,8 +157,8 @@ test('updateValue - handles empty string', () => {
 
   expect(result.value).toBe('')
   expect(result.selections.SearchValue).toEqual({
-    start: 0,
     end: 0,
+    start: 0,
   })
 })
 

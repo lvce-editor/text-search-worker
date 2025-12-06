@@ -22,8 +22,8 @@ test('diff - value change', () => {
   const { oldState } = SearchViewStates.get(uid)
   const newState: SearchState = {
     ...oldState,
-    value: 'a',
     inputSource: InputSource.Script,
+    value: 'a',
   }
   expect(Diff.diff(oldState, newState)).toEqual([DiffType.RenderValue])
 })

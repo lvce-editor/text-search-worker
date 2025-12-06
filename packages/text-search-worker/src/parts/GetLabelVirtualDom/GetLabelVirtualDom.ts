@@ -5,27 +5,27 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const deleted: VirtualDomNode = {
-  type: VirtualDomElements.Del,
-  className: ClassNames.HighlightDeleted,
   childCount: 1,
+  className: ClassNames.HighlightDeleted,
+  type: VirtualDomElements.Del,
 }
 
 const inserted: VirtualDomNode = {
-  type: VirtualDomElements.Ins,
-  className: ClassNames.HighlightInserted,
   childCount: 1,
+  className: ClassNames.HighlightInserted,
+  type: VirtualDomElements.Ins,
 }
 
 const highlighted: VirtualDomNode = {
-  type: VirtualDomElements.Span,
-  className: ClassNames.Highlight,
   childCount: 1,
+  className: ClassNames.Highlight,
+  type: VirtualDomElements.Span,
 }
 
 const label1: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: MergeClassNames.mergeClassNames(ClassNames.Label, ClassNames.Grow),
   childCount: 1,
+  className: MergeClassNames.mergeClassNames(ClassNames.Label, ClassNames.Grow),
+  type: VirtualDomElements.Div,
 }
 
 const label3: VirtualDomNode = {

@@ -26,14 +26,14 @@ test('handleInputCopy - copies selected text from SearchValue', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'hello world',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 0,
         end: 5,
+        start: 0,
       },
     },
+    value: 'hello world',
   }
 
   const result = await handleInputCopy(state, InputName.SearchValue)
@@ -53,8 +53,8 @@ test('handleInputCopy - copies selected text from ReplaceValue', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       ReplaceValue: {
-        start: 0,
         end: 7,
+        start: 0,
       },
     },
   }
@@ -76,8 +76,8 @@ test('handleInputCopy - copies selected text from FilesToInclude', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       FilesToInclude: {
-        start: 0,
         end: 4,
+        start: 0,
       },
     },
   }
@@ -99,8 +99,8 @@ test('handleInputCopy - copies selected text from FilesToExclude', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       FilesToExclude: {
-        start: 0,
         end: 4,
+        start: 0,
       },
     },
   }
@@ -118,14 +118,14 @@ test('handleInputCopy - copies middle portion of text', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'hello world test',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 6,
         end: 11,
+        start: 6,
       },
     },
+    value: 'hello world test',
   }
 
   const result = await handleInputCopy(state, InputName.SearchValue)
@@ -141,14 +141,14 @@ test('handleInputCopy - copies empty string when selection range is empty', asyn
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 2,
         end: 2,
+        start: 2,
       },
     },
+    value: 'test',
   }
 
   const result = await handleInputCopy(state, InputName.SearchValue)

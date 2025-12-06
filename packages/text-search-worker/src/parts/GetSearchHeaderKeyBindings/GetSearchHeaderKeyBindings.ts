@@ -6,38 +6,38 @@ import * as KeyModifier from '../KeyModifier/KeyModifier.ts'
 export const getSearchHeaderKeyBindings = (): readonly KeyBinding[] => {
   return [
     {
-      key: KeyModifier.CtrlCmd | KeyModifier.Alt | KeyCode.Enter,
       command: 'Search.replaceAll',
+      key: KeyModifier.CtrlCmd | KeyModifier.Alt | KeyCode.Enter,
       when: WhenExpression.FocusSearch,
     },
     {
-      key: KeyCode.Tab,
       command: 'Search.focusNextInput',
+      key: KeyCode.Tab,
       when: WhenExpression.FocusSearch,
     },
     {
-      key: KeyModifier.Shift | KeyCode.Tab,
       command: 'Search.focusPreviousInput',
+      key: KeyModifier.Shift | KeyCode.Tab,
       when: WhenExpression.FocusSearch,
     },
     {
-      key: KeyCode.UpArrow,
       command: 'Search.previousHistoryResult',
+      key: KeyCode.UpArrow,
       when: WhenExpression.FocusSearchInput,
     },
     {
-      key: KeyCode.DownArrow,
       command: 'Search.nextHistoryResult',
+      key: KeyCode.DownArrow,
       when: WhenExpression.FocusSearchInput,
     },
     {
-      key: KeyCode.Enter,
       command: 'Search.submit',
+      key: KeyCode.Enter,
       when: WhenExpression.FocusSearchInput,
     },
     {
-      key: KeyCode.Enter,
       command: 'Search.submit',
+      key: KeyCode.Enter,
       when: WhenExpression.FocusSearchReplaceInput,
     },
   ]

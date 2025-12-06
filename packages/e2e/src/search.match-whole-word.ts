@@ -4,7 +4,7 @@ export const name = 'search.match-whole-word'
 
 export const skip = true
 
-export const test: Test = async ({ Search, FileSystem, Workspace, SideBar, Locator, expect }) => {
+export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `Abc`)

@@ -9,26 +9,26 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getSearchToggleVirtualDom = (replaceExpanded: number): readonly VirtualDomNode[] => {
   return [
     {
-      type: VirtualDomElements.Button,
+      ariaExpanded: Boolean(replaceExpanded),
+      ariaLabel: SearchStrings.toggleReplace(), // TODO compute label only once
+      childCount: 1,
       className: MergeClassNames.mergeClassNames(
         ClassNames.IconButton,
         ClassNames.SearchToggleButton,
         replaceExpanded ? ClassNames.SearchToggleButtonExpanded : '',
       ),
-      title: SearchStrings.toggleReplace(),
-      ariaLabel: SearchStrings.toggleReplace(), // TODO compute label only once
-      ariaExpanded: Boolean(replaceExpanded),
-      childCount: 1,
       name: InputName.ToggleReplace,
       onClick: DomEventListenerFunctions.HandleButtonClick,
+      title: SearchStrings.toggleReplace(),
+      type: VirtualDomElements.Button,
     },
     {
-      type: VirtualDomElements.Div,
+      childCount: 0,
       className: MergeClassNames.mergeClassNames(
         ClassNames.MaskIcon,
         replaceExpanded ? ClassNames.MaskIconChevronDown : ClassNames.MaskIconChevronRight,
       ),
-      childCount: 0,
+      type: VirtualDomElements.Div,
     },
   ]
 }

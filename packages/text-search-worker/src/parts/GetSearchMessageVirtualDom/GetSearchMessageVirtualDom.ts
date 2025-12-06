@@ -15,10 +15,10 @@ const getClassName = (indented: boolean): string => {
 export const getSearchMessageVirtualDom = (message: string, indented: boolean): readonly VirtualDomNode[] => {
   return [
     {
-      type: VirtualDomElements.Div,
+      childCount: 1,
       className: getClassName(indented),
       role: AriaRoles.Status,
-      childCount: 1,
+      type: VirtualDomElements.Div,
     },
     text(message),
   ]

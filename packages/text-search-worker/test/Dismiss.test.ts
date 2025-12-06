@@ -17,13 +17,13 @@ test('dismissItem - no focused item', async () => {
 test('dismissItem - dismiss file item', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
+    fileCount: 2,
     items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.File, text: 'file2.txt', end: 0, start: 0, lineNumber: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
     ],
     listFocusedIndex: 0,
-    fileCount: 2,
     matchCount: 1,
   }
 
@@ -37,13 +37,13 @@ test('dismissItem - dismiss file item', async () => {
 test('dismissItem - dismiss match item', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
+    fileCount: 1,
     items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, lineNumber: 0, start: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, lineNumber: 0, start: 0 },
-      { type: TextSearchResultType.Match, text: 'match2', end: 0, lineNumber: 0, start: 0 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'match2', type: TextSearchResultType.Match },
     ],
     listFocusedIndex: 1,
-    fileCount: 1,
     matchCount: 2,
   }
 

@@ -9,11 +9,11 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 export const getInputActionsInclude = (flags: number): InputActions => {
   const inside: readonly InputAction[] = [
     {
-      icon: ClassNames.MaskIconBook,
-      title: SearchStrings.searchOnlyOpenEditors(),
       command: 'searchOnlyOpenEditors',
       flag: flags & OpenEditors ? InputActionFlag.CheckBoxEnabled : InputActionFlag.CheckBoxDisabled,
+      icon: ClassNames.MaskIconBook,
       name: InputName.SearchOnlyOpenEditors,
+      title: SearchStrings.searchOnlyOpenEditors(),
     },
   ]
   const outside: readonly InputAction[] = []

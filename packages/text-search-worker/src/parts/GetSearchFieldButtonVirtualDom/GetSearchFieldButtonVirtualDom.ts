@@ -11,10 +11,10 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 // TODO maybe move logic to viewmodel, which returns ariaChecked 1 | 2 | 3
 const getAriaChecked = (flag: number): boolean | undefined => {
   switch (flag) {
-    case InputActionFlag.CheckBoxEnabled:
-      return true
     case InputActionFlag.CheckBoxDisabled:
       return false
+    case InputActionFlag.CheckBoxEnabled:
+      return true
     default:
       return undefined
   }
@@ -23,8 +23,8 @@ const getAriaChecked = (flag: number): boolean | undefined => {
 // TODO have have separate renderers for checkbox and button elements
 const getRole = (flag: number): string | undefined => {
   switch (flag) {
-    case InputActionFlag.CheckBoxEnabled:
     case InputActionFlag.CheckBoxDisabled:
+    case InputActionFlag.CheckBoxEnabled:
       return AriaRoles.CheckBox
     default:
       return undefined
@@ -41,27 +41,27 @@ const getDisabled = (flag: number): boolean | undefined => {
 }
 
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
-  const { icon, title, name, flag } = button
+  const { flag, icon, name, title } = button
   const ariaChecked = getAriaChecked(flag)
   const role = getRole(flag)
   const disabled = getDisabled(flag)
   return [
     {
-      type: VirtualDomElements.Button,
-      className: GetSearchFieldButtonClassName.getSearchFieldButtonClassName(flag),
-      name,
-      title,
-      role,
       ariaChecked,
-      disabled,
-      tabIndex: 0,
       childCount: 1,
+      className: GetSearchFieldButtonClassName.getSearchFieldButtonClassName(flag),
+      disabled,
+      name,
       onClick: DomEventListenerFunctions.HandleButtonClick,
+      role,
+      tabIndex: 0,
+      title,
+      type: VirtualDomElements.Button,
     },
     {
-      type: VirtualDomElements.Span,
-      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
       childCount: 0,
+      className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, icon),
+      type: VirtualDomElements.Span,
     },
   ]
 }

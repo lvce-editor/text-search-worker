@@ -7,7 +7,7 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
     'ConfirmPrompt.prompt': () => false,
   })
 
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
 
   expect(result).toBe(false)
   expect(mockRpc.invocations).toEqual([
@@ -15,8 +15,8 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
       'ConfirmPrompt.prompt',
       "Replace 5 occurrences across 2 files with 'replacement'",
       {
-        title: 'Replace All',
         confirmMessage: 'Replace',
+        title: 'Replace All',
       },
     ],
   ])
@@ -27,7 +27,7 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
     'ConfirmPrompt.prompt': () => true,
   })
 
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ type: 'file', text: 'test.txt' }], 'replacement', 5, 2)
+  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
 
   expect(result).toBe(true)
   expect(mockRpc.invocations).toEqual([
@@ -35,8 +35,8 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
       'ConfirmPrompt.prompt',
       "Replace 5 occurrences across 2 files with 'replacement'",
       {
-        title: 'Replace All',
         confirmMessage: 'Replace',
+        title: 'Replace All',
       },
     ],
   ])

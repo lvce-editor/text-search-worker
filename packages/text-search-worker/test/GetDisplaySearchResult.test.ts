@@ -5,11 +5,11 @@ import * as GetSearchDisplayResult from '../src/parts/GetSearchDisplayResult/Get
 test('getDisplayResult - file', () => {
   const results: readonly SearchResult[] = [
     {
-      type: 1,
-      start: 0,
       end: 0,
       lineNumber: 0,
+      start: 0,
       text: './languages/index.kt',
+      type: 1,
     },
   ]
 
@@ -35,10 +35,11 @@ test('getDisplayResult - file', () => {
       results,
     ),
   ).toEqual({
+    badgeText: '0',
     depth: 0,
+    expanded: 2,
     focused: false,
     icon: '',
-    badgeText: '0',
     matchLength: 0,
     matchStart: 0,
     posInSet: 1,
@@ -46,18 +47,17 @@ test('getDisplayResult - file', () => {
     setSize: 1,
     text: 'index.kt',
     title: '/languages/index.kt',
-    expanded: 2,
   })
 })
 
 test('getDisplayResult - result', () => {
   const results: readonly SearchResult[] = [
     {
-      type: 2,
-      start: 5,
       end: 6,
       lineNumber: 1,
+      start: 5,
       text: 'fun main(args : Array<String>) {',
+      type: 2,
     },
   ]
   const i = 0
@@ -82,10 +82,11 @@ test('getDisplayResult - result', () => {
       results,
     ),
   ).toEqual({
+    badgeText: '',
     depth: 1,
+    expanded: 0,
     focused: false,
     icon: '',
-    badgeText: '',
     matchLength: 1,
     matchStart: 5,
     posInSet: 1,
@@ -93,6 +94,5 @@ test('getDisplayResult - result', () => {
     setSize: 1,
     text: 'fun main(args : Array<String>) {',
     title: 'fun main(args : Array<String>) {',
-    expanded: 0,
   })
 })

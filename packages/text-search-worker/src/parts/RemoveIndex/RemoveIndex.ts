@@ -6,13 +6,13 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import * as ViewletSearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 
 export const removeIndex = async (state: SearchState, index: number): Promise<SearchState> => {
-  const { fileIconCache, minimumSliderSize, height, headerHeight, items, fileCount, matchCount, minLineY, maxLineY, deltaY, itemHeight } = state
+  const { deltaY, fileCount, fileIconCache, headerHeight, height, itemHeight, items, matchCount, maxLineY, minimumSliderSize, minLineY } = state
   if (index === -1) {
     return state
   }
-  const { newItems, newFocusedIndex, newMatchCount, newFileCount } = removeItemFromItems(items, index, matchCount, fileCount)
+  const { newFileCount, newFocusedIndex, newItems, newMatchCount } = removeItemFromItems(items, index, matchCount, fileCount)
   const message = ViewletSearchStatusMessage.getStatusMessage(newMatchCount, newFileCount)
-  const { newMinLineY, newMaxLineY, newDeltaY } = getNewMinMax(newItems.length, minLineY, maxLineY, deltaY, itemHeight)
+  const { newDeltaY, newMaxLineY, newMinLineY } = getNewMinMax(newItems.length, minLineY, maxLineY, deltaY, itemHeight)
   const total = newItems.length
   const contentHeight = total * itemHeight
   const listHeight = height - headerHeight
@@ -25,16 +25,16 @@ export const removeIndex = async (state: SearchState, index: number): Promise<Se
     ...state,
     deltaY: newDeltaY,
     fileCount: newFileCount,
+    fileIconCache: newFileIconCache,
+    finalDeltaY,
+    icons,
     items: newItems,
-    listItems: newItems,
     listFocusedIndex: newFocusedIndex,
+    listItems: newItems,
     matchCount: newMatchCount,
     maxLineY: newMaxLineY,
     message,
     minLineY: newMinLineY,
-    icons,
-    fileIconCache: newFileIconCache,
-    finalDeltaY,
     scrollBarHeight,
   }
 }

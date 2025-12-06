@@ -7,16 +7,16 @@ export const getSearchHeaderLimitHitVirtualDom = (limitHitWarning: string): read
     // TODO remove unused dom node
     return [
       {
-        type: VirtualDomElements.Div,
         childCount: 0,
+        type: VirtualDomElements.Div,
       },
     ]
   }
   const dom: readonly VirtualDomNode[] = [
     {
-      type: VirtualDomElements.Div,
-      className: SearchWarningMessage,
       childCount: 1,
+      className: SearchWarningMessage,
+      type: VirtualDomElements.Div,
     },
     // TODO warning triangle here
     text(limitHitWarning),

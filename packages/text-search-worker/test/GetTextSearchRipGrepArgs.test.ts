@@ -4,9 +4,9 @@ import * as GetTextSearchRipGrepArgs from '../src/parts/GetTextSearchRipGrepArgs
 test('getRipGrepArgs - threads', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({
-      threads: 1,
       isCaseSensitive: false,
       searchString: 'test',
+      threads: 1,
       useRegularExpression: false,
     }),
   ).toEqual([
@@ -28,9 +28,9 @@ test('getRipGrepArgs - threads', () => {
 test('getRipGrepArgs - isCaseSensitive', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({
-      threads: 1,
       isCaseSensitive: true,
       searchString: 'test',
+      threads: 1,
       useRegularExpression: false,
     }),
   ).toEqual([
@@ -52,9 +52,9 @@ test('getRipGrepArgs - isCaseSensitive', () => {
 test('getRipGrepArgs - useRegularExpression', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({
-      threads: 1,
       isCaseSensitive: false,
       searchString: 'test',
+      threads: 1,
       useRegularExpression: true,
     }),
   ).toEqual(['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', '1', '--ignore-case', '--regexp', 'test', '.'])

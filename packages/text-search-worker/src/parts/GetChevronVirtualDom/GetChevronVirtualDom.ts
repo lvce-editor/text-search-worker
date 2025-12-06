@@ -4,10 +4,10 @@ import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 
 export const getChevronVirtualDom = (expanded: number): readonly VirtualDomNode[] => {
   switch (expanded) {
-    case ExpandedType.Expanded:
-      return [ChevronVirtualDom.chevronDownVirtualDom]
     case ExpandedType.Collapsed:
       return [ChevronVirtualDom.chevronRightVirtualDom]
+    case ExpandedType.Expanded:
+      return [ChevronVirtualDom.chevronDownVirtualDom]
     default:
       return []
   }

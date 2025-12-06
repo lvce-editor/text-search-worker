@@ -45,7 +45,7 @@ test('keyboard handler works correctly', async () => {
 
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: 0 }],
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { index: 0, menuId: MenuEntryId.Search }],
   ])
 })
 
@@ -68,6 +68,6 @@ test('mouse handler works correctly', async () => {
 
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }],
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { index: -1, menuId: MenuEntryId.Search }],
   ])
 })

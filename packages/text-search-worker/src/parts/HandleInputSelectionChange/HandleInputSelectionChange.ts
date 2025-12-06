@@ -12,7 +12,7 @@ export const handleInputSelectionChange = async (
   if (!old) {
     return state
   }
-  const { start, end } = old
+  const { end, start } = old
   if (start === selectionStart && end === selectionEnd) {
     return state
   }
@@ -21,8 +21,8 @@ export const handleInputSelectionChange = async (
     selections: {
       ...selections,
       [name]: {
-        start: selectionStart,
         end: selectionEnd,
+        start: selectionStart,
       },
     },
   }

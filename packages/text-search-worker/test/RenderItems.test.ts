@@ -7,26 +7,26 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test('renderItems - returns correct command structure', () => {
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [],
-    minLineY: 0,
-    maxLineY: 0,
-    uid: 1,
-    value: '',
-    includeValue: '',
     excludeValue: '',
     focus: 0,
     focusSource: InputSource.Script,
+    includeValue: '',
     inputSource: InputSource.Script,
+    items: [],
+    maxLineY: 0,
+    minLineY: 0,
+    uid: 1,
+    value: '',
   }
 
   const newState: SearchState = {
     ...oldState,
-    items: [{ type: TextSearchResultType.File, text: 'item1', start: 0, end: 0, lineNumber: 0 }],
-    uid: 1,
-    itemHeight: 22,
     fileCount: 1,
+    itemHeight: 22,
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
+    listItems: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
+    uid: 1,
     value: 'test',
-    listItems: [{ type: TextSearchResultType.File, text: 'item1', start: 0, end: 0, lineNumber: 0 }],
   }
 
   const result = RenderItems.renderItems(oldState, newState)
@@ -37,8 +37,8 @@ test('renderItems - handles empty items', () => {
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [],
-    minLineY: 0,
     maxLineY: 0,
+    minLineY: 0,
     uid: 1,
   }
 

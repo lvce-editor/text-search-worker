@@ -8,11 +8,11 @@ import { getSearchHeaderLimitHitVirtualDom } from '../GetSearchHeaderLimitHitWar
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 
 const parentNode: VirtualDomNode = {
-  type: VirtualDomElements.Div,
-  className: ClassNames.SearchHeader,
-  role: AriaRoles.None,
   childCount: 3,
+  className: ClassNames.SearchHeader,
   onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
+  role: AriaRoles.None,
+  type: VirtualDomElements.Div,
 }
 
 export const getSearchHeaderVirtualDom = (

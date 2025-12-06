@@ -6,7 +6,7 @@ export const handleHeaderFocusOut = (state: SearchState): SearchState => {
   }
   return {
     ...state,
-    focused: false,
     focus: 0,
+    focused: false,
   }
 }

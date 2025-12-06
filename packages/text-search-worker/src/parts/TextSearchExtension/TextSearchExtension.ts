@@ -7,7 +7,7 @@ export const textSearch = async (scheme: string, root: string, query: string): P
   Assert.string(query)
   const results = await RendererWorker.invoke('ExtensionHostTextSearch.executeTextSearchProvider', scheme, query)
   return {
-    results,
     limitHit: false,
+    results,
   }
 }

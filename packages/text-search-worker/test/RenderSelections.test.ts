@@ -20,21 +20,21 @@ test('renderSelections - returns empty array when SearchValue selection changes'
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -44,8 +44,8 @@ test('renderSelections - returns empty array when SearchValue selection changes'
     selections: {
       ...oldState.selections,
       SearchValue: {
-        start: 5,
         end: 10,
+        start: 5,
       },
     },
   }
@@ -58,21 +58,21 @@ test('renderSelections - returns empty array when ReplaceValue selection changes
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -82,8 +82,8 @@ test('renderSelections - returns empty array when ReplaceValue selection changes
     selections: {
       ...oldState.selections,
       ReplaceValue: {
-        start: 2,
         end: 8,
+        start: 2,
       },
     },
   }
@@ -96,21 +96,21 @@ test('renderSelections - returns empty array when FilesToInclude selection chang
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -120,8 +120,8 @@ test('renderSelections - returns empty array when FilesToInclude selection chang
     selections: {
       ...oldState.selections,
       FilesToInclude: {
-        start: 1,
         end: 5,
+        start: 1,
       },
     },
   }
@@ -134,21 +134,21 @@ test('renderSelections - returns empty array when FilesToExclude selection chang
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -158,8 +158,8 @@ test('renderSelections - returns empty array when FilesToExclude selection chang
     selections: {
       ...oldState.selections,
       FilesToExclude: {
-        start: 3,
         end: 7,
+        start: 3,
       },
     },
   }
@@ -172,21 +172,21 @@ test('renderSelections - returns empty array when multiple selections change', (
   const oldState: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     selections: {
-      SearchValue: {
-        start: 0,
+      FilesToExclude: {
         end: 0,
-      },
-      ReplaceValue: {
         start: 0,
-        end: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 0,
+      ReplaceValue: {
         end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -194,21 +194,21 @@ test('renderSelections - returns empty array when multiple selections change', (
   const newState: SearchState = {
     ...oldState,
     selections: {
-      SearchValue: {
-        start: 1,
-        end: 3,
-      },
-      ReplaceValue: {
-        start: 2,
-        end: 4,
+      FilesToExclude: {
+        end: 10,
+        start: 5,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
-      FilesToExclude: {
-        start: 5,
-        end: 10,
+      ReplaceValue: {
+        end: 4,
+        start: 2,
+      },
+      SearchValue: {
+        end: 3,
+        start: 1,
       },
     },
   }

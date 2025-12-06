@@ -14,15 +14,15 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 0, lineNumber: 1 },
-      { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    ],
     collapsedPaths: [],
-    itemHeight: 22,
     headerHeight: 40,
     height: 500,
+    itemHeight: 22,
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    ],
   }
 
   const result = await selectIndexFile(state, state.items[0], 0)
@@ -30,23 +30,23 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
   expect(result).toMatchObject({
     ...state,
     collapsedPaths: ['file1.txt'],
-    listFocusedIndex: 0,
-    listFocused: true,
-    listItems: [
-      { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-      { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    ],
-    maxLineY: 2,
-    icons: ['file-icon', 'file-icon'],
     focus: 22,
     focusSource: 2,
+    icons: ['file-icon', 'file-icon'],
+    listFocused: true,
+    listFocusedIndex: 0,
+    listItems: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    ],
+    maxLineY: 2,
   })
   expect(mockRpc.invocations).toEqual([
     [
       'IconTheme.getIcons',
       [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'file2.txt' },
+        { name: 'file1.txt', type: 1 },
+        { name: 'file2.txt', type: 1 },
       ],
     ],
   ])
@@ -59,15 +59,15 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', start: 0, end: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', start: 0, end: 0, lineNumber: 1 },
-      { type: TextSearchResultType.File, text: 'file2.txt', start: 0, end: 0, lineNumber: 2 },
-    ],
     collapsedPaths: ['file1.txt'],
-    itemHeight: 22,
     headerHeight: 40,
     height: 500,
+    itemHeight: 22,
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 2, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    ],
   }
 
   const result = await selectIndexFile(state, state.items[0], 0)
@@ -75,20 +75,20 @@ test('selectIndexFile - uncollapse path when already collapsed', async () => {
   expect(result).toMatchObject({
     ...state,
     collapsedPaths: [],
-    listFocusedIndex: 0,
-    listFocused: true,
-    listItems: state.items,
-    maxLineY: 3,
-    icons: ['file-icon', '', 'file-icon'],
     focus: 22,
     focusSource: 2,
+    icons: ['file-icon', '', 'file-icon'],
+    listFocused: true,
+    listFocusedIndex: 0,
+    listItems: state.items,
+    maxLineY: 3,
   })
   expect(mockRpc.invocations).toEqual([
     [
       'IconTheme.getIcons',
       [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'file2.txt' },
+        { name: 'file1.txt', type: 1 },
+        { name: 'file2.txt', type: 1 },
       ],
     ],
   ])

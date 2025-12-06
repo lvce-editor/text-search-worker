@@ -6,20 +6,20 @@ import * as GetActionsVirtualDom from '../src/parts/GetActionsVirtualDom/GetActi
 test('getActionsVirtualDom - should return correct virtual dom structure', () => {
   const actions: readonly Action[] = [
     {
-      id: 'searchInFiles',
-      icon: 'Search in Files',
       command: 'Search.searchInFiles',
-      type: 1,
-      label: 'Search in Files',
       enabled: true,
+      icon: 'Search in Files',
+      id: 'searchInFiles',
+      label: 'Search in Files',
+      type: 1,
     },
     {
-      id: 'findInFile',
-      icon: 'Find in File',
       command: 'Search.findInFile',
-      type: 1,
-      label: 'Find in File',
       enabled: true,
+      icon: 'Find in File',
+      id: 'findInFile',
+      label: 'Find in File',
+      type: 1,
     },
   ]
 
@@ -27,16 +27,16 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 2,
       className: 'Actions',
+      onClick: 22,
       role: AriaRoles.ToolBar,
       type: 4,
-      onClick: 22,
     },
     {
       childCount: 1,
       className: 'IconButton',
+      name: 'searchInFiles',
       title: 'Search in Files',
       type: 1,
-      name: 'searchInFiles',
     },
     {
       childCount: 0,
@@ -47,9 +47,9 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
     {
       childCount: 1,
       className: 'IconButton',
+      name: 'findInFile',
       title: 'Find in File',
       type: 1,
-      name: 'findInFile',
     },
     {
       childCount: 0,
@@ -63,11 +63,11 @@ test('getActionsVirtualDom - should return correct virtual dom structure', () =>
 test('getActionsVirtualDom - should handle empty actions array', () => {
   expect(GetActionsVirtualDom.getActionsVirtualDom([])).toEqual([
     {
-      type: 4,
-      className: 'Actions',
-      role: AriaRoles.ToolBar,
       childCount: 0,
+      className: 'Actions',
       onClick: 22,
+      role: AriaRoles.ToolBar,
+      type: 4,
     },
   ])
 })

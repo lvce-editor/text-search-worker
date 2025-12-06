@@ -4,7 +4,7 @@ import * as InputSource from '../InputSource/InputSource.ts'
 
 export const handleReplaceInput = (state: SearchState, value: string, inputSource = InputSource.Script): Promise<SearchState> => {
   return HandleUpdate.handleUpdate(state, {
-    replacement: value,
     inputSource,
+    replacement: value,
   })
 }

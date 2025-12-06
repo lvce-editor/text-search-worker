@@ -20,9 +20,9 @@ export const selectIndexPreview = async (state: SearchState, searchResult: any, 
   })
   return {
     ...state,
-    listFocusedIndex: index,
-    listFocused: false,
     focus: WhenExpression.FocusSearchResults,
     focusSource: InputSource.Script,
+    listFocused: false,
+    listFocusedIndex: index,
   }
 }

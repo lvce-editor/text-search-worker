@@ -4,14 +4,14 @@ export const handleUpdateEmpty = (state: SearchState, update: Partial<SearchStat
   const partialNewState = { ...state, ...update }
   return {
     ...partialNewState,
-    minLineY: 0,
-    maxLineY: 0,
     deltaY: 0,
     items: [],
     listItems: [],
-    matchCount: 0,
-    message: '',
     loaded: true,
+    matchCount: 0,
+    maxLineY: 0,
+    message: '',
+    minLineY: 0,
     searchInputErrorMessage: '',
   }
 }

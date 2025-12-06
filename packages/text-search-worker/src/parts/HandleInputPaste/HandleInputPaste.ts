@@ -15,7 +15,7 @@ export const handleInputPaste = async (state: SearchState, name: string): Promis
     return state
   }
   const selection = selections[name]
-  const { start, end } = selection
+  const { end, start } = selection
   const currentText = getCurrentValue(state, name)
   const insertedText = await readText()
   const newText = getNewText(currentText, start, end, insertedText)

@@ -8,18 +8,18 @@ import * as GetSearchResultsVirtualDom from '../src/parts/GetSearchResultsVirtua
 test('getSearchResultsVirtualDom', () => {
   const searchResults: readonly DisplaySearchResult[] = [
     {
-      matchStart: 0,
+      badgeText: '',
+      depth: 0,
+      expanded: ExpandedType.Expanded,
+      focused: false,
+      icon: 'test',
       matchLength: 1,
+      matchStart: 0,
+      posInSet: 2,
+      replacement: '',
+      setSize: 2,
       text: 'abc',
       title: 'abc',
-      icon: 'test',
-      setSize: 2,
-      posInSet: 2,
-      depth: 0,
-      replacement: '',
-      badgeText: '',
-      focused: false,
-      expanded: ExpandedType.Expanded,
     },
   ]
   const focusOutline = false
@@ -40,12 +40,12 @@ test('getSearchResultsVirtualDom', () => {
     ),
   ).toEqual([
     {
-      type: 4,
+      childCount: 1,
       className: 'Viewlet List Tree',
+      onBlur: DomEventListenerFunctions.HandleListBlur,
       role: AriaRoles.Tree,
       tabIndex: 0,
-      childCount: 1,
-      onBlur: DomEventListenerFunctions.HandleListBlur,
+      type: 4,
       // onPointerDown: DomEventListenerFunctions.HandleListPointerDown,
       // onFocus: DomEventListenerFunctions.HandleListFocus,
     },
@@ -55,8 +55,8 @@ test('getSearchResultsVirtualDom', () => {
       id: 'TreeItems',
       onBlur: 11,
       onClick: 1,
-      onWheel: 16,
       onContextMenu: 2,
+      onWheel: 16,
       top: '0px',
       type: 4,
     },
@@ -115,8 +115,8 @@ test('getSearchResultsVirtualDom', () => {
     {
       childCount: 1,
       className: 'SearchRemove',
-      title: 'Remove',
       name: 'Remove',
+      title: 'Remove',
       type: 1,
     },
     {

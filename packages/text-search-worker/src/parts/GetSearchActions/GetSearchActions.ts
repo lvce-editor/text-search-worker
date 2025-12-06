@@ -6,48 +6,48 @@ import * as MaskIcon from '../MaskIcon/MaskIcon.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
 export const getActions = (state: SearchState): readonly Action[] => {
-  const { value, replacement } = state
+  const { replacement, value } = state
   const bothEmpty = value === '' && replacement === ''
   return [
     {
-      type: ActionType.Button,
-      label: SearchStrings.refresh(),
-      icon: MaskIcon.Refresh,
-      id: InputName.Refresh,
       command: 'refresh',
       enabled: true,
+      icon: MaskIcon.Refresh,
+      id: InputName.Refresh,
+      label: SearchStrings.refresh(),
+      type: ActionType.Button,
     },
     {
-      type: ActionType.Button,
-      label: SearchStrings.clearSearchResults(),
-      icon: MaskIcon.ClearAll,
       command: 'clearSearchResults',
-      id: InputName.ClearAll,
       enabled: !bothEmpty,
+      icon: MaskIcon.ClearAll,
+      id: InputName.ClearAll,
+      label: SearchStrings.clearSearchResults(),
+      type: ActionType.Button,
     },
     {
-      type: ActionType.Button,
-      label: SearchStrings.openNewSearchEditor(),
+      command: '',
+      enabled: true,
       icon: MaskIcon.NewFile,
-      command: '',
       id: InputName.OpenSearchEditor,
-      enabled: true,
+      label: SearchStrings.openNewSearchEditor(),
+      type: ActionType.Button,
     },
     {
-      type: ActionType.Button,
-      label: SearchStrings.viewAsTree(),
+      command: '',
+      enabled: true,
       icon: MaskIcon.ListFlat,
-      command: '',
       id: InputName.ViewAsTree,
-      enabled: true,
+      label: SearchStrings.viewAsTree(),
+      type: ActionType.Button,
     },
     {
-      type: ActionType.Button,
-      label: SearchStrings.collapseAll(),
-      icon: MaskIcon.CollapseAll,
       command: '',
-      id: InputName.CollapseAll,
       enabled: true,
+      icon: MaskIcon.CollapseAll,
+      id: InputName.CollapseAll,
+      label: SearchStrings.collapseAll(),
+      type: ActionType.Button,
     },
   ]
 }

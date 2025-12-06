@@ -1,9 +1,9 @@
 export interface TreeItem {
-  readonly label: string
-  readonly uri: string
   readonly depth: number
-  readonly selected: boolean
-  readonly posInSet: number
-  readonly setSize: number
   readonly icon: string
+  readonly label: string
+  readonly posInSet: number
+  readonly selected: boolean
+  readonly setSize: number
+  readonly uri: string
 }

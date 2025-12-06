@@ -25,14 +25,14 @@ test('handleInputCut - cuts text from SearchValue', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'hello world',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 6,
         end: 11,
+        start: 6,
       },
     },
+    value: 'hello world',
   }
 
   const result = await HandleInputCut.handleInputCut(state, InputName.SearchValue)
@@ -53,8 +53,8 @@ test('handleInputCut - cuts text from ReplaceValue', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       ReplaceValue: {
-        start: 0,
         end: 7,
+        start: 0,
       },
     },
   }
@@ -77,8 +77,8 @@ test('handleInputCut - cuts text from FilesToInclude', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       FilesToInclude: {
-        start: 4,
         end: 7,
+        start: 4,
       },
     },
   }
@@ -101,8 +101,8 @@ test('handleInputCut - cuts text from FilesToExclude', async () => {
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       FilesToExclude: {
-        start: 5,
         end: 12,
+        start: 5,
       },
     },
   }
@@ -121,14 +121,14 @@ test('handleInputCut - cuts entire text when selection spans full length', async
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'full text',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 0,
         end: 9,
+        start: 0,
       },
     },
+    value: 'full text',
   }
 
   const result = await HandleInputCut.handleInputCut(state, InputName.SearchValue)
@@ -145,14 +145,14 @@ test('handleInputCut - cuts empty selection', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     selections: {
       ...CreateDefaultState.createDefaultState().selections,
       SearchValue: {
-        start: 2,
         end: 2,
+        start: 2,
       },
     },
+    value: 'test',
   }
 
   const result = await HandleInputCut.handleInputCut(state, InputName.SearchValue)

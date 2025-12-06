@@ -12,12 +12,12 @@ export const handleActionClick = async (state: SearchState, name: string): Promi
       return clearSearchResults(state)
     case InputName.CollapseAll:
       return collapseAll(state)
-    case InputName.ViewAsTree:
-      return viewAsTree(state)
-    case InputName.Refresh:
-      return refresh(state)
     case InputName.OpenSearchEditor:
       return openSearchEditor(state)
+    case InputName.Refresh:
+      return refresh(state)
+    case InputName.ViewAsTree:
+      return viewAsTree(state)
     default:
       return state
   }

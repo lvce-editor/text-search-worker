@@ -11,25 +11,25 @@ test.skip('GetFileIcons', async () => {
 
   const mockFiles: readonly SearchResult[] = [
     {
-      type: TextSearchResultType.File,
+      end: 0,
+      lineNumber: 0,
+      start: 0,
       text: 'file1.txt',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-    {
-      type: TextSearchResultType.Match,
-      text: 'file2.js',
-      start: 0,
-      end: 0,
-      lineNumber: 0,
-    },
-    {
       type: TextSearchResultType.File,
-      text: 'file3.css',
-      start: 0,
+    },
+    {
       end: 0,
       lineNumber: 0,
+      start: 0,
+      text: 'file2.js',
+      type: TextSearchResultType.Match,
+    },
+    {
+      end: 0,
+      lineNumber: 0,
+      start: 0,
+      text: 'file3.css',
+      type: TextSearchResultType.File,
     },
   ]
 

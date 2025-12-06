@@ -14,15 +14,15 @@ export const getTreeItemsVirtualDom = (
   const pixelOffset = deltaY % itemHeight
   return [
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.TreeItems,
       childCount: visibleItems.length,
-      onClick: DomEventListenerFunctions.HandleClick,
-      onBlur: DomEventListenerFunctions.HandleListBlur,
-      onWheel: DomEventListenerFunctions.HandleWheel,
-      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
+      className: ClassNames.TreeItems,
       id: DomId.TreeItems,
+      onBlur: DomEventListenerFunctions.HandleListBlur,
+      onClick: DomEventListenerFunctions.HandleClick,
+      onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
+      onWheel: DomEventListenerFunctions.HandleWheel,
       top: `${-pixelOffset}px`, // TODO use dynamic css instead
+      type: VirtualDomElements.Div,
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
   ]

@@ -23,9 +23,9 @@ const toIconRequest = (item: SearchResult): IconRequest => {
   const filePath = getFilePath(item.text)
   const fileName = getFileName(filePath)
   return {
-    type: DirentType.File,
     name: fileName,
     path: filePath,
+    type: DirentType.File,
   }
 }
 

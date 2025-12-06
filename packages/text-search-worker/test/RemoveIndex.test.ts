@@ -7,11 +7,11 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 test.skip('removeIndex - returns state unchanged', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
-    ],
     fileCount: 1,
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+    ],
     matchCount: 1,
   }
 
@@ -24,8 +24,8 @@ test.skip('removeIndex - returns state unchanged', async () => {
 test.skip('removeIndex - with empty state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [],
     fileCount: 0,
+    items: [],
     matchCount: 0,
   }
 
@@ -38,12 +38,12 @@ test.skip('removeIndex - with empty state', async () => {
 test.skip('removeIndex - with file item', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.File, text: 'file2.txt', end: 0, start: 0, lineNumber: 0 },
-    ],
     fileCount: 2,
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.txt', type: TextSearchResultType.File },
+    ],
     matchCount: 1,
   }
 
@@ -56,12 +56,12 @@ test.skip('removeIndex - with file item', async () => {
 test.skip('removeIndex - with match item', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match2', end: 0, start: 0, lineNumber: 0 },
-    ],
     fileCount: 1,
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'match1', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'match2', type: TextSearchResultType.Match },
+    ],
     matchCount: 2,
   }
 
@@ -74,8 +74,8 @@ test.skip('removeIndex - with match item', async () => {
 test.skip('removeIndex - with invalid index', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 }],
     fileCount: 1,
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File }],
     matchCount: 0,
   }
 

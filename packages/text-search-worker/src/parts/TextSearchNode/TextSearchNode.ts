@@ -24,15 +24,15 @@ export const textSearch = async (
   if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
     const result = await SearchProcess.invoke('TextSearch.search', actualOptions)
     return {
-      results: result.results,
       limitHit: result.limitHit,
+      results: result.results,
     }
   }
   // TODO always create search process messageport rpc to have one api, in web can send the messageport to renderer worker
   const result = await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.search', actualOptions)
   // TODO api is weird
   return {
-    results: result.results,
     limitHit: result.limitHit,
+    results: result.results,
   }
 }

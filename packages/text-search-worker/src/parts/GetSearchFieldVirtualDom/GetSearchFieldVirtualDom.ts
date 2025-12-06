@@ -16,7 +16,7 @@ export const getSearchFieldVirtualDom = (
   outsideButtons: readonly InputAction[],
   hasError = false,
 ): readonly VirtualDomNode[] => {
-  const { preNodes, postNodes } = GetOutSideButtonsDom.getOutSideButtonsDom(outsideButtons)
+  const { postNodes, preNodes } = GetOutSideButtonsDom.getOutSideButtonsDom(outsideButtons)
   const searchFieldClassName = hasError
     ? MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError)
     : ClassNames.SearchField
@@ -24,30 +24,30 @@ export const getSearchFieldVirtualDom = (
   const dom: readonly VirtualDomNode[] = [
     ...preNodes,
     {
-      type: VirtualDomElements.Div,
+      childCount: 2,
       className: searchFieldClassName,
       role: AriaRoles.None,
-      childCount: 2,
+      type: VirtualDomElements.Div,
     },
     {
-      type: VirtualDomElements.TextArea,
-      className: ClassNames.MultilineInputBox,
-      spellcheck: false,
       autocapitalize: 'off',
       autocorrect: 'off',
-      placeholder,
+      childCount: 0,
+      className: ClassNames.MultilineInputBox,
       name,
-      onInput,
-      onFocus: DomEventListenerFunctions.HandleInputFocus,
       onBlur: DomEventListenerFunctions.HandleInputBlur,
       onContextMenu: DomEventListenerFunctions.HandleInputContextMenu,
+      onFocus: DomEventListenerFunctions.HandleInputFocus,
+      onInput,
       onSelectionChange: DomEventListenerFunctions.HandleInputSelectionChange,
-      childCount: 0,
+      placeholder,
+      spellcheck: false,
+      type: VirtualDomElements.TextArea,
     },
     {
-      type: VirtualDomElements.Div,
-      className: ClassNames.SearchFieldButtons,
       childCount: insideButtons.length,
+      className: ClassNames.SearchFieldButtons,
+      type: VirtualDomElements.Div,
     },
     ...insideButtons.flatMap(GetSearchFieldButtonVirtualDom.getSearchFieldButtonVirtualDom),
     ...postNodes,

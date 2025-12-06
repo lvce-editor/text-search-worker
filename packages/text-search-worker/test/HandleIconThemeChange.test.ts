@@ -11,12 +11,12 @@ test('handleIconThemeChange updates icons for visible items', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [
-      { text: 'file1.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
-      { text: 'file2.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
-      { text: 'file3.txt', start: 0, end: 0, lineNumber: 0, type: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.txt', type: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file3.txt', type: 1 },
     ],
-    minLineY: 0,
     maxLineY: 2,
+    minLineY: 0,
   }
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)
@@ -25,8 +25,8 @@ test('handleIconThemeChange updates icons for visible items', async () => {
     [
       'IconTheme.getIcons',
       [
-        { type: 1, name: 'file1.txt' },
-        { type: 1, name: 'file2.txt' },
+        { name: 'file1.txt', type: 1 },
+        { name: 'file2.txt', type: 1 },
       ],
     ],
   ])
@@ -39,8 +39,8 @@ test('handleIconThemeChange handles empty items array', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     items: [],
-    minLineY: 0,
     maxLineY: 0,
+    minLineY: 0,
   }
   const newState = await HandleIconThemeChange.handleIconThemeChange(state)
   expect(newState).not.toBe(state)

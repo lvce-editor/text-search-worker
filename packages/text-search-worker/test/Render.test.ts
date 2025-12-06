@@ -18,10 +18,10 @@ test('doRender - renders items when changed', () => {
   const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState = {
     ...oldState,
-    items: [{ type: TextSearchResultType.File, text: 'item1', start: 0, lineNumber: 0, end: 0 }],
-    listItems: [{ type: TextSearchResultType.File, text: 'item1', start: 0, lineNumber: 0, end: 0 }],
-    value: 'test',
     fileCount: 1,
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
+    listItems: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
+    value: 'test',
   }
   SearchViewStates.set(1, oldState, newState)
 
@@ -56,8 +56,8 @@ test('doRender - renders value when changed', () => {
   const oldState = { ...CreateDefaultState.createDefaultState(), uid: 1 }
   const newState = {
     ...oldState,
-    value: 'newValue',
     inputSource: InputSource.Script,
+    value: 'newValue',
   }
   SearchViewStates.set(1, oldState, newState)
 

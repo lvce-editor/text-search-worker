@@ -23,23 +23,23 @@ test('getScrollBarY - calculates correct offset', () => {
 test('getNewDeltaPercent - clicked at top', () => {
   const result = ScrollBarFunctions.getNewDeltaPercent(100, 20, 5)
   expect(result).toEqual({
-    percent: 0,
     handleOffset: 5,
+    percent: 0,
   })
 })
 
 test('getNewDeltaPercent - clicked in middle', () => {
   const result = ScrollBarFunctions.getNewDeltaPercent(100, 20, 50)
   expect(result).toEqual({
-    percent: 0.5,
     handleOffset: 10,
+    percent: 0.5,
   })
 })
 
 test('getNewDeltaPercent - clicked at bottom', () => {
   const result = ScrollBarFunctions.getNewDeltaPercent(100, 20, 90)
   expect(result).toEqual({
-    percent: 1,
     handleOffset: 10,
+    percent: 1,
   })
 })

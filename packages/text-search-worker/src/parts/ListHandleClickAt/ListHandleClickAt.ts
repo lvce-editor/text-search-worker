@@ -6,7 +6,7 @@ import { removeIndex } from '../RemoveIndex/RemoveIndex.ts'
 import * as SelectIndex from '../SelectIndex/SelectIndex.ts'
 
 export const handleClickAt = async (state: SearchState, eventX: number, eventY: number, name: string): Promise<SearchState> => {
-  const { x, y, itemHeight, deltaY, flags, listItems } = state
+  const { deltaY, flags, itemHeight, listItems, x, y } = state
   const topHeight = GetTopHeight.getTopHeight(flags)
   const index = GetListIndex.getListIndex(eventX, eventY, x, y, deltaY, itemHeight, topHeight, listItems.length)
   const isRemoveButton = name === InputName.Remove

@@ -1,11 +1,11 @@
 interface Selection {
-  readonly start: number
   readonly end: number
+  readonly start: number
 }
 
 export interface SelectionState {
-  readonly SearchValue: Selection
-  readonly ReplaceValue: Selection
-  readonly FilesToInclude: Selection
   readonly FilesToExclude: Selection
+  readonly FilesToInclude: Selection
+  readonly ReplaceValue: Selection
+  readonly SearchValue: Selection
 }

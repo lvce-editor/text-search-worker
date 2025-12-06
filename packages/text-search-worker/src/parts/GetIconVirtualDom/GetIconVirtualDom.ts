@@ -6,9 +6,9 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
 export const getIconVirtualDom = (icon: string, type = VirtualDomElements.Div): VirtualDomNode => {
   return {
-    type,
+    childCount: 0,
     className: MergeClassNames.mergeClassNames(ClassNames.MaskIcon, `MaskIcon${icon}`),
     role: AriaRoles.None,
-    childCount: 0,
+    type,
   }
 }

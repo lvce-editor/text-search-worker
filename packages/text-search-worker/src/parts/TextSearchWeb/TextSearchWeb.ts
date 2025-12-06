@@ -19,7 +19,7 @@ export const textSearch = async (scheme: string, root: string, query: string): P
     }
   }
   return {
-    results,
     limitHit: false,
+    results,
   }
 }

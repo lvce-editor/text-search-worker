@@ -23,25 +23,25 @@ test('handleInputPaste - pastes text into SearchValue at cursor position', async
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'hello world',
     selections: {
-      SearchValue: {
-        start: 5,
-        end: 5,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
-      },
       FilesToExclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
+      },
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 5,
+        start: 5,
       },
     },
+    value: 'hello world',
   }
 
   const result = await HandleInputPaste.handleInputPaste(state, InputName.SearchValue)
@@ -59,25 +59,25 @@ test('handleInputPaste - replaces selected text in SearchValue', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'hello world',
     selections: {
-      SearchValue: {
-        start: 0,
-        end: 5,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
-      },
       FilesToExclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
+      },
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 5,
+        start: 0,
       },
     },
+    value: 'hello world',
   }
 
   const result = await HandleInputPaste.handleInputPaste(state, InputName.SearchValue)
@@ -97,21 +97,21 @@ test('handleInputPaste - pastes text into ReplaceValue', async () => {
     ...CreateDefaultState.createDefaultState(),
     replacement: 'old',
     selections: {
-      SearchValue: {
-        start: 0,
-        end: 0,
-      },
-      ReplaceValue: {
-        start: 3,
-        end: 3,
-      },
       FilesToExclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
+      },
+      ReplaceValue: {
+        end: 3,
+        start: 3,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -133,21 +133,21 @@ test('handleInputPaste - pastes text into FilesToInclude', async () => {
     ...CreateDefaultState.createDefaultState(),
     includeValue: '*.js',
     selections: {
-      SearchValue: {
-        start: 0,
-        end: 0,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
-      },
       FilesToExclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 4,
         end: 4,
+        start: 4,
+      },
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -169,21 +169,21 @@ test('handleInputPaste - pastes text into FilesToExclude', async () => {
     ...CreateDefaultState.createDefaultState(),
     excludeValue: 'dist/',
     selections: {
-      SearchValue: {
-        start: 0,
-        end: 0,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
-      },
       FilesToExclude: {
-        start: 0,
         end: 5,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
+      },
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 0,
+        start: 0,
       },
     },
   }
@@ -203,25 +203,25 @@ test('handleInputPaste - handles empty clipboard text', async () => {
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    value: 'test',
     selections: {
-      SearchValue: {
-        start: 2,
-        end: 4,
-      },
-      ReplaceValue: {
-        start: 0,
-        end: 0,
-      },
       FilesToExclude: {
-        start: 0,
         end: 0,
+        start: 0,
       },
       FilesToInclude: {
-        start: 0,
         end: 0,
+        start: 0,
+      },
+      ReplaceValue: {
+        end: 0,
+        start: 0,
+      },
+      SearchValue: {
+        end: 4,
+        start: 2,
       },
     },
+    value: 'test',
   }
 
   const result = await HandleInputPaste.handleInputPaste(state, InputName.SearchValue)

@@ -17,9 +17,9 @@ test.skip('launchSearchProcessElectron - creates message port and rpc', async ()
 
   await LaunchSearchProcessElectron.launchSearchProcessElectron()
   expect(MessagePortRpcParent.create).toHaveBeenCalledWith({
-    messagePort: expect.anything(),
     commandMap: {},
     isMessagePortOpen: true,
+    messagePort: expect.anything(),
   })
   expect(mockRpc.invocations).toEqual([['SendMessagePortToElectron.sendMessagePortToElectron', expect.anything()]])
 })

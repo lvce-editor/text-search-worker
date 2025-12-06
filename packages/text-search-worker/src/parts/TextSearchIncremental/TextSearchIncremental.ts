@@ -24,16 +24,16 @@ export const textSearchIncremental = async (
     searchString: query,
   })
   const actualOptions = {
+    id: searchId,
     ripGrepArgs,
     searchDir: root,
-    id: searchId,
   }
 
   const resultPromise = SearchProcess.invoke('TextSearch.searchIncremental', actualOptions)
   for (let i = 0; i < 100; i++) {
     const latest = SearchViewStates.get(uid)
     const { newState } = latest
-    const { minLineY, height, headerHeight, itemHeight } = newState
+    const { headerHeight, height, itemHeight, minLineY } = newState
     const listHeight = height - headerHeight
     const numberOfVisible = GetNumberOfVisibleItems.getNumberOfVisibleItems(listHeight, itemHeight)
     const visible = await SearchProcess.invoke('TextSearch.getIncrementalResults', searchId, minLineY, minLineY + numberOfVisible)
@@ -45,8 +45,8 @@ export const textSearchIncremental = async (
       ...latest2.newState,
       items: visible,
       listItems: visible,
-      minLineY: 0,
       maxLineY: visible.length,
+      minLineY: 0,
     }
     SearchViewStates.set(uid, latest2.oldState, updatedState2)
     // @ts-ignore

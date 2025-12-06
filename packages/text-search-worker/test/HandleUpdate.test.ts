@@ -18,40 +18,40 @@ test('handleUpdate - empty search value returns cleared state', async () => {
   expect(result).toEqual({
     ...state,
     ...update,
-    minLineY: 0,
-    maxLineY: 0,
     deltaY: 0,
     items: [],
-    listItems: [],
-    matchCount: 0,
-    message: '',
-    loaded: true,
-    searchInputErrorMessage: '',
     limitHit: false,
+    listItems: [],
+    loaded: true,
+    matchCount: 0,
+    maxLineY: 0,
+    message: '',
+    minLineY: 0,
+    searchInputErrorMessage: '',
   })
 })
 
 test.skip('handleUpdate - performs search with valid input', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    workspacePath: '/test',
-    value: 'test',
-    itemHeight: 20,
-    height: 500,
     headerHeight: 40,
+    height: 500,
+    itemHeight: 20,
     minimumSliderSize: 20,
+    value: 'test',
+    workspacePath: '/test',
   }
   const update = { value: 'test' }
   const searchResults: readonly SearchResult[] = [
-    { text: 'file1.txt', type: 1, start: 0, end: 0, lineNumber: 0 },
-    { text: 'match1', type: 2, start: 0, end: 0, lineNumber: 0 },
+    { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: 1 },
+    { end: 0, lineNumber: 0, start: 0, text: 'match1', type: 2 },
   ]
 
   add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
       return {
-        results: searchResults,
         limitHit: false,
+        results: searchResults,
       }
     },
   })
@@ -60,14 +60,14 @@ test.skip('handleUpdate - performs search with valid input', async () => {
 
   expect(result).toMatchObject({
     ...state,
-    value: 'test',
-    items: searchResults,
-    listItems: searchResults,
-    matchCount: 1,
     fileCount: 1,
-    loaded: true,
-    searchInputErrorMessage: '',
+    items: searchResults,
     limitHit: false,
+    listItems: searchResults,
+    loaded: true,
+    matchCount: 1,
+    searchInputErrorMessage: '',
+    value: 'test',
   })
 })
 
@@ -88,31 +88,31 @@ test('handleUpdate - handles search error', async () => {
 
   expect(result).toMatchObject({
     ...state,
-    message: 'Error: Search failed',
+    fileCount: 0,
     items: [],
+    limitHit: false,
     listItems: [],
     matchCount: 0,
-    fileCount: 0,
-    minLineY: 0,
     maxLineY: 0,
-    limitHit: false,
+    message: 'Error: Search failed',
+    minLineY: 0,
   })
 })
 
 test.skip('handleUpdate - uses search flags from state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
-    workspacePath: '/test',
-    value: 'test',
     flags: SearchFlags.MatchCase | SearchFlags.UseRegularExpression,
+    value: 'test',
+    workspacePath: '/test',
   }
   const update = { value: 'test' }
 
   add({
     async ''(): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
       return {
-        results: [],
         limitHit: false,
+        results: [],
       }
     },
   })

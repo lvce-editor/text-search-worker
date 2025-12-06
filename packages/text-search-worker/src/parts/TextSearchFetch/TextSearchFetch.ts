@@ -11,7 +11,7 @@ export const textSearch = async (
 ): Promise<TextSearchCompletionResult> => {
   const results = await RendererWorker.invoke('ExtensionHostTextSearch.textSearchFetch', scheme, root, query, options, assetDir)
   return {
-    results,
     limitHit: false,
+    results,
   }
 }

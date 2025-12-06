@@ -8,8 +8,8 @@ import * as InputActionFlag from '../src/parts/InputActionFlag/InputActionFlag.t
 test('getOutsideButtonsDom - no buttons', () => {
   const buttons: InputAction[] = []
   expect(GetOutsideButtonsDom.getOutSideButtonsDom(buttons)).toEqual({
-    preNodes: [],
     postNodes: [],
+    preNodes: [],
   })
 })
 
@@ -17,14 +17,14 @@ test('getOutsideButtonsDom - multiple buttons', () => {
   const buttons: readonly InputAction[] = [
     {
       flag: InputActionFlag.ButtonEnabled,
-      name: 'Button1',
       icon: 'test-icon',
+      name: 'Button1',
       title: 'Button 1',
     },
     {
       flag: InputActionFlag.ButtonDisabled,
-      name: 'Button2',
       icon: 'test-icon',
+      name: 'Button2',
       title: 'Button 2',
     },
   ]

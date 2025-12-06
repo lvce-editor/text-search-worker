@@ -48,9 +48,9 @@ test('collapseReplace preserves all state properties except flags', () => {
     ...CreateDefaultState.createDefaultState(),
     flags: SearchFlags.ReplaceExpanded,
     uid: 123,
+    value: 'test',
     x: 100,
     y: 200,
-    value: 'test',
   }
 
   const result = CollapseReplace.collapseReplace(state)

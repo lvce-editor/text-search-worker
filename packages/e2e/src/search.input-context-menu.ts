@@ -4,7 +4,7 @@ export const name = 'search.input-context-menu'
 
 export const skip = 1
 
-export const test: Test = async ({ Search, FileSystem, Workspace, Locator, expect }) => {
+export const test: Test = async ({ expect, FileSystem, Locator, Search, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)

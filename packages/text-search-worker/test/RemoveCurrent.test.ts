@@ -21,7 +21,7 @@ test.skip('removeCurrent - with focused item returns state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: 0,
-    items: [{ type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 }],
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File }],
   }
 
   const result = await RemoveCurrent.removeCurrent(state)
@@ -35,8 +35,8 @@ test.skip('removeCurrent - with focused match item returns state', async () => {
     ...CreateDefaultState.createDefaultState(),
     focusedIndex: 1,
     items: [
-      { type: TextSearchResultType.File, text: 'file1.txt', end: 0, start: 0, lineNumber: 0 },
-      { type: TextSearchResultType.Match, text: 'match1', end: 5, start: 0, lineNumber: 1 },
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.txt', type: TextSearchResultType.File },
+      { end: 5, lineNumber: 1, start: 0, text: 'match1', type: TextSearchResultType.Match },
     ],
   }
 

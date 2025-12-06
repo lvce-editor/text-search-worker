@@ -24,7 +24,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
 
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }],
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { index: -1, menuId: MenuEntryId.Search }],
   ])
 })
 
@@ -45,6 +45,6 @@ test('handleContextMenuMouseAt - calls show with correct coordinates', async () 
   await ViewletSearchHandleContextMenuMouseAt.handleContextMenuMouseAt(state, x, y)
 
   expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { menuId: MenuEntryId.Search, index: -1 }],
+    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { index: -1, menuId: MenuEntryId.Search }],
   ])
 })
