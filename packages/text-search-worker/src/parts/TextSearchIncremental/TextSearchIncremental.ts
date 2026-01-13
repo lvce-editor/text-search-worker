@@ -1,10 +1,9 @@
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { RendererWorker, SearchProcess } from '@lvce-editor/rpc-registry'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
 import * as Assert from '../Assert/Assert.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
-import * as SearchProcess from '../SearchProcess/SearchProcess.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 import { waitForNextFrame } from '../WaitForNextFrame/WaitForNextFrame.ts'
 
