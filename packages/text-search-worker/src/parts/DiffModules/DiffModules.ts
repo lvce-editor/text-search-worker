@@ -18,20 +18,11 @@ export const modules = [
 ]
 
 export const numbers = [
-<<<<<<< Updated upstream
-  DiffType.RenderItems,
+  DiffType.RenderIncremental,
   DiffType.RenderFocus,
   DiffType.RenderIncludeValue,
   DiffType.RenderExcludeValue,
   DiffType.RenderReplaceValue,
   DiffType.RenderValue,
-=======
-  DiffType.RenderIncremental,
-  DiffFocus.diffType,
-  DiffIncludeValue.diffType,
-  DiffExcludeValue.diffType,
-  DiffReplaceValue.diffType,
-  DiffValue.diffType,
->>>>>>> Stashed changes
   DiffType.RenderFocusContext,
 ]
