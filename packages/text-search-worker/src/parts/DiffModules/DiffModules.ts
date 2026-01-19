@@ -18,11 +18,11 @@ export const modules = [
 ]
 
 export const numbers = [
-  DiffItems.diffType,
-  DiffFocus.diffType,
-  DiffIncludeValue.diffType,
-  DiffExcludeValue.diffType,
-  DiffReplaceValue.diffType,
-  DiffValue.diffType,
+  DiffType.RenderItems,
+  DiffType.RenderFocus,
+  DiffType.RenderIncludeValue,
+  DiffType.RenderExcludeValue,
+  DiffType.RenderReplaceValue,
+  DiffType.RenderValue,
   DiffType.RenderFocusContext,
 ]
