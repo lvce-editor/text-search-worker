@@ -29,7 +29,7 @@ test('doRender - renders items when changed', () => {
   // Only one command is expected: Viewlet.setDom2 with the dom structure
   expect(commands).toEqual([
     [
-      'Viewlet.setDom2',
+      'Viewlet.setPatches',
       1,
       expect.any(Array), // dom structure, don't check deeply
     ],
