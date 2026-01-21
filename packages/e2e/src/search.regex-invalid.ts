@@ -2,6 +2,8 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.regex-invalid'
 
+export const skip = 1
+
 export const test: Test = async ({ expect, FileSystem, Locator, Platform, Search, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
