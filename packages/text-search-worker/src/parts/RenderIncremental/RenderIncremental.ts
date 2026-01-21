@@ -7,5 +7,6 @@ export const renderIncremental = (oldState: SearchState, newState: SearchState):
   const oldDom = renderItems(oldState, oldState)[2]
   const newDom = renderItems(newState, newState)[2]
   const patches = diff(oldDom, newDom)
+  console.log({ newDom, oldDom })
   return ['Viewlet.setPatches', newState.uid, patches]
 }
