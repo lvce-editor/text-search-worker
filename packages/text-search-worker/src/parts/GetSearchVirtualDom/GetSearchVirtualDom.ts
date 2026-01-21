@@ -23,7 +23,11 @@ export const getSearchVirtualDom = (
   matchCount: number,
   limitHitWarning: string,
   focus: number = 0,
+  initial: boolean = false,
 ): readonly VirtualDomNode[] => {
+  if (initial) {
+    return []
+  }
   const errorDom = GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(searchInputErrorMessage)
   const childCount = 2 + (errorDom.length > 0 ? 1 : 0)
 

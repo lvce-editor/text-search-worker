@@ -19,6 +19,7 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
     viewModel.matchCount,
     newState.limitHitWarning,
     viewModel.focus,
+    newState.initial,
   )
   return [ViewletCommand.SetDom2, newState.uid, dom]
 }

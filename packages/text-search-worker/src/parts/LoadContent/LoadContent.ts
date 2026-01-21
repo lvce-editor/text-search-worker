@@ -21,6 +21,7 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     const result = await ViewletSearchHandleUpdate.handleUpdate(state, update)
     return {
       ...result,
+      initial: false,
       loaded: true,
     }
   }
@@ -28,6 +29,7 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     ...state,
     ...update,
     flags,
+    initial: false,
     loaded: true,
     threads,
   }

@@ -23,6 +23,7 @@ export const create = (
     disposed: false,
     fileCount: 0,
     height,
+    initial: true,
     searchResults: [],
     stats: {},
     uid,

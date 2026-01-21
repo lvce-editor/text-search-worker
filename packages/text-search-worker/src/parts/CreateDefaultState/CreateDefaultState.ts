@@ -47,6 +47,7 @@ export const createDefaultState = (): SearchState => {
     icons: [],
     includeValue: '',
     incrementalSearch: false,
+    initial: true,
     inputSource: InputSource.User,
     limit: 20_000,
     limitHit: false,

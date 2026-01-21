@@ -1,11 +1,11 @@
-import { diff } from '@lvce-editor/virtual-dom-worker'
+import { diffTree } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import { renderItems } from '../RenderItems/RenderItems.ts'
 
 // TODO cache rendered dom so that it can be used for dom diffing
 export const renderIncremental = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  const oldDom = renderItems(oldState, oldState)
-  const newDom = renderItems(newState, newState)
-  const patches = diff(oldDom, newDom)
-  return patches
+  const oldDom = renderItems(oldState, oldState)[2]
+  const newDom = renderItems(newState, newState)[2]
+  const patches = diffTree(oldDom, newDom)
+  return ['Viewlet.setPatches', newState.uid, patches]
 }
