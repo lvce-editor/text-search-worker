@@ -10,7 +10,6 @@ export const {
   openUri,
   sendMessagePortToSearchProcess,
   set,
-  showContextMenu,
   showContextMenu2,
   writeClipBoardText,
 } = RendererWorker
