@@ -1,7 +1,7 @@
 import { expect, test } from '@jest/globals'
 import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
-import { handlePullResultsFound } from '../src/parts/PullResultsFound/PullResultsFound.ts'
+import { handlePullResultsFound } from '../src/parts/HandlePullResultsFound/HandlePullResultsFound.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('handlePullResultsFound - ignores stale search id', async () => {
