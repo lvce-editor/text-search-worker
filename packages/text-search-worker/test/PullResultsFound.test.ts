@@ -51,8 +51,10 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
   SearchViewStates.set(state.uid, state, state)
 
   const result = await handlePullResultsFound(state, 'active-search')
+  const { newState } = SearchViewStates.get(state.uid)
 
-  expect(result).toMatchObject({
+  expect(result).toBe(state)
+  expect(newState).toMatchObject({
     fileCount: 1,
     icons: ['file-icon', ''],
     items: [
