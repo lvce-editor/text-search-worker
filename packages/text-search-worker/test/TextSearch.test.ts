@@ -21,6 +21,7 @@ test('textSearch - calls provider with correct arguments', async () => {
     root,
     scheme: 'test',
     threads: 0,
+    usePullBasedSearch: false,
     useRegularExpression: false,
   }
 
@@ -76,6 +77,7 @@ test('textSearch - handles different protocols', async () => {
     root,
     scheme: 'http',
     threads: 0,
+    usePullBasedSearch: false,
     useRegularExpression: false,
   }
 
