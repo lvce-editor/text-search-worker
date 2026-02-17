@@ -1,8 +1,10 @@
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as DefaultExcludeValue from '../DefaultExcludeValue/DefaultExcludeValue.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as ViewMode from '../ViewMode/ViewMode.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
 
@@ -32,11 +34,12 @@ export const createDefaultState = (): SearchState => {
     ...virtualList,
     assetDir: '',
     collapsedPaths: [],
+    defaultExcludes: DefaultExcludeValue.defaultExcludes,
     deltaY,
     excludeValue: '',
     fileIconCache: {},
     finalDeltaY,
-    flags: 0,
+    flags: SearchFlags.UseIgnoreFiles,
     focus: WhenExpression.Empty,
     focused: false,
     focusedIndex: -1,

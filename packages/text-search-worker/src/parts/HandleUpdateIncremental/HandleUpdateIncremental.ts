@@ -24,6 +24,7 @@ export const handleUpdateIncremental = async (state: SearchState, update: Partia
     value,
     {
       assetDir: assetDir,
+      defaultExcludes: SearchFlags.hasUseIgnoreFiles(flags) ? partialNewState.defaultExcludes : [],
       exclude: excludeValue,
       flags,
       include: includeValue,

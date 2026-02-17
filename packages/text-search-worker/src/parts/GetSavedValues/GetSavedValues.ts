@@ -1,3 +1,5 @@
+import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+
 export const getSavedValue = (savedState: unknown): string => {
   if (savedState && typeof savedState === 'object' && 'value' in savedState && typeof savedState.value === 'string') {
     return savedState.value
@@ -16,7 +18,7 @@ export const getSavedFlags = (savedState: unknown): number => {
   if (savedState && typeof savedState === 'object' && 'flags' in savedState && typeof savedState.flags === 'number') {
     return savedState.flags
   }
-  return 0
+  return SearchFlags.UseIgnoreFiles
 }
 
 export const getSavedIncludeValue = (savedState: unknown): string => {

@@ -1,4 +1,5 @@
 export interface SearchHeader {
+  readonly defaultExcludes: readonly string[]
   readonly excludeValue: string
   readonly flags: number
   readonly focus: number

@@ -7,7 +7,7 @@ test('restoreState - with empty state', () => {
   const result = restoreState(state)
   expect(result).toEqual({
     excludeValue: '',
-    flags: 0,
+    flags: SearchFlags.UseIgnoreFiles,
     focus: 0,
     history: [],
     includeValue: '',
@@ -24,7 +24,7 @@ test('restoreState - with null state', () => {
   const result = restoreState(null)
   expect(result).toEqual({
     excludeValue: '',
-    flags: 0,
+    flags: SearchFlags.UseIgnoreFiles,
     focus: 0,
     history: [],
     includeValue: '',
