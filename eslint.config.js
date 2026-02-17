@@ -18,6 +18,8 @@ export default [
   {
     rules: {
       'github-actions/permissions': 'off',
+      'tsconfig/dont-skip-lib-check': 'off',
+      '@cspell/spellchecker': 'off',
     },
   },
 ]
