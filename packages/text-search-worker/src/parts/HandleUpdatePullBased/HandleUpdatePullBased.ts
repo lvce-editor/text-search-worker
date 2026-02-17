@@ -6,7 +6,7 @@ import { get, set } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdatePullBased = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const partialNewState: SearchState = { ...state, ...update, searchResults: [] }
+  const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], searchResults: [] }
   set(state.uid, state, partialNewState)
   const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value } = partialNewState
   const root = state.workspacePath
