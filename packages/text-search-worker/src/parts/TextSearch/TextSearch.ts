@@ -10,11 +10,13 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir: string,
   platform?: number,
+  searchId?: string,
+  uid?: number,
 ): Promise<TextSearchCompletionResult> => {
   Assert.string(root)
   Assert.string(query)
   const scheme = GetProtocol.getProtocol(root)
   const provider = getTextSearchProvider(scheme)
-  const results = await provider(scheme, root, query, options, assetDir, platform)
+  const results = await provider(scheme, root, query, options, assetDir, platform, searchId, uid)
   return results
 }
