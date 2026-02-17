@@ -19,21 +19,21 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
   const mockRendererWorker = RendererWorker.registerMockRpc({
     'Search.rerender': () => undefined,
     'SearchProcess.invoke': () => [
-        {
-          end: 0,
-          lineNumber: 0,
-          start: 0,
-          text: 'file1.txt',
-          type: TextSearchResultType.File,
-        },
-        {
-          end: 4,
-          lineNumber: 1,
-          start: 0,
-          text: 'test',
-          type: TextSearchResultType.Match,
-        },
-      ],
+      {
+        end: 0,
+        lineNumber: 0,
+        start: 0,
+        text: 'file1.txt',
+        type: TextSearchResultType.File,
+      },
+      {
+        end: 4,
+        lineNumber: 1,
+        start: 0,
+        text: 'test',
+        type: TextSearchResultType.Match,
+      },
+    ],
   })
   IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
