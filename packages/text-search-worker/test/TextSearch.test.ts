@@ -41,7 +41,7 @@ test('textSearch - calls provider with correct arguments', async () => {
 
   const results = await textSearch(root, query, options, assetDir)
   // @ts-ignore
-  expect(search).toHaveBeenCalledWith('test', root, query, options, assetDir, undefined)
+  expect(search).toHaveBeenCalledWith('test', root, query, options, assetDir, undefined, undefined)
   expect(results).toEqual({
     limitHit: false,
     results: [
@@ -95,5 +95,5 @@ test('textSearch - handles different protocols', async () => {
   await textSearch(root, query, options, assetDir)
 
   // @ts-ignore
-  expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir, undefined)
+  expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir, undefined, undefined)
 })

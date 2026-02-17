@@ -80,3 +80,43 @@ test('textSearch', async () => {
     ],
   ])
 })
+
+test('textSearch - pull based (file scheme)', async () => {
+  const handler = jest.fn(() => undefined)
+  const mockRpc = RendererWorker.registerMockRpc({
+    'SearchProcess.invoke': handler,
+  })
+
+  const result = await TextSearchNode.textSearch(
+    'file',
+    '/test',
+    'abc',
+    {
+      defaultExcludes: [],
+      exclude: '',
+      isCaseSensitive: false,
+      threads: 1,
+      usePullBasedSearch: true,
+      useRegularExpression: false,
+    } as any,
+    undefined,
+    undefined,
+    'search-1',
+  )
+
+  expect(result).toEqual({
+    limitHit: false,
+    results: [],
+  })
+  expect(mockRpc.invocations).toEqual([
+    [
+      'SearchProcess.invoke',
+      'TextSearch.searchPull',
+      {
+        id: 'search-1',
+        ripGrepArgs: ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', '1', '--ignore-case', '--fixed-strings', '--', 'abc', '.'],
+        searchDir: '/test',
+      },
+    ],
+  ])
+})
