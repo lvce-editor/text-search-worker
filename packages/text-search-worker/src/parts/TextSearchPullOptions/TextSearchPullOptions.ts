@@ -1,5 +1,5 @@
 export interface TextSearchPullOptions {
-  readonly id: string
+  readonly searchId: string
   readonly maxSearchResults?: number
   readonly resultsFoundMethod: string
   readonly ripGrepArgs?: readonly string[]

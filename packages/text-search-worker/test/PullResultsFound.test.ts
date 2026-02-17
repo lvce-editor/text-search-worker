@@ -36,6 +36,7 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
         },
       ],
     }),
+    'Search.rerender': () => undefined,
   })
   IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
@@ -93,5 +94,8 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRendererWorker.invocations).toEqual([['SearchProcess.invoke', 'TextSearch.getPullResults', 'active-search']])
+  expect(mockRendererWorker.invocations).toEqual([
+    ['SearchProcess.invoke', 'TextSearch.getPullResults', 'active-search'],
+    ['Search.rerender'],
+  ])
 })

@@ -113,7 +113,7 @@ test('textSearch - pull based (file scheme)', async () => {
       'SearchProcess.invoke',
       'TextSearch.searchPull',
       {
-        id: 'search-1',
+        searchId: 'search-1',
         ripGrepArgs: ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', '1', '--ignore-case', '--fixed-strings', '--', 'abc', '.'],
         searchDir: '/test',
       },

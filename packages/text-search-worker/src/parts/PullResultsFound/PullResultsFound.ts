@@ -7,6 +7,7 @@ import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetText
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
+import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
   if (state.searchId !== searchId) {
@@ -31,7 +32,7 @@ export const handlePullResultsFound = async (state: SearchState, searchId: strin
   const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, state.fileIconCache)
   const limitHit = Boolean(result?.limitHit)
   const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
-  return {
+  const updatedState = {
     ...state,
     fileCount,
     fileIconCache: newFileIconCache,
@@ -48,4 +49,9 @@ export const handlePullResultsFound = async (state: SearchState, searchId: strin
     minLineY: 0,
     scrollBarHeight,
   }
+  const latest = SearchViewStates.get(state.uid)
+  const oldState = latest ? latest.oldState : state
+  SearchViewStates.set(state.uid, oldState, updatedState)
+  await RendererWorker.invoke('Search.rerender')
+  return updatedState
 }

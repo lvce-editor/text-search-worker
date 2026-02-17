@@ -19,7 +19,7 @@ export const textSearch = async (
   })
   if (options.usePullBasedSearch && searchId && (scheme === '' || scheme === 'file')) {
     const pullSearchOptions = {
-      id: searchId,
+      searchId,
       ripGrepArgs,
       searchDir: root,
     }
