@@ -1,10 +1,14 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as GetUsePullBasedSearch from '../GetUsePullBasedSearch/GetUsePullBasedSearch.ts'
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
+
+
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
   const { excludeValue, flags, includeValue, replacement, savedCollapsedPaths, savedValue, threads } = RestoreState.restoreState(savedState)
+  const usePullBasedSearch = await GetUsePullBasedSearch.getUsePullBasedSearch()
 
   const update: Partial<SearchState> = {
     collapsedPaths: savedCollapsedPaths,
@@ -15,10 +19,17 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     inputSource: InputSource.Script,
     replacement,
     threads,
+    usePullBasedSearch,
     value: savedValue,
   }
   if (savedValue) {
-    const result = await ViewletSearchHandleUpdate.handleUpdate(state, update)
+    const result = await ViewletSearchHandleUpdate.handleUpdate(
+      {
+        ...state,
+        usePullBasedSearch,
+      },
+      update,
+    )
     return {
       ...result,
       initial: false,
@@ -32,5 +43,6 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     initial: false,
     loaded: true,
     threads,
+    usePullBasedSearch,
   }
 }
