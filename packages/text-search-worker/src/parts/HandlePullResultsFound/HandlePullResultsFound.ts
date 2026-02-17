@@ -7,7 +7,6 @@ import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOf
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
-import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
@@ -50,5 +49,5 @@ export const handlePullResultsFound = async (state: SearchState, searchId: strin
   const oldState = latest ? latest.oldState : state
   SearchViewStates.set(uid, oldState, updatedState)
   await RendererWorker.invoke('Search.rerender')
-  return updatedState
+  return state
 }
