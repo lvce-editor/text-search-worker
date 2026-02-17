@@ -4,8 +4,6 @@ import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
-
-
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
   const { excludeValue, flags, includeValue, replacement, savedCollapsedPaths, savedValue, threads } = RestoreState.restoreState(savedState)
   const usePullBasedSearch = await GetUsePullBasedSearch.getUsePullBasedSearch()
