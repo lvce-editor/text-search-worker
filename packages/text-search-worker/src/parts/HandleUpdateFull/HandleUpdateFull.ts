@@ -24,6 +24,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     minimumSliderSize,
     platform,
     threads,
+    uid,
     usePullBasedSearch,
     value,
   } = partialNewState
@@ -54,6 +55,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     assetDir,
     platform,
     searchId,
+    uid,
   )
   if (!Array.isArray(results)) {
     throw new TypeError('results must be of type array')
