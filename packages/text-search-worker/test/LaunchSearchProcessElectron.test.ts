@@ -1,14 +1,14 @@
-import { expect, test, jest } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessElectron/LaunchSearchProcessElectron.ts'
 
-const mockRpc = {
-  invoke: jest.fn(),
-}
+// const mockRpc = {
+//   invoke: jest.fn(),
+// }
 
 // @ts-ignore
-MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
+// MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
 test.skip('launchSearchProcessElectron - creates message port and rpc', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
