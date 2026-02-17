@@ -42,6 +42,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       query: value,
       root,
       scheme,
+      defaultExcludes: SearchFlags.hasUseIgnoreFiles(flags) ? partialNewState.defaultExcludes : [],
       threads,
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
