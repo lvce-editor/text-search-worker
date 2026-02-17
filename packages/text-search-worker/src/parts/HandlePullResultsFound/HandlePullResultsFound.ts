@@ -11,13 +11,12 @@ import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
   const { fileIconCache, headerHeight, height, itemHeight, listItems, minimumSliderSize, platform, uid } = state
-  if (state.searchId !== searchId) {
-    return state
-  }
   const result =
     platform === PlatformType.Remote || platform === PlatformType.Electron
       ? await SearchProcess.invoke('TextSearch.getPullResults', searchId)
       : await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.getPullResults', searchId)
+
+  console.log('got results...')
   const newResults = result?.results || []
   const allResults = [...listItems, ...newResults]
   const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(allResults)
