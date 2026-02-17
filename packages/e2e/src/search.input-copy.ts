@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.input-copy'
 
-export const test: Test = async ({ ClipBoard, Command, FileSystem, Search, Workspace }) => {
+export const test: Test = async ({ ClipBoard, FileSystem, Search, Workspace }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   const tmpDir = await FileSystem.getTmpDir()
@@ -11,10 +11,10 @@ export const test: Test = async ({ ClipBoard, Command, FileSystem, Search, Works
   await Search.open()
   await Search.setValue('ab')
   await Search.setReplaceValue('')
-  await Command.execute('Search.handleInputSelectionChange', 'SearchValue', 0, 2)
+  await Search.handleInputSelectionChange('SearchValue', 0, 2)
 
   // act
-  await Command.execute('Search.handleInputCopy', 'SearchValue')
+  await Search.handleInputCopy('SearchValue')
 
   // assert
   await ClipBoard.shouldHaveText('ab')
