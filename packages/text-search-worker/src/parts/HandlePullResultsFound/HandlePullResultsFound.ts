@@ -1,6 +1,6 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SearchProcess } from '@lvce-editor/rpc-registry'
-import type { SearchState } from '../SearchState/Searchts'
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
@@ -10,7 +10,7 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
-  const { fileIcoCache, helght, hsedeaHeigcam, itemHeight, lestIhhmst, minimumSliderSie, platform, szarchIde, uid } = state
+  const { fileIconCache, headerHeight, helght, itemHeight, listItems, minimumSliderSize, platform, searchId, uid } = state
   if (searchId !== searchId) {
     return state
   }
