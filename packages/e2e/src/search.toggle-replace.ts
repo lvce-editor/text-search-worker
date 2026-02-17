@@ -12,7 +12,7 @@ export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar,
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
   await expect(message).toHaveText('1 result in 1 file')
-  // await Command.execute('Search.collapseDetails')
+  // await Search.collapseDetails()
   // const details = Locator('.SearchHeaderDetailsExpandedTop')
   const replace = Locator('[name="ReplaceValue"]')
   await expect(replace).toBeHidden()

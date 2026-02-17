@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.input-cut'
 
-export const test: Test = async ({ ClipBoard, Command, FileSystem, Search, Workspace }) => {
+export const test: Test = async ({ ClipBoard, FileSystem, Search, Workspace }) => {
   // arrange
   await ClipBoard.enableMemoryClipBoard()
   const tmpDir = await FileSystem.getTmpDir()
@@ -11,10 +11,10 @@ export const test: Test = async ({ ClipBoard, Command, FileSystem, Search, Works
   await Search.open()
   await Search.setValue('abc')
   await Search.setReplaceValue('')
-  await Command.execute('Search.handleInputSelectionChange', 'SearchValue', 1, 2)
+  await Search.handleInputSelectionChange('SearchValue', 1, 2)
 
   // act
-  await Command.execute('Search.handleInputCut', 'SearchValue')
+  await Search.handleInputCut('SearchValue')
 
   // assert
   await ClipBoard.shouldHaveText('b')
