@@ -10,8 +10,8 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
-  const { fileIconCache, headerHeight, helght, itemHeight, listItems, minimumSliderSize, platform, searchId, uid } = state
-  if (searchId !== searchId) {
+  const { fileIconCache, headerHeight, height, itemHeight, listItems, minimumSliderSize, platform, uid } = state
+  if (state.searchId !== searchId) {
     return state
   }
   const result =
