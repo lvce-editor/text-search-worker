@@ -33,6 +33,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     value,
     {
       assetDir,
+      defaultExcludes: SearchFlags.hasUseIgnoreFiles(flags) ? partialNewState.defaultExcludes : [],
       exclude: excludeValue,
       flags,
       include: includeValue,
@@ -42,7 +43,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       query: value,
       root,
       scheme,
-      defaultExcludes: SearchFlags.hasUseIgnoreFiles(flags) ? partialNewState.defaultExcludes : [],
       threads,
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
