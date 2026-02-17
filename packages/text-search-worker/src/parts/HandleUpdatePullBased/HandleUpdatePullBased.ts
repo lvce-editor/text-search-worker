@@ -8,14 +8,14 @@ import { get, set } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdatePullBased = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], message: '', searchResults: [] }
+  const searchId = crypto.randomUUID()
+  const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], message: '', searchId, searchResults: [] }
   set(state.uid, state, partialNewState)
   const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const isFileSearch = scheme === '' || scheme === 'file'
   const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
-  const searchId = crypto.randomUUID()
   const { limitHit } = await TextSearch.textSearch(
     root,
     value,

@@ -9,8 +9,11 @@ import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
-export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
-  const { fileIconCache, headerHeight, height, itemHeight, listItems, minimumSliderSize, platform, uid } = state
+export const handlePullResultsFound = async (state: SearchState, resultSearchId: string): Promise<SearchState> => {
+  const { fileIconCache, headerHeight, height, itemHeight, listItems, minimumSliderSize, platform, searchId, uid } = state
+  if (searchId !== resultSearchId) {
+    return state
+  }
   const result: readonly SearchResult[] =
     platform === PlatformType.Remote || platform === PlatformType.Electron
       ? await SearchProcess.invoke('TextSearch.getPullResults', searchId)
