@@ -2,11 +2,12 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
-import { get } from '../SearchViewStates/SearchViewStates.ts'
+import { get, set } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdatePullBased = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const partialNewState = { ...state, ...update }
+  const partialNewState: SearchState = { ...state, ...update, searchResults: [] }
+  set(state.uid, state, partialNewState)
   const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
