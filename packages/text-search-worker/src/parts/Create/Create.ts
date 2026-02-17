@@ -92,7 +92,7 @@ export const create = (
     threads: 0,
     useChevrons: true,
     useFileIcons: true,
-    usePullBasedSearch: true,
+    usePullBasedSearch: false, // TODO enable
     viewMode: ViewMode.List,
     workspacePath: workspacePath,
   }
