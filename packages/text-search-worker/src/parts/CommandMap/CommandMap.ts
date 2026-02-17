@@ -57,6 +57,7 @@ import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as NextHistoryResult from '../NextHistoryResult/NextHistoryResult.ts'
 import { openSearchEditor } from '../OpenSearchEditor/OpenSearchEditor.ts'
 import * as PreviousHistoryResult from '../PreviousHistoryResult/PreviousHistoryResult.ts'
+import { handlePullResultsFound } from '../PullResultsFound/PullResultsFound.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import { removeCurrent } from '../RemoveCurrent/RemoveCurrent.ts'
 import { removeIndex } from '../RemoveIndex/RemoveIndex.ts'
@@ -86,7 +87,6 @@ import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFi
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
-import { handlePullResultsFound } from '../PullResultsFound/PullResultsFound.ts'
 
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
@@ -148,6 +148,7 @@ export const commandMap = {
   'TextSearch.handleListBlur': WrapCommand.wrapCommand(HandleListBlur.handleListBlur),
   'TextSearch.handleListFocus': WrapCommand.wrapCommand(handleListFocus),
   'TextSearch.handleListPointerDown': WrapCommand.wrapCommand(handleListPointerDown),
+  'TextSearch.handlePullResultsFound': WrapCommand.wrapCommand(handlePullResultsFound),
   'TextSearch.handleReplaceInput': WrapCommand.wrapCommand(HandleReplaceInput.handleReplaceInput),
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'TextSearch.handleScrollBarClick': WrapCommand.wrapCommand(ListHandleScrollBarClick.handleScrollBarClick),
@@ -168,7 +169,6 @@ export const commandMap = {
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
-  'TextSearch.handlePullResultsFound': WrapCommand.wrapCommand(handlePullResultsFound),
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
   'TextSearch.replaceAllInFile': WrapCommand.wrapCommand(replaceAllInFile),
