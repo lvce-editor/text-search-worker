@@ -1,12 +1,14 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
+import { getTextSearchResultCounts } from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
+import { getStatusMessage } from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import { get, set } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
 export const handleUpdatePullBased = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], searchResults: [] }
+  const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], message: '', searchResults: [] }
   set(state.uid, state, partialNewState)
   const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value } = partialNewState
   const root = state.workspacePath
@@ -44,9 +46,12 @@ export const handleUpdatePullBased = async (state: SearchState, update: Partial<
     return state
   }
   const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
+  const { fileCount, resultCount } = getTextSearchResultCounts(latest.newState.items)
+  const message = getStatusMessage(resultCount, fileCount)
   return {
     ...latest.newState,
     limitHit,
     limitHitWarning,
+    message,
   }
 }
