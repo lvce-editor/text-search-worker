@@ -57,6 +57,7 @@ import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as NextHistoryResult from '../NextHistoryResult/NextHistoryResult.ts'
 import { openSearchEditor } from '../OpenSearchEditor/OpenSearchEditor.ts'
 import * as PreviousHistoryResult from '../PreviousHistoryResult/PreviousHistoryResult.ts'
+import { handlePullResultsFound } from '../PullResultsFound/PullResultsFound.ts'
 import * as Refresh from '../Refresh/Refresh.ts'
 import { removeCurrent } from '../RemoveCurrent/RemoveCurrent.ts'
 import { removeIndex } from '../RemoveIndex/RemoveIndex.ts'
@@ -147,6 +148,7 @@ export const commandMap = {
   'TextSearch.handleListBlur': WrapCommand.wrapCommand(HandleListBlur.handleListBlur),
   'TextSearch.handleListFocus': WrapCommand.wrapCommand(handleListFocus),
   'TextSearch.handleListPointerDown': WrapCommand.wrapCommand(handleListPointerDown),
+  'TextSearch.handlePullResultsFound': WrapCommand.wrapCommand(handlePullResultsFound),
   'TextSearch.handleReplaceInput': WrapCommand.wrapCommand(HandleReplaceInput.handleReplaceInput),
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'TextSearch.handleScrollBarClick': WrapCommand.wrapCommand(ListHandleScrollBarClick.handleScrollBarClick),
