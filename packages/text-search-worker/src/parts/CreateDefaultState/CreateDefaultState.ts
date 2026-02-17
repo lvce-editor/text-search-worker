@@ -88,6 +88,7 @@ export const createDefaultState = (): SearchState => {
     threads: 0,
     useChevrons: true,
     useFileIcons: true,
+    usePullBasedSearch: false,
     viewMode: ViewMode.List,
     workspacePath: '',
   }

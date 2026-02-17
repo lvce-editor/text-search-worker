@@ -24,6 +24,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     minimumSliderSize,
     platform,
     threads,
+    usePullBasedSearch,
     value,
   } = partialNewState
   const root = state.workspacePath
@@ -44,6 +45,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       root,
       scheme,
       threads,
+      usePullBasedSearch: usePullBasedSearch || false,
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
     assetDir,

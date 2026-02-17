@@ -17,6 +17,7 @@ export interface SearchHeader {
   readonly searchInputErrorMessage: string
   readonly useChevrons: boolean
   readonly useFileIcons: boolean
+  readonly usePullBasedSearch: boolean
   readonly value: string
   readonly viewMode: number
 }
