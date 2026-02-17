@@ -86,6 +86,7 @@ import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFi
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 import * as ViewAsTree from '../ViewAsTree/ViewAsTree.ts'
 import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
+import { handlePullResultsFound } from '../PullResultsFound/PullResultsFound.ts'
 
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
@@ -167,6 +168,7 @@ export const commandMap = {
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
   'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
+  'TextSearch.handlePullResultsFound': WrapCommand.wrapCommand(handlePullResultsFound),
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
   'TextSearch.replaceAllInFile': WrapCommand.wrapCommand(replaceAllInFile),
