@@ -3,8 +3,9 @@ import * as GetSearchFocusKey from '../GetSearchFocusKey/GetSearchFocusKey.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 
 export const handleFocusIn = async (state: SearchState, key: string): Promise<SearchState> => {
+  const { focus } = state
   const focusKey = GetSearchFocusKey.getSearchFocusKey(key)
-  if (state.focus === focusKey) {
+  if (focus === focusKey) {
     return state
   }
   return {
