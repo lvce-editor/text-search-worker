@@ -11,11 +11,30 @@ export const textSearch = async (
   options: TextSearchOptions,
   assetDir?: string,
   platform?: number,
+  searchId?: string,
+  uid?: number,
 ): Promise<TextSearchCompletionResult> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
     searchString: query,
   })
+  if (options.usePullBasedSearch && searchId && (scheme === '' || scheme === 'file')) {
+    const pullSearchOptions = {
+      ripGrepArgs,
+      searchDir: root,
+      searchId,
+      uid,
+    }
+    if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
+      await SearchProcess.invoke('TextSearch.searchPull', pullSearchOptions)
+    } else {
+      await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.searchPull', pullSearchOptions)
+    }
+    return {
+      limitHit: false,
+      results: [],
+    }
+  }
   const actualOptions = {
     ripGrepArgs,
     searchDir: root,

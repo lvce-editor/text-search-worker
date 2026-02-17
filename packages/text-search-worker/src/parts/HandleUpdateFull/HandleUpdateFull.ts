@@ -24,11 +24,15 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     minimumSliderSize,
     platform,
     threads,
+    uid,
     usePullBasedSearch,
     value,
   } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
+  const isFileSearch = scheme === '' || scheme === 'file'
+  const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
+  const searchId = shouldUsePullBasedSearch ? crypto.randomUUID() : ''
   const { limitHit, results } = await TextSearch.textSearch(
     root,
     value,
@@ -45,11 +49,13 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
       root,
       scheme,
       threads,
-      usePullBasedSearch: usePullBasedSearch || false,
+      usePullBasedSearch: shouldUsePullBasedSearch,
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
     assetDir,
     platform,
+    searchId,
+    uid,
   )
   if (!Array.isArray(results)) {
     throw new TypeError('results must be of type array')
@@ -84,6 +90,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     message,
     minLineY: 0,
     scrollBarHeight,
+    searchId,
     searchInputErrorMessage: '',
     threads,
     value,
