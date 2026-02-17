@@ -37,7 +37,11 @@ export const getSavedExcludeValue = (savedState: unknown): string => {
 }
 
 export const getSavedCollapsedPaths = (savedState: unknown): readonly string[] => {
-  if (hasProperty(savedState, 'collapsedPaths') && Array.isArray(savedState.collapsedPaths) && savedState.collapsedPaths.every((item) => typeof item === 'string')) {
+  if (
+    hasProperty(savedState, 'collapsedPaths') &&
+    Array.isArray(savedState.collapsedPaths) &&
+    savedState.collapsedPaths.every((item) => typeof item === 'string')
+  ) {
     return savedState.collapsedPaths
   }
   return []
