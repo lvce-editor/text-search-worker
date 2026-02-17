@@ -9,5 +9,6 @@ export interface TextSearchProvider {
     assetDir: string,
     platform?: number,
     searchId?: string,
+    uid?: number,
   ): Promise<TextSearchCompletionResult>
 }

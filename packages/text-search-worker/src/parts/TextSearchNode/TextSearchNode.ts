@@ -12,6 +12,7 @@ export const textSearch = async (
   assetDir?: string,
   platform?: number,
   searchId?: string,
+  uid?: number,
 ): Promise<TextSearchCompletionResult> => {
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
@@ -22,6 +23,7 @@ export const textSearch = async (
       ripGrepArgs,
       searchDir: root,
       searchId,
+      uid,
     }
     if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
       await SearchProcess.invoke('TextSearch.searchPull', pullSearchOptions)
