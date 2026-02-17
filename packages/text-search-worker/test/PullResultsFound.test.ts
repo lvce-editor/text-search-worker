@@ -2,6 +2,7 @@ import { expect, test } from '@jest/globals'
 import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handlePullResultsFound } from '../src/parts/HandlePullResultsFound/HandlePullResultsFound.ts'
+import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewStates.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('handlePullResultsFound - ignores stale search id', async () => {
@@ -47,6 +48,7 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
     minimumSliderSize: 20,
     searchId: 'active-search',
   }
+  SearchViewStates.set(state.uid, state, state)
 
   const result = await handlePullResultsFound(state, 'active-search')
 
