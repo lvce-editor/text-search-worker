@@ -14,6 +14,7 @@ import * as ToggleUseIgnoreFiles from '../ToggleUseIgnoreFiles/ToggleUseIgnoreFi
 import * as ToggleUseRegularExpression from '../ToggleUseRegularExpression/ToggleUseRegularExpression.ts'
 
 export const getClickHandler = (name: string): ClickHandler => {
+  // TODO maybe add a click handler to each button instead
   switch (name) {
     case InputName.MatchCase:
       return ToggleMatchCase.toggleMatchCase
