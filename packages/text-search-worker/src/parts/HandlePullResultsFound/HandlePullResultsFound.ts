@@ -1,5 +1,6 @@
 import { PlatformType } from '@lvce-editor/constants'
 import { RendererWorker, SearchProcess } from '@lvce-editor/rpc-registry'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
@@ -11,13 +12,11 @@ import * as SearchViewStates from '../SearchViewStates/SearchViewStates.ts'
 
 export const handlePullResultsFound = async (state: SearchState, searchId: string): Promise<SearchState> => {
   const { fileIconCache, headerHeight, height, itemHeight, listItems, minimumSliderSize, platform, uid } = state
-  const result =
+  const result: readonly SearchResult[] =
     platform === PlatformType.Remote || platform === PlatformType.Electron
       ? await SearchProcess.invoke('TextSearch.getPullResults', searchId)
       : await RendererWorker.invoke('SearchProcess.invoke', 'TextSearch.getPullResults', searchId)
-
-  console.log('got results...')
-  const newResults = result?.results || []
+  const newResults = result
   const allResults = [...listItems, ...newResults]
   const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(allResults)
   const message = SearchStatusMessage.getStatusMessage(resultCount, fileCount)
@@ -30,17 +29,16 @@ export const handlePullResultsFound = async (state: SearchState, searchId: strin
   const finalDeltaY = Math.max(contentHeight - listHeight, 0)
   const visible = allResults.slice(0, maxLineY)
   const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, fileIconCache)
-  const limitHit = Boolean(result?.limitHit)
-  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
+
+  const latest = SearchViewStates.get(uid)
+
   const updatedState = {
-    ...state,
+    ...latest.newState,
     fileCount,
     fileIconCache: newFileIconCache,
     finalDeltaY,
     icons,
     items: allResults,
-    limitHit,
-    limitHitWarning,
     listItems: allResults,
     loaded: true,
     matchCount: resultCount,
@@ -49,7 +47,6 @@ export const handlePullResultsFound = async (state: SearchState, searchId: strin
     minLineY: 0,
     scrollBarHeight,
   }
-  const latest = SearchViewStates.get(uid)
   const oldState = latest ? latest.oldState : state
   SearchViewStates.set(uid, oldState, updatedState)
   await RendererWorker.invoke('Search.rerender')
