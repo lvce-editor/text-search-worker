@@ -1,6 +1,6 @@
+import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
-import type { SearchState } from '../SearchState/SearchState.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import { get } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
