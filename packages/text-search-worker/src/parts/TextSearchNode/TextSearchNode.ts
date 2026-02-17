@@ -19,9 +19,9 @@ export const textSearch = async (
   })
   if (options.usePullBasedSearch && searchId && (scheme === '' || scheme === 'file')) {
     const pullSearchOptions = {
-      searchId,
       ripGrepArgs,
       searchDir: root,
+      searchId,
     }
     if (platform === PlatformType.Remote || platform === PlatformType.Electron) {
       await SearchProcess.invoke('TextSearch.searchPull', pullSearchOptions)

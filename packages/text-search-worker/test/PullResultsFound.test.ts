@@ -17,6 +17,7 @@ test('handlePullResultsFound - ignores stale search id', async () => {
 
 test('handlePullResultsFound - fetches and merges pull results', async () => {
   const mockRendererWorker = RendererWorker.registerMockRpc({
+    'Search.rerender': () => undefined,
     'SearchProcess.invoke': () => ({
       limitHit: false,
       results: [
@@ -36,7 +37,6 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
         },
       ],
     }),
-    'Search.rerender': () => undefined,
   })
   IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
@@ -94,8 +94,5 @@ test('handlePullResultsFound - fetches and merges pull results', async () => {
     maxLineY: 2,
     message: '1 result in 1 file',
   })
-  expect(mockRendererWorker.invocations).toEqual([
-    ['SearchProcess.invoke', 'TextSearch.getPullResults', 'active-search'],
-    ['Search.rerender'],
-  ])
+  expect(mockRendererWorker.invocations).toEqual([['SearchProcess.invoke', 'TextSearch.getPullResults', 'active-search'], ['Search.rerender']])
 })
