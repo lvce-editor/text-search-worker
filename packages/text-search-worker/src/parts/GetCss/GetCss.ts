@@ -11,8 +11,9 @@ const getIndentRightRule = (indentRight: number): string => {
 }
 
 const getTreeItemsTopRule = (treeItemsTop: number): string => {
-  return `.TreeItemsTop-${treeItemsTop} {
-  top: ${treeItemsTop}px;
+  const roundedTreeItemsTop = Math.round(treeItemsTop)
+  return `.TreeItemsTop-${roundedTreeItemsTop} {
+  top: ${roundedTreeItemsTop}px;
 }`
 }
 

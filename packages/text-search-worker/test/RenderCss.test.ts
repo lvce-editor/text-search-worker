@@ -45,3 +45,24 @@ test('renderCss - returns SetCss command with generated css', () => {
   expect(countOccurrences(css, '.Indent-28 {')).toBe(1)
   expect(countOccurrences(css, '.IndentRight-12 {')).toBe(1)
 })
+
+test('renderCss - rounds subpixel tree items top values', () => {
+  const uid = 5
+  const oldState = {
+    ...CreateDefaultState.createDefaultState(),
+    uid,
+  }
+  const newState = {
+    ...oldState,
+    deltaY: 18.609_375,
+    finalDeltaY: 100,
+    height: 200,
+    itemHeight: 22,
+  }
+
+  const result = renderCss(oldState, newState)
+  const css = result[2] as string
+  expect(css).toContain('.TreeItemsTop--19 {')
+  expect(css).toContain('top: -19px;')
+  expect(css).not.toContain('18.609375')
+})

@@ -12,7 +12,7 @@ export const getTreeItemsVirtualDom = (
   itemHeight: number,
 ): readonly VirtualDomNode[] => {
   const pixelOffset = itemHeight === 0 ? 0 : deltaY % itemHeight
-  const treeItemsTop = -pixelOffset
+  const treeItemsTop = Math.round(-pixelOffset)
   return [
     {
       childCount: visibleItems.length,
