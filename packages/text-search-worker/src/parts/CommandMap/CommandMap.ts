@@ -5,8 +5,10 @@ import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
 import * as CopyPath from '../CopyPath/CopyPath.ts'
 import * as Create from '../Create/Create.ts'
+import * as DisableRenderFolderPaths from '../DisableRenderFolderPaths/DisableRenderFolderPaths.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
+import * as EnableRenderFolderPaths from '../EnableRenderFolderPaths/EnableRenderFolderPaths.ts'
 import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
@@ -95,8 +97,10 @@ export const commandMap = {
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
   'TextSearch.create': Create.create,
+  'TextSearch.disableRenderFolderPaths': WrapCommand.wrapCommand(DisableRenderFolderPaths.disableRenderFolderPaths),
   'TextSearch.diff2': Diff2.diff2,
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
+  'TextSearch.enableRenderFolderPaths': WrapCommand.wrapCommand(EnableRenderFolderPaths.enableRenderFolderPaths),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
