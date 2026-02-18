@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
 import { ViewletCommand } from '@lvce-editor/constants'
+import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { renderCss } from '../src/parts/RenderCss/RenderCss.ts'
-import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 const countOccurrences = (value: string, search: string): number => {
