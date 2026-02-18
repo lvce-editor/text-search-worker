@@ -14,28 +14,28 @@ test('getDisplayResults', () => {
     },
     {
       end: 6,
-      indent: 16,
+      lineNumber: 1,
       start: 5,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
     {
       end: 10,
-      indent: 28,
+      lineNumber: 1,
       start: 9,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
     {
       end: 17,
-      indent: 28,
+      lineNumber: 1,
       start: 16,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
   ]
   const fileIcons: readonly string[] = ['']
-      indent: 28,
+  const itemHeight = 20
   const resultCount = 3
   const searchTerm = 'a'
   const minLineY = 0
@@ -64,7 +64,7 @@ test('getDisplayResults', () => {
       expanded: 2,
       focused: false,
       icon: '',
-      indent: 0,
+      indent: 16,
       matchLength: 0,
       matchStart: 0,
       posInSet: 1,
@@ -79,7 +79,7 @@ test('getDisplayResults', () => {
       expanded: 0,
       focused: false,
       icon: '',
-      indent: 12,
+      indent: 28,
       matchLength: 1,
       matchStart: 5,
       posInSet: 2,
@@ -94,7 +94,7 @@ test('getDisplayResults', () => {
       expanded: 0,
       focused: false,
       icon: '',
-      indent: 12,
+      indent: 28,
       matchLength: 1,
       matchStart: 9,
       posInSet: 3,
@@ -109,7 +109,7 @@ test('getDisplayResults', () => {
       expanded: 0,
       focused: false,
       icon: '',
-      indent: 12,
+      indent: 28,
       matchLength: 1,
       matchStart: 16,
       posInSet: 4,
