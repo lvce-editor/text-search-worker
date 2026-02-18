@@ -1,7 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
-import * as GetUsePullBasedSearch from '../GetUsePullBasedSearch/GetUsePullBasedSearch.ts'
 import * as GetSearchWarningMessageHeight from '../GetSearchWarningMessageHeight/GetSearchWarningMessageHeight.ts'
 import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
+import * as GetUsePullBasedSearch from '../GetUsePullBasedSearch/GetUsePullBasedSearch.ts'
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'

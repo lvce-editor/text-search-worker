@@ -1,7 +1,7 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
-import { getTextSearchResultCounts } from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as GetSearchWarningMessageHeight from '../GetSearchWarningMessageHeight/GetSearchWarningMessageHeight.ts'
+import { getTextSearchResultCounts } from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
 import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import { getStatusMessage } from '../SearchStatusMessage/SearchStatusMessage.ts'

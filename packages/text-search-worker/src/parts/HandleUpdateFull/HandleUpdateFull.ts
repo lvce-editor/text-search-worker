@@ -2,14 +2,14 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import * as GetNumberOfVisibleItems from '../GetNumberOfVisibleItems/GetNumberOfVisibleItems.ts'
 import * as GetProtocol from '../GetProtocol/GetProtocol.ts'
+import * as GetSearchWarningMessageHeight from '../GetSearchWarningMessageHeight/GetSearchWarningMessageHeight.ts'
 import * as GetTextSearchResultCounts from '../GetTextSearchResultCounts/GetTextSearchResultCounts.ts'
+import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
-import * as GetSearchWarningMessageHeight from '../GetSearchWarningMessageHeight/GetSearchWarningMessageHeight.ts'
-import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
@@ -83,8 +83,8 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     fileCount,
     fileIconCache: newFileIconCache,
     finalDeltaY,
-    icons,
     headerHeight,
+    icons,
     items: results,
     limitHit,
     limitHitWarning,
