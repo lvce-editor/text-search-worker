@@ -40,6 +40,7 @@ import { handleListFocus } from '../HandleListFocus/HandleListFocus.ts'
 import { handlePullResultsFound } from '../HandlePullResultsFound/HandlePullResultsFound.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
+import * as HandleWorkspaceChange from '../HandleWorkspaceChange/HandleWorkspaceChange.ts'
 import * as Initialize from '../Initialize/Initialize.ts'
 import * as ListFocusFirst from '../ListFocusFirst/ListFocusFirst.ts'
 import * as ListFocusIndex from '../ListFocusIndex/ListFocusIndex.ts'
@@ -155,6 +156,7 @@ export const commandMap = {
   'TextSearch.handleScrollBarMove': WrapCommand.wrapCommand(ListHandleScrollBarMove.handleScrollBarMove),
   'TextSearch.handleSharedInput': WrapCommand.wrapCommand(HandleSharedInput.handleSharedInput),
   'TextSearch.handleWheel': WrapCommand.wrapCommand(ListHandleWheel.handleWheel),
+  'TextSearch.handleWorkspaceChange': WrapCommand.wrapCommand(HandleWorkspaceChange.handleWorkspaceChange),
   // not wrapped
   'TextSearch.initialize': Initialize.initialize,
   'TextSearch.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
