@@ -2,7 +2,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.render-folder-paths'
 
-const enableRenderFolderPaths = async (Command: { execute: (id: string) => Promise<void> }): Promise<void> => {
+const enableRenderFolderPaths = async (Command: { readonly execute: (id: string) => Promise<void> }): Promise<void> => {
   try {
     await Command.execute('Search.enableRenderFolderPaths')
   } catch {
@@ -10,7 +10,7 @@ const enableRenderFolderPaths = async (Command: { execute: (id: string) => Promi
   }
 }
 
-const disableRenderFolderPaths = async (Command: { execute: (id: string) => Promise<void> }): Promise<void> => {
+const disableRenderFolderPaths = async (Command: { readonly execute: (id: string) => Promise<void> }): Promise<void> => {
   try {
     await Command.execute('Search.disableRenderFolderPaths')
   } catch {
