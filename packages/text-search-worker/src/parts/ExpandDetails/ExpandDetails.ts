@@ -10,8 +10,8 @@ export const expandDetails = (state: SearchState): SearchState => {
   return {
     ...state,
     flags: newFlags,
-    headerHeight: GetHeaderHeightForFlags.getHeaderHeightForFlags(headerHeight, flags, newFlags),
     focus: WhenExpression.FocusSearchIncludeInput,
     focusSource: InputSource.Script,
+    headerHeight: GetHeaderHeightForFlags.getHeaderHeightForFlags(headerHeight, flags, newFlags),
   }
 }
