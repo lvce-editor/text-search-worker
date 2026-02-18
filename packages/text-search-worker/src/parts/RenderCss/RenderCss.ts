@@ -10,6 +10,6 @@ export const renderCss = (oldState: SearchState, newState: SearchState): readonl
   const indents = viewModel.displayResults.map((item) => item.indent)
   const uniqueIndents = getUniqueIndents(indents)
 
-  const css = getCss(0, uniqueIndents)
+  const css = getCss(0, uniqueIndents, viewModel.scrollBarHeight, viewModel.scrollBarY)
   return [ViewletCommand.SetCss, uid, css]
 }
