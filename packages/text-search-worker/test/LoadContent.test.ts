@@ -2,6 +2,7 @@ import { expect, test } from '@jest/globals'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { loadContent } from '../src/parts/LoadContent/LoadContent.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import * as TextSearchProviders from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('loadContent with saved value calls handleUpdate', async () => {
@@ -41,7 +42,7 @@ test('loadContent without saved value returns state with loaded flag', async () 
   const state = CreateDefaultState.createDefaultState()
   const savedState = {
     excludeValue: '',
-    flags: 1,
+    flags: SearchFlags.UseIgnoreFiles | SearchFlags.ReplaceExpanded | SearchFlags.DetailsExpanded,
     includeValue: '',
     replacement: '',
     savedCollapsedPaths: [],
@@ -52,7 +53,8 @@ test('loadContent without saved value returns state with loaded flag', async () 
   const result = await loadContent(state, savedState)
 
   expect(result).toMatchObject({
-    flags: 1,
+    flags: SearchFlags.UseIgnoreFiles | SearchFlags.ReplaceExpanded | SearchFlags.DetailsExpanded,
+    headerHeight: 190,
     loaded: true,
     threads: 1,
   })

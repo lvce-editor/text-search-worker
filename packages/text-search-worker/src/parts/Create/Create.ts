@@ -1,6 +1,7 @@
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as DefaultExcludeValue from '../DefaultExcludeValue/DefaultExcludeValue.ts'
+import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
@@ -21,6 +22,7 @@ export const create = (
   replacement: string = '',
   platform?: number,
 ): SearchState => {
+  const headerHeight = GetTopHeight.getTopHeight(0)
   const state: SearchState = {
     disposed: false,
     fileCount: 0,
@@ -34,7 +36,7 @@ export const create = (
     x,
     y,
     ...VirtualList.create({
-      headerHeight: 61, // TODO
+      headerHeight,
       itemHeight: itemHeight || 22,
       minimumSliderSize: MinimumSliderSize.minimumSliderSize,
     }),

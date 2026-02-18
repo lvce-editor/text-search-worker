@@ -1,6 +1,7 @@
 import { WhenExpression } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as DefaultExcludeValue from '../DefaultExcludeValue/DefaultExcludeValue.ts'
+import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 import * as InputSource from '../InputSource/InputSource.ts'
 import * as MinimumSliderSize from '../MinimumSliderSize/MinimumSliderSize.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
@@ -9,13 +10,13 @@ import * as ViewMode from '../ViewMode/ViewMode.ts'
 import * as VirtualList from '../VirtualList/VirtualList.ts'
 
 export const createDefaultState = (): SearchState => {
+  const headerHeight = GetTopHeight.getTopHeight(0)
   const virtualList = VirtualList.create({
-    headerHeight: 61, // TODO
+    headerHeight,
     itemHeight: 22,
     minimumSliderSize: MinimumSliderSize.minimumSliderSize,
   })
   const height = 0
-  const headerHeight = 61
   const deltaY = 0
   const finalDeltaY = 0
   const { scrollBarHeight } = virtualList
