@@ -30,7 +30,7 @@ test('getContextMenuHandler returns mouse handler for button 2', () => {
 })
 
 test('keyboard handler works correctly', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 
@@ -50,7 +50,7 @@ test('keyboard handler works correctly', async () => {
 })
 
 test('mouse handler works correctly', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 

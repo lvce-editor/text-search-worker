@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as OpenUri from '../src/parts/OpenUri/OpenUri.ts'
 
 test('openUri - without options', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -12,7 +12,7 @@ test('openUri - without options', async () => {
 })
 
 test('openUri - with preview', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -21,7 +21,7 @@ test('openUri - with preview', async () => {
 })
 
 test('openUri - with options', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -33,7 +33,7 @@ test('openUri - with options', async () => {
 })
 
 test('openUri - error', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => {
       throw new Error('Failed to open file')
     },

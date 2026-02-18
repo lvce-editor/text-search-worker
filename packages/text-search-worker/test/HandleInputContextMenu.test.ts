@@ -6,7 +6,7 @@ import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefau
 import * as HandleInputContextMenu from '../src/parts/HandleInputContextMenu/HandleInputContextMenu.ts'
 
 test('handleInputContextMenu calls ContextMenu.show2 with correct parameters', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 
@@ -39,7 +39,7 @@ test('handleInputContextMenu calls ContextMenu.show2 with correct parameters', a
 })
 
 test('handleInputContextMenu works with different input name', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 

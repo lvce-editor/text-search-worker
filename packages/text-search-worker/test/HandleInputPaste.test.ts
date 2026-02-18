@@ -17,7 +17,7 @@ test('handleInputPaste - returns state unchanged when name is not a valid select
 })
 
 test('handleInputPaste - pastes text into SearchValue at cursor position', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => 'pasted',
   })
 
@@ -53,7 +53,7 @@ test('handleInputPaste - pastes text into SearchValue at cursor position', async
 })
 
 test('handleInputPaste - replaces selected text in SearchValue', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => 'new',
   })
 
@@ -89,7 +89,7 @@ test('handleInputPaste - replaces selected text in SearchValue', async () => {
 })
 
 test('handleInputPaste - pastes text into ReplaceValue', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => 'replacement',
   })
 
@@ -125,7 +125,7 @@ test('handleInputPaste - pastes text into ReplaceValue', async () => {
 })
 
 test('handleInputPaste - pastes text into FilesToInclude', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => '*.ts',
   })
 
@@ -161,7 +161,7 @@ test('handleInputPaste - pastes text into FilesToInclude', async () => {
 })
 
 test('handleInputPaste - pastes text into FilesToExclude', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => 'node_modules',
   })
 
@@ -197,7 +197,7 @@ test('handleInputPaste - pastes text into FilesToExclude', async () => {
 })
 
 test('handleInputPaste - handles empty clipboard text', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => '',
   })
 

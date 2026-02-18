@@ -7,7 +7,7 @@ import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon', undefined],
   })
 
@@ -60,7 +60,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon', undefined],
   })
 
