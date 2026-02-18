@@ -54,7 +54,7 @@ test('renderCss - rounds subpixel tree items top values', () => {
   }
   const newState = {
     ...oldState,
-    deltaY: 18.609375,
+    deltaY: 18.609_375,
     finalDeltaY: 100,
     height: 200,
     itemHeight: 22,
