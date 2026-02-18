@@ -55,6 +55,7 @@ test('getDisplayResults', () => {
       fileIcons,
       focusedIndex,
       collapsedPaths,
+      false,
       results,
     ),
   ).toEqual([
@@ -181,6 +182,7 @@ test('getDisplayResults - should not show child items when parent file is collap
     fileIcons,
     focusedIndex,
     collapsedPaths,
+    false,
     originalResults,
   )
 
@@ -192,4 +194,26 @@ test('getDisplayResults - should not show child items when parent file is collap
   expect(displayResults[1].text).toBe('file2.txt')
   expect(displayResults[1].expanded).toBe(2) // Expanded
   expect(displayResults[2].text).toBe('match1 in file2')
+})
+
+test('getDisplayResults - should render relative folder path next to file name when enabled', () => {
+  const results: readonly SearchResult[] = [
+    {
+      end: 0,
+      lineNumber: 0,
+      start: 0,
+      text: './languages/index.kt',
+      type: TextSearchResultType.File,
+    },
+    {
+      end: 6,
+      lineNumber: 1,
+      start: 5,
+      text: 'fun main(args : Array<String>) {',
+      type: TextSearchResultType.Match,
+    },
+  ]
+  const displayResults = GetSearchDisplayResults.getDisplayResults(results, 20, 1, 'a', 0, 2, '', [''], -1, [], true, results)
+
+  expect(displayResults[0].text).toBe('index.kt — languages')
 })

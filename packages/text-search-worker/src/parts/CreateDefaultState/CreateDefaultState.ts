@@ -63,6 +63,7 @@ export const createDefaultState = (): SearchState => {
     platform: 0,
     removeButtonRight: 0,
     removeButtonWidth: 20,
+    renderFolderPaths: false,
     replacement: '',
     scrollBarY,
     searchId: '',

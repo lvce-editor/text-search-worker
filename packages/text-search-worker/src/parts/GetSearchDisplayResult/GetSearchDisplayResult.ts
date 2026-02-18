@@ -13,6 +13,7 @@ export const getDisplayResult = (
   replacement: string,
   focusedIndex: number,
   collapsedPaths: readonly string[],
+  renderFolderPaths: boolean,
   minLineY: number,
   originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
@@ -33,6 +34,7 @@ export const getDisplayResult = (
         posInSet,
         relativeIndex,
         focused,
+        renderFolderPaths,
         originalResults,
       )
     case TextSearchResultType.Match:

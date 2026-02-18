@@ -12,6 +12,7 @@ export interface SearchHeader {
   readonly limit: number
   readonly limitHit: boolean
   readonly limitHitWarning: string
+  readonly renderFolderPaths?: boolean
   readonly replacement: string
   readonly searchId: string
   readonly searchInputErrorMessage: string
