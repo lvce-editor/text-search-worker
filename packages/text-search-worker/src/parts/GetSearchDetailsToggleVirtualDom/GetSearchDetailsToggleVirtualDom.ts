@@ -12,7 +12,7 @@ export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] =>
     {
       ariaLabel: SearchStrings.toggleSearchDetails(),
       childCount: 1,
-      className: ClassNames.ToggleDetails,
+      className: MergeClassNames.mergeClassNames(ClassNames.ToggleDetails, ClassNames.IconButton),
       name: InputName.ToggleSearchDetails,
       onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,

@@ -142,7 +142,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
     {
       ariaLabel: 'Toggle Search Details',
       childCount: 1,
-      className: 'ToggleDetails',
+      className: 'ToggleDetails IconButton',
       name: 'ToggleSearchDetails',
       onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
