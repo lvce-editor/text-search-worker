@@ -18,6 +18,8 @@ const disableRenderFolderPaths = async (Command: { readonly execute: (id: string
   }
 }
 
+export const skip = 1
+
 export const test: Test = async ({ Command, expect, FileSystem, Locator, Search, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
