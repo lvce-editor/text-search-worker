@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { IconThemeWorker } from '@lvce-editor/rpc-registry'
+import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
@@ -9,6 +9,9 @@ import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
   const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon', undefined],
+  })
+  const mockRendererWorker = RendererWorker.registerMockRpc({
+    'MeasureTextBlockHeight.measureTextBlockHeight': () => 18,
   })
 
   const state: SearchState = {
@@ -45,6 +48,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
 
   expect(result).toMatchObject({
     fileCount: 1,
+    headerHeight: 87,
     icons: ['file-icon', ''],
     items: searchResults,
     limitHit: true,
@@ -57,11 +61,17 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     value: 'test',
   })
   expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
+  expect(mockRendererWorker.invocations).toEqual([
+    ['MeasureTextBlockHeight.measureTextBlockHeight', expect.any(String), 12, 'system-ui', 18, 1],
+  ])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
   const mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon', undefined],
+  })
+  const mockRendererWorker = RendererWorker.registerMockRpc({
+    'MeasureTextBlockHeight.measureTextBlockHeight': () => 18,
   })
 
   const state: SearchState = {
@@ -98,6 +108,7 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
 
   expect(result).toMatchObject({
     fileCount: 1,
+    headerHeight: 61,
     icons: ['file-icon', ''],
     items: searchResults,
     limitHit: false,
@@ -110,4 +121,5 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     value: 'test',
   })
   expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
+  expect(mockRendererWorker.invocations).toEqual([])
 })
