@@ -4,7 +4,27 @@ const getIndentRule = (indent: number): string => {
 }`
 }
 
-export const getCss = (top: number, uniqueIndents: readonly number[], scrollBarHeight: number, scrollBarY: number): string => {
+const getIndentRightRule = (indentRight: number): string => {
+  return `.IndentRight-${indentRight} {
+  padding-right: ${indentRight}px;
+}`
+}
+
+const getTreeItemsTopRule = (treeItemsTop: number): string => {
+  const roundedTreeItemsTop = Math.round(treeItemsTop)
+  return `.TreeItemsTop-${roundedTreeItemsTop} {
+  top: ${roundedTreeItemsTop}px;
+}`
+}
+
+export const getCss = (
+  top: number,
+  uniqueIndents: readonly number[],
+  uniqueIndentRights: readonly number[],
+  scrollBarHeight: number,
+  scrollBarY: number,
+  treeItemsTop: number,
+): string => {
   const rules = [
     `.Search {
   --ScrollBarHeight: ${scrollBarHeight}px;
@@ -14,6 +34,8 @@ export const getCss = (top: number, uniqueIndents: readonly number[], scrollBarH
   `,
 
     ...uniqueIndents.map(getIndentRule),
+    ...uniqueIndentRights.map(getIndentRightRule),
+    getTreeItemsTopRule(treeItemsTop),
   ]
   return rules.join('\n')
 }
