@@ -11,7 +11,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     'IconTheme.getIcons': () => ['file-icon', undefined],
   })
   const mockRendererWorker = RendererWorker.registerMockRpc({
-    'MeasureTextBlockHeight.measureTextBlockHeight': () => 18,
+    'MeasureTextHeight.measureTextBlockHeight': () => 18,
   })
 
   const state: SearchState = {
@@ -61,7 +61,7 @@ test('handleUpdateFull - sets limitHit to true when search hits limit', async ()
     value: 'test',
   })
   expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
-  expect(mockRendererWorker.invocations).toEqual([['MeasureTextBlockHeight.measureTextBlockHeight', expect.any(String), 12, 'system-ui', 18, 1]])
+  expect(mockRendererWorker.invocations).toEqual([['MeasureTextHeight.measureTextBlockHeight', expect.any(String), 12, 'system-ui', 18, 1]])
 })
 
 test('handleUpdateFull - sets limitHit to false when search does not hit limit', async () => {
@@ -69,7 +69,7 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
     'IconTheme.getIcons': () => ['file-icon', undefined],
   })
   const mockRendererWorker = RendererWorker.registerMockRpc({
-    'MeasureTextBlockHeight.measureTextBlockHeight': () => 18,
+    'MeasureTextHeight.measureTextBlockHeight': () => 18,
   })
 
   const state: SearchState = {
