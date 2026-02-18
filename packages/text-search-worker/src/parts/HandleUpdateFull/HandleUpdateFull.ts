@@ -8,6 +8,8 @@ import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 import * as SearchStatusMessage from '../SearchStatusMessage/SearchStatusMessage.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
+import * as GetSearchWarningMessageHeight from '../GetSearchWarningMessageHeight/GetSearchWarningMessageHeight.ts'
+import * as GetTopHeight from '../GetTopHeight/GetTopHeight.ts'
 
 export const handleUpdateFull = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
   const partialNewState = { ...state, ...update }
@@ -16,7 +18,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     excludeValue,
     fileIconCache,
     flags,
-    headerHeight,
     height,
     includeValue,
     itemHeight,
@@ -27,6 +28,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     uid,
     usePullBasedSearch,
     value,
+    width,
   } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
@@ -62,6 +64,9 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   }
   const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(results)
   const message = SearchStatusMessage.getStatusMessage(resultCount, fileCount)
+  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
+  const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(limitHitWarning, width)
+  const headerHeight = GetTopHeight.getTopHeight(flags) + warningHeight
   const total = results.length
   const contentHeight = total * itemHeight
   const listHeight = height - headerHeight
@@ -71,7 +76,6 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const finalDeltaY = Math.max(contentHeight - listHeight, 0)
   const visible = results.slice(0, maxLineY)
   const { icons, newFileIconCache } = await GetFileIcons.getFileIcons(visible, fileIconCache)
-  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
   return {
     ...partialNewState,
     collapsedPaths: [],
@@ -80,6 +84,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     fileIconCache: newFileIconCache,
     finalDeltaY,
     icons,
+    headerHeight,
     items: results,
     limitHit,
     limitHitWarning,
