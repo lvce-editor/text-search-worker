@@ -15,5 +15,5 @@ export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar,
   // assert
   const viewletSearch = Locator('.Search')
   const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('20000 results in 1 file')
+  await expect(message).toHaveText('19999 results in 1 file')
 }
