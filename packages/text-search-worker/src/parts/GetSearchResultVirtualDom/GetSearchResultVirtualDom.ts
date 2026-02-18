@@ -7,7 +7,6 @@ import * as GetBadgeVirtualDom from '../GetBadgeVirtualDom/GetBadgeVirtualDom.ts
 import * as GetChevronVirtualDom from '../GetChevronVirtualDom/GetChevronVirtualDom.ts'
 import * as GetIconsVirtualDom from '../GetIconsVirtualDom/GetIconsVirtualDom.ts'
 import * as GetLabelVirtualDom from '../GetLabelVirtualDom/GetLabelVirtualDom.ts'
-import * as GetPaddingLeft from '../GetPaddingLeft/GetPaddingLeft.ts'
 import { getChildCount } from '../GetSearchDisplayResultChildCount/GetSearchDisplayResultChildCount.ts'
 import * as GetSearchRemoveVirtualDom from '../GetSearchRemoveVirtualDom/GetSearchRemoveVirtualDom.ts'
 import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearchResultClassName.ts'
@@ -29,6 +28,7 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     text: displayText,
     title,
   } = rowInfo
+  const className = `${GetSearchResultClassName.getSearchResultClassName(focused)} Indent-${indent}`
   const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
@@ -39,8 +39,7 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
       ariaPosInSet: posInSet,
       ariaSetSize: setSize,
       childCount,
-      className: GetSearchResultClassName.getSearchResultClassName(focused),
-      paddingLeft: GetPaddingLeft.getPaddingLeft(indent),
+      className,
       paddingRight: TreeItemPadding.PaddingRight,
       role: AriaRoles.TreeItem,
       title,

@@ -1,9 +1,6 @@
 import { getUnique } from '../GetUnique/GetUnique.ts'
 
-const getIndent = (item: any): number => item.indent
-
-export const getUniqueIndents = (items: readonly any[]): readonly number[] => {
-  const indents = items.map(getIndent)
+export const getUniqueIndents = (indents: readonly number[]): readonly number[] => {
   const uniqueIndents = getUnique(indents)
   return uniqueIndents
 }

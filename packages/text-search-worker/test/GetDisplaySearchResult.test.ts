@@ -23,7 +23,7 @@ test('getDisplayResult - file', () => {
   const minLineY = 0
   expect(
     GetSearchDisplayResult.getDisplayResult(
-      results,
+          indent: 16,
       fileIcons,
       i,
       setSize,
@@ -55,7 +55,7 @@ test('getDisplayResult - result', () => {
   const results: readonly SearchResult[] = [
     {
       end: 6,
-      lineNumber: 1,
+        indent: 28,
       start: 5,
       text: 'fun main(args : Array<String>) {',
       type: 2,

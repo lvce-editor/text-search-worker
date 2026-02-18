@@ -1,5 +1,6 @@
 const defaultIndent = 12
+const baseIndent = 16
 
 export const getTreeItemIndent = (depth: number): number => {
-  return depth * defaultIndent
+  return baseIndent + depth * defaultIndent
 }

@@ -14,28 +14,28 @@ test('getDisplayResults', () => {
     },
     {
       end: 6,
-      lineNumber: 1,
+      indent: 16,
       start: 5,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
     {
       end: 10,
-      lineNumber: 1,
+      indent: 28,
       start: 9,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
     {
       end: 17,
-      lineNumber: 1,
+      indent: 28,
       start: 16,
       text: 'fun main(args : Array<String>) {',
       type: 2,
     },
   ]
   const fileIcons: readonly string[] = ['']
-  const itemHeight = 20
+      indent: 28,
   const resultCount = 3
   const searchTerm = 'a'
   const minLineY = 0
