@@ -1,5 +1,5 @@
-import { diffTree } from '@lvce-editor/virtual-dom-worker'
 import { ViewletCommand } from '@lvce-editor/constants'
+import { diffTree } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import { getDom } from '../RenderItems/RenderItems.ts'
 

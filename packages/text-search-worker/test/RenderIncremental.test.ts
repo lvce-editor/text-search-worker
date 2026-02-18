@@ -14,6 +14,7 @@ test('renderIncremental - returns non-empty patches when dom changes', () => {
   const newState: SearchState = {
     ...oldState,
     fileCount: 1,
+    maxLineY: 10,
     items: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
     listItems: [{ end: 0, lineNumber: 0, start: 0, text: 'item1', type: TextSearchResultType.File }],
   }
