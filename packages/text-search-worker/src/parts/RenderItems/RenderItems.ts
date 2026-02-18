@@ -1,10 +1,12 @@
+import type { VirtualDomNode } from '@lvce-editor/virtual-dom-worker'
 import { ViewletCommand } from '@lvce-editor/constants'
+import { diffTree } from '@lvce-editor/virtual-dom-worker'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as CreateViewModel from '../CreateViewModel/CreateViewModel.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 
-export const renderItems = (oldState: SearchState, newState: SearchState): readonly any[] => {
-  const viewModel = CreateViewModel.createViewModel(newState)
+const getDom = (state: SearchState): readonly VirtualDomNode[] => {
+  const viewModel = CreateViewModel.createViewModel(state)
   const dom = GetSearchVirtualDom.getSearchVirtualDom(
     viewModel.displayResults,
     viewModel.flags,
@@ -17,9 +19,17 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
     viewModel.deltaY,
     viewModel.itemHeight,
     viewModel.matchCount,
-    newState.limitHitWarning,
+    state.limitHitWarning,
     viewModel.focus,
-    newState.initial,
+    state.initial,
   )
-  return [ViewletCommand.SetDom2, newState.uid, dom]
+  return dom
+}
+
+export const renderItems = (oldState: SearchState, newState: SearchState): readonly any[] => {
+  const oldDom = getDom(oldState)
+  const newDom = getDom(newState)
+  const patches = diffTree(oldDom, newDom)
+  console.log({ init: newState.initial, newDom, newState, oldDom, oldState, patches })
+  return [ViewletCommand.SetPatches, newState.uid, patches]
 }
