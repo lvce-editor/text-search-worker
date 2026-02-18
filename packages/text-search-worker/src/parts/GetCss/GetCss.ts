@@ -31,12 +31,18 @@ export const getCss = (
   scrollBarHeight: number,
   scrollBarY: number,
   treeItemsTop: number,
+  headerHeight: number = 0,
 ): string => {
   const rules = [
     `.Search {
   --ScrollBarHeight: ${scrollBarHeight}px;
   --ScrollBarTop: ${scrollBarY}px;
   --TreeItemsTop: ${top}px;
+}
+
+.SearchHeader {
+  contain: strict;
+  height: ${headerHeight}px;
 }
   `,
 
