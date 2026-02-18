@@ -28,7 +28,7 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
     text: displayText,
     title,
   } = rowInfo
-  const className = `${GetSearchResultClassName.getSearchResultClassName(focused)} Indent-${indent}`
+  const className = `${GetSearchResultClassName.getSearchResultClassName(focused)} Indent-${indent} IndentRight-${TreeItemPadding.PaddingRight}`
   const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
@@ -40,7 +40,6 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
       ariaSetSize: setSize,
       childCount,
       className,
-      paddingRight: TreeItemPadding.PaddingRight,
       role: AriaRoles.TreeItem,
       title,
       type: VirtualDomElements.Div,

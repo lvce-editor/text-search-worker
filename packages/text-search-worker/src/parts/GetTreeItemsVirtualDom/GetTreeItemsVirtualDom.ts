@@ -11,17 +11,17 @@ export const getTreeItemsVirtualDom = (
   deltaY: number,
   itemHeight: number,
 ): readonly VirtualDomNode[] => {
-  const pixelOffset = deltaY % itemHeight
+  const pixelOffset = itemHeight === 0 ? 0 : deltaY % itemHeight
+  const treeItemsTop = -pixelOffset
   return [
     {
       childCount: visibleItems.length,
-      className: ClassNames.TreeItems,
+      className: `${ClassNames.TreeItems} TreeItemsTop-${treeItemsTop}`,
       id: DomId.TreeItems,
       onBlur: DomEventListenerFunctions.HandleListBlur,
       onClick: DomEventListenerFunctions.HandleClick,
       onContextMenu: DomEventListenerFunctions.HandleListContextMenu,
       onWheel: DomEventListenerFunctions.HandleWheel,
-      top: `${-pixelOffset}px`, // TODO use dynamic css instead
       type: VirtualDomElements.Div,
     },
     ...visibleItems.flatMap(GetSearchResultVirtualDom.getSearchResultVirtualDom),
