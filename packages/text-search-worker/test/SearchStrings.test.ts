@@ -85,8 +85,28 @@ test('dismiss', () => {
   expect(SearchStrings.dismiss()).toBe('Dismiss')
 })
 
+test('cut', () => {
+  expect(SearchStrings.cut()).toBe('Cut')
+})
+
+test('copy', () => {
+  expect(SearchStrings.copy()).toBe('Copy')
+})
+
+test('paste', () => {
+  expect(SearchStrings.paste()).toBe('Paste')
+})
+
+test('selectAll', () => {
+  expect(SearchStrings.selectAll()).toBe('SelectAll')
+})
+
 test('copyPath', () => {
   expect(SearchStrings.copyPath()).toBe('Copy Path')
+})
+
+test('copyAll', () => {
+  expect(SearchStrings.copyAll()).toBe('Copy All')
 })
 
 test('refresh', () => {
@@ -119,4 +139,12 @@ test('filesToExclude', () => {
 
 test('searchOnlyOpenEditors', () => {
   expect(SearchStrings.searchOnlyOpenEditors()).toBe('Search Only Open Editors')
+})
+
+test('searchForHistory', () => {
+  expect(SearchStrings.searchForHistory()).toBe('Search (⇅ for history)')
+})
+
+test('replaceForHistory', () => {
+  expect(SearchStrings.replaceForHistory()).toBe('Replace (⇅ for history)')
 })
