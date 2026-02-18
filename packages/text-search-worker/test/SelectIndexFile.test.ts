@@ -8,7 +8,7 @@ import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSea
 const mockIcon = 'file-icon'
 
 test('selectIndexFile - toggles collapsed path and updates state', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [mockIcon, mockIcon],
   })
 
@@ -53,7 +53,7 @@ test('selectIndexFile - toggles collapsed path and updates state', async () => {
 })
 
 test('selectIndexFile - uncollapse path when already collapsed', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [mockIcon, mockIcon, mockIcon],
   })
 

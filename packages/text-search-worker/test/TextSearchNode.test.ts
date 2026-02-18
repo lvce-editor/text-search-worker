@@ -33,7 +33,7 @@ test('textSearch', async () => {
       },
     ],
   }))
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SearchProcess.invoke': handler,
   })
 
@@ -83,7 +83,7 @@ test('textSearch', async () => {
 
 test('textSearch - pull based (file scheme)', async () => {
   const handler = jest.fn(() => undefined)
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SearchProcess.invoke': handler,
   })
 

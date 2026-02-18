@@ -7,7 +7,7 @@ import * as SearchViewStates from '../src/parts/SearchViewStates/SearchViewState
 import * as ViewletSearchHandleContextMenuMouseAt from '../src/parts/ViewletSearchHandleContextMenuMouseAt/ViewletSearchHandleContextMenuMouseAt.ts'
 
 test('handleContextMenuMouseAt - shows context menu and returns same state', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 
@@ -29,7 +29,7 @@ test('handleContextMenuMouseAt - shows context menu and returns same state', asy
 })
 
 test('handleContextMenuMouseAt - calls show with correct coordinates', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 

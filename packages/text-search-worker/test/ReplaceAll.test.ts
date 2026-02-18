@@ -6,7 +6,7 @@ import { replaceAll } from '../src/parts/ReplaceAll/ReplaceAll.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('replaceAll - replaces all matches and updates state', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'BulkReplacement.applyBulkReplacement'() {},
     'Layout.handleWorkspaceRefresh'() {},
   })

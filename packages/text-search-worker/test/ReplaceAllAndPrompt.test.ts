@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ReplaceAllAndPrompt from '../src/parts/ReplaceAllAndPrompt/ReplaceAllAndPrompt.ts'
 
 test('replaceAllAndPrompt - user cancels prompt', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ConfirmPrompt.prompt': () => false,
   })
 
@@ -23,7 +23,7 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
 })
 
 test('replaceAllAndPrompt - user confirms prompt', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ConfirmPrompt.prompt': () => true,
   })
 
@@ -43,7 +43,7 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
 })
 
 test('replaceAllAndPrompt - validates input parameters', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({})
+  using mockRpc = RendererWorker.registerMockRpc({})
 
   await expect(ReplaceAllAndPrompt.replaceAllAndPrompt(123 as any, [], 'replacement', 5, 2)).rejects.toThrow()
   expect(mockRpc.invocations).toEqual([])

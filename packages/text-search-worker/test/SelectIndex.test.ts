@@ -6,7 +6,7 @@ import * as SelectIndex from '../src/parts/SelectIndex/SelectIndex.ts'
 import * as TextSearchResultType from '../src/parts/TextSearchResultType/TextSearchResultType.ts'
 
 test('selectIndex - no selection', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({})
+  using mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
@@ -24,7 +24,7 @@ test('selectIndex - no selection', async () => {
 })
 
 test('selectIndex - select file item', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -48,7 +48,7 @@ test('selectIndex - select match item', async () => {
   RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
-  const iconThemeMockRpc = IconThemeWorker.registerMockRpc({
+  using iconThemeMockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['file-icon'],
   })
 
@@ -69,7 +69,7 @@ test('selectIndex - select match item', async () => {
 })
 
 test('getFileIndex - finds closest file above match', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 
@@ -91,7 +91,7 @@ test('getFileIndex - finds closest file above match', async () => {
 })
 
 test('getFileIndex - returns -1 when no file found', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({})
+  using mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
@@ -107,7 +107,7 @@ test('getFileIndex - returns -1 when no file found', async () => {
 })
 
 test('selectIndexPreview - handles match with file above', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
   })
 

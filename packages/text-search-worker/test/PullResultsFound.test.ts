@@ -17,7 +17,7 @@ test('handlePullResultsFound - ignores stale search id', async () => {
 })
 
 test('handlePullResultsFound - fetches and merges pull results', async () => {
-  const mockRendererWorker = RendererWorker.registerMockRpc({
+  using mockRendererWorker = RendererWorker.registerMockRpc({
     'Search.rerender': () => undefined,
     'SearchProcess.invoke': () => [
       {

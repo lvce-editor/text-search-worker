@@ -5,7 +5,7 @@ import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefau
 import * as HandleIconThemeChange from '../src/parts/HandleIconThemeChange/HandleIconThemeChange.ts'
 
 test('handleIconThemeChange updates icons for visible items', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => ['icon1', 'icon1'],
   })
   const state: SearchState = {
@@ -33,7 +33,7 @@ test('handleIconThemeChange updates icons for visible items', async () => {
 })
 
 test('handleIconThemeChange handles empty items array', async () => {
-  const mockRpc = IconThemeWorker.registerMockRpc({
+  using mockRpc = IconThemeWorker.registerMockRpc({
     'IconTheme.getIcons': () => [],
   })
   const state: SearchState = {

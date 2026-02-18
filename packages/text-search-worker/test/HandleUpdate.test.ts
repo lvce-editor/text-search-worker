@@ -1,4 +1,4 @@
-import { expect, test } from '@jest/globals'
+import { expect, jest, test } from '@jest/globals'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
@@ -72,6 +72,7 @@ test.skip('handleUpdate - performs search with valid input', async () => {
 })
 
 test('handleUpdate - handles search error', async () => {
+  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
     value: 'test',
@@ -84,19 +85,24 @@ test('handleUpdate - handles search error', async () => {
     },
   })
 
-  const result = await handleUpdate(state, update)
+  try {
+    const result = await handleUpdate(state, update)
 
-  expect(result).toMatchObject({
-    ...state,
-    fileCount: 0,
-    items: [],
-    limitHit: false,
-    listItems: [],
-    matchCount: 0,
-    maxLineY: 0,
-    message: 'Error: Search failed',
-    minLineY: 0,
-  })
+    expect(result).toMatchObject({
+      ...state,
+      fileCount: 0,
+      items: [],
+      limitHit: false,
+      listItems: [],
+      matchCount: 0,
+      maxLineY: 0,
+      message: 'Error: Search failed',
+      minLineY: 0,
+    })
+    expect(consoleErrorSpy).toHaveBeenCalledWith('[text-search-worker] Error: Search failed')
+  } finally {
+    consoleErrorSpy.mockRestore()
+  }
 })
 
 test.skip('handleUpdate - uses search flags from state', async () => {

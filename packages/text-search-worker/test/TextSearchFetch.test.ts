@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchFetch from '../src/parts/TextSearchFetch/TextSearchFetch.ts'
 
 test('textSearch - calls ParentRpc with correct arguments', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.textSearchFetch': () => [
       {
         end: 0,
@@ -39,7 +39,7 @@ test('textSearch - calls ParentRpc with correct arguments', async () => {
 })
 
 test('textSearch - handles error from ParentRpc', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.textSearchFetch': () => {
       throw new Error('Network error')
     },

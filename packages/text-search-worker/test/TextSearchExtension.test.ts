@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as TextSearchExtension from '../src/parts/TextSearchExtension/TextSearchExtension.ts'
 
 test('textSearch - extension search', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.executeTextSearchProvider': () => [
       {
         end: 0,
@@ -48,7 +48,7 @@ test('textSearch - extension search', async () => {
 })
 
 test('textSearch - extension search error', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostTextSearch.executeTextSearchProvider': () => {
       throw new TypeError('x is not a function')
     },
