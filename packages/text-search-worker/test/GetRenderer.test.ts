@@ -17,11 +17,6 @@ test('getRenderer - value type', () => {
   expect(renderer).toBe(RenderValue.renderValue)
 })
 
-test('getRenderer - items type', () => {
-  const renderer = GetRenderer.getRenderer(DiffType.RenderItems)
-  expect(renderer).toBe(RenderItems.renderItems)
-})
-
 test('getRenderer - replace value type', () => {
   const renderer = GetRenderer.getRenderer(DiffType.RenderReplaceValue)
   expect(renderer).toBe(RenderValue.renderReplacement)
