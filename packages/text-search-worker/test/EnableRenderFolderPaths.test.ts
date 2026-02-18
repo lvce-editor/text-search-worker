@@ -17,11 +17,11 @@ test('enableRenderFolderPaths enables renderFolderPaths', () => {
 test('enableRenderFolderPaths preserves other state properties', () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
+    renderFolderPaths: false,
     uid: 123,
     value: 'test',
     x: 10,
     y: 20,
-    renderFolderPaths: false,
   }
 
   const newState = EnableRenderFolderPaths.enableRenderFolderPaths(state)
