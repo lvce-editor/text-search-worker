@@ -8,7 +8,7 @@ test('getCss - returns base css variables when there are no indents', () => {
   --ScrollBarTop: 12px;
   --TreeItemsTop: 24px;
 }
-  
+
 .TreeItemsTop-0 {
   top: 0px;
 }`)
@@ -21,7 +21,7 @@ test('getCss - returns css variables and indent rules', () => {
   --ScrollBarTop: 6px;
   --TreeItemsTop: 0px;
 }
-  
+
 .Indent-16 {
   padding-left: 16px;
 }
