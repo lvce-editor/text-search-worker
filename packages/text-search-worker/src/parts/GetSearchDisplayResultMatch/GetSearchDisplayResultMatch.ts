@@ -1,5 +1,6 @@
 import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchResult.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
+import * as GetTreeItemIndent from '../GetTreeItemIndent/GetTreeItemIndent.ts'
 
 export const getDisplayResultMatch = (
   setSize: number,
@@ -10,12 +11,15 @@ export const getDisplayResultMatch = (
   start: number,
   focused: boolean,
 ): DisplaySearchResult => {
+  const depth = 1
+  const indent = GetTreeItemIndent.getTreeItemIndent(depth)
   return {
     badgeText: '',
-    depth: 1,
+    depth,
     expanded: ExpandedType.None,
     focused,
     icon: '',
+    indent,
     matchLength: searchTermLength,
     matchStart: start,
     posInSet,
