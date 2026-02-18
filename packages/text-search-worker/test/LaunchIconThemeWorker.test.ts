@@ -13,6 +13,7 @@ test('launchIconThemeWorker - creates rpc and calls sendMessagePortToIconThemeWo
   expect(typeof rpc).toBe('object')
   const expectedArray = ['SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker', expect.anything(), 'IconTheme.handleMessagePort', 0]
   expect(mockRpc.invocations).toEqual([expectedArray])
+  await rpc.dispose()
 })
 
 test('launchIconThemeWorker - handles error when sendMessagePortToIconThemeWorker fails', async () => {
