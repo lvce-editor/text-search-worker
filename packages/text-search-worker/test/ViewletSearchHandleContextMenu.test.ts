@@ -6,7 +6,7 @@ import * as MouseEventType from '../src/parts/MouseEventType/MouseEventType.ts'
 import { handleContextMenu } from '../src/parts/ViewletSearchHandleContextMenu/ViewletSearchHandleContextMenu.ts'
 
 test('handleContextMenu - mouse event shows context menu at mouse position', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ContextMenu.show2': () => undefined,
   })
 

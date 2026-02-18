@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as LaunchIconThemeWorker from '../src/parts/LaunchIconThemeWorker/LaunchIconThemeWorker.ts'
 
 test('launchIconThemeWorker - creates rpc and calls sendMessagePortToIconThemeWorker', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker': () => undefined,
   })
 
@@ -17,7 +17,7 @@ test('launchIconThemeWorker - creates rpc and calls sendMessagePortToIconThemeWo
 
 test('launchIconThemeWorker - handles error when sendMessagePortToIconThemeWorker fails', async () => {
   const mockError = new Error('Failed to transfer port')
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToExtensionHostWorker.sendMessagePortToIconThemeWorker': () => {
       throw mockError
     },

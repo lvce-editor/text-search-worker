@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as ClipBoard from '../src/parts/ClipBoard/ClipBoard.ts'
 
 test('writeText - writes text to clipboard', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText': () => undefined,
   })
 
@@ -13,7 +13,7 @@ test('writeText - writes text to clipboard', async () => {
 })
 
 test('writeText - writes empty string to clipboard', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText': () => undefined,
   })
 
@@ -23,7 +23,7 @@ test('writeText - writes empty string to clipboard', async () => {
 })
 
 test('readText - reads text from clipboard', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => 'clipboard content',
   })
 
@@ -34,7 +34,7 @@ test('readText - reads text from clipboard', async () => {
 })
 
 test('readText - reads empty string from clipboard', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.readText': () => '',
   })
 

@@ -5,7 +5,7 @@ import * as CopyPath from '../src/parts/CopyPath/CopyPath.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 
 test('copyPath - no focused item returns same state', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({})
+  using mockRpc = RendererWorker.registerMockRpc({})
 
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),
@@ -19,7 +19,7 @@ test('copyPath - no focused item returns same state', async () => {
 })
 
 test('copyPath - copies text from focused item', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ClipBoard.writeText': () => undefined,
   })
 

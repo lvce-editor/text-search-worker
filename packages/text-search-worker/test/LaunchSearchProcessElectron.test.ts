@@ -11,7 +11,7 @@ import * as LaunchSearchProcessElectron from '../src/parts/LaunchSearchProcessEl
 // MessagePortRpcParent.create = jest.fn().mockResolvedValue(mockRpc)
 
 test.skip('launchSearchProcessElectron - creates message port and rpc', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToElectron.sendMessagePortToElectron': () => undefined,
   })
 
@@ -29,7 +29,7 @@ test.skip('launchSearchProcessElectron - handles rpc creation error', async () =
   // @ts-ignore
   MessagePortRpcParent.create.mockRejectedValue(mockError)
 
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToElectron.sendMessagePortToElectron': () => undefined,
   })
 
@@ -39,7 +39,7 @@ test.skip('launchSearchProcessElectron - handles rpc creation error', async () =
 
 test.skip('launchSearchProcessElectron - handles port transfer error', async () => {
   const mockError = new Error('Failed to transfer port')
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'SendMessagePortToElectron.sendMessagePortToElectron': () => {
       throw mockError
     },
