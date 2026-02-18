@@ -5,7 +5,7 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as CreateViewModel from '../CreateViewModel/CreateViewModel.ts'
 import * as GetSearchVirtualDom from '../GetSearchVirtualDom/GetSearchVirtualDom.ts'
 
-const getDom = (state: SearchState): readonly VirtualDomNode[] => {
+export const getDom = (state: SearchState): readonly VirtualDomNode[] => {
   const viewModel = CreateViewModel.createViewModel(state)
   const dom = GetSearchVirtualDom.getSearchVirtualDom(
     viewModel.displayResults,
@@ -30,6 +30,5 @@ export const renderItems = (oldState: SearchState, newState: SearchState): reado
   const oldDom = getDom(oldState)
   const newDom = getDom(newState)
   const patches = diffTree(oldDom, newDom)
-  console.log({ init: newState.initial, newDom, newState, oldDom, oldState, patches })
   return [ViewletCommand.SetPatches, newState.uid, patches]
 }
