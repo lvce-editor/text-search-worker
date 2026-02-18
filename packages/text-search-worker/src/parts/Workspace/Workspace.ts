@@ -9,3 +9,12 @@ export const getRelativePath = (relativePath: string): string => {
   }
   return `/${relativePath}` // TODO support windows paths
 }
+
+export const getRelativeFolderPath = (relativePath: string): string => {
+  const normalized = relativePath.startsWith('./') ? relativePath.slice(2) : relativePath
+  const slashIndex = normalized.lastIndexOf('/')
+  if (slashIndex === -1) {
+    return ''
+  }
+  return normalized.slice(0, slashIndex)
+}

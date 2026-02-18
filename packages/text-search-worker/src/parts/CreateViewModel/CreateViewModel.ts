@@ -25,6 +25,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     maxLineY,
     message,
     minLineY,
+    renderFolderPaths,
     replacement,
     scrollBarHeight,
     searchInputErrorMessage,
@@ -41,6 +42,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     icons,
     listFocusedIndex,
     collapsedPaths,
+    renderFolderPaths || false,
     items,
   )
   const focusOutline = listFocused && listFocusedIndex === -1

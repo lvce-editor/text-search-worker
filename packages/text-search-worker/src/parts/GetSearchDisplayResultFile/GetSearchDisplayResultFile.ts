@@ -15,11 +15,14 @@ export const getSearchDisplayResultFile = (
   posInSet: number,
   relativeIndex: number,
   focused: boolean,
+  renderFolderPaths: boolean,
   originalResults: readonly SearchResult[],
 ): DisplaySearchResult => {
   const path = text
   const absolutePath = Workspace.getRelativePath(path)
   const baseName = Workspace.pathBaseName(path)
+  const relativeFolderPath = Workspace.getRelativeFolderPath(path)
+  const displayText = renderFolderPaths && relativeFolderPath ? `${baseName} — ${relativeFolderPath}` : baseName
   const index = originalResults.indexOf(results[i])
   const matchCount = GetMatchCount.getMatchCount(originalResults, index)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
@@ -38,7 +41,7 @@ export const getSearchDisplayResultFile = (
     posInSet,
     replacement: '',
     setSize,
-    text: baseName,
+    text: displayText,
     title: absolutePath,
   }
 }

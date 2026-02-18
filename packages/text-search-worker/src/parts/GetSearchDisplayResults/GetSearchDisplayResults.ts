@@ -14,6 +14,7 @@ export const getDisplayResults = (
   fileIcons: readonly string[],
   focusedIndex: number,
   collapsedPaths: readonly string[],
+  renderFolderPaths: boolean,
   originalResults: readonly SearchResult[],
 ): readonly DisplaySearchResult[] => {
   const filteredResults = GetFilteredResults.getFilteredResults(results, collapsedPaths)
@@ -32,6 +33,7 @@ export const getDisplayResults = (
       replacement,
       focusedIndex,
       collapsedPaths,
+      renderFolderPaths,
       minLineY,
       originalResults,
     )
