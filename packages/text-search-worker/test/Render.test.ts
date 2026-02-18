@@ -26,13 +26,9 @@ test('doRender - renders items when changed', () => {
   SearchViewStates.set(1, oldState, newState)
 
   const commands = Render.doRender(1)
-  // Only one command is expected: Viewlet.setDom2 with the dom structure
   expect(commands).toEqual([
-    [
-      'Viewlet.setPatches',
-      1,
-      expect.any(Array), // dom structure, don't check deeply
-    ],
+    ['Viewlet.setPatches', 1, expect.any(Array)],
+    ['Viewlet.setCss', 1, expect.any(String)],
   ])
 })
 
