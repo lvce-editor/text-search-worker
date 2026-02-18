@@ -44,7 +44,8 @@ export const getLabelVirtualDom = (displayText: string, matchLength: number, mat
     const highlight = displayText.slice(matchStart, matchStart + matchLength)
     const after = displayText.slice(matchStart + matchLength)
     if (replacement) {
-      return [label4, text(before), deleted, text(highlight), inserted, text(replacement), text(after)]
+      const replacementPreview = replacement.split(/\r\n|\r|\n/, 1)[0]
+      return [label4, text(before), deleted, text(highlight), inserted, text(replacementPreview), text(after)]
     }
     return [label3, text(before), highlighted, text(highlight), text(after)]
   }
