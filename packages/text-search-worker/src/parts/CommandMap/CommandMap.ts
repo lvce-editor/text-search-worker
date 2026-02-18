@@ -40,6 +40,7 @@ import { handleInputSelectionChange } from '../HandleInputSelectionChange/Handle
 import * as HandleListBlur from '../HandleListBlur/HandleListBlur.ts'
 import { handleListFocus } from '../HandleListFocus/HandleListFocus.ts'
 import { handlePullResultsFound } from '../HandlePullResultsFound/HandlePullResultsFound.ts'
+import * as HandleResize from '../HandleResize/HandleResize.ts'
 import * as HandleReplaceInput from '../HandleReplaceInput/HandleReplaceInput.ts'
 import * as HandleSharedInput from '../HandleSharedInput/HandleSharedInput.ts'
 import * as HandleWorkspaceChange from '../HandleWorkspaceChange/HandleWorkspaceChange.ts'
@@ -154,6 +155,7 @@ export const commandMap = {
   'TextSearch.handleListFocus': WrapCommand.wrapCommand(handleListFocus),
   'TextSearch.handleListPointerDown': WrapCommand.wrapCommand(handleListPointerDown),
   'TextSearch.handlePullResultsFound': WrapCommand.wrapCommand(handlePullResultsFound),
+  'TextSearch.handleResize': WrapCommand.wrapCommand(HandleResize.handleResize),
   'TextSearch.handleReplaceInput': WrapCommand.wrapCommand(HandleReplaceInput.handleReplaceInput),
   'TextSearch.handleScrollBarCaptureLost': WrapCommand.wrapCommand(ListHandleScrollBarCaptureLost.handleScrollBarCaptureLost),
   'TextSearch.handleScrollBarClick': WrapCommand.wrapCommand(ListHandleScrollBarClick.handleScrollBarClick),
