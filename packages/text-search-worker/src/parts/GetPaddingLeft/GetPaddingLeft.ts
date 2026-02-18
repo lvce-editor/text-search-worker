@@ -1,3 +1,3 @@
-export const getPaddingLeft = (depth: number): string => {
-  return `${Number(depth) + 1}rem` // TODO use classname and dynamic css
+export const getPaddingLeft = (indent: number): string => {
+  return `${indent + 16}px`
 }

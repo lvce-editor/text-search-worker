@@ -2,6 +2,7 @@ import type { DisplaySearchResult } from '../DisplaySearchResult/DisplaySearchRe
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 import * as GetMatchCount from '../GetMatchCount/GetMatchCount.ts'
+import * as GetTreeItemIndent from '../GetTreeItemIndent/GetTreeItemIndent.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 export const getSearchDisplayResultFile = (
@@ -23,12 +24,15 @@ export const getSearchDisplayResultFile = (
   const matchCount = GetMatchCount.getMatchCount(originalResults, index)
   const expanded = collapsedPaths.includes(path) ? ExpandedType.Collapsed : ExpandedType.Expanded
   const badgeText = `${matchCount}`
+  const depth = 0
+  const indent = GetTreeItemIndent.getTreeItemIndent(depth)
   return {
     badgeText,
-    depth: 0,
+    depth,
     expanded,
     focused,
     icon: fileIcons[relativeIndex],
+    indent,
     matchLength: 0,
     matchStart: 0,
     posInSet,
