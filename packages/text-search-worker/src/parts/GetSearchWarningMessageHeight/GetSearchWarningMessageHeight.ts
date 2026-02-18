@@ -11,7 +11,7 @@ export const getSearchWarningMessageHeight = async (limitHitWarning: string, wid
     return 0
   }
   const availableWidth = Math.max(width - SearchWarningHorizontalPadding, 1)
-  const textHeight = await MeasureTextBlockHeight.measureTextBlockHeight(
+  const textHeight = await MeasureTextBlockHeight.measureTextHeight(
     limitHitWarning,
     SearchWarningFontFamily,
     SearchWarningFontSize,
