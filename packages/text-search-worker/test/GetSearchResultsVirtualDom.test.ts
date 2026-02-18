@@ -124,3 +124,22 @@ test('getSearchResultsVirtualDom', () => {
     },
   ])
 })
+
+test('getSearchResultsVirtualDom - uses dynamic class for scrollbar thumb top', () => {
+  const result = GetSearchResultsVirtualDom.getSearchResultsVirtualDom([], false, 20, 18.609_375, 30, 0, 1)
+  expect(result).toContainEqual({
+    ariaControls: 'TreeItems',
+    ariaValueNow: 30,
+    childCount: 1,
+    className: 'ScrollBar ScrollBarVertical',
+    onPointerDown: DomEventListenerFunctions.HandleScrollBarPointerDown,
+    role: AriaRoles.ScrollBar,
+    type: 4,
+  })
+  expect(result).toContainEqual({
+    childCount: 0,
+    className: 'ScrollBarThumb ScrollBarThumbTop-19',
+    height: 20,
+    type: 4,
+  })
+})

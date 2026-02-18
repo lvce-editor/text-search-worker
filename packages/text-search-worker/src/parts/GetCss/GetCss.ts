@@ -17,6 +17,13 @@ const getTreeItemsTopRule = (treeItemsTop: number): string => {
 }`
 }
 
+const getScrollBarThumbTopRule = (scrollBarY: number): string => {
+  const roundedScrollBarY = Math.round(scrollBarY)
+  return `.ScrollBarThumbTop-${roundedScrollBarY} {
+  transform: translateY(${roundedScrollBarY}px);
+}`
+}
+
 export const getCss = (
   top: number,
   uniqueIndents: readonly number[],
@@ -36,6 +43,7 @@ export const getCss = (
     ...uniqueIndents.map(getIndentRule),
     ...uniqueIndentRights.map(getIndentRightRule),
     getTreeItemsTopRule(treeItemsTop),
+    getScrollBarThumbTopRule(scrollBarY),
   ]
   return rules.join('\n')
 }
