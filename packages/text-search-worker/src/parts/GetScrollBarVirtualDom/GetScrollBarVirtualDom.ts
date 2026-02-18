@@ -10,6 +10,7 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
   if (scrollBarHeight === 0) {
     return []
   }
+  const roundedScrollBarY = Math.round(scrollBarY)
   return [
     {
       ariaControls: DomId.TreeItems,
@@ -22,9 +23,8 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
     },
     {
       childCount: 0,
-      className: ClassNames.ScrollBarThumb,
+      className: `${ClassNames.ScrollBarThumb} ScrollBarThumbTop-${roundedScrollBarY}`,
       height: scrollBarHeight,
-      translate: `0 ${scrollBarY}px`,
       type: VirtualDomElements.Div,
     },
   ]
