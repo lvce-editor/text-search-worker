@@ -14,7 +14,21 @@ import * as GetSearchResultClassName from '../GetSearchResultClassName/GetSearch
 import * as TreeItemPadding from '../TreeItemPadding/TreeItemPadding.ts'
 
 export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonly VirtualDomNode[] => {
-  const { badgeText, depth, expanded, focused, icon, indent, matchLength, matchStart, posInSet, replacement, setSize, text: displayText, title } = rowInfo
+  const {
+    badgeText,
+    depth,
+    expanded,
+    focused,
+    icon,
+    indent,
+    matchLength,
+    matchStart,
+    posInSet,
+    replacement,
+    setSize,
+    text: displayText,
+    title,
+  } = rowInfo
   const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
