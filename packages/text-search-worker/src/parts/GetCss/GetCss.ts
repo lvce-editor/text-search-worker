@@ -4,11 +4,11 @@ const getIndentRule = (indent: number): string => {
 }`
 }
 
-export const getCss = (top: number, uniqueIndents: readonly number[]): string => {
+export const getCss = (top: number, uniqueIndents: readonly number[], scrollBarHeight: number, scrollBarY: number): string => {
   const rules = [
     `.Search {
-  --ScrollBarHeight: 20px;
-  --ScrollBarTop: 20px;
+  --ScrollBarHeight: ${scrollBarHeight}px;
+  --ScrollBarTop: ${scrollBarY}px;
   --TreeItemsTop: ${top}px;
 }
   `,
