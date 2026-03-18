@@ -9,8 +9,12 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 import { get, set } from '../SearchViewStates/SearchViewStates.ts'
 import * as TextSearch from '../TextSearch/TextSearch.ts'
 
+const getsearchid = (): string => {
+  return crypto.randomUUID()
+}
+
 export const handleUpdatePullBased = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const searchId = crypto.randomUUID()
+  const searchId = getsearchid()
   const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], message: '', searchId, searchResults: [] }
   set(state.uid, state, partialNewState)
   const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value, width } = partialNewState
