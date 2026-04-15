@@ -13,7 +13,7 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
   const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, '')
   expect(dom).toEqual([
     {
-      childCount: 3,
+      childCount: 2,
       className: 'SearchHeader',
       onContextMenu: 3,
       role: AriaRoles.None,
@@ -155,9 +155,28 @@ test('getSearchHeaderVirtualDom - with no flags', () => {
       className: 'MaskIcon MaskIconEllipsis',
       type: 4,
     },
+  ])
+})
+
+test('getSearchHeaderVirtualDom - with limit hit warning', () => {
+  const flags = 0
+  const message = ''
+  const errorMessage = ''
+  const matchCount = 0
+  const focus = 0
+  const limitHitWarning = 'Too many results found'
+  const dom = GetSearchHeaderVirtualDom.getSearchHeaderVirtualDom(flags, message, errorMessage, matchCount, focus, limitHitWarning)
+  expect(dom[0].childCount).toBe(3)
+  expect(dom.slice(-2)).toEqual([
+    {
+      childCount: 1,
+      className: 'SearchWarningMessage',
+      type: 4,
+    },
     {
       childCount: 0,
-      type: 4,
+      text: limitHitWarning,
+      type: 12,
     },
   ])
 })

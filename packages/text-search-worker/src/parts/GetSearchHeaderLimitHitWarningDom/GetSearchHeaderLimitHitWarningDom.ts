@@ -4,13 +4,7 @@ import { SearchWarningMessage } from '../ClassNames/ClassNames.ts'
 
 export const getSearchHeaderLimitHitVirtualDom = (limitHitWarning: string): readonly VirtualDomNode[] => {
   if (!limitHitWarning) {
-    // TODO remove unused dom node
-    return [
-      {
-        childCount: 0,
-        type: VirtualDomElements.Div,
-      },
-    ]
+    return []
   }
   const dom: readonly VirtualDomNode[] = [
     {

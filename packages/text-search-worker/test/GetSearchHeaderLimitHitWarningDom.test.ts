@@ -3,14 +3,9 @@ import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import { SearchWarningMessage } from '../src/parts/ClassNames/ClassNames.ts'
 import * as GetSearchHeaderLimitHitWarningDom from '../src/parts/GetSearchHeaderLimitHitWarningDom/GetSearchHeaderLimitHitWarningDom.ts'
 
-test('getSearchHeaderLimitHitVirtualDom - returns empty div when limitHitWarning is empty', () => {
+test('getSearchHeaderLimitHitVirtualDom - returns no nodes when limitHitWarning is empty', () => {
   const result = GetSearchHeaderLimitHitWarningDom.getSearchHeaderLimitHitVirtualDom('')
-  expect(result).toEqual([
-    {
-      childCount: 0,
-      type: VirtualDomElements.Div,
-    },
-  ])
+  expect(result).toEqual([])
 })
 
 test('getSearchHeaderLimitHitVirtualDom - returns warning div with text when limitHitWarning has value', () => {
