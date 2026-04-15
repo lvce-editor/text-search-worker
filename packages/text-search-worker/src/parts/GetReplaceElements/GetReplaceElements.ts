@@ -5,10 +5,6 @@ import * as GetFileName from '../GetFilePath/GetFilePath.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 export const getReplaceElements = (items: readonly SearchResult[], workspacePath: string, replacement: string): readonly BulkReplacementEdit[] => {
-  let element: BulkReplacementEdit = {
-    changes: [],
-    uri: '',
-  }
   const bulkChanges: BulkReplacementEdit[] = []
   let changes: TextEdit[] = []
   // TODO simplify code by first matching files with their elements, then creating bulk edits
@@ -18,11 +14,10 @@ export const getReplaceElements = (items: readonly SearchResult[], workspacePath
       changes = []
       const fileName = GetFileName.getFilePath(text)
       const absolutePath = `${workspacePath}/${fileName}`
-      element = {
+      bulkChanges.push({
         changes,
         uri: absolutePath,
-      }
-      bulkChanges.push(element)
+      })
     } else {
       changes.push({
         endColumnIndex: end,
