@@ -73,7 +73,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      childCount: 3,
+      childCount: 2,
       className: 'SearchHeader',
       onContextMenu: 3,
       role: AriaRoles.None,
@@ -213,10 +213,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     {
       childCount: 0,
       className: 'MaskIcon MaskIconEllipsis',
-      type: 4,
-    },
-    {
-      childCount: 0,
       type: 4,
     },
     {

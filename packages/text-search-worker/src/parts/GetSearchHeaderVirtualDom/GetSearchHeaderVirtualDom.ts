@@ -7,14 +7,6 @@ import * as GetSearchHeaderDetailsVirtualDom from '../GetSearchHeaderDetailsVirt
 import { getSearchHeaderLimitHitVirtualDom } from '../GetSearchHeaderLimitHitWarningDom/GetSearchHeaderLimitHitWarningDom.ts'
 import * as GetSearchHeaderTopVirtualDom from '../GetSearchHeaderTopVirtualDom/GetSearchHeaderTopVirtualDom.ts'
 
-const parentNode: VirtualDomNode = {
-  childCount: 3,
-  className: ClassNames.SearchHeader,
-  onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
-  role: AriaRoles.None,
-  type: VirtualDomElements.Div,
-}
-
 export const getSearchHeaderVirtualDom = (
   flags: number,
   message: string,
@@ -23,11 +15,19 @@ export const getSearchHeaderVirtualDom = (
   focus: number,
   limitHitWarning: string,
 ): readonly VirtualDomNode[] => {
+  const warningDom = getSearchHeaderLimitHitVirtualDom(limitHitWarning)
+  const parentNode: VirtualDomNode = {
+    childCount: 2 + (warningDom.length > 0 ? 1 : 0),
+    className: ClassNames.SearchHeader,
+    onContextMenu: DomEventListenerFunctions.HandleHeaderContextMenu,
+    role: AriaRoles.None,
+    type: VirtualDomElements.Div,
+  }
   const dom: readonly VirtualDomNode[] = [
     parentNode,
     ...GetSearchHeaderTopVirtualDom.getSearchHeaderTopVirtualDom(flags, searchInputErrorMessage, matchCount, focus),
     ...GetSearchHeaderDetailsVirtualDom.getSearchHeaderDetailsVirtualDom(flags, message),
-    ...getSearchHeaderLimitHitVirtualDom(limitHitWarning),
+    ...warningDom,
   ]
   return dom
 }
