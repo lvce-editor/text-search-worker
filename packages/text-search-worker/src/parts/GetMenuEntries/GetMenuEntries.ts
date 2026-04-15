@@ -6,11 +6,12 @@ import { getMenuEntriesInput } from '../GetMenuEntriesInput/GetMenuEntriesInput.
 import { getMenuEntriesList } from '../GetMenuEntriesList/GetMenuEntriesList.ts'
 
 export const getMenuEntries = (state: SearchState, props: ContextMenuProps): readonly MenuEntry[] => {
-  if (props.menuId === MenuEntryId.Search) {
-    return getMenuEntriesList(state, props)
+  switch (props.menuId) {
+    case MenuEntryId.InputContextMenu:
+      return getMenuEntriesInput(props)
+    case MenuEntryId.Search:
+      return getMenuEntriesList(state, props)
+    default:
+      return []
   }
-  if (props.menuId === MenuEntryId.InputContextMenu) {
-    return getMenuEntriesInput(props)
-  }
-  return []
 }
