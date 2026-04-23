@@ -1,6 +1,7 @@
 import { terminate } from '@lvce-editor/viewlet-registry'
 import * as ClearSearchResults from '../ClearSearchResults/ClearSearchResults.ts'
 import * as CollapseAll from '../CollapseAll/CollapseAll.ts'
+import * as CollapseCurrent from '../CollapseCurrent/CollapseCurrent.ts'
 import * as CollapseDetails from '../CollapseDetails/CollapseDetails.ts'
 import * as Copy from '../Copy/Copy.ts'
 import * as CopyPath from '../CopyPath/CopyPath.ts'
@@ -9,6 +10,7 @@ import * as Diff2 from '../Diff2/Diff2.ts'
 import * as DisableRenderFolderPaths from '../DisableRenderFolderPaths/DisableRenderFolderPaths.ts'
 import * as Dismiss from '../Dismiss/Dismiss.ts'
 import * as EnableRenderFolderPaths from '../EnableRenderFolderPaths/EnableRenderFolderPaths.ts'
+import * as ExpandCurrent from '../ExpandCurrent/ExpandCurrent.ts'
 import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as FocusMatchCase from '../FocusMatchCase/FocusMatchCase.ts'
 import * as FocusNextInput from '../FocusNextInput/FocusNextInput.ts'
@@ -95,6 +97,7 @@ import * as ViewletSearchHandleContextMenu from '../ViewletSearchHandleContextMe
 export const commandMap = {
   'TextSearch.clearSearchResults': WrapCommand.wrapCommand(ClearSearchResults.clearSearchResults),
   'TextSearch.collapseAll': WrapCommand.wrapCommand(CollapseAll.collapseAll),
+  'TextSearch.collapseCurrent': WrapCommand.wrapCommand(CollapseCurrent.collapseCurrent),
   'TextSearch.collapseDetails': WrapCommand.wrapCommand(CollapseDetails.collapseDetails),
   'TextSearch.copy': WrapCommand.wrapCommand(Copy.copy),
   'TextSearch.copyPath': WrapCommand.wrapCommand(CopyPath.copyPath),
@@ -103,6 +106,7 @@ export const commandMap = {
   'TextSearch.disableRenderFolderPaths': WrapCommand.wrapCommand(DisableRenderFolderPaths.disableRenderFolderPaths),
   'TextSearch.dismissItem': WrapCommand.wrapCommand(Dismiss.dismissItem),
   'TextSearch.enableRenderFolderPaths': WrapCommand.wrapCommand(EnableRenderFolderPaths.enableRenderFolderPaths),
+  'TextSearch.expandCurrent': WrapCommand.wrapCommand(ExpandCurrent.expandCurrent),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
