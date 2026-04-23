@@ -7,7 +7,7 @@ test('waitForNextFrame resolves after requestAnimationFrame is called', async ()
     rafCallback = callback
     return 1
   }
-  globalThis.requestAnimationFrame = mockRequestAnimationFrame as typeof requestAnimationFrame
+  globalThis.requestAnimationFrame = mockRequestAnimationFrame
 
   const promise = waitForNextFrame()
   expect(rafCallback).not.toBeNull()
@@ -26,7 +26,7 @@ test('waitForNextFrame waits for the next frame', async () => {
     rafCallCount++
     return 1
   }
-  globalThis.requestAnimationFrame = mockRequestAnimationFrame as typeof requestAnimationFrame
+  globalThis.requestAnimationFrame = mockRequestAnimationFrame
 
   const promise = waitForNextFrame()
   expect(rafCallCount).toBe(1)
