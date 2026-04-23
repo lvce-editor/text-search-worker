@@ -133,3 +133,52 @@ test('textSearch - pull based (file scheme)', async () => {
     ],
   ])
 })
+
+test('textSearch - forwards whole word searches as ripgrep word regex', async () => {
+  using mockRpc = RendererWorker.registerMockRpc({
+    'SearchProcess.invoke': () => ({
+      limitHit: false,
+      results: [],
+    }),
+  })
+
+  await TextSearchNode.textSearch(
+    'file',
+    '/test',
+    'tic-tac',
+    {
+      defaultExcludes: [],
+      exclude: '',
+      isCaseSensitive: false,
+      matchWholeWord: true,
+      threads: 1,
+      usePullBasedSearch: false,
+      useRegularExpression: false,
+    } as any,
+  )
+
+  expect(mockRpc.invocations).toEqual([
+    [
+      'SearchProcess.invoke',
+      'TextSearch.search',
+      {
+        ripGrepArgs: [
+          '--hidden',
+          '--no-require-git',
+          '--smart-case',
+          '--stats',
+          '--json',
+          '--threads',
+          '1',
+          '--ignore-case',
+          '--word-regexp',
+          '--fixed-strings',
+          '--',
+          'tic-tac',
+          '.',
+        ],
+        searchDir: '/test',
+      },
+    ],
+  ])
+})

@@ -60,6 +60,32 @@ test('getRipGrepArgs - useRegularExpression', () => {
   ).toEqual(['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', '1', '--ignore-case', '--regexp', 'test', '.'])
 })
 
+test('getRipGrepArgs - matchWholeWord uses ripgrep word boundary handling', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      isCaseSensitive: false,
+      matchWholeWord: true,
+      searchString: 'tic-tac',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--ignore-case',
+    '--word-regexp',
+    '--fixed-strings',
+    '--',
+    'tic-tac',
+    '.',
+  ])
+})
+
 test('getRipGrepArgs - exclude', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({

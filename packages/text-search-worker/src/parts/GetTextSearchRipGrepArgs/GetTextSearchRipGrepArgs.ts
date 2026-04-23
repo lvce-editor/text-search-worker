@@ -2,6 +2,7 @@ export const getRipGrepArgs = ({
   defaultExcludes,
   exclude,
   isCaseSensitive,
+  matchWholeWord,
   searchString,
   threads,
   useRegularExpression,
@@ -10,6 +11,7 @@ export const getRipGrepArgs = ({
   readonly exclude?: string
   readonly threads: number
   readonly isCaseSensitive: boolean
+  readonly matchWholeWord?: boolean
   readonly searchString: string
   readonly useRegularExpression: boolean
 }): readonly string[] => {
@@ -29,6 +31,9 @@ export const getRipGrepArgs = ({
     ripGrepArgs.push('--case-sensitive')
   } else {
     ripGrepArgs.push('--ignore-case')
+  }
+  if (matchWholeWord) {
+    ripGrepArgs.push('--word-regexp')
   }
   if (useRegularExpression) {
     ripGrepArgs.push('--regexp', searchString)
