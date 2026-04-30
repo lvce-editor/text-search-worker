@@ -1,3 +1,3 @@
-export const handleError = (error: any): void => {
+export const handleError = (error: unknown): void => {
   console.error(`[text-search-worker] ${error}`)
 }
