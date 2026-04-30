@@ -22,10 +22,9 @@ export const replaceAllAndPrompt = async (
     confirmMessage: confirmAccept,
     title: confirmTitle,
   })
-  if (!shouldReplace) {
-    return false
+  if (shouldReplace) {
+    // TODO
+    // await TextSearchReplaceAll.replaceAll(workspacePath, items, replacement)
   }
-  // TODO
-  // await TextSearchReplaceAll.replaceAll(workspacePath, items, replacement)
-  return true
+  return shouldReplace
 }
