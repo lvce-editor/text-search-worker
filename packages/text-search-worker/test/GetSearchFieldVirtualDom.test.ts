@@ -44,8 +44,8 @@ test('getSearchFieldVirtualDom - with error', () => {
   const name = ''
   const placeholder = ''
   const onInput = 'handleInput'
-  const insideButtons: any = []
-  const outsideButtons: any = []
+  const insideButtons: readonly InputAction[] = []
+  const outsideButtons: readonly InputAction[] = []
   const hasError = true
   expect(GetSearchFieldVirtualDom.getSearchFieldVirtualDom(name, placeholder, onInput, insideButtons, outsideButtons, hasError)).toEqual([
     {

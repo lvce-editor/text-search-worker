@@ -12,7 +12,12 @@ const getScrollBarOffset = (delta: number, finalDelta: number, size: number, scr
 
 export const getScrollBarY = getScrollBarOffset
 
-export const getNewDeltaPercent = (height: number, scrollBarHeight: number, relativeY: number): any => {
+export interface DeltaPercent {
+  readonly handleOffset: number
+  readonly percent: number
+}
+
+export const getNewDeltaPercent = (height: number, scrollBarHeight: number, relativeY: number): DeltaPercent => {
   const halfScrollBarHeight = scrollBarHeight / 2
   if (relativeY <= halfScrollBarHeight) {
     // clicked at top
