@@ -46,8 +46,8 @@ export const createViewModel = (state: SearchState): ViewModel => {
     items,
   )
   const focusOutline = listFocused && listFocusedIndex === -1
-  const scrollBarValue = (deltaY / finalDeltaY) * 100
-  const scrollBarY = ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, height - headerHeight, scrollBarHeight)
+  const scrollBarValue = finalDeltaY === 0 ? 0 : (deltaY / finalDeltaY) * 100
+  const scrollBarY = finalDeltaY === 0 ? 0 : ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, height - headerHeight, scrollBarHeight)
   return {
     deltaY,
     displayResults,
