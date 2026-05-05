@@ -7,6 +7,7 @@ import * as GetReplacedMessage from '../GetReplacedMessage/GetReplacedMessage.ts
 import * as GetReplaceElements from '../GetReplaceElements/GetReplaceElements.ts'
 import { removeItemFromItems } from '../RemoveItemFromItems/RemoveItemFromItems.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 const getActualIndex = (state: SearchState): number => {
@@ -25,7 +26,7 @@ const getFileIndex = (state: SearchState, actualIndex: number): number => {
   return -1
 }
 
-const getFileItems = (state: SearchState, fileIndex: number) => {
+const getFileItems = (state: SearchState, fileIndex: number): readonly SearchResult[] => {
   const { items } = state
   const fileItems = [items[fileIndex]]
   for (let i = fileIndex + 1; i < items.length; i++) {

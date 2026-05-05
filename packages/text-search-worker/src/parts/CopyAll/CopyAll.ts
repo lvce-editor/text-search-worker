@@ -1,5 +1,5 @@
-import { writeText } from '../ClipBoard/ClipBoard.ts'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
+import { writeText } from '../ClipBoard/ClipBoard.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
