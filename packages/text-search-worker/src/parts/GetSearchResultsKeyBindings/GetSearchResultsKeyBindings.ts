@@ -16,6 +16,16 @@ export const getSearchResultKeyBindings = (): readonly KeyBinding[] => {
       when: WhenExpression.FocusSearchResults,
     },
     {
+      command: 'Search.collapseCurrent',
+      key: KeyCode.LeftArrow,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
+      command: 'Search.expandCurrent',
+      key: KeyCode.RightArrow,
+      when: WhenExpression.FocusSearchResults,
+    },
+    {
       command: 'Search.dismissItem',
       key: KeyCode.Delete,
       when: WhenExpression.FocusSearchResults,
