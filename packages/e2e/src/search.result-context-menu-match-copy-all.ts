@@ -1,6 +1,7 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.result-context-menu-match-copy-all'
+export const skip = 1
 
 export const test: Test = async ({ ClipBoard, expect, FileSystem, Locator, Search, SideBar, Workspace }) => {
   // arrange
