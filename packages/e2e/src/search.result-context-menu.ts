@@ -2,35 +2,37 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.result-context-menu'
 
-export const skip = 1
-
 export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
-  await FileSystem.writeFile(`${tmpDir}/test.css`, `abc`)
+  await FileSystem.writeFile(`${tmpDir}/test.css`, `abc\nabx`)
   await Workspace.setPath(tmpDir)
   await SideBar.open('Search')
   await Search.setValue('ab')
-  await Search.setReplaceValue('')
-  const viewletSearch = Locator('.Search')
-  const message = viewletSearch.locator('[role="status"]')
-  await expect(message).toHaveText('1 result in 1 file')
-  const result = Locator('.TreeItem[aria-label="/test.css"]')
-  await expect(result).toHaveAttribute('aria-expanded', 'true')
-  const match = Locator('.TreeItem[aria-label="abc"]')
-  await expect(match).toBeVisible()
-  await Search.selectIndex(0)
+  await Search.toggleReplace()
+  await Search.setReplaceValue('d')
 
   // act
-  await Search.handleContextMenu(-1, 300, 100)
+  await Search.handleContextMenu(2, 300, 100)
 
   // assert
-  const menu = Locator('.Menu')
-  await expect(menu).toBeVisible()
-  const menuItems = menu.locator('.MenuItem')
-  await expect(menuItems).toHaveCount(5)
-  const first = menuItems.nth(0)
-  await expect(first).toHaveText('Replace All')
-  const second = menuItems.nth(1)
-  await expect(second).toHaveText('Dismiss')
+  const fileMenu = Locator('.Menu')
+  await expect(fileMenu).toBeVisible()
+  const fileMenuItems = fileMenu.locator('.MenuItem')
+  await expect(fileMenuItems).toHaveCount(5)
+  await expect(fileMenuItems.nth(0)).toHaveText('Replace All')
+  await expect(fileMenuItems.nth(1)).toHaveText('Dismiss')
+  await expect(fileMenuItems.nth(2)).toHaveText('Copy')
+  await expect(fileMenuItems.nth(3)).toHaveText('Copy Path')
+  await expect(fileMenuItems.nth(4)).toHaveText('Copy All')
+
+  await Search.handleContextMenu(2, 300, 124)
+
+  const matchMenu = Locator('.Menu')
+  await expect(matchMenu).toBeVisible()
+  const matchMenuItems = matchMenu.locator('.MenuItem')
+  await expect(matchMenuItems).toHaveCount(3)
+  await expect(matchMenuItems.nth(0)).toHaveText('Dismiss')
+  await expect(matchMenuItems.nth(1)).toHaveText('Copy')
+  await expect(matchMenuItems.nth(2)).toHaveText('Copy All')
 }
