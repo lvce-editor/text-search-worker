@@ -1,6 +1,6 @@
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
-import { writeText } from '../ClipBoard/ClipBoard.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
+import { writeText } from '../ClipBoard/ClipBoard.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 const getActualIndex = (state: SearchState): number => {

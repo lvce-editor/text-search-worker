@@ -1,4 +1,5 @@
 import { RendererWorker } from '@lvce-editor/rpc-registry'
+import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
 import * as ApplyBulkReplacement from '../ApplyBulkReplacement/ApplyBulkReplacement.ts'
 import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
@@ -7,7 +8,6 @@ import * as GetReplacedMessage from '../GetReplacedMessage/GetReplacedMessage.ts
 import * as GetReplaceElements from '../GetReplaceElements/GetReplaceElements.ts'
 import { removeItemFromItems } from '../RemoveItemFromItems/RemoveItemFromItems.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
-import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 const getActualIndex = (state: SearchState): number => {
