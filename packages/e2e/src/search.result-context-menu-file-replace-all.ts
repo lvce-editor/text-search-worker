@@ -3,7 +3,7 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 export const name = 'search.result-context-menu-file-replace-all'
 export const skip = 1
 
-export const test: Test = async ({ expect, FileSystem, Locator, Main, Search, SideBar, Workspace }) => {
+export const test: Test = async ({ Command, expect, FileSystem, Locator, Main, Search, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.writeFile(`${tmpDir}/a.css`, `abc`)
@@ -20,7 +20,7 @@ export const test: Test = async ({ expect, FileSystem, Locator, Main, Search, Si
   const menuItems = menu.locator('.MenuItem')
   const replaceAll = menuItems.nth(0)
   await expect(replaceAll).toHaveText('Replace All')
-  await replaceAll.click()
+  await Command.execute('Search.replaceAll')
 
   // assert
   await Main.openUri(`${tmpDir}/a.css`)
