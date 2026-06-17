@@ -12,7 +12,7 @@ const getMissingDirents = (searchResults: readonly SearchResult[], fileIconCache
   for (const file of files) {
     const uri = getFilePath(file.text)
 
-    if (!(uri in fileIconCache)) {
+    if (!Object.hasOwn(fileIconCache, uri)) {
       missingDirents.push(file)
     }
   }

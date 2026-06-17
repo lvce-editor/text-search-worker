@@ -26,16 +26,16 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     platform,
     threads,
     uid,
-    usePullBasedSearch,
+    usePullBasedSearch: isUsePullBasedSearch,
     value,
     width,
   } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const isFileSearch = scheme === '' || scheme === 'file'
-  const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
+  const shouldUsePullBasedSearch = isUsePullBasedSearch && isFileSearch
   const searchId = shouldUsePullBasedSearch ? crypto.randomUUID() : ''
-  const { limitHit, results } = await TextSearch.textSearch(
+  const { limitHit: isLimitHit, results } = await TextSearch.textSearch(
     root,
     value,
     {
@@ -64,7 +64,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   }
   const { fileCount, resultCount } = GetTextSearchResultCounts.getTextSearchResultCounts(results)
   const message = SearchStatusMessage.getStatusMessage(resultCount, fileCount)
-  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
+  const limitHitWarning = isLimitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
   const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(limitHitWarning, width)
   const headerHeight = GetTopHeight.getTopHeight(flags) + warningHeight
   const total = results.length
@@ -86,7 +86,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
     headerHeight,
     icons,
     items: results,
-    limitHit,
+    limitHit: isLimitHit,
     limitHitWarning,
     listItems: results,
     loaded: true,

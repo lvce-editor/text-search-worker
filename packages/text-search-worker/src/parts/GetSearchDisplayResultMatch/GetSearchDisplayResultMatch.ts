@@ -3,13 +3,13 @@ import * as ExpandedType from '../ExpandedType/ExpandedType.ts'
 import * as GetTreeItemIndent from '../GetTreeItemIndent/GetTreeItemIndent.ts'
 
 export const getDisplayResultMatch = (
-  setSize: number,
+  ariaSetSize: number,
   searchTermLength: number,
   replacement: string,
   text: string,
   posInSet: number,
   start: number,
-  focused: boolean,
+  isFocused: boolean,
 ): DisplaySearchResult => {
   const depth = 1
   const indent = GetTreeItemIndent.getTreeItemIndent(depth)
@@ -17,14 +17,14 @@ export const getDisplayResultMatch = (
     badgeText: '',
     depth,
     expanded: ExpandedType.None,
-    focused,
+    focused: isFocused,
     icon: '',
     indent,
     matchLength: searchTermLength,
     matchStart: start,
     posInSet,
     replacement,
-    setSize,
+    setSize: ariaSetSize,
     text: text,
     title: text.trim(),
   }

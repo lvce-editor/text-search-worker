@@ -17,12 +17,24 @@ export const handleUpdatePullBased = async (state: SearchState, update: Partial<
   const searchId = getsearchid()
   const partialNewState: SearchState = { ...state, ...update, items: [], listItems: [], message: '', searchId, searchResults: [] }
   set(state.uid, state, partialNewState)
-  const { assetDir, excludeValue, flags, includeValue, limit, platform, threads, uid, usePullBasedSearch, value, width } = partialNewState
+  const {
+    assetDir,
+    excludeValue,
+    flags,
+    includeValue,
+    limit,
+    platform,
+    threads,
+    uid,
+    usePullBasedSearch: isUsePullBasedSearch,
+    value,
+    width,
+  } = partialNewState
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const isFileSearch = scheme === '' || scheme === 'file'
-  const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
-  const { limitHit } = await TextSearch.textSearch(
+  const shouldUsePullBasedSearch = isUsePullBasedSearch && isFileSearch
+  const { limitHit: isLimitHit } = await TextSearch.textSearch(
     root,
     value,
     {
@@ -51,7 +63,7 @@ export const handleUpdatePullBased = async (state: SearchState, update: Partial<
   if (!latest) {
     return state
   }
-  const limitHitWarning = limitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
+  const limitHitWarning = isLimitHit ? SearchStrings.theResultSetOnlyContainsASubSetOfMatches() : ''
   const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(limitHitWarning, width)
   const headerHeight = GetTopHeight.getTopHeight(flags) + warningHeight
   const { fileCount, resultCount } = getTextSearchResultCounts(latest.newState.items)
@@ -59,7 +71,7 @@ export const handleUpdatePullBased = async (state: SearchState, update: Partial<
   return {
     ...latest.newState,
     headerHeight,
-    limitHit,
+    limitHit: isLimitHit,
     limitHitWarning,
     message,
   }

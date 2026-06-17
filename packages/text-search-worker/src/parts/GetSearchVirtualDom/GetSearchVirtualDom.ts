@@ -13,7 +13,7 @@ export const getSearchVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],
   flags: number,
   message: string,
-  focusOutline: boolean,
+  hasFocusOutline: boolean,
   searchInputErrorMessage: string,
   scrollBarHeight: number,
   scrollBarY: number,
@@ -23,9 +23,9 @@ export const getSearchVirtualDom = (
   matchCount: number,
   limitHitWarning: string,
   focus: number = 0,
-  initial: boolean = false,
+  isInitial: boolean = false,
 ): readonly VirtualDomNode[] => {
-  if (initial) {
+  if (isInitial) {
     return []
   }
   const errorDom = GetSearchInputErrorVirtualDom.getSearchInputErrorVirtualDom(searchInputErrorMessage)
@@ -41,7 +41,7 @@ export const getSearchVirtualDom = (
     ...errorDom,
     ...GetSearchResultsVirtualDom.getSearchResultsVirtualDom(
       visibleItems,
-      focusOutline,
+      hasFocusOutline,
       scrollBarHeight,
       scrollBarY,
       scrollBarValue,

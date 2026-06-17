@@ -6,7 +6,7 @@ import { getNewText } from '../GetNewText/GetNewText.ts'
 import { updateValue } from '../UpdateValue/UpdateValue.ts'
 
 export const isSelectionKey = (name: string, selections: SelectionState): name is keyof SelectionState => {
-  return name in selections
+  return Object.hasOwn(selections, name)
 }
 
 export const handleInputPaste = async (state: SearchState, name: string): Promise<SearchState> => {

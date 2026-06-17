@@ -6,13 +6,11 @@ export const createFullParentFolderTree = (folders: readonly string[]): Tree => 
   const denseTree: Record<string, SearchResult[]> = Object.create(null)
   for (const path of folders) {
     let currentPath = path
-    while (true) {
-      const parentPath = Path.dirname2(currentPath)
-      if (parentPath === currentPath) {
-        break
-      }
+    let parentPath = Path.dirname2(currentPath)
+    while (parentPath !== currentPath) {
       denseTree[parentPath] ||= []
       currentPath = parentPath
+      parentPath = Path.dirname2(currentPath)
     }
   }
 

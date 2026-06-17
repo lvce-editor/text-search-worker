@@ -6,15 +6,10 @@ export const getTextSearchResultCounts = (results: readonly SearchResult[]): Res
   let resultCount = 0
   let fileCount = 0
   for (const result of results) {
-    switch (result.type) {
-      case TextSearchResultType.File:
-        fileCount++
-        break
-      case TextSearchResultType.Match:
-        resultCount++
-        break
-      default:
-        break
+    if (result.type === TextSearchResultType.File) {
+      fileCount++
+    } else if (result.type === TextSearchResultType.Match) {
+      resultCount++
     }
   }
   return { fileCount, resultCount }

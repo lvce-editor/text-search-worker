@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { getSavedFocus, getSavedListFocus } from '../src/parts/GetSavedFocus/GetSavedFocus.ts'
+import { getSavedFocus, isSavedListFocused } from '../src/parts/GetSavedFocus/GetSavedFocus.ts'
 
 test('getSavedFocus returns focus value when it exists and is a number', () => {
   const savedState = { focus: 5 }
@@ -40,47 +40,47 @@ test('getSavedFocus returns 0 when focus is null', () => {
   expect(result).toBe(0)
 })
 
-test('getSavedListFocus returns listFocused value when it exists and is a boolean', () => {
+test('isSavedListFocused returns listFocused value when it exists and is a boolean', () => {
   const savedState = { listFocused: true }
-  const result = getSavedListFocus(savedState)
-  expect(result).toBe(true)
+  const isResult = isSavedListFocused(savedState)
+  expect(isResult).toBe(true)
 })
 
-test('getSavedListFocus returns false when listFocused is false', () => {
+test('isSavedListFocused returns false when listFocused is false', () => {
   const savedState = { listFocused: false }
-  const result = getSavedListFocus(savedState)
-  expect(result).toBe(false)
+  const isResult = isSavedListFocused(savedState)
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when savedState is null', () => {
-  const result = getSavedListFocus(null)
-  expect(result).toBe(false)
+test('isSavedListFocused returns false when savedState is null', () => {
+  const isResult = isSavedListFocused(null)
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when savedState is undefined', () => {
-  const result = getSavedListFocus(undefined)
-  expect(result).toBe(false)
+test('isSavedListFocused returns false when savedState is undefined', () => {
+  const isResult = isSavedListFocused(undefined)
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when savedState is not an object', () => {
-  const result = getSavedListFocus('not an object')
-  expect(result).toBe(false)
+test('isSavedListFocused returns false when savedState is not an object', () => {
+  const isResult = isSavedListFocused('not an object')
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when listFocused does not exist', () => {
+test('isSavedListFocused returns false when listFocused does not exist', () => {
   const savedState = { other: 'value' }
-  const result = getSavedListFocus(savedState)
-  expect(result).toBe(false)
+  const isResult = isSavedListFocused(savedState)
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when listFocused is not a boolean', () => {
+test('isSavedListFocused returns false when listFocused is not a boolean', () => {
   const savedState = { listFocused: 'not a boolean' }
-  const result = getSavedListFocus(savedState)
-  expect(result).toBe(false)
+  const isResult = isSavedListFocused(savedState)
+  expect(isResult).toBe(false)
 })
 
-test('getSavedListFocus returns false when listFocused is null', () => {
+test('isSavedListFocused returns false when listFocused is null', () => {
   const savedState = { listFocused: null }
-  const result = getSavedListFocus(savedState)
-  expect(result).toBe(false)
+  const isResult = isSavedListFocused(savedState)
+  expect(isResult).toBe(false)
 })

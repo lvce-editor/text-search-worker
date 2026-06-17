@@ -5,18 +5,18 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
-const getClassName = (indented: boolean): string => {
-  if (indented) {
+const getClassName = (isIndented: boolean): string => {
+  if (isIndented) {
     return MergeClassNames.mergeClassNames(ClassNames.ViewletSearchMessage, ClassNames.ViewletSearchMessageIndented)
   }
   return ClassNames.ViewletSearchMessage
 }
 
-export const getSearchMessageVirtualDom = (message: string, indented: boolean): readonly VirtualDomNode[] => {
+export const getSearchMessageVirtualDom = (message: string, isIndented: boolean): readonly VirtualDomNode[] => {
   return [
     {
       childCount: 1,
-      className: getClassName(indented),
+      className: getClassName(isIndented),
       role: AriaRoles.Status,
       type: VirtualDomElements.Div,
     },

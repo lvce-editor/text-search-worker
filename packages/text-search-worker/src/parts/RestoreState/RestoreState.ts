@@ -1,5 +1,5 @@
 import type { RestoredState } from '../RestoredState/RestoredState.ts'
-import { getSavedFocus, getSavedListFocus } from '../GetSavedFocus/GetSavedFocus.ts'
+import { getSavedFocus, isSavedListFocused } from '../GetSavedFocus/GetSavedFocus.ts'
 import { getSavedHistory } from '../GetSavedHistory/GetSavedHistory.ts'
 import {
   getSavedValue,
@@ -17,7 +17,7 @@ export const restoreState = (savedState: unknown): RestoredState => {
     focus: getSavedFocus(savedState),
     history: getSavedHistory(savedState),
     includeValue: getSavedIncludeValue(savedState),
-    listFocused: getSavedListFocus(savedState),
+    listFocused: isSavedListFocused(savedState),
     replacement: getSavedReplacement(savedState),
     savedCollapsedPaths: getSavedCollapsedPaths(savedState),
     savedValue: getSavedValue(savedState),

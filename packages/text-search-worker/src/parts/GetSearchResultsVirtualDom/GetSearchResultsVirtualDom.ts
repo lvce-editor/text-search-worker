@@ -9,7 +9,7 @@ import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
 export const getSearchResultsVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],
-  focusOutline: boolean,
+  hasFocusOutline: boolean,
   scrollbarHeight: number,
   scrollBarY: number,
   scrollBarValue: number,
@@ -24,7 +24,7 @@ export const getSearchResultsVirtualDom = (
         ClassNames.Viewlet,
         ClassNames.List,
         ClassNames.Tree,
-        focusOutline ? ClassNames.FocusOutline : ClassNames.Empty,
+        hasFocusOutline ? ClassNames.FocusOutline : ClassNames.Empty,
       ),
       onBlur: HandleListBlur,
       role: AriaRoles.Tree,

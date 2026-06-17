@@ -3,22 +3,22 @@ import * as Arrays from '../Arrays/Arrays.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
 
 interface RemoveIndices {
+  itemsToRemove: number
   newFileCount: number
   newFocusedIndex: number
   newMatchCount: number
-  removeCount: number
   startIndex: number
 }
 
 const getSetSize = (items: readonly SearchResult[], index: number): number => {
-  let setSize = 0
+  let childCount = 0
   for (let i = index + 1; i < items.length; i++) {
     if (items[i].type === TextSearchResultType.File) {
       break
     }
-    setSize++
+    childCount++
   }
-  return setSize
+  return childCount
 }
 
 const getRemoveIndicesFile = (
@@ -28,12 +28,12 @@ const getRemoveIndicesFile = (
   matchCount: number,
   fileCount: number,
 ): RemoveIndices => {
-  const setSize = getSetSize(items, index)
+  const childCount = getSetSize(items, index)
   return {
+    itemsToRemove: childCount + 1,
     newFileCount: fileCount - 1,
-    newFocusedIndex: index + setSize + 1 < items.length ? index : index - 1,
-    newMatchCount: matchCount - setSize,
-    removeCount: setSize + 1,
+    newFocusedIndex: index + childCount + 1 < items.length ? index : index - 1,
+    newMatchCount: matchCount - childCount,
     startIndex: index,
   }
 }
@@ -41,21 +41,21 @@ const getRemoveIndicesFile = (
 const getRemoveIndicesMatch = (items: readonly SearchResult[], index: number, matchCount: number, fileCount: number): RemoveIndices => {
   for (let i = index; i >= 0; i--) {
     if (items[i].type === TextSearchResultType.File) {
-      const setSize = getSetSize(items, i)
-      if (setSize === 1) {
+      const childCount = getSetSize(items, i)
+      if (childCount === 1) {
         return {
+          itemsToRemove: 2,
           newFileCount: fileCount - 1,
           newFocusedIndex: i - 1,
           newMatchCount: matchCount - 1,
-          removeCount: 2,
           startIndex: i,
         }
       }
       return {
+        itemsToRemove: 1,
         newFileCount: fileCount,
         newFocusedIndex: index,
         newMatchCount: matchCount - 1,
-        removeCount: 1,
         startIndex: index,
       }
     }
@@ -76,8 +76,8 @@ const getRemoveIndices = (items: readonly SearchResult[], index: number, matchCo
 }
 
 export const removeItemFromItems = (items: readonly SearchResult[], index: number, matchCount: number, fileCount: number): any => {
-  const { newFileCount, newFocusedIndex, newMatchCount, removeCount, startIndex } = getRemoveIndices(items, index, matchCount, fileCount)
-  const newItems = Arrays.remove(items, startIndex, removeCount)
+  const { itemsToRemove, newFileCount, newFocusedIndex, newMatchCount, startIndex } = getRemoveIndices(items, index, matchCount, fileCount)
+  const newItems = Arrays.remove(items, startIndex, itemsToRemove)
   return {
     newFileCount,
     newFocusedIndex,

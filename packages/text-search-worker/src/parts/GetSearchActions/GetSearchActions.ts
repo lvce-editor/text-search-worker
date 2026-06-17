@@ -7,7 +7,7 @@ import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
 
 export const getActions = (state: SearchState): readonly Action[] => {
   const { replacement, value } = state
-  const bothEmpty = value === '' && replacement === ''
+  const isBothEmpty = value === '' && replacement === ''
   return [
     {
       command: 'refresh',
@@ -19,7 +19,7 @@ export const getActions = (state: SearchState): readonly Action[] => {
     },
     {
       command: 'clearSearchResults',
-      enabled: !bothEmpty,
+      enabled: !isBothEmpty,
       icon: MaskIcon.ClearAll,
       id: InputName.ClearAll,
       label: SearchStrings.clearSearchResults(),

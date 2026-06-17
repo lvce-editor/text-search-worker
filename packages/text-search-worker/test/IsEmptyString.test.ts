@@ -3,21 +3,21 @@ import * as Character from '../src/parts/Character/Character.ts'
 import { isEmptyString } from '../src/parts/IsEmptyString/IsEmptyString.ts'
 
 test('isEmptyString returns true for empty string', () => {
-  const result = isEmptyString('')
-  expect(result).toBe(true)
+  const isResult = isEmptyString('')
+  expect(isResult).toBe(true)
 })
 
 test('isEmptyString returns false for non-empty string', () => {
-  const result = isEmptyString('Hello')
-  expect(result).toBe(false)
+  const isResult = isEmptyString('Hello')
+  expect(isResult).toBe(false)
 })
 
 test('isEmptyString returns false for string equal to Character.EmptyString', () => {
-  const result = isEmptyString(Character.EmptyString)
-  expect(result).toBe(true)
+  const isResult = isEmptyString(Character.EmptyString)
+  expect(isResult).toBe(true)
 })
 
 test('isEmptyString returns false for whitespace string', () => {
-  const result = isEmptyString('   ')
-  expect(result).toBe(false)
+  const isResult = isEmptyString(' '.repeat(3))
+  expect(isResult).toBe(false)
 })

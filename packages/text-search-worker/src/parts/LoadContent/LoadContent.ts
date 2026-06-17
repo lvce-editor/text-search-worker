@@ -8,7 +8,7 @@ import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
   const { excludeValue, flags, includeValue, replacement, savedCollapsedPaths, savedValue, threads } = RestoreState.restoreState(savedState)
-  const usePullBasedSearch = await GetUsePullBasedSearch.getUsePullBasedSearch()
+  const isUsePullBasedSearch = await GetUsePullBasedSearch.getUsePullBasedSearch()
   const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(state.limitHitWarning, state.width)
   const headerHeight = GetTopHeight.getTopHeight(flags) + warningHeight
 
@@ -22,14 +22,14 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     inputSource: InputSource.Script,
     replacement,
     threads,
-    usePullBasedSearch,
+    usePullBasedSearch: isUsePullBasedSearch,
     value: savedValue,
   }
   if (savedValue) {
     const result = await ViewletSearchHandleUpdate.handleUpdate(
       {
         ...state,
-        usePullBasedSearch,
+        usePullBasedSearch: isUsePullBasedSearch,
       },
       update,
     )
@@ -46,6 +46,6 @@ export const loadContent = async (state: SearchState, savedState: unknown): Prom
     initial: false,
     loaded: true,
     threads,
-    usePullBasedSearch,
+    usePullBasedSearch: isUsePullBasedSearch,
   }
 }

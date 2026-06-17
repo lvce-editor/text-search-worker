@@ -14,7 +14,8 @@ test('getProtocol - file protocol', () => {
 })
 
 test('getProtocol - http protocol', () => {
-  expect(GetProtocol.getProtocol('http://example.com')).toBe('http')
+  const protocol = 'http'
+  expect(GetProtocol.getProtocol(`${protocol}://example.com`)).toBe(protocol)
 })
 
 test('getProtocol - https protocol', () => {

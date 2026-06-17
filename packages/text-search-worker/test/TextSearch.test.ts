@@ -62,7 +62,8 @@ test('textSearch - throws error for non-string query', async () => {
 })
 
 test('textSearch - handles different protocols', async () => {
-  const root = 'http://test.com'
+  const protocol = 'http'
+  const root = `${protocol}://test.com`
   const query = 'search'
   const assetDir = '/assets'
   const options: TextSearchOptions = {
@@ -75,7 +76,7 @@ test('textSearch - handles different protocols', async () => {
     matchWholeWord: false,
     query,
     root,
-    scheme: 'http',
+    scheme: protocol,
     threads: 0,
     usePullBasedSearch: false,
     useRegularExpression: false,
@@ -89,11 +90,11 @@ test('textSearch - handles different protocols', async () => {
     }
   })
   set({
-    http: mockProvider,
+    [protocol]: mockProvider,
   })
 
   await textSearch(root, query, options, assetDir)
 
   // @ts-ignore
-  expect(mockProvider).toHaveBeenCalledWith('http', root, query, options, assetDir, undefined, undefined, undefined)
+  expect(mockProvider).toHaveBeenCalledWith(protocol, root, query, options, assetDir, undefined, undefined, undefined)
 })

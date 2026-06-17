@@ -41,7 +41,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
   ]
   const flags = 0
   const message = 'Search results'
-  const focusOutline = false
+  const isFocusOutline = false
   const scrollBarHeight = 0
   const scrollBarY = 0
   const scrollBarValue = 0
@@ -54,7 +54,7 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
     visibleItems,
     flags,
     message,
-    focusOutline,
+    isFocusOutline,
     '',
     scrollBarHeight,
     scrollBarY,

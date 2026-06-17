@@ -14,13 +14,13 @@ export const getDisplayResults = (
   fileIcons: readonly string[],
   focusedIndex: number,
   collapsedPaths: readonly string[],
-  renderFolderPaths: boolean,
+  shouldRenderFolderPaths: boolean,
   originalResults: readonly SearchResult[],
 ): readonly DisplaySearchResult[] => {
   const filteredResults = GetFilteredResults.getFilteredResults(results, collapsedPaths)
 
   const displayResults: DisplaySearchResult[] = []
-  const setSize = resultCount
+  const ariaSetSize = resultCount
   const searchTermLength = searchTerm.length
   const max = Math.min(filteredResults.length, maxLineY)
   for (let i = minLineY; i < max; i++) {
@@ -28,12 +28,12 @@ export const getDisplayResults = (
       filteredResults,
       fileIcons,
       i,
-      setSize,
+      ariaSetSize,
       searchTermLength,
       replacement,
       focusedIndex,
       collapsedPaths,
-      renderFolderPaths,
+      shouldRenderFolderPaths,
       minLineY,
       originalResults,
     )

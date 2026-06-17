@@ -18,7 +18,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     icons,
     itemHeight,
     items,
-    listFocused,
+    listFocused: isListFocused,
     listFocusedIndex,
     listItems,
     matchCount,
@@ -45,7 +45,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     renderFolderPaths || false,
     items,
   )
-  const focusOutline = listFocused && listFocusedIndex === -1
+  const isFocusOutline = isListFocused && listFocusedIndex === -1
   const scrollBarValue = finalDeltaY === 0 ? 0 : (deltaY / finalDeltaY) * 100
   const scrollBarY = finalDeltaY === 0 ? 0 : ScrollBarFunctions.getScrollBarY(deltaY, finalDeltaY, height - headerHeight, scrollBarHeight)
   return {
@@ -53,7 +53,7 @@ export const createViewModel = (state: SearchState): ViewModel => {
     displayResults,
     flags,
     focus,
-    focusOutline,
+    focusOutline: isFocusOutline,
     itemHeight,
     matchCount,
     message,

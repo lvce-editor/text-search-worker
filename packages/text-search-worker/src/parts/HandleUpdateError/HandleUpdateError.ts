@@ -9,7 +9,7 @@ export const handleUpdateError = async (state: SearchState, update: Partial<Sear
     listItems: [],
     matchCount: 0,
     maxLineY: 0,
-    message: `${error}`,
+    message: String(error),
     minLineY: 0,
   }
 }

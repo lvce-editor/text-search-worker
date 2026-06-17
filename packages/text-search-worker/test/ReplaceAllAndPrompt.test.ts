@@ -7,9 +7,9 @@ test('replaceAllAndPrompt - user cancels prompt', async () => {
     'ConfirmPrompt.prompt': () => false,
   })
 
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
+  const isResult = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
 
-  expect(result).toBe(false)
+  expect(isResult).toBe(false)
   expect(mockRpc.invocations).toEqual([
     [
       'ConfirmPrompt.prompt',
@@ -27,9 +27,9 @@ test('replaceAllAndPrompt - user confirms prompt', async () => {
     'ConfirmPrompt.prompt': () => true,
   })
 
-  const result = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
+  const isResult = await ReplaceAllAndPrompt.replaceAllAndPrompt('/test/workspace', [{ text: 'test.txt', type: 'file' }], 'replacement', 5, 2)
 
-  expect(result).toBe(true)
+  expect(isResult).toBe(true)
   expect(mockRpc.invocations).toEqual([
     [
       'ConfirmPrompt.prompt',

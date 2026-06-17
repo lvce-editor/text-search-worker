@@ -13,7 +13,7 @@ export const getRipGrepArgs = ({
   readonly searchString: string
   readonly useRegularExpression: boolean
 }): readonly string[] => {
-  const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', `${threads}`]
+  const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', String(threads)]
   const excludePatternsFromValue = exclude
     ? exclude
         .split(',')

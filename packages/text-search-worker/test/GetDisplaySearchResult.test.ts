@@ -16,7 +16,7 @@ test('getDisplayResult - file', () => {
   const i = 0
   const replacement = ''
   const focusedIndex = -1
-  const setSize = 1
+  const ariaSetSize = 1
   const searchTermLength = 1
   const fileIcons: readonly string[] = ['']
   const collapsedPaths: readonly string[] = []
@@ -26,7 +26,7 @@ test('getDisplayResult - file', () => {
       results,
       fileIcons,
       i,
-      setSize,
+      ariaSetSize,
       searchTermLength,
       replacement,
       focusedIndex,
@@ -65,7 +65,7 @@ test('getDisplayResult - result', () => {
   const i = 0
   const replacement = ''
   const focusedIndex = -1
-  const setSize = 1
+  const ariaSetSize = 1
   const searchTermLength = 1
   const fileIcons: readonly string[] = []
   const collapsedPaths: readonly string[] = []
@@ -75,7 +75,7 @@ test('getDisplayResult - result', () => {
       results,
       fileIcons,
       i,
-      setSize,
+      ariaSetSize,
       searchTermLength,
       replacement,
       focusedIndex,

@@ -10,7 +10,7 @@ import * as IsEmptyString from '../IsEmptyString/IsEmptyString.ts'
 import * as ValidateSearchInput from '../ValidateSearchInput/ValidateSearchInput.ts'
 
 export const handleUpdate = async (state: SearchState, update: Partial<SearchState>): Promise<SearchState> => {
-  const { incrementalSearch, usePullBasedSearch } = state
+  const { incrementalSearch: isIncrementalSearch, usePullBasedSearch: isUsePullBasedSearch } = state
   const partialNewState = { ...state, ...update }
   try {
     const { flags, value } = partialNewState
@@ -21,10 +21,10 @@ export const handleUpdate = async (state: SearchState, update: Partial<SearchSta
     if (searchInputErrorMessage) {
       return handleUpdateValidationError(state, update, searchInputErrorMessage)
     }
-    if (incrementalSearch) {
+    if (isIncrementalSearch) {
       return await handleUpdateIncremental(state, update)
     }
-    if (usePullBasedSearch) {
+    if (isUsePullBasedSearch) {
       return await handleUpdatePullBased(state, update)
     }
     return await handleUpdateFull(state, update)

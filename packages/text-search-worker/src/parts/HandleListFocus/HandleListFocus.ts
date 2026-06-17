@@ -1,8 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const handleListFocus = async (state: SearchState): Promise<SearchState> => {
-  const { listFocused } = state
-  if (listFocused) {
+  const { listFocused: isListFocused } = state
+  if (isListFocused) {
     return state
   }
   return {

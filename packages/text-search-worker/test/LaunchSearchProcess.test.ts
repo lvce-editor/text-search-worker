@@ -4,16 +4,20 @@ import * as LaunchSearchProcess from '../src/parts/LaunchSearchProcessNode/Launc
 
 // TODO add a helper function in rpc to mock websocket rpc
 test.skip('launchSearchProcess - creates websocket with correct url', async () => {
-  // @ts-ignore
-  globalThis.location = {}
+  Object.defineProperty(globalThis, 'location', {
+    configurable: true,
+    value: {},
+  })
 
   const mockWebSocket = {
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
   }
 
-  // @ts-ignore
-  globalThis.WebSocket = jest.fn(() => mockWebSocket)
+  Object.defineProperty(globalThis, 'WebSocket', {
+    configurable: true,
+    value: jest.fn(() => mockWebSocket),
+  })
 
   // @ts-ignore
   WebSocketRpcParent2.create = jest.fn().mockResolvedValue({
@@ -33,9 +37,11 @@ test.skip('launchSearchProcess - creates websocket with correct url', async () =
 test.skip('launchSearchProcess - handles websocket creation error', async () => {
   const mockError = new Error('Failed to connect')
 
-  // @ts-ignore
-  globalThis.WebSocket = jest.fn(() => {
-    throw mockError
+  Object.defineProperty(globalThis, 'WebSocket', {
+    configurable: true,
+    value: jest.fn(() => {
+      throw mockError
+    }),
   })
 
   await expect(LaunchSearchProcess.launchSearchProcessNode()).rejects.toThrow('Failed to connect')
@@ -47,8 +53,10 @@ test.skip('launchSearchProcess - handles rpc creation error', async () => {
     removeEventListener: jest.fn(),
   }
 
-  // @ts-ignore
-  globalThis.WebSocket = jest.fn(() => mockWebSocket)
+  Object.defineProperty(globalThis, 'WebSocket', {
+    configurable: true,
+    value: jest.fn(() => mockWebSocket),
+  })
 
   const mockError = new Error('RPC creation failed')
   // @ts-ignore
