@@ -88,6 +88,15 @@ const settingsWorkerUrl = \`\${assetDir}/packages/settings-view/dist/settingsVie
 const staleSearchStaticCommandMapPattern =
   /\n?const searchCommandAliases = \[[^\n]*\]\nObject\.assign\(commandMap, Object\.fromEntries\(searchCommandAliases\.map\(command => \[`Search\.\$\{command\}`, lazy\(`Search\.\$\{command\}`\)\]\)\)\)\n/g
 
+const commandRegistrySnippet = `const register$2 = commandMap => {
+  Object.assign(commands, commandMap);
+};`
+
+const liveCommandRegistrySnippet = `const register$2 = commandMap => {
+  Object.setPrototypeOf(commands, commandMap);
+  Object.assign(commands, commandMap);
+};`
+
 let newContent = content
 
 if (!content.includes('// const textSearchWorkerUrl = ')) {
@@ -123,6 +132,10 @@ if (newContent.includes(oldSearchWrappedCommandsSnippet)) {
 }
 
 newContent = newContent.replace(staleSearchStaticCommandMapPattern, '\n')
+
+if (newContent.includes(commandRegistrySnippet)) {
+  newContent = newContent.replace(commandRegistrySnippet, liveCommandRegistrySnippet)
+}
 
 if (newContent !== content) {
   await writeFile(rendererWorkerMainPath, newContent)
