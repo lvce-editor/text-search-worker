@@ -75,6 +75,12 @@ const missingSearchWrappedCommandsSnippet = `const settingsWorkerUrl = \`\${asse
 
 const searchWrappedCommandsSnippet = `const searchWrappedCommands = Object.fromEntries(Object.entries(Commands$a).map(([command, fn]) => [\`Search.\${command}\`, wrapViewletCommand('Search', command, fn)]))
 Object.assign(commandMapRef, searchWrappedCommands)
+Object.assign(commands, searchWrappedCommands)
+
+const settingsWorkerUrl = \`\${assetDir}/packages/settings-view/dist/settingsViewWorkerMain.js\`;`
+
+const oldSearchWrappedCommandsSnippet = `const searchWrappedCommands = Object.fromEntries(Object.entries(Commands$a).map(([command, fn]) => [\`Search.\${command}\`, wrapViewletCommand('Search', command, fn)]))
+Object.assign(commandMapRef, searchWrappedCommands)
 
 const settingsWorkerUrl = \`\${assetDir}/packages/settings-view/dist/settingsViewWorkerMain.js\`;`
 
@@ -108,6 +114,10 @@ if (!newContent.includes('case Search:') && newContent.includes(missingSearchLoa
 
 if (!newContent.includes('const searchWrappedCommands = ') && newContent.includes(missingSearchWrappedCommandsSnippet)) {
   newContent = newContent.replace(missingSearchWrappedCommandsSnippet, searchWrappedCommandsSnippet)
+}
+
+if (newContent.includes(oldSearchWrappedCommandsSnippet)) {
+  newContent = newContent.replace(oldSearchWrappedCommandsSnippet, searchWrappedCommandsSnippet)
 }
 
 newContent = newContent.replace(staleSearchStaticCommandMapPattern, '\n')
