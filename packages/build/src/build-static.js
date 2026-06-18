@@ -55,6 +55,22 @@ const partiallyFixedSideBarSnippet = `  let actionsDom = [];
 
 const safeSideBarSnippet = `  if (commands) {`
 
+const missingSearchCommandModuleSnippet = `    case 'SearchProcess':
+      return SearchProcess;`
+
+const searchCommandModuleSnippet = `    case 'Search':
+      return Search;
+    case 'SearchProcess':
+      return SearchProcess;`
+
+const missingSearchLoaderSnippet = `    case SearchProcess:
+      return Promise.resolve().then(function () { return SearchProcess_ipc; });`
+
+const searchLoaderSnippet = `    case Search:
+      return Promise.resolve().then(function () { return ViewletSearch_ipc; });
+    case SearchProcess:
+      return Promise.resolve().then(function () { return SearchProcess_ipc; });`
+
 let newContent = content
 
 if (content.includes('// const textSearchWorkerUrl = ')) {
@@ -70,6 +86,14 @@ if (newContent.includes(brokenSideBarSnippet)) {
 
 if (newContent.includes(partiallyFixedSideBarSnippet)) {
   newContent = newContent.replace(partiallyFixedSideBarSnippet, safeSideBarSnippet)
+}
+
+if (!newContent.includes("case 'Search':") && newContent.includes(missingSearchCommandModuleSnippet)) {
+  newContent = newContent.replace(missingSearchCommandModuleSnippet, searchCommandModuleSnippet)
+}
+
+if (!newContent.includes('case Search:') && newContent.includes(missingSearchLoaderSnippet)) {
+  newContent = newContent.replace(missingSearchLoaderSnippet, searchLoaderSnippet)
 }
 
 if (newContent !== content) {
