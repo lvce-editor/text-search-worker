@@ -71,6 +71,16 @@ const searchLoaderSnippet = `    case Search:
     case SearchProcess:
       return Promise.resolve().then(function () { return SearchProcess_ipc; });`
 
+const missingSearchWrappedCommandsSnippet = `const settingsWorkerUrl = \`\${assetDir}/packages/settings-view/dist/settingsViewWorkerMain.js\`;`
+
+const searchWrappedCommandsSnippet = `const searchWrappedCommands = Object.fromEntries(Object.entries(Commands$a).map(([command, fn]) => [\`Search.\${command}\`, wrapViewletCommand('Search', command, fn)]))
+Object.assign(commandMapRef, searchWrappedCommands)
+
+const settingsWorkerUrl = \`\${assetDir}/packages/settings-view/dist/settingsViewWorkerMain.js\`;`
+
+const staleSearchStaticCommandMapPattern =
+  /\n?const searchCommandAliases = \[[^\n]*\]\nObject\.assign\(commandMap, Object\.fromEntries\(searchCommandAliases\.map\(command => \[`Search\.\$\{command\}`, lazy\(`Search\.\$\{command\}`\)\]\)\)\)\n/g
+
 let newContent = content
 
 if (content.includes('// const textSearchWorkerUrl = ')) {
@@ -95,6 +105,12 @@ if (!newContent.includes("case 'Search':") && newContent.includes(missingSearchC
 if (!newContent.includes('case Search:') && newContent.includes(missingSearchLoaderSnippet)) {
   newContent = newContent.replace(missingSearchLoaderSnippet, searchLoaderSnippet)
 }
+
+if (!newContent.includes('const searchWrappedCommands = ') && newContent.includes(missingSearchWrappedCommandsSnippet)) {
+  newContent = newContent.replace(missingSearchWrappedCommandsSnippet, searchWrappedCommandsSnippet)
+}
+
+newContent = newContent.replace(staleSearchStaticCommandMapPattern, '\n')
 
 if (newContent !== content) {
   await writeFile(rendererWorkerPath, newContent)
