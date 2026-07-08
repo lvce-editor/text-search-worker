@@ -63,6 +63,26 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     newContent = newContent.replace(missingActionsUidSnippet, fixedActionsUidSnippet)
   }
 
+  const duplicateActionsUidSnippet = `  let actionsUid = -1;
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {
+    disposeFunctional(childUid);
+    await savePromise;
+    return state;
+  }
+  let actionsUid = -1;
+  if (commands) {`
+  const singleActionsUidSnippet = `  let actionsUid = -1;
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {
+    disposeFunctional(childUid);
+    await savePromise;
+    return state;
+  }
+  if (commands) {`
+
+  if (newContent.includes(duplicateActionsUidSnippet)) {
+    newContent = newContent.replace(duplicateActionsUidSnippet, singleActionsUidSnippet)
+  }
+
   const commandInitializerSnippet = `const initializeModule = module => {
   if (module.Commands) {
     for (const [key, value] of Object.entries(module.Commands)) {`
