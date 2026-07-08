@@ -64,25 +64,31 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
   newContent = newContent.replace(
     `    const module = await state.load(moduleId);
     initializeModule(module);`,
-    `    const module = moduleId === 'Search' ? ViewletSearch_ipc : await state.load(moduleId);
+    `    const module = await state.load(moduleId);
     await initializeModule(module);`,
   )
   newContent = newContent.replace(
     `    const module = await state$A.load(moduleId);
     initializeModule(module);`,
-    `    const module = moduleId === 'Search' ? ViewletSearch_ipc : await state$A.load(moduleId);
+    `    const module = await state$A.load(moduleId);
     await initializeModule(module);`,
   )
 
   newContent = newContent.replace(
     `  await getOrLoadModule(ModuleMap.getModuleId(command));`,
-    `  const moduleId = command.startsWith('Search.') ? 'Search' : ModuleMap.getModuleId(command);
-  await getOrLoadModule(moduleId);`,
+    `  if (command.startsWith('Search.')) {
+    await loadModule(load$3, Search);
+    return;
+  }
+  await getOrLoadModule(ModuleMap.getModuleId(command));`,
   )
   newContent = newContent.replace(
     `  await getOrLoadModule(getModuleId$2(command));`,
-    `  const moduleId = command.startsWith('Search.') ? 'Search' : getModuleId$2(command);
-  await getOrLoadModule(moduleId);`,
+    `  if (command.startsWith('Search.')) {
+    await loadModule(load$3, Search);
+    return;
+  }
+  await getOrLoadModule(getModuleId$2(command));`,
   )
 
   return newContent
