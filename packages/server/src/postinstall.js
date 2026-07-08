@@ -28,6 +28,7 @@ const isCommitHash = (dirent) => {
 const dirents = await readdir(serverStaticPath)
 const commitHash = dirents.find(isCommitHash) || ''
 const rendererWorkerMainPath = join(serverStaticPath, commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const rendererProcessMainPath = join(serverStaticPath, commitHash, 'packages', 'renderer-process', 'dist', 'rendererProcessMain.js')
 
 const content = await readFile(rendererWorkerMainPath, 'utf-8')
 const remoteUrl = getRemoteUrl(textSearchWorkerPath)
@@ -35,6 +36,45 @@ const newContent = patchRendererWorker(content, remoteUrl, true)
 
 if (newContent !== content) {
   await writeFile(rendererWorkerMainPath, newContent)
+}
+
+const rendererProcessContent = await readFile(rendererProcessMainPath, 'utf-8')
+const rendererWorkerLaunchDiagnosticsSnippet = `return \`Failed to start \${displayName}: \${error}\`;`
+const rendererProcessWithDiagnostics = rendererProcessContent.includes(rendererWorkerLaunchDiagnosticsSnippet)
+  ? rendererProcessContent
+  : rendererProcessContent
+      .replace(
+        `const tryToGetActualErrorMessage = async ({
+  name
+}) => {
+  const displayName = getWorkerDisplayName(name);
+  return \`Failed to start \${displayName}: Worker Launch Error\`;
+};`,
+        `const tryToGetActualErrorMessage = async ({
+  name,
+  url
+}) => {
+  const displayName = getWorkerDisplayName(name);
+  try {
+    await import(url);
+    return \`Failed to start \${displayName}: Worker Launch Error\`;
+  } catch (error) {
+    return \`Failed to start \${displayName}: \${error}\`;
+  }
+};`,
+      )
+      .replace(
+        `const actualErrorMessage = await tryToGetActualErrorMessage({
+        name
+      });`,
+        `const actualErrorMessage = await tryToGetActualErrorMessage({
+        name,
+        url
+      });`,
+      )
+
+if (rendererProcessWithDiagnostics !== rendererProcessContent) {
+  await writeFile(rendererProcessMainPath, rendererProcessWithDiagnostics)
 }
 
 const serverContent = await readFile(serverMainPath, 'utf-8')

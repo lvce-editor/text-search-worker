@@ -18,6 +18,7 @@ const { commitHash } = await sharedProcess.exportStatic({
 })
 
 const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const rendererProcessPath = join(root, 'dist', commitHash, 'packages', 'renderer-process', 'dist', 'rendererProcessMain.js')
 
 export const getRemoteUrl = (path) => {
   const url = pathToFileURL(path).toString().slice(8)
@@ -31,6 +32,45 @@ const newContent = patchRendererWorker(content, remoteUrl, false)
 
 if (newContent !== content) {
   await writeFile(rendererWorkerPath, newContent)
+}
+
+const rendererProcessContent = await readFile(rendererProcessPath, 'utf-8')
+const rendererWorkerLaunchDiagnosticsSnippet = `return \`Failed to start \${displayName}: \${error}\`;`
+const rendererProcessWithDiagnostics = rendererProcessContent.includes(rendererWorkerLaunchDiagnosticsSnippet)
+  ? rendererProcessContent
+  : rendererProcessContent
+      .replace(
+        `const tryToGetActualErrorMessage = async ({
+  name
+}) => {
+  const displayName = getWorkerDisplayName(name);
+  return \`Failed to start \${displayName}: Worker Launch Error\`;
+};`,
+        `const tryToGetActualErrorMessage = async ({
+  name,
+  url
+}) => {
+  const displayName = getWorkerDisplayName(name);
+  try {
+    await import(url);
+    return \`Failed to start \${displayName}: Worker Launch Error\`;
+  } catch (error) {
+    return \`Failed to start \${displayName}: \${error}\`;
+  }
+};`,
+      )
+      .replace(
+        `const actualErrorMessage = await tryToGetActualErrorMessage({
+        name
+      });`,
+        `const actualErrorMessage = await tryToGetActualErrorMessage({
+        name,
+        url
+      });`,
+      )
+
+if (rendererProcessWithDiagnostics !== rendererProcessContent) {
+  await writeFile(rendererProcessPath, rendererProcessWithDiagnostics)
 }
 
 const staticPath = join(root, '.tmp', 'static')
