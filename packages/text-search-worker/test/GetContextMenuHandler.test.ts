@@ -60,14 +60,12 @@ test('mouse handler works correctly', async () => {
     y: 250,
   }
   SearchViewStates.set(state.uid, state, state)
-  const x = 150
-  const y = 250
+  const x = 350
+  const y = 450
 
   const handler = GetContextMenuHandler.getContextMenuHandler(0)
   const result = await handler(state, x, y)
 
   expect(result).toBe(state)
-  expect(mockRpc.invocations).toEqual([
-    ['ContextMenu.show2', state.uid, MenuEntryId.Search, state.x, state.y, { index: -1, menuId: MenuEntryId.Search }],
-  ])
+  expect(mockRpc.invocations).toEqual([['ContextMenu.show2', state.uid, MenuEntryId.Search, x, y, { index: -1, menuId: MenuEntryId.Search }]])
 })
