@@ -89,8 +89,8 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     `  await getOrLoadModule(ModuleMap.getModuleId(command));`,
     `  if (command.startsWith('Search.')) {
     await loadModule(load$3, Search);
-    for (let i = 0; i < 100 && !getInstance(Search); i++) {
-      await new Promise(resolve => setTimeout(resolve, 10));
+    if (!getInstance(Search)) {
+      await execute$3('SideBar.openViewlet', Search);
     }
     return;
   }
@@ -100,8 +100,8 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     `  await getOrLoadModule(getModuleId$2(command));`,
     `  if (command.startsWith('Search.')) {
     await loadModule(load$3, Search);
-    for (let i = 0; i < 100 && !getInstance(Search); i++) {
-      await new Promise(resolve => setTimeout(resolve, 10));
+    if (!getInstance(Search)) {
+      await execute$3('SideBar.openViewlet', Search);
     }
     return;
   }
