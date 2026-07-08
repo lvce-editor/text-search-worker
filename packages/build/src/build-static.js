@@ -1,8 +1,8 @@
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { root } from './root.js'
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { patchRendererWorker } from './patchRendererWorker.js'
+import { root } from './root.js'
 
 const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
@@ -18,20 +18,72 @@ const { commitHash } = await sharedProcess.exportStatic({
 })
 
 const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const textSearchWorkerPath = join(root, 'dist', commitHash, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
+const extensionHostWorkerTestsPath = join(root, 'dist', commitHash, 'packages', 'extension-host-worker-tests')
+const serverRendererWorkerPath = join(
+  root,
+  'packages',
+  'server',
+  'node_modules',
+  '@lvce-editor',
+  'static-server',
+  'static',
+  commitHash,
+  'packages',
+  'renderer-worker',
+  'dist',
+  'rendererWorkerMain.js',
+)
+const serverTextSearchWorkerPath = join(
+  root,
+  'packages',
+  'server',
+  'node_modules',
+  '@lvce-editor',
+  'static-server',
+  'static',
+  commitHash,
+  'packages',
+  'text-search-worker',
+  'dist',
+  'textSearchWorkerMain.js',
+)
+const serverExtensionHostWorkerTestsPath = join(
+  root,
+  'packages',
+  'server',
+  'node_modules',
+  '@lvce-editor',
+  'static-server',
+  'static',
+  commitHash,
+  'packages',
+  'extension-host-worker-tests',
+)
 
 export const getRemoteUrl = (path) => {
   const url = pathToFileURL(path).toString().slice(8)
   return `/remote/${url}`
 }
 
-const content = await readFile(rendererWorkerPath, 'utf8')
-const workerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
+const workerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorkerMain.js')
 const remoteUrl = getRemoteUrl(workerPath)
-const newContent = patchRendererWorker(content, remoteUrl, false)
 
-if (newContent !== content) {
-  await writeFile(rendererWorkerPath, newContent)
+const patchRendererWorkerPath = async (path, useRemoteUrl) => {
+  const content = await readFile(path, 'utf8')
+  const newContent = patchRendererWorker(content, remoteUrl, useRemoteUrl)
+
+  if (newContent !== content) {
+    await writeFile(path, newContent)
+  }
 }
+
+await patchRendererWorkerPath(rendererWorkerPath, false)
+await patchRendererWorkerPath(serverRendererWorkerPath, false)
+
+await cp(workerPath, textSearchWorkerPath)
+await cp(workerPath, serverTextSearchWorkerPath)
+await cp(extensionHostWorkerTestsPath, serverExtensionHostWorkerTestsPath, { recursive: true })
 
 const staticPath = join(root, '.tmp', 'static')
 const staticPrefixPath = join(staticPath, 'text-search-worker')
