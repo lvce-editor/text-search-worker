@@ -58,18 +58,34 @@ const patchServerStaticPrefix = async () => {
 
 const patchE2eDiagnostics = async () => {
   const content = await readFile(e2eWorkerPath, 'utf-8')
-  const diagnosticsSnippet = `const message = error instanceof Error ? error.message : \`\${error}\`;
-    const diagnostics = await getPageDiagnostics(page);`
-  const newContent = content.includes(diagnosticsSnippet)
-    ? content
-    : content
+  const oldDiagnosticsHelper = `const getPageDiagnostics = async page => {
+  try {
+    const html = await page.content();
+    return \`\\nURL: \${page.url()}\\nHTML: \${html.slice(0, 1200)}\`;
+  } catch (error) {
+    return \`\\nDiagnostics unavailable: \${error}\`;
+  }
+};
+`
+  const normalizedContent = content.replace(oldDiagnosticsHelper, '')
+  const diagnosticsSnippet = `PageErrors: \${JSON.stringify(diagnostics.pageErrors || [])}`
+  const newContent = normalizedContent.includes(diagnosticsSnippet)
+    ? normalizedContent
+    : normalizedContent
         .replace(
           `const runTest = async ({
   page,`,
           `const getPageDiagnostics = async page => {
   try {
     const html = await page.content();
-    return \`\\nURL: \${page.url()}\\nHTML: \${html.slice(0, 1200)}\`;
+    const resourceEntries = await page.evaluate(() => performance.getEntriesByType('resource').map(entry => ({
+      name: entry.name,
+      duration: entry.duration,
+      transferSize: entry.transferSize,
+      responseStatus: entry.responseStatus
+    })).slice(-20));
+    const diagnostics = page.__lvceDiagnostics || {};
+    return \`\\nURL: \${page.url()}\\nConsole: \${JSON.stringify(diagnostics.console || [])}\\nPageErrors: \${JSON.stringify(diagnostics.pageErrors || [])}\\nRequestFailures: \${JSON.stringify(diagnostics.requestFailures || [])}\\nBadResponses: \${JSON.stringify(diagnostics.badResponses || [])}\\nResources: \${JSON.stringify(resourceEntries)}\\nHTML: \${html.slice(0, 1200)}\`;
   } catch (error) {
     return \`\\nDiagnostics unavailable: \${error}\`;
   }
@@ -102,6 +118,35 @@ const runTest = async ({
           start
         });
         return;`,
+        )
+        .replace(
+          `  const page = await browser.newPage();
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises`,
+          `  const page = await browser.newPage();
+  page.__lvceDiagnostics = {
+    badResponses: [],
+    console: [],
+    pageErrors: [],
+    requestFailures: []
+  };
+  page.on('console', message => page.__lvceDiagnostics.console.push({
+    type: message.type(),
+    text: message.text()
+  }));
+  page.on('pageerror', error => page.__lvceDiagnostics.pageErrors.push(\`\${error}\`));
+  page.on('requestfailed', request => page.__lvceDiagnostics.requestFailures.push({
+    errorText: request.failure()?.errorText,
+    url: request.url()
+  }));
+  page.on('response', response => {
+    if (response.status() >= 400) {
+      page.__lvceDiagnostics.badResponses.push({
+        status: response.status(),
+        url: response.url()
+      });
+    }
+  });
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises`,
         )
 
   if (newContent !== content) {
