@@ -42,7 +42,8 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     actionsUid = create$14();
     commands.push(['Viewlet.createFunctionalRoot', moduleId, actionsUid, true], ['Viewlet.registerEventListeners', actionsUid, events], ['Viewlet.setDom2', actionsUid, actionsDom], ['Viewlet.setUid', actionsUid, childUid]);`
 
-  const safeSideBarSnippet = `  if (commands) {`
+  const safeSideBarSnippet = `  let actionsUid = -1;
+  if (commands) {`
 
   if (newContent.includes(brokenSideBarSnippet)) {
     newContent = newContent.replace(brokenSideBarSnippet, safeSideBarSnippet)
@@ -50,6 +51,16 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
 
   if (newContent.includes(partiallyFixedSideBarSnippet)) {
     newContent = newContent.replace(partiallyFixedSideBarSnippet, safeSideBarSnippet)
+  }
+
+  const missingActionsUidSnippet = `  }, false, true);
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {`
+  const fixedActionsUidSnippet = `  }, false, true);
+  let actionsUid = -1;
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {`
+
+  if (newContent.includes(missingActionsUidSnippet) && !newContent.includes(fixedActionsUidSnippet)) {
+    newContent = newContent.replace(missingActionsUidSnippet, fixedActionsUidSnippet)
   }
 
   const commandInitializerSnippet = `const initializeModule = module => {
