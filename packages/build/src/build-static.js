@@ -1,7 +1,7 @@
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { root } from './root.js'
-import { cp, readFile, writeFile } from 'node:fs/promises'
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { patchRendererWorker } from './patchRendererWorker.js'
 
 const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
@@ -33,4 +33,10 @@ if (newContent !== content) {
   await writeFile(rendererWorkerPath, newContent)
 }
 
-await cp(join(root, 'dist'), join(root, '.tmp', 'static'), { recursive: true })
+const staticPath = join(root, '.tmp', 'static')
+const staticPrefixPath = join(staticPath, 'text-search-worker')
+
+await cp(join(root, 'dist'), staticPath, { recursive: true })
+await mkdir(staticPrefixPath, { recursive: true })
+await cp(join(staticPath, commitHash), join(staticPrefixPath, commitHash), { recursive: true })
+await cp(join(staticPath, 'favicon.ico'), join(staticPrefixPath, 'favicon.ico'))
