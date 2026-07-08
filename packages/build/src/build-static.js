@@ -36,6 +36,7 @@ if (newContent !== content) {
 const staticPath = join(root, '.tmp', 'static')
 const staticPrefixPath = join(staticPath, 'text-search-worker')
 const serverMainPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'server', 'src', 'server.js')
+const e2eWorkerPath = join(root, 'packages', 'e2e', 'node_modules', '@lvce-editor', 'test-with-playwright-worker', 'dist', 'workerMain.js')
 
 const patchServerStaticPrefix = async () => {
   const content = await readFile(serverMainPath, 'utf-8')
@@ -55,8 +56,62 @@ const patchServerStaticPrefix = async () => {
   }
 }
 
+const patchE2eDiagnostics = async () => {
+  const content = await readFile(e2eWorkerPath, 'utf-8')
+  const diagnosticsSnippet = `const message = error instanceof Error ? error.message : \`\${error}\`;
+    const diagnostics = await getPageDiagnostics(page);`
+  const newContent = content.includes(diagnosticsSnippet)
+    ? content
+    : content
+        .replace(
+          `const runTest = async ({
+  page,`,
+          `const getPageDiagnostics = async page => {
+  try {
+    const html = await page.content();
+    return \`\\nURL: \${page.url()}\\nHTML: \${html.slice(0, 1200)}\`;
+  } catch (error) {
+    return \`\\nDiagnostics unavailable: \${error}\`;
+  }
+};
+const runTest = async ({
+  page,`,
+        )
+        .replace(
+          `    const message = error instanceof Error ? error.message : \`\${error}\`;
+    return {
+      end,
+      error: message,`,
+          `    const message = error instanceof Error ? error.message : \`\${error}\`;
+    const diagnostics = await getPageDiagnostics(page);
+    return {
+      end,
+      error: message + diagnostics,`,
+        )
+        .replace(
+          `      case Fail:
+        failed++;
+        break;`,
+          `      case Fail:
+        failed++;
+        await onFinalResult({
+          end: performance.now(),
+          failed,
+          passed,
+          skipped,
+          start
+        });
+        return;`,
+        )
+
+  if (newContent !== content) {
+    await writeFile(e2eWorkerPath, newContent)
+  }
+}
+
 await cp(join(root, 'dist'), staticPath, { recursive: true })
 await mkdir(staticPrefixPath, { recursive: true })
 await cp(join(staticPath, commitHash), join(staticPrefixPath, commitHash), { recursive: true })
 await cp(join(staticPath, 'favicon.ico'), join(staticPrefixPath, 'favicon.ico'))
 await patchServerStaticPrefix()
+await patchE2eDiagnostics()

@@ -18,6 +18,7 @@ const textSearchWorkerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorke
 
 const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'static-server', 'static')
 const serverMainPath = join(nodeModulesPath, '@lvce-editor', 'server', 'src', 'server.js')
+const e2eWorkerPath = join(root, 'packages', 'e2e', 'node_modules', '@lvce-editor', 'test-with-playwright-worker', 'dist', 'workerMain.js')
 
 const RE_COMMIT_HASH = /^[a-z\d]+$/
 const isCommitHash = (dirent) => {
@@ -52,4 +53,55 @@ const newServerContent = serverContent.includes("url.startsWith('/text-search-wo
 
 if (newServerContent !== serverContent) {
   await writeFile(serverMainPath, newServerContent)
+}
+
+const e2eWorkerContent = await readFile(e2eWorkerPath, 'utf-8')
+const e2eDiagnosticsSnippet = `const message = error instanceof Error ? error.message : \`\${error}\`;
+    const diagnostics = await getPageDiagnostics(page);`
+const e2eWorkerWithDiagnostics = e2eWorkerContent.includes(e2eDiagnosticsSnippet)
+  ? e2eWorkerContent
+  : e2eWorkerContent
+      .replace(
+        `const runTest = async ({
+  page,`,
+        `const getPageDiagnostics = async page => {
+  try {
+    const html = await page.content();
+    return \`\\nURL: \${page.url()}\\nHTML: \${html.slice(0, 1200)}\`;
+  } catch (error) {
+    return \`\\nDiagnostics unavailable: \${error}\`;
+  }
+};
+const runTest = async ({
+  page,`,
+      )
+      .replace(
+        `    const message = error instanceof Error ? error.message : \`\${error}\`;
+    return {
+      end,
+      error: message,`,
+        `    const message = error instanceof Error ? error.message : \`\${error}\`;
+    const diagnostics = await getPageDiagnostics(page);
+    return {
+      end,
+      error: message + diagnostics,`,
+      )
+      .replace(
+        `      case Fail:
+        failed++;
+        break;`,
+        `      case Fail:
+        failed++;
+        await onFinalResult({
+          end: performance.now(),
+          failed,
+          passed,
+          skipped,
+          start
+        });
+        return;`,
+      )
+
+if (e2eWorkerWithDiagnostics !== e2eWorkerContent) {
+  await writeFile(e2eWorkerPath, e2eWorkerWithDiagnostics)
 }
