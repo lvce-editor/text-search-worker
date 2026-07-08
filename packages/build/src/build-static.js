@@ -35,8 +35,28 @@ if (newContent !== content) {
 
 const staticPath = join(root, '.tmp', 'static')
 const staticPrefixPath = join(staticPath, 'text-search-worker')
+const serverMainPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'server', 'src', 'server.js')
+
+const patchServerStaticPrefix = async () => {
+  const content = await readFile(serverMainPath, 'utf-8')
+  const occurrence = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }`
+  const replacement = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }
+  if (url.startsWith('/text-search-worker')) {
+    return true
+  }`
+  const newContent = content.includes("url.startsWith('/text-search-worker')") ? content : content.replace(occurrence, replacement)
+
+  if (newContent !== content) {
+    await writeFile(serverMainPath, newContent)
+  }
+}
 
 await cp(join(root, 'dist'), staticPath, { recursive: true })
 await mkdir(staticPrefixPath, { recursive: true })
 await cp(join(staticPath, commitHash), join(staticPrefixPath, commitHash), { recursive: true })
 await cp(join(staticPath, 'favicon.ico'), join(staticPrefixPath, 'favicon.ico'))
+await patchServerStaticPrefix()

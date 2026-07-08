@@ -85,22 +85,34 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     await initializeModule(module);`,
   )
 
-  newContent = newContent.replace(
-    `  await getOrLoadModule(ModuleMap.getModuleId(command));`,
-    `  if (command.startsWith('Search.')) {
+  const searchCommandLoadSnippet = `  if (command.startsWith('Search.')) {
     await loadModule(load$3, Search);
     return;
-  }
+  }`
+
+  if (!newContent.includes(searchCommandLoadSnippet)) {
+    newContent = newContent.replace(
+      `  await getOrLoadModule(ModuleMap.getModuleId(command));`,
+      `${searchCommandLoadSnippet}
   await getOrLoadModule(ModuleMap.getModuleId(command));`,
-  )
-  newContent = newContent.replace(
-    `  await getOrLoadModule(getModuleId$2(command));`,
-    `  if (command.startsWith('Search.')) {
-    await loadModule(load$3, Search);
-    return;
-  }
+    )
+    newContent = newContent.replace(
+      `  await getOrLoadModule(getModuleId$2(command));`,
+      `${searchCommandLoadSnippet}
   await getOrLoadModule(getModuleId$2(command));`,
-  )
+    )
+  }
+
+  while (
+    newContent.includes(`${searchCommandLoadSnippet}
+${searchCommandLoadSnippet}`)
+  ) {
+    newContent = newContent.replace(
+      `${searchCommandLoadSnippet}
+${searchCommandLoadSnippet}`,
+      searchCommandLoadSnippet,
+    )
+  }
 
   return newContent
 }

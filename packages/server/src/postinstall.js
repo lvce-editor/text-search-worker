@@ -17,6 +17,7 @@ const nodeModulesPath = join(root, 'packages', 'server', 'node_modules')
 const textSearchWorkerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorkerMain.js')
 
 const serverStaticPath = join(nodeModulesPath, '@lvce-editor', 'static-server', 'static')
+const serverMainPath = join(nodeModulesPath, '@lvce-editor', 'server', 'src', 'server.js')
 
 const RE_COMMIT_HASH = /^[a-z\d]+$/
 const isCommitHash = (dirent) => {
@@ -33,4 +34,22 @@ const newContent = patchRendererWorker(content, remoteUrl, true)
 
 if (newContent !== content) {
   await writeFile(rendererWorkerMainPath, newContent)
+}
+
+const serverContent = await readFile(serverMainPath, 'utf-8')
+const staticPrefixSnippet = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }`
+const staticPrefixReplacement = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }
+  if (url.startsWith('/text-search-worker')) {
+    return true
+  }`
+const newServerContent = serverContent.includes("url.startsWith('/text-search-worker')")
+  ? serverContent
+  : serverContent.replace(staticPrefixSnippet, staticPrefixReplacement)
+
+if (newServerContent !== serverContent) {
+  await writeFile(serverMainPath, newServerContent)
 }
