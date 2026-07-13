@@ -33,7 +33,7 @@ export const handleUpdateFull = async (state: SearchState, update: Partial<Searc
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const isFileSearch = scheme === '' || scheme === 'file'
-  const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
+  const shouldUsePullBasedSearch = usePullBasedSearch && isFileSearch
   const searchId = shouldUsePullBasedSearch ? crypto.randomUUID() : ''
   const { limitHit, results } = await TextSearch.textSearch(
     root,
