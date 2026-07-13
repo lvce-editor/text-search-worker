@@ -21,7 +21,7 @@ export const handleUpdatePullBased = async (state: SearchState, update: Partial<
   const root = state.workspacePath
   const scheme = GetProtocol.getProtocol(root)
   const isFileSearch = scheme === '' || scheme === 'file'
-  const shouldUsePullBasedSearch = Boolean(usePullBasedSearch) && isFileSearch
+  const shouldUsePullBasedSearch = usePullBasedSearch && isFileSearch
   const { limitHit } = await TextSearch.textSearch(
     root,
     value,
