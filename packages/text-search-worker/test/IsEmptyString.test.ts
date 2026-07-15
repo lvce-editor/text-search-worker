@@ -18,6 +18,6 @@ test('isEmptyString returns false for string equal to Character.EmptyString', ()
 })
 
 test('isEmptyString returns false for whitespace string', () => {
-  const result = isEmptyString('   ')
+  const result = isEmptyString(' '.repeat(3))
   expect(result).toBe(false)
 })
