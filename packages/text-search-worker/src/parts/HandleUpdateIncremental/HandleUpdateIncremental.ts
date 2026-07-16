@@ -35,7 +35,7 @@ export const handleUpdateIncremental = async (state: SearchState, update: Partia
       root,
       scheme,
       threads,
-      usePullBasedSearch: usePullBasedSearch || false,
+      usePullBasedSearch: usePullBasedSearch,
       useRegularExpression: Boolean(flags & SearchFlags.UseRegularExpression),
     },
     assetDir,

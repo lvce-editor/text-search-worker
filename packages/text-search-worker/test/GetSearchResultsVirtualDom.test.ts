@@ -126,7 +126,7 @@ test('getSearchResultsVirtualDom', () => {
 })
 
 test('getSearchResultsVirtualDom - uses dynamic class for scrollbar thumb top', () => {
-  const result = GetSearchResultsVirtualDom.getSearchResultsVirtualDom([], false, 20, 18.609_375, 30, 0, 1)
+  const result = GetSearchResultsVirtualDom.getSearchResultsVirtualDom([], false, 20, 18.609375, 30, 0, 1)
   expect(result).toContainEqual({
     ariaControls: 'TreeItems',
     ariaValueNow: 30,

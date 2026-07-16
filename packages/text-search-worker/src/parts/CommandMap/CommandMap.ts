@@ -110,6 +110,7 @@ export const commandMap = {
   'TextSearch.enableRenderFolderPaths': WrapCommand.wrapCommand(EnableRenderFolderPaths.enableRenderFolderPaths),
   'TextSearch.expandCurrent': WrapCommand.wrapCommand(ExpandCurrent.expandCurrent),
   'TextSearch.expandDetails': WrapCommand.wrapCommand(ExpandDetails.expandDetails),
+  'TextSearch.focus': WrapCommand.wrapCommand(SearchFocus.focusSearchValue),
   'TextSearch.focusFirst': WrapCommand.wrapCommand(ListFocusFirst.focusFirst),
   'TextSearch.focusIndex': WrapCommand.wrapCommand(ListFocusIndex.focusIndex),
   'TextSearch.focusLast': WrapCommand.wrapCommand(ListFocusLast.focusLast),

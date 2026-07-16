@@ -13,7 +13,7 @@ export const handleContextMenuMouseAt = async (state: SearchState, eventX: numbe
     focusedIndex: index,
     listFocusedIndex: index,
   })
-  await ContextMenu.show2(uid, MenuEntryId.Search, x, y, {
+  await ContextMenu.show2(uid, MenuEntryId.Search, eventX, eventY, {
     index,
     menuId: MenuEntryId.Search,
   })
