@@ -9,7 +9,10 @@ import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualD
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
 const getSearchFieldClassName = (hasError: boolean): string => {
-  return hasError ? MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError) : ClassNames.SearchField
+  if (hasError) {
+    return MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError)
+  }
+  return ClassNames.SearchField
 }
 
 export const getSearchFieldVirtualDom = (
