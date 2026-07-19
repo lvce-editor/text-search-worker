@@ -60,3 +60,30 @@ test('copyAll - copies all matches for focused match item', async () => {
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([['ClipBoard.writeText', 'abc\nabx']])
 })
+
+test('copyAll - ignores an out-of-range focus index', async () => {
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 1,
+    items: [],
+  }
+  expect(await CopyAll.copyAll(state)).toBe(state)
+})
+
+test('copyAll - ignores a match without a preceding file', async () => {
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 0,
+    items: [{ end: 2, lineNumber: 1, start: 0, text: 'abc', type: TextSearchResultType.Match }],
+  }
+  expect(await CopyAll.copyAll(state)).toBe(state)
+})
+
+test('copyAll - ignores a file without matches', async () => {
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 0,
+    items: [{ end: 0, lineNumber: 0, start: 0, text: 'test.css', type: TextSearchResultType.File }],
+  }
+  expect(await CopyAll.copyAll(state)).toBe(state)
+})

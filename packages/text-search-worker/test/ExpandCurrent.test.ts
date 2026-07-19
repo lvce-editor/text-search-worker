@@ -77,3 +77,26 @@ test('expandCurrent does nothing for non-expandable items', async () => {
   expect(result).toBe(state)
   expect(mockRpc.invocations).toEqual([])
 })
+
+test('expandCurrent does nothing without a focused item', async () => {
+  const state = CreateDefaultState.createDefaultState()
+  expect(await expandCurrent(state)).toBe(state)
+})
+
+test('expandCurrent does nothing when the focused item is missing', async () => {
+  const state = {
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 0,
+  }
+  expect(await expandCurrent(state)).toBe(state)
+})
+
+test('expandCurrent does nothing when the focused file is not collapsed', async () => {
+  const item = { end: 0, lineNumber: 0, start: 0, text: 'file.txt', type: TextSearchResultType.File }
+  const state = {
+    ...CreateDefaultState.createDefaultState(),
+    focusedIndex: 0,
+    listItems: [item],
+  }
+  expect(await expandCurrent(state)).toBe(state)
+})

@@ -105,6 +105,18 @@ test('handleUpdate - handles search error', async () => {
   }
 })
 
+test('handleUpdate - returns a validation error for an invalid regular expression', async () => {
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    flags: SearchFlags.UseRegularExpression,
+    value: '[',
+  }
+
+  const result = await handleUpdate(state, {})
+
+  expect(result.searchInputErrorMessage).toMatch(/Invalid regular expression/)
+})
+
 test.skip('handleUpdate - uses search flags from state', async () => {
   const state: SearchState = {
     ...CreateDefaultState.createDefaultState(),

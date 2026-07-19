@@ -37,9 +37,9 @@ test('getNewDeltaPercent - clicked in middle', () => {
 })
 
 test('getNewDeltaPercent - clicked at bottom', () => {
-  const result = ScrollBarFunctions.getNewDeltaPercent(100, 20, 90)
+  const result = ScrollBarFunctions.getNewDeltaPercent(100, 20, 91)
   expect(result).toEqual({
-    handleOffset: 10,
+    handleOffset: 11,
     percent: 1,
   })
 })
