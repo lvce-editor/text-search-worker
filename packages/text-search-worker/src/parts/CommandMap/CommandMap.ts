@@ -183,7 +183,7 @@ export const commandMap = {
   'TextSearch.renderActions': WrapCommand.wrapGetter(RenderActions.renderActions),
   'TextSearch.renderEventListeners': RenderEventListeners.renderEventListeners,
   'TextSearch.renderIncremental': RenderIncremental.renderIncremental,
-  'TextSearch.replaceAll': WrapCommand.wrapCommand(ReplaceAll.replaceAll),
+  'TextSearch.replaceAll': WrapCommand.wrapAsyncCommand(ReplaceAll.replaceAllWithProgress),
   // TODO needed?
   'TextSearch.replaceAllAndPrompt': ReplaceAllAndPrompt.replaceAllAndPrompt,
   'TextSearch.replaceAllInFile': WrapCommand.wrapCommand(replaceAllInFile),

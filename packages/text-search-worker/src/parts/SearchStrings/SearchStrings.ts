@@ -109,6 +109,23 @@ export const replacedManyOccurrencesInManyFiles = (matchCount: number, fileCount
   })
 }
 
+export const replacingOneOccurrenceInOneFile = (): string => {
+  return I18nString.i18nString(UiStrings.ReplacingOneOccurrenceInOneFile)
+}
+
+export const replacingManyOccurrencesInOneFile = (matchCount: number): string => {
+  return I18nString.i18nString(UiStrings.ReplacingManyOccurrencesInOneFile, {
+    PH1: matchCount,
+  })
+}
+
+export const replacingManyOccurrencesInManyFiles = (matchCount: number, fileCount: number): string => {
+  return I18nString.i18nString(UiStrings.ReplacingManyOccurrencesInManyFiles, {
+    PH1: matchCount,
+    PH2: fileCount,
+  })
+}
+
 export const replaceAll = (): string => {
   return I18nString.i18nString(UiStrings.ReplaceAll)
 }
