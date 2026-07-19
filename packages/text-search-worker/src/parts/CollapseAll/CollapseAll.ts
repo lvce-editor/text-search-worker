@@ -14,10 +14,10 @@ const getPaths = (items: readonly SearchResult[]): readonly string[] => {
 }
 
 export const collapseAll = async (state: SearchState): Promise<SearchState> => {
-  const { items } = state
+  const { items, listFocusedIndex } = state
   if (items.length === 0) {
     return state
   }
   const paths = getPaths(items)
-  return ApplyCollapsedPaths.applyCollapsedPaths(state, paths, state.listFocusedIndex)
+  return ApplyCollapsedPaths.applyCollapsedPaths(state, paths, listFocusedIndex)
 }
