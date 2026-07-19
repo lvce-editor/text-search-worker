@@ -2,8 +2,10 @@ import { expect, test } from '@jest/globals'
 import { IconThemeWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../src/parts/SearchResult/SearchResult.ts'
 import type { SearchState } from '../src/parts/SearchState/SearchState.ts'
+import type { TextSearchOptions } from '../src/parts/TextSearchOptions/TextSearchOptions.ts'
 import * as CreateDefaultState from '../src/parts/CreateDefaultState/CreateDefaultState.ts'
 import { handleUpdateFull } from '../src/parts/HandleUpdateFull/HandleUpdateFull.ts'
+import * as SearchFlags from '../src/parts/SearchFlags/SearchFlags.ts'
 import { add } from '../src/parts/TextSearchProviders/TextSearchProviders.ts'
 
 test('handleUpdateFull - sets limitHit to true when search hits limit', async () => {
@@ -120,4 +122,54 @@ test('handleUpdateFull - sets limitHit to false when search does not hit limit',
   })
   expect(mockRpc.invocations).toEqual([['IconTheme.getIcons', [{ name: 'file1.txt', type: 1 }]]])
   expect(mockRendererWorker.invocations).toEqual([])
+})
+
+test('handleUpdateFull - passes enabled search options to the provider', async () => {
+  let receivedOptions: TextSearchOptions | undefined
+  add({
+    async ''(_scheme, _root, _query, options): Promise<{ results: readonly SearchResult[]; limitHit: boolean }> {
+      receivedOptions = options
+      return {
+        limitHit: false,
+        results: [],
+      }
+    },
+  })
+  const flags = SearchFlags.MatchCase | SearchFlags.MatchWholeWord | SearchFlags.UseIgnoreFiles | SearchFlags.UseRegularExpression
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    flags,
+    usePullBasedSearch: true,
+    value: 'test',
+    workspacePath: '/test',
+  }
+
+  const result = await handleUpdateFull(state, {})
+
+  expect(receivedOptions).toMatchObject({
+    defaultExcludes: state.defaultExcludes,
+    isCaseSensitive: true,
+    matchWholeWord: true,
+    usePullBasedSearch: true,
+    useRegularExpression: true,
+  })
+  expect(result.searchId).not.toBe('')
+})
+
+test('handleUpdateFull - rejects a provider result that is not an array', async () => {
+  add({
+    async ''(): Promise<any> {
+      return {
+        limitHit: false,
+        results: {},
+      }
+    },
+  })
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    value: 'test',
+    workspacePath: '/test',
+  }
+
+  await expect(handleUpdateFull(state, {})).rejects.toThrow('results must be of type array')
 })

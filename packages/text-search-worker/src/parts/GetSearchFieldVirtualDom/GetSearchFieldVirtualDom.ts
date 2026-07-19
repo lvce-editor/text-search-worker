@@ -8,6 +8,13 @@ import * as GetOutSideButtonsDom from '../GetOutSideButtonsDom/GetOutSideButtons
 import * as GetSearchFieldButtonVirtualDom from '../GetSearchFieldButtonVirtualDom/GetSearchFieldButtonVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 
+const getSearchFieldClassName = (hasError: boolean): string => {
+  if (hasError) {
+    return MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError)
+  }
+  return ClassNames.SearchField
+}
+
 export const getSearchFieldVirtualDom = (
   name: string,
   placeholder: string,
@@ -17,10 +24,7 @@ export const getSearchFieldVirtualDom = (
   hasError = false,
 ): readonly VirtualDomNode[] => {
   const { postNodes, preNodes } = GetOutSideButtonsDom.getOutSideButtonsDom(outsideButtons)
-  const searchFieldClassName = hasError
-    ? MergeClassNames.mergeClassNames(ClassNames.SearchField, ClassNames.SearchFieldError)
-    : ClassNames.SearchField
-
+  const searchFieldClassName = getSearchFieldClassName(hasError)
   const dom: readonly VirtualDomNode[] = [
     ...preNodes,
     {

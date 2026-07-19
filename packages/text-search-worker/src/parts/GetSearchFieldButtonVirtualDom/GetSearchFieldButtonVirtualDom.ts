@@ -1,51 +1,20 @@
-import { AriaRoles } from '@lvce-editor/constants'
 import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { InputAction } from '../InputAction/InputAction.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
+import * as GetAriaChecked from '../GetAriaChecked/GetAriaChecked.ts'
+import * as GetDisabled from '../GetDisabled/GetDisabled.ts'
+import * as GetRole from '../GetRole/GetRole.ts'
 import * as GetSearchFieldButtonClassName from '../GetSearchFieldButtonClassName/GetSearchFieldButtonClassName.ts'
-import * as InputActionFlag from '../InputActionFlag/InputActionFlag.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as TabIndex from '../TabIndex/TabIndex.ts'
 
-// TODO maybe move logic to viewmodel, which returns ariaChecked 1 | 2 | 3
-const getAriaChecked = (flag: number): boolean | undefined => {
-  switch (flag) {
-    case InputActionFlag.CheckBoxDisabled:
-      return false
-    case InputActionFlag.CheckBoxEnabled:
-      return true
-    default:
-      return undefined
-  }
-}
-
-// TODO have have separate renderers for checkbox and button elements
-const getRole = (flag: number): string | undefined => {
-  switch (flag) {
-    case InputActionFlag.CheckBoxDisabled:
-    case InputActionFlag.CheckBoxEnabled:
-      return AriaRoles.CheckBox
-    default:
-      return undefined
-  }
-}
-
-const getDisabled = (flag: number): boolean | undefined => {
-  switch (flag) {
-    case InputActionFlag.ButtonDisabled:
-      return true
-    default:
-      return undefined
-  }
-}
-
 export const getSearchFieldButtonVirtualDom = (button: InputAction): readonly VirtualDomNode[] => {
   const { flag, icon, name, title } = button
-  const ariaChecked = getAriaChecked(flag)
-  const role = getRole(flag)
-  const disabled = getDisabled(flag)
+  const ariaChecked = GetAriaChecked.getAriaChecked(flag)
+  const role = GetRole.getRole(flag)
+  const disabled = GetDisabled.getDisabled(flag)
   return [
     {
       ariaChecked,

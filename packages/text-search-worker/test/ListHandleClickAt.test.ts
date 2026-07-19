@@ -84,3 +84,9 @@ test('handleClickAt with empty list', async () => {
   const result = await handleClickAt(state, 10, 71, '')
   expect(result.listFocusedIndex).toBe(-1)
 })
+
+test('handleClickAt delegates remove button clicks', async () => {
+  const state = CreateDefaultState.createDefaultState()
+  const result = await handleClickAt(state, 0, 0, 'Remove')
+  expect(result).toBe(state)
+})
