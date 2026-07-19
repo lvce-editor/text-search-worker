@@ -10,10 +10,11 @@ const getNewHistory = (history: readonly string[], newValue: string): readonly s
 }
 
 export const submit = (state: SearchState): Promise<SearchState> => {
-  const newHistory = getNewHistory(state.history, state.value)
+  const { history, value } = state
+  const newHistory = getNewHistory(history, value)
   return ViewletSearchHandleUpdate.handleUpdate(state, {
     history: newHistory,
     inputSource: InputSource.User,
-    value: state.value,
+    value,
   })
 }

@@ -1,7 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
 
 export const handleHeaderFocusOut = (state: SearchState): SearchState => {
-  if (!state.focus) {
+  const { focus } = state
+  if (!focus) {
     return state
   }
   return {

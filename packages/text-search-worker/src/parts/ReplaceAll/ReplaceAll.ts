@@ -48,6 +48,7 @@ const replaceAllInFocusedFile = async (state: SearchState, fileIndex: number): P
     height,
     itemHeight,
     items,
+    matchCount: totalMatchCount,
     maxLineY,
     minimumSliderSize,
     minLineY,
@@ -63,7 +64,7 @@ const replaceAllInFocusedFile = async (state: SearchState, fileIndex: number): P
   await ApplyBulkReplacement.applyBulkReplacement(bulkEdits)
   await RendererWorker.handleWorkspaceRefresh()
 
-  const { newFileCount, newFocusedIndex, newItems, newMatchCount } = removeItemFromItems(items, fileIndex, state.matchCount, fileCount)
+  const { newFileCount, newFocusedIndex, newItems, newMatchCount } = removeItemFromItems(items, fileIndex, totalMatchCount, fileCount)
   const { newDeltaY, newMaxLineY, newMinLineY } = getNewMinMax(newItems.length, minLineY, maxLineY, deltaY, itemHeight)
   const total = newItems.length
   const contentHeight = total * itemHeight

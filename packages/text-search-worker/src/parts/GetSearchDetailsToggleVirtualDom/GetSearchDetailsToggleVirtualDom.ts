@@ -6,6 +6,7 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 import * as InputName from '../InputName/InputName.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as SearchStrings from '../SearchStrings/SearchStrings.ts'
+import * as TabIndex from '../TabIndex/TabIndex.ts'
 
 export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] => {
   return [
@@ -16,7 +17,7 @@ export const getSearchDetailsToggleVirtualDom = (): readonly VirtualDomNode[] =>
       name: InputName.ToggleSearchDetails,
       onClick: DomEventListenerFunctions.HandleButtonClick,
       role: AriaRoles.Button,
-      tabIndex: 0,
+      tabIndex: TabIndex.Focusable,
       title: SearchStrings.toggleSearchDetails(),
       type: VirtualDomElements.Button,
     },
