@@ -8,14 +8,16 @@ export const focusSearchValue = (state: SearchState): SearchState => {
 }
 
 export const focusSearchValueNext = (state: SearchState): SearchState => {
-  if (state.flags & SearchFlags.ReplaceExpanded) {
+  const { flags } = state
+  if (flags & SearchFlags.ReplaceExpanded) {
     return focusReplaceValue(state)
   }
   return focusMatchCase(state)
 }
 
 export const focusMatchCasePrevious = (state: SearchState): SearchState => {
-  if (state.flags & SearchFlags.ReplaceExpanded) {
+  const { flags } = state
+  if (flags & SearchFlags.ReplaceExpanded) {
     return focusReplaceValue(state)
   }
   return focusSearchValue(state)

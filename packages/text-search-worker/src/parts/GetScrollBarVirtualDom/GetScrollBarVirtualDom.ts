@@ -23,7 +23,7 @@ export const getScrollBarVirtualDom = (scrollBarHeight: number, scrollBarY: numb
     },
     {
       childCount: 0,
-      className: `${ClassNames.ScrollBarThumb} ScrollBarThumbTop-${roundedScrollBarY}`,
+      className: MergeClassNames.mergeClassNames(ClassNames.ScrollBarThumb, `ScrollBarThumbTop-${roundedScrollBarY}`),
       height: scrollBarHeight,
       type: VirtualDomElements.Div,
     },

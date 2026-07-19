@@ -4,7 +4,8 @@ import * as ExpandDetails from '../ExpandDetails/ExpandDetails.ts'
 import * as SearchFlags from '../SearchFlags/SearchFlags.ts'
 
 export const toggleDetailsExpanded = (state: SearchState): SearchState => {
-  if (SearchFlags.hasDetailsExpanded(state.flags)) {
+  const { flags } = state
+  if (SearchFlags.hasDetailsExpanded(flags)) {
     return CollapseDetails.collapseDetails(state)
   }
   return ExpandDetails.expandDetails(state)

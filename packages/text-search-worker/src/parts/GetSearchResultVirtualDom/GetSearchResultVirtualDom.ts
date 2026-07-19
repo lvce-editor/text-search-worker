@@ -32,7 +32,6 @@ export const getSearchResultVirtualDom = (rowInfo: DisplaySearchResult): readonl
   const childCount = getChildCount(icon, expanded, badgeText)
   const dom: VirtualDomNode[] = [
     {
-      ariaDescription: '',
       ariaExpanded: GetAriaExpanded.getAriaExpanded(expanded),
       ariaLabel: title,
       ariaLevel: depth,

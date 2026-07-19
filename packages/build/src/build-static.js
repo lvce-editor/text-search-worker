@@ -1,9 +1,10 @@
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { patchRendererWorker } from './patchRendererWorker.js'
 import { root } from './root.js'
-import { cp, readFile, writeFile } from 'node:fs/promises'
 
-const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
+const sharedProcessPath = join(root, 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
 const sharedProcessUrl = pathToFileURL(sharedProcessPath).toString()
 
@@ -17,63 +18,61 @@ const { commitHash } = await sharedProcess.exportStatic({
 })
 
 const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const textSearchWorkerPath = join(root, 'dist', commitHash, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
+const extensionHostWorkerTestsPath = join(root, 'dist', commitHash, 'packages', 'extension-host-worker-tests')
+const serverStaticPath = join(root, 'node_modules', '@lvce-editor', 'static-server', 'static', commitHash)
+const serverRendererWorkerPath = join(serverStaticPath, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const serverTextSearchWorkerPath = join(serverStaticPath, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
+const serverExtensionHostWorkerTestsPath = join(serverStaticPath, 'packages', 'extension-host-worker-tests')
 
 export const getRemoteUrl = (path) => {
   const url = pathToFileURL(path).toString().slice(8)
   return `/remote/${url}`
 }
 
-const content = await readFile(rendererWorkerPath, 'utf8')
-const workerPath = join(root, '.tmp/dist/dist/textSearchWorkerMain.js')
+const workerPath = join(root, '.tmp', 'dist', 'dist', 'textSearchWorkerMain.js')
 const remoteUrl = getRemoteUrl(workerPath)
 
-const brokenSideBarSnippet = `  let actionsDom = [];
-  let actionsUid = -1;
-  if (commands) {
-    const actionsDomIndex = commands.findIndex(command => command[2] === 'setActionsDom');
-    if (actionsDomIndex) {
-      actionsDom = commands[actionsDomIndex][3];
-      commands.splice(actionsDomIndex, 1);
-    }
-    const eventsIndex = commands.findIndex(command => command[0] === 'Viewlet.registerEventListeners');
-    const events = commands[eventsIndex][2];
-    actionsUid = create$14();
-    commands.push(['Viewlet.createFunctionalRoot', moduleId, actionsUid, true], ['Viewlet.registerEventListeners', actionsUid, events], ['Viewlet.setDom2', actionsUid, actionsDom], ['Viewlet.setUid', actionsUid, childUid]);`
+const patchRendererWorkerPath = async (path, useRemoteUrl) => {
+  const content = await readFile(path, 'utf8')
+  const newContent = patchRendererWorker(content, remoteUrl, useRemoteUrl)
 
-const partiallyFixedSideBarSnippet = `  let actionsDom = [];
-  let actionsUid = -1;
-  if (commands) {
-    const actionsDomIndex = commands.findIndex(command => command[2] === 'setActionsDom');
-    if (actionsDomIndex !== -1) {
-      actionsDom = commands[actionsDomIndex][3];
-      commands.splice(actionsDomIndex, 1);
-    }
-    const eventsIndex = commands.findIndex(command => command[0] === 'Viewlet.registerEventListeners');
-    const events = eventsIndex === -1 ? [] : commands[eventsIndex][2];
-    actionsUid = create$14();
-    commands.push(['Viewlet.createFunctionalRoot', moduleId, actionsUid, true], ['Viewlet.registerEventListeners', actionsUid, events], ['Viewlet.setDom2', actionsUid, actionsDom], ['Viewlet.setUid', actionsUid, childUid]);`
-
-const safeSideBarSnippet = `  if (commands) {`
-
-let newContent = content
-
-if (content.includes('// const textSearchWorkerUrl = ')) {
-  const occurrence = `// const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\`
-const textSearchWorkerUrl = \`${remoteUrl}\``
-  const replacement = `const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\``
-  newContent = newContent.replace(occurrence, replacement)
+  if (newContent !== content) {
+    await writeFile(path, newContent)
+  }
 }
 
-if (newContent.includes(brokenSideBarSnippet)) {
-  newContent = newContent.replace(brokenSideBarSnippet, safeSideBarSnippet)
+await patchRendererWorkerPath(rendererWorkerPath, false)
+await patchRendererWorkerPath(serverRendererWorkerPath, false)
+
+await cp(workerPath, textSearchWorkerPath)
+await cp(workerPath, serverTextSearchWorkerPath)
+await cp(extensionHostWorkerTestsPath, serverExtensionHostWorkerTestsPath, { recursive: true })
+
+const staticPath = join(root, '.tmp', 'static')
+const staticPrefixPath = join(staticPath, 'text-search-worker')
+const serverMainPath = join(root, 'node_modules', '@lvce-editor', 'server', 'src', 'server.js')
+
+const patchServerStaticPrefix = async () => {
+  const content = await readFile(serverMainPath, 'utf-8')
+  const occurrence = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }`
+  const replacement = `  if (url.startsWith('/995dbd2')) {
+    return true
+  }
+  if (url.startsWith('/text-search-worker')) {
+    return true
+  }`
+  const newContent = content.includes("url.startsWith('/text-search-worker')") ? content : content.replace(occurrence, replacement)
+
+  if (newContent !== content) {
+    await writeFile(serverMainPath, newContent)
+  }
 }
 
-if (newContent.includes(partiallyFixedSideBarSnippet)) {
-  newContent = newContent.replace(partiallyFixedSideBarSnippet, safeSideBarSnippet)
-}
-
-if (newContent !== content) {
-  await writeFile(rendererWorkerPath, newContent)
-}
-
-await cp(join(root, 'dist'), join(root, '.tmp', 'static'), { recursive: true })
+await cp(join(root, 'dist'), staticPath, { recursive: true })
+await mkdir(staticPrefixPath, { recursive: true })
+await cp(join(staticPath, commitHash), join(staticPrefixPath, commitHash), { recursive: true })
+await cp(join(staticPath, 'favicon.ico'), join(staticPrefixPath, 'favicon.ico'))
+await patchServerStaticPrefix()

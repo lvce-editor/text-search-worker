@@ -32,7 +32,7 @@ test('getCss - returns css variables and indent rules', () => {
 })
 
 test('getCss - rounds subpixel scrollbar top values', () => {
-  const result = getCss(0, [], [], 44, 18.609_375, 0)
+  const result = getCss(0, [], [], 44, 18.609375, 0)
   expect(result).toContain('.ScrollBarThumbTop-19 {')
   expect(result).toContain('transform: translateY(19px);')
 })

@@ -6,6 +6,7 @@ import { HandleListBlur } from '../DomEventListenerFunctions/DomEventListenerFun
 import * as GetScrollBarVirtualDom from '../GetScrollBarVirtualDom/GetScrollBarVirtualDom.ts'
 import * as GetTreeItemsVirtualDom from '../GetTreeItemsVirtualDom/GetTreeItemsVirtualDom.ts'
 import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import * as TabIndex from '../TabIndex/TabIndex.ts'
 
 export const getSearchResultsVirtualDom = (
   visibleItems: readonly DisplaySearchResult[],
@@ -28,7 +29,7 @@ export const getSearchResultsVirtualDom = (
       ),
       onBlur: HandleListBlur,
       role: AriaRoles.Tree,
-      tabIndex: 0,
+      tabIndex: TabIndex.Focusable,
       type: VirtualDomElements.Div,
       // TODO renable this when dom diffing is supported
       // onPointerDown: HandleListPointerDown,
