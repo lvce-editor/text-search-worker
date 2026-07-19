@@ -2,7 +2,15 @@ import type { Test } from '@lvce-editor/test-with-playwright'
 
 export const name = 'search.exclude-setting-refresh'
 
-export const test: Test = async ({ expect, FileSystem, Locator, Search, Settings, SideBar, Workspace }) => {
+const refreshSearch = async (Command: { readonly execute: (id: string) => Promise<void> }): Promise<void> => {
+  try {
+    await Command.execute('Search.refresh')
+  } catch {
+    await Command.execute('TextSearch.refresh')
+  }
+}
+
+export const test: Test = async ({ Command, expect, FileSystem, Locator, Search, Settings, SideBar, Workspace }) => {
   // arrange
   const tmpDir = await FileSystem.getTmpDir()
   await FileSystem.mkdir(`${tmpDir}/excluded`)
@@ -24,7 +32,7 @@ export const test: Test = async ({ expect, FileSystem, Locator, Search, Settings
 
   // act
   await Settings.update({ 'search.exclude': { '**/excluded': true } })
-  await Locator('button[name="Refresh"]').click()
+  await refreshSearch(Command)
 
   // assert
   await expect(message).toHaveText('1 result in 1 file')
