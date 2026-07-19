@@ -24,7 +24,7 @@ export const test: Test = async ({ expect, FileSystem, Locator, Search, Settings
 
   // act
   await Settings.update({ 'search.exclude': { '**/excluded': true } })
-  await viewletSearch.locator('button[name="Refresh"]').click()
+  await Locator('button[name="Refresh"]').click()
 
   // assert
   await expect(message).toHaveText('1 result in 1 file')
