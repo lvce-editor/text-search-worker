@@ -26,3 +26,10 @@ test('getSearchExcludes - returns no patterns for invalid values', async () => {
     expect(mockRpc.invocations).toEqual([['Preferences.get', 'search.exclude']])
   }
 })
+
+test('getSearchExcludes - returns fallback when preferences are unavailable', async () => {
+  using mockRpc = RendererWorker.registerMockRpc({})
+
+  await expect(GetSearchExcludes.getSearchExcludes(['.git', 'node_modules'])).resolves.toEqual(['.git', 'node_modules'])
+  expect(mockRpc.invocations).toEqual([['Preferences.get', 'search.exclude']])
+})
