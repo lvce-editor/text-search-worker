@@ -1,8 +1,8 @@
 import { AriaRoles } from '@lvce-editor/constants'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import { getSearchMessageClassName } from '../GetSearchMessageClassName/GetSearchMessageClassName.ts'
-import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
+import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 export const getSearchMessageVirtualDom = (message: string, indented: boolean): readonly VirtualDomNode[] => {
   return [
