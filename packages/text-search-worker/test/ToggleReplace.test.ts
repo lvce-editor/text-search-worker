@@ -12,3 +12,12 @@ test('toggleReplace', async () => {
   const newState = await ToggleReplace.toggleReplace(initialState)
   expect(SearchFlags.hasReplaceExpanded(newState.flags)).toBe(true)
 })
+
+test('toggleReplace collapses an expanded replace input', async () => {
+  const initialState: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    flags: SearchFlags.ReplaceExpanded,
+  }
+  const newState = await ToggleReplace.toggleReplace(initialState)
+  expect(SearchFlags.hasReplaceExpanded(newState.flags)).toBe(false)
+})
