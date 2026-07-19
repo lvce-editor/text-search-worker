@@ -1,22 +1,14 @@
 import { AriaRoles } from '@lvce-editor/constants'
-import { ClassNames } from '@lvce-editor/virtual-dom-worker'
 import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
-import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
-import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
+import { getSearchMessageClassName } from '../GetSearchMessageClassName/GetSearchMessageClassName.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
-
-const getClassName = (indented: boolean): string => {
-  if (indented) {
-    return MergeClassNames.mergeClassNames(ClassNames.ViewletSearchMessage, ClassNames.ViewletSearchMessageIndented)
-  }
-  return ClassNames.ViewletSearchMessage
-}
+import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 
 export const getSearchMessageVirtualDom = (message: string, indented: boolean): readonly VirtualDomNode[] => {
   return [
     {
       childCount: 1,
-      className: getClassName(indented),
+      className: getSearchMessageClassName(indented),
       role: AriaRoles.Status,
       type: VirtualDomElements.Div,
     },
