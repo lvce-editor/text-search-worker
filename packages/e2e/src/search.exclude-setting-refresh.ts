@@ -24,7 +24,7 @@ export const test: Test = async ({ Command, expect, FileSystem, Locator, Search,
 
   // act
   await Settings.update({ 'search.exclude': { '**/excluded': true } })
-  await Command.execute('TextSearch.refresh')
+  await Command.execute('Search.refresh')
 
   // assert
   await expect(message).toHaveText('1 result in 1 file')
