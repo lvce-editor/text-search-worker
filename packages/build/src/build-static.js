@@ -20,46 +20,22 @@ const { commitHash } = await sharedProcess.exportStatic({
 const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
 const textSearchWorkerPath = join(root, 'dist', commitHash, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
 const extensionHostWorkerTestsPath = join(root, 'dist', commitHash, 'packages', 'extension-host-worker-tests')
+const serverStaticPath = join(root, 'node_modules', '@lvce-editor', 'static-server', 'static', commitHash)
 const serverRendererWorkerPath = join(
-  root,
-  'packages',
-  'server',
-  'node_modules',
-  '@lvce-editor',
-  'static-server',
-  'static',
-  commitHash,
+  serverStaticPath,
   'packages',
   'renderer-worker',
   'dist',
   'rendererWorkerMain.js',
 )
 const serverTextSearchWorkerPath = join(
-  root,
-  'packages',
-  'server',
-  'node_modules',
-  '@lvce-editor',
-  'static-server',
-  'static',
-  commitHash,
+  serverStaticPath,
   'packages',
   'text-search-worker',
   'dist',
   'textSearchWorkerMain.js',
 )
-const serverExtensionHostWorkerTestsPath = join(
-  root,
-  'packages',
-  'server',
-  'node_modules',
-  '@lvce-editor',
-  'static-server',
-  'static',
-  commitHash,
-  'packages',
-  'extension-host-worker-tests',
-)
+const serverExtensionHostWorkerTestsPath = join(serverStaticPath, 'packages', 'extension-host-worker-tests')
 
 export const getRemoteUrl = (path) => {
   const url = pathToFileURL(path).toString().slice(8)
