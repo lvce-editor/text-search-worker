@@ -21,20 +21,8 @@ const rendererWorkerPath = join(root, 'dist', commitHash, 'packages', 'renderer-
 const textSearchWorkerPath = join(root, 'dist', commitHash, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
 const extensionHostWorkerTestsPath = join(root, 'dist', commitHash, 'packages', 'extension-host-worker-tests')
 const serverStaticPath = join(root, 'node_modules', '@lvce-editor', 'static-server', 'static', commitHash)
-const serverRendererWorkerPath = join(
-  serverStaticPath,
-  'packages',
-  'renderer-worker',
-  'dist',
-  'rendererWorkerMain.js',
-)
-const serverTextSearchWorkerPath = join(
-  serverStaticPath,
-  'packages',
-  'text-search-worker',
-  'dist',
-  'textSearchWorkerMain.js',
-)
+const serverRendererWorkerPath = join(serverStaticPath, 'packages', 'renderer-worker', 'dist', 'rendererWorkerMain.js')
+const serverTextSearchWorkerPath = join(serverStaticPath, 'packages', 'text-search-worker', 'dist', 'textSearchWorkerMain.js')
 const serverExtensionHostWorkerTestsPath = join(serverStaticPath, 'packages', 'extension-host-worker-tests')
 
 export const getRemoteUrl = (path) => {
