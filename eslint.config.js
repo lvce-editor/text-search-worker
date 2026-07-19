@@ -10,6 +10,24 @@ export default [
     ignores: ['packages/text-search-worker/src/textSearchWorkerMain.ts'],
   },
   {
+    files: ['packages/text-search-worker/src/parts/LaunchSearchProcessNode/LaunchSearchProcessNode.ts'],
+    rules: {
+      'virtual-dom/no-object-attribute-values': 'off',
+    },
+  },
+  {
+    files: ['packages/text-search-worker/test/**/*.ts'],
+    rules: {
+      'virtual-dom/no-empty-aria': 'off',
+      'virtual-dom/no-inline-event-handlers': 'off',
+      'virtual-dom/no-object-attribute-values': 'off',
+      'virtual-dom/prefer-constants': 'off',
+      'virtual-dom/prefer-merge-class-names': 'off',
+      'virtual-dom/prefer-state-destructuring': 'off',
+      'virtual-dom/valid-child-count': 'off',
+    },
+  },
+  {
     files: ['**/*.ts'],
     rules: {
       'e2e/no-direct-click': 'off',

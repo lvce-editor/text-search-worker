@@ -58,10 +58,10 @@ test('getSearchResultsVirtualDom', () => {
       onClick: 1,
       onContextMenu: 2,
       onWheel: 16,
+      role: 'none',
       type: 4,
     },
     {
-      ariaDescription: '',
       ariaExpanded: 'true',
       ariaLabel: 'abc',
       ariaLevel: 0,

@@ -233,10 +233,10 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       onClick: 1,
       onContextMenu: 2,
       onWheel: 16,
+      role: 'none',
       type: 4,
     },
     {
-      ariaDescription: '',
       ariaExpanded: 'true',
       ariaLabel: 'Title 1',
       ariaLevel: 0,
@@ -283,7 +283,6 @@ test('getSearchVirtualDom returns correct virtual DOM structure', () => {
       type: 4,
     },
     {
-      ariaDescription: '',
       ariaExpanded: 'true',
       ariaLabel: 'Title 2',
       ariaLevel: 0,

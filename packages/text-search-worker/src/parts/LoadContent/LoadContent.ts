@@ -7,9 +7,10 @@ import * as InputSource from '../InputSource/InputSource.ts'
 import * as RestoreState from '../RestoreState/RestoreState.ts'
 
 export const loadContent = async (state: SearchState, savedState: unknown): Promise<SearchState> => {
+  const { limitHitWarning, width } = state
   const { excludeValue, flags, includeValue, replacement, savedCollapsedPaths, savedValue, threads } = RestoreState.restoreState(savedState)
   const usePullBasedSearch = await GetUsePullBasedSearch.getUsePullBasedSearch()
-  const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(state.limitHitWarning, state.width)
+  const warningHeight = await GetSearchWarningMessageHeight.getSearchWarningMessageHeight(limitHitWarning, width)
   const headerHeight = GetTopHeight.getTopHeight(flags) + warningHeight
 
   const update: Partial<SearchState> = {

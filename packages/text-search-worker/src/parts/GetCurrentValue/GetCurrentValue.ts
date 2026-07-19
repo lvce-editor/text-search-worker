@@ -2,15 +2,16 @@ import type { SearchState } from '../SearchState/SearchState.ts'
 import * as InputName from '../InputName/InputName.ts'
 
 export const getCurrentValue = (state: SearchState, name: string): string => {
+  const { excludeValue, includeValue, replacement, value } = state
   switch (name) {
     case InputName.FilesToExclude:
-      return state.excludeValue
+      return excludeValue
     case InputName.FilesToInclude:
-      return state.includeValue
+      return includeValue
     case InputName.ReplaceValue:
-      return state.replacement
+      return replacement
     case InputName.SearchValue:
-      return state.value
+      return value
     default:
       return ''
   }
