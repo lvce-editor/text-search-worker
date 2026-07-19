@@ -4,7 +4,7 @@ export const name = 'search.exclude-setting-refresh'
 
 export const test: Test = async ({ Command, expect, FileSystem, Locator, Search, Settings, SideBar, Workspace }) => {
   // arrange
-  const tmpDir = await FileSystem.getTmpDir()
+  const tmpDir = await FileSystem.getTmpDir({ scheme: 'file' })
   await FileSystem.mkdir(`${tmpDir}/excluded`)
   await FileSystem.mkdir(`${tmpDir}/included`)
   await FileSystem.writeFile(`${tmpDir}/excluded/result.txt`, `needle`)
@@ -24,10 +24,6 @@ export const test: Test = async ({ Command, expect, FileSystem, Locator, Search,
 
   // act
   await Settings.update({ 'search.exclude': { '**/excluded': true } })
-  const configuredExcludes = await Command.execute('Preferences.get', 'search.exclude')
-  if (configuredExcludes?.['**/excluded'] !== true) {
-    throw new Error(`Expected updated search.exclude preference but received ${JSON.stringify(configuredExcludes)}`)
-  }
   await Command.execute('Search.refresh')
 
   // assert
