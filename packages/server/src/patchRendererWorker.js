@@ -1,6 +1,8 @@
 export const patchRendererWorker = (content, remoteUrl = '', useRemoteUrl = true) => {
   let newContent = content
 
+  newContent = newContent.replaceAll('http://localhost:3001/tests/', '/tests/')
+
   if (useRemoteUrl && remoteUrl && !newContent.includes('// const textSearchWorkerUrl = ')) {
     const occurrence = `const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\``
     const replacement = `// const textSearchWorkerUrl = \`\${assetDir}/packages/text-search-worker/dist/textSearchWorkerMain.js\`
@@ -42,7 +44,8 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     actionsUid = create$14();
     commands.push(['Viewlet.createFunctionalRoot', moduleId, actionsUid, true], ['Viewlet.registerEventListeners', actionsUid, events], ['Viewlet.setDom2', actionsUid, actionsDom], ['Viewlet.setUid', actionsUid, childUid]);`
 
-  const safeSideBarSnippet = `  let actionsUid = -1;
+  const safeSideBarSnippet = `  let actionsDom = [];
+  let actionsUid = -1;
   if (commands) {`
 
   if (newContent.includes(brokenSideBarSnippet)) {
@@ -83,6 +86,22 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     newContent = newContent.replace(duplicateActionsUidSnippet, singleActionsUidSnippet)
   }
 
+  const openViewletSnippet = `const openViewlet$1 = async (state, moduleId, focus = false, args) => {
+  await execute$3('Layout.openSideBarViewlet', moduleId);
+  return state;
+};`
+  const openViewletSearchSnippet = `const openViewlet$1 = async (state, moduleId, focus = false, args) => {
+  await execute$3('Layout.openSideBarViewlet', moduleId);
+  if (moduleId === Search) {
+    await loadModule(load$3, moduleId);
+  }
+  return state;
+};`
+
+  if (newContent.includes(openViewletSnippet)) {
+    newContent = newContent.replace(openViewletSnippet, openViewletSearchSnippet)
+  }
+
   const commandInitializerSnippet = `const initializeModule = module => {
   if (module.Commands) {
     for (const [key, value] of Object.entries(module.Commands)) {`
@@ -105,7 +124,29 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
     await initializeModule(module);`,
   )
 
-  const searchCommandLoadSnippet = `  if (command.startsWith('Search.')) {
+  const getSearchModuleIdSnippet = `    case 'Search':
+      return Search;
+    case 'SearchProcess':
+      return SearchProcess;`
+  const getSearchProcessModuleIdSnippet = `    case 'SearchProcess':
+      return SearchProcess;`
+
+  if (newContent.includes(getSearchModuleIdSnippet)) {
+    newContent = newContent.replace(getSearchModuleIdSnippet, getSearchProcessModuleIdSnippet)
+  }
+
+  const loadSearchModuleSnippet = `    case Search:
+      return Promise.resolve().then(function () { return ViewletSearch_ipc; });
+    case SearchProcess:
+      return Promise.resolve().then(function () { return SearchProcess_ipc; });`
+  const loadSearchProcessModuleSnippet = `    case SearchProcess:
+      return Promise.resolve().then(function () { return SearchProcess_ipc; });`
+
+  if (newContent.includes(loadSearchModuleSnippet)) {
+    newContent = newContent.replace(loadSearchModuleSnippet, loadSearchProcessModuleSnippet)
+  }
+
+  const searchCommandLoadSnippet = `  if (getPrefix(command) === Search) {
     await loadModule(load$3, Search);
     return;
   }`
