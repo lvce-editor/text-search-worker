@@ -12,6 +12,7 @@ import * as InputSource from '../src/parts/InputSource/InputSource.ts'
 test('handleActionClick dispatches every action and preserves unknown actions', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
     'Main.openUri': () => undefined,
+    'Preferences.get': () => ({ '**/dist': true }),
   })
   const state = createDefaultState()
 
@@ -21,9 +22,13 @@ test('handleActionClick dispatches every action and preserves unknown actions', 
   expect(await handleActionClick(state, InputName.OpenSearchEditor)).toBe(state)
   const refreshedState = await handleActionClick(state, InputName.Refresh)
   expect(refreshedState.loaded).toBe(true)
+  expect(refreshedState.defaultExcludes).toEqual(['**/dist'])
   expect(await handleActionClick(state, InputName.ViewAsTree)).toBe(state)
   expect(await handleActionClick(state, 'Unknown')).toBe(state)
-  expect(mockRpc.invocations).toHaveLength(1)
+  expect(mockRpc.invocations).toEqual([
+    ['Main.openUri', expect.any(String), true, {}],
+    ['Preferences.get', 'search.exclude'],
+  ])
 })
 
 test('input handlers use the script input source by default', async () => {

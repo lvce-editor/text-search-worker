@@ -1,3 +1,4 @@
+import type { AsyncCommandContext } from '@lvce-editor/viewlet-registry'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { SearchResult } from '../SearchResult/SearchResult.ts'
 import type { SearchState } from '../SearchState/SearchState.ts'
@@ -6,6 +7,7 @@ import * as GetFileIcons from '../GetFileIcons/GetFileIcons.ts'
 import { getNewMinMax } from '../GetNewMinMax/GetNewMinMax.ts'
 import * as GetReplacedMessage from '../GetReplacedMessage/GetReplacedMessage.ts'
 import * as GetReplaceElements from '../GetReplaceElements/GetReplaceElements.ts'
+import * as GetReplacingMessage from '../GetReplacingMessage/GetReplacingMessage.ts'
 import { removeItemFromItems } from '../RemoveItemFromItems/RemoveItemFromItems.ts'
 import * as ScrollBarFunctions from '../ScrollBarFunctions/ScrollBarFunctions.ts'
 import * as TextSearchResultType from '../TextSearchResultType/TextSearchResultType.ts'
@@ -113,4 +115,21 @@ export const replaceAll = async (state: SearchState): Promise<SearchState> => {
     message,
     minLineY: 0,
   }
+}
+
+export const replaceAllWithProgress = async (context: AsyncCommandContext<SearchState>): Promise<void> => {
+  const state = context.getState()
+  const { fileCount: totalFileCount, matchCount: totalMatchCount } = state
+  const actualIndex = getActualIndex(state)
+  const fileIndex = getFileIndex(state, actualIndex)
+  const fileCount = fileIndex === -1 ? totalFileCount : 1
+  const matchCount = fileIndex === -1 ? totalMatchCount : Math.max(getFileItems(state, fileIndex).length - 1, 0)
+  const message = GetReplacingMessage.getReplacingMessage(fileCount, matchCount)
+  await context.updateState((latestState) => ({
+    ...latestState,
+    message,
+  }))
+  await RendererWorker.invoke('Search.rerender')
+  const updatedState = await replaceAll(context.getState())
+  await context.updateState(() => updatedState)
 }

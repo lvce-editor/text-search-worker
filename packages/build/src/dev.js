@@ -1,8 +1,24 @@
 import { execa } from 'execa'
 import { root } from './root.js'
 
+const watchArgs = [
+  'exec',
+  '--workspace=packages/build',
+  '--',
+  'esbuild',
+  '--format=esm',
+  '--bundle',
+  '--external:node:buffer',
+  '--external:electron',
+  '--external:ws',
+  '--external:node:worker_threads',
+  '--watch',
+  '../text-search-worker/src/textSearchWorkerMain.ts',
+  '--outfile=../../.tmp/dist/dist/textSearchWorkerMain.js',
+]
+
 const main = async () => {
-  execa(`npm`, ['run', 'build:watch'], {
+  execa('npm', watchArgs, {
     cwd: root,
     stdio: 'inherit',
   })
