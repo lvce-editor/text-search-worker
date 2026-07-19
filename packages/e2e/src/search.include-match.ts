@@ -1,6 +1,6 @@
 import type { Test } from '@lvce-editor/test-with-playwright'
 
-export const name = 'search.exclude-glob'
+export const name = 'search.include-match'
 
 export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar, Workspace }) => {
   // arrange
@@ -15,7 +15,7 @@ export const test: Test = async ({ expect, FileSystem, Locator, Search, SideBar,
   await expect(message).toHaveText('2 results in 2 files')
 
   // act
-  await Search.setExcludeValue('*.js')
+  await Search.setIncludeValue('a.css')
 
   // assert
   await expect(message).toHaveText('1 result in 1 file')
