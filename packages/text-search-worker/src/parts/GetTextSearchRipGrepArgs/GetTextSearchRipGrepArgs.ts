@@ -23,7 +23,14 @@ export const getRipGrepArgs = ({
   const excludePatternsFromDefaults = defaultExcludes?.filter(Boolean) || []
   const uniqueExcludePatterns = [...new Set([...excludePatternsFromDefaults, ...excludePatternsFromValue])]
   for (const excludePattern of uniqueExcludePatterns) {
-    ripGrepArgs.push('--glob', `!**/${excludePattern}/**`)
+    if (excludePattern.includes('*')) {
+      ripGrepArgs.push('--glob', `!${excludePattern}`)
+      if (!excludePattern.endsWith('/**')) {
+        ripGrepArgs.push('--glob', `!${excludePattern}/**`)
+      }
+    } else {
+      ripGrepArgs.push('--glob', `!**/${excludePattern}/**`)
+    }
   }
   if (isCaseSensitive) {
     ripGrepArgs.push('--case-sensitive')
