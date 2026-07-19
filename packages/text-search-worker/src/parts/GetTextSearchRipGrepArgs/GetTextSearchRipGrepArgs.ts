@@ -23,7 +23,8 @@ export const getRipGrepArgs = ({
   const excludePatternsFromDefaults = defaultExcludes?.filter(Boolean) || []
   const uniqueExcludePatterns = [...new Set([...excludePatternsFromDefaults, ...excludePatternsFromValue])]
   for (const excludePattern of uniqueExcludePatterns) {
-    ripGrepArgs.push('--glob', `!**/${excludePattern}/**`)
+    const glob = excludePattern.includes('*') ? excludePattern : `**/${excludePattern}/**`
+    ripGrepArgs.push('--glob', `!${glob}`)
   }
   if (isCaseSensitive) {
     ripGrepArgs.push('--case-sensitive')

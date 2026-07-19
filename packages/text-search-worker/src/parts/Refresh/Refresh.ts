@@ -1,6 +1,8 @@
 import type { SearchState } from '../SearchState/SearchState.ts'
+import * as GetSearchExcludes from '../GetSearchExcludes/GetSearchExcludes.ts'
 import * as ViewletSearchHandleUpdate from '../HandleUpdate/HandleUpdate.ts'
 
-export const refresh = (state: SearchState): Promise<SearchState> => {
-  return ViewletSearchHandleUpdate.handleUpdate(state, {})
+export const refresh = async (state: SearchState): Promise<SearchState> => {
+  const defaultExcludes = await GetSearchExcludes.getSearchExcludes()
+  return ViewletSearchHandleUpdate.handleUpdate(state, { defaultExcludes })
 }

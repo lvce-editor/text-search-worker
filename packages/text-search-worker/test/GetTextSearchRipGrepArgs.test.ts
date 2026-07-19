@@ -149,3 +149,32 @@ test('getRipGrepArgs - merges default excludes and exclude value', () => {
     '.',
   ])
 })
+
+test('getRipGrepArgs - preserves search exclude glob patterns', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      defaultExcludes: ['**/excluded', '**/package-lock.json'],
+      isCaseSensitive: false,
+      searchString: 'test',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--glob',
+    '!**/excluded',
+    '--glob',
+    '!**/package-lock.json',
+    '--ignore-case',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
