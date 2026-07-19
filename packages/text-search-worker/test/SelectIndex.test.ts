@@ -144,3 +144,30 @@ test('selectIndexPreview - uses extension search result coordinates as fallback'
   })
   expect(mockRpc.invocations).toEqual([['Main.openUri', '/test/file1.ts', true, { selections: new Uint32Array([10, 4, 10, 8]) }]])
 })
+
+test('selectIndexPreview - opens the correct file after an earlier result is collapsed', async () => {
+  using mockRpc = RendererWorker.registerMockRpc({
+    'Main.openUri': () => undefined,
+  })
+
+  const state: SearchState = {
+    ...CreateDefaultState.createDefaultState(),
+    items: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.ts', type: TextSearchResultType.File },
+      { end: 5, lineNumber: 1, start: 1, text: 'match 1', type: TextSearchResultType.Match },
+      { end: 5, lineNumber: 2, start: 1, text: 'match 2', type: TextSearchResultType.Match },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.ts', type: TextSearchResultType.File },
+      { end: 7, lineNumber: 3, start: 3, text: 'match 3', type: TextSearchResultType.Match },
+    ],
+    listItems: [
+      { end: 0, lineNumber: 0, start: 0, text: 'file1.ts', type: TextSearchResultType.File },
+      { end: 0, lineNumber: 0, start: 0, text: 'file2.ts', type: TextSearchResultType.File },
+      { end: 7, lineNumber: 3, start: 3, text: 'match 3', type: TextSearchResultType.Match },
+    ],
+    workspacePath: '/test',
+  }
+
+  await SelectIndex.selectIndex(state, 2)
+
+  expect(mockRpc.invocations).toEqual([['Main.openUri', '/test/file2.ts', true, { selections: new Uint32Array([3, 3, 3, 7]) }]])
+})
