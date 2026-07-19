@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url'
 import { patchRendererWorker } from './patchRendererWorker.js'
 import { root } from './root.js'
 
-const sharedProcessPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
+const sharedProcessPath = join(root, 'node_modules', '@lvce-editor', 'shared-process', 'index.js')
 
 const sharedProcessUrl = pathToFileURL(sharedProcessPath).toString()
 
@@ -87,7 +87,7 @@ await cp(extensionHostWorkerTestsPath, serverExtensionHostWorkerTestsPath, { rec
 
 const staticPath = join(root, '.tmp', 'static')
 const staticPrefixPath = join(staticPath, 'text-search-worker')
-const serverMainPath = join(root, 'packages', 'server', 'node_modules', '@lvce-editor', 'server', 'src', 'server.js')
+const serverMainPath = join(root, 'node_modules', '@lvce-editor', 'server', 'src', 'server.js')
 
 const patchServerStaticPrefix = async () => {
   const content = await readFile(serverMainPath, 'utf-8')
