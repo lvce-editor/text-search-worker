@@ -2,7 +2,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 export const getSearchExcludes = async (fallback: readonly string[] = []): Promise<readonly string[]> => {
   try {
-    const value = await RendererWorker.getPreference('search.exclude')
+    const value = await RendererWorker.invoke('Preferences.get', 'search.exclude')
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
       return []
     }
