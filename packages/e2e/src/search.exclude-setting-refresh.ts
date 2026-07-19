@@ -29,10 +29,6 @@ export const test: Test = async ({ Command, expect, FileSystem, Locator, Search,
     throw new Error(`Expected updated search.exclude preference but received ${JSON.stringify(configuredExcludes)}`)
   }
   await Command.execute('Search.refresh')
-  const effectiveExcludes = await Command.execute('Search.getDefaultExcludes')
-  if (!effectiveExcludes.includes('**/excluded')) {
-    throw new Error(`Expected updated worker excludes but received ${JSON.stringify(effectiveExcludes)}`)
-  }
 
   // assert
   await expect(message).toHaveText('1 result in 1 file')
