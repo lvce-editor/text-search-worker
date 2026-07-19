@@ -61,8 +61,15 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
   const fixedActionsUidSnippet = `  }, false, true);
   let actionsUid = -1;
   if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {`
+  const existingActionsUidSnippet = `  let actionsDom = [];
+  let actionsUid = -1;
+  if (commands) {`
 
-  if (newContent.includes(missingActionsUidSnippet) && !newContent.includes(fixedActionsUidSnippet)) {
+  if (
+    newContent.includes(missingActionsUidSnippet) &&
+    !newContent.includes(fixedActionsUidSnippet) &&
+    !newContent.includes(existingActionsUidSnippet)
+  ) {
     newContent = newContent.replace(missingActionsUidSnippet, fixedActionsUidSnippet)
   }
 
@@ -84,6 +91,28 @@ const textSearchWorkerUrl = \`${remoteUrl}\``
 
   if (newContent.includes(duplicateActionsUidSnippet)) {
     newContent = newContent.replace(duplicateActionsUidSnippet, singleActionsUidSnippet)
+  }
+
+  const duplicateActionsUidWithActionsDomSnippet = `  let actionsUid = -1;
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {
+    disposeFunctional(childUid);
+    await savePromise;
+    return state;
+  }
+  let actionsDom = [];
+  let actionsUid = -1;
+  if (commands) {`
+  const singleActionsUidWithActionsDomSnippet = `  let actionsUid = -1;
+  if (state.currentViewletRequestId !== requestId || state.currentViewletId !== moduleId) {
+    disposeFunctional(childUid);
+    await savePromise;
+    return state;
+  }
+  let actionsDom = [];
+  if (commands) {`
+
+  if (newContent.includes(duplicateActionsUidWithActionsDomSnippet)) {
+    newContent = newContent.replace(duplicateActionsUidWithActionsDomSnippet, singleActionsUidWithActionsDomSnippet)
   }
 
   const openViewletSnippet = `const openViewlet$1 = async (state, moduleId, focus = false, args) => {
