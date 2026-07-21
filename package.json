@@ -28,6 +28,8 @@
     "@lvce-editor/eslint-config": "^16.5.0",
     "eslint": "^10.7.0",
     "prettier": "^3.5.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "knip": "^6.26.0"
+
   }
 }
