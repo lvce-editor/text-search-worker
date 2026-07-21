@@ -1,5 +1,5 @@
-export const Tab = 2
-export const Enter = 3
+const Tab = 2
+const Enter = 3
 export const End = 255
 export const Home = 12
 export const UpArrow = 14
