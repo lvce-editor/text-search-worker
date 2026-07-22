@@ -1,11 +1,10 @@
-import type { Rpc } from '@lvce-editor/rpc'
-import { LazyWebSocketRpcParent2 } from '@lvce-editor/rpc'
+import { type Rpc, LazyWebSocketRpcParent2 } from '@lvce-editor/rpc'
+import * as CommandMapRef from '../CommandMapRef/CommandMapRef.ts'
 
 export const launchSearchProcessNode = async (): Promise<Rpc> => {
-  const rpc = await LazyWebSocketRpcParent2.create({
-    commandMap: {},
+  return LazyWebSocketRpcParent2.create({
+    commandMap: CommandMapRef.commandMapRef,
     // @ts-ignore
     type: 'search-process',
   })
-  return rpc
 }

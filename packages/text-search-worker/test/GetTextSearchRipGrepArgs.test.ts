@@ -60,6 +60,32 @@ test('getRipGrepArgs - useRegularExpression', () => {
   ).toEqual(['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', '1', '--ignore-case', '--regexp', 'test', '.'])
 })
 
+test('getRipGrepArgs - matchWholeWord', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      isCaseSensitive: false,
+      matchWholeWord: true,
+      searchString: 'test',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--ignore-case',
+    '--word-regexp',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
+
 test('getRipGrepArgs - exclude', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({

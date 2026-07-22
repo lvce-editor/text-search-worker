@@ -1,6 +1,7 @@
-import { initializeIconThemeWorker } from '../InitializeIconThemeWorker/InitializeIconThemeWorker.ts'
-import { initializeSearchProcess } from '../InitializeSearchProcess/InitializeSearchProcess.ts'
+import * as InitializeSearchProcess from '../InitializeSearchProcess/InitializeSearchProcess.ts'
+import * as PlatformState from '../PlatformState/PlatformState.ts'
 
 export const initialize = async (platform: number): Promise<void> => {
-  await Promise.all([initializeSearchProcess(platform), initializeIconThemeWorker()])
+  PlatformState.set(platform)
+  await InitializeSearchProcess.initializeSearchProcess(platform)
 }
