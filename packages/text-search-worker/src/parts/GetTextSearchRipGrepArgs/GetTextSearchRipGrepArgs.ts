@@ -5,6 +5,7 @@ export const getRipGrepArgs = ({
   matchWholeWord,
   searchString,
   threads,
+  useIgnoreFiles = true,
   useRegularExpression,
 }: {
   readonly defaultExcludes?: readonly string[]
@@ -13,9 +14,13 @@ export const getRipGrepArgs = ({
   readonly isCaseSensitive: boolean
   readonly matchWholeWord?: boolean
   readonly searchString: string
+  readonly useIgnoreFiles?: boolean
   readonly useRegularExpression: boolean
 }): readonly string[] => {
   const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', `${threads}`]
+  if (!useIgnoreFiles) {
+    ripGrepArgs.push('--no-ignore')
+  }
   const excludePatternsFromValue = exclude
     ? exclude
         .split(',')
