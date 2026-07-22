@@ -44,7 +44,7 @@ test('set - replaces existing providers', () => {
     default: providerB,
   })
 
-  expect(TextSearchProviders.get('alternate')).toBeUndefined()
+  expect(TextSearchProviders.get('alternate')).toBe(providerB)
   expect(TextSearchProviders.get('')).toBe(providerB)
 })
 
