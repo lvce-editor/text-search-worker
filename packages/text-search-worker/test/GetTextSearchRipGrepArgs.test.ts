@@ -122,6 +122,7 @@ test('getRipGrepArgs - default excludes when UseIgnoreFiles is enabled', () => {
       isCaseSensitive: false,
       searchString: 'test',
       threads: 1,
+      useIgnoreFiles: true,
       useRegularExpression: false,
     }),
   ).toEqual([
@@ -136,6 +137,32 @@ test('getRipGrepArgs - default excludes when UseIgnoreFiles is enabled', () => {
     '!**/.git/**',
     '--glob',
     '!**/node_modules/**',
+    '--ignore-case',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
+
+test('getRipGrepArgs - ignores ignore files when UseIgnoreFiles is disabled', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      isCaseSensitive: false,
+      searchString: 'test',
+      threads: 1,
+      useIgnoreFiles: false,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--no-ignore',
     '--ignore-case',
     '--fixed-strings',
     '--',
