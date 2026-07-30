@@ -5,22 +5,16 @@
       "project": ["*.js"]
     },
     "packages/build": {
-      "project": ["src/**/*.js", "src/**/*.ts"],
-      "ignoreDependencies": ["@lvce-editor/verror", "esbuild"]
-    },
-    "packages/e2e": {
-      "entry": ["src/**/*.ts"],
-      "project": ["src/**/*.ts"]
-    },
-    "packages/memory": {
-      "project": ["src/**/*.ts"],
-      "ignoreDependencies": ["playwright"]
+      "entry": ["src/build.js", "src/computeNodeModulesCacheKey.js", "src/measureMemory.js"],
+      "project": ["src/**/*.{js,ts}"],
+      "ignoreDependencies": ["esbuild", "playwright"]
     },
     "packages/text-search-worker": {
-      "entry": ["src/textSearchWorkerMain.ts"],
+      "entry": ["src/textSearchWorkerMain.ts", "test/**/*.test.ts"],
       "project": ["src/**/*.ts", "test/**/*.ts"]
     },
     "packages/server": {
+      "entry": ["src/postinstall.js"],
       "project": ["src/**/*.js"]
     }
   }
