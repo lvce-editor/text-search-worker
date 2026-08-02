@@ -1,4 +1,12 @@
+const getContextArgs = (contextLines?: number): readonly string[] => {
+  if (contextLines && contextLines > 0) {
+    return ['--context', `${Math.trunc(contextLines)}`]
+  }
+  return []
+}
+
 export const getRipGrepArgs = ({
+  contextLines,
   defaultExcludes,
   exclude,
   isCaseSensitive,
@@ -8,6 +16,7 @@ export const getRipGrepArgs = ({
   useIgnoreFiles = true,
   useRegularExpression,
 }: {
+  readonly contextLines?: number
   readonly defaultExcludes?: readonly string[]
   readonly exclude?: string
   readonly threads: number
@@ -17,7 +26,16 @@ export const getRipGrepArgs = ({
   readonly useIgnoreFiles?: boolean
   readonly useRegularExpression: boolean
 }): readonly string[] => {
-  const ripGrepArgs = ['--hidden', '--no-require-git', '--smart-case', '--stats', '--json', '--threads', `${threads}`]
+  const ripGrepArgs = [
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    `${threads}`,
+    ...getContextArgs(contextLines),
+  ]
   if (!useIgnoreFiles) {
     ripGrepArgs.push('--no-ignore')
   }
