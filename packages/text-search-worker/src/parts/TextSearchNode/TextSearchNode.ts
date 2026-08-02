@@ -1,5 +1,6 @@
 import type { TextSearchCompletionResult } from '../TextSearchCompletionResult/TextSearchCompletionResult.ts'
 import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.ts'
+import * as GetOpenEditorPaths from '../GetOpenEditorPaths/GetOpenEditorPaths.ts'
 import * as GetTextSearchRipGrepArgs from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 import * as InvokeSearchProcess from '../InvokeSearchProcess/InvokeSearchProcess.ts'
 
@@ -13,8 +14,16 @@ export const textSearch = async (
   searchId?: string,
   uid?: number,
 ): Promise<TextSearchCompletionResult> => {
+  const openEditorPaths = options.openEditorUris ? GetOpenEditorPaths.getOpenEditorPaths(root, options.openEditorUris) : undefined
+  if (openEditorPaths && openEditorPaths.length === 0) {
+    return {
+      limitHit: false,
+      results: [],
+    }
+  }
   const ripGrepArgs = GetTextSearchRipGrepArgs.getRipGrepArgs({
     ...options,
+    ...(openEditorPaths && { paths: openEditorPaths }),
     searchString: query,
   })
   if (options.usePullBasedSearch && searchId && (scheme === '' || scheme === 'file')) {

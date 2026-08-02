@@ -154,6 +154,47 @@ test('getRipGrepArgs - exclude', () => {
   ])
 })
 
+test('getRipGrepArgs - include', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      include: '*.ts, src/**',
+      isCaseSensitive: false,
+      searchString: 'test',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--glob',
+    '*.ts',
+    '--glob',
+    'src/**',
+    '--ignore-case',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
+
+test('getRipGrepArgs - explicit paths', () => {
+  const result = GetTextSearchRipGrepArgs.getRipGrepArgs({
+    isCaseSensitive: false,
+    paths: ['src/app.ts', 'README.md'],
+    searchString: 'test',
+    threads: 1,
+    useRegularExpression: false,
+  })
+
+  expect(result.slice(-2)).toEqual(['src/app.ts', 'README.md'])
+})
+
 test('getRipGrepArgs - default excludes when UseIgnoreFiles is enabled', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({
