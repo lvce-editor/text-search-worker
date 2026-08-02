@@ -5,12 +5,22 @@ const getContextArgs = (contextLines?: number): readonly string[] => {
   return []
 }
 
+const getIncludeArgs = (include?: string): readonly string[] => {
+  return (include || '')
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .flatMap((pattern) => ['--glob', pattern])
+}
+
 export const getRipGrepArgs = ({
   contextLines,
   defaultExcludes,
   exclude,
+  include,
   isCaseSensitive,
   matchWholeWord,
+  paths,
   searchString,
   threads,
   useIgnoreFiles = true,
@@ -19,6 +29,8 @@ export const getRipGrepArgs = ({
   readonly contextLines?: number
   readonly defaultExcludes?: readonly string[]
   readonly exclude?: string
+  readonly include?: string
+  readonly paths?: readonly string[]
   readonly threads: number
   readonly isCaseSensitive: boolean
   readonly matchWholeWord?: boolean
@@ -57,6 +69,7 @@ export const getRipGrepArgs = ({
       ripGrepArgs.push('--glob', `!**/${excludePattern}/**`)
     }
   }
+  ripGrepArgs.push(...getIncludeArgs(include))
   if (isCaseSensitive) {
     ripGrepArgs.push('--case-sensitive')
   } else {
@@ -72,6 +85,6 @@ export const getRipGrepArgs = ({
     ripGrepArgs.push('--')
     ripGrepArgs.push(searchString)
   }
-  ripGrepArgs.push('.')
+  ripGrepArgs.push(...(paths || ['.']))
   return ripGrepArgs
 }

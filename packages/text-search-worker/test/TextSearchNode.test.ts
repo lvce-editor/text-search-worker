@@ -81,6 +81,61 @@ test('textSearch', async () => {
   ])
 })
 
+test('textSearch - returns no results when only open editors is enabled without file editors', async () => {
+  const handler = jest.fn()
+  using mockRpc = RendererWorker.registerMockRpc({
+    'SearchProcess.invoke': handler,
+  })
+
+  await expect(TextSearchNode.textSearch('', '/test', 'abc', { openEditorUris: [] } as any)).resolves.toEqual({
+    limitHit: false,
+    results: [],
+  })
+  expect(mockRpc.invocations).toEqual([])
+})
+
+test('textSearch - limits results to open editors inside the workspace', async () => {
+  const handler = jest.fn(() => ({
+    limitHit: false,
+    results: [],
+  }))
+  using mockRpc = RendererWorker.registerMockRpc({
+    'SearchProcess.invoke': handler,
+  })
+
+  await expect(
+    TextSearchNode.textSearch('', '/test', 'abc', {
+      openEditorUris: ['file:///test/src/app.ts', 'file:///outside/app.ts'],
+    } as any),
+  ).resolves.toEqual({
+    limitHit: false,
+    results: [],
+  })
+  expect(mockRpc.invocations).toEqual([
+    [
+      'SearchProcess.invoke',
+      'TextSearch.search',
+      {
+        ripGrepArgs: [
+          '--hidden',
+          '--no-require-git',
+          '--smart-case',
+          '--stats',
+          '--json',
+          '--threads',
+          'undefined',
+          '--ignore-case',
+          '--fixed-strings',
+          '--',
+          'abc',
+          'src/app.ts',
+        ],
+        searchDir: '/test',
+      },
+    ],
+  ])
+})
+
 test('textSearch - pull based (file scheme)', async () => {
   const handler = jest.fn(() => undefined)
   using mockRpc = RendererWorker.registerMockRpc({
