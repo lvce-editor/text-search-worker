@@ -49,6 +49,45 @@ test('getRipGrepArgs - isCaseSensitive', () => {
   ])
 })
 
+test('getRipGrepArgs - context lines', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      contextLines: 2,
+      isCaseSensitive: false,
+      searchString: 'test',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--context',
+    '2',
+    '--ignore-case',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
+
+test('getRipGrepArgs - disabled context lines', () => {
+  const args = GetTextSearchRipGrepArgs.getRipGrepArgs({
+    contextLines: 0,
+    isCaseSensitive: false,
+    searchString: 'test',
+    threads: 1,
+    useRegularExpression: false,
+  })
+
+  expect(args).not.toContain('--context')
+})
+
 test('getRipGrepArgs - useRegularExpression', () => {
   expect(
     GetTextSearchRipGrepArgs.getRipGrepArgs({
