@@ -4,6 +4,7 @@ import * as TextSearchFetch from '../TextSearchFetch/TextSearchFetch.ts'
 import * as TextSearchHtml from '../TextSearchHtml/TextSearchHtml.ts'
 import * as TextSearchMemory from '../TextSearchMemory/TextSearchMemory.ts'
 import * as TextSearchNode from '../TextSearchNode/TextSearchNode.ts'
+import * as TextSearchRemoteSsh from '../TextSearchRemoteSsh/TextSearchRemoteSsh.ts'
 import * as TextSearchWeb from '../TextSearchWeb/TextSearchWeb.ts'
 
 export const textSearchProviderMap: Record<string, TextSearchProvider> = {
@@ -13,5 +14,6 @@ export const textSearchProviderMap: Record<string, TextSearchProvider> = {
   file: TextSearchNode.textSearch,
   html: TextSearchHtml.textSearch,
   memfs: TextSearchMemory.textSearch,
+  'remote-ssh': TextSearchRemoteSsh.textSearch,
   web: TextSearchWeb.textSearch,
 }
