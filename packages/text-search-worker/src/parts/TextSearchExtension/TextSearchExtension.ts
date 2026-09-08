@@ -4,7 +4,12 @@ import type { TextSearchOptions } from '../TextSearchOptions/TextSearchOptions.t
 import * as Assert from '../Assert/Assert.ts'
 import { getRipGrepArgs } from '../GetTextSearchRipGrepArgs/GetTextSearchRipGrepArgs.ts'
 
-export const textSearch = async (scheme: string, root: string, query: string, options?: Partial<TextSearchOptions>): Promise<TextSearchCompletionResult> => {
+export const textSearch = async (
+  scheme: string,
+  root: string,
+  query: string,
+  options?: Partial<TextSearchOptions>,
+): Promise<TextSearchCompletionResult> => {
   Assert.string(scheme)
   Assert.string(query)
   const ripGrepArgs = getRipGrepArgs({ isCaseSensitive: false, threads: 1, useRegularExpression: false, ...options, searchString: query })
