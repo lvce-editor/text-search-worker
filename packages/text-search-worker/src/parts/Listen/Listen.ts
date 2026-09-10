@@ -5,11 +5,16 @@ import * as CommandMapRef from '../CommandMapRef/CommandMapRef.ts'
 import * as TextSearchProviderMap from '../TextSearchProviderMap/TextSearchProviderMap.ts'
 import * as TextSearchProviders from '../TextSearchProviders/TextSearchProviders.ts'
 
-export const listen = async (): Promise<void> => {
-  Object.assign(CommandMapRef.commandMapRef, CommandMap.commandMap)
-  TextSearchProviders.add(TextSearchProviderMap.textSearchProviderMap)
+const initializeRendererWorker = async (): Promise<void> => {
   const rpc = await WebWorkerRpcClient.create({
     commandMap: CommandMapRef.commandMapRef,
   })
   RendererWorker.set(rpc)
+}
+
+export const listen = async (): Promise<void> => {
+  Object.assign(CommandMapRef.commandMapRef, CommandMap.commandMap)
+  TextSearchProviders.add(TextSearchProviderMap.textSearchProviderMap)
+
+  await initializeRendererWorker()
 }
