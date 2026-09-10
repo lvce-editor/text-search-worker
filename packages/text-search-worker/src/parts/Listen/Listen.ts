@@ -5,7 +5,7 @@ import * as CommandMapRef from '../CommandMapRef/CommandMapRef.ts'
 import * as TextSearchProviderMap from '../TextSearchProviderMap/TextSearchProviderMap.ts'
 import * as TextSearchProviders from '../TextSearchProviders/TextSearchProviders.ts'
 
-const initializeRendererWorker = async () => {
+const initializeRendererWorker = async (): Promise<void> => {
   const rpc = await WebWorkerRpcClient.create({
     commandMap: CommandMapRef.commandMapRef,
   })
