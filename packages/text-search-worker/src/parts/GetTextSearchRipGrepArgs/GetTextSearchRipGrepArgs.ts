@@ -5,12 +5,16 @@ const getContextArgs = (contextLines?: number): readonly string[] => {
   return []
 }
 
+const trimPart = (part: string): string => {
+  return part.trim()
+}
+
+const toGlob = (pattern: string): readonly string[] => {
+  return ['--glob', pattern]
+}
+
 const getIncludeArgs = (include?: string): readonly string[] => {
-  return (include || '')
-    .split(',')
-    .map((part) => part.trim())
-    .filter(Boolean)
-    .flatMap((pattern) => ['--glob', pattern])
+  return (include || '').split(',').map(trimPart).filter(Boolean).flatMap(toGlob)
 }
 
 export const getRipGrepArgs = ({
