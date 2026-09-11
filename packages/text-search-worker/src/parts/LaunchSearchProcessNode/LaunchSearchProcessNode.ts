@@ -2,6 +2,8 @@ import { type Rpc, LazyWebSocketRpcParent2, WebSocketRpcParent } from '@lvce-edi
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as CommandMapRef from '../CommandMapRef/CommandMapRef.ts'
 
+const commandNotFoundRegex = /command not found|not found/i
+
 export const launchSearchProcessNode = async (): Promise<Rpc> => {
   try {
     const { protocols, url } = (await RendererWorker.invoke('WebSocketCapability.create', 'search-process')) as {
@@ -16,7 +18,7 @@ export const launchSearchProcessNode = async (): Promise<Rpc> => {
     if (!(
       error instanceof Error &&
       (error.message.includes('WebSocketCapability.create') || error.message.includes('module WebSocketCapability not found')) &&
-      /command not found|not found/i.test(error.message)
+      commandNotFoundRegex.test(error.message)
     )) {
       throw error
     }
