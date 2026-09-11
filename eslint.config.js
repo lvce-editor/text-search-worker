@@ -5,6 +5,7 @@ export default defineConfig([
   ...config.default,
   ...config.recommendedActions,
   ...config.recommendedTsconfig,
+  ...config.recommendedRegex,
   ...config.recommendedVirtualDom,
   {
     ignores: ['packages/text-search-worker/src/textSearchWorkerMain.ts'],
