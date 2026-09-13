@@ -5,7 +5,7 @@
       "project": ["*.js"]
     },
     "packages/build": {
-      "entry": ["src/build.js", "src/computeNodeModulesCacheKey.js", "src/measureMemory.js"],
+      "entry": ["src/build.ts", "src/computeNodeModulesCacheKey.ts", "src/measureMemory.ts"],
       "project": ["src/**/*.{js,ts}"],
       "ignoreDependencies": ["esbuild", "playwright"]
     },
