@@ -183,6 +183,35 @@ test('getRipGrepArgs - include', () => {
   ])
 })
 
+test('getRipGrepArgs - include directory', () => {
+  expect(
+    GetTextSearchRipGrepArgs.getRipGrepArgs({
+      include: 'packages/build',
+      isCaseSensitive: false,
+      searchString: 'test',
+      threads: 1,
+      useRegularExpression: false,
+    }),
+  ).toEqual([
+    '--hidden',
+    '--no-require-git',
+    '--smart-case',
+    '--stats',
+    '--json',
+    '--threads',
+    '1',
+    '--glob',
+    'packages/build',
+    '--glob',
+    'packages/build/**',
+    '--ignore-case',
+    '--fixed-strings',
+    '--',
+    'test',
+    '.',
+  ])
+})
+
 test('getRipGrepArgs - explicit paths', () => {
   const result = GetTextSearchRipGrepArgs.getRipGrepArgs({
     isCaseSensitive: false,
