@@ -9,8 +9,19 @@ const trimPart = (part: string): string => {
   return part.trim()
 }
 
+const hasGlob = (pattern: string): boolean => {
+  return pattern.includes('*') || pattern.includes('?') || pattern.includes('[') || pattern.includes('{')
+}
+
 const toGlob = (pattern: string): readonly string[] => {
-  return ['--glob', pattern]
+  const args = ['--glob', pattern]
+  if (!hasGlob(pattern)) {
+    const normalizedPattern = pattern.endsWith('/') ? pattern.slice(0, -1) : pattern
+    if (normalizedPattern) {
+      args.push('--glob', `${normalizedPattern}/**`)
+    }
+  }
+  return args
 }
 
 const getIncludeArgs = (include?: string): readonly string[] => {
