@@ -18,3 +18,18 @@ test('getOpenEditorPaths - supports plain and Windows paths', () => {
   expect(GetOpenEditorPaths.getOpenEditorPaths('file:///C:/workspace', ['file:///C:/workspace/src/app.ts'])).toEqual(['src/app.ts'])
   expect(GetOpenEditorPaths.getOpenEditorPaths('C:\\workspace', ['C:\\workspace\\src\\app.ts'])).toEqual(['src/app.ts'])
 })
+
+test('getOpenEditorPaths - supports virtual file system uris and excludes other schemes', () => {
+  expect(
+    GetOpenEditorPaths.getOpenEditorPaths('memfs:///workspace', [
+      'memfs:///workspace/README.md',
+      'memfs:///workspace/src/app.ts',
+      'file:///workspace/unopened.txt',
+      'search-editor://1/Search',
+    ]),
+  ).toEqual(['README.md', 'src/app.ts'])
+})
+
+test('getOpenEditorPaths - rejects non-file uris for a plain path root and malformed schemes', () => {
+  expect(GetOpenEditorPaths.getOpenEditorPaths('/workspace', ['memfs:///workspace/app.ts', 'file://%'])).toEqual([])
+})
