@@ -30,3 +30,52 @@ test('textSearch - falls back to the legacy result API', async () => {
     ['ExtensionHostTextSearch.textSearchMemory', 'memfs', 'memfs://workspace', 'test', options, '/assets'],
   ])
 })
+
+test('textSearch - filters memory search results to open editor files', async () => {
+  const results = [
+    { end: 4, lineNumber: 1, start: 0, text: 'README.md', type: 1 },
+    { end: 4, lineNumber: 1, start: 0, text: 'auth', type: 2 },
+    { end: 4, lineNumber: 1, start: 0, text: 'unopened.txt', type: 1 },
+    { end: 4, lineNumber: 1, start: 0, text: 'auth', type: 2 },
+  ]
+  const completion = { limitHit: true, results }
+  const searchOptions = {
+    openEditorUris: ['memfs:///workspace/README.md'],
+  } as any
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostTextSearch.textSearchMemory2': () => completion,
+  })
+
+  await expect(TextSearchMemory.textSearch('memfs', 'memfs:///workspace', 'test', searchOptions, '/assets')).resolves.toEqual({
+    limitHit: true,
+    results: results.slice(0, 2),
+  })
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionHostTextSearch.textSearchMemory2', 'memfs', 'memfs:///workspace', 'test', searchOptions, '/assets'],
+  ])
+})
+
+test('textSearch - filters legacy memory search results to open editor files', async () => {
+  const results = [
+    { end: 4, lineNumber: 1, start: 0, text: 'README.md', type: 1 },
+    { end: 4, lineNumber: 1, start: 0, text: 'auth', type: 2 },
+    { end: 4, lineNumber: 1, start: 0, text: 'unopened.txt', type: 1 },
+    { end: 4, lineNumber: 1, start: 0, text: 'auth', type: 2 },
+  ]
+  const searchOptions = {
+    openEditorUris: ['memfs:///workspace/README.md'],
+  } as any
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostTextSearch.textSearchMemory': () => results,
+    'ExtensionHostTextSearch.textSearchMemory2': () => undefined,
+  })
+
+  await expect(TextSearchMemory.textSearch('memfs', 'memfs:///workspace', 'test', searchOptions, '/assets')).resolves.toEqual({
+    limitHit: false,
+    results: results.slice(0, 2),
+  })
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionHostTextSearch.textSearchMemory2', 'memfs', 'memfs:///workspace', 'test', searchOptions, '/assets'],
+    ['ExtensionHostTextSearch.textSearchMemory', 'memfs', 'memfs:///workspace', 'test', searchOptions, '/assets'],
+  ])
+})
