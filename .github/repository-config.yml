@@ -1,0 +1,40 @@
+version: 1
+requiredStatusChecks:
+  - pr (ubuntu-24.04)
+  - pr (macos-15)
+  - pr (windows-2025)
+settings:
+  description: Text Search Worker
+  homepage: https://lvce-editor.github.io/text-search-worker/
+  has_issues: true
+  has_projects: false
+  has_wiki: false
+  has_downloads: false
+  has_discussions: false
+  is_template: false
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: false
+  allow_auto_merge: true
+  allow_update_branch: false
+  delete_branch_on_merge: true
+  web_commit_signoff_required: false
+  merge_commit_title: PR_TITLE
+  merge_commit_message: PR_TITLE
+  squash_merge_commit_title: PR_TITLE
+  squash_merge_commit_message: BLANK
+topics:
+  - text-search
+branches:
+  - name: main
+    protection:
+      enforce_admins: true
+      required_signatures: false
+      required_pull_request_reviews:
+        required_approving_review_count: 0
+        dismiss_stale_reviews: false
+        require_code_owner_reviews: false
+        require_last_push_approval: false
+labels: []
+milestones: []
+rulesets: []
