@@ -19,7 +19,7 @@ settings:
   allow_update_branch: false
   delete_branch_on_merge: true
   web_commit_signoff_required: false
-  merge_commit_title: PR_TITLE
+  merge_commit_title: MERGE_MESSAGE
   merge_commit_message: PR_TITLE
   squash_merge_commit_title: PR_TITLE
   squash_merge_commit_message: BLANK
