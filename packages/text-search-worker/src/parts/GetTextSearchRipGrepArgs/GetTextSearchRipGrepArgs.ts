@@ -1,32 +1,5 @@
-const getContextArgs = (contextLines?: number): readonly string[] => {
-  if (contextLines && contextLines > 0) {
-    return ['--context', `${Math.trunc(contextLines)}`]
-  }
-  return []
-}
-
-const trimPart = (part: string): string => {
-  return part.trim()
-}
-
-const hasGlob = (pattern: string): boolean => {
-  return pattern.includes('*') || pattern.includes('?') || pattern.includes('[') || pattern.includes('{')
-}
-
-const toGlob = (pattern: string): readonly string[] => {
-  const args = ['--glob', pattern]
-  if (!hasGlob(pattern)) {
-    const normalizedPattern = pattern.endsWith('/') ? pattern.slice(0, -1) : pattern
-    if (normalizedPattern) {
-      args.push('--glob', `${normalizedPattern}/**`)
-    }
-  }
-  return args
-}
-
-const getIncludeArgs = (include?: string): readonly string[] => {
-  return (include || '').split(',').map(trimPart).filter(Boolean).flatMap(toGlob)
-}
+import * as GetContextArgs from '../GetContextArgs/GetContextArgs.ts'
+import * as GetIncludeArgs from '../GetIncludeArgs/GetIncludeArgs.ts'
 
 export const getRipGrepArgs = ({
   contextLines,
@@ -61,7 +34,7 @@ export const getRipGrepArgs = ({
     '--json',
     '--threads',
     `${threads}`,
-    ...getContextArgs(contextLines),
+    ...GetContextArgs.getContextArgs(contextLines),
   ]
   if (!useIgnoreFiles) {
     ripGrepArgs.push('--no-ignore')
@@ -84,7 +57,7 @@ export const getRipGrepArgs = ({
       ripGrepArgs.push('--glob', `!**/${excludePattern}/**`)
     }
   }
-  ripGrepArgs.push(...getIncludeArgs(include))
+  ripGrepArgs.push(...GetIncludeArgs.getIncludeArgs(include))
   if (isCaseSensitive) {
     ripGrepArgs.push('--case-sensitive')
   } else {
