@@ -344,3 +344,16 @@ test('getRipGrepArgs - preserves search exclude glob patterns', () => {
     '.',
   ])
 })
+
+test('getRipGrepArgs - does not expand exclude glob patterns ending in /**', () => {
+  const args = GetTextSearchRipGrepArgs.getRipGrepArgs({
+    defaultExcludes: ['src/**'],
+    isCaseSensitive: false,
+    searchString: 'test',
+    threads: 1,
+    useRegularExpression: false,
+  })
+
+  expect(args).toContain('!src/**')
+  expect(args).not.toContain('!src/**/**')
+})
