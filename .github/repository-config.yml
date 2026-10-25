@@ -35,6 +35,9 @@ branches:
         dismiss_stale_reviews: false
         require_code_owner_reviews: false
         require_last_push_approval: false
-labels: []
+labels:
+  - name: repository-config
+    color: '1d76db'
+    description: Repository configuration changes
 milestones: []
 rulesets: []
